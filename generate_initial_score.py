@@ -1,11 +1,9 @@
+# vera-research: dropped imports this inference path never uses (pandas, decord, pdb, pytorch_lightning, peft).
 import sys
 import os
 
 from torch.utils.data import Dataset, DataLoader
-import pandas as pd
 import numpy as np
-import decord
-from decord import VideoReader, cpu
 import random
 import torch
 from torch.utils.data.dataloader import default_collate
@@ -19,11 +17,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, LlamaTokenizer
 import copy
 import math
 from torchvision import transforms
-import pdb
 import torchvision.transforms as T
 from torchvision.transforms.functional import InterpolationMode
 from transformers import AutoModel
-import pytorch_lightning as pl
 import itertools
 
 import warnings
@@ -34,7 +30,6 @@ import torch.utils.checkpoint
 import transformers
 
 import sys
-from peft import LoraConfig, get_peft_model
 from torch import nn
 from torch.nn import CrossEntropyLoss
 from transformers import (AutoModel, GenerationConfig, LlamaForCausalLM,
@@ -46,10 +41,7 @@ from transformers.utils import ModelOutput, logging
 
 import os
 from torch.utils.data import Dataset, DataLoader
-import pandas as pd
 import numpy as np
-import decord
-from decord import VideoReader, cpu
 import random
 import torch
 from torch.utils.data.dataloader import default_collate
@@ -63,18 +55,10 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, LlamaTokenizer
 import copy
 import math
 from torchvision import transforms
-import pdb
 import torchvision.transforms as T
 from torchvision.transforms.functional import InterpolationMode
 from transformers import AutoModel
-import pytorch_lightning as pl
 import itertools
-
-# folder for saving the initial segment-level 0/1 prediction score
-save_folder = "prediction_scores_InternVL2/"
-
-if not os.path.exists(save_folder):
-    os.makedirs(save_folder)
 
 # Please put the guiding questions here
 new_qs = "1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?"+"\n"+ \
@@ -143,10 +127,9 @@ class Video_Instruct_Dataset_Inference(Dataset):
                     
                 vlen = sample['length']
 
-            except:
-                print(f"Failed to load examples with video: {video_path}. Will randomly sample an example as a replacement.")
-                index = random.randint(0, len(self) - 1)
-                continue
+            except Exception as e:
+                # vera-research: fail explicitly instead of substituting a random other video.
+                raise RuntimeError(f"Failed to load annotation entry {index}") from e
             break
         else:
             raise RuntimeError(f"Failed to fetch video after {num_retries} retries.")
@@ -154,7 +137,7 @@ class Video_Instruct_Dataset_Inference(Dataset):
         return video_path, video_name, vlen
 
             
-class VideoAnomalyDetectionModelInference(pl.LightningModule):
+class VideoAnomalyDetectionModelInference(nn.Module):  # vera-research: was pl.LightningModule, used only as a module container
     def __init__(self, model, tokenizer, optimizer_instruct, model_instruct, new_qs, generation_config, epochs=5):
         super().__init__()
         self.model = model
@@ -187,7 +170,10 @@ class VideoAnomalyDetectionModelInference(pl.LightningModule):
         questions = [question] * batch_size
         num_patches_list_real = [frame_size] * batch_size
 
-        responses = self.model.batch_chat(self.tokenizer, pixel_values, num_patches_list=num_patches_list_real, questions=questions, generation_config=generation_config)
+        responses = self.model.batch_chat(self.tokenizer, pixel_values, num_patches_list=num_patches_list_real, questions=questions, generation_config=self.generation_config)
+        # vera-research: keep the raw text before parsing (and use self.generation_config, not the script global).
+        self.last_questions = questions
+        self.last_responses = list(responses)
         
         predict_labels = []
         for response in responses:
@@ -200,105 +186,119 @@ class VideoAnomalyDetectionModelInference(pl.LightningModule):
 
         return predict_labels
 
-path = 'OpenGVLab/InternVL2-8B'
+# vera-research: the script body runs only when executed directly, so the classes above can be imported.
+def main():
+    # folder for saving the initial segment-level 0/1 prediction score
+    save_folder = "prediction_scores_InternVL2/"
+
+    if not os.path.exists(save_folder):
+        os.makedirs(save_folder)
+
+    path = 'OpenGVLab/InternVL2-8B'
 
 
-model = AutoModel.from_pretrained(
-    path,
-    torch_dtype=torch.bfloat16,
-    low_cpu_mem_usage=True,
-    trust_remote_code=True,
-    use_flash_attn=True,
-    cache_dir='./cache'
-).eval()
+    model = AutoModel.from_pretrained(
+        path,
+        torch_dtype=torch.bfloat16,
+        low_cpu_mem_usage=True,
+        trust_remote_code=True,
+        use_flash_attn=True,
+        cache_dir='./cache'
+    ).eval()
 
-tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, cache_dir='./cache')
+    tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, cache_dir='./cache')
 
-generation_config = dict(
-    num_beams=1,
-    max_new_tokens=1024,
-    do_sample=False,
-)
+    generation_config = dict(
+        num_beams=1,
+        max_new_tokens=1024,
+        do_sample=False,
+    )
 
-test_dataset = Video_Instruct_Dataset_Inference(vis_root='Data/ucf/frames/', ann_root='Data/UCF_Eval.json')
+    test_dataset = Video_Instruct_Dataset_Inference(vis_root='Data/ucf/frames/', ann_root='Data/UCF_Eval.json')
 
-test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=16)
-
-
-file = open('VERA_learner_instruct.txt','r')
-model_instruct =  file.read()
-file.close()
+    test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=16)
 
 
-lightning_model = VideoAnomalyDetectionModelInference(
-    model=model, tokenizer=tokenizer, optimizer_instruct=None,
-    model_instruct=model_instruct, new_qs=new_qs, generation_config=generation_config
-).eval().cuda()
-
-iter_test_loader = iter(test_loader)
-
-fps = 30
-t_window = 10
-sampling_rate = 16
-snippet_len = 8
-image_transform = test_dataset.transform
-
-dict_all = {}
-count = -1
+    file = open('VERA_learner_instruct.txt','r')
+    model_instruct =  file.read()
+    file.close()
 
 
+    lightning_model = VideoAnomalyDetectionModelInference(
+        model=model, tokenizer=tokenizer, optimizer_instruct=None,
+        model_instruct=model_instruct, new_qs=new_qs, generation_config=generation_config
+    ).eval().cuda()
 
-while True:
+    iter_test_loader = iter(test_loader)
 
-    dict_single ={}
-    try:
-        video_path, video_name, n_frms  = next(iter_test_loader)
-        count+=1
+    fps = 30
+    t_window = 10
+    sampling_rate = 16
+    snippet_len = 8
+    image_transform = test_dataset.transform
 
-        print("testing video "+video_name[0])
+    dict_all = {}
+    count = -1
 
 
-        if os.path.exists(save_folder+"{}.json".format(video_name[0])):
-            continue
+
+    while True:
+
+        dict_single ={}
+        try:
+            video_path, video_name, n_frms  = next(iter_test_loader)
+            count+=1
+
+            print("testing video "+video_name[0])
+
+
+            if os.path.exists(save_folder+"{}.json".format(video_name[0])):
+                continue
         
 
-        start, end = 0, n_frms.item()
-        vlen = n_frms.item()
+            start, end = 0, n_frms.item()
+            vlen = n_frms.item()
         
-        indices = [i for i in range(start, end, sampling_rate)]
+            indices = [i for i in range(start, end, sampling_rate)]
 
-        for ind in indices:
-            snippet_start = max(ind - 1/2*fps*t_window, start)
-            snippet_end = min(ind+1/2*fps*t_window, end)
+            for ind in indices:
+                snippet_start = max(ind - 1/2*fps*t_window, start)
+                snippet_end = min(ind+1/2*fps*t_window, end)
 
-            snippet_indices = np.arange(snippet_start, snippet_end, (snippet_end-snippet_start)/snippet_len).astype(int).tolist()
-            frame_no_list=['{:06d}'.format(i)+'.jpg' for i in snippet_indices]
-            pixel_values_list, num_patches_list = [], []
-            for frame_name in frame_no_list:
+                snippet_indices = np.arange(snippet_start, snippet_end, (snippet_end-snippet_start)/snippet_len).astype(int).tolist()
+                frame_no_list=['{:06d}'.format(i)+'.jpg' for i in snippet_indices]
+                pixel_values_list, num_patches_list = [], []
+                for frame_name in frame_no_list:
     
-                frame_path = video_path[0] + '/' + frame_name
-                frame = Image.open(frame_path).convert('RGB')
+                    frame_path = video_path[0] + '/' + frame_name
+                    frame = Image.open(frame_path).convert('RGB')
                 
-                stitched_image = dynamic_preprocess([frame], grid_size=1)
+                    stitched_image = dynamic_preprocess([frame], grid_size=1)
 
-                pixel_values = [image_transform(stitched_image)]
-                pixel_values = torch.stack(pixel_values)
+                    pixel_values = [image_transform(stitched_image)]
+                    pixel_values = torch.stack(pixel_values)
 
-                pixel_values_list.append(pixel_values)
-                num_patches_list.append(pixel_values.shape[0])
+                    pixel_values_list.append(pixel_values)
+                    num_patches_list.append(pixel_values.shape[0])
 
-            pixel_values = torch.cat(pixel_values_list).unsqueeze(0)
-            pixel_values = pixel_values.to(torch.bfloat16).cuda()
+                pixel_values = torch.cat(pixel_values_list).unsqueeze(0)
+                pixel_values = pixel_values.to(torch.bfloat16).cuda()
 
            
                 
-            predict_labels = lightning_model.forward(pixel_values, num_patches_list)
+                predict_labels = lightning_model.forward(pixel_values, num_patches_list)
 
-            dict_single[ind]={'start':snippet_start,'end':snippet_end, 'score':predict_labels.item()}
+                # vera-research: forward() returns a Python list; take its single element explicitly.
+                assert isinstance(predict_labels, list) and len(predict_labels) == 1, predict_labels
+                dict_single[ind]={'start':snippet_start,'end':snippet_end, 'score':predict_labels[0]}
 
-        with open(save_folder+"{}.json".format(video_name[0]),"w") as outfile:
+            with open(save_folder+"{}.json".format(video_name[0]),"w") as outfile:
             
-            json.dump(dict_single, outfile)
+                json.dump(dict_single, outfile)
 
-    except (StopIteration):
-        break
+        except (StopIteration):
+            break
+
+
+if __name__ == "__main__":
+    main()
