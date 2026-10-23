@@ -1,0 +1,163 @@
+{
+ "estimate_pp": 42.857142857142854,
+ "ci95_pp": [
+  16.071428571428573,
+  72.85714285714286
+ ],
+ "n_videos": 5,
+ "n_videos_population": 5,
+ "n_inputs": 8,
+ "n_inputs_missing_dw": 1,
+ "video_means_pp": {
+  "SynthArson_001": 37.5,
+  "SynthBurglary_002": 96.42857142857143,
+  "SynthNormal_901": 53.57142857142857,
+  "SynthShooting_006": 26.785714285714285,
+  "SynthStealing_007": 0.0
+ },
+ "d_w": {
+  "SynthArson_001@160": 0.75,
+  "SynthArson_001@896": 0.0,
+  "SynthBurglary_002@208": 0.9642857142857143,
+  "SynthBurglary_002@592": null,
+  "SynthNormal_901@1504": 0.5357142857142857,
+  "SynthShooting_006@160": 0.5357142857142857,
+  "SynthShooting_006@496": 0.0,
+  "SynthStealing_007@160": 0.0
+ },
+ "bootstrap": {
+  "seed": 0,
+  "B": 10000,
+  "method": "video-cluster percentile; random.Random(seed).randrange",
+  "stability": [
+   {
+    "seed": 1,
+    "ci95_pp": [
+     16.071428571428573,
+     72.85714285714286
+    ]
+   },
+   {
+    "seed": 2,
+    "ci95_pp": [
+     16.071428571428573,
+     70.71428571428572
+    ]
+   },
+   {
+    "seed": 3,
+    "ci95_pp": [
+     16.071428571428573,
+     70.71428571428572
+    ]
+   },
+   {
+    "seed": 4,
+    "ci95_pp": [
+     16.071428571428573,
+     72.85714285714286
+    ]
+   }
+  ]
+ },
+ "bounds_pp": [
+  30.71428571428571,
+  41.07142857142857
+ ],
+ "bounds_note": "worst-case bounds on the estimate had every missing label been observed (missing selected flips 0/1, missing comparator flips 1/0, then video averaging); the complete-case estimate need not lie inside them",
+ "sensitivity": {
+  "tie_free": {
+   "estimate_pp": 60.26785714285714,
+   "ci95_pp": [
+    41.51785714285714,
+    85.71428571428572
+   ],
+   "n_videos": 4,
+   "n_videos_population": 4,
+   "n_inputs": 5,
+   "n_inputs_missing_dw": 0,
+   "video_means_pp": {
+    "SynthArson_001": 37.5,
+    "SynthBurglary_002": 96.42857142857143,
+    "SynthNormal_901": 53.57142857142857,
+    "SynthShooting_006": 53.57142857142857
+   }
+  },
+  "scorer_agreement": {
+   "estimate_pp": 42.857142857142854,
+   "ci95_pp": [
+    16.071428571428573,
+    72.85714285714286
+   ],
+   "n_videos": 5,
+   "n_videos_population": 5,
+   "n_inputs": 8,
+   "n_inputs_missing_dw": 1,
+   "video_means_pp": {
+    "SynthArson_001": 37.5,
+    "SynthBurglary_002": 96.42857142857143,
+    "SynthNormal_901": 53.57142857142857,
+    "SynthShooting_006": 26.785714285714285,
+    "SynthStealing_007": 0.0
+   }
+  },
+  "with_development": {
+   "estimate_pp": 44.64285714285714,
+   "ci95_pp": [
+    22.321428571428573,
+    67.85714285714288
+   ],
+   "n_videos": 6,
+   "n_videos_population": 6,
+   "n_inputs": 9,
+   "n_inputs_missing_dw": 1,
+   "video_means_pp": {
+    "RoadAccidents127_x264": 53.57142857142857,
+    "SynthArson_001": 37.5,
+    "SynthBurglary_002": 96.42857142857143,
+    "SynthNormal_901": 53.57142857142857,
+    "SynthShooting_006": 26.785714285714285,
+    "SynthStealing_007": 0.0
+   }
+  },
+  "metadata_clean": {
+   "estimate_pp": 42.857142857142854,
+   "ci95_pp": [
+    16.071428571428573,
+    72.85714285714286
+   ],
+   "n_videos": 5,
+   "n_videos_population": 5,
+   "n_inputs": 8,
+   "n_inputs_missing_dw": 1,
+   "video_means_pp": {
+    "SynthArson_001": 37.5,
+    "SynthBurglary_002": 96.42857142857143,
+    "SynthNormal_901": 53.57142857142857,
+    "SynthShooting_006": 26.785714285714285,
+    "SynthStealing_007": 0.0
+   }
+  }
+ },
+ "counts": {
+  "inputs": 11,
+  "L0_parsed": 10,
+  "alerts_confirmation": 8,
+  "all_tied": 2,
+  "all_nonpositive": 1,
+  "tie_cut2": 3,
+  "complete_28": 7
+ },
+ "population": "unique inputs, not development, status ok, fresh original L0 = 1 (PROTOCOL §3.3)",
+ "run_flags": {
+  "partial": false,
+  "skipped_budget_lines": 0,
+  "error_lines": 0,
+  "record_conflicts": 0
+ },
+ "code_sha256": {
+  "analyze3b.py": "0231997bbfa31bb4a1bad5876b8e87332382045b5b9b224ceda23c04cb1f58e5",
+  "xb_core.py": "dd8b18896c49828456c19aaceac141a1381f34908c34897801c6b553255268b1",
+  "io3b.py": "46c35a71e42a8b8227ab5e2da88d3cc7a2158a05e26d99506e1f01f83e3a1d6b"
+ }
+}

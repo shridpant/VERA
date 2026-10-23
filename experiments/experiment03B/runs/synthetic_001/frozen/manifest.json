@@ -1,0 +1,617 @@
+{
+ "version": "cases",
+ "cases": [
+  {
+   "window_uid": "SynthArson_001@160",
+   "video_id": "SynthArson_001",
+   "category": "Arson",
+   "anchor": 160,
+   "frame_indices": [
+    10,
+    47,
+    85,
+    122,
+    160,
+    197,
+    235,
+    272
+   ],
+   "frame_sha256": [
+    "SynthArson_001@160-frame0",
+    "SynthArson_001@160-frame1",
+    "SynthArson_001@160-frame2",
+    "SynthArson_001@160-frame3",
+    "SynthArson_001@160-frame4",
+    "SynthArson_001@160-frame5",
+    "SynthArson_001@160-frame6",
+    "SynthArson_001@160-frame7"
+   ],
+   "video_sha256": "SynthArson_001-video",
+   "frames_dir": "synthetic/SynthArson_001",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "event:SynthArson_001@160"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3
+   ],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Arson/SynthArson_001.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthArson_001@896",
+   "video_id": "SynthArson_001",
+   "category": "Arson",
+   "anchor": 896,
+   "frame_indices": [
+    746,
+    783,
+    821,
+    858,
+    896,
+    933,
+    971,
+    1008
+   ],
+   "frame_sha256": [
+    "SynthArson_001@896-frame0",
+    "SynthArson_001@896-frame1",
+    "SynthArson_001@896-frame2",
+    "SynthArson_001@896-frame3",
+    "SynthArson_001@896-frame4",
+    "SynthArson_001@896-frame5",
+    "SynthArson_001@896-frame6",
+    "SynthArson_001@896-frame7"
+   ],
+   "video_sha256": "SynthArson_001-video",
+   "frames_dir": "synthetic/SynthArson_001",
+   "strata": [
+    "negative"
+   ],
+   "window_record_ids": [
+    "negative:SynthArson_001@896"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Arson/SynthArson_001.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthBurglary_002@208",
+   "video_id": "SynthBurglary_002",
+   "category": "Burglary",
+   "anchor": 208,
+   "frame_indices": [
+    58,
+    95,
+    133,
+    170,
+    208,
+    245,
+    283,
+    320
+   ],
+   "frame_sha256": [
+    "SynthBurglary_002@208-frame0",
+    "SynthBurglary_002@208-frame1",
+    "SynthBurglary_002@208-frame2",
+    "SynthBurglary_002@208-frame3",
+    "SynthBurglary_002@208-frame4",
+    "SynthBurglary_002@208-frame5",
+    "SynthBurglary_002@208-frame6",
+    "SynthBurglary_002@208-frame7"
+   ],
+   "video_sha256": "SynthBurglary_002-video",
+   "frames_dir": "synthetic/SynthBurglary_002",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "event:SynthBurglary_002@208"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3
+   ],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Burglary/SynthBurglary_002.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthBurglary_002@592",
+   "video_id": "SynthBurglary_002",
+   "category": "Burglary",
+   "anchor": 592,
+   "frame_indices": [
+    442,
+    479,
+    517,
+    554,
+    592,
+    629,
+    667,
+    704
+   ],
+   "frame_sha256": [
+    "SynthBurglary_002@592-frame0",
+    "SynthBurglary_002@592-frame1",
+    "SynthBurglary_002@592-frame2",
+    "SynthBurglary_002@592-frame3",
+    "SynthBurglary_002@592-frame4",
+    "SynthBurglary_002@592-frame5",
+    "SynthBurglary_002@592-frame6",
+    "SynthBurglary_002@592-frame7"
+   ],
+   "video_sha256": "SynthBurglary_002-video",
+   "frames_dir": "synthetic/SynthBurglary_002",
+   "strata": [
+    "negative"
+   ],
+   "window_record_ids": [
+    "negative:SynthBurglary_002@592"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Burglary/SynthBurglary_002.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthNormal_900@1504",
+   "video_id": "SynthNormal_900",
+   "category": "Normal",
+   "anchor": 1504,
+   "frame_indices": [
+    1354,
+    1391,
+    1429,
+    1466,
+    1504,
+    1541,
+    1579,
+    1616
+   ],
+   "frame_sha256": [
+    "SynthNormal_900@1504-frame0",
+    "SynthNormal_900@1504-frame1",
+    "SynthNormal_900@1504-frame2",
+    "SynthNormal_900@1504-frame3",
+    "SynthNormal_900@1504-frame4",
+    "SynthNormal_900@1504-frame5",
+    "SynthNormal_900@1504-frame6",
+    "SynthNormal_900@1504-frame7"
+   ],
+   "video_sha256": "SynthNormal_900-video",
+   "frames_dir": "synthetic/SynthNormal_900",
+   "strata": [
+    "normal"
+   ],
+   "window_record_ids": [
+    "normal:SynthNormal_900@1504"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Normal/SynthNormal_900.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthNormal_901@1504",
+   "video_id": "SynthNormal_901",
+   "category": "Normal",
+   "anchor": 1504,
+   "frame_indices": [
+    1354,
+    1391,
+    1429,
+    1466,
+    1504,
+    1541,
+    1579,
+    1616
+   ],
+   "frame_sha256": [
+    "SynthNormal_901@1504-frame0",
+    "SynthNormal_901@1504-frame1",
+    "SynthNormal_901@1504-frame2",
+    "SynthNormal_901@1504-frame3",
+    "SynthNormal_901@1504-frame4",
+    "SynthNormal_901@1504-frame5",
+    "SynthNormal_901@1504-frame6",
+    "SynthNormal_901@1504-frame7"
+   ],
+   "video_sha256": "SynthNormal_901-video",
+   "frames_dir": "synthetic/SynthNormal_901",
+   "strata": [
+    "normal"
+   ],
+   "window_record_ids": [
+    "normal:SynthNormal_901@1504"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Normal/SynthNormal_901.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthRobbery_005@160",
+   "video_id": "SynthRobbery_005",
+   "category": "Robbery",
+   "anchor": 160,
+   "frame_indices": [
+    10,
+    47,
+    85,
+    122,
+    160,
+    197,
+    235,
+    272
+   ],
+   "frame_sha256": [
+    "SynthRobbery_005@160-frame0",
+    "SynthRobbery_005@160-frame1",
+    "SynthRobbery_005@160-frame2",
+    "SynthRobbery_005@160-frame3",
+    "SynthRobbery_005@160-frame4",
+    "SynthRobbery_005@160-frame5",
+    "SynthRobbery_005@160-frame6",
+    "SynthRobbery_005@160-frame7"
+   ],
+   "video_sha256": "SynthRobbery_005-video",
+   "frames_dir": "synthetic/SynthRobbery_005",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "event:SynthRobbery_005@160"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3
+   ],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Robbery/SynthRobbery_005.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "RoadAccidents127_x264@2224",
+   "video_id": "RoadAccidents127_x264",
+   "category": "RoadAccidents",
+   "anchor": 2224,
+   "frame_indices": [
+    2074,
+    2111,
+    2149,
+    2186,
+    2224,
+    2261,
+    2299,
+    2336
+   ],
+   "frame_sha256": [
+    "RoadAccidents127_x264@2224-frame0",
+    "RoadAccidents127_x264@2224-frame1",
+    "RoadAccidents127_x264@2224-frame2",
+    "RoadAccidents127_x264@2224-frame3",
+    "RoadAccidents127_x264@2224-frame4",
+    "RoadAccidents127_x264@2224-frame5",
+    "RoadAccidents127_x264@2224-frame6",
+    "RoadAccidents127_x264@2224-frame7"
+   ],
+   "video_sha256": "RoadAccidents127_x264-video",
+   "frames_dir": "synthetic/RoadAccidents127_x264",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "event:RoadAccidents127_x264@2224"
+   ],
+   "development": true,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3
+   ],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/RoadAccidents/RoadAccidents127_x264.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthShooting_006@160",
+   "video_id": "SynthShooting_006",
+   "category": "Shooting",
+   "anchor": 160,
+   "frame_indices": [
+    10,
+    47,
+    85,
+    122,
+    160,
+    197,
+    235,
+    272
+   ],
+   "frame_sha256": [
+    "SynthShooting_006@160-frame0",
+    "SynthShooting_006@160-frame1",
+    "SynthShooting_006@160-frame2",
+    "SynthShooting_006@160-frame3",
+    "SynthShooting_006@160-frame4",
+    "SynthShooting_006@160-frame5",
+    "SynthShooting_006@160-frame6",
+    "SynthShooting_006@160-frame7"
+   ],
+   "video_sha256": "SynthShooting_006-video",
+   "frames_dir": "synthetic/SynthShooting_006",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "event:SynthShooting_006@160"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3
+   ],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Shooting/SynthShooting_006.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthShooting_006@496",
+   "video_id": "SynthShooting_006",
+   "category": "Shooting",
+   "anchor": 496,
+   "frame_indices": [
+    346,
+    383,
+    421,
+    458,
+    496,
+    533,
+    571,
+    608
+   ],
+   "frame_sha256": [
+    "SynthShooting_006@496-frame0",
+    "SynthShooting_006@496-frame1",
+    "SynthShooting_006@496-frame2",
+    "SynthShooting_006@496-frame3",
+    "SynthShooting_006@496-frame4",
+    "SynthShooting_006@496-frame5",
+    "SynthShooting_006@496-frame6",
+    "SynthShooting_006@496-frame7"
+   ],
+   "video_sha256": "SynthShooting_006-video",
+   "frames_dir": "synthetic/SynthShooting_006",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "event:SynthShooting_006@496"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3
+   ],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Shooting/SynthShooting_006.mp4",
+   "manifest_length": 3000
+  },
+  {
+   "window_uid": "SynthStealing_007@160",
+   "video_id": "SynthStealing_007",
+   "category": "Stealing",
+   "anchor": 160,
+   "frame_indices": [
+    10,
+    47,
+    85,
+    122,
+    160,
+    197,
+    235,
+    272
+   ],
+   "frame_sha256": [
+    "SynthStealing_007@160-frame0",
+    "SynthStealing_007@160-frame1",
+    "SynthStealing_007@160-frame2",
+    "SynthStealing_007@160-frame3",
+    "SynthStealing_007@160-frame4",
+    "SynthStealing_007@160-frame5",
+    "SynthStealing_007@160-frame6",
+    "SynthStealing_007@160-frame7"
+   ],
+   "video_sha256": "SynthStealing_007-video",
+   "frames_dir": "synthetic/SynthStealing_007",
+   "strata": [
+    "negative"
+   ],
+   "window_record_ids": [
+    "negative:SynthStealing_007@160"
+   ],
+   "development": false,
+   "metadata_flags": [],
+   "annotated_slots": [],
+   "clipped": false,
+   "status": "selected",
+   "manifest_entry": "frames/Stealing/SynthStealing_007.mp4",
+   "manifest_length": 3000
+  }
+ ],
+ "videos": [
+  {
+   "video_id": "RoadAccidents127_x264",
+   "length": 3000,
+   "development": true
+  },
+  {
+   "video_id": "SynthArson_001",
+   "length": 3000,
+   "development": false
+  },
+  {
+   "video_id": "SynthBurglary_002",
+   "length": 3000,
+   "development": false
+  },
+  {
+   "video_id": "SynthNormal_900",
+   "length": 3000,
+   "development": false
+  },
+  {
+   "video_id": "SynthNormal_901",
+   "length": 3000,
+   "development": false
+  },
+  {
+   "video_id": "SynthRobbery_005",
+   "length": 3000,
+   "development": false
+  },
+  {
+   "video_id": "SynthShooting_006",
+   "length": 3000,
+   "development": false
+  },
+  {
+   "video_id": "SynthStealing_007",
+   "length": 3000,
+   "development": false
+  }
+ ],
+ "unique_inputs": [
+  {
+   "window_uid": "SynthArson_001@160",
+   "window_record_ids": [
+    "event:SynthArson_001@160"
+   ],
+   "strata": [
+    "event"
+   ]
+  },
+  {
+   "window_uid": "SynthArson_001@896",
+   "window_record_ids": [
+    "negative:SynthArson_001@896"
+   ],
+   "strata": [
+    "negative"
+   ]
+  },
+  {
+   "window_uid": "SynthBurglary_002@208",
+   "window_record_ids": [
+    "event:SynthBurglary_002@208"
+   ],
+   "strata": [
+    "event"
+   ]
+  },
+  {
+   "window_uid": "SynthBurglary_002@592",
+   "window_record_ids": [
+    "negative:SynthBurglary_002@592"
+   ],
+   "strata": [
+    "negative"
+   ]
+  },
+  {
+   "window_uid": "SynthNormal_900@1504",
+   "window_record_ids": [
+    "normal:SynthNormal_900@1504"
+   ],
+   "strata": [
+    "normal"
+   ]
+  },
+  {
+   "window_uid": "SynthNormal_901@1504",
+   "window_record_ids": [
+    "normal:SynthNormal_901@1504"
+   ],
+   "strata": [
+    "normal"
+   ]
+  },
+  {
+   "window_uid": "SynthRobbery_005@160",
+   "window_record_ids": [
+    "event:SynthRobbery_005@160"
+   ],
+   "strata": [
+    "event"
+   ]
+  },
+  {
+   "window_uid": "RoadAccidents127_x264@2224",
+   "window_record_ids": [
+    "event:RoadAccidents127_x264@2224"
+   ],
+   "strata": [
+    "event"
+   ]
+  },
+  {
+   "window_uid": "SynthShooting_006@160",
+   "window_record_ids": [
+    "event:SynthShooting_006@160"
+   ],
+   "strata": [
+    "event"
+   ]
+  },
+  {
+   "window_uid": "SynthShooting_006@496",
+   "window_record_ids": [
+    "event:SynthShooting_006@496"
+   ],
+   "strata": [
+    "event"
+   ]
+  },
+  {
+   "window_uid": "SynthStealing_007@160",
+   "window_record_ids": [
+    "negative:SynthStealing_007@160"
+   ],
+   "strata": [
+    "negative"
+   ]
+  }
+ ]
+}

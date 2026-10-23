@@ -1,0 +1,149 @@
+{
+ "at": "2026-10-23T06:27:42+00:00",
+ "checks": [
+  {
+   "window_uid": "RoadAccidents127_x264@2240",
+   "target": "label_only_score",
+   "family": "blur",
+   "mask": [
+    3
+   ],
+   "cached_status": "prior_cache",
+   "from_cache": true,
+   "all_equal": true,
+   "fields": {
+    "S": {
+     "cached": 2.2500000596046448,
+     "fresh": 2.2500000596046448,
+     "equal": true
+    },
+    "S_hi": {
+     "cached": 2.1106414794921875,
+     "fresh": 2.1106414794921875,
+     "equal": true
+    },
+    "logit_0": {
+     "cached": 34.5,
+     "fresh": 34.5,
+     "equal": true
+    },
+    "logit_1": {
+     "cached": 36.75,
+     "fresh": 36.75,
+     "equal": true
+    },
+    "hi_logit_0": {
+     "cached": 34.535804748535156,
+     "fresh": 34.535804748535156,
+     "equal": true
+    },
+    "hi_logit_1": {
+     "cached": 36.646446228027344,
+     "fresh": 36.646446228027344,
+     "equal": true
+    },
+    "slot_tensor_sha256": {
+     "cached": [
+      "747b62c1b9a2bdf60c01a525d3be7a82bd1d7f62f63091a8a94bbe293808c659",
+      "22891cbfa24f8d8963f9cd9cda597b9700d32fbc690c31c77bd62f28ad555850",
+      "559b00e44ffbc94438dc7366ed890afbfee20887eea4141b13c8fb7c6d853599",
+      "821a734a965c863b6e7c43a8deee06a9ea75c5037edba6348faf3073ac4e83d3",
+      "5121bd94b50f32b839b7225686f7985c3b75442c653592b2b97d01a28335f6a2",
+      "3c9d650fc0e8735557d866e4e60b303a41b09c2b44fc8a8c7ea8c2b76c7fee0f",
+      "6c059cea22ddcff641f31189446c2caa918ef4a6137a8976ca5f1a2a2b06f33a",
+      "0e08a6f96efa4e5ca21f60700d6052e8355771e76db6907283e50eeba5882f57"
+     ],
+     "fresh": [
+      "747b62c1b9a2bdf60c01a525d3be7a82bd1d7f62f63091a8a94bbe293808c659",
+      "22891cbfa24f8d8963f9cd9cda597b9700d32fbc690c31c77bd62f28ad555850",
+      "559b00e44ffbc94438dc7366ed890afbfee20887eea4141b13c8fb7c6d853599",
+      "821a734a965c863b6e7c43a8deee06a9ea75c5037edba6348faf3073ac4e83d3",
+      "5121bd94b50f32b839b7225686f7985c3b75442c653592b2b97d01a28335f6a2",
+      "3c9d650fc0e8735557d866e4e60b303a41b09c2b44fc8a8c7ea8c2b76c7fee0f",
+      "6c059cea22ddcff641f31189446c2caa918ef4a6137a8976ca5f1a2a2b06f33a",
+      "0e08a6f96efa4e5ca21f60700d6052e8355771e76db6907283e50eeba5882f57"
+     ],
+     "equal": true
+    },
+    "model_input_sha256": {
+     "cached": "d49b4749da42b6acc115966997921fe1d6ce93673af347826e6a5c3a8785c5ec",
+     "fresh": "d49b4749da42b6acc115966997921fe1d6ce93673af347826e6a5c3a8785c5ec",
+     "equal": true
+    },
+    "question_sha256": {
+     "cached": "fbda861cbe61805108398d96784bfc77e471aea01eac089deed41a38b927d68c",
+     "fresh": "fbda861cbe61805108398d96784bfc77e471aea01eac089deed41a38b927d68c",
+     "equal": true
+    }
+   },
+   "runtime_s": 2.314
+  },
+  {
+   "window_uid": "RoadAccidents127_x264@2240",
+   "target": "original_generation",
+   "family": "none",
+   "mask": [],
+   "cached_status": "prior_cache",
+   "from_cache": true,
+   "all_equal": true,
+   "fields": {
+    "raw_response": {
+     "cached": "Answers to Prompt Questions: The video shows a red truck and a train crossing the same road at the same time, which is an unusual and potentially dangerous situation. There is visible damage to the train, indicating an anomaly.\nOutput: 1",
+     "fresh": "Answers to Prompt Questions: The video shows a red truck and a train crossing the same road at the same time, which is an unusual and potentially dangerous situation. There is visible damage to the train, indicating an anomaly.\nOutput: 1",
+     "equal": true
+    },
+    "label": {
+     "cached": 1,
+     "fresh": 1,
+     "equal": true
+    },
+    "parse_status": {
+     "cached": "ok",
+     "fresh": "ok",
+     "equal": true
+    },
+    "slot_tensor_sha256": {
+     "cached": [
+      "747b62c1b9a2bdf60c01a525d3be7a82bd1d7f62f63091a8a94bbe293808c659",
+      "22891cbfa24f8d8963f9cd9cda597b9700d32fbc690c31c77bd62f28ad555850",
+      "559b00e44ffbc94438dc7366ed890afbfee20887eea4141b13c8fb7c6d853599",
+      "6d7381344f5a21c9991a1bc847ef783bfa650e32c9701bad456222b8580a0a2d",
+      "5121bd94b50f32b839b7225686f7985c3b75442c653592b2b97d01a28335f6a2",
+      "3c9d650fc0e8735557d866e4e60b303a41b09c2b44fc8a8c7ea8c2b76c7fee0f",
+      "6c059cea22ddcff641f31189446c2caa918ef4a6137a8976ca5f1a2a2b06f33a",
+      "0e08a6f96efa4e5ca21f60700d6052e8355771e76db6907283e50eeba5882f57"
+     ],
+     "fresh": [
+      "747b62c1b9a2bdf60c01a525d3be7a82bd1d7f62f63091a8a94bbe293808c659",
+      "22891cbfa24f8d8963f9cd9cda597b9700d32fbc690c31c77bd62f28ad555850",
+      "559b00e44ffbc94438dc7366ed890afbfee20887eea4141b13c8fb7c6d853599",
+      "6d7381344f5a21c9991a1bc847ef783bfa650e32c9701bad456222b8580a0a2d",
+      "5121bd94b50f32b839b7225686f7985c3b75442c653592b2b97d01a28335f6a2",
+      "3c9d650fc0e8735557d866e4e60b303a41b09c2b44fc8a8c7ea8c2b76c7fee0f",
+      "6c059cea22ddcff641f31189446c2caa918ef4a6137a8976ca5f1a2a2b06f33a",
+      "0e08a6f96efa4e5ca21f60700d6052e8355771e76db6907283e50eeba5882f57"
+     ],
+     "equal": true
+    },
+    "model_input_sha256": {
+     "cached": "2e8cfa0ecea458835748591024d2734f9c9386c48ab3ac3ef2399ea7cea7929d",
+     "fresh": "2e8cfa0ecea458835748591024d2734f9c9386c48ab3ac3ef2399ea7cea7929d",
+     "equal": true
+    },
+    "question_sha256": {
+     "cached": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924",
+     "fresh": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924",
+     "equal": true
+    },
+    "n_new_tokens": {
+     "cached": 51,
+     "fresh": 51,
+     "equal": true
+    }
+   },
+   "runtime_s": 1.827
+  }
+ ],
+ "all_equal": true,
+ "all_from_cache": true
+}

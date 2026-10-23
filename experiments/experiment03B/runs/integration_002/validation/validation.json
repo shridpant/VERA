@@ -1,0 +1,529 @@
+{
+ "validator": "validate3b 1.0",
+ "protocol_version": "1.0",
+ "run_dir": "/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/integration_002",
+ "passed": true,
+ "summary": {
+  "passed": 20,
+  "failed": 0,
+  "skipped": 0
+ },
+ "checks": [
+  {
+   "id": "run_files",
+   "description": "required run files exist and parse (inputs.json, frozen/config.json, requests/*.jsonl)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 3,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "request_files": [
+     "requests/adaptive.jsonl",
+     "requests/baseline.jsonl",
+     "requests/evaluation.jsonl",
+     "requests/fixed.jsonl"
+    ]
+   }
+  },
+  {
+   "id": "records_schema",
+   "description": "every request line follows RECORDS (fields, enums, canonical masks, family/mask, known window_uid, result fields on successes, error lines carry 'error' only)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 250,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "result_key_consistency",
+   "description": "all successful lines sharing a result_key carry identical result fields (and the same target)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 244,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "n_result_keys": 244,
+    "tuples_with_divergent_successful_lines": 0
+   }
+  },
+  {
+   "id": "repeat_rule",
+   "description": "repeats 1/2 exist only for generations, only after an unparsed repeat r-1 of the identical input, and an unparsed repeat 0/1 is always regenerated (repeat r+1 logged); label = repeat 0 if parsed, else first parsed of repeats 1, 2",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 244,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "non_deterministic_generation_inputs": 0
+   }
+  },
+  {
+   "id": "retry_limit",
+   "description": "errors are retried at most twice per request (at most 3 error attempts per request_id, and at most 2 attempts that follow an error attempt)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 244,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "score_rounding",
+   "description": "every successful score line: finite readouts, S_hi_rounds_to_model_logits is true and equals bf16(hi_logit_k) == logit_k, S_hi is the FP32 difference of the head logits",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 179,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "inputs_identity",
+   "description": "inputs.json: unique window_uid == video_id@anchor, unique (video_id, frame_indices), 8 frame indices, 8 frame hashes, strata, development tags, slots in 0..7",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 2,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "window_arithmetic",
+   "description": "frame_indices, window and clipped flag equal VERA's arithmetic for the anchor and the manifest length (inputs.json and frozen/manifest.json windows)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 2,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "slot_hashes_present",
+   "description": "every successful line has 8 slot tensor hashes and slot_identity_ok is true",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 250,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "slot_identity",
+   "description": "per input: unmasked slots of every masked line equal the unmasked input's slot hashes and every masked slot differs; unmasked lines agree across targets; a replaced slot has one hash per (input, family, slot) across all masks (no accumulated replacement)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 244,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "mask_hash_consistency",
+   "description": "the same (input, family, mask) always yields identical slot hashes and sequence_key across targets and repeats; distinct pixel inputs never share a sequence_key",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 175,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "planned_requests",
+   "description": "PROTOCOL 6 schedule: every planned (target, family, mask) has at least one logged line; no unplanned requests; only Phase 0 when L0 is missing",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 2,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "inputs_not_ok_not_checked": [],
+    "n_inputs_not_ok": 0,
+    "inputs_with_undetermined_schedule": 0
+   }
+  },
+  {
+   "id": "cross_family_isolation",
+   "description": "replacing every grey record (scores and labels) leaves every blur ranking, native blur ranking, adaptive trajectory, prefix and T_w unchanged",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 2,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "inputs_whose_grey_ranking_changed_under_perturbation": 2
+   }
+  },
+  {
+   "id": "adaptive_invariants",
+   "description": "adaptive trajectories (recomputed, and the analyzer's when present): every remaining slot is a candidate, no masked slot is re-selected, max-effect/lower-slot selection, step 1 equals fixed pi_1, prefixes and T_w follow the orders",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 4,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "rankings_compare",
+   "description": "derived/rankings.jsonl equals the recomputation: one record per label-available input; L0, q, baseline, three fixed RANKINGs, adaptive states, prefixes, T_w",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 342,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "primary_compare",
+   "description": "results/primary.json equals the recomputed primary estimate, bootstrap interval, stability seeds, n's, video means, d_w, worst-case bounds and sensitivities",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 41,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "inputs_metrics_compare",
+   "description": "results/inputs_metrics.csv equals the recomputation (d_w, F_top2, F_random_mean, n_pair_labels, e_w, L0, q, T_w, tau_b and overlaps when present)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 28,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "optional_columns_matched": {
+     "L0": "L0",
+     "q": "q",
+     "T_w": "T_w",
+     "video_id": "video_id",
+     "nosound_label": "nosound_label",
+     "tau_blur_grey": "tau_b_blur_grey",
+     "tau_native_hi": "tau_b_native_hi",
+     "overlap_blur_grey": "overlap_blur_grey",
+     "overlap_native_hi": "overlap_native_hi"
+    },
+    "optional_columns_unmatched": [],
+    "L0_0_rows_d_w_F_not_compared": 0
+   }
+  },
+  {
+   "id": "pairs_compare",
+   "description": "results/pairs.csv equals the recomputation: one row per (label-available input, family, pair) with S_hi, S, D, J and, on grey, label and flip",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 560,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "label_column": "label",
+    "flip_column": "flip"
+   }
+  },
+  {
+   "id": "trajectories_compare",
+   "description": "results/trajectories.csv equals the recomputation: per (input, mode, k) the grey-evaluated prefix mask, label, flip, q*dS_hi and q*dS",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 80,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "columns_matched": {
+     "label": "label",
+     "flip": "flip",
+     "q_dS_hi": "q_dS_hi",
+     "q_dS": "q_dS_native"
+    }
+   }
+  },
+  {
+   "id": "erratum_e1",
+   "description": "experiment02 erratum E1 from raw score records: |Delta S_hi| < S_resolution rows whose native BF16 margin still changes (expected 36 of 109 of 168), cross-checked against temporal_effects.csv",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 349,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  }
+ ],
+ "recomputed": {
+  "primary": {
+   "estimate_pp": null,
+   "ci95_pp": null,
+   "bootstrap": {
+    "seed": 0,
+    "B": 10000,
+    "stability": [
+     {
+      "seed": 1,
+      "ci95_pp": null
+     },
+     {
+      "seed": 2,
+      "ci95_pp": null
+     },
+     {
+      "seed": 3,
+      "ci95_pp": null
+     },
+     {
+      "seed": 4,
+      "ci95_pp": null
+     }
+    ]
+   },
+   "n_videos": 0,
+   "n_videos_population": 0,
+   "n_inputs": 0,
+   "n_inputs_missing_dw": 0,
+   "video_means_pp": {},
+   "d_w": {},
+   "bounds_pp": [
+    null,
+    null
+   ],
+   "sensitivity": {
+    "tie_free": {
+     "estimate_pp": null,
+     "ci95_pp": null,
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 0,
+     "n_videos_population": 0,
+     "n_inputs": 0,
+     "n_inputs_missing_dw": 0,
+     "video_means_pp": {},
+     "d_w": {},
+     "bounds_pp": [
+      null,
+      null
+     ]
+    },
+    "scorer_agreement": {
+     "estimate_pp": null,
+     "ci95_pp": null,
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 0,
+     "n_videos_population": 0,
+     "n_inputs": 0,
+     "n_inputs_missing_dw": 0,
+     "video_means_pp": {},
+     "d_w": {},
+     "bounds_pp": [
+      null,
+      null
+     ]
+    },
+    "with_development": {
+     "estimate_pp": 3.571428571428569,
+     "ci95_pp": [
+      3.571428571428569,
+      3.571428571428569
+     ],
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 1,
+     "n_videos_population": 1,
+     "n_inputs": 2,
+     "n_inputs_missing_dw": 0,
+     "video_means_pp": {
+      "RoadAccidents127_x264": 3.571428571428569
+     },
+     "d_w": {
+      "RoadAccidents127_x264@2240": -0.03571428571428571,
+      "RoadAccidents127_x264@496": 0.1071428571428571
+     },
+     "bounds_pp": [
+      3.571428571428569,
+      3.571428571428569
+     ]
+    },
+    "metadata_clean": {
+     "estimate_pp": null,
+     "ci95_pp": null,
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 0,
+     "n_videos_population": 0,
+     "n_inputs": 0,
+     "n_inputs_missing_dw": 0,
+     "video_means_pp": {},
+     "d_w": {},
+     "bounds_pp": [
+      null,
+      null
+     ]
+    }
+   }
+  },
+  "bootstrap_params": {
+   "seed_source": "protocol default",
+   "B_source": "frozen/config.json:analysis.bootstrap_B",
+   "seed": 0,
+   "B": 10000
+  },
+  "counts": {
+   "n_inputs": 2,
+   "n_inputs_status_ok": 2,
+   "n_label_available": 2,
+   "n_L0_1": 2,
+   "n_L0_0": 0,
+   "n_L0_missing": 0,
+   "n_development_inputs": 2,
+   "n_request_lines": 250,
+   "n_successful_lines": 250,
+   "n_authoritative_tuples": 244,
+   "cache_status": {
+    "fresh": 0,
+    "cached": 0,
+    "prior_cache": 250,
+    "error": 0,
+    "skipped_budget": 0
+   },
+   "all_tied_blur": 0,
+   "all_nonpositive_blur": 0,
+   "tie_spans_cut2_blur": 0
+  },
+  "e1": {
+   "n_rows": 168,
+   "n_substep": 109,
+   "n_substep_bf16_changed": 36,
+   "by_family": {
+    "blur": {
+     "n_rows": 84,
+     "n_substep": 57,
+     "n_substep_bf16_changed": 16
+    },
+    "constant": {
+     "n_rows": 84,
+     "n_substep": 52,
+     "n_substep_bf16_changed": 20
+    }
+   },
+   "n_substep_raw_S_field_nonzero": 83,
+   "native_difference_definition": "Delta_bf16 = (logit_1 - logit_0)(base) - (logit_1 - logit_0)(mask); the stored S field carries <= 1.2e-7 float noise from log-prob subtraction, so its literal difference is reported separately (n_substep_raw_S_field_nonzero); temporal_effects.csv prints Delta_bf16 to 6 decimals (agrees with the margin difference) but computed its Delta_bf16_zero flag from the raw S fields",
+   "expected": {
+    "n_rows": 168,
+    "n_substep": 109,
+    "n_substep_bf16_changed": 36
+   },
+   "temporal_effects_csv_rows": 168
+  },
+  "inputs": [
+   {
+    "window_uid": "RoadAccidents127_x264@2240",
+    "video_id": "RoadAccidents127_x264",
+    "development": true,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     3,
+     4
+    ],
+    "d_w": -0.03571428571428571,
+    "d_lower": -0.03571428571428571,
+    "d_upper": -0.03571428571428571,
+    "F_top2": 0,
+    "n_pair_labels": 28,
+    "e_w": 1.9504705156598772,
+    "tau_blur_grey": 0.8571428571428571,
+    "tau_native_hi": 0.8693182879212227,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     4,
+     3,
+     5,
+     1,
+     6,
+     2,
+     7,
+     0
+    ],
+    "order_adaptive": [
+     4,
+     3,
+     5,
+     7
+    ]
+   },
+   {
+    "window_uid": "RoadAccidents127_x264@496",
+    "video_id": "RoadAccidents127_x264",
+    "development": true,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     4,
+     7
+    ],
+    "d_w": 0.1071428571428571,
+    "d_lower": 0.1071428571428571,
+    "d_upper": 0.1071428571428571,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 0.599654061453683,
+    "tau_blur_grey": 0.6428571428571429,
+    "tau_native_hi": 0.47691048323826596,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 1,
+    "order_blur": [
+     7,
+     4,
+     5,
+     0,
+     2,
+     6,
+     3,
+     1
+    ],
+    "order_adaptive": [
+     7,
+     4,
+     0,
+     1
+    ]
+   }
+  ]
+ },
+ "readings": [
+  "latest line: request lines are ordered by request file name (sorted) and then line number",
+  "parsed label = parse_status 'ok' with an integer label 0/1; repeats 1/2 are expected only after an unparsed repeat r-1 of the same generation; score requests have repeat 0 only",
+  "native readout = logit_1 - logit_0 (protocol/RECORDS v1.1; the stored S field carries ~1e-7 log-softmax noise)",
+  "development = video_id in the protocol's two development videos (or tagged so in inputs.json)",
+  "primary population ignores inputs.json status (any input with parsed L0 = 1); planned-request checks cover status 'ok' inputs only",
+  "a successful line with a non-finite readout is treated as a missing value",
+  "a RANKING whose baseline score is missing is incomplete with 'baseline' in its missing list",
+  "ties lists only groups of size >= 2 and is compared as an unordered set of sorted groups",
+  "d_w, F_top2 and F_random_mean are defined for L0 = 1 inputs only (F = 1 iff label 0); L0 = 0 rows are not compared for them; F_random_mean with missing labels is accepted blank or as the mean of available labels",
+  "if T_w is undefined (incomplete blur ranking) d_w is missing and the bound uses selected = 0 / 1",
+  "e_w is missing unless the baseline score, T_w and all 28 grey-pair S_hi values are present",
+  "n_videos = videos with at least one non-missing d_w (the bootstrap V)",
+  "bootstrap results (ci95_pp and stability ci95_pp) are compared endpoint by endpoint within 1e-9 pp (the protocol fixes the draws and the percentile rule, not float summation order); the validator sums with Python's built-in sum in input order within a video and video_id order across videos; percentile = s[lo] + (s[hi]-s[lo])*frac; pp = 100 * value at the end",
+  "sensitivity estimates use the primary seed and B; their CIs are compared only when the analyzer reports them",
+  "E1 native difference uses the BF16 logit margin (logit_1 - logit_0); the stored S field differs from it by <= 1.2e-7 and its literal difference is reported separately",
+  "a retry is any attempt logged after an error attempt of the same request_id (global line order); more than two retries or more than three error attempts per request_id fail retry_limit",
+  "an unparsed successful generation at repeat r < 2 must be followed by a logged line (any cache_status) for repeat r + 1; an errored repeat does not oblige a further repeat",
+  "a replaced slot's tensor hash depends only on (input, family, slot), since every mask is rebuilt from the original frames; two hashes for one (input, family, slot) fail slot_identity",
+  "manifest window records with status 'unavailable' have no window and are not checked against VERA arithmetic"
+ ],
+ "provenance": {
+  "sha256": {
+   "inputs.json": "a41184a4af40e908f1a4614bb055290abe4bb20db630c4d0a1ba6f851444834e",
+   "frozen/config.json": "b68fb20733ae7d727ba2850ef30970f1c5c56b46b39b5d39546f71567f5d8044",
+   "frozen/manifest.json": "6f88b5ca9aa9f23eba1cfc07bf6141eb632106c72d864af6a868b6e281227d32",
+   "requests/adaptive.jsonl": "95bc1f7d11448769872a3a1e44451cc9c712bfffb0c0a4ae57a58551040bba3b",
+   "requests/baseline.jsonl": "865555ab9142d2f505364edbc991d0adef1985130aa75bbc02a7a84d7f268b63",
+   "requests/evaluation.jsonl": "f64f01a2aad6068494c847f98816307a3562e237c10874b64c193c2e032e7863",
+   "requests/fixed.jsonl": "01061c7fcba57d0c4617b02dc318d76f3ec01f9203cac45c291b4607194e91f5",
+   "derived/rankings.jsonl": "56863f8a3ce45574d3462088254e5a7beb5f2c84320fab1e86eda6b89917a7b9",
+   "results/primary.json": "efdea0d9ce8addce6f36733dc1111baf29faf97607352e59f1792c9c2485ce08",
+   "results/inputs_metrics.csv": "5f48580a221c161e5bd03c9a0e8c93b2e470900cd1c58d8413d6328c716005c5",
+   "results/pairs.csv": "5fc7bae4b52168936135033a5d21d348d7b0cd1cefe607bf906e6bfea008d079",
+   "results/trajectories.csv": "21e70939ac847d80dd000bb933d0ef182055a294e45d85461014eae67a5637f6"
+  }
+ }
+}

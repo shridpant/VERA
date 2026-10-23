@@ -1,0 +1,23 @@
+{
+ "at": "2026-10-23T06:31:27+00:00",
+ "dry_run": false,
+ "checks": {
+  "source": {
+   "checkout": "setup/source/VERA",
+   "head": "008ed4019781c39e7cb16244b7500244f3986f92",
+   "clean": true
+  },
+  "free_bytes_home": 9802971348992,
+  "home_probe_path": "/home/stu11/s5/sp2117",
+  "free_bytes_scratch": 270016290816,
+  "scratch_probe_path": "/tmp/sp2117_vera3b_scratch",
+  "home_quota_line": "sp2117 150G 139G",
+  "inputs": {
+   "n": 11,
+   "videos": 8,
+   "development_inputs": 1
+  }
+ },
+ "failures": [],
+ "warnings": []
+}

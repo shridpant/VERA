@@ -1,0 +1,91 @@
+{
+ "inputs": [
+  {
+   "window_uid": "RoadAccidents127_x264@2240",
+   "video_id": "RoadAccidents127_x264",
+   "category": "RoadAccidents",
+   "anchor": 2240,
+   "frame_indices": [
+    2090,
+    2127,
+    2165,
+    2202,
+    2240,
+    2277,
+    2315,
+    2352
+   ],
+   "frame_sha256": [
+    "1102053049689269d8c2dd8515073404bad19b4aff1e28614f4b501ef8ebba1e",
+    "dde162e341cbabcf1d9a6bc41bf615d11f541e60b7f18a42805ec556342784cf",
+    "9575203b550d7fa75762c2786b1ed5f488c19b56e97a8314ca637dfed27ebf3c",
+    "904b6e61fa19cd0b4514a3c972abb5e614a6e7e995039a2a42c679194f930746",
+    "3ee043cba9c4e8a416ee9f7149f3046f1987ae202b7306edb58a430e749b98e4",
+    "d698a6bcd15be6d0aebb32e85057d222d3d37747214d3754b89a95096c3f8416",
+    "5c3dbf3e5c936dc689d02bd3c6fe51bda229fab5c496010c13f52626566a8dd3",
+    "8c797d9ce5770755f53e78d6d79e58f3dc783095e7dc5161e90e0b2e03a9110c"
+   ],
+   "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+   "strata": [
+    "event"
+   ],
+   "window_record_ids": [
+    "experiment02:R-accident"
+   ],
+   "development": true,
+   "metadata_flags": [],
+   "annotated_slots": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "clipped": false,
+   "status": "ok",
+   "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+   "manifest_entry": "frames/RoadAccidents/RoadAccidents127_x264.mp4",
+   "manifest_length": 2580
+  },
+  {
+   "window_uid": "RoadAccidents127_x264@496",
+   "video_id": "RoadAccidents127_x264",
+   "category": "RoadAccidents",
+   "anchor": 496,
+   "frame_indices": [
+    346,
+    383,
+    421,
+    458,
+    496,
+    533,
+    571,
+    608
+   ],
+   "frame_sha256": [
+    "acbf8d1d4509b4527c89b0ba098df2b7a6a0d3496268ea1813bcd62f9c230f58",
+    "ccb9cede83270b7fe9f3ecd15a99ce9974204ad083564997600dd33811a907fd",
+    "2ed5dc9e3ced25661b9f20cc732fd9a94b780db00365032bc2b98b6c7e748ffa",
+    "ef8d342dc40c9d03d0eebd67c66a481bae15f25c9135a297ff50da2df189e714",
+    "5c2fd3fdb605e81f30b0ff53298852a8da5eac9ab86046e02c61fc32318a99ea",
+    "806e37e2217622c33ec1749daf6da1643c28fc3ce600166f06703c9d5498899e",
+    "6101ebc3cf978c49a0aa0d2745befc8f899a015648c88a9a6610663bc1908061",
+    "1f5e2a1f01c34aa2af9cae941f98e7d4589c018773a74017dc78b22ad205586a"
+   ],
+   "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+   "strata": [
+    "negative"
+   ],
+   "window_record_ids": [
+    "experiment02:R-pedestrian"
+   ],
+   "development": true,
+   "metadata_flags": [],
+   "annotated_slots": [],
+   "clipped": false,
+   "status": "ok",
+   "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+   "manifest_entry": "frames/RoadAccidents/RoadAccidents127_x264.mp4",
+   "manifest_length": 2580
+  }
+ ]
+}

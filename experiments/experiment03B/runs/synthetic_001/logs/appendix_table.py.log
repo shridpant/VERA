@@ -1,0 +1,3 @@
+$ ['/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python', '-B', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/code/appendix_table.py', '--run-dir', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/synthetic_001', '--seed', '0']
+/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/synthetic_001/results/APPENDIX_RESULTS.md
+

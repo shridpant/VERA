@@ -1,0 +1,947 @@
+{
+ "validator": "validate3b 1.0",
+ "protocol_version": "1.0",
+ "run_dir": "/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/synthetic_001",
+ "passed": true,
+ "summary": {
+  "passed": 20,
+  "failed": 0,
+  "skipped": 0
+ },
+ "checks": [
+  {
+   "id": "run_files",
+   "description": "required run files exist and parse (inputs.json, frozen/config.json, requests/*.jsonl)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 3,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "request_files": [
+     "requests/adaptive.jsonl",
+     "requests/baseline.jsonl",
+     "requests/evaluation.jsonl",
+     "requests/fixed.jsonl"
+    ]
+   }
+  },
+  {
+   "id": "records_schema",
+   "description": "every request line follows RECORDS (fields, enums, canonical masks, family/mask, known window_uid, result fields on successes, error lines carry 'error' only)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1231,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "result_key_consistency",
+   "description": "all successful lines sharing a result_key carry identical result fields (and the same target)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1197,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "n_result_keys": 1197,
+    "tuples_with_divergent_successful_lines": 0
+   }
+  },
+  {
+   "id": "repeat_rule",
+   "description": "repeats 1/2 exist only for generations, only after an unparsed repeat r-1 of the identical input, and an unparsed repeat 0/1 is always regenerated (repeat r+1 logged); label = repeat 0 if parsed, else first parsed of repeats 1, 2",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1197,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "non_deterministic_generation_inputs": 0
+   }
+  },
+  {
+   "id": "retry_limit",
+   "description": "errors are retried at most twice per request (at most 3 error attempts per request_id, and at most 2 attempts that follow an error attempt)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1197,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "score_rounding",
+   "description": "every successful score line: finite readouts, S_hi_rounds_to_model_logits is true and equals bf16(hi_logit_k) == logit_k, S_hi is the FP32 difference of the head logits",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 882,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "inputs_identity",
+   "description": "inputs.json: unique window_uid == video_id@anchor, unique (video_id, frame_indices), 8 frame indices, 8 frame hashes, strata, development tags, slots in 0..7",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 11,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "window_arithmetic",
+   "description": "frame_indices, window and clipped flag equal VERA's arithmetic for the anchor and the manifest length (inputs.json and frozen/manifest.json windows)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 11,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "slot_hashes_present",
+   "description": "every successful line has 8 slot tensor hashes and slot_identity_ok is true",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1231,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "slot_identity",
+   "description": "per input: unmasked slots of every masked line equal the unmasked input's slot hashes and every masked slot differs; unmasked lines agree across targets; a replaced slot has one hash per (input, family, slot) across all masks (no accumulated replacement)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1196,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "mask_hash_consistency",
+   "description": "the same (input, family, mask) always yields identical slot hashes and sequence_key across targets and repeats; distinct pixel inputs never share a sequence_key",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 861,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "planned_requests",
+   "description": "PROTOCOL 6 schedule: every planned (target, family, mask) has at least one logged line; no unplanned requests; only Phase 0 when L0 is missing",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 11,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "inputs_not_ok_not_checked": [],
+    "n_inputs_not_ok": 0,
+    "inputs_with_undetermined_schedule": 0
+   }
+  },
+  {
+   "id": "cross_family_isolation",
+   "description": "replacing every grey record (scores and labels) leaves every blur ranking, native blur ranking, adaptive trajectory, prefix and T_w unchanged",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 10,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "inputs_whose_grey_ranking_changed_under_perturbation": 10
+   }
+  },
+  {
+   "id": "adaptive_invariants",
+   "description": "adaptive trajectories (recomputed, and the analyzer's when present): every remaining slot is a candidate, no masked slot is re-selected, max-effect/lower-slot selection, step 1 equals fixed pi_1, prefixes and T_w follow the orders",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 20,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "rankings_compare",
+   "description": "derived/rankings.jsonl equals the recomputation: one record per label-available input; L0, q, baseline, three fixed RANKINGs, adaptive states, prefixes, T_w",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 1710,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "primary_compare",
+   "description": "results/primary.json equals the recomputed primary estimate, bootstrap interval, stability seeds, n's, video means, d_w, worst-case bounds and sensitivities",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 81,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  },
+  {
+   "id": "inputs_metrics_compare",
+   "description": "results/inputs_metrics.csv equals the recomputation (d_w, F_top2, F_random_mean, n_pair_labels, e_w, L0, q, T_w, tau_b and overlaps when present)",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 144,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "optional_columns_matched": {
+     "L0": "L0",
+     "q": "q",
+     "T_w": "T_w",
+     "video_id": "video_id",
+     "nosound_label": "nosound_label",
+     "tau_blur_grey": "tau_b_blur_grey",
+     "tau_native_hi": "tau_b_native_hi",
+     "overlap_blur_grey": "overlap_blur_grey",
+     "overlap_native_hi": "overlap_native_hi"
+    },
+    "optional_columns_unmatched": [],
+    "L0_0_rows_d_w_F_not_compared": 1
+   }
+  },
+  {
+   "id": "pairs_compare",
+   "description": "results/pairs.csv equals the recomputation: one row per (label-available input, family, pair) with S_hi, S, D, J and, on grey, label and flip",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 2800,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "label_column": "label",
+    "flip_column": "flip"
+   }
+  },
+  {
+   "id": "trajectories_compare",
+   "description": "results/trajectories.csv equals the recomputation: per (input, mode, k) the grey-evaluated prefix mask, label, flip, q*dS_hi and q*dS",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 400,
+   "discrepancies": [],
+   "n_discrepancies": 0,
+   "notes": {
+    "columns_matched": {
+     "label": "label",
+     "flip": "flip",
+     "q_dS_hi": "q_dS_hi",
+     "q_dS": "q_dS_native"
+    }
+   }
+  },
+  {
+   "id": "erratum_e1",
+   "description": "experiment02 erratum E1 from raw score records: |Delta S_hi| < S_resolution rows whose native BF16 margin still changes (expected 36 of 109 of 168), cross-checked against temporal_effects.csv",
+   "passed": true,
+   "status": "passed",
+   "n_checked": 349,
+   "discrepancies": [],
+   "n_discrepancies": 0
+  }
+ ],
+ "recomputed": {
+  "primary": {
+   "estimate_pp": 42.857142857142854,
+   "ci95_pp": [
+    16.071428571428573,
+    72.85714285714286
+   ],
+   "bootstrap": {
+    "seed": 0,
+    "B": 10000,
+    "stability": [
+     {
+      "seed": 1,
+      "ci95_pp": [
+       16.071428571428573,
+       72.85714285714286
+      ]
+     },
+     {
+      "seed": 2,
+      "ci95_pp": [
+       16.071428571428573,
+       70.71428571428572
+      ]
+     },
+     {
+      "seed": 3,
+      "ci95_pp": [
+       16.071428571428573,
+       70.71428571428572
+      ]
+     },
+     {
+      "seed": 4,
+      "ci95_pp": [
+       16.071428571428573,
+       72.85714285714286
+      ]
+     }
+    ],
+    "stability_range_pp": {
+     "lower": [
+      16.071428571428573,
+      16.071428571428573
+     ],
+     "upper": [
+      70.71428571428572,
+      72.85714285714286
+     ]
+    }
+   },
+   "n_videos": 5,
+   "n_videos_population": 5,
+   "n_inputs": 8,
+   "n_inputs_missing_dw": 1,
+   "video_means_pp": {
+    "SynthArson_001": 37.5,
+    "SynthBurglary_002": 96.42857142857143,
+    "SynthNormal_901": 53.57142857142857,
+    "SynthShooting_006": 26.785714285714285,
+    "SynthStealing_007": 0.0
+   },
+   "d_w": {
+    "SynthArson_001@160": 0.75,
+    "SynthArson_001@896": 0.0,
+    "SynthBurglary_002@208": 0.9642857142857143,
+    "SynthBurglary_002@592": null,
+    "SynthNormal_901@1504": 0.5357142857142857,
+    "SynthShooting_006@160": 0.5357142857142857,
+    "SynthShooting_006@496": 0.0,
+    "SynthStealing_007@160": 0.0
+   },
+   "bounds_pp": [
+    30.71428571428571,
+    41.07142857142857
+   ],
+   "sensitivity": {
+    "tie_free": {
+     "estimate_pp": 60.26785714285714,
+     "ci95_pp": [
+      41.51785714285714,
+      85.71428571428572
+     ],
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 4,
+     "n_videos_population": 4,
+     "n_inputs": 5,
+     "n_inputs_missing_dw": 0,
+     "video_means_pp": {
+      "SynthArson_001": 37.5,
+      "SynthBurglary_002": 96.42857142857143,
+      "SynthNormal_901": 53.57142857142857,
+      "SynthShooting_006": 53.57142857142857
+     },
+     "d_w": {
+      "SynthArson_001@160": 0.75,
+      "SynthArson_001@896": 0.0,
+      "SynthBurglary_002@208": 0.9642857142857143,
+      "SynthNormal_901@1504": 0.5357142857142857,
+      "SynthShooting_006@160": 0.5357142857142857
+     },
+     "bounds_pp": [
+      60.26785714285714,
+      60.26785714285714
+     ]
+    },
+    "scorer_agreement": {
+     "estimate_pp": 42.857142857142854,
+     "ci95_pp": [
+      16.071428571428573,
+      72.85714285714286
+     ],
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 5,
+     "n_videos_population": 5,
+     "n_inputs": 8,
+     "n_inputs_missing_dw": 1,
+     "video_means_pp": {
+      "SynthArson_001": 37.5,
+      "SynthBurglary_002": 96.42857142857143,
+      "SynthNormal_901": 53.57142857142857,
+      "SynthShooting_006": 26.785714285714285,
+      "SynthStealing_007": 0.0
+     },
+     "d_w": {
+      "SynthArson_001@160": 0.75,
+      "SynthArson_001@896": 0.0,
+      "SynthBurglary_002@208": 0.9642857142857143,
+      "SynthBurglary_002@592": null,
+      "SynthNormal_901@1504": 0.5357142857142857,
+      "SynthShooting_006@160": 0.5357142857142857,
+      "SynthShooting_006@496": 0.0,
+      "SynthStealing_007@160": 0.0
+     },
+     "bounds_pp": [
+      30.71428571428571,
+      41.07142857142857
+     ]
+    },
+    "with_development": {
+     "estimate_pp": 44.64285714285714,
+     "ci95_pp": [
+      22.321428571428573,
+      67.85714285714288
+     ],
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 6,
+     "n_videos_population": 6,
+     "n_inputs": 9,
+     "n_inputs_missing_dw": 1,
+     "video_means_pp": {
+      "RoadAccidents127_x264": 53.57142857142857,
+      "SynthArson_001": 37.5,
+      "SynthBurglary_002": 96.42857142857143,
+      "SynthNormal_901": 53.57142857142857,
+      "SynthShooting_006": 26.785714285714285,
+      "SynthStealing_007": 0.0
+     },
+     "d_w": {
+      "RoadAccidents127_x264@2224": 0.5357142857142857,
+      "SynthArson_001@160": 0.75,
+      "SynthArson_001@896": 0.0,
+      "SynthBurglary_002@208": 0.9642857142857143,
+      "SynthBurglary_002@592": null,
+      "SynthNormal_901@1504": 0.5357142857142857,
+      "SynthShooting_006@160": 0.5357142857142857,
+      "SynthShooting_006@496": 0.0,
+      "SynthStealing_007@160": 0.0
+     },
+     "bounds_pp": [
+      34.52380952380952,
+      43.1547619047619
+     ]
+    },
+    "metadata_clean": {
+     "estimate_pp": 42.857142857142854,
+     "ci95_pp": [
+      16.071428571428573,
+      72.85714285714286
+     ],
+     "bootstrap": {
+      "seed": 0,
+      "B": 10000
+     },
+     "n_videos": 5,
+     "n_videos_population": 5,
+     "n_inputs": 8,
+     "n_inputs_missing_dw": 1,
+     "video_means_pp": {
+      "SynthArson_001": 37.5,
+      "SynthBurglary_002": 96.42857142857143,
+      "SynthNormal_901": 53.57142857142857,
+      "SynthShooting_006": 26.785714285714285,
+      "SynthStealing_007": 0.0
+     },
+     "d_w": {
+      "SynthArson_001@160": 0.75,
+      "SynthArson_001@896": 0.0,
+      "SynthBurglary_002@208": 0.9642857142857143,
+      "SynthBurglary_002@592": null,
+      "SynthNormal_901@1504": 0.5357142857142857,
+      "SynthShooting_006@160": 0.5357142857142857,
+      "SynthShooting_006@496": 0.0,
+      "SynthStealing_007@160": 0.0
+     },
+     "bounds_pp": [
+      30.71428571428571,
+      41.07142857142857
+     ]
+    }
+   }
+  },
+  "bootstrap_params": {
+   "seed_source": "protocol default",
+   "B_source": "frozen/config.json:analysis.bootstrap_B",
+   "seed": 0,
+   "B": 10000
+  },
+  "counts": {
+   "n_inputs": 11,
+   "n_inputs_status_ok": 11,
+   "n_label_available": 10,
+   "n_L0_1": 9,
+   "n_L0_0": 1,
+   "n_L0_missing": 1,
+   "n_development_inputs": 1,
+   "n_request_lines": 1231,
+   "n_successful_lines": 1231,
+   "n_authoritative_tuples": 1197,
+   "cache_status": {
+    "fresh": 1197,
+    "cached": 34,
+    "prior_cache": 0,
+    "error": 0,
+    "skipped_budget": 0
+   },
+   "all_tied_blur": 3,
+   "all_nonpositive_blur": 2,
+   "tie_spans_cut2_blur": 4
+  },
+  "e1": {
+   "n_rows": 168,
+   "n_substep": 109,
+   "n_substep_bf16_changed": 36,
+   "by_family": {
+    "blur": {
+     "n_rows": 84,
+     "n_substep": 57,
+     "n_substep_bf16_changed": 16
+    },
+    "constant": {
+     "n_rows": 84,
+     "n_substep": 52,
+     "n_substep_bf16_changed": 20
+    }
+   },
+   "n_substep_raw_S_field_nonzero": 83,
+   "native_difference_definition": "Delta_bf16 = (logit_1 - logit_0)(base) - (logit_1 - logit_0)(mask); the stored S field carries <= 1.2e-7 float noise from log-prob subtraction, so its literal difference is reported separately (n_substep_raw_S_field_nonzero); temporal_effects.csv prints Delta_bf16 to 6 decimals (agrees with the margin difference) but computed its Delta_bf16_zero flag from the raw S fields",
+   "expected": {
+    "n_rows": 168,
+    "n_substep": 109,
+    "n_substep_bf16_changed": 36
+   },
+   "temporal_effects_csv_rows": 168
+  },
+  "inputs": [
+   {
+    "window_uid": "RoadAccidents127_x264@2224",
+    "video_id": "RoadAccidents127_x264",
+    "development": true,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     3,
+     4
+    ],
+    "d_w": 0.5357142857142857,
+    "d_lower": 0.5357142857142857,
+    "d_upper": 0.5357142857142857,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 13.5,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     3,
+     4,
+     0,
+     1,
+     2,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     3,
+     4,
+     0,
+     1
+    ]
+   },
+   {
+    "window_uid": "SynthArson_001@160",
+    "video_id": "SynthArson_001",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     0,
+     2
+    ],
+    "d_w": 0.75,
+    "d_lower": 0.75,
+    "d_upper": 0.75,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 9.678571428571429,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     2,
+     1,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "window_uid": "SynthArson_001@896",
+    "video_id": "SynthArson_001",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     6,
+     7
+    ],
+    "d_w": 0.0,
+    "d_lower": 0.0,
+    "d_upper": 0.0,
+    "F_top2": 0,
+    "n_pair_labels": 28,
+    "e_w": 6.0,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     7,
+     6,
+     5,
+     4,
+     3,
+     2,
+     1,
+     0
+    ],
+    "order_adaptive": [
+     7,
+     6,
+     5,
+     4
+    ]
+   },
+   {
+    "window_uid": "SynthBurglary_002@208",
+    "video_id": "SynthBurglary_002",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     2,
+     3
+    ],
+    "d_w": 0.9642857142857143,
+    "d_lower": 0.9642857142857143,
+    "d_upper": 0.9642857142857143,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 9.0,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     2,
+     3,
+     0,
+     1,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     2,
+     3,
+     0,
+     1
+    ]
+   },
+   {
+    "window_uid": "SynthBurglary_002@592",
+    "video_id": "SynthBurglary_002",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     0,
+     1
+    ],
+    "d_w": null,
+    "d_lower": -0.25,
+    "d_upper": 0.7857142857142857,
+    "F_top2": null,
+    "n_pair_labels": 27,
+    "e_w": 3.75,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "window_uid": "SynthNormal_900@1504",
+    "video_id": "SynthNormal_900",
+    "development": false,
+    "L0": 0,
+    "q": -1,
+    "T_w": [
+     0,
+     1
+    ],
+    "d_w": null,
+    "d_lower": null,
+    "d_upper": null,
+    "F_top2": null,
+    "n_pair_labels": 28,
+    "e_w": 0.0,
+    "tau_blur_grey": null,
+    "tau_native_hi": null,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "window_uid": "SynthNormal_901@1504",
+    "video_id": "SynthNormal_901",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     0,
+     7
+    ],
+    "d_w": 0.5357142857142857,
+    "d_lower": 0.5357142857142857,
+    "d_upper": 0.5357142857142857,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 6.0,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     7,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "order_adaptive": [
+     0,
+     7,
+     1,
+     2
+    ]
+   },
+   {
+    "window_uid": "SynthRobbery_005@160",
+    "video_id": "SynthRobbery_005",
+    "development": false,
+    "L0": null,
+    "q": null,
+    "T_w": null,
+    "d_w": null,
+    "d_lower": null,
+    "d_upper": null,
+    "F_top2": null,
+    "n_pair_labels": null,
+    "e_w": null,
+    "tau_blur_grey": null,
+    "tau_native_hi": null,
+    "overlap_blur_grey": null,
+    "overlap_native_hi": null,
+    "order_blur": null,
+    "order_adaptive": null
+   },
+   {
+    "window_uid": "SynthShooting_006@160",
+    "video_id": "SynthShooting_006",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     0,
+     1
+    ],
+    "d_w": 0.5357142857142857,
+    "d_lower": 0.5357142857142857,
+    "d_upper": 0.5357142857142857,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 12.0,
+    "tau_blur_grey": 1.0,
+    "tau_native_hi": 1.0,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "window_uid": "SynthShooting_006@496",
+    "video_id": "SynthShooting_006",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     0,
+     1
+    ],
+    "d_w": 0.0,
+    "d_lower": 0.0,
+    "d_upper": 0.0,
+    "F_top2": 1,
+    "n_pair_labels": 28,
+    "e_w": 0.0,
+    "tau_blur_grey": null,
+    "tau_native_hi": null,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     0,
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "window_uid": "SynthStealing_007@160",
+    "video_id": "SynthStealing_007",
+    "development": false,
+    "L0": 1,
+    "q": 1,
+    "T_w": [
+     0,
+     1
+    ],
+    "d_w": 0.0,
+    "d_lower": 0.0,
+    "d_upper": 0.0,
+    "F_top2": 0,
+    "n_pair_labels": 28,
+    "e_w": 0.0,
+    "tau_blur_grey": null,
+    "tau_native_hi": null,
+    "overlap_blur_grey": 2,
+    "overlap_native_hi": 2,
+    "order_blur": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "order_adaptive": [
+     0,
+     1,
+     2,
+     3
+    ]
+   }
+  ]
+ },
+ "readings": [
+  "latest line: request lines are ordered by request file name (sorted) and then line number",
+  "parsed label = parse_status 'ok' with an integer label 0/1; repeats 1/2 are expected only after an unparsed repeat r-1 of the same generation; score requests have repeat 0 only",
+  "native readout = logit_1 - logit_0 (protocol/RECORDS v1.1; the stored S field carries ~1e-7 log-softmax noise)",
+  "development = video_id in the protocol's two development videos (or tagged so in inputs.json)",
+  "primary population ignores inputs.json status (any input with parsed L0 = 1); planned-request checks cover status 'ok' inputs only",
+  "a successful line with a non-finite readout is treated as a missing value",
+  "a RANKING whose baseline score is missing is incomplete with 'baseline' in its missing list",
+  "ties lists only groups of size >= 2 and is compared as an unordered set of sorted groups",
+  "d_w, F_top2 and F_random_mean are defined for L0 = 1 inputs only (F = 1 iff label 0); L0 = 0 rows are not compared for them; F_random_mean with missing labels is accepted blank or as the mean of available labels",
+  "if T_w is undefined (incomplete blur ranking) d_w is missing and the bound uses selected = 0 / 1",
+  "e_w is missing unless the baseline score, T_w and all 28 grey-pair S_hi values are present",
+  "n_videos = videos with at least one non-missing d_w (the bootstrap V)",
+  "bootstrap results (ci95_pp and stability ci95_pp) are compared endpoint by endpoint within 1e-9 pp (the protocol fixes the draws and the percentile rule, not float summation order); the validator sums with Python's built-in sum in input order within a video and video_id order across videos; percentile = s[lo] + (s[hi]-s[lo])*frac; pp = 100 * value at the end",
+  "sensitivity estimates use the primary seed and B; their CIs are compared only when the analyzer reports them",
+  "E1 native difference uses the BF16 logit margin (logit_1 - logit_0); the stored S field differs from it by <= 1.2e-7 and its literal difference is reported separately",
+  "a retry is any attempt logged after an error attempt of the same request_id (global line order); more than two retries or more than three error attempts per request_id fail retry_limit",
+  "an unparsed successful generation at repeat r < 2 must be followed by a logged line (any cache_status) for repeat r + 1; an errored repeat does not oblige a further repeat",
+  "a replaced slot's tensor hash depends only on (input, family, slot), since every mask is rebuilt from the original frames; two hashes for one (input, family, slot) fail slot_identity",
+  "manifest window records with status 'unavailable' have no window and are not checked against VERA arithmetic"
+ ],
+ "provenance": {
+  "sha256": {
+   "inputs.json": "73f419b18f3debe4488e4f91540817d95adfa516302b4cd063865711aa05137a",
+   "frozen/config.json": "e0171c9f7da2510d9549010426f544a4917307158803f70615316c2f8d44207a",
+   "frozen/manifest.json": "d9598aaa6ccfeaecfb13ff3f454be3910c335132b942d17f22e174ab20dfa8cb",
+   "requests/adaptive.jsonl": "9a6a3b095fd16f4135603b285ac7fb1cf575a60e92b9ed97773b849f30a0b811",
+   "requests/baseline.jsonl": "ae12ef2eeb4a9cecd5b82f7730c43a095c5e87e030d73ea58a7cb3a104625d60",
+   "requests/evaluation.jsonl": "fb202428b8af5c7a7719b6dd1a869c2c62eb86fc5a1fc95b05e9eb7c97db5f7c",
+   "requests/fixed.jsonl": "fc2e87bca14050fb845a8b47738d842f4556b236ba4a725e1c6e95ffecfeea6e",
+   "derived/rankings.jsonl": "7c57dcce546ab75e2867a54ccf420b0949e9cfdc8f8ad073ba305f3dcbaf3563",
+   "results/primary.json": "e4096e6a6a3b3eeb576c0708e106a3d55f711bbe7a1670298998bb5a1bb2543a",
+   "results/inputs_metrics.csv": "f2c1814d0a99ff3f2ae58cd7f969deb248d393bf654a5abf5a531019aca51fa2",
+   "results/pairs.csv": "a2de651be6e2ff5cc656781d59cf2e927a4b89e64c3a6c0b8e595f5113d7bdcc",
+   "results/trajectories.csv": "3da752d313b2cabf18af35fc755df794e85d6efdc4932d52c7db89c3cc84315e"
+  }
+ }
+}

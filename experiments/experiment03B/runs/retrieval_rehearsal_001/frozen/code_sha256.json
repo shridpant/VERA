@@ -1,0 +1,17 @@
+{
+ "experiments/experiment03B/code/run_workflow.py": "3451524c01e51cc401e8789565d84e9d6edd28a8ccf27e3f7e9f3aeab97c81b0",
+ "experiments/experiment03B/code/xb_core.py": "dd8b18896c49828456c19aaceac141a1381f34908c34897801c6b553255268b1",
+ "experiments/experiment03B/code/config3b.py": "80d2c9c1770947afe4b07a8c0642664e07d28aa164b265c310f9a321b0b34714",
+ "experiments/experiment03B/code/io3b.py": "46c35a71e42a8b8227ab5e2da88d3cc7a2158a05e26d99506e1f01f83e3a1d6b",
+ "experiments/experiment03B/code/engine3b.py": "e82c5074713ee760613dc969df306b24db7e467ecd4f9d5a1f0f139f1211304e",
+ "experiments/experiment03B/code/acquire3b.py": "f49267e1eba3a81185e98f37d5b18d1ef17e5f6d385e4b751a7cde3bd9e66e83",
+ "experiments/experiment03B/code/analyze3b.py": "0231997bbfa31bb4a1bad5876b8e87332382045b5b9b224ceda23c04cb1f58e5",
+ "experiments/experiment03B/code/appendix_table.py": "feb2fb82096410047e98eec42f572e7e7a04c4b75112ae16221398992e9f854c",
+ "experiments/experiment03B/code/manifest3b.py": "79745cbf8507c73d25eb2fcb73111411921b36702bf71ecc910f0d55ab791e42",
+ "experiments/experiment03B/code/validate3b.py": "8ea12393327de61b8b626ba7f6557417be1d5d280c53be33ba4a2593a2107138",
+ "experiments/experiment02/code/engine.py": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+ "experiments/experiment02/code/attr_lib.py": "7acf4acfc7f11b10bd8483efd97a5a981c4a33574f3af3d0fdbc1a7bffe371fb",
+ "setup/scripts/vera_pipeline.py": "9acb63665d94a91fbdd32cdb1d9870cff9c09b5546caf96b649eb44ccbdb2691",
+ "setup/scripts/fetch_zip_member.py": "5e82b5325204be3fcfbcbeb56d261bcae0f50c91a94890311ddc3302845b0b76",
+ "experiments/experiment02/errata/precision_crossings.py": "0f0f9fff15a859f062ffd5c3d5d8c2d2a9728457c68c493502d518390d5fda3b"
+}

@@ -1,0 +1,148 @@
+{
+ "schema_version": "exp03b-config-1",
+ "experiment_id": "experiment03B",
+ "protocol_version": "1.1",
+ "run_id": "retrieval_rehearsal_001",
+ "engine": "real",
+ "seeds": {
+  "planned": [
+   0,
+   1,
+   2
+  ],
+  "execute": [
+   0
+  ]
+ },
+ "source": {
+  "repo": "https://github.com/vera-framework/VERA",
+  "base_commit": "15b8bcb8574a977c229c577f50bfe6f06d07106e",
+  "checkout": "setup/source/VERA",
+  "expected_head": "008ed4019781c39e7cb16244b7500244f3986f92"
+ },
+ "model": {
+  "repo": "OpenGVLab/InternVL2-8B",
+  "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+  "local_dir": "shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+  "dtype": "bfloat16",
+  "use_flash_attn": true
+ },
+ "generation": {
+  "num_beams": 1,
+  "max_new_tokens": 1024,
+  "do_sample": false
+ },
+ "prompt": {
+  "learner_instruct_file": "VERA_learner_instruct.txt",
+  "guiding_questions": [
+   "1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?",
+   "2. Are there any vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?",
+   "3. Are there any objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?",
+   "4. Is there any visible damage or unusual movement in the video that indicates an anomaly?",
+   "5. Are there any unusual sounds or noises in the video that suggest an anomaly?"
+  ]
+ },
+ "scoring": {
+  "contract": "label_only_first_token_v1",
+  "ranking_readout": "S_hi"
+ },
+ "replacements": {
+  "preprocessed_resolution": 448,
+  "blur_radius_fraction": 0.04,
+  "grey_rgb": [
+   127,
+   127,
+   127
+  ]
+ },
+ "ranking": {
+  "method": "temporal_occlusion",
+  "aggregation": "singleton",
+  "construction_family": "blur",
+  "evaluation_family": "grey",
+  "modes": [
+   "fixed",
+   "adaptive"
+  ],
+  "budgets": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "adaptive_max_budget": 4
+ },
+ "population": {
+  "kind": "manifest",
+  "manifest": "experiments/experiment03B/manifest/manifest_v1.json",
+  "manifest_sha256": "a8a209cfb490334634926a079b6693ae3be1f01ca61d07c207eda29b51a40473",
+  "development_videos": [
+   "RoadAccidents127_x264",
+   "Normal_Videos_018_x264"
+  ]
+ },
+ "analysis": {
+  "bootstrap_B": 10000,
+  "alpha": 0.05,
+  "stability_seed_offsets": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "secondary_scope": "confirmation"
+ },
+ "retries": {
+  "error_retries": 2,
+  "parse_failure_repeats": 2
+ },
+ "limits": {
+  "max_new_transformed_inputs": 1,
+  "max_gpu_hours": 0.01,
+  "max_scratch_mib": 500,
+  "max_model_calls": 1
+ },
+ "retrieval": {
+  "mode": "fetch",
+  "frames_root": "shared/frames/ucf_crime_sparse",
+  "scratch_dir": "/tmp/sp2117_vera3b_scratch",
+  "archives": {
+   "Anomaly-Videos-Part-1.zip": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/ACSm_o3uoOKYRyTX_D4gAlc/Anomaly-Videos-Part-1.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+   "Anomaly-Videos-Part-2.zip": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/ABYl45nk5Wd0ecKkP7VfnmI/Anomaly-Videos-Part-2.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+   "Anomaly-Videos-Part-3.zip": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AFb9SoyBX4rJ-XrdqZDVA_I/Anomaly-Videos-Part-3.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+   "Anomaly-Videos-Part-4.zip": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AAmA_Jr2it3xfS0o1J-WF1Q/Anomaly-Videos-Part-4.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+   "Testing_Normal_Videos.zip": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AHTTsM4LmY3lQdqO9mMBjFw/Testing_Normal_Videos.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1"
+  },
+  "prefer_local": false,
+  "fidelity_check": {
+   "video_id": "Normal_Videos_018_x264",
+   "fetch": true,
+   "zip": "Testing_Normal_Videos.zip",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_018_x264.mp4",
+   "video_bytes": 7662531,
+   "expected_sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1",
+   "frame_indices": [
+    442,
+    479,
+    517,
+    554,
+    592,
+    629,
+    667,
+    704
+   ],
+   "full_cache_dir": "shared/frames/ucf_crime/Normal_Videos_018_x264",
+   "note": "manifest_v1 normal-video window of a development video (anchor 592)"
+  }
+ },
+ "prior_caches": [
+  "experiments/experiment02/runs/run_002/results/cache_records.jsonl"
+ ],
+ "paths": {
+  "runs_root": "experiments/experiment03B/runs"
+ },
+ "gpu": {
+  "min_free_mib": 40000
+ },
+ "note": "CPU/network rehearsal of the fetch path on a development video only: run with --videos Normal_Videos_018_x264 --stages preflight errata manifest retrieval. No model stage is run."
+}

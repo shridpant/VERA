@@ -1,0 +1,16 @@
+{"at": "2026-10-23T06:23:34+00:00", "event": "fetch", "video_id": "Normal_Videos_018_x264", "path": "/tmp/sp2117_vera3b_scratch/fidelity/Normal_Videos_018_x264.mp4", "exit": 0, "stderr_tail": ""}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/Normal_Videos_018_x264.mp4", "bytes": 7662531}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/Normal_Videos_018_x264.mp4.provenance.json", "bytes": 809}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000442.jpg", "bytes": 40957}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000479.jpg", "bytes": 40839}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000517.jpg", "bytes": 40944}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000554.jpg", "bytes": 40561}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000592.jpg", "bytes": 40765}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000629.jpg", "bytes": 40743}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000667.jpg", "bytes": 40757}
+{"at": "2026-10-23T06:23:35+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/fidelity/frames/000704.jpg", "bytes": 40802}
+{"at": "2026-10-23T06:23:20+00:00", "event": "fidelity_check", "video_id": "Normal_Videos_018_x264", "fetched": true, "fetched_sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1", "fetched_sha256_matches_recorded": true, "bytes_fetched_over_http": 9443406, "decoded_frame_count": 1181, "container_fps": 30.0, "cv2_version": "4.9.0", "n_frames": 8, "identical": true}
+{"at": "2026-10-23T06:23:48+00:00", "event": "fetch", "video_id": "Normal_Videos_018_x264", "path": "/tmp/sp2117_vera3b_scratch/Normal_Videos_018_x264.mp4", "exit": 0, "stderr_tail": ""}
+{"at": "2026-10-23T06:23:49+00:00", "event": "extracted", "video_id": "Normal_Videos_018_x264", "flags": [], "n_frames": 8, "missing_indices": []}
+{"at": "2026-10-23T06:23:49+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/Normal_Videos_018_x264.mp4", "bytes": 7662531}
+{"at": "2026-10-23T06:23:49+00:00", "event": "purge", "path": "/tmp/sp2117_vera3b_scratch/Normal_Videos_018_x264.mp4.provenance.json", "bytes": 809}

@@ -1,0 +1,81 @@
+window_uid,video_id,mode,k,mask,label,flip,q_dS_hi,q_dS_native,attributable_new_calls
+RoadAccidents127_x264@2224,RoadAccidents127_x264,fixed,1,3,0,1,9.0,9.0,1
+RoadAccidents127_x264@2224,RoadAccidents127_x264,fixed,2,3 4,0,1,18.0,18.0,0
+RoadAccidents127_x264@2224,RoadAccidents127_x264,fixed,3,0 3 4,0,1,18.0,18.0,2
+RoadAccidents127_x264@2224,RoadAccidents127_x264,fixed,4,0 1 3 4,0,1,18.0,18.0,2
+RoadAccidents127_x264@2224,RoadAccidents127_x264,adaptive,1,3,0,1,9.0,9.0,0
+RoadAccidents127_x264@2224,RoadAccidents127_x264,adaptive,2,3 4,0,1,18.0,18.0,0
+RoadAccidents127_x264@2224,RoadAccidents127_x264,adaptive,3,0 3 4,0,1,18.0,18.0,6
+RoadAccidents127_x264@2224,RoadAccidents127_x264,adaptive,4,0 1 3 4,0,1,18.0,18.0,5
+SynthArson_001@160,SynthArson_001,fixed,1,0,0,1,15.0,15.0,1
+SynthArson_001@160,SynthArson_001,fixed,2,0 2,0,1,16.0,16.0,0
+SynthArson_001@160,SynthArson_001,fixed,3,0 1 2,0,1,21.0,21.0,2
+SynthArson_001@160,SynthArson_001,fixed,4,0 1 2 3,0,1,21.0,21.0,2
+SynthArson_001@160,SynthArson_001,adaptive,1,0,0,1,15.0,15.0,0
+SynthArson_001@160,SynthArson_001,adaptive,2,0 1,0,1,20.0,20.0,0
+SynthArson_001@160,SynthArson_001,adaptive,3,0 1 2,0,1,21.0,21.0,6
+SynthArson_001@160,SynthArson_001,adaptive,4,0 1 2 3,0,1,21.0,21.0,5
+SynthArson_001@896,SynthArson_001,fixed,1,7,1,0,8.0,8.0,1
+SynthArson_001@896,SynthArson_001,fixed,2,6 7,1,0,15.0,15.0,0
+SynthArson_001@896,SynthArson_001,fixed,3,5 6 7,0,1,21.0,21.0,2
+SynthArson_001@896,SynthArson_001,fixed,4,4 5 6 7,0,1,26.0,26.0,2
+SynthArson_001@896,SynthArson_001,adaptive,1,7,1,0,8.0,8.0,0
+SynthArson_001@896,SynthArson_001,adaptive,2,6 7,1,0,15.0,15.0,0
+SynthArson_001@896,SynthArson_001,adaptive,3,5 6 7,0,1,21.0,21.0,6
+SynthArson_001@896,SynthArson_001,adaptive,4,4 5 6 7,0,1,26.0,26.0,5
+SynthBurglary_002@208,SynthBurglary_002,fixed,1,2,1,0,6.0,6.0,1
+SynthBurglary_002@208,SynthBurglary_002,fixed,2,2 3,0,1,12.0,12.0,0
+SynthBurglary_002@208,SynthBurglary_002,fixed,3,0 2 3,0,1,12.0,12.0,2
+SynthBurglary_002@208,SynthBurglary_002,fixed,4,0 1 2 3,0,1,12.0,12.0,2
+SynthBurglary_002@208,SynthBurglary_002,adaptive,1,2,1,0,6.0,6.0,0
+SynthBurglary_002@208,SynthBurglary_002,adaptive,2,2 3,0,1,12.0,12.0,0
+SynthBurglary_002@208,SynthBurglary_002,adaptive,3,0 2 3,0,1,12.0,12.0,6
+SynthBurglary_002@208,SynthBurglary_002,adaptive,4,0 1 2 3,0,1,12.0,12.0,5
+SynthBurglary_002@592,SynthBurglary_002,fixed,1,0,0,1,5.0,5.0,1
+SynthBurglary_002@592,SynthBurglary_002,fixed,2,0 1,,,5.0,5.0,0
+SynthBurglary_002@592,SynthBurglary_002,fixed,3,0 1 2,0,1,5.0,5.0,2
+SynthBurglary_002@592,SynthBurglary_002,fixed,4,0 1 2 3,0,1,5.0,5.0,2
+SynthBurglary_002@592,SynthBurglary_002,adaptive,1,0,0,1,5.0,5.0,0
+SynthBurglary_002@592,SynthBurglary_002,adaptive,2,0 1,,,5.0,5.0,0
+SynthBurglary_002@592,SynthBurglary_002,adaptive,3,0 1 2,0,1,5.0,5.0,6
+SynthBurglary_002@592,SynthBurglary_002,adaptive,4,0 1 2 3,0,1,5.0,5.0,5
+SynthNormal_900@1504,SynthNormal_900,fixed,1,0,0,0,-1.0,-1.0,1
+SynthNormal_900@1504,SynthNormal_900,fixed,2,0 1,0,0,-2.0,-2.0,0
+SynthNormal_900@1504,SynthNormal_900,fixed,3,0 1 2,0,0,-3.0,-3.0,2
+SynthNormal_900@1504,SynthNormal_900,fixed,4,0 1 2 3,0,0,-4.0,-4.0,2
+SynthNormal_900@1504,SynthNormal_900,adaptive,1,0,0,0,-1.0,-1.0,0
+SynthNormal_900@1504,SynthNormal_900,adaptive,2,0 1,0,0,-2.0,-2.0,0
+SynthNormal_900@1504,SynthNormal_900,adaptive,3,0 1 2,0,0,-3.0,-3.0,6
+SynthNormal_900@1504,SynthNormal_900,adaptive,4,0 1 2 3,0,0,-4.0,-4.0,5
+SynthNormal_901@1504,SynthNormal_901,fixed,1,0,0,1,4.0,4.0,1
+SynthNormal_901@1504,SynthNormal_901,fixed,2,0 7,0,1,8.0,8.0,0
+SynthNormal_901@1504,SynthNormal_901,fixed,3,0 1 7,0,1,8.0,8.0,2
+SynthNormal_901@1504,SynthNormal_901,fixed,4,0 1 2 7,0,1,8.0,8.0,2
+SynthNormal_901@1504,SynthNormal_901,adaptive,1,0,0,1,4.0,4.0,0
+SynthNormal_901@1504,SynthNormal_901,adaptive,2,0 7,0,1,8.0,8.0,0
+SynthNormal_901@1504,SynthNormal_901,adaptive,3,0 1 7,0,1,8.0,8.0,6
+SynthNormal_901@1504,SynthNormal_901,adaptive,4,0 1 2 7,0,1,8.0,8.0,5
+SynthShooting_006@160,SynthShooting_006,fixed,1,0,0,1,8.0,8.0,1
+SynthShooting_006@160,SynthShooting_006,fixed,2,0 1,0,1,16.0,16.0,0
+SynthShooting_006@160,SynthShooting_006,fixed,3,0 1 2,0,1,16.0,16.0,2
+SynthShooting_006@160,SynthShooting_006,fixed,4,0 1 2 3,0,1,16.0,16.0,2
+SynthShooting_006@160,SynthShooting_006,adaptive,1,0,0,1,8.0,8.0,0
+SynthShooting_006@160,SynthShooting_006,adaptive,2,0 1,0,1,16.0,16.0,0
+SynthShooting_006@160,SynthShooting_006,adaptive,3,0 1 2,0,1,16.0,16.0,6
+SynthShooting_006@160,SynthShooting_006,adaptive,4,0 1 2 3,0,1,16.0,16.0,5
+SynthShooting_006@496,SynthShooting_006,fixed,1,0,1,0,2.0,2.0,1
+SynthShooting_006@496,SynthShooting_006,fixed,2,0 1,0,1,4.0,4.0,0
+SynthShooting_006@496,SynthShooting_006,fixed,3,0 1 2,0,1,6.0,6.0,2
+SynthShooting_006@496,SynthShooting_006,fixed,4,0 1 2 3,0,1,8.0,8.0,2
+SynthShooting_006@496,SynthShooting_006,adaptive,1,0,1,0,2.0,2.0,0
+SynthShooting_006@496,SynthShooting_006,adaptive,2,0 1,0,1,4.0,4.0,0
+SynthShooting_006@496,SynthShooting_006,adaptive,3,0 1 2,0,1,6.0,6.0,6
+SynthShooting_006@496,SynthShooting_006,adaptive,4,0 1 2 3,0,1,8.0,8.0,5
+SynthStealing_007@160,SynthStealing_007,fixed,1,0,1,0,-1.0,-1.0,1
+SynthStealing_007@160,SynthStealing_007,fixed,2,0 1,1,0,-2.0,-2.0,0
+SynthStealing_007@160,SynthStealing_007,fixed,3,0 1 2,1,0,-3.0,-3.0,2
+SynthStealing_007@160,SynthStealing_007,fixed,4,0 1 2 3,1,0,-4.0,-4.0,2
+SynthStealing_007@160,SynthStealing_007,adaptive,1,0,1,0,-1.0,-1.0,0
+SynthStealing_007@160,SynthStealing_007,adaptive,2,0 1,1,0,-2.0,-2.0,0
+SynthStealing_007@160,SynthStealing_007,adaptive,3,0 1 2,1,0,-3.0,-3.0,6
+SynthStealing_007@160,SynthStealing_007,adaptive,4,0 1 2 3,1,0,-4.0,-4.0,5
