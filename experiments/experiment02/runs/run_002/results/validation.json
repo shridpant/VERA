@@ -1,0 +1,114 @@
+{
+  "passed": 18,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "V01",
+      "check": "required artifacts exist",
+      "status": "PASS",
+      "detail": "18 files"
+    },
+    {
+      "id": "V02",
+      "check": "case frames, windows, timestamps, hashes and metadata",
+      "status": "PASS",
+      "detail": "5 cases; problems []"
+    },
+    {
+      "id": "V03",
+      "check": "only the intended slots changed; preprocessing identical elsewhere",
+      "status": "PASS",
+      "detail": "576 perturbation records: unmasked slots bit-identical to baseline, masked slots changed; problems []"
+    },
+    {
+      "id": "V04",
+      "check": "group enumeration and matched intervention sizes",
+      "status": "PASS",
+      "detail": "28 masks per case/family/target; sizes {'all_eight': {8}, 'single': {1}, 'adjacent_pair': {2}, 'adjacent_triple': {3}, 'nonconsecutive_pair': {2}, 'nonconsecutive_triple': {3}}; problems []"
+    },
+    {
+      "id": "V05",
+      "check": "cache keys complete (model, prompt/contract, source, frames, transform, preprocessing) and consistent",
+      "status": "PASS",
+      "detail": "recomputed keys match 606/606; cache keys unique True; fresh results missing from cache 0; generation and score records never share a key True"
+    },
+    {
+      "id": "V06",
+      "check": "parsing reproducible; parse failures are missing, never labels",
+      "status": "PASS",
+      "detail": "re-parsed 303 generations; parse failures (kept unlabelled) 0; mismatches []"
+    },
+    {
+      "id": "V07",
+      "check": "likelihood indexing, finite scores and repeatability",
+      "status": "PASS",
+      "detail": "candidates {0: [300], 1: [312]}, single-token True; S finite and = logp1-logp0 for all; repeat max|dS| 0.0; problems []"
+    },
+    {
+      "id": "V08",
+      "check": "signed effects, binary diffs, interactions and normal/anomaly direction recomputed",
+      "status": "PASS",
+      "detail": "168 rows; negative Deltas kept 80; problems []"
+    },
+    {
+      "id": "V09",
+      "check": "rankings well formed; ties recorded",
+      "status": "PASS",
+      "detail": "rankings are full permutations with recorded ties; problems []"
+    },
+    {
+      "id": "V10",
+      "check": "effective generation configuration saved, including model-added values",
+      "status": "PASS",
+      "detail": "effective generation settings = config + eos_token_id 92542 on all generations; problems []"
+    },
+    {
+      "id": "V11",
+      "check": "resume safety: append-only request logs; failed attempts retried, never overwritten",
+      "status": "PASS",
+      "detail": "at most one success per request id, always the last attempt; retried ids 0; problems []"
+    },
+    {
+      "id": "V12",
+      "check": "original runs and setup unchanged",
+      "status": "PASS",
+      "detail": "experiment01 + setup files unchanged since preflight (none changed); VERA HEAD 008ed401 clean True"
+    },
+    {
+      "id": "V13",
+      "check": "execution limits respected",
+      "status": "PASS",
+      "detail": "unique transformed sequences 255/394; experiment02 GPU job wall time 0.30 h / 2.9 h"
+    },
+    {
+      "id": "V14",
+      "check": "prompt identity (original = experiment01; ablation and label-only differ only as declared)",
+      "status": "PASS",
+      "detail": "original question identical to experiment01 True; one original prompt hash True; label-only keeps all 5 questions True; no-sound = original minus question 5 only True; question actually built by VERA forward() = prompt in cache key for every record True"
+    },
+    {
+      "id": "V15",
+      "check": "A1 reruns compared with experiment01 records",
+      "status": "PASS",
+      "detail": "R-start: text same, label same, token ids same; R-pedestrian: text same, label same, token ids same; R-accident: text same, label same, token ids same; R-end: text same, label same, token ids same (informational: discrepancies are reported, not failures)"
+    },
+    {
+      "id": "V17",
+      "check": "in-run check: every fresh record changed exactly its masked slots",
+      "status": "PASS",
+      "detail": "in-run slot identity flag true on 540/540 fresh records"
+    },
+    {
+      "id": "V18",
+      "check": "one code version produced all model results",
+      "status": "PASS",
+      "detail": "1 model invocations all ran code {'attr_lib.py': '7acf4acfc7', 'engine.py': '7bb6ae95b2', 'run_attr.py': '5b543ca153'}; current code identical True; verified snapshot in run dir True"
+    },
+    {
+      "id": "V16",
+      "check": "spatial diagnostic arrays finite",
+      "status": "PASS",
+      "detail": "4 spatial arrays finite True"
+    }
+  ]
+}

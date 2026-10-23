@@ -1,0 +1,156 @@
+{
+ "case_id": "R-accident",
+ "target": "auxiliary label-only score S = log P('1') - log P('0') (contract label_only_first_token_v1); NOT VERA's original explanation-first decision",
+ "spatial_probe_sha256": "7a4d42e35132d1ea8bdfcb29da588ec8e34c474559630b6e99302e492f84c6f5",
+ "engine_sha256": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+ "S_no_grad_path": 2.7499998807907104,
+ "S_hi_no_grad_path": 2.8548316955566406,
+ "S_grad_path": 2.75,
+ "forward_agreement_abs_diff": 1.1920928955078125e-07,
+ "gradient_call_seconds": 0.99,
+ "peak_gpu_mem_allocated_gib_gradient_call": 36.4,
+ "parameter_grads_stored": 0,
+ "finite": {
+  "gradcam_vit_32x32": true,
+  "gradcampp_vit_32x32": true,
+  "gradxinput_tokens_16x16": true,
+  "pixel_grad_abs_448": true,
+  "vit_token_grad": true
+ },
+ "nonzero": {
+  "gradcam_vit_32x32": true,
+  "gradcampp_vit_32x32": true,
+  "gradxinput_tokens_16x16": true,
+  "pixel_grad_abs_448": true
+ },
+ "per_frame_share": {
+  "gradcam_vit_32x32": [
+   0.2525,
+   0.0535,
+   0.0191,
+   0.2028,
+   0.1158,
+   0.2763,
+   0.0709,
+   0.0091
+  ],
+  "gradcampp_vit_32x32": [
+   0.3284,
+   0.0032,
+   0.0093,
+   0.5563,
+   0.0418,
+   0.0252,
+   0.0028,
+   0.0331
+  ],
+  "pixel_grad_abs_448": [
+   0.2193,
+   0.0596,
+   0.0499,
+   0.1398,
+   0.1936,
+   0.1623,
+   0.0951,
+   0.0804
+  ]
+ },
+ "per_frame_gradxinput_signed_sum": [
+  1.02684,
+  0.20464,
+  0.21919,
+  -1.24689,
+  -0.13196,
+  -1.13266,
+  0.01033,
+  0.22996
+ ],
+ "grad_norm_per_frame_pixels": [
+  33.741169,
+  6.674314,
+  6.390352,
+  24.284285,
+  22.182558,
+  24.772528,
+  11.897068,
+  10.068645
+ ],
+ "occlusion_check": {
+  "cells_total": 2048,
+  "k": 102,
+  "cell_px": 28,
+  "fill": "RGB(127,127,127) before normalization",
+  "baseline": {
+   "S": 2.7499998807907104,
+   "S_hi": 2.8548316955566406
+  },
+  "gradcam_top": {
+   "S": -0.75,
+   "S_hi": -0.6593208312988281,
+   "cells_per_frame": [
+    32,
+    2,
+    0,
+    14,
+    21,
+    33,
+    0,
+    0
+   ],
+   "input_sha256": "2f9fbd33765389d8f57dbe7efbc150c73bcfd49e7d88ce5281cd8a89b36cdaae"
+  },
+  "random_seed0": {
+   "S": 1.7500000894069672,
+   "S_hi": 1.9555816650390625,
+   "cells_per_frame": [
+    10,
+    18,
+    10,
+    15,
+    14,
+    13,
+    9,
+    13
+   ],
+   "input_sha256": "915f495d900bd81cc02553feabf57809d87f7039bce5097b66a954f70de1cd69"
+  },
+  "random_seed1": {
+   "S": 1.7499999403953552,
+   "S_hi": 1.9626884460449219,
+   "cells_per_frame": [
+    16,
+    9,
+    9,
+    15,
+    9,
+    12,
+    15,
+    17
+   ],
+   "input_sha256": "363d533d8b3569908c160c44af88d6b9c6a691d40b4eef65a501d7267f71c932"
+  },
+  "random_seed2": {
+   "S": 3.0000001192092896,
+   "S_hi": 3.0109100341796875,
+   "cells_per_frame": [
+    19,
+    9,
+    15,
+    12,
+    10,
+    16,
+    9,
+    12
+   ],
+   "input_sha256": "e7a9f0c566aa65676028efd2c72358d21f3f7306ebdcfd6a0eda3b377441140b"
+  },
+  "note": "Diagnostic of the auxiliary score only; 4 extra transformed sequences; greyed 28x28 cells are an out-of-distribution intervention, so a larger drop for top cells is consistent with, not proof of, the map tracking evidence"
+ },
+ "engine_counts": {
+  "generation_calls": 0,
+  "score_calls": 4,
+  "alignment_score_forwards": 0,
+  "alignment_generate_calls": 0,
+  "gradient_calls": 1
+ }
+}

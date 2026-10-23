@@ -2,6 +2,13 @@
 
 Updated 2026-10-22 after experiment01 run_001 and run_002 (both complete, validator 15/15).
 
+**Later use.** experiment02 (`temporal_attribution_feasibility`, see `../EXPERIMENTS.md` and
+`../experiments/experiment02/README.md`) used this setup without changing it. Every `setup/` file and the VERA
+checkout were hash-identical before and after (experiment02 validator V12). It added only shared data:
+- `shared/videos/ucf_crime/Normal_Videos_018_x264.mp4`, range-fetched alone from the official `Testing_Normal_Videos.zip`, with provenance JSON;
+- its frame cache `shared/frames/ucf_crime/Normal_Videos_018_x264/` with an identity file;
+- `shared/reference/ucf_crime_official/Temporal_Anomaly_Annotation_for_Testing_Videos.txt` (official, 15.6 KB).
+
 | Component | Status | Detail |
 |---|---|---|
 | Connection | ready | `ssh sp2117@oz.gccis.rit.edu`. Oz is the GPU host itself and has no scheduler. See `connection.md`. |

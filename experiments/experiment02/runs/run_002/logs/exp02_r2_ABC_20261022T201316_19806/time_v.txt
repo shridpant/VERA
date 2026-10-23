@@ -1,0 +1,23 @@
+	Command being timed: "timeout --signal=TERM --kill-after=30s 7170s setup/environment/env/bin/python experiments/experiment02/code/run_attr.py --config experiments/experiment02/config.yaml --run-dir experiments/experiment02/runs/run_002 --stages A,B,C"
+	User time (seconds): 1245.67
+	System time (seconds): 18.95
+	Percent of CPU this job got: 150%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 13:59.55
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 6427588
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 570135
+	Voluntary context switches: 54150
+	Involuntary context switches: 9972
+	Swaps: 0
+	File system inputs: 1128
+	File system outputs: 16464
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

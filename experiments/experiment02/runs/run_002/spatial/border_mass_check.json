@@ -1,0 +1,8 @@
+{
+ "dark_token_area_share": 0.25,
+ "gradcam_vit_32x32_mass_on_dark_tokens": 0.25339060247160655,
+ "gradcampp_vit_32x32_mass_on_dark_tokens": 0.22873023789657923,
+ "gradxinput_abs_mass_on_dark_tokens": 0.3527376075493788,
+ "dark_visual_token_area_share": 0.25,
+ "pixel_grad_mass_on_dark": 0.3354119359720358
+}

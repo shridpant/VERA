@@ -1,0 +1,223 @@
+recorded_at: 2026-10-22T23:42:19+00:00
+host: oz.gccis.rit.edu
+platform: Linux-6.12.113+deb13-amd64-x86_64-with-glibc2.41
+python: 3.10.22 (/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python)
+CUDA_VISIBLE_DEVICES: None
+HF_HOME: None
+HF_HUB_OFFLINE: None
+torch: 2.1.2+cu121 cuda 12.1 cudnn 8902
+cuda_available: True
+device 0: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 1: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 2: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 3: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 4: NVIDIA A16, 15016 MiB, capability 8.6
+device 5: NVIDIA A16, 15016 MiB, capability 8.6
+device 6: NVIDIA A16, 15016 MiB, capability 8.6
+device 7: NVIDIA A16, 15016 MiB, capability 8.6
+device 8: NVIDIA A16, 15016 MiB, capability 8.6
+device 9: NVIDIA A16, 15016 MiB, capability 8.6
+device 10: NVIDIA A16, 15016 MiB, capability 8.6
+device 11: NVIDIA A16, 15016 MiB, capability 8.6
+
+nvidia-smi:
+index, uuid, name, driver_version, memory.total [MiB], memory.used [MiB]
+0, GPU-01c08ec4-a2c6-1361-6c35-b449b00f831f, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+1, GPU-687f4dc1-2697-7b56-d848-cab1bcdeb8af, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+2, GPU-7e4f6111-7563-e0c1-bd4b-9daf338b03c0, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+3, GPU-7e0a76a1-67fb-9868-76e0-f9d82abf1279, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+4, GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+5, GPU-b6901777-c94c-e9ac-b295-041178270888, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+6, GPU-2931eba2-9a4d-61da-6bd1-e75692edad03, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+7, GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+8, GPU-022bc4c1-a77f-6752-afbd-136f51258755, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+9, GPU-8590087f-2489-8606-87fc-8b2cd7e5976e, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+10, GPU-bc8880a1-c98f-25e5-8cff-32fde558704d, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+11, GPU-0f39412c-e59f-5a5f-9ea8-a03e1eb28a0f, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+
+pip freeze:
+accelerate==0.27.2
+certifi==2022.12.7
+charset-normalizer==2.1.1
+cloudpickle==3.1.2
+einops==0.7.0
+filelock==3.32.3
+flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu122torch2.1cxx11abiFALSE-cp310-cp310-linux_x86_64.whl#sha256=1e782463ba32d2193924771c940805d74c365435d4142df18a261fc5a2fdff82
+fsspec==2026.7.0
+huggingface-hub==0.20.3
+idna==3.4
+Jinja2==3.1.6
+joblib==1.6.0
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.4.2
+numpy==1.26.4
+opencv-python-headless==4.9.0.80
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1785888127/work
+pillow==10.2.0
+psutil==7.2.2
+PyYAML==6.0.1
+regex==2026.9.29
+requests==2.28.1
+safetensors==0.4.2
+scikit-learn==1.3.2
+scipy==1.11.4
+sentencepiece==0.2.0
+sympy==1.14.0
+threadpoolctl==3.7.0
+timm==0.6.7
+tokenizers==0.15.2
+torch==2.1.2+cu121
+torchaudio==2.1.2+cu121
+torchvision==0.16.2+cu121
+tqdm==4.70.1
+transformers==4.37.2
+triton==2.1.0
+typing_extensions==4.16.0
+urllib3==1.26.13
+
+recorded_at: 2026-10-23T00:05:30+00:00
+host: oz.gccis.rit.edu
+platform: Linux-6.12.113+deb13-amd64-x86_64-with-glibc2.41
+python: 3.10.22 (/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python)
+CUDA_VISIBLE_DEVICES: None
+HF_HOME: None
+HF_HUB_OFFLINE: None
+torch: 2.1.2+cu121 cuda 12.1 cudnn 8902
+cuda_available: True
+device 0: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 1: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 2: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 3: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+device 4: NVIDIA A16, 15016 MiB, capability 8.6
+device 5: NVIDIA A16, 15016 MiB, capability 8.6
+device 6: NVIDIA A16, 15016 MiB, capability 8.6
+device 7: NVIDIA A16, 15016 MiB, capability 8.6
+device 8: NVIDIA A16, 15016 MiB, capability 8.6
+device 9: NVIDIA A16, 15016 MiB, capability 8.6
+device 10: NVIDIA A16, 15016 MiB, capability 8.6
+device 11: NVIDIA A16, 15016 MiB, capability 8.6
+
+nvidia-smi:
+index, uuid, name, driver_version, memory.total [MiB], memory.used [MiB]
+0, GPU-01c08ec4-a2c6-1361-6c35-b449b00f831f, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+1, GPU-687f4dc1-2697-7b56-d848-cab1bcdeb8af, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+2, GPU-7e4f6111-7563-e0c1-bd4b-9daf338b03c0, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+3, GPU-7e0a76a1-67fb-9868-76e0-f9d82abf1279, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+4, GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+5, GPU-b6901777-c94c-e9ac-b295-041178270888, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+6, GPU-2931eba2-9a4d-61da-6bd1-e75692edad03, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+7, GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+8, GPU-022bc4c1-a77f-6752-afbd-136f51258755, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+9, GPU-8590087f-2489-8606-87fc-8b2cd7e5976e, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+10, GPU-bc8880a1-c98f-25e5-8cff-32fde558704d, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+11, GPU-0f39412c-e59f-5a5f-9ea8-a03e1eb28a0f, NVIDIA A16, 615.71.10, 15356 MiB, 3 MiB
+
+pip freeze:
+accelerate==0.27.2
+certifi==2022.12.7
+charset-normalizer==2.1.1
+cloudpickle==3.1.2
+einops==0.7.0
+filelock==3.32.3
+flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu122torch2.1cxx11abiFALSE-cp310-cp310-linux_x86_64.whl#sha256=1e782463ba32d2193924771c940805d74c365435d4142df18a261fc5a2fdff82
+fsspec==2026.7.0
+huggingface-hub==0.20.3
+idna==3.4
+Jinja2==3.1.6
+joblib==1.6.0
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.4.2
+numpy==1.26.4
+opencv-python-headless==4.9.0.80
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1785888127/work
+pillow==10.2.0
+psutil==7.2.2
+PyYAML==6.0.1
+regex==2026.9.29
+requests==2.28.1
+safetensors==0.4.2
+scikit-learn==1.3.2
+scipy==1.11.4
+sentencepiece==0.2.0
+sympy==1.14.0
+threadpoolctl==3.7.0
+timm==0.6.7
+tokenizers==0.15.2
+torch==2.1.2+cu121
+torchaudio==2.1.2+cu121
+torchvision==0.16.2+cu121
+tqdm==4.70.1
+transformers==4.37.2
+triton==2.1.0
+typing_extensions==4.16.0
+urllib3==1.26.13
+
+recorded_at: 2026-10-23T00:05:47+00:00
+host: oz.gccis.rit.edu
+platform: Linux-6.12.113+deb13-amd64-x86_64-with-glibc2.41
+python: 3.10.22 (/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python)
+CUDA_VISIBLE_DEVICES: GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3
+HF_HOME: /home/stu11/s5/sp2117/vera_research/shared/models/hf_home
+HF_HUB_OFFLINE: 1
+torch: 2.1.2+cu121 cuda 12.1 cudnn 8902
+cuda_available: True
+device 0: NVIDIA RTX 6000 Ada Generation, 45537 MiB, capability 8.9
+
+nvidia-smi:
+index, uuid, name, driver_version, memory.total [MiB], memory.used [MiB]
+0, GPU-01c08ec4-a2c6-1361-6c35-b449b00f831f, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+1, GPU-687f4dc1-2697-7b56-d848-cab1bcdeb8af, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+2, GPU-7e4f6111-7563-e0c1-bd4b-9daf338b03c0, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+3, GPU-7e0a76a1-67fb-9868-76e0-f9d82abf1279, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+4, GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 4 MiB
+5, GPU-b6901777-c94c-e9ac-b295-041178270888, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 2 MiB
+6, GPU-2931eba2-9a4d-61da-6bd1-e75692edad03, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 2 MiB
+7, GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB, 2 MiB
+8, GPU-022bc4c1-a77f-6752-afbd-136f51258755, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+9, GPU-8590087f-2489-8606-87fc-8b2cd7e5976e, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+10, GPU-bc8880a1-c98f-25e5-8cff-32fde558704d, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+11, GPU-0f39412c-e59f-5a5f-9ea8-a03e1eb28a0f, NVIDIA A16, 615.71.10, 15356 MiB, 0 MiB
+
+pip freeze:
+accelerate==0.27.2
+certifi==2022.12.7
+charset-normalizer==2.1.1
+cloudpickle==3.1.2
+einops==0.7.0
+filelock==3.32.3
+flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.5.8/flash_attn-2.5.8+cu122torch2.1cxx11abiFALSE-cp310-cp310-linux_x86_64.whl#sha256=1e782463ba32d2193924771c940805d74c365435d4142df18a261fc5a2fdff82
+fsspec==2026.7.0
+huggingface-hub==0.20.3
+idna==3.4
+Jinja2==3.1.6
+joblib==1.6.0
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.4.2
+numpy==1.26.4
+opencv-python-headless==4.9.0.80
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1785888127/work
+pillow==10.2.0
+psutil==7.2.2
+PyYAML==6.0.1
+regex==2026.9.29
+requests==2.28.1
+safetensors==0.4.2
+scikit-learn==1.3.2
+scipy==1.11.4
+sentencepiece==0.2.0
+sympy==1.14.0
+threadpoolctl==3.7.0
+timm==0.6.7
+tokenizers==0.15.2
+torch==2.1.2+cu121
+torchaudio==2.1.2+cu121
+torchvision==0.16.2+cu121
+tqdm==4.70.1
+transformers==4.37.2
+triton==2.1.0
+typing_extensions==4.16.0
+urllib3==1.26.13
+

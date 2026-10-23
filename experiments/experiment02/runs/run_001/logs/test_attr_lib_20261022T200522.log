@@ -1,0 +1,46 @@
+PASS 22 primary masks: 8 singles, 7 adjacent pairs, 6 adjacent triples, 1 all-eight 
+PASS primary masks unique 
+PASS 6 nonconsecutive controls (3 pairs, 3 triples), no two slots adjacent, distinct, reproducible [(1, 6), (2, 4), (4, 6), (0, 3, 7), (0, 4, 7), (3, 5, 7)]
+PASS nonconsecutive controls never coincide with adjacent groups 
+PASS label-only instruct keeps $Data and the question insertion flag 
+PASS label-only instruct no longer asks for answers/explanations or an Output field 
+PASS label-only instruct keeps the label request 
+PASS no-sound questions drop only question 5 
+PASS label-only parse '1' (1, 'ok')
+PASS label-only parse '0' (0, 'ok')
+PASS label-only parse ' 1\n' (1, 'ok')
+PASS label-only parse '```\n0\n```' (0, 'ok')
+PASS label-only parse '[1]' (1, 'ok')
+PASS label-only parse '1.' (1, 'ok')
+PASS label-only parse 'Output: 1' (1, 'ok')
+PASS label-only parse 'Yes, there is an anomaly' (None, 'not_a_single_label')
+PASS label-only parse '0 or 1' (None, 'not_a_single_label')
+PASS label-only parse '' (None, 'empty_response')
+PASS label-only parse '10' (None, 'not_a_single_label')
+PASS FIXTURE: pooled mean of Delta/|G| is NOT flat under a constant group effect (boundary/coverage artifact) {"0": 0.4167, "1": 0.4167, "2": 0.4, "3": 0.4, "4": 0.4, "5": 0.4, "6": 0.4167, "7": 0.4167}
+PASS FIXTURE: size-balanced score is flat under a constant group effect {"0": 0.4167, "1": 0.4167, "2": 0.4167, "3": 0.4167, "4": 0.4167, "5": 0.4167, "6": 0.4167, "7": 0.4167}
+PASS coverage: edge slots 0/7 in 1 pair + 1 triple, slot 1 in 2+2, middle slots in 2+3 
+PASS all-tied ranking falls back to slot order and reports one tie group 
+PASS rank_slots: descending, ties by slot index, None dropped [1, 2, 5, 7, 0, 4, 3]
+PASS rank_slots direction -1 ranks most negative first [2, 3, 4, 5, 6, 7, 0, 1]
+PASS signed binary diff keeps sign and missing 
+PASS interaction = group - sum(singles); None if a single is missing 
+PASS evaluation masks: removal = top-2, retention = complement 
+PASS random rankings are seeded permutations 
+PASS ranking_status: all tied 
+PASS ranking_status: incomplete 
+PASS ranking_status: tie straddling a cut detected {'status': 'complete', 'n_distinct_values': 6, 'tie_spans_cut_at_2': False, 'tie_spans_cut_at_4': False}
+PASS ranking_status: tie across top-2 and top-4 cuts {'status': 'complete', 'n_distinct_values': 6, 'tie_spans_cut_at_2': True, 'tie_spans_cut_at_4': True}
+PASS bf16 spacing: 0.0625 in [8,16), 0.125 in [16,32), 2^-7 at 1 
+PASS evaluation_masks refuses a partial ranking 
+PASS jsonl round-trips text containing U+2028/U+0085 
+PASS claim flag no_anomaly_stated never fires on experiment01 label-1 responses fires on []
+INFO no_anomaly_stated absent from 59/149 experiment01 label-0 responses
+PASS cache key changes with target, prompt, mask, family, video, frames and model revision 
+PASS cache key is order-insensitive in the mask 
+PASS blur radius = 0.04 * 448 = 17.92 px 
+PASS unperturbed slot tensors are bit-identical to the upstream main loop 
+PASS blur: only slots 3 and 4 change; others bit-identical max|diff| per slot [0.0, 0.0, 0.0, 3.449, 3.659, 0.0, 0.0, 0.0]
+PASS constant: only slots 3 and 4 change; others bit-identical max|diff| per slot [0.0, 0.0, 0.0, 2.241, 2.241, 0.0, 0.0, 0.0]
+PASS constant replacement is exactly RGB(127,127,127) at 448x448 
+ALL PASS

@@ -39,3 +39,8 @@ __pycache__/
 !/shared/frames/*/*.frames.sha256
 /shared/models/hf_home/
 /shared/frames/*/*/
+
+# experiment02: images derived from dataset frames, and the full-resolution pixel-gradient maps, stay local.
+/experiments/experiment02/runs/run_002/results/example_inputs/
+/experiments/experiment02/runs/run_002/spatial/preview_gradcam_global_norm.png
+/experiments/experiment02/runs/run_002/spatial/pixel_grad_abs_448.npy

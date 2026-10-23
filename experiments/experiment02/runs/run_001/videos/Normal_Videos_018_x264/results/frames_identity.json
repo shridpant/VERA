@@ -1,0 +1,23 @@
+{
+  "source_sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1",
+  "extractor_sha256": "79d709e5d190020b001c64d687083fc57429aa9f3e179c1742def01b77a74697",
+  "cv2_version": "4.9.0",
+  "video": "shared/videos/ucf_crime/Normal_Videos_018_x264.mp4",
+  "frames_dir": "shared/frames/ucf_crime/Normal_Videos_018_x264",
+  "decoded_frame_count": 1181,
+  "naming": "{:06d}.jpg, zero-based, written by cv2.imwrite (default JPEG quality 95)",
+  "extractor": "setup/source/VERA/Preprocessing/extract_frames.py extract_frames() at VERA 008ed4019781c39e7cb16244b7500244f3986f92",
+  "video_metadata_cv2": {
+    "container_fps": 30.0,
+    "width": 320,
+    "height": 240,
+    "fourcc": "h264",
+    "container_frame_count": 1181
+  },
+  "duration_s_from_decoded": 39.36666666666667,
+  "frames_digest_sha256": "df4494fc598f392463afac7004781593c6f3fcdfa24867b312a1124193e06d48",
+  "per_frame_sha256_file": "shared/frames/ucf_crime/Normal_Videos_018_x264.frames.sha256",
+  "extracted_at": "2026-10-22T23:43:00+00:00",
+  "extract_seconds": 29.84,
+  "reused_cache": true
+}

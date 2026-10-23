@@ -1,0 +1,89 @@
+{
+  "note": "Measured on oz on 2026-10-22, on one NVIDIA RTX 6000 Ada (no scheduler; launched with setup/scripts/launch.sh).",
+  "jobs": [
+    {
+      "job_id": "exp02_A_20261022T200546_18974",
+      "started": "2026-10-22T20:05:47-04:00",
+      "finished": "2026-10-22T20:09:25-04:00",
+      "exit": 0,
+      "wall_s": 218,
+      "max_rss_kib": 6426364,
+      "peak_device_mem_mib": 20422,
+      "peak_util_pct": 100,
+      "job_dir": "experiments/experiment02/runs/run_001/logs/exp02_A_20261022T200546_18974"
+    },
+    {
+      "job_id": "exp02_r2_ABC_20261022T201316_19806",
+      "started": "2026-10-22T20:13:17-04:00",
+      "finished": "2026-10-22T20:27:16-04:00",
+      "exit": 0,
+      "wall_s": 839,
+      "max_rss_kib": 6427588,
+      "peak_device_mem_mib": 20422,
+      "peak_util_pct": 100,
+      "job_dir": "experiments/experiment02/runs/run_002/logs/exp02_r2_ABC_20261022T201316_19806"
+    },
+    {
+      "job_id": "exp02_r2_D_20261022T202933_21188",
+      "started": "2026-10-22T20:29:34-04:00",
+      "finished": "2026-10-22T20:29:50-04:00",
+      "exit": 0,
+      "wall_s": 16,
+      "max_rss_kib": 6424340,
+      "peak_device_mem_mib": 38982,
+      "peak_util_pct": 100,
+      "job_dir": "experiments/experiment02/runs/run_002/logs/exp02_r2_D_20261022T202933_21188"
+    }
+  ],
+  "gpu_job_wall_s_total": 1073,
+  "gpu_job_wall_h_total": 0.298,
+  "calls": {
+    "run_001_stage_A": {
+      "generation_calls": 15,
+      "score_calls": 21,
+      "alignment_score_forwards": 5,
+      "alignment_generate_calls": 5,
+      "gradient_calls": 0
+    },
+    "run_002_stages_A_B_C": {
+      "generation_calls": 270,
+      "score_calls": 270,
+      "alignment_score_forwards": 5,
+      "alignment_generate_calls": 5,
+      "gradient_calls": 0
+    },
+    "run_002_stage_D": {
+      "generation_calls": 0,
+      "score_calls": 4,
+      "alignment_score_forwards": 0,
+      "alignment_generate_calls": 0,
+      "gradient_calls": 1
+    },
+    "run_002_stage_D_uncounted": "1 no-grad reference scorer forward (S_no_grad_path), not counted by the engine counter"
+  },
+  "unique_transformed_sequences": {
+    "run_001": 6,
+    "run_002_stages_B_C": 255,
+    "run_002_stage_D_occlusion": 4,
+    "total": 265,
+    "note": "budget charge = 265 transformed-sequence computations (6 + 255 + 4); distinct inputs = 259, because run_001's 6 all-eight inputs were recomputed in run_002"
+  },
+  "seconds": {
+    "run_002_generation_total": 670.3,
+    "run_002_score_total": 96.0,
+    "mean_generation_s": 2.48,
+    "mean_score_s": 0.356,
+    "gradient_call_s": 0.99
+  },
+  "peak_gpu_memory": {
+    "generation_or_score_call_allocated_gib": 17.96,
+    "gradient_call_allocated_gib": 36.4,
+    "device_peak_mib_stages_A_B_C": 20422,
+    "device_peak_mib_stage_D": 38982
+  },
+  "engineering_time": {
+    "A2_numeric_scorer": "about 37 min (19:36-20:13 EDT), cap 60",
+    "D_spatial": "roughly 6-10 min: started 20:28 EDT, probe job 20:29:34-20:29:50, border check and write-up by about 20:37; cap 45",
+    "note": "approximate wall-clock spans of the agent's work, not audited timings"
+  }
+}
