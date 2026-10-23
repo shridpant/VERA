@@ -5,3 +5,7 @@ __pycache__/
 runs/
 configs/datasets.local.json
 configs/local_*.json
+
+tests/artifacts/
+tests/reports/*/
+tests/real_model/*.local.json

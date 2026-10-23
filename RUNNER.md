@@ -233,7 +233,7 @@ verifies all its files against hashes. Hub-model downloads use the configured re
 for the strongest provenance, stage a verified local model first.
 
 ```bash
-.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python tests/run_tests.py --suite all
 ```
 
 Tests cover actual upstream prompt equivalence, sampling arithmetic, exact interventions,
@@ -244,3 +244,7 @@ does not establish that InternVL2 inference works on MPS or reproduces CUDA pred
 The local sample contains three originals, but only RoadAccidents011_x264 matches the released UCF test manifest. Local test-split configs therefore select that one video; the other sample clips are not silently reassigned to the test set. To infer on all three as an unlabeled custom collection, register their folder under a separate name without a manifest.
 
 On this machine, the untracked registry also includes `salvaged_sample` (all three provided clips, no benchmark annotation). Use `--dataset salvaged_sample` for that explicitly unlabeled collection.
+
+## Categorized acceptance tests
+
+All tests and reports are now under [tests/](tests/README.md). The default suite explicitly skips real-model acceptance; run `tests/run_tests.py --suite real-model` for that separate opt-in check. A skipped, failed, or blocked real-model test is never evidence of working real-model inference.

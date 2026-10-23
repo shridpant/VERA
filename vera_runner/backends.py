@@ -45,6 +45,20 @@ def intervene(image, spec):
     return Image.new('RGB', image.size, tuple(spec['grey_rgb']))
 
 
+def install_progress_hooks(model, report):
+    """Observe vision and language forwards without changing tensors or generation."""
+    counts={'vision':0,'language':0}
+    handles=[]
+    for name,module in [('vision',model.vision_model),('language',model.language_model)]:
+        def before(mod,args,name=name):
+            counts[name]+=1
+            report(name+'_forward_begin',{'forward_index':counts[name]})
+        def after(mod,args,result,name=name):
+            report(name+'_forward_end',{'forward_index':counts[name]})
+        handles.extend([module.register_forward_pre_hook(before),module.register_forward_hook(after)])
+    return handles
+
+
 class InternVL2:
     def __init__(self, cfg):
         import torch
@@ -94,6 +108,18 @@ class InternVL2:
         self.tokenizer = AutoTokenizer.from_pretrained(source, revision=settings['revision'],
             trust_remote_code=True, local_files_only=settings['local_files_only'])
         self.question = prompt(cfg)
+        self.progress = lambda stage,details: None
+        def report(stage,details):
+            import resource
+            details=dict(details)
+            details['maxrss_raw']=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            details['maxrss_unit']='bytes' if __import__('sys').platform=='darwin' else 'KiB'
+            if self.device=='mps':
+                for key,func in [('mps_allocated_bytes',torch.mps.current_allocated_memory),('mps_driver_bytes',torch.mps.driver_allocated_memory)]:
+                    try:details[key]=func()
+                    except Exception:details[key]=None
+            self.progress(stage,details)
+        self._progress_handles=install_progress_hooks(self.model,report)
         # Retain token IDs passed to the language model, not only the high-level prompt.
         original = self.model.generate
         def captured(*args, **kwargs):

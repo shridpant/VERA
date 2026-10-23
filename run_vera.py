@@ -52,6 +52,12 @@ def run(cfg,run_dir,state):
         if backend is None:
             state['stage']='loading_model';backend=BACKENDS[cfg['model']['backend']](cfg)
             state['device']=backend.device
+            def progress(stage,details):
+                state.update(model_stage=stage,model_progress=details)
+                record={'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),'stage':stage,**details}
+                with (output/'model_progress.jsonl').open('a') as telemetry:telemetry.write(json.dumps(record)+'\n')
+                print('MODEL',json.dumps(record),flush=True)
+            backend.progress=progress
             write(output/'model_identity.json',getattr(backend,'model_identity',{'synthetic':True}))
             (output/'prompt.txt').write_text(prompt(cfg))
         records=[]
