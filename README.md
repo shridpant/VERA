@@ -82,3 +82,8 @@ If you use this code or find our work helpful, please consider citing our paper.
     pages     = {8679-8688}
 }
 ```
+
+
+## Configurable runner
+
+For JSON-configured dataset selection, preprocessing, model adapters, baseline/blur/grey interventions, and optional refinement/evaluation, see [RUNNER.md](RUNNER.md). The original scripts above remain unchanged.

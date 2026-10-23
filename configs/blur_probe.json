@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "dataset": "ucf_crime",
+  "split": "test",
+  "registry": "configs/datasets.local.json",
+  "output_root": "runs/blur",
+  "stages": [
+    "preprocess",
+    "infer"
+  ],
+  "seed": 0,
+  "selection": {
+    "video_ids": [],
+    "max_videos": null,
+    "max_windows_per_video": null
+  },
+  "preprocessing": {
+    "image_size": 448
+  },
+  "sampling": {
+    "stride": 16,
+    "window_seconds": 10.0,
+    "fps": 30.0,
+    "frames_per_window": 8
+  },
+  "model": {
+    "backend": "internvl2",
+    "path": "OpenGVLab/InternVL2-8B",
+    "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "device": "auto",
+    "dtype": "bfloat16",
+    "flash_attention": false,
+    "mps_cpu_fallback": false,
+    "local_files_only": true
+  },
+  "generation": {
+    "num_beams": 1,
+    "max_new_tokens": 1024,
+    "do_sample": false
+  },
+  "prompt": {
+    "instruction_file": "VERA_learner_instruct.txt",
+    "guiding_questions": "upstream_ucf"
+  },
+  "intervention": {
+    "mode": "blur",
+    "slots": [
+      0
+    ],
+    "probe": true,
+    "blur_radius_fraction": 0.04,
+    "grey_rgb": [
+      127,
+      127,
+      127
+    ]
+  },
+  "refinement": {
+    "neighbor_fraction": 0.15,
+    "similarity_temperature": 10.0,
+    "smoothing_size": 15,
+    "smoothing_sigma": 10.0,
+    "round_decimals": 1,
+    "position_weighting": true
+  },
+  "runtime": {
+    "timeout_seconds": 3600
+  }
+}

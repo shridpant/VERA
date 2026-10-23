@@ -1,0 +1,37 @@
+{
+  "ucf_crime": {
+    "annotation_format": "vera_frames",
+    "splits": {
+      "train": {
+        "videos": "/path/to/UCF/train",
+        "annotations": "Data/UCF_Instruct_train.json"
+      },
+      "test": {
+        "videos": "/path/to/UCF/test",
+        "annotations": "Data/UCF_Eval.json",
+        "features": "/path/to/ucf_segment_features"
+      }
+    }
+  },
+  "xd_violence": {
+    "annotation_format": "vera_frames",
+    "splits": {
+      "train": {
+        "videos": "/path/to/XD/train",
+        "annotations": "Data/xd_train.json"
+      },
+      "test": {
+        "videos": "/path/to/XD/test",
+        "annotations": "Data/xd_test_800.json",
+        "features": "/path/to/xd_segment_features"
+      }
+    }
+  },
+  "my_videos": {
+    "splits": {
+      "test": {
+        "videos": "/path/to/my/videos"
+      }
+    }
+  }
+}
