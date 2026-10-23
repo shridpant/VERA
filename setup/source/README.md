@@ -43,3 +43,37 @@ git rev-parse 008ed401^{tree} && git -C setup/source/VERA rev-parse 'HEAD^{tree}
 If the checkout is missing, you can recreate it at the same path from this repository's own history with
 `git worktree add --detach setup/source/VERA 008ed4019781c39e7cb16244b7500244f3986f92`. The runners only check
 HEAD and cleanliness.
+
+## New runs: a pinned checkout of this repository
+
+New experiments should import the source tracked in this repository, not the historical clone. Create a pinned,
+detached worktree of this repository and point the config at it:
+
+```bash
+bash setup/scripts/pin_tracked_source.sh        # prints the `source:` block for the new config
+```
+
+- **What it pins.** By default, the last commit that changed the VERA source, meaning every tracked file outside
+  `setup/`, `shared/`, `experiments/`, `README.md`, `EXPERIMENTS.md` and `.gitignore`. Today that is `008ed401`,
+  the same source the historical runs used.
+- **Where it goes.** The worktree is created at `setup/source/tracked-<sha12>`. It is ignored by the root
+  `.gitignore`, its objects come from this repository, and the runners never write into it.
+- **Unchanged runners.** The existing checks apply as they are: HEAD must equal `expected_head`, and the checkout
+  must be clean.
+- **Changing the source.** Commit the change at the repository root, run the helper again, and give the new
+  experiment the new `expected_head`. Old configs keep naming the revision they ran.
+
+Check any config before a run. This loads no weights:
+
+```bash
+setup/environment/env/bin/python setup/scripts/check_source_resolution.py \
+  --config experiments/experimentNN/config.yaml --import-python setup/environment/env/bin/python --out /tmp/source_check.json
+```
+
+The check confirms these things:
+- the checkout's HEAD, and that the checkout is clean;
+- that the commit is in this repository's history and has the same tree;
+- that the VERA source files are byte-identical to the tracked root at HEAD, so the pin is current;
+- that `import generate_initial_score` resolves to the pinned file.
+
+It passes for experiment01, experiment02 and a pinned new-run config; see `setup/GIT_BASELINE_REPORT.md`.

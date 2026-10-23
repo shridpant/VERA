@@ -22,6 +22,8 @@ checkout were hash-identical before and after (experiment02 validator V12). It a
 | Steps 2–3 runner | ready, validated | `--stages refine`. Byte-identical to the unmodified `compute_auc.py` (validator C13; tests on synthetic videos). |
 | ImageBind / LAVAD feature extraction | **not set up** | Not needed for UCF-Crime: the authors' per-video features can be range-fetched from their zip with `scripts/fetch_zip_member.py`. Any other video needs this first (`environment/requirements-imagebind-optional.txt`, untested). |
 | Tests | passing | `scripts/test_vera_pipeline.py` 30/30 (log in `logs/`) |
+| Repository | ready | `~/vera_research` is the working tree of `shridpant/VERA` (2026-10-23). The upstream history is kept, the setup and experiment01/02 were imported as commits, and the data stays local. See `GIT_BASELINE_REPORT.md`. |
+| Source for new runs | ready | Make a pinned worktree of the tracked source with `scripts/pin_tracked_source.sh`, and verify it with `scripts/check_source_resolution.py` (no weights loaded). See `source/README.md`. |
 
 ## Reusable commands (on oz, from `~/vera_research`)
 

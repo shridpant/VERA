@@ -45,6 +45,8 @@ shared/     README.md + provenance only; model, videos, frames, features and ref
 experiments/experimentNN/      README.md, config.yaml, runs/run_NNN/ (never overwritten)
 ```
 
+How this baseline was put under version control, and what stays local: [`setup/GIT_BASELINE_REPORT.md`](setup/GIT_BASELINE_REPORT.md).
+
 ### Adding an experiment
 
 1. Create `experiments/experimentNN/` with a `README.md` (purpose) and a `config.yaml`. Copy experiment01's config
@@ -60,8 +62,13 @@ experiments/experimentNN/      README.md, config.yaml, runs/run_NNN/ (never over
    ```
 
 The config's `source` block names the checkout the runner imports (`checkout`) and the commit it must be at
-(`expected_head`). The runner refuses a dirty checkout or a head that differs from the config. Old runs keep
-pointing at the revision they used. Shared caches are reused only when checksums match. The frame cache checks the
+(`expected_head`). The runner refuses a dirty checkout or a head that differs from the config.
+- **New experiments.** Use a pinned worktree of this repository's tracked source. Run
+  `bash setup/scripts/pin_tracked_source.sh` and paste the `source:` block it prints. Then run
+  `setup/scripts/check_source_resolution.py` on the config (see
+  [`setup/source/README.md`](setup/source/README.md)).
+- **Source changes.** Commit them at the repository root, then pin again.
+- **Old runs.** They keep pointing at the revision they used (`setup/source/VERA` at `008ed401`). Shared caches are reused only when checksums match. The frame cache checks the
 source video sha256, the extractor sha256, the cv2 version and every frame's sha256.
 
 Videos without released VERA features would need the LAVAD/ImageBind feature runner. It is **not set up yet**; see

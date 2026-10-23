@@ -1,0 +1,184 @@
+{
+ "source": "experiments/experiment02/runs/run_002/results/temporal_effects.csv",
+ "rows_total": 168,
+ "rows_scored": 168,
+ "totals": {
+  "rows": 168,
+  "sub_step": 109,
+  "sub_step_but_bf16_moved": 36,
+  "step_or_more_but_bf16_unchanged": 2,
+  "opposite_sign": 4,
+  "flag_disagrees_with_recomputation": 0
+ },
+ "by_case_family": [
+  {
+   "case_id": "N-middle",
+   "family": "blur",
+   "rows": 28,
+   "sub_step": 27,
+   "sub_step_but_bf16_moved": 3,
+   "step_or_more_but_bf16_unchanged": 0,
+   "opposite_sign": 1,
+   "flag_disagrees_with_recomputation": 0
+  },
+  {
+   "case_id": "N-middle",
+   "family": "constant",
+   "rows": 28,
+   "sub_step": 27,
+   "sub_step_but_bf16_moved": 8,
+   "step_or_more_but_bf16_unchanged": 0,
+   "opposite_sign": 1,
+   "flag_disagrees_with_recomputation": 0
+  },
+  {
+   "case_id": "R-accident",
+   "family": "blur",
+   "rows": 28,
+   "sub_step": 8,
+   "sub_step_but_bf16_moved": 3,
+   "step_or_more_but_bf16_unchanged": 0,
+   "opposite_sign": 0,
+   "flag_disagrees_with_recomputation": 0
+  },
+  {
+   "case_id": "R-accident",
+   "family": "constant",
+   "rows": 28,
+   "sub_step": 9,
+   "sub_step_but_bf16_moved": 3,
+   "step_or_more_but_bf16_unchanged": 0,
+   "opposite_sign": 0,
+   "flag_disagrees_with_recomputation": 0
+  },
+  {
+   "case_id": "R-pedestrian",
+   "family": "blur",
+   "rows": 28,
+   "sub_step": 22,
+   "sub_step_but_bf16_moved": 10,
+   "step_or_more_but_bf16_unchanged": 1,
+   "opposite_sign": 1,
+   "flag_disagrees_with_recomputation": 0
+  },
+  {
+   "case_id": "R-pedestrian",
+   "family": "constant",
+   "rows": 28,
+   "sub_step": 16,
+   "sub_step_but_bf16_moved": 9,
+   "step_or_more_but_bf16_unchanged": 1,
+   "opposite_sign": 1,
+   "flag_disagrees_with_recomputation": 0
+  }
+ ],
+ "non_all_eight_by_case": [
+  {
+   "case_id": "N-middle",
+   "rows": 54,
+   "step_or_more_on_S_hi": 0,
+   "native_S_moved": 11,
+   "sub_step_but_bf16_moved": 11,
+   "step_or_more_but_bf16_unchanged": 0,
+   "max_abs_Delta": 0.226826
+  },
+  {
+   "case_id": "R-accident",
+   "rows": 54,
+   "step_or_more_on_S_hi": 37,
+   "native_S_moved": 43,
+   "sub_step_but_bf16_moved": 6,
+   "step_or_more_but_bf16_unchanged": 0,
+   "max_abs_Delta": 3.949959
+  },
+  {
+   "case_id": "R-pedestrian",
+   "rows": 54,
+   "step_or_more_on_S_hi": 16,
+   "native_S_moved": 33,
+   "sub_step_but_bf16_moved": 19,
+   "step_or_more_but_bf16_unchanged": 2,
+   "max_abs_Delta": 0.712563
+  }
+ ],
+ "examples_sub_step_but_bf16_moved": [
+  {
+   "case_id": "R-accident",
+   "family": "blur",
+   "mask_type": "single",
+   "mask_slots": "0",
+   "S_baseline": "2.854832",
+   "S_perturbed": "2.985783",
+   "Delta": "-0.130951",
+   "S_bf16_baseline": "2.750000",
+   "S_bf16_perturbed": "3.000000",
+   "Delta_bf16": "-0.250000",
+   "S_resolution": "0.250000"
+  },
+  {
+   "case_id": "R-accident",
+   "family": "blur",
+   "mask_type": "single",
+   "mask_slots": "2",
+   "S_baseline": "2.854832",
+   "S_perturbed": "2.894169",
+   "Delta": "-0.039337",
+   "S_bf16_baseline": "2.750000",
+   "S_bf16_perturbed": "3.000000",
+   "Delta_bf16": "-0.250000",
+   "S_resolution": "0.250000"
+  },
+  {
+   "case_id": "R-accident",
+   "family": "blur",
+   "mask_type": "adjacent_pair",
+   "mask_slots": "6-7",
+   "S_baseline": "2.854832",
+   "S_perturbed": "2.912296",
+   "Delta": "-0.057465",
+   "S_bf16_baseline": "2.750000",
+   "S_bf16_perturbed": "3.000000",
+   "Delta_bf16": "-0.250000",
+   "S_resolution": "0.250000"
+  },
+  {
+   "case_id": "R-accident",
+   "family": "constant",
+   "mask_type": "single",
+   "mask_slots": "0",
+   "S_baseline": "2.854832",
+   "S_perturbed": "2.992432",
+   "Delta": "-0.137600",
+   "S_bf16_baseline": "2.750000",
+   "S_bf16_perturbed": "3.000000",
+   "Delta_bf16": "-0.250000",
+   "S_resolution": "0.250000"
+  },
+  {
+   "case_id": "R-accident",
+   "family": "constant",
+   "mask_type": "single",
+   "mask_slots": "7",
+   "S_baseline": "2.854832",
+   "S_perturbed": "3.069454",
+   "Delta": "-0.214622",
+   "S_bf16_baseline": "2.750000",
+   "S_bf16_perturbed": "3.250000",
+   "Delta_bf16": "-0.500000",
+   "S_resolution": "0.250000"
+  },
+  {
+   "case_id": "R-accident",
+   "family": "constant",
+   "mask_type": "adjacent_pair",
+   "mask_slots": "6-7",
+   "S_baseline": "2.854832",
+   "S_perturbed": "3.009792",
+   "Delta": "-0.154961",
+   "S_bf16_baseline": "2.750000",
+   "S_bf16_perturbed": "3.000000",
+   "Delta_bf16": "-0.250000",
+   "S_resolution": "0.250000"
+  }
+ ]
+}
