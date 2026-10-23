@@ -1,0 +1,274 @@
+{
+  "experiment_id": "experiment02",
+  "purpose": "temporal_attribution_feasibility",
+  "run_id": "run_002",
+  "created_at": "2026-10-23T00:12:59+00:00",
+  "host": "oz.gccis.rit.edu",
+  "config_sha256": "ca3885cf22a7e4d785693468dc10315890d7ea76da17c09f6f4dcad3be3083e7",
+  "source_head": "008ed4019781c39e7cb16244b7500244f3986f92",
+  "model": {
+    "repo": "OpenGVLab/InternVL2-8B",
+    "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "local_dir": "shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "dtype": "bfloat16",
+    "use_flash_attn": true
+  },
+  "limits": {
+    "max_unique_transformed_sequences": 394,
+    "max_gpu_hours": 2.9,
+    "a2_engineering_minutes": 60,
+    "d_engineering_minutes": 45
+  },
+  "invocations": [
+    {
+      "started_at": "2026-10-23T00:12:59+00:00",
+      "argv": [
+        "experiments/experiment02/code/run_attr.py",
+        "--config",
+        "experiments/experiment02/config.yaml",
+        "--run-dir",
+        "experiments/experiment02/runs/run_002",
+        "--stages",
+        "prep"
+      ],
+      "stages": [
+        "prep"
+      ],
+      "uses_gpu": false,
+      "code_sha256": {
+        "attr_lib.py": "7acf4acfc7f11b10bd8483efd97a5a981c4a33574f3af3d0fdbc1a7bffe371fb",
+        "engine.py": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+        "run_attr.py": "5b543ca1530ca38c4f6e867c80582beb4be88340e8a6f22683778d6408e7208b"
+      },
+      "job_dir": null,
+      "cuda_visible_devices": null,
+      "finished_at": "2026-10-23T00:13:07+00:00"
+    },
+    {
+      "started_at": "2026-10-23T00:13:17+00:00",
+      "argv": [
+        "experiments/experiment02/code/run_attr.py",
+        "--config",
+        "experiments/experiment02/config.yaml",
+        "--run-dir",
+        "experiments/experiment02/runs/run_002",
+        "--stages",
+        "A,B,C"
+      ],
+      "stages": [
+        "A",
+        "B",
+        "C"
+      ],
+      "uses_gpu": true,
+      "code_sha256": {
+        "attr_lib.py": "7acf4acfc7f11b10bd8483efd97a5a981c4a33574f3af3d0fdbc1a7bffe371fb",
+        "engine.py": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+        "run_attr.py": "5b543ca1530ca38c4f6e867c80582beb4be88340e8a6f22683778d6408e7208b"
+      },
+      "job_dir": "experiments/experiment02/runs/run_002/logs/exp02_r2_ABC_20261022T201316_19806",
+      "cuda_visible_devices": "GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3",
+      "gpu_seconds_prior_invocations": 0.0,
+      "engine": {
+        "model_load_s": 4.2,
+        "attention": {
+          "vision_use_flash_attn": true,
+          "llm_attn_implementation": "flash_attention_2",
+          "llm_attention_class": "InternLM2FlashAttention2"
+        }
+      },
+      "finished_at": "2026-10-23T00:27:16+00:00"
+    }
+  ],
+  "stages": {
+    "prep": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-23T00:13:07+00:00",
+        "wall_s": 3.8,
+        "cases": [
+          "R-start",
+          "R-pedestrian",
+          "R-accident",
+          "R-end",
+          "N-middle"
+        ],
+        "frames_cache_reused": {
+          "RoadAccidents127_x264": true,
+          "Normal_Videos_018_x264": true
+        }
+      }
+    ],
+    "A": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-23T00:14:05+00:00",
+        "wall_s": 37.9,
+        "scorer_status": "provisional_post_hoc_gate",
+        "A1": [
+          {
+            "case_id": "R-start",
+            "label": 0,
+            "parse_status": "ok",
+            "cache_status": "fresh",
+            "vs_experiment01": {
+              "raw_text_identical": true,
+              "label_identical": true,
+              "token_ids_identical": true,
+              "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+            }
+          },
+          {
+            "case_id": "R-pedestrian",
+            "label": 1,
+            "parse_status": "ok",
+            "cache_status": "fresh",
+            "vs_experiment01": {
+              "raw_text_identical": true,
+              "label_identical": true,
+              "token_ids_identical": true,
+              "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+            }
+          },
+          {
+            "case_id": "R-accident",
+            "label": 1,
+            "parse_status": "ok",
+            "cache_status": "fresh",
+            "vs_experiment01": {
+              "raw_text_identical": true,
+              "label_identical": true,
+              "token_ids_identical": true,
+              "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+            }
+          },
+          {
+            "case_id": "R-end",
+            "label": 0,
+            "parse_status": "ok",
+            "cache_status": "fresh",
+            "vs_experiment01": {
+              "raw_text_identical": true,
+              "label_identical": true,
+              "token_ids_identical": true,
+              "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+            }
+          },
+          {
+            "case_id": "N-middle",
+            "label": 0,
+            "parse_status": "ok",
+            "cache_status": "fresh",
+            "vs_experiment01": null
+          }
+        ],
+        "A3": [
+          {
+            "case_id": "R-start",
+            "label_original": 0,
+            "label_nosound": 0,
+            "label_changed": false,
+            "parse_missing": [],
+            "sound_sentences_original": [
+              "There is no visible damage or unusual movement, and no unusual sounds or noises are indicated."
+            ],
+            "sound_sentences_nosound": []
+          },
+          {
+            "case_id": "R-pedestrian",
+            "label_original": 1,
+            "label_nosound": 0,
+            "label_changed": true,
+            "parse_missing": [],
+            "sound_sentences_original": [
+              "There are no unusual sounds or noises."
+            ],
+            "sound_sentences_nosound": []
+          },
+          {
+            "case_id": "R-accident",
+            "label_original": 1,
+            "label_nosound": 1,
+            "label_changed": false,
+            "parse_missing": [],
+            "sound_sentences_original": [],
+            "sound_sentences_nosound": []
+          },
+          {
+            "case_id": "R-end",
+            "label_original": 0,
+            "label_nosound": 0,
+            "label_changed": false,
+            "parse_missing": [],
+            "sound_sentences_original": [
+              "There are no unusual sounds or noises in the video."
+            ],
+            "sound_sentences_nosound": []
+          },
+          {
+            "case_id": "N-middle",
+            "label_original": 0,
+            "label_nosound": 0,
+            "label_changed": false,
+            "parse_missing": [],
+            "sound_sentences_original": [
+              "There are no unusual sounds or noises in the video that suggest an anomaly."
+            ],
+            "sound_sentences_nosound": []
+          }
+        ],
+        "engine_counts_cumulative_this_invocation": {
+          "generation_calls": 15,
+          "score_calls": 21,
+          "alignment_score_forwards": 5,
+          "alignment_generate_calls": 5,
+          "gradient_calls": 0
+        },
+        "unique_transformed_sequences_total": 6,
+        "gpu_seconds_used_total": 44.6
+      }
+    ],
+    "B": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-23T00:22:27+00:00",
+        "wall_s": 502.8,
+        "masks_per_case_family": 28,
+        "case_family_masks": 168,
+        "numeric_scores": true,
+        "engine_counts_cumulative_this_invocation": {
+          "generation_calls": 183,
+          "score_calls": 183,
+          "alignment_score_forwards": 5,
+          "alignment_generate_calls": 5,
+          "gradient_calls": 0
+        },
+        "unique_transformed_sequences_total": 168,
+        "gpu_seconds_used_total": 547.4
+      }
+    ],
+    "C": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-23T00:27:16+00:00",
+        "wall_s": 288.1,
+        "evaluation_requests": 240,
+        "not_rankable": [],
+        "engine_counts_cumulative_this_invocation": {
+          "generation_calls": 270,
+          "score_calls": 270,
+          "alignment_score_forwards": 5,
+          "alignment_generate_calls": 5,
+          "gradient_calls": 0
+        },
+        "unique_transformed_sequences_total": 255,
+        "gpu_seconds_used_total": 835.5
+      }
+    ]
+  },
+  "code_sha256_frozen_at_first_model_invocation": {
+    "attr_lib.py": "7acf4acfc7f11b10bd8483efd97a5a981c4a33574f3af3d0fdbc1a7bffe371fb",
+    "engine.py": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+    "run_attr.py": "5b543ca1530ca38c4f6e867c80582beb4be88340e8a6f22683778d6408e7208b"
+  }
+}

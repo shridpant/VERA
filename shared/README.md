@@ -12,6 +12,9 @@ whitelist is the `shared/` block in the root `.gitignore`.
 | `frames/ucf_crime/RoadAccidents127_x264/` (2,580 JPEGs, 73.1 MB) | — | digest `d14b4bf8…` over the per-frame list | `RoadAccidents127_x264.frames.json`, `.frames.sha256` | extracted locally with upstream `Preprocessing/extract_frames.py` |
 | `features/vera_official_ucf_imagebind/RoadAccidents127_x264.npy` | 1,327,232 | `f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657` | `*.npy.provenance.json` | VERA authors' UCF-Crime ImageBind features (Drive link in the upstream README), one member |
 | `reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json` | 8,485 | `2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1` | `*.json.provenance.json` | VERA authors' released initial scores (Drive link in the upstream README), one member |
+| `videos/ucf_crime/Normal_Videos_018_x264.mp4` (added by experiment02) | 7,662,531 | `ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1` | `*.mp4.provenance.json` | UCF-Crime `Testing_Normal_Videos.zip`, one member range-fetched |
+| `frames/ucf_crime/Normal_Videos_018_x264/` (1,181 JPEGs, 48.1 MB; experiment02) | — | per-frame list | `Normal_Videos_018_x264.frames.json`, `.frames.sha256` | extracted locally with upstream `Preprocessing/extract_frames.py` |
+| `reference/ucf_crime_official/Temporal_Anomaly_Annotation_for_Testing_Videos.txt` (experiment02) | 15,574 | `3b9542413f2ed9e94f73bf0488c151b3d7d595a8d2ad30f524e9243a2ae2a17c` | (recorded here) | official UCF-Crime temporal annotation file |
 | `reference/vera_official_ucf_initial_scores/VERA_prediction_scores_UCF_Crime.zip` | 655,612 | `b7457cee812510ec2331c24cb5da451327c9500152e2437839d31af29166a3b0` | (recorded here) | the same release, the whole archive |
 
 **Download links.** The UCF-Crime provenance files record the dataset's Dropbox folder link, including its `rlkey`.

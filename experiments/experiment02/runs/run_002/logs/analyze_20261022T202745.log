@@ -1,0 +1,15 @@
+{
+ "counts": {
+  "unique_transformed_sequences": 255,
+  "fresh_generation_calls": 270,
+  "fresh_score_calls": 270,
+  "cached_reuses": 66,
+  "errors_logged": 0,
+  "skipped_budget": 0,
+  "slot_identity_failures": 0,
+  "generation_seconds": 670.3,
+  "score_seconds": 96.0,
+  "peak_gpu_mem_allocated_gib_per_call_max": 17.96
+ },
+ "scorer_status": "provisional_post_hoc_gate"
+}

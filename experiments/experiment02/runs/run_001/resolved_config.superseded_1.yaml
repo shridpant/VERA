@@ -1,0 +1,100 @@
+# experiment02: temporal_attribution_feasibility (v2 brief). Paths are relative to VERA_PROJECT_ROOT (~/vera_research).
+# Decision rules below were fixed before any experiment02 model output was produced.
+experiment_id: experiment02
+purpose: temporal_attribution_feasibility
+seed: 0
+
+source:
+  repo: https://github.com/vera-framework/VERA
+  base_commit: 15b8bcb8574a977c229c577f50bfe6f06d07106e
+  checkout: setup/source/VERA
+  expected_head: 008ed4019781c39e7cb16244b7500244f3986f92
+
+model:
+  repo: OpenGVLab/InternVL2-8B
+  revision: 6fb9ad6924f69424e57fab2ab061d707688f0296
+  local_dir: shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296
+  dtype: bfloat16
+  use_flash_attn: true
+
+generation:  # original VERA settings; InternVL batch_chat adds eos_token_id=92542 in place
+  num_beams: 1
+  max_new_tokens: 1024
+  do_sample: false
+
+prompt:
+  learner_instruct_file: VERA_learner_instruct.txt
+  guiding_questions:
+    - "1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?"
+    - "2. Are there any vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?"
+    - "3. Are there any objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?"
+    - "4. Is there any visible damage or unusual movement in the video that indicates an anomaly?"
+    - "5. Are there any unusual sounds or noises in the video that suggest an anomaly?"
+
+sampling:  # VERA generate_initial_score.py defaults
+  sampling_rate: 16
+  fps_for_windows: 30
+  t_window_s: 10
+  snippet_len: 8
+
+frames:
+  cache_root: shared/frames/ucf_crime
+
+annotations:
+  official_file: shared/reference/ucf_crime_official/Temporal_Anomaly_Annotation_for_Testing_Videos.txt
+
+videos:
+  RoadAccidents127_x264:
+    path: shared/videos/ucf_crime/RoadAccidents127_x264.mp4
+    sha256: 618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff
+    manifest_entry: frames/RoadAccidents/RoadAccidents127_x264.mp4
+    expected_length: 2580
+  Normal_Videos_018_x264:
+    path: shared/videos/ucf_crime/Normal_Videos_018_x264.mp4
+    sha256: ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1
+    manifest_entry: frames/Normal/Normal_Videos_018_x264.mp4
+    expected_length: 1181
+
+cases:
+  - {case_id: R-start, video_id: RoadAccidents127_x264, anchor: 0, role: ordinary early-video diagnostic,
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl}
+  - {case_id: R-pedestrian, video_id: RoadAccidents127_x264, anchor: 496, role: baseline false-alert candidate (benchmark-negative interval),
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl, expect_window: [346.0, 646.0]}
+  - {case_id: R-accident, video_id: RoadAccidents127_x264, anchor: 2240, role: main accident window,
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl, expect_window: [2090.0, 2390.0]}
+  - {case_id: R-end, video_id: RoadAccidents127_x264, anchor: 2576, role: late-video diagnostic,
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl}
+  - {case_id: N-middle, video_id: Normal_Videos_018_x264, role: independent normal-video control (midpoint anchor)}
+
+primary_cases: [R-accident, R-pedestrian, N-middle]
+
+stage_a:
+  cases: [R-start, R-pedestrian, R-accident, R-end, N-middle]
+  score_repeats: 3
+  scorer_criteria:  # all technical criteria must hold, else the numeric scorer is "blocked"
+    max_repeat_abs_diff: 0.05          # nats, identical input scored 3 times
+    max_alignment_abs_S_diff: 0.25     # nats, scorer forward vs generate() step-0 scores
+    min_candidate_mass: 0.5            # P('0') + P('1') at the reply boundary
+    min_strong_alteration_abs_change: 0.0   # all-eight replacement must move S at all
+    min_original_agreement: 4          # of 5 cases sign(S) == original-prompt label, else "provisional_diverges_from_original"
+
+stage_b:
+  families: [blur, constant]
+  preprocessed_resolution: 448        # perturbation applied to the 448x448 image after VERA dynamic_preprocess
+  blur_radius_fraction: 0.04          # PIL GaussianBlur radius = 0.04 * 448 = 17.92 px
+  constant_rgb: [127, 127, 127]
+  nonconsecutive_per_size: 3          # seeded nonconsecutive pairs and triples (no two slots adjacent)
+  nonconsecutive_seed: 20261022
+
+stage_c:
+  budgets: [2, 4]
+  random_seeds: [0, 1, 2]
+  group_sizes: [2, 3]                 # temporal-group ranking uses adjacent pairs and triples only
+  group_ranking: size_balanced        # chosen before data because the pooled heuristic fails the constant fixture
+  ranking_direction: support for the scorer's baseline class (sign of baseline S; ties to anomaly)
+
+limits:
+  max_unique_transformed_sequences: 400
+  max_gpu_hours: 3
+  a2_engineering_minutes: 60
+  d_engineering_minutes: 45

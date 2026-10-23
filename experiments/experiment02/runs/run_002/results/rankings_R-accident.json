@@ -1,0 +1,190 @@
+{
+  "singleton|blur": {
+    "order": [
+      4,
+      3,
+      5,
+      1,
+      6,
+      2,
+      7,
+      0
+    ],
+    "ties": [],
+    "direction": 1,
+    "source_family": "blur",
+    "eval_families": [
+      "constant"
+    ],
+    "values": {
+      "0": -0.130950927734375,
+      "1": 0.2843971252441406,
+      "2": -0.039337158203125,
+      "3": 0.7441902160644531,
+      "4": 1.5946197509765625,
+      "5": 0.5391082763671875,
+      "6": -0.000881195068359375,
+      "7": -0.0785369873046875
+    },
+    "status": "complete",
+    "n_distinct_values": 8,
+    "tie_spans_cut_at_2": false,
+    "tie_spans_cut_at_4": false
+  },
+  "group_size_balanced|blur": {
+    "order": [
+      4,
+      3,
+      5,
+      2,
+      6,
+      1,
+      7,
+      0
+    ],
+    "ties": [],
+    "direction": 1,
+    "source_family": "blur",
+    "eval_families": [
+      "constant"
+    ],
+    "values": {
+      "0": 0.021836280822753906,
+      "1": 0.1948107083638509,
+      "2": 0.39600017335679794,
+      "3": 0.8545110490587022,
+      "4": 1.1663158734639485,
+      "5": 0.8087279001871746,
+      "6": 0.36040306091308594,
+      "7": 0.12229410807291666
+    },
+    "status": "complete",
+    "n_distinct_values": 8,
+    "tie_spans_cut_at_2": false,
+    "tie_spans_cut_at_4": false
+  },
+  "singleton|constant": {
+    "order": [
+      4,
+      3,
+      5,
+      1,
+      2,
+      6,
+      0,
+      7
+    ],
+    "ties": [],
+    "direction": 1,
+    "source_family": "constant",
+    "eval_families": [
+      "blur"
+    ],
+    "values": {
+      "0": -0.13759994506835938,
+      "1": 0.21197509765625,
+      "2": 0.1127166748046875,
+      "3": 0.8030815124511719,
+      "4": 1.7354316711425781,
+      "5": 0.4284095764160156,
+      "6": -0.09931564331054688,
+      "7": -0.21462249755859375
+    },
+    "status": "complete",
+    "n_distinct_values": 8,
+    "tie_spans_cut_at_2": false,
+    "tie_spans_cut_at_4": false
+  },
+  "group_size_balanced|constant": {
+    "order": [
+      4,
+      3,
+      5,
+      2,
+      6,
+      1,
+      0,
+      7
+    ],
+    "ties": [],
+    "direction": 1,
+    "source_family": "constant",
+    "eval_families": [
+      "blur"
+    ],
+    "values": {
+      "0": 0.02311420440673828,
+      "1": 0.20241546630859375,
+      "2": 0.4196204609341091,
+      "3": 0.8934919569227431,
+      "4": 1.1822519832187228,
+      "5": 0.7562849786546495,
+      "6": 0.26955223083496094,
+      "7": 0.02057647705078125
+    },
+    "status": "complete",
+    "n_distinct_values": 8,
+    "tie_spans_cut_at_2": false,
+    "tie_spans_cut_at_4": false
+  },
+  "random_seed0": {
+    "order": [
+      6,
+      7,
+      3,
+      0,
+      2,
+      5,
+      1,
+      4
+    ],
+    "ties": [],
+    "direction": null,
+    "source_family": null,
+    "eval_families": [
+      "blur",
+      "constant"
+    ],
+    "status": "random_control"
+  },
+  "random_seed1": {
+    "order": [
+      2,
+      4,
+      0,
+      7,
+      5,
+      1,
+      6,
+      3
+    ],
+    "ties": [],
+    "direction": null,
+    "source_family": null,
+    "eval_families": [
+      "blur",
+      "constant"
+    ],
+    "status": "random_control"
+  },
+  "random_seed2": {
+    "order": [
+      0,
+      7,
+      6,
+      2,
+      1,
+      4,
+      3,
+      5
+    ],
+    "ties": [],
+    "direction": null,
+    "source_family": null,
+    "eval_families": [
+      "blur",
+      "constant"
+    ],
+    "status": "random_control"
+  }
+}

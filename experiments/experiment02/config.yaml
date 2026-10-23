@@ -1,0 +1,122 @@
+# experiment02: temporal_attribution_feasibility (v2 brief). Paths are relative to VERA_PROJECT_ROOT (~/vera_research).
+# CONFIG v2 (used by run_002). run_001 ran Stage A only, under v1 (its frozen resolved_config.yaml). v1 rules were
+# fixed before any model output; under them the numeric scorer was "blocked" by one exact bf16 tie. On R-pedestrian
+# logit('0') = logit('1') = 36.0, so S = 0; the v1 rule sends ties to anomaly while greedy decoding picks '0'. Stage A
+# also showed that S moves in 0.25-nat steps (bf16 spacing at |logit| ~ 36).
+# POST-HOC changes in v2, made after seeing run_001 Stage A and disclosed in the report:
+#   stage_a.exact_tie_handling: undecided   (S == 0 counts as neither agreement nor disagreement)
+#   stage_a.post_hoc_amendment: true        (the numeric scorer can be at most "provisional" in this experiment)
+#   stage_c.effect_scale: S_hi              (finer readout of the same bf16 computation; see scoring_contract.md)
+#   limits reduced by run_001 usage (6 transformed sequences, about 0.1 GPU-hour)
+experiment_id: experiment02
+purpose: temporal_attribution_feasibility
+seed: 0
+
+source:
+  repo: https://github.com/vera-framework/VERA
+  base_commit: 15b8bcb8574a977c229c577f50bfe6f06d07106e
+  checkout: setup/source/VERA
+  expected_head: 008ed4019781c39e7cb16244b7500244f3986f92
+
+model:
+  repo: OpenGVLab/InternVL2-8B
+  revision: 6fb9ad6924f69424e57fab2ab061d707688f0296
+  local_dir: shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296
+  dtype: bfloat16
+  use_flash_attn: true
+
+generation:  # original VERA settings; InternVL batch_chat adds eos_token_id=92542 in place
+  num_beams: 1
+  max_new_tokens: 1024
+  do_sample: false
+
+prompt:
+  learner_instruct_file: VERA_learner_instruct.txt
+  guiding_questions:
+    - "1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?"
+    - "2. Are there any vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?"
+    - "3. Are there any objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?"
+    - "4. Is there any visible damage or unusual movement in the video that indicates an anomaly?"
+    - "5. Are there any unusual sounds or noises in the video that suggest an anomaly?"
+
+sampling:  # VERA generate_initial_score.py defaults
+  sampling_rate: 16
+  fps_for_windows: 30
+  t_window_s: 10
+  snippet_len: 8
+
+frames:
+  cache_root: shared/frames/ucf_crime
+
+annotations:
+  official_file: shared/reference/ucf_crime_official/Temporal_Anomaly_Annotation_for_Testing_Videos.txt
+
+videos:
+  RoadAccidents127_x264:
+    path: shared/videos/ucf_crime/RoadAccidents127_x264.mp4
+    sha256: 618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff
+    manifest_entry: frames/RoadAccidents/RoadAccidents127_x264.mp4
+    expected_length: 2580
+  Normal_Videos_018_x264:
+    path: shared/videos/ucf_crime/Normal_Videos_018_x264.mp4
+    sha256: ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1
+    manifest_entry: frames/Normal/Normal_Videos_018_x264.mp4
+    expected_length: 1181
+
+cases:
+  - {case_id: R-start, video_id: RoadAccidents127_x264, anchor: 0, role: ordinary early-video diagnostic,
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl}
+  - {case_id: R-pedestrian, video_id: RoadAccidents127_x264, anchor: 496, role: baseline false-alert candidate (benchmark-negative interval),
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl, expect_window: [346.0, 646.0]}
+  - {case_id: R-accident, video_id: RoadAccidents127_x264, anchor: 2240, role: main accident window,
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl, expect_window: [2090.0, 2390.0]}
+  - {case_id: R-end, video_id: RoadAccidents127_x264, anchor: 2576, role: late-video diagnostic,
+     experiment01_record: experiments/experiment01/runs/run_001/results/raw_responses.jsonl}
+  - {case_id: N-middle, video_id: Normal_Videos_018_x264, role: independent normal-video control (midpoint anchor)}
+
+primary_cases: [R-accident, R-pedestrian, N-middle]
+
+stage_a:
+  cases: [R-start, R-pedestrian, R-accident, R-end, N-middle]
+  score_repeats: 3
+  scorer_criteria:
+    # Technical gate: ALL must hold, else the numeric scorer is "blocked". Missing or non-finite values count as failures.
+    #  - candidate tokenization: query reconstruction == captured ids, prefix-stable, and '0'/'1' are single tokens
+    #    (multi-token candidates are out of scope for contract label_only_first_token_v1 -> blocked)
+    #  - every repeat score of every Stage A case finite
+    #  - alignment: argmax of the scorer's boundary logits == argmax of generate()'s step-0 scores on all 5 cases
+    #  - sign(S) (S >= 0 -> 1) == label-only greedy generation label on all 5 cases
+    #  - all 6 all-eight replacement scores present and finite
+    max_repeat_abs_diff: 0.05          # nats, identical input scored 3 times
+    max_alignment_abs_S_diff: 0.25     # nats, scorer forward vs generate() step-0 scores
+    min_candidate_mass: 0.5            # P('0') + P('1') at the reply boundary, unperturbed cases
+    min_strong_alteration_abs_change: 0.0   # each all-eight replacement must move S at all
+    min_original_agreement: 4          # of 5 cases scorer class == original-prompt label, else "provisional_diverges_from_original"
+  tie_rule: S >= 0 is class 1 (anomaly) everywhere (ranking direction, class flips)
+  exact_tie_handling: undecided        # v2: in the gate, S == 0 is reported as a tie, not as agreement/disagreement
+  post_hoc_amendment: true             # v2: caps the scorer status at provisional_post_hoc_gate
+  resolution_rule: S is a difference of two bf16 logits (0.25-nat steps here); Delta on the S_hi scale with |Delta| <= S_resolution is flagged as smaller than one bf16 step of the deployed output
+  perturbed_candidate_mass_flag: 0.5  # perturbed records below this are flagged (kept, not dropped)
+
+stage_b:
+  families: [blur, constant]
+  preprocessed_resolution: 448        # perturbation applied to the 448x448 image after VERA dynamic_preprocess
+  blur_radius_fraction: 0.04          # PIL GaussianBlur radius = 0.04 * 448 = 17.92 px
+  constant_rgb: [127, 127, 127]
+  nonconsecutive_per_size: 3          # seeded nonconsecutive pairs and triples (no two slots adjacent)
+  nonconsecutive_seed: 20261022
+
+stage_c:
+  budgets: [2, 4]
+  random_seeds: [0, 1, 2]
+  group_sizes: [2, 3]                 # temporal-group ranking uses adjacent pairs and triples only
+  group_ranking: size_balanced        # chosen before data because the pooled heuristic fails the constant fixture
+  ranking_direction: support for the scorer's baseline class (sign of baseline S; ties to anomaly)
+  effect_scale: S_hi                  # v2: Delta, interactions and rankings on S_hi; Delta_bf16 on S is reported alongside
+  ranking_requirements: complete Stage B effects (8 singles + 7 adjacent pairs + 6 adjacent triples) and >= 2 distinct values; otherwise not_rankable and not evaluated
+
+limits:
+  max_unique_transformed_sequences: 394   # 400 minus the 6 used by run_001; enforced per request (skipped_budget)
+  max_gpu_hours: 2.9                       # 3 minus run_001's Stage A job; enforced per request; launch with --time-limit too
+  a2_engineering_minutes: 60
+  d_engineering_minutes: 45

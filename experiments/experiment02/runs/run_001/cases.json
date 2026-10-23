@@ -1,0 +1,579 @@
+{
+  "generated_at": "2026-10-23T00:05:37+00:00",
+  "sampling": {
+    "sampling_rate": 16,
+    "fps_for_windows": 30,
+    "t_window_s": 10,
+    "snippet_len": 8
+  },
+  "cases": [
+    {
+      "case_id": "R-start",
+      "role": "ordinary early-video diagnostic",
+      "video_id": "RoadAccidents127_x264",
+      "video_path": "shared/videos/ucf_crime/RoadAccidents127_x264.mp4",
+      "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+      "decoded_frames": 2580,
+      "fps": 30.0,
+      "anchor": 0,
+      "anchor_rule": "fixed in config",
+      "anchor_time_s": 0.0,
+      "window_start": 0,
+      "window_end": 150.0,
+      "window_time_s": [
+        0.0,
+        5.0
+      ],
+      "frame_indices": [
+        0,
+        18,
+        37,
+        56,
+        75,
+        93,
+        112,
+        131
+      ],
+      "frame_times_s": [
+        0.0,
+        0.6,
+        1.2333333333333334,
+        1.8666666666666667,
+        2.5,
+        3.1,
+        3.7333333333333334,
+        4.366666666666666
+      ],
+      "frame_files": [
+        "000000.jpg",
+        "000018.jpg",
+        "000037.jpg",
+        "000056.jpg",
+        "000075.jpg",
+        "000093.jpg",
+        "000112.jpg",
+        "000131.jpg"
+      ],
+      "frame_sha256": [
+        "bd1ab99444ed586a517a6adbcb0e7cb4227658ffd6a9655ef01ad440e5d34a75",
+        "5868014ed7642aebf1869e6052445f5b98cde2c45803ff5d7c1d0c60510687b0",
+        "5398a3db9f1500f940cd85ff24240e62399b90d7e318d7285fb01fce4576d815",
+        "265679463202a211666af7ce2a43d44baba88e7259136b8fc4d83b95e7cd8458",
+        "6184b55274f9e40600cd09c9da97f56ce744e12222462c7d2b1c2d3615c7887d",
+        "b7cce0e625e71d3aaf0bb611ce4ba558fb7677b631bde94a41751818bc39af4f",
+        "779d6ddb59833786b7bf5f6e9fc7d009087e6975ddc11559c9e27c625dd077b7",
+        "f09c08c4b15feaf4f54792b4c115603850d4006d9eb81efe1f27b3097f38d089"
+      ],
+      "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+      "frames_identity_sha256": "d14b4bf8021652d5ca57c5ae108a52afb1c0c6bd6fb86d79cf5789581c5c7ef7",
+      "benchmark_annotation": {
+        "vera_ucf_eval_json": {
+          "temporal_label": [
+            2160,
+            2300,
+            -1,
+            -1
+          ],
+          "length": 2580,
+          "video_level_answer": "Yes."
+        },
+        "official_ucf_crime_txt": [
+          "RoadAccidents",
+          "2160",
+          "2300",
+          "-1",
+          "-1"
+        ],
+        "convention": "compute_auc.py marks frames [start, end) zero-based; the official txt does not state whether indices are 0- or 1-based or end-inclusive (at most one frame at each end)",
+        "annotated_intervals_used": [
+          [
+            2160,
+            2300
+          ]
+        ],
+        "window_overlap_frames_with_annotation": 0
+      },
+      "provenance": {
+        "source_url": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AFb9SoyBX4rJ-XrdqZDVA_I/Anomaly-Videos-Part-3.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+        "resolved_url_host": "uce8ca0444b8c86272df179c9c07.dl.dropboxusercontent.com",
+        "archive_bytes": 5616615706,
+        "archive_members": 354,
+        "member": "Anomaly-Videos-Part-3/RoadAccidents/RoadAccidents127_x264.mp4",
+        "member_bytes": 19361185,
+        "member_compressed_bytes": 19096608,
+        "member_crc32": "b1af440a",
+        "member_date_time": [
+          2017,
+          4,
+          18,
+          11,
+          6,
+          22
+        ],
+        "sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+        "bytes_fetched_over_http": 20365594,
+        "fetched_at": "2026-10-22T19:20:15+00:00",
+        "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+      },
+      "experiment01": {
+        "record_file": "experiments/experiment01/runs/run_001/results/raw_responses.jsonl",
+        "label": 0,
+        "raw_response": "Answers to Prompt Questions: The video shows a red truck and a white van driving on a road with other vehicles and traffic lights. The vehicles are in their typical positions and engaging in activities consistent with their usual behavior. There is no visible damage or unusual movement, and no unusual sounds or noises are indicated. Therefore, there is no anomaly in the video.\nOutput: 0",
+        "model_input_sha256": "2e8cfa0ecea458835748591024d2734f9c9386c48ab3ac3ef2399ea7cea7929d",
+        "window_matches_recomputation": true
+      }
+    },
+    {
+      "case_id": "R-pedestrian",
+      "role": "baseline false-alert candidate (benchmark-negative interval)",
+      "video_id": "RoadAccidents127_x264",
+      "video_path": "shared/videos/ucf_crime/RoadAccidents127_x264.mp4",
+      "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+      "decoded_frames": 2580,
+      "fps": 30.0,
+      "anchor": 496,
+      "anchor_rule": "fixed in config",
+      "anchor_time_s": 16.533333333333335,
+      "window_start": 346.0,
+      "window_end": 646.0,
+      "window_time_s": [
+        11.533333333333333,
+        21.533333333333335
+      ],
+      "frame_indices": [
+        346,
+        383,
+        421,
+        458,
+        496,
+        533,
+        571,
+        608
+      ],
+      "frame_times_s": [
+        11.533333333333333,
+        12.766666666666667,
+        14.033333333333333,
+        15.266666666666667,
+        16.533333333333335,
+        17.766666666666666,
+        19.033333333333335,
+        20.266666666666666
+      ],
+      "frame_files": [
+        "000346.jpg",
+        "000383.jpg",
+        "000421.jpg",
+        "000458.jpg",
+        "000496.jpg",
+        "000533.jpg",
+        "000571.jpg",
+        "000608.jpg"
+      ],
+      "frame_sha256": [
+        "acbf8d1d4509b4527c89b0ba098df2b7a6a0d3496268ea1813bcd62f9c230f58",
+        "ccb9cede83270b7fe9f3ecd15a99ce9974204ad083564997600dd33811a907fd",
+        "2ed5dc9e3ced25661b9f20cc732fd9a94b780db00365032bc2b98b6c7e748ffa",
+        "ef8d342dc40c9d03d0eebd67c66a481bae15f25c9135a297ff50da2df189e714",
+        "5c2fd3fdb605e81f30b0ff53298852a8da5eac9ab86046e02c61fc32318a99ea",
+        "806e37e2217622c33ec1749daf6da1643c28fc3ce600166f06703c9d5498899e",
+        "6101ebc3cf978c49a0aa0d2745befc8f899a015648c88a9a6610663bc1908061",
+        "1f5e2a1f01c34aa2af9cae941f98e7d4589c018773a74017dc78b22ad205586a"
+      ],
+      "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+      "frames_identity_sha256": "d14b4bf8021652d5ca57c5ae108a52afb1c0c6bd6fb86d79cf5789581c5c7ef7",
+      "benchmark_annotation": {
+        "vera_ucf_eval_json": {
+          "temporal_label": [
+            2160,
+            2300,
+            -1,
+            -1
+          ],
+          "length": 2580,
+          "video_level_answer": "Yes."
+        },
+        "official_ucf_crime_txt": [
+          "RoadAccidents",
+          "2160",
+          "2300",
+          "-1",
+          "-1"
+        ],
+        "convention": "compute_auc.py marks frames [start, end) zero-based; the official txt does not state whether indices are 0- or 1-based or end-inclusive (at most one frame at each end)",
+        "annotated_intervals_used": [
+          [
+            2160,
+            2300
+          ]
+        ],
+        "window_overlap_frames_with_annotation": 0
+      },
+      "provenance": {
+        "source_url": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AFb9SoyBX4rJ-XrdqZDVA_I/Anomaly-Videos-Part-3.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+        "resolved_url_host": "uce8ca0444b8c86272df179c9c07.dl.dropboxusercontent.com",
+        "archive_bytes": 5616615706,
+        "archive_members": 354,
+        "member": "Anomaly-Videos-Part-3/RoadAccidents/RoadAccidents127_x264.mp4",
+        "member_bytes": 19361185,
+        "member_compressed_bytes": 19096608,
+        "member_crc32": "b1af440a",
+        "member_date_time": [
+          2017,
+          4,
+          18,
+          11,
+          6,
+          22
+        ],
+        "sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+        "bytes_fetched_over_http": 20365594,
+        "fetched_at": "2026-10-22T19:20:15+00:00",
+        "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+      },
+      "experiment01": {
+        "record_file": "experiments/experiment01/runs/run_001/results/raw_responses.jsonl",
+        "label": 1,
+        "raw_response": "Answers to Prompt Questions: The video shows a person crossing the road in a way that is not consistent with their usual behavior. There are no vehicles or objects in unusual positions, and no visible damage or unusual movement. There are no unusual sounds or noises. Based on the analysis, there is an anomaly in the video.\nOutput: 1",
+        "model_input_sha256": "2e8cfa0ecea458835748591024d2734f9c9386c48ab3ac3ef2399ea7cea7929d",
+        "window_matches_recomputation": true
+      }
+    },
+    {
+      "case_id": "R-accident",
+      "role": "main accident window",
+      "video_id": "RoadAccidents127_x264",
+      "video_path": "shared/videos/ucf_crime/RoadAccidents127_x264.mp4",
+      "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+      "decoded_frames": 2580,
+      "fps": 30.0,
+      "anchor": 2240,
+      "anchor_rule": "fixed in config",
+      "anchor_time_s": 74.66666666666667,
+      "window_start": 2090.0,
+      "window_end": 2390.0,
+      "window_time_s": [
+        69.66666666666667,
+        79.66666666666667
+      ],
+      "frame_indices": [
+        2090,
+        2127,
+        2165,
+        2202,
+        2240,
+        2277,
+        2315,
+        2352
+      ],
+      "frame_times_s": [
+        69.66666666666667,
+        70.9,
+        72.16666666666667,
+        73.4,
+        74.66666666666667,
+        75.9,
+        77.16666666666667,
+        78.4
+      ],
+      "frame_files": [
+        "002090.jpg",
+        "002127.jpg",
+        "002165.jpg",
+        "002202.jpg",
+        "002240.jpg",
+        "002277.jpg",
+        "002315.jpg",
+        "002352.jpg"
+      ],
+      "frame_sha256": [
+        "1102053049689269d8c2dd8515073404bad19b4aff1e28614f4b501ef8ebba1e",
+        "dde162e341cbabcf1d9a6bc41bf615d11f541e60b7f18a42805ec556342784cf",
+        "9575203b550d7fa75762c2786b1ed5f488c19b56e97a8314ca637dfed27ebf3c",
+        "904b6e61fa19cd0b4514a3c972abb5e614a6e7e995039a2a42c679194f930746",
+        "3ee043cba9c4e8a416ee9f7149f3046f1987ae202b7306edb58a430e749b98e4",
+        "d698a6bcd15be6d0aebb32e85057d222d3d37747214d3754b89a95096c3f8416",
+        "5c3dbf3e5c936dc689d02bd3c6fe51bda229fab5c496010c13f52626566a8dd3",
+        "8c797d9ce5770755f53e78d6d79e58f3dc783095e7dc5161e90e0b2e03a9110c"
+      ],
+      "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+      "frames_identity_sha256": "d14b4bf8021652d5ca57c5ae108a52afb1c0c6bd6fb86d79cf5789581c5c7ef7",
+      "benchmark_annotation": {
+        "vera_ucf_eval_json": {
+          "temporal_label": [
+            2160,
+            2300,
+            -1,
+            -1
+          ],
+          "length": 2580,
+          "video_level_answer": "Yes."
+        },
+        "official_ucf_crime_txt": [
+          "RoadAccidents",
+          "2160",
+          "2300",
+          "-1",
+          "-1"
+        ],
+        "convention": "compute_auc.py marks frames [start, end) zero-based; the official txt does not state whether indices are 0- or 1-based or end-inclusive (at most one frame at each end)",
+        "annotated_intervals_used": [
+          [
+            2160,
+            2300
+          ]
+        ],
+        "window_overlap_frames_with_annotation": 140
+      },
+      "provenance": {
+        "source_url": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AFb9SoyBX4rJ-XrdqZDVA_I/Anomaly-Videos-Part-3.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+        "resolved_url_host": "uce8ca0444b8c86272df179c9c07.dl.dropboxusercontent.com",
+        "archive_bytes": 5616615706,
+        "archive_members": 354,
+        "member": "Anomaly-Videos-Part-3/RoadAccidents/RoadAccidents127_x264.mp4",
+        "member_bytes": 19361185,
+        "member_compressed_bytes": 19096608,
+        "member_crc32": "b1af440a",
+        "member_date_time": [
+          2017,
+          4,
+          18,
+          11,
+          6,
+          22
+        ],
+        "sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+        "bytes_fetched_over_http": 20365594,
+        "fetched_at": "2026-10-22T19:20:15+00:00",
+        "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+      },
+      "experiment01": {
+        "record_file": "experiments/experiment01/runs/run_001/results/raw_responses.jsonl",
+        "label": 1,
+        "raw_response": "Answers to Prompt Questions: The video shows a red truck and a train crossing the same road at the same time, which is an unusual and potentially dangerous situation. There is visible damage to the train, indicating an anomaly.\nOutput: 1",
+        "model_input_sha256": "2e8cfa0ecea458835748591024d2734f9c9386c48ab3ac3ef2399ea7cea7929d",
+        "window_matches_recomputation": true
+      }
+    },
+    {
+      "case_id": "R-end",
+      "role": "late-video diagnostic",
+      "video_id": "RoadAccidents127_x264",
+      "video_path": "shared/videos/ucf_crime/RoadAccidents127_x264.mp4",
+      "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+      "decoded_frames": 2580,
+      "fps": 30.0,
+      "anchor": 2576,
+      "anchor_rule": "fixed in config",
+      "anchor_time_s": 85.86666666666666,
+      "window_start": 2426.0,
+      "window_end": 2580,
+      "window_time_s": [
+        80.86666666666666,
+        86.0
+      ],
+      "frame_indices": [
+        2426,
+        2445,
+        2464,
+        2483,
+        2503,
+        2522,
+        2541,
+        2560
+      ],
+      "frame_times_s": [
+        80.86666666666666,
+        81.5,
+        82.13333333333334,
+        82.76666666666667,
+        83.43333333333334,
+        84.06666666666666,
+        84.7,
+        85.33333333333333
+      ],
+      "frame_files": [
+        "002426.jpg",
+        "002445.jpg",
+        "002464.jpg",
+        "002483.jpg",
+        "002503.jpg",
+        "002522.jpg",
+        "002541.jpg",
+        "002560.jpg"
+      ],
+      "frame_sha256": [
+        "1a246c0aa2847df8f6642baaba2fb6085ed291c50e6c23a23ef8b79952cf697b",
+        "d9b5d1a46554d43920446be907b15a20a716bf2a1b6a0e11ccce97dd19e99d0c",
+        "ea63ec7770e29625bce1c7a2bcac399fba2f2bf629c1f2139d2b451921cfeb5d",
+        "c726c5c9a51bbc96304940c4eab808569d5779a56ac4b3e97d6cdeae60108428",
+        "3c346dc9c0ca60ffa6b44fb95b600621ed2e40e34a292f055c6d1f99fbae754e",
+        "d3101fd4921127589d239ba502a1080ffc94f5623fad6598ec9f8473d6661f54",
+        "9ac36b192e96ad648a43241dc898d4700902f287b518a6086be5e8996d07af25",
+        "c538eca01c9f6ea8e7b24b01299186ef3e484931cba8fae7260b2385f83e6201"
+      ],
+      "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+      "frames_identity_sha256": "d14b4bf8021652d5ca57c5ae108a52afb1c0c6bd6fb86d79cf5789581c5c7ef7",
+      "benchmark_annotation": {
+        "vera_ucf_eval_json": {
+          "temporal_label": [
+            2160,
+            2300,
+            -1,
+            -1
+          ],
+          "length": 2580,
+          "video_level_answer": "Yes."
+        },
+        "official_ucf_crime_txt": [
+          "RoadAccidents",
+          "2160",
+          "2300",
+          "-1",
+          "-1"
+        ],
+        "convention": "compute_auc.py marks frames [start, end) zero-based; the official txt does not state whether indices are 0- or 1-based or end-inclusive (at most one frame at each end)",
+        "annotated_intervals_used": [
+          [
+            2160,
+            2300
+          ]
+        ],
+        "window_overlap_frames_with_annotation": 0
+      },
+      "provenance": {
+        "source_url": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AFb9SoyBX4rJ-XrdqZDVA_I/Anomaly-Videos-Part-3.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+        "resolved_url_host": "uce8ca0444b8c86272df179c9c07.dl.dropboxusercontent.com",
+        "archive_bytes": 5616615706,
+        "archive_members": 354,
+        "member": "Anomaly-Videos-Part-3/RoadAccidents/RoadAccidents127_x264.mp4",
+        "member_bytes": 19361185,
+        "member_compressed_bytes": 19096608,
+        "member_crc32": "b1af440a",
+        "member_date_time": [
+          2017,
+          4,
+          18,
+          11,
+          6,
+          22
+        ],
+        "sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+        "bytes_fetched_over_http": 20365594,
+        "fetched_at": "2026-10-22T19:20:15+00:00",
+        "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+      },
+      "experiment01": {
+        "record_file": "experiments/experiment01/runs/run_001/results/raw_responses.jsonl",
+        "label": 0,
+        "raw_response": "Answers to Prompt Questions: The video shows a train on the tracks, and there are no people or vehicles in unusual positions or engaging in activities that are not consistent with their usual behavior. There is no visible damage or unusual movement in the video. There are no unusual sounds or noises in the video. Based on the analysis, there is no anomaly in the video.\nOutput: 0",
+        "model_input_sha256": "2e8cfa0ecea458835748591024d2734f9c9386c48ab3ac3ef2399ea7cea7929d",
+        "window_matches_recomputation": true
+      }
+    },
+    {
+      "case_id": "N-middle",
+      "role": "independent normal-video control (midpoint anchor)",
+      "video_id": "Normal_Videos_018_x264",
+      "video_path": "shared/videos/ucf_crime/Normal_Videos_018_x264.mp4",
+      "video_sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1",
+      "decoded_frames": 1181,
+      "fps": 30.0,
+      "anchor": 592,
+      "anchor_rule": "anchor in range(0, n, 16) closest to n/2 (ties to the earlier)",
+      "anchor_time_s": 19.733333333333334,
+      "window_start": 442.0,
+      "window_end": 742.0,
+      "window_time_s": [
+        14.733333333333333,
+        24.733333333333334
+      ],
+      "frame_indices": [
+        442,
+        479,
+        517,
+        554,
+        592,
+        629,
+        667,
+        704
+      ],
+      "frame_times_s": [
+        14.733333333333333,
+        15.966666666666667,
+        17.233333333333334,
+        18.466666666666665,
+        19.733333333333334,
+        20.966666666666665,
+        22.233333333333334,
+        23.466666666666665
+      ],
+      "frame_files": [
+        "000442.jpg",
+        "000479.jpg",
+        "000517.jpg",
+        "000554.jpg",
+        "000592.jpg",
+        "000629.jpg",
+        "000667.jpg",
+        "000704.jpg"
+      ],
+      "frame_sha256": [
+        "bfc38c0bca1d7f67ed10fd6abe555d922bcfcbf77cac2233866e1015ba8ed42a",
+        "759d9c33a8dae5fe930b70ed9540f90b681ab787bda8eacae880ffb6c39fc7af",
+        "bbd9e7614a36d9cbc3cd0d9385deeb2397be4b3e24d308792304c8e3f5fa83e0",
+        "142574230466e23bd962568f846868ebc068034c9443e63867487de1be75e3d3",
+        "ff8410d3e0c59f2359d0ab70693c91947cd9b681981c3b7da4d22ec454514481",
+        "9776a19db86157649432b0698f394049963044133f1ba3918a1c09b98370af24",
+        "f6f8e6d233eed835c41e6e4f22701cfec76802031342d8f1f306853fb55f8c8b",
+        "30459f08393a0da0021a61dde8bdea0435a97073091bd90604309ac62268c56f"
+      ],
+      "frames_dir": "shared/frames/ucf_crime/Normal_Videos_018_x264",
+      "frames_identity_sha256": "df4494fc598f392463afac7004781593c6f3fcdfa24867b312a1124193e06d48",
+      "benchmark_annotation": {
+        "vera_ucf_eval_json": {
+          "temporal_label": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "length": 1181,
+          "video_level_answer": "No."
+        },
+        "official_ucf_crime_txt": [
+          "Normal",
+          "-1",
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "convention": "compute_auc.py marks frames [start, end) zero-based; the official txt does not state whether indices are 0- or 1-based or end-inclusive (at most one frame at each end)",
+        "annotated_intervals_used": [],
+        "window_overlap_frames_with_annotation": 0
+      },
+      "provenance": {
+        "source_url": "https://www.dropbox.com/scl/fo/2aczdnx37hxvcfdo4rq4q/AHTTsM4LmY3lQdqO9mMBjFw/Testing_Normal_Videos.zip?rlkey=5bg7mxxbq46t7aujfch46dlvz&dl=1",
+        "resolved_url_host": "uce6c13100ebb16fa8283f5749b5.dl.dropboxusercontent.com",
+        "archive_bytes": 4661975118,
+        "archive_members": 151,
+        "member": "Testing_Normal_Videos_Anomaly/Normal_Videos_018_x264.mp4",
+        "member_bytes": 7662531,
+        "member_compressed_bytes": 7402502,
+        "member_crc32": "31ef609e",
+        "member_date_time": [
+          2017,
+          5,
+          26,
+          17,
+          51,
+          4
+        ],
+        "sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1",
+        "bytes_fetched_over_http": 9443406,
+        "fetched_at": "2026-10-22T23:34:19+00:00",
+        "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+PASS V01 required artifacts exist: 18 files
+PASS V02 case frames, windows, timestamps, hashes and metadata: 5 cases; problems []
+PASS V03 only the intended slots changed; preprocessing identical elsewhere: 576 perturbation records: unmasked slots bit-identical to baseline, masked slots changed; problems []
+PASS V04 group enumeration and matched intervention sizes: 28 masks per case/family/target; sizes {'all_eight': {8}, 'single': {1}, 'adjacent_pair': {2}, 'adjacent_triple': {3}, 'nonconsecutive_pair': {2}, 'nonconsecutive_triple': {3}}; problems []
+PASS V05 cache keys complete (model, prompt/contract, source, frames, transform, preprocessing) and consistent: recomputed keys match 606/606; cache keys unique True; fresh results missing from cache 0; generation and score records never share a key True
+PASS V06 parsing reproducible; parse failures are missing, never labels: re-parsed 303 generations; parse failures (kept unlabelled) 0; mismatches []
+PASS V07 likelihood indexing, finite scores and repeatability: candidates {0: [300], 1: [312]}, single-token True; S finite and = logp1-logp0 for all; repeat max|dS| 0.0; problems []
+PASS V08 signed effects, binary diffs, interactions and normal/anomaly direction recomputed: 168 rows; negative Deltas kept 80; problems []
+PASS V09 rankings well formed; ties recorded: rankings are full permutations with recorded ties; problems []
+PASS V10 effective generation configuration saved, including model-added values: effective generation settings = config + eos_token_id 92542 on all generations; problems []
+PASS V11 resume safety: append-only request logs; failed attempts retried, never overwritten: at most one success per request id, always the last attempt; retried ids 0; problems []
+PASS V12 original runs and setup unchanged: experiment01 + setup files unchanged since preflight (none changed); VERA HEAD 008ed401 clean True
+PASS V13 execution limits respected: unique transformed sequences 255/394; experiment02 GPU job wall time 0.30 h / 2.9 h
+PASS V14 prompt identity (original = experiment01; ablation and label-only differ only as declared): original question identical to experiment01 True; one original prompt hash True; label-only keeps all 5 questions True; no-sound = original minus question 5 only True; question actually built by VERA forward() = prompt in cache key for every record True
+PASS V15 A1 reruns compared with experiment01 records: R-start: text same, label same, token ids same; R-pedestrian: text same, label same, token ids same; R-accident: text same, label same, token ids same; R-end: text same, label same, token ids same (informational: discrepancies are reported, not failures)
+PASS V17 in-run check: every fresh record changed exactly its masked slots: in-run slot identity flag true on 540/540 fresh records
+PASS V18 one code version produced all model results: 1 model invocations all ran code {'attr_lib.py': '7acf4acfc7', 'engine.py': '7bb6ae95b2', 'run_attr.py': '5b543ca153'}; current code identical True; verified snapshot in run dir False
+PASS V16 spatial diagnostic arrays finite: 4 spatial arrays finite True
+18/18 checks passed

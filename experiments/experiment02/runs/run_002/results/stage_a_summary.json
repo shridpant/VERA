@@ -1,0 +1,555 @@
+{
+  "A1": [
+    {
+      "case_id": "R-start",
+      "label": 0,
+      "parse_status": "ok",
+      "cache_status": "fresh",
+      "vs_experiment01": {
+        "raw_text_identical": true,
+        "label_identical": true,
+        "token_ids_identical": true,
+        "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+      }
+    },
+    {
+      "case_id": "R-pedestrian",
+      "label": 1,
+      "parse_status": "ok",
+      "cache_status": "fresh",
+      "vs_experiment01": {
+        "raw_text_identical": true,
+        "label_identical": true,
+        "token_ids_identical": true,
+        "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+      }
+    },
+    {
+      "case_id": "R-accident",
+      "label": 1,
+      "parse_status": "ok",
+      "cache_status": "fresh",
+      "vs_experiment01": {
+        "raw_text_identical": true,
+        "label_identical": true,
+        "token_ids_identical": true,
+        "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+      }
+    },
+    {
+      "case_id": "R-end",
+      "label": 0,
+      "parse_status": "ok",
+      "cache_status": "fresh",
+      "vs_experiment01": {
+        "raw_text_identical": true,
+        "label_identical": true,
+        "token_ids_identical": true,
+        "pixel_identity": "experiment01 stored no pixel hashes; this pixel path is bit-identical to VERA's main loop by test_attr_lib.py, and the frame JPEGs match cases.json hashes"
+      }
+    },
+    {
+      "case_id": "N-middle",
+      "label": 0,
+      "parse_status": "ok",
+      "cache_status": "fresh",
+      "vs_experiment01": null
+    }
+  ],
+  "A2": {
+    "status": "provisional_post_hoc_gate",
+    "criteria": {
+      "max_repeat_abs_diff": 0.05,
+      "max_alignment_abs_S_diff": 0.25,
+      "min_candidate_mass": 0.5,
+      "min_strong_alteration_abs_change": 0.0,
+      "min_original_agreement": 4
+    },
+    "technical_gate": {
+      "candidates_ok_and_single_token": true,
+      "all_scores_finite": true,
+      "repeatability": true,
+      "alignment_S": true,
+      "alignment_argmax": true,
+      "candidate_mass": true,
+      "sign_matches_label_only_generation": true,
+      "S_hi_rounds_to_model_logits": true,
+      "strong_alteration_moves_S": true
+    },
+    "checks": {
+      "candidate_tokenization_ok": true,
+      "single_token_candidates": true,
+      "all_scores_finite": true,
+      "repeatability_max_abs_diff": 0.0,
+      "alignment_cases": 5,
+      "alignment_max_abs_S_diff": 1.1920928955078125e-07,
+      "alignment_argmax_agree": true,
+      "min_candidate_mass": 0.8220298290252686,
+      "exact_ties_S_zero": 1,
+      "S_hi_rounds_to_model_logits_all": true,
+      "sign_agrees_label_only_generation": 4,
+      "sign_disagrees_label_only_generation": 0,
+      "label_only_generation_missing": 0,
+      "sign_agrees_original_prompt": 4,
+      "sign_disagrees_original_prompt": 0,
+      "original_prompt_label_missing": 0,
+      "strong_alterations_present": true,
+      "strong_alteration_min_abs_change": 0.75
+    },
+    "cases": [
+      {
+        "case_id": "R-start",
+        "original_prompt_label": 0,
+        "label_only_generation_label": 0,
+        "label_only_generation_text": "0",
+        "S": -1.0,
+        "scorer_class": 0,
+        "S_resolution": 0.25,
+        "logit_0": 36.25,
+        "logit_1": 35.25,
+        "candidate_mass": 0.8909759521484375,
+        "top5_next_tokens": [
+          [
+            "0",
+            300,
+            0.651356
+          ],
+          [
+            "1",
+            312,
+            0.23962
+          ],
+          [
+            "[",
+            336,
+            0.068652
+          ],
+          [
+            "``",
+            14016,
+            0.032429
+          ],
+          [
+            "`",
+            350,
+            0.00183
+          ]
+        ],
+        "S_hi": -0.9486961364746094,
+        "S_agrees_label_only_generation": true,
+        "S_agrees_original_prompt_label": true,
+        "repeatability": {
+          "S_repeats": [
+            -1.0,
+            -1.0,
+            -1.0
+          ],
+          "max_abs_diff": 0.0
+        }
+      },
+      {
+        "case_id": "R-pedestrian",
+        "original_prompt_label": 1,
+        "label_only_generation_label": 0,
+        "label_only_generation_text": "0",
+        "S": 0.0,
+        "scorer_class": 1,
+        "S_resolution": 0.25,
+        "logit_0": 36.0,
+        "logit_1": 36.0,
+        "candidate_mass": 0.8835075497627258,
+        "top5_next_tokens": [
+          [
+            "1",
+            312,
+            0.441754
+          ],
+          [
+            "0",
+            300,
+            0.441754
+          ],
+          [
+            "[",
+            336,
+            0.076765
+          ],
+          [
+            "``",
+            14016,
+            0.02824
+          ],
+          [
+            "Yes",
+            9583,
+            0.004331
+          ]
+        ],
+        "S_hi": -0.13105010986328125,
+        "S_agrees_label_only_generation": "tie",
+        "S_agrees_original_prompt_label": "tie",
+        "repeatability": {
+          "S_repeats": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_abs_diff": 0.0
+        }
+      },
+      {
+        "case_id": "R-accident",
+        "original_prompt_label": 1,
+        "label_only_generation_label": 1,
+        "label_only_generation_text": "1",
+        "S": 2.7499998807907104,
+        "scorer_class": 1,
+        "S_resolution": 0.25,
+        "logit_0": 33.75,
+        "logit_1": 36.5,
+        "candidate_mass": 0.8220298290252686,
+        "top5_next_tokens": [
+          [
+            "1",
+            312,
+            0.772637
+          ],
+          [
+            "``",
+            14016,
+            0.081435
+          ],
+          [
+            "[",
+            336,
+            0.081435
+          ],
+          [
+            "0",
+            300,
+            0.049393
+          ],
+          [
+            "Yes",
+            9583,
+            0.005899
+          ]
+        ],
+        "S_hi": 2.8548316955566406,
+        "S_agrees_label_only_generation": true,
+        "S_agrees_original_prompt_label": true,
+        "repeatability": {
+          "S_repeats": [
+            2.7499998807907104,
+            2.7499998807907104,
+            2.7499998807907104
+          ],
+          "max_abs_diff": 0.0
+        }
+      },
+      {
+        "case_id": "R-end",
+        "original_prompt_label": 0,
+        "label_only_generation_label": 0,
+        "label_only_generation_text": "0",
+        "S": -1.4999999701976776,
+        "scorer_class": 0,
+        "S_resolution": 0.25,
+        "logit_0": 36.75,
+        "logit_1": 35.25,
+        "candidate_mass": 0.909531831741333,
+        "top5_next_tokens": [
+          [
+            "0",
+            300,
+            0.74361
+          ],
+          [
+            "1",
+            312,
+            0.165922
+          ],
+          [
+            "[",
+            336,
+            0.047537
+          ],
+          [
+            "``",
+            14016,
+            0.037022
+          ],
+          [
+            "`",
+            350,
+            0.001627
+          ]
+        ],
+        "S_hi": -1.4178390502929688,
+        "S_agrees_label_only_generation": true,
+        "S_agrees_original_prompt_label": true,
+        "repeatability": {
+          "S_repeats": [
+            -1.4999999701976776,
+            -1.4999999701976776,
+            -1.4999999701976776
+          ],
+          "max_abs_diff": 0.0
+        }
+      },
+      {
+        "case_id": "N-middle",
+        "original_prompt_label": 0,
+        "label_only_generation_label": 0,
+        "label_only_generation_text": "0",
+        "S": -1.7500000298023224,
+        "scorer_class": 0,
+        "S_resolution": 0.25,
+        "logit_0": 35.5,
+        "logit_1": 33.75,
+        "candidate_mass": 0.8664150834083557,
+        "top5_next_tokens": [
+          [
+            "0",
+            300,
+            0.738145
+          ],
+          [
+            "1",
+            312,
+            0.12827
+          ],
+          [
+            "[",
+            336,
+            0.0778
+          ],
+          [
+            "``",
+            14016,
+            0.047188
+          ],
+          [
+            "`",
+            350,
+            0.002349
+          ]
+        ],
+        "S_hi": -1.810821533203125,
+        "S_agrees_label_only_generation": true,
+        "S_agrees_original_prompt_label": true,
+        "repeatability": {
+          "S_repeats": [
+            -1.7500000298023224,
+            -1.7500000298023224,
+            -1.7500000298023224
+          ],
+          "max_abs_diff": 0.0
+        }
+      }
+    ],
+    "alignment": [
+      {
+        "case_id": "R-start",
+        "S_scorer": -1.0,
+        "max_abs_logit_diff": 0.0,
+        "argmax_scorer": 300,
+        "argmax_generate_step0": 300,
+        "argmax_generate_token": "0",
+        "generated_token": "0",
+        "S_generate_step0": -1.0,
+        "abs_S_diff": 0.0
+      },
+      {
+        "case_id": "R-pedestrian",
+        "S_scorer": 0.0,
+        "max_abs_logit_diff": 0.0,
+        "argmax_scorer": 300,
+        "argmax_generate_step0": 300,
+        "argmax_generate_token": "0",
+        "generated_token": "0",
+        "S_generate_step0": 0.0,
+        "abs_S_diff": 0.0
+      },
+      {
+        "case_id": "R-accident",
+        "S_scorer": 2.7499998807907104,
+        "max_abs_logit_diff": 0.0,
+        "argmax_scorer": 312,
+        "argmax_generate_step0": 312,
+        "argmax_generate_token": "1",
+        "generated_token": "1",
+        "S_generate_step0": 2.75,
+        "abs_S_diff": 1.1920928955078125e-07
+      },
+      {
+        "case_id": "R-end",
+        "S_scorer": -1.4999999701976776,
+        "max_abs_logit_diff": 0.0,
+        "argmax_scorer": 300,
+        "argmax_generate_step0": 300,
+        "argmax_generate_token": "0",
+        "generated_token": "0",
+        "S_generate_step0": -1.5,
+        "abs_S_diff": 2.9802322387695312e-08
+      },
+      {
+        "case_id": "N-middle",
+        "S_scorer": -1.7500000298023224,
+        "max_abs_logit_diff": 0.0,
+        "argmax_scorer": 300,
+        "argmax_generate_step0": 300,
+        "argmax_generate_token": "0",
+        "generated_token": "0",
+        "S_generate_step0": -1.75,
+        "abs_S_diff": 2.9802322387695312e-08
+      }
+    ],
+    "strong_alterations": {
+      "R-accident|blur": {
+        "S": 0.7499999403953552,
+        "S_baseline": 2.7499998807907104,
+        "abs_change": 1.9999999403953552,
+        "S_resolution": 0.25,
+        "S_hi": 0.8479194641113281,
+        "S_hi_baseline": 2.8548316955566406,
+        "S_hi_ok": true
+      },
+      "R-accident|constant": {
+        "S": -0.8749999403953552,
+        "S_baseline": 2.7499998807907104,
+        "abs_change": 3.6249998211860657,
+        "S_resolution": 0.25,
+        "S_hi": -0.8851222991943359,
+        "S_hi_baseline": 2.8548316955566406,
+        "S_hi_ok": true
+      },
+      "R-pedestrian|blur": {
+        "S": 0.75,
+        "S_baseline": 0.0,
+        "abs_change": 0.75,
+        "S_resolution": 0.25,
+        "S_hi": 0.7530517578125,
+        "S_hi_baseline": -0.13105010986328125,
+        "S_hi_ok": true
+      },
+      "R-pedestrian|constant": {
+        "S": -0.8749999403953552,
+        "S_baseline": 0.0,
+        "abs_change": 0.8749999403953552,
+        "S_resolution": 0.25,
+        "S_hi": -0.8851222991943359,
+        "S_hi_baseline": -0.13105010986328125,
+        "S_hi_ok": true
+      },
+      "N-middle|blur": {
+        "S": -0.5000000596046448,
+        "S_baseline": -1.7500000298023224,
+        "abs_change": 1.2499999701976776,
+        "S_resolution": 0.25,
+        "S_hi": -0.5466537475585938,
+        "S_hi_baseline": -1.810821533203125,
+        "S_hi_ok": true
+      },
+      "N-middle|constant": {
+        "S": -0.8749999403953552,
+        "S_baseline": -1.7500000298023224,
+        "abs_change": 0.8750000894069672,
+        "S_resolution": 0.25,
+        "S_hi": -0.8851222991943359,
+        "S_hi_baseline": -1.810821533203125,
+        "S_hi_ok": true
+      }
+    },
+    "candidates": {
+      "query_reconstruction_matches_captured_ids": true,
+      "boundary": "start of the assistant reply, right after '<|im_start|>assistant\\n'",
+      "query_tail_repr": "\"'t give me any other words.\\n<|im_end|><|im_start|>assistant\\n\"",
+      "candidates": {
+        "0": {
+          "prefix_stable": true,
+          "token_ids": [
+            300
+          ],
+          "tokens": [
+            "0"
+          ],
+          "standalone_token_ids": [
+            300
+          ]
+        },
+        "1": {
+          "prefix_stable": true,
+          "token_ids": [
+            312
+          ],
+          "tokens": [
+            "1"
+          ],
+          "standalone_token_ids": [
+            312
+          ]
+        }
+      },
+      "single_token_candidates": true,
+      "ok": true
+    },
+    "tie_rule": "S >= 0 -> class 1 (anomaly)",
+    "note": "A 5-case agreement table is a feasibility diagnostic, not a validation of the scorer on UCF-Crime."
+  },
+  "A3": [
+    {
+      "case_id": "R-start",
+      "label_original": 0,
+      "label_nosound": 0,
+      "label_changed": false,
+      "parse_missing": [],
+      "sound_sentences_original": [
+        "There is no visible damage or unusual movement, and no unusual sounds or noises are indicated."
+      ],
+      "sound_sentences_nosound": []
+    },
+    {
+      "case_id": "R-pedestrian",
+      "label_original": 1,
+      "label_nosound": 0,
+      "label_changed": true,
+      "parse_missing": [],
+      "sound_sentences_original": [
+        "There are no unusual sounds or noises."
+      ],
+      "sound_sentences_nosound": []
+    },
+    {
+      "case_id": "R-accident",
+      "label_original": 1,
+      "label_nosound": 1,
+      "label_changed": false,
+      "parse_missing": [],
+      "sound_sentences_original": [],
+      "sound_sentences_nosound": []
+    },
+    {
+      "case_id": "R-end",
+      "label_original": 0,
+      "label_nosound": 0,
+      "label_changed": false,
+      "parse_missing": [],
+      "sound_sentences_original": [
+        "There are no unusual sounds or noises in the video."
+      ],
+      "sound_sentences_nosound": []
+    },
+    {
+      "case_id": "N-middle",
+      "label_original": 0,
+      "label_nosound": 0,
+      "label_changed": false,
+      "parse_missing": [],
+      "sound_sentences_original": [
+        "There are no unusual sounds or noises in the video that suggest an anomaly."
+      ],
+      "sound_sentences_nosound": []
+    }
+  ]
+}
