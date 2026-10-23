@@ -1,0 +1,54 @@
+gate syn=0.5 event event3 A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=313 NOT_SUP=1 INCONCL=89 INSEPAR=597 INCONCL_T=0 | SUP/evaluable=0.78
+gate syn=0.5 event event3 A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=352 NOT_SUP=1 INCONCL=99 INSEPAR=548 INCONCL_T=0 | SUP/evaluable=0.78
+gate syn=0.5 event event3 A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=313 NOT_SUP=0 INCONCL=111 INSEPAR=576 INCONCL_T=0 | SUP/evaluable=0.74
+gate syn=0.5 event event3 A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=141 NOT_SUP=2 INCONCL=78 INSEPAR=779 INCONCL_T=0 | SUP/evaluable=0.64
+gate syn=0.5 event event3 A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=154 NOT_SUP=1 INCONCL=79 INSEPAR=766 INCONCL_T=0 | SUP/evaluable=0.66
+gate syn=0.5 event event3 A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=166 NOT_SUP=0 INCONCL=76 INSEPAR=758 INCONCL_T=0 | SUP/evaluable=0.69
+gate syn=0.5 event event3 A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=69 NOT_SUP=1 INCONCL=43 INSEPAR=887 INCONCL_T=0 | SUP/evaluable=0.61
+gate syn=0.5 event event3 A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=63 NOT_SUP=1 INCONCL=46 INSEPAR=890 INCONCL_T=0 | SUP/evaluable=0.57
+gate syn=0.5 event event3 A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=82 NOT_SUP=2 INCONCL=38 INSEPAR=878 INCONCL_T=0 | SUP/evaluable=0.67
+gate syn=0.5 event twopairs A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=539 NOT_SUP=0 INCONCL=0 INSEPAR=461 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=525 NOT_SUP=0 INCONCL=0 INSEPAR=475 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=576 NOT_SUP=0 INCONCL=0 INSEPAR=424 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=289 NOT_SUP=0 INCONCL=0 INSEPAR=711 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=270 NOT_SUP=0 INCONCL=0 INSEPAR=730 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=276 NOT_SUP=0 INCONCL=0 INSEPAR=724 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=136 NOT_SUP=0 INCONCL=0 INSEPAR=864 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=129 NOT_SUP=0 INCONCL=0 INSEPAR=871 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event twopairs A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=141 NOT_SUP=0 INCONCL=0 INSEPAR=859 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event S1like A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=3 NOT_SUP=27 INCONCL=145 INSEPAR=825 INCONCL_T=0 | SUP/evaluable=0.02
+gate syn=0.5 event S1like A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=2 NOT_SUP=26 INCONCL=137 INSEPAR=835 INCONCL_T=0 | SUP/evaluable=0.01
+gate syn=0.5 event S1like A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=2 NOT_SUP=21 INCONCL=129 INSEPAR=848 INCONCL_T=0 | SUP/evaluable=0.01
+gate syn=0.5 event S1like A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=1 NOT_SUP=9 INCONCL=62 INSEPAR=928 INCONCL_T=0 | SUP/evaluable=0.01
+gate syn=0.5 event S1like A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=1 NOT_SUP=10 INCONCL=47 INSEPAR=942 INCONCL_T=0 | SUP/evaluable=0.02
+gate syn=0.5 event S1like A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=3 NOT_SUP=11 INCONCL=62 INSEPAR=924 INCONCL_T=0 | SUP/evaluable=0.04
+gate syn=0.5 event S1like A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=5 INCONCL=25 INSEPAR=970 INCONCL_T=0 | SUP/evaluable=0.00
+gate syn=0.5 event S1like A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=1 NOT_SUP=4 INCONCL=26 INSEPAR=969 INCONCL_T=0 | SUP/evaluable=0.03
+gate syn=0.5 event S1like A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=3 NOT_SUP=5 INCONCL=23 INSEPAR=969 INCONCL_T=0 | SUP/evaluable=0.10
+gate syn=0.5 event plateau_bg A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=81 NOT_SUP=0 INCONCL=0 INSEPAR=919 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=73 NOT_SUP=0 INCONCL=0 INSEPAR=927 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=64 NOT_SUP=0 INCONCL=0 INSEPAR=936 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=80 NOT_SUP=0 INCONCL=0 INSEPAR=920 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=82 NOT_SUP=0 INCONCL=0 INSEPAR=918 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=83 NOT_SUP=0 INCONCL=0 INSEPAR=917 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=85 NOT_SUP=0 INCONCL=0 INSEPAR=915 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=82 NOT_SUP=0 INCONCL=0 INSEPAR=918 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event plateau_bg A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=85 NOT_SUP=0 INCONCL=0 INSEPAR=915 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 event raccident A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event raccident A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 event heterog A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=277 NOT_SUP=0 INCONCL=16 INSEPAR=707 INCONCL_T=0 | SUP/evaluable=0.95
+gate syn=0.5 event heterog A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=303 NOT_SUP=0 INCONCL=12 INSEPAR=685 INCONCL_T=0 | SUP/evaluable=0.96
+gate syn=0.5 event heterog A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=261 NOT_SUP=0 INCONCL=9 INSEPAR=730 INCONCL_T=0 | SUP/evaluable=0.97
+gate syn=0.5 event heterog A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=112 NOT_SUP=0 INCONCL=9 INSEPAR=879 INCONCL_T=0 | SUP/evaluable=0.93
+gate syn=0.5 event heterog A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=117 NOT_SUP=0 INCONCL=12 INSEPAR=871 INCONCL_T=0 | SUP/evaluable=0.91
+gate syn=0.5 event heterog A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=94 NOT_SUP=0 INCONCL=20 INSEPAR=886 INCONCL_T=0 | SUP/evaluable=0.82
+gate syn=0.5 event heterog A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=42 NOT_SUP=0 INCONCL=6 INSEPAR=952 INCONCL_T=0 | SUP/evaluable=0.88
+gate syn=0.5 event heterog A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=43 NOT_SUP=0 INCONCL=5 INSEPAR=952 INCONCL_T=0 | SUP/evaluable=0.90
+gate syn=0.5 event heterog A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=40 NOT_SUP=0 INCONCL=8 INSEPAR=952 INCONCL_T=0 | SUP/evaluable=0.83

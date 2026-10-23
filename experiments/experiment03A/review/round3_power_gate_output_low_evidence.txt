@@ -1,0 +1,63 @@
+gate syn=0.5 evidence spread A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=796 NOT_SUP=0 INCONCL=0 INSEPAR=204 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=796 NOT_SUP=0 INCONCL=0 INSEPAR=204 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=805 NOT_SUP=0 INCONCL=0 INSEPAR=195 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=529 NOT_SUP=0 INCONCL=0 INSEPAR=471 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=568 NOT_SUP=0 INCONCL=0 INSEPAR=432 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=546 NOT_SUP=0 INCONCL=0 INSEPAR=454 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=352 NOT_SUP=0 INCONCL=0 INSEPAR=648 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=328 NOT_SUP=0 INCONCL=0 INSEPAR=672 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence spread A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=342 NOT_SUP=0 INCONCL=0 INSEPAR=658 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=423 NOT_SUP=0 INCONCL=0 INSEPAR=577 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=402 NOT_SUP=0 INCONCL=0 INSEPAR=598 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=418 NOT_SUP=0 INCONCL=0 INSEPAR=582 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=220 NOT_SUP=0 INCONCL=0 INSEPAR=780 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=234 NOT_SUP=0 INCONCL=0 INSEPAR=766 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=212 NOT_SUP=0 INCONCL=0 INSEPAR=788 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=132 NOT_SUP=0 INCONCL=0 INSEPAR=868 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=129 NOT_SUP=0 INCONCL=0 INSEPAR=871 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence event3 A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=117 NOT_SUP=0 INCONCL=0 INSEPAR=883 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=550 NOT_SUP=0 INCONCL=0 INSEPAR=450 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=542 NOT_SUP=0 INCONCL=0 INSEPAR=458 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=579 NOT_SUP=0 INCONCL=0 INSEPAR=421 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=293 NOT_SUP=0 INCONCL=0 INSEPAR=707 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=327 NOT_SUP=0 INCONCL=0 INSEPAR=673 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=284 NOT_SUP=0 INCONCL=0 INSEPAR=716 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=143 NOT_SUP=0 INCONCL=0 INSEPAR=857 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=156 NOT_SUP=0 INCONCL=0 INSEPAR=844 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence twopairs A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=114 NOT_SUP=0 INCONCL=0 INSEPAR=886 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=169 NOT_SUP=0 INCONCL=0 INSEPAR=831 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=186 NOT_SUP=0 INCONCL=0 INSEPAR=814 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=172 NOT_SUP=0 INCONCL=0 INSEPAR=828 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=72 NOT_SUP=0 INCONCL=0 INSEPAR=928 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=76 NOT_SUP=0 INCONCL=0 INSEPAR=924 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=69 NOT_SUP=0 INCONCL=0 INSEPAR=931 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=32 NOT_SUP=0 INCONCL=0 INSEPAR=968 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=20 NOT_SUP=0 INCONCL=0 INSEPAR=980 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence S1like A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=29 NOT_SUP=0 INCONCL=0 INSEPAR=971 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=81 NOT_SUP=0 INCONCL=0 INSEPAR=919 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=95 NOT_SUP=0 INCONCL=0 INSEPAR=905 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=70 NOT_SUP=0 INCONCL=0 INSEPAR=930 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=73 NOT_SUP=0 INCONCL=0 INSEPAR=927 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=78 NOT_SUP=0 INCONCL=0 INSEPAR=922 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=63 NOT_SUP=0 INCONCL=0 INSEPAR=937 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=81 NOT_SUP=0 INCONCL=0 INSEPAR=919 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=73 NOT_SUP=0 INCONCL=0 INSEPAR=927 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence plateau_bg A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=66 NOT_SUP=0 INCONCL=0 INSEPAR=934 INCONCL_T=0 | SUP/evaluable=1.00
+gate syn=0.5 evidence raccident A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence raccident A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=0 NOT_SUP=0 INCONCL=0 INSEPAR=1000 INCONCL_T=0
+gate syn=0.5 evidence heterog A=4 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=268 NOT_SUP=0 INCONCL=10 INSEPAR=722 INCONCL_T=0 | SUP/evaluable=0.96
+gate syn=0.5 evidence heterog A=4 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=278 NOT_SUP=0 INCONCL=20 INSEPAR=702 INCONCL_T=0 | SUP/evaluable=0.93
+gate syn=0.5 evidence heterog A=4 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=298 NOT_SUP=0 INCONCL=13 INSEPAR=689 INCONCL_T=0 | SUP/evaluable=0.96
+gate syn=0.5 evidence heterog A=6 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=111 NOT_SUP=0 INCONCL=8 INSEPAR=881 INCONCL_T=0 | SUP/evaluable=0.93
+gate syn=0.5 evidence heterog A=6 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=108 NOT_SUP=0 INCONCL=5 INSEPAR=887 INCONCL_T=0 | SUP/evaluable=0.96
+gate syn=0.5 evidence heterog A=6 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=111 NOT_SUP=0 INCONCL=9 INSEPAR=880 INCONCL_T=0 | SUP/evaluable=0.93
+gate syn=0.5 evidence heterog A=8 w=1.5 margin=(0.05, 0.3) draws=1000: SUPPORT=54 NOT_SUP=0 INCONCL=8 INSEPAR=938 INCONCL_T=0 | SUP/evaluable=0.87
+gate syn=0.5 evidence heterog A=8 w=2 margin=(0.05, 0.3) draws=1000: SUPPORT=35 NOT_SUP=0 INCONCL=5 INSEPAR=960 INCONCL_T=0 | SUP/evaluable=0.88
+gate syn=0.5 evidence heterog A=8 w=3 margin=(0.05, 0.3) draws=1000: SUPPORT=32 NOT_SUP=0 INCONCL=7 INSEPAR=961 INCONCL_T=0 | SUP/evaluable=0.82
