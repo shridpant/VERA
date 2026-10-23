@@ -1,0 +1,5 @@
+HEAD 008ed4019781c39e7cb16244b7500244f3986f92
+branch vera-research-local
+status_porcelain_all []
+main 15b8bcb8574a977c229c577f50bfe6f06d07106e
+origin/main 15b8bcb8574a977c229c577f50bfe6f06d07106e

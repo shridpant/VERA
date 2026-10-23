@@ -1,0 +1,23 @@
+clone of research/validated-baseline at f955fec643742151d2b8e6ae145ae23395536541 in /tmp/sp2117_vera_cleanclone_C0b
+PASS  all 319 tracked files present
+PASS  fresh clone is clean
+PASS  compile_all_python (exit 0)
+PASS  recreate_historical_checkout (exit 0)
+PASS  test_vera_pipeline (exit 0)
+PASS  pin_tracked_source (exit 0)
+PASS  source_resolution (exit 0)
+FAIL  doc_links (exit 1)
+PASS  precision_crossings (exit 0)
+PASS  precision_crossings.json reproduces the tracked copy
+FAIL  test_attr_lib (exit 1)
+FAIL  validate_exp01_run_001 (exit 1)
+FAIL  validate_exp02_run_002 (exit 1)
+PASS  analyze_exp02_run_002 (exit 0)
+PASS  analyzer outputs from tracked records are byte-identical to the tracked results
+  validate_exp01_run_001 per-check:
+    PASS: C01 C02 C03 C04 C06 C07 C08 C09 C10
+    FAIL: C05
+  validate_exp02_run_002 per-check:
+    PASS: V01 V03 V04 V05 V06 V07 V08 V09 V10 V11 V13 V14 V15 V16 V17 V18
+    FAIL: V02 V12
+done: 11 PASS, 4 FAIL, 0 INFO

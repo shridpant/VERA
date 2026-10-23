@@ -1,0 +1,66 @@
+# path	bytes	sha256_or_identity	reason it stays local
+experiments/experiment01/runs/run_001/logs/exp01_run001_20261022T155048_12135/pid	6	e66b2800604e0ef3c802c2072895ef7e411c3acd31b5f21affa5a5793b220274	process id file
+experiments/experiment01/runs/run_002/logs/exp01_run002_20261022T155919_14733/pid	6	9de69b3988e23aa3d920205367429f8788774fd644f1e092d25ca9c062e3b408	process id file
+experiments/experiment02/runs/run_001/.run.lock	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	lock file
+experiments/experiment02/runs/run_001/logs/exp02_A_20261022T200546_18974/pid	6	1f95c94d6728c6419b193418f24bd52aa7c687f4ed910f18f8886cf624878a74	process id file
+experiments/experiment02/runs/run_002/.run.lock	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	lock file
+experiments/experiment02/runs/run_002/logs/exp02_r2_ABC_20261022T201316_19806/pid	6	a35906fa0884e87079101cbe8f71013ea11968df31c3aa9714bd399e371eb8ba	process id file
+experiments/experiment02/runs/run_002/logs/exp02_r2_D_20261022T202933_21188/pid	6	e1173a4948bc78ea2bb1fde57f403cbee9b64e2deb19224296e99f06840ee56f	process id file
+experiments/experiment02/runs/run_002/results/example_inputs/N-middle_slot3_blur.png	101234	2b895c1ad8c266f23943f1d799414e75fb538ea6f8bbc298c8788f64f3180ac4	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/N-middle_slot3_constant.png	1545	e85f94b87bc40beba12bfb50bd6666fd249417a177f121efc9db03f4f6f98917	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/N-middle_slot3_original.png	275881	85977601792f42820a20ae0f9563fae3f66f8bd07364588bccfbe5790c54c68e	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/R-accident_slot3_blur.png	82988	ab4ecd06fe6e544780f26dbaef83b04a44b277943cd91a40a8af15acf41ad76c	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/R-accident_slot3_constant.png	1545	e85f94b87bc40beba12bfb50bd6666fd249417a177f121efc9db03f4f6f98917	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/R-accident_slot3_original.png	209096	e650592a5381b5fa3ce4ed54daeb90ad65a9b97eaeb17803c97bc546110c6a7c	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/R-pedestrian_slot3_blur.png	65914	79f9a108f010a2ef5510cf4e55436d5f5fccabfab5f575476541332c910a3b3c	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/R-pedestrian_slot3_constant.png	1545	e85f94b87bc40beba12bfb50bd6666fd249417a177f121efc9db03f4f6f98917	image derived from dataset frames
+experiments/experiment02/runs/run_002/results/example_inputs/R-pedestrian_slot3_original.png	207340	07009cb4cc48f759abbf844e0601687dd0d1932f3da648f0a10bfa5f1f32af9a	image derived from dataset frames
+experiments/experiment02/runs/run_002/spatial/pixel_grad_abs_448.npy	3211392	c22d4811d85a71c837bc3c77cd7beac14451001920fb24b46d3656b3666a16d2	448x448 pixel-gradient maps (image-like, derived from dataset frames)
+experiments/experiment02/runs/run_002/spatial/preview_gradcam_global_norm.png	460042	178062b70d8aaf421ae13ec8fc1f785bc1ddb87b114b84e4c79f1e3cc2818d78	heatmap overlaid on dataset frames
+setup/jobs/.submit.lock	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	lock file
+setup/logs/setup_env.nohup	20333	150b199a272370e3b10dda701a568e2d88b09626c6c1f1a41a61f9d46733328e	byte-identical duplicate of a tracked setup log
+setup/logs/setup_env2.nohup	15562	86501ef58522eeabfd9b0c91875ff1c00a0d2f628e7b06b90f014179bea70764	byte-identical duplicate of a tracked setup log
+setup/logs/smoke_jobs/smoke_20261022T154840_11383/pid	6	e1f771e3a7b7117e0197a06cdbd5ea7942e64aea3e7af965eff82f4643722034	process id file
+setup/logs/smoke_jobs/smoke_20261022T155015_11857/pid	6	39b3a723856dca22d69c8c8ccc537480f7f49950d334b26000b0307a4f10804f	process id file
+setup/logs/ucf_part1_listing.err	56	5d78e202187db039d819918368b6829d157a8854c10524ec057794348123814d	archive listing made for the experiment03 draft (untracked, not ignored)
+setup/logs/ucf_part1_listing.tsv	11401	4edab095d2d7ea0030e9f0855ef7ad4235b1c77456dc18881a9de950b69d702e	archive listing made for the experiment03 draft (untracked, not ignored)
+setup/logs/ucf_part2_listing.err	55	9dce305cc50d205de95a99a2b5fdcc8319fa936c36aac8b3a8131e134a453b62	archive listing made for the experiment03 draft (untracked, not ignored)
+setup/logs/ucf_part2_listing.tsv	12375	6f514e2d47cf6d5130524b17bbcf9a181998571adf4e082bb283cb5a617d1f4f	archive listing made for the experiment03 draft (untracked, not ignored)
+setup/logs/ucf_part4_listing.err	56	3d3ae6386a43f0492f391cea3d46786d174052eb00a204e43029c074f44edb55	archive listing made for the experiment03 draft (untracked, not ignored)
+setup/logs/ucf_part4_listing.tsv	12691	1fb1000077a35b9ec4eebe4ae858d9a642f65aba24baded93f266fded83c15ec	archive listing made for the experiment03 draft (untracked, not ignored)
+shared/features/vera_official_ucf_imagebind/RoadAccidents127_x264.npy	1327232	f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657	ImageBind feature array from the VERA authors' release (provenance JSON tracked)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/.gitattributes	1634	a9052e0ab15012812d1e35b9647a6b64f5da1ccc77272b077410260795a200ce	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/README.md	34348	36b369a7de60337c8734f51b6a3a5ad961eaa491734ba3817ca9320260980c18	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/added_tokens.json	179	df59e170102f8d19d3e186cc91c81006c9822ea9fe8ce2b68e7be77195c01db3	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/config.json	3954	6691657d87c9e0ddf294d21505223a999e67ca96f12e286c5f849cccc3176516	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/configuration_intern_vit.py	5548	22dd687a5f142985407675fc6b1dc688c2ded93e54192543ecf28ef495a6efa8	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/configuration_internlm2.py	7005	9f9e14d64be7b81068e8421fd27e1c466b3fb6aeb67725ca328e56083c3f7a60	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/configuration_internvl_chat.py	4088	20bd8ddcf5c51f9fded0e3191db2bc00a7012fd3f7912dea4277fa24f17b6e32	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/conversation.py	15309	b1b9f280e9cb9211e519e2b8071002b57cc742aadb2f49b05fa674ee3c7d83ee	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/generation_config.json	115	eac5a6b0dff266d8ce2fcf6c05880d7ff71087ca273d1fafd6fd2f53b2565d2e	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/model-00001-of-00004.safetensors	4939944336	-	model weights (hub checksums in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/model-00002-of-00004.safetensors	4915914584	-	model weights (hub checksums in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/model-00003-of-00004.safetensors	4915914592	-	model weights (hub checksums in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/model-00004-of-00004.safetensors	1379026920	-	model weights (hub checksums in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/model.safetensors.index.json	51167	9110700a238c972daba84e094fa2c79c1a7ab7595df7912f30bd5f08120e226b	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/modeling_intern_vit.py	18106	1978e330ea5533dda4d1379096aded271fc741347fc48cb4924846b56a2a6a4b	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/modeling_internlm2.py	61208	c014d933c6afdf7414791c1859c692ca4b49c925688bcc00fbd1658ef75fb0ba	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/modeling_internvl_chat.py	15988	1915c32d984aed6750e911884ad59f92504f73b799c7443121c67b9cb21fe347	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/preprocessor_config.json	287	0658115064c561026539aeeead9ed3b1a8e0cc90967df8c142849199f955d2b4	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/special_tokens_map.json	844	8cb729e6fd4c29e8c5be65cb51128735cea0ab56606a186cf8cbb30123c72eae	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/tokenization_internlm2.py	8791	e548dc777a1def2f5339cfe12de8da2d12500d664e3dafa5c585c407e4b806fa	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/tokenization_internlm2_fast.py	7788	b6dc75cb1a276a897190a003b97a65b13b68b948d64646df67e7f18392dfbb34	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/tokenizer.model	1477754	f868398fc4e05ee1e8aeba95ddf18ddcc45b8bce55d5093bead5bbf80429b48b	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296/tokenizer_config.json	4005	2a0e30fb556e25b8255729fcb67db4e0e1a265e3fb177d9b09316f7c665f31f7	model repository file (hashes in MODEL_PROVENANCE.json)
+shared/reference/ucf_crime_official/Temporal_Anomaly_Annotation_for_Testing_Videos.txt	15574	3b9542413f2ed9e94f73bf0488c151b3d7d595a8d2ad30f524e9243a2ae2a17c	external reference file (hash in shared/README.md / provenance JSON)
+shared/reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json	8485	2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1	external reference file (hash in shared/README.md / provenance JSON)
+shared/reference/vera_official_ucf_initial_scores/VERA_prediction_scores_UCF_Crime.zip	655612	b7457cee812510ec2331c24cb5da451327c9500152e2437839d31af29166a3b0	VERA authors' released archive (hash in shared/README.md)
+shared/videos/ucf_crime/Normal_Videos_018_x264.mp4	7662531	ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1	dataset video (provenance JSON tracked)
+shared/videos/ucf_crime/RoadAccidents127_x264.mp4	19361185	618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff	dataset video (provenance JSON tracked)
+shared/frames/ucf_crime/Normal_Videos_018_x264/	48104989	see shared/frames/ucf_crime/Normal_Videos_018_x264.frames.json (frames_digest_sha256)	frame cache, 1181 JPEGs from dataset video
+shared/frames/ucf_crime/RoadAccidents127_x264/	73069851	see shared/frames/ucf_crime/RoadAccidents127_x264.frames.json (frames_digest_sha256)	frame cache, 2580 JPEGs from dataset video
+setup/environment/env/	-	-	conda prefix; rebuild from setup/environment/
+setup/source/VERA/	-	HEAD 008ed4019781c39e7cb16244b7500244f3986f92	historical runtime checkout with its own .git (commit is in this repository)
+shared/models/hf_home/	-	-	Hugging Face module cache
+setup/cleanup_inventory/, setup/cleanup_manifest.md, setup/scripts/cleanup_obsolete_experiments.sh	-	-	records about unrelated folders on the host account
+experiments/experiment03/	-	-	protocol draft, not executed; deliberately outside the baseline (untracked, not ignored)

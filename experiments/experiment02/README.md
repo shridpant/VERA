@@ -27,4 +27,7 @@ bounded question.
 | Numeric temporal attribution | CONDITIONAL GO (provisional) |
 | Spatial heatmaps | CONDITIONAL GO for technical validation only; NO-GO for participants |
 
+**Errata.** See [`ERRATA.md`](ERRATA.md). E1 (2026-10-23): a change in S_hi of less than one bf16 step can still
+move the deployed bf16 score. The native differences (`Delta_bf16`) are what to read alongside S_hi.
+
 Next step: [`runs/run_002/NEXT_STEP.md`](runs/run_002/NEXT_STEP.md).

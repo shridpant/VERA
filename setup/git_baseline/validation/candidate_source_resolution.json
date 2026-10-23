@@ -1,0 +1,121 @@
+{
+ "repository_root": "/tmp/sp2117_vera_bootstrap",
+ "repository_head": "f955fec643742151d2b8e6ae145ae23395536541",
+ "passed": true,
+ "results": [
+  {
+   "config": "experiments/experiment01/config.yaml",
+   "checkout": "setup/source/VERA",
+   "resolved_path": "/tmp/sp2117_vera_bootstrap/setup/source/VERA",
+   "expected_head": "008ed4019781c39e7cb16244b7500244f3986f92",
+   "checks": {
+    "S1_checkout_exists": {
+     "ok": true,
+     "detail": "git checkout"
+    },
+    "S2_head_and_clean": {
+     "ok": true,
+     "detail": "HEAD 008ed4019781c39e7cb16244b7500244f3986f92; tracked changes: none; git dir /tmp/sp2117_vera_bootstrap/.git/worktrees/VERA"
+    },
+    "S3_commit_in_this_repository": {
+     "ok": true,
+     "detail": "present True; ancestor of HEAD True"
+    },
+    "S4_tree_matches": {
+     "ok": true,
+     "detail": "checkout 41c689acd9d3, repository 41c689acd9d3"
+    },
+    "S5_matches_tracked_root": {
+     "ok": true,
+     "detail": "25 VERA source files; differing []; root working copies modified: none",
+     "generate_initial_score.py_blob": "bba1119482d02d41dfb6e470466976d8702e7410"
+    },
+    "S6_import_resolves_to_checkout": {
+     "ok": true,
+     "detail": {
+      "file": "/tmp/sp2117_vera_bootstrap/setup/source/VERA/generate_initial_score.py",
+      "classes": [
+       "VideoAnomalyDetectionModelInference"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "config": "experiments/experiment02/config.yaml",
+   "checkout": "setup/source/VERA",
+   "resolved_path": "/tmp/sp2117_vera_bootstrap/setup/source/VERA",
+   "expected_head": "008ed4019781c39e7cb16244b7500244f3986f92",
+   "checks": {
+    "S1_checkout_exists": {
+     "ok": true,
+     "detail": "git checkout"
+    },
+    "S2_head_and_clean": {
+     "ok": true,
+     "detail": "HEAD 008ed4019781c39e7cb16244b7500244f3986f92; tracked changes: none; git dir /tmp/sp2117_vera_bootstrap/.git/worktrees/VERA"
+    },
+    "S3_commit_in_this_repository": {
+     "ok": true,
+     "detail": "present True; ancestor of HEAD True"
+    },
+    "S4_tree_matches": {
+     "ok": true,
+     "detail": "checkout 41c689acd9d3, repository 41c689acd9d3"
+    },
+    "S5_matches_tracked_root": {
+     "ok": true,
+     "detail": "25 VERA source files; differing []; root working copies modified: none",
+     "generate_initial_score.py_blob": "bba1119482d02d41dfb6e470466976d8702e7410"
+    },
+    "S6_import_resolves_to_checkout": {
+     "ok": true,
+     "detail": {
+      "file": "/tmp/sp2117_vera_bootstrap/setup/source/VERA/generate_initial_score.py",
+      "classes": [
+       "VideoAnomalyDetectionModelInference"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "config": "/tmp/sp2117_vera_validate/candidate_C0b/future_run_config.yaml",
+   "checkout": "setup/source/tracked-008ed4019781",
+   "resolved_path": "/tmp/sp2117_vera_bootstrap/setup/source/tracked-008ed4019781",
+   "expected_head": "008ed4019781c39e7cb16244b7500244f3986f92",
+   "checks": {
+    "S1_checkout_exists": {
+     "ok": true,
+     "detail": "git checkout"
+    },
+    "S2_head_and_clean": {
+     "ok": true,
+     "detail": "HEAD 008ed4019781c39e7cb16244b7500244f3986f92; tracked changes: none; git dir /tmp/sp2117_vera_bootstrap/.git/worktrees/tracked-008ed4019781"
+    },
+    "S3_commit_in_this_repository": {
+     "ok": true,
+     "detail": "present True; ancestor of HEAD True"
+    },
+    "S4_tree_matches": {
+     "ok": true,
+     "detail": "checkout 41c689acd9d3, repository 41c689acd9d3"
+    },
+    "S5_matches_tracked_root": {
+     "ok": true,
+     "detail": "25 VERA source files; differing []; root working copies modified: none",
+     "generate_initial_score.py_blob": "bba1119482d02d41dfb6e470466976d8702e7410"
+    },
+    "S6_import_resolves_to_checkout": {
+     "ok": true,
+     "detail": {
+      "file": "/tmp/sp2117_vera_bootstrap/setup/source/tracked-008ed4019781/generate_initial_score.py",
+      "classes": [
+       "VideoAnomalyDetectionModelInference"
+      ]
+     }
+    }
+   }
+  }
+ ]
+}

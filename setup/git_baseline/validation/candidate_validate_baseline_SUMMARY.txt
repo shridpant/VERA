@@ -1,0 +1,27 @@
+R=/tmp/sp2117_vera_bootstrap HEAD=f955fec643742151d2b8e6ae145ae23395536541 O=/tmp/sp2117_vera_validate/candidate_C0b
+PASS  ancestry: 15b8bcb8574a977c229c577f50bfe6f06d07106e <- 008ed4019781c39e7cb16244b7500244f3986f92 <- ... <- HEAD
+PASS  fork main still 15b8bcb8574a977c229c577f50bfe6f06d07106e
+PASS  source equivalence: all 26 files of 008ed4019781c39e7cb16244b7500244f3986f92 identical at HEAD (README.md integrated)
+PASS  live setup/source/VERA = tree of 008ed4019781c39e7cb16244b7500244f3986f92, clean
+PASS  no gitlinks
+PASS  no new file > 2 MB (inherited Data/name_gt_pair.json 11.7 MB excluded)
+PASS  secret/signed-URL scan: no hits
+PASS  no caches, weights, videos, frames or archives tracked
+PASS  test_vera_pipeline (exit 0)
+PASS  test_attr_lib (exit 0)
+PASS  compile_all_python (exit 0)
+PASS  validate_exp01_run_001 (exit 0)
+PASS  validate_exp01_run_002 (exit 0)
+PASS  summarize_exp01_run_001 (exit 0)
+PASS  validate_exp02_run_002 (exit 0)
+PASS  analyze_exp02_run_002 (exit 0)
+PASS  spatial_border_check (exit 0)
+PASS  rerun outputs byte-identical to originals: exp01_run_001
+PASS  rerun outputs byte-identical to originals: exp01_run_002
+PASS  rerun outputs byte-identical to originals: exp02_run_002_validate
+PASS  rerun outputs byte-identical to originals: exp02_run_002_analyze
+PASS  precision_crossings (exit 0)
+PASS  pin_tracked_source (exit 0)
+PASS  source_resolution (exit 0)
+FAIL  doc_links (exit 1)
+done: 24 PASS, 1 FAIL, 0 INFO
