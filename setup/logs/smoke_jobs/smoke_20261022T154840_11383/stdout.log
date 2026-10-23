@@ -1,0 +1,7 @@
+== stage frames (2026-10-22T19:48:46+00:00)
+Extracted 2580 frames from /home/stu11/s5/sp2117/vera_research/shared/videos/ucf_crime/RoadAccidents127_x264.mp4 to /home/stu11/s5/sp2117/vera_research/shared/frames/ucf_crime/.tmp_RoadAccidents127_x264_11435/RoadAccidents127_x264
+== stage frames: ok {"decoded_frame_count": 2580, "reused_cache": false, "frames_identity": "shared/frames/ucf_crime/RoadAccidents127_x264.frames.json", "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff"}
+== stage vlm (2026-10-22T19:49:32+00:00)
+162 anchors, 0 already recorded, 1 to run
+model loaded in 5.7s; {'vision_use_flash_attn': True, 'llm_attn_implementation': 'flash_attention_2', 'llm_attention_class': 'InternLM2FlashAttention2'}
+== stage vlm: failed {"error": "UnicodeEncodeError('ascii', \" <s><|im_start|> system\\n\u4f60\u662f\u7531\u4e0a\u6d77\u4eba\u5de5\u667a\u80fd\u5b9e\u9a8c\u5ba4\u8054\u5408\u5546\u6c64\u79d1\u6280\u5f00\u53d1\u7684\u4e66\u751f\u591a\u6a21\u6001\u5927\u6a21\u578b\uff0c\u82f1\u6587\u540d\u53ebInternVL, \u662f\u4e00\u4e2a\u6709\u7528\u65e0\u5bb3\u7684\u4eba\u5de5\u667a\u80fd\u52a9\u624b\u3002<|im_end|><|im_start|>user\\n

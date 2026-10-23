@@ -1,0 +1,229 @@
+{
+  "run_id": "run_001",
+  "experiment_id": "experiment01",
+  "created_at": "2026-10-22T19:50:49+00:00",
+  "host": "oz.gccis.rit.edu",
+  "config": "experiments/experiment01/config.yaml",
+  "config_sha256": "764dfb5f8c1119e8af036e733a069fcee61cfb69d6b92f238b8237956b81c9bf",
+  "source": {
+    "repo": "https://github.com/vera-framework/VERA",
+    "base_commit": "15b8bcb8574a977c229c577f50bfe6f06d07106e",
+    "head": "008ed4019781c39e7cb16244b7500244f3986f92",
+    "branch": "vera-research-local",
+    "local_patch_vs_base": "generate_initial_score.py | 176 +++++++++++++++++++++++-----------------------\n 1 file changed, 88 insertions(+), 88 deletions(-)",
+    "executed_inference_code": "generate_initial_score.py (root; classes and helpers imported) + setup/scripts/run_experiment.py main loop; Inference/generate_intial_score.py is not used",
+    "refinement_code": "setup/scripts/vera_pipeline.py vera_refine() (transcription of compute_auc.py, checked against the unmodified script by validate_run.py)"
+  },
+  "model": {
+    "repo": "OpenGVLab/InternVL2-8B",
+    "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "local_dir": "shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "dtype": "bfloat16",
+    "use_flash_attn": true,
+    "frozen": true
+  },
+  "video": {
+    "id": "RoadAccidents127_x264",
+    "path": "shared/videos/ucf_crime/RoadAccidents127_x264.mp4",
+    "sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+    "manifest_entry": "frames/RoadAccidents/RoadAccidents127_x264.mp4",
+    "expected_length": 2580,
+    "expected_anchor_count": 162,
+    "why": "VERA appendix B.5 qualitative example"
+  },
+  "sampling": {
+    "sampling_rate": 16,
+    "fps_for_windows": 30,
+    "t_window_s": 10,
+    "snippet_len": 8,
+    "image_size": 448
+  },
+  "generation": {
+    "num_beams": 1,
+    "max_new_tokens": 1024,
+    "do_sample": false
+  },
+  "features": {
+    "path": "shared/features/vera_official_ucf_imagebind/RoadAccidents127_x264.npy",
+    "sha256": "f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657",
+    "source": "official VERA release ucf_crime_vision_features.zip (Google Drive id 1gwkgIKiPg6fpRaO5yXkxuRcN3X1-97LF), single member fetched by HTTP range",
+    "model": "ImageBind (per the VERA README, extracted with LAVAD's code); exact extraction settings are not published with the file"
+  },
+  "seed": 0,
+  "deviations": [
+    "Loop over windows runs in setup/scripts/run_experiment.py (same arithmetic as generate_initial_score.py main(); classes, transform, prompt and parser imported from the pinned source).",
+    "Segment labels come from a strict parser of the 'Output:' field; the upstream parser's label is kept alongside for comparison. Unparseable output gets no label.",
+    "Model loaded from a local, checksum-verified copy of the pinned Hugging Face revision instead of the hub name and ./cache.",
+    "Scene refinement uses the authors' released ImageBind features for this video rather than features recomputed here."
+  ],
+  "runner_sha256": {
+    "fetch_hf_model.py": "9dcd039d2f4b1c0fbeb657191ea548f7cf901561b79d37a06d9efa00c0bfaaaa",
+    "fetch_zip_member.py": "5e82b5325204be3fcfbcbeb56d261bcae0f50c91a94890311ddc3302845b0b76",
+    "run_experiment.py": "170bd5cedc1906b0a46d7d02a4e188c0b8913b954a2d60e81f2311eb8acd00d5",
+    "test_vera_pipeline.py": "396d5a2cd22c2257c5519207e49937ab6153afd2c7cd3e34cacafda6619b5324",
+    "validate_run.py": "b6918d3bd4c6e74febb9bdb26b8b9648f810f9d6eeab7d8913c6757fde83c004",
+    "vera_pipeline.py": "9acb63665d94a91fbdd32cdb1d9870cff9c09b5546caf96b649eb44ccbdb2691"
+  },
+  "invocations": [
+    {
+      "started_at": "2026-10-22T19:50:49+00:00",
+      "argv": [
+        "setup/scripts/run_experiment.py",
+        "--config",
+        "experiments/experiment01/config.yaml",
+        "--run-dir",
+        "experiments/experiment01/runs/run_001",
+        "--new-run"
+      ],
+      "python": "/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python",
+      "stages": [
+        "frames",
+        "vlm",
+        "refine"
+      ],
+      "cwd": "/home/stu11/s5/sp2117/vera_research",
+      "job_dir": "experiments/experiment01/runs/run_001/logs/exp01_run001_20261022T155048_12135",
+      "cuda_visible_devices": "GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3",
+      "finished_at": "2026-10-22T19:57:00+00:00"
+    },
+    {
+      "started_at": "2026-10-22T19:59:03+00:00",
+      "argv": [
+        "setup/scripts/run_experiment.py",
+        "--config",
+        "experiments/experiment01/config.yaml",
+        "--run-dir",
+        "experiments/experiment01/runs/run_001",
+        "--stages",
+        "refine"
+      ],
+      "python": "/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python",
+      "stages": [
+        "refine"
+      ],
+      "cwd": "/home/stu11/s5/sp2117/vera_research",
+      "job_dir": null,
+      "cuda_visible_devices": "",
+      "finished_at": "2026-10-22T19:59:09+00:00"
+    }
+  ],
+  "stages": {
+    "frames": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-22T19:50:55+00:00",
+        "wall_s": 2.6,
+        "decoded_frame_count": 2580,
+        "reused_cache": true,
+        "frames_identity": "shared/frames/ucf_crime/RoadAccidents127_x264.frames.json",
+        "video_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff"
+      }
+    ],
+    "vlm": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-22T19:56:58+00:00",
+        "wall_s": 363.7,
+        "n_anchors": 162,
+        "n_unparsed": 0,
+        "windows_run_this_invocation": 162,
+        "model_load_s": 4.2,
+        "attention": {
+          "vision_use_flash_attn": true,
+          "llm_attn_implementation": "flash_attention_2",
+          "llm_attention_class": "InternLM2FlashAttention2"
+        },
+        "vlm_seconds_this_invocation": 346.2,
+        "peak_gpu_mem_allocated_bytes_max": 19289207296
+      }
+    ],
+    "refine": [
+      {
+        "status": "ok",
+        "finished_at": "2026-10-22T19:57:00+00:00",
+        "wall_s": 1.8,
+        "frame_scores": 2580,
+        "features_sha256": "f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657",
+        "features_shape": [
+          162,
+          1024
+        ],
+        "top_n": 24,
+        "diagnostics": {
+          "scope": "single video only; not a benchmark AUC/AP and not comparable to the paper's numbers",
+          "gt_positive_frames": 140,
+          "gt_negative_frames": 2440,
+          "frame_level_roc_auc_this_video": 0.9949414519906323,
+          "mean_score_inside_annotation": 0.3564626558813943,
+          "mean_score_outside_annotation": 0.03253706102605916,
+          "reference_official_initial_scores": {
+            "label": "REFERENCE ONLY: labels released by the VERA authors, not generated in this run",
+            "path": "shared/reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json",
+            "sha256": "2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1",
+            "same_anchor_keys": true,
+            "agreement_with_fresh_labels": 0.9629629629629629,
+            "official_anchors_labelled_1": [
+              672,
+              1280,
+              2128,
+              2176,
+              2192,
+              2208,
+              2240,
+              2256,
+              2272,
+              2288,
+              2320,
+              2352,
+              2368
+            ],
+            "frame_level_roc_auc_this_video": 0.9949414519906323
+          }
+        }
+      },
+      {
+        "status": "ok",
+        "finished_at": "2026-10-22T19:59:09+00:00",
+        "wall_s": 1.9,
+        "frame_scores": 2580,
+        "features_sha256": "f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657",
+        "features_shape": [
+          162,
+          1024
+        ],
+        "top_n": 24,
+        "diagnostics": {
+          "scope": "single video only; not a benchmark AUC/AP and not comparable to the paper's numbers",
+          "gt_positive_frames": 140,
+          "gt_negative_frames": 2440,
+          "frame_level_roc_auc_this_video": 0.9949414519906323,
+          "mean_score_inside_annotation": 0.3564626558813943,
+          "mean_score_outside_annotation": 0.03253706102605916,
+          "reference_official_initial_scores": {
+            "label": "REFERENCE ONLY: labels released by the VERA authors, not generated in this run",
+            "path": "shared/reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json",
+            "sha256": "2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1",
+            "same_anchor_keys": true,
+            "agreement_with_fresh_labels": 0.9629629629629629,
+            "official_anchors_labelled_1": [
+              672,
+              1280,
+              2128,
+              2176,
+              2192,
+              2208,
+              2240,
+              2256,
+              2272,
+              2288,
+              2320,
+              2352,
+              2368
+            ],
+            "frame_level_roc_auc_this_video": 0.9949414519906323
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+# What stays local in this research fork. Rules are path-specific on purpose: experiment folders are never
+# ignored wholesale, so new experiments show up in `git status` and are committed with explicit paths.
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Conda environment. Rebuild it from setup/environment/ (REBUILD.md, setup/scripts/setup_env.sh).
+/setup/environment/env/
+
+# Runtime source checkouts, each with its own .git: the historical setup/source/VERA used by experiment01 and
+# experiment02, and any pinned checkout made for later runs. See setup/source/README.md.
+/setup/source/*/
+
+# Records about unrelated folders on the host account. They stay local.
+/setup/cleanup_inventory/
+/setup/cleanup_manifest.md
+/setup/scripts/cleanup_obsolete_experiments.sh
+
+# Launcher lock (the job ledger setup/jobs/RESOURCE_LOG.tsv is tracked)
+/setup/jobs/.submit.lock
+
+# Byte-identical copies of setup/logs/setup_env_*.log
+/setup/logs/setup_env*.nohup
+
+# Process ids and run locks
+/setup/logs/smoke_jobs/*/pid
+/experiments/*/runs/*/logs/*/pid
+.run.lock
+
+# Shared data: only provenance and identity files are tracked. The model, videos, frames, features and reference
+# outputs are external (see shared/README.md for sources and checksums).
+/shared/**
+!/shared/**/
+!/shared/README.md
+!/shared/**/*.provenance.json
+!/shared/**/MODEL_PROVENANCE.json
+!/shared/frames/*/*.frames.json
+!/shared/frames/*/*.frames.sha256
+/shared/models/hf_home/
+/shared/frames/*/*/

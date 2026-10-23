@@ -1,0 +1,22 @@
+{
+  "source_url": "https://drive.usercontent.google.com/download?id=1gwkgIKiPg6fpRaO5yXkxuRcN3X1-97LF&export=download&confirm=t",
+  "resolved_url_host": "drive.usercontent.google.com",
+  "archive_bytes": 309807835,
+  "archive_members": 292,
+  "member": "ucf_crime_vision_features/RoadAccidents127_x264.npy",
+  "member_bytes": 1327232,
+  "member_compressed_bytes": 721314,
+  "member_crc32": "babda0b4",
+  "member_date_time": [
+    2025,
+    4,
+    14,
+    16,
+    54,
+    42
+  ],
+  "sha256": "f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657",
+  "bytes_fetched_over_http": 2575067,
+  "fetched_at": "2026-10-22T19:33:49+00:00",
+  "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+}

@@ -1,0 +1,21 @@
+# Pinned pip requirements for the vera-research environment (installed after torch; see setup/scripts/setup_env.sh).
+# torch==2.1.2, torchvision==0.16.2, torchaudio==2.1.2 come from https://download.pytorch.org/whl/cu121.
+# flash-attn 2.5.8 comes from the official prebuilt wheel (cu122, torch2.1, cxx11abi FALSE, cp310).
+
+# InternVL2-8B remote code (model card: transformers>=4.37.2; InternVL install docs pin 4.37.2)
+transformers==4.37.2
+tokenizers==0.15.2
+accelerate==0.27.2
+sentencepiece==0.2.0
+einops==0.7.0
+timm==0.6.7
+huggingface_hub==0.20.3
+safetensors==0.4.2
+
+# numerics / VERA compute_auc.py
+numpy==1.26.4
+scipy==1.11.4
+scikit-learn==1.3.2
+pillow==10.2.0
+opencv-python-headless==4.9.0.80
+pyyaml==6.0.1

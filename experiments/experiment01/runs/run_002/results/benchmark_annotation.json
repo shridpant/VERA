@@ -1,0 +1,12 @@
+{
+  "note": "UCF-Crime benchmark annotation copied from VERA Data/UCF_Eval.json. NOT used by Step 1 or the refinement; diagnostics only. compute_auc.py treats it as frames [start, end) (zero-based).",
+  "video": "frames/RoadAccidents/RoadAccidents127_x264.mp4",
+  "length": 2580,
+  "temporal_label": [
+    2160,
+    2300,
+    -1,
+    -1
+  ],
+  "video_level_answer": "Yes."
+}
