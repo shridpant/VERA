@@ -1,0 +1,141 @@
+{
+ "seed": "experiment03-20261023",
+ "key_templates": [
+  "class:{class}",
+  "S1video:{video}",
+  "S2:{video}:{anchor}",
+  "S3video:{video}"
+ ],
+ "order": "ascending sha256 hexdigest of SEED:key",
+ "max_mb": 100,
+ "hold_out": [
+  "Normal_Videos_018_x264",
+  "RoadAccidents127_x264"
+ ],
+ "excluded_by_replacement": [],
+ "vera_source": {
+  "checkout_head": "008ed4019781c39e7cb16244b7500244f3986f92",
+  "base_commit": "15b8bcb8574a977c229c577f50bfe6f06d07106e",
+  "note": "Data/UCF_Eval.json is not modified by the experiment01 patch"
+ },
+ "inputs": {
+  "ucf_eval_json": {
+   "path": "setup/source/VERA/Data/UCF_Eval.json",
+   "sha256": "f3857cddd623f767e7b86bd50a4aeb122445fc6e241ddd7130b7e3ec0c4d8b9f"
+  },
+  "released_scores_zip": {
+   "path": "shared/reference/vera_official_ucf_initial_scores/VERA_prediction_scores_UCF_Crime.zip",
+   "sha256": "b7457cee812510ec2331c24cb5da451327c9500152e2437839d31af29166a3b0"
+  },
+  "zip_listings": {
+   "ucf_part1_listing.tsv": "4edab095d2d7ea0030e9f0855ef7ad4235b1c77456dc18881a9de950b69d702e",
+   "ucf_part2_listing.tsv": "6f514e2d47cf6d5130524b17bbcf9a181998571adf4e082bb283cb5a617d1f4f",
+   "ucf_part3_listing.tsv": "aacd9a0496d721777777c07a18f79fc69ce44caccce0285b8b5ba46177174b5a",
+   "ucf_part4_listing.tsv": "1fb1000077a35b9ec4eebe4ae858d9a642f65aba24baded93f266fded83c15ec",
+   "ucf_testing_normal_listing.tsv": "ffe44275e8d859fc9b35cd2df5bde452ba5191ea218241a06e1d7652cbe1fd95"
+  }
+ },
+ "excluded": {
+  "hold_out": [
+   "Normal_Videos_018_x264",
+   "RoadAccidents127_x264"
+  ],
+  "too_large": [
+   "Arrest039_x264",
+   "Assault010_x264",
+   "Burglary032_x264",
+   "Explosion007_x264",
+   "Normal_Videos_634_x264",
+   "Normal_Videos_880_x264",
+   "Normal_Videos_923_x264",
+   "Normal_Videos_924_x264",
+   "Normal_Videos_935_x264",
+   "Normal_Videos_940_x264",
+   "Shooting032_x264",
+   "Shoplifting044_x264"
+  ],
+  "no_unclipped_anchor": [
+   "Normal_Videos_345_x264",
+   "Normal_Videos_745_x264",
+   "Normal_Videos_878_x264",
+   "Normal_Videos_881_x264",
+   "RoadAccidents017_x264",
+   "RoadAccidents021_x264",
+   "Shooting037_x264"
+  ],
+  "replacement": []
+ },
+ "jointly_eligible_s1_videos_by_class": {
+  "Abuse": 2,
+  "Arrest": 4,
+  "Arson": 6,
+  "Assault": 2,
+  "Burglary": 6,
+  "Explosion": 15,
+  "Fighting": 5,
+  "RoadAccidents": 6,
+  "Robbery": 3,
+  "Shooting": 21,
+  "Shoplifting": 16,
+  "Stealing": 4,
+  "Vandalism": 3
+ },
+ "class_order": [
+  "RoadAccidents",
+  "Vandalism",
+  "Shoplifting",
+  "Burglary",
+  "Fighting",
+  "Arson",
+  "Abuse",
+  "Assault",
+  "Arrest",
+  "Explosion",
+  "Robbery",
+  "Shooting",
+  "Stealing"
+ ],
+ "slot_classes": [
+  "RoadAccidents",
+  "Vandalism",
+  "Shoplifting",
+  "Burglary",
+  "Fighting",
+  "Arson",
+  "Abuse",
+  "Assault",
+  "Arrest",
+  "Explosion"
+ ],
+ "next_class_order": [
+  "Robbery",
+  "Shooting",
+  "Stealing"
+ ],
+ "next_class_candidates": {
+  "Robbery": 3,
+  "Shooting": 6,
+  "Stealing": 4
+ },
+ "replacements": [],
+ "dropped_slots": [],
+ "counts": {
+  "S1": 10,
+  "S2": 10,
+  "S3": 10
+ },
+ "distinct_videos": 20,
+ "download_mb_primary": 354.9,
+ "backup_counts_by_class": {
+  "RoadAccidents": 5,
+  "Vandalism": 2,
+  "Shoplifting": 5,
+  "Burglary": 5,
+  "Fighting": 4,
+  "Arson": 5,
+  "Abuse": 1,
+  "Assault": 1,
+  "Arrest": 3,
+  "Explosion": 5
+ }
+}

@@ -1,0 +1,1439 @@
+{
+ "seed": "experiment03-20261023",
+ "windows": [
+  {
+   "window_id": "S1-01",
+   "stratum": "S1",
+   "video_id": "RoadAccidents001_x264",
+   "class": "RoadAccidents",
+   "manifest_entry": "frames/RoadAccidents/RoadAccidents001_x264.mp4",
+   "manifest_length": 1366,
+   "anchor": 256,
+   "window": [
+    106.0,
+    406.0
+   ],
+   "window_s_at_30fps": [
+    3.53,
+    13.53
+   ],
+   "frame_indices": [
+    106,
+    143,
+    181,
+    218,
+    256,
+    293,
+    331,
+    368
+   ],
+   "released_label": 1,
+   "annotation": [
+    210,
+    300,
+    -1,
+    -1
+   ],
+   "overlap_frames": 90,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    3,
+    4,
+    5
+   ],
+   "localized_event": true,
+   "side": null,
+   "released_run_length_anchors": 86,
+   "released_label1_fraction_video": 1.0,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part3",
+   "zip_member": "Anomaly-Videos-Part-3/RoadAccidents/RoadAccidents001_x264.mp4",
+   "video_bytes": 9440348
+  },
+  {
+   "window_id": "S2-01",
+   "stratum": "S2",
+   "video_id": "RoadAccidents001_x264",
+   "class": "RoadAccidents",
+   "manifest_entry": "frames/RoadAccidents/RoadAccidents001_x264.mp4",
+   "manifest_length": 1366,
+   "anchor": 1168,
+   "window": [
+    1018.0,
+    1318.0
+   ],
+   "window_s_at_30fps": [
+    33.93,
+    43.93
+   ],
+   "frame_indices": [
+    1018,
+    1055,
+    1093,
+    1130,
+    1168,
+    1205,
+    1243,
+    1280
+   ],
+   "released_label": 1,
+   "annotation": [
+    210,
+    300,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 718.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "post",
+   "released_run_length_anchors": 86,
+   "released_label1_fraction_video": 1.0,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part3",
+   "zip_member": "Anomaly-Videos-Part-3/RoadAccidents/RoadAccidents001_x264.mp4",
+   "video_bytes": 9440348,
+   "paired_with": "S1-01"
+  },
+  {
+   "window_id": "S1-02",
+   "stratum": "S1",
+   "video_id": "Vandalism015_x264",
+   "class": "Vandalism",
+   "manifest_entry": "frames/Vandalism/Vandalism015_x264.mp4",
+   "manifest_length": 2982,
+   "anchor": 2352,
+   "window": [
+    2202.0,
+    2502.0
+   ],
+   "window_s_at_30fps": [
+    73.4,
+    83.4
+   ],
+   "frame_indices": [
+    2202,
+    2239,
+    2277,
+    2314,
+    2352,
+    2389,
+    2427,
+    2464
+   ],
+   "released_label": 1,
+   "annotation": [
+    2010,
+    2700,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 61,
+   "released_label1_fraction_video": 0.786,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part4",
+   "zip_member": "Anomaly-Videos-Part-4/Vandalism/Vandalism015_x264.mp4",
+   "video_bytes": 14779363
+  },
+  {
+   "window_id": "S2-02",
+   "stratum": "S2",
+   "video_id": "Vandalism015_x264",
+   "class": "Vandalism",
+   "manifest_entry": "frames/Vandalism/Vandalism015_x264.mp4",
+   "manifest_length": 2982,
+   "anchor": 448,
+   "window": [
+    298.0,
+    598.0
+   ],
+   "window_s_at_30fps": [
+    9.93,
+    19.93
+   ],
+   "frame_indices": [
+    298,
+    335,
+    373,
+    410,
+    448,
+    485,
+    523,
+    560
+   ],
+   "released_label": 1,
+   "annotation": [
+    2010,
+    2700,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 1412.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 22,
+   "released_label1_fraction_video": 0.786,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part4",
+   "zip_member": "Anomaly-Videos-Part-4/Vandalism/Vandalism015_x264.mp4",
+   "video_bytes": 14779363,
+   "paired_with": "S1-02"
+  },
+  {
+   "window_id": "S1-03",
+   "stratum": "S1",
+   "video_id": "Shoplifting020_x264",
+   "class": "Shoplifting",
+   "manifest_entry": "frames/Shoplifting/Shoplifting020_x264.mp4",
+   "manifest_length": 5770,
+   "anchor": 2400,
+   "window": [
+    2250.0,
+    2550.0
+   ],
+   "window_s_at_30fps": [
+    75.0,
+    85.0
+   ],
+   "frame_indices": [
+    2250,
+    2287,
+    2325,
+    2362,
+    2400,
+    2437,
+    2475,
+    2512
+   ],
+   "released_label": 1,
+   "annotation": [
+    2340,
+    2460,
+    -1,
+    -1
+   ],
+   "overlap_frames": 120,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    3,
+    4,
+    5
+   ],
+   "localized_event": true,
+   "side": null,
+   "released_run_length_anchors": 29,
+   "released_label1_fraction_video": 0.377,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part4",
+   "zip_member": "Anomaly-Videos-Part-4/Shoplifting/Shoplifting020_x264.mp4",
+   "video_bytes": 46703722
+  },
+  {
+   "window_id": "S2-03",
+   "stratum": "S2",
+   "video_id": "Shoplifting020_x264",
+   "class": "Shoplifting",
+   "manifest_entry": "frames/Shoplifting/Shoplifting020_x264.mp4",
+   "manifest_length": 5770,
+   "anchor": 624,
+   "window": [
+    474.0,
+    774.0
+   ],
+   "window_s_at_30fps": [
+    15.8,
+    25.8
+   ],
+   "frame_indices": [
+    474,
+    511,
+    549,
+    586,
+    624,
+    661,
+    699,
+    736
+   ],
+   "released_label": 1,
+   "annotation": [
+    2340,
+    2460,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 1566.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 3,
+   "released_label1_fraction_video": 0.377,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part4",
+   "zip_member": "Anomaly-Videos-Part-4/Shoplifting/Shoplifting020_x264.mp4",
+   "video_bytes": 46703722,
+   "paired_with": "S1-03"
+  },
+  {
+   "window_id": "S1-04",
+   "stratum": "S1",
+   "video_id": "Burglary035_x264",
+   "class": "Burglary",
+   "manifest_entry": "frames/Burglary/Burglary035_x264.mp4",
+   "manifest_length": 4050,
+   "anchor": 928,
+   "window": [
+    778.0,
+    1078.0
+   ],
+   "window_s_at_30fps": [
+    25.93,
+    35.93
+   ],
+   "frame_indices": [
+    778,
+    815,
+    853,
+    890,
+    928,
+    965,
+    1003,
+    1040
+   ],
+   "released_label": 1,
+   "annotation": [
+    120,
+    1740,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 19,
+   "released_label1_fraction_video": 0.543,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part2",
+   "zip_member": "Anomaly-Videos-Part-2/Burglary/Burglary035_x264.mp4",
+   "video_bytes": 15183310
+  },
+  {
+   "window_id": "S2-04",
+   "stratum": "S2",
+   "video_id": "Burglary035_x264",
+   "class": "Burglary",
+   "manifest_entry": "frames/Burglary/Burglary035_x264.mp4",
+   "manifest_length": 4050,
+   "anchor": 3536,
+   "window": [
+    3386.0,
+    3686.0
+   ],
+   "window_s_at_30fps": [
+    112.87,
+    122.87
+   ],
+   "frame_indices": [
+    3386,
+    3423,
+    3461,
+    3498,
+    3536,
+    3573,
+    3611,
+    3648
+   ],
+   "released_label": 1,
+   "annotation": [
+    120,
+    1740,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 1646.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "post",
+   "released_run_length_anchors": 8,
+   "released_label1_fraction_video": 0.543,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part2",
+   "zip_member": "Anomaly-Videos-Part-2/Burglary/Burglary035_x264.mp4",
+   "video_bytes": 15183310,
+   "paired_with": "S1-04"
+  },
+  {
+   "window_id": "S1-05",
+   "stratum": "S1",
+   "video_id": "Fighting003_x264",
+   "class": "Fighting",
+   "manifest_entry": "frames/Fighting/Fighting003_x264.mp4",
+   "manifest_length": 3102,
+   "anchor": 2464,
+   "window": [
+    2314.0,
+    2614.0
+   ],
+   "window_s_at_30fps": [
+    77.13,
+    87.13
+   ],
+   "frame_indices": [
+    2314,
+    2351,
+    2389,
+    2426,
+    2464,
+    2501,
+    2539,
+    2576
+   ],
+   "released_label": 1,
+   "annotation": [
+    1820,
+    3103,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 1,
+   "released_label1_fraction_video": 0.562,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part2",
+   "zip_member": "Anomaly-Videos-Part-2/Fighting/Fighting003_x264.mp4",
+   "video_bytes": 28076150
+  },
+  {
+   "window_id": "S2-05",
+   "stratum": "S2",
+   "video_id": "Fighting003_x264",
+   "class": "Fighting",
+   "manifest_entry": "frames/Fighting/Fighting003_x264.mp4",
+   "manifest_length": 3102,
+   "anchor": 1040,
+   "window": [
+    890.0,
+    1190.0
+   ],
+   "window_s_at_30fps": [
+    29.67,
+    39.67
+   ],
+   "frame_indices": [
+    890,
+    927,
+    965,
+    1002,
+    1040,
+    1077,
+    1115,
+    1152
+   ],
+   "released_label": 1,
+   "annotation": [
+    1820,
+    3103,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 630.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 2,
+   "released_label1_fraction_video": 0.562,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part2",
+   "zip_member": "Anomaly-Videos-Part-2/Fighting/Fighting003_x264.mp4",
+   "video_bytes": 28076150,
+   "paired_with": "S1-05"
+  },
+  {
+   "window_id": "S1-06",
+   "stratum": "S1",
+   "video_id": "Arson041_x264",
+   "class": "Arson",
+   "manifest_entry": "frames/Arson/Arson041_x264.mp4",
+   "manifest_length": 3754,
+   "anchor": 2880,
+   "window": [
+    2730.0,
+    3030.0
+   ],
+   "window_s_at_30fps": [
+    91.0,
+    101.0
+   ],
+   "frame_indices": [
+    2730,
+    2767,
+    2805,
+    2842,
+    2880,
+    2917,
+    2955,
+    2992
+   ],
+   "released_label": 1,
+   "annotation": [
+    2130,
+    3615,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 10,
+   "released_label1_fraction_video": 0.757,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Arson/Arson041_x264.mp4",
+   "video_bytes": 15253202
+  },
+  {
+   "window_id": "S2-06",
+   "stratum": "S2",
+   "video_id": "Arson041_x264",
+   "class": "Arson",
+   "manifest_entry": "frames/Arson/Arson041_x264.mp4",
+   "manifest_length": 3754,
+   "anchor": 528,
+   "window": [
+    378.0,
+    678.0
+   ],
+   "window_s_at_30fps": [
+    12.6,
+    22.6
+   ],
+   "frame_indices": [
+    378,
+    415,
+    453,
+    490,
+    528,
+    565,
+    603,
+    640
+   ],
+   "released_label": 1,
+   "annotation": [
+    2130,
+    3615,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 1452.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 6,
+   "released_label1_fraction_video": 0.757,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Arson/Arson041_x264.mp4",
+   "video_bytes": 15253202,
+   "paired_with": "S1-06"
+  },
+  {
+   "window_id": "S1-07",
+   "stratum": "S1",
+   "video_id": "Abuse030_x264",
+   "class": "Abuse",
+   "manifest_entry": "frames/Abuse/Abuse030_x264.mp4",
+   "manifest_length": 1544,
+   "anchor": 1328,
+   "window": [
+    1178.0,
+    1478.0
+   ],
+   "window_s_at_30fps": [
+    39.27,
+    49.27
+   ],
+   "frame_indices": [
+    1178,
+    1215,
+    1253,
+    1290,
+    1328,
+    1365,
+    1403,
+    1440
+   ],
+   "released_label": 1,
+   "annotation": [
+    1275,
+    1360,
+    -1,
+    -1
+   ],
+   "overlap_frames": 85,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    3,
+    4
+   ],
+   "localized_event": true,
+   "side": null,
+   "released_run_length_anchors": 14,
+   "released_label1_fraction_video": 0.454,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Abuse/Abuse030_x264.mp4",
+   "video_bytes": 13147762
+  },
+  {
+   "window_id": "S2-07",
+   "stratum": "S2",
+   "video_id": "Abuse030_x264",
+   "class": "Abuse",
+   "manifest_entry": "frames/Abuse/Abuse030_x264.mp4",
+   "manifest_length": 1544,
+   "anchor": 512,
+   "window": [
+    362.0,
+    662.0
+   ],
+   "window_s_at_30fps": [
+    12.07,
+    22.07
+   ],
+   "frame_indices": [
+    362,
+    399,
+    437,
+    474,
+    512,
+    549,
+    587,
+    624
+   ],
+   "released_label": 1,
+   "annotation": [
+    1275,
+    1360,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 613.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 1,
+   "released_label1_fraction_video": 0.454,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Abuse/Abuse030_x264.mp4",
+   "video_bytes": 13147762,
+   "paired_with": "S1-07"
+  },
+  {
+   "window_id": "S1-08",
+   "stratum": "S1",
+   "video_id": "Assault011_x264",
+   "class": "Assault",
+   "manifest_entry": "frames/Assault/Assault011_x264.mp4",
+   "manifest_length": 2288,
+   "anchor": 864,
+   "window": [
+    714.0,
+    1014.0
+   ],
+   "window_s_at_30fps": [
+    23.8,
+    33.8
+   ],
+   "frame_indices": [
+    714,
+    751,
+    789,
+    826,
+    864,
+    901,
+    939,
+    976
+   ],
+   "released_label": 1,
+   "annotation": [
+    375,
+    1345,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 6,
+   "released_label1_fraction_video": 0.476,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Assault/Assault011_x264.mp4",
+   "video_bytes": 20113377
+  },
+  {
+   "window_id": "S2-08",
+   "stratum": "S2",
+   "video_id": "Assault011_x264",
+   "class": "Assault",
+   "manifest_entry": "frames/Assault/Assault011_x264.mp4",
+   "manifest_length": 2288,
+   "anchor": 2064,
+   "window": [
+    1914.0,
+    2214.0
+   ],
+   "window_s_at_30fps": [
+    63.8,
+    73.8
+   ],
+   "frame_indices": [
+    1914,
+    1951,
+    1989,
+    2026,
+    2064,
+    2101,
+    2139,
+    2176
+   ],
+   "released_label": 1,
+   "annotation": [
+    375,
+    1345,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 569.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "post",
+   "released_run_length_anchors": 5,
+   "released_label1_fraction_video": 0.476,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Assault/Assault011_x264.mp4",
+   "video_bytes": 20113377,
+   "paired_with": "S1-08"
+  },
+  {
+   "window_id": "S1-09",
+   "stratum": "S1",
+   "video_id": "Arrest024_x264",
+   "class": "Arrest",
+   "manifest_entry": "frames/Arrest/Arrest024_x264.mp4",
+   "manifest_length": 3629,
+   "anchor": 2048,
+   "window": [
+    1898.0,
+    2198.0
+   ],
+   "window_s_at_30fps": [
+    63.27,
+    73.27
+   ],
+   "frame_indices": [
+    1898,
+    1935,
+    1973,
+    2010,
+    2048,
+    2085,
+    2123,
+    2160
+   ],
+   "released_label": 1,
+   "annotation": [
+    1005,
+    3105,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 159,
+   "released_label1_fraction_video": 0.881,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Arrest/Arrest024_x264.mp4",
+   "video_bytes": 21325478
+  },
+  {
+   "window_id": "S2-09",
+   "stratum": "S2",
+   "video_id": "Arrest024_x264",
+   "class": "Arrest",
+   "manifest_entry": "frames/Arrest/Arrest024_x264.mp4",
+   "manifest_length": 3629,
+   "anchor": 208,
+   "window": [
+    58.0,
+    358.0
+   ],
+   "window_s_at_30fps": [
+    1.93,
+    11.93
+   ],
+   "frame_indices": [
+    58,
+    95,
+    133,
+    170,
+    208,
+    245,
+    283,
+    320
+   ],
+   "released_label": 1,
+   "annotation": [
+    1005,
+    3105,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 647.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 10,
+   "released_label1_fraction_video": 0.881,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part1",
+   "zip_member": "Anomaly-Videos-Part-1/Arrest/Arrest024_x264.mp4",
+   "video_bytes": 21325478,
+   "paired_with": "S1-09"
+  },
+  {
+   "window_id": "S1-10",
+   "stratum": "S1",
+   "video_id": "Explosion013_x264",
+   "class": "Explosion",
+   "manifest_entry": "frames/Explosion/Explosion013_x264.mp4",
+   "manifest_length": 3317,
+   "anchor": 2752,
+   "window": [
+    2602.0,
+    2902.0
+   ],
+   "window_s_at_30fps": [
+    86.73,
+    96.73
+   ],
+   "frame_indices": [
+    2602,
+    2639,
+    2677,
+    2714,
+    2752,
+    2789,
+    2827,
+    2864
+   ],
+   "released_label": 1,
+   "annotation": [
+    2520,
+    2970,
+    -1,
+    -1
+   ],
+   "overlap_frames": 300.0,
+   "gap_to_annotation_frames": 0,
+   "annotated_slots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 45,
+   "released_label1_fraction_video": 0.639,
+   "selection_rule": "max overlap with annotation; ties: distance to nearest interval midpoint, then earliest",
+   "zip": "part2",
+   "zip_member": "Anomaly-Videos-Part-2/Explosion/Explosion013_x264.mp4",
+   "video_bytes": 16418748
+  },
+  {
+   "window_id": "S2-10",
+   "stratum": "S2",
+   "video_id": "Explosion013_x264",
+   "class": "Explosion",
+   "manifest_entry": "frames/Explosion/Explosion013_x264.mp4",
+   "manifest_length": 3317,
+   "anchor": 736,
+   "window": [
+    586.0,
+    886.0
+   ],
+   "window_s_at_30fps": [
+    19.53,
+    29.53
+   ],
+   "frame_indices": [
+    586,
+    623,
+    661,
+    698,
+    736,
+    773,
+    811,
+    848
+   ],
+   "released_label": 1,
+   "annotation": [
+    2520,
+    2970,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": 1634.0,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": "pre",
+   "released_run_length_anchors": 32,
+   "released_label1_fraction_video": 0.639,
+   "selection_rule": "same video as S1; released label 1; >=150 frames from every interval; 'pre' side first, then hash order",
+   "zip": "part2",
+   "zip_member": "Anomaly-Videos-Part-2/Explosion/Explosion013_x264.mp4",
+   "video_bytes": 16418748,
+   "paired_with": "S1-10"
+  },
+  {
+   "window_id": "S3-01",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_246_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_246_x264.mp4",
+   "manifest_length": 4993,
+   "anchor": 2496,
+   "window": [
+    2346.0,
+    2646.0
+   ],
+   "window_s_at_30fps": [
+    78.2,
+    88.2
+   ],
+   "frame_indices": [
+    2346,
+    2383,
+    2421,
+    2458,
+    2496,
+    2533,
+    2571,
+    2608
+   ],
+   "released_label": 1,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 13,
+   "released_label1_fraction_video": 0.559,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_246_x264.mp4",
+   "video_bytes": 43167382
+  },
+  {
+   "window_id": "S3-02",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_606_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_606_x264.mp4",
+   "manifest_length": 1233,
+   "anchor": 624,
+   "window": [
+    474.0,
+    774.0
+   ],
+   "window_s_at_30fps": [
+    15.8,
+    25.8
+   ],
+   "frame_indices": [
+    474,
+    511,
+    549,
+    586,
+    624,
+    661,
+    699,
+    736
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 42,
+   "released_label1_fraction_video": 0.141,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_606_x264.mp4",
+   "video_bytes": 8522117
+  },
+  {
+   "window_id": "S3-03",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_926_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_926_x264.mp4",
+   "manifest_length": 1796,
+   "anchor": 896,
+   "window": [
+    746.0,
+    1046.0
+   ],
+   "window_s_at_30fps": [
+    24.87,
+    34.87
+   ],
+   "frame_indices": [
+    746,
+    783,
+    821,
+    858,
+    896,
+    933,
+    971,
+    1008
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 98,
+   "released_label1_fraction_video": 0.009,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_926_x264.mp4",
+   "video_bytes": 10210838
+  },
+  {
+   "window_id": "S3-04",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_932_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_932_x264.mp4",
+   "manifest_length": 1784,
+   "anchor": 896,
+   "window": [
+    746.0,
+    1046.0
+   ],
+   "window_s_at_30fps": [
+    24.87,
+    34.87
+   ],
+   "frame_indices": [
+    746,
+    783,
+    821,
+    858,
+    896,
+    933,
+    971,
+    1008
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 46,
+   "released_label1_fraction_video": 0.491,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_932_x264.mp4",
+   "video_bytes": 11902950
+  },
+  {
+   "window_id": "S3-05",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_910_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_910_x264.mp4",
+   "manifest_length": 567,
+   "anchor": 288,
+   "window": [
+    138.0,
+    438.0
+   ],
+   "window_s_at_30fps": [
+    4.6,
+    14.6
+   ],
+   "frame_indices": [
+    138,
+    175,
+    213,
+    250,
+    288,
+    325,
+    363,
+    400
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 6,
+   "released_label1_fraction_video": 0.139,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_910_x264.mp4",
+   "video_bytes": 4910679
+  },
+  {
+   "window_id": "S3-06",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_100_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_100_x264.mp4",
+   "manifest_length": 627,
+   "anchor": 320,
+   "window": [
+    170.0,
+    470.0
+   ],
+   "window_s_at_30fps": [
+    5.67,
+    15.67
+   ],
+   "frame_indices": [
+    170,
+    207,
+    245,
+    282,
+    320,
+    357,
+    395,
+    432
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 40,
+   "released_label1_fraction_video": 0.0,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_100_x264.mp4",
+   "video_bytes": 5832425
+  },
+  {
+   "window_id": "S3-07",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_901_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_901_x264.mp4",
+   "manifest_length": 1170,
+   "anchor": 592,
+   "window": [
+    442.0,
+    742.0
+   ],
+   "window_s_at_30fps": [
+    14.73,
+    24.73
+   ],
+   "frame_indices": [
+    442,
+    479,
+    517,
+    554,
+    592,
+    629,
+    667,
+    704
+   ],
+   "released_label": 1,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 1,
+   "released_label1_fraction_video": 0.108,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_901_x264.mp4",
+   "video_bytes": 9509272
+  },
+  {
+   "window_id": "S3-08",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_210_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_210_x264.mp4",
+   "manifest_length": 5408,
+   "anchor": 2704,
+   "window": [
+    2554.0,
+    2854.0
+   ],
+   "window_s_at_30fps": [
+    85.13,
+    95.13
+   ],
+   "frame_indices": [
+    2554,
+    2591,
+    2629,
+    2666,
+    2704,
+    2741,
+    2779,
+    2816
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 213,
+   "released_label1_fraction_video": 0.083,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_210_x264.mp4",
+   "video_bytes": 46969249
+  },
+  {
+   "window_id": "S3-09",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_778_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_778_x264.mp4",
+   "manifest_length": 1262,
+   "anchor": 624,
+   "window": [
+    474.0,
+    774.0
+   ],
+   "window_s_at_30fps": [
+    15.8,
+    25.8
+   ],
+   "frame_indices": [
+    474,
+    511,
+    549,
+    586,
+    624,
+    661,
+    699,
+    736
+   ],
+   "released_label": 0,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 79,
+   "released_label1_fraction_video": 0.0,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_778_x264.mp4",
+   "video_bytes": 8623785
+  },
+  {
+   "window_id": "S3-10",
+   "stratum": "S3",
+   "video_id": "Normal_Videos_870_x264",
+   "class": "Normal",
+   "manifest_entry": "frames/Normal/Normal_Videos_870_x264.mp4",
+   "manifest_length": 601,
+   "anchor": 304,
+   "window": [
+    154.0,
+    454.0
+   ],
+   "window_s_at_30fps": [
+    5.13,
+    15.13
+   ],
+   "frame_indices": [
+    154,
+    191,
+    229,
+    266,
+    304,
+    341,
+    379,
+    416
+   ],
+   "released_label": 1,
+   "annotation": [
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "overlap_frames": 0,
+   "gap_to_annotation_frames": null,
+   "annotated_slots": [],
+   "localized_event": false,
+   "side": null,
+   "released_run_length_anchors": 3,
+   "released_label1_fraction_video": 0.632,
+   "selection_rule": "unclipped anchor closest to n/2 (ties earlier); label-agnostic",
+   "zip": "testing_normal",
+   "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_870_x264.mp4",
+   "video_bytes": 4772144
+  }
+ ]
+}
