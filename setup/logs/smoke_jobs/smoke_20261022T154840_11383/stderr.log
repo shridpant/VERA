@@ -1,0 +1,10 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  6.26it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00,  7.65it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00,  7.80it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  8.38it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00,  7.98it/s]
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Traceback (most recent call last):
+  File "/home/stu11/s5/sp2117/vera_research/setup/scripts/run_experiment.py", line 509, in main
+    result = {"frames": stage_frames, "vlm": stage_vlm, "refine": stage_refine}[st](cfg, run_dir, man)
+  File "/home/stu11/s5/sp2117/vera_research/setup/scripts/run_experiment.py", line 313, in stage_vlm
+    template_path.write_text(rendered)
+  File "/home/stu11/s5/sp2117/vera_research/setup/environment/env/lib/python3.10/pathlib.py", line 1155, in write_text
+    return f.write(data)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 24-57: ordinal not in range(128)

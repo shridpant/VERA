@@ -1,3 +1,85 @@
+# VERA research fork
+
+This is [`shridpant/VERA`](https://github.com/shridpant/VERA), a fork of the official VERA code,
+[`vera-framework/VERA`](https://github.com/vera-framework/VERA) (Ye, Liu & He, *Explainable Video Anomaly
+Detection via Verbalized Learning of Vision-Language Models*, CVPR 2025). The upstream code and history are kept
+unchanged up to commit `15b8bcb8`. The upstream README is reproduced verbatim [at the end of this
+file](#upstream-vera-readme). Please cite the VERA paper when you use this code.
+
+The fork adds a reproducible research setup around the upstream code:
+
+- **One source change.** It makes `generate_initial_score.py` importable for one-video inference. It is kept in
+  its original commit, `008ed401`, directly on top of `15b8bcb8`. See [`setup/patches/`](setup/patches) and
+  [`setup/source/README.md`](setup/source/README.md).
+- **`setup/`.** The environment specification, runners, validators, tests and setup logs.
+- **`shared/`.** Provenance and checksums for the external model, videos, frames, features and reference scores.
+  The data itself is not redistributed; see [`shared/README.md`](shared/README.md).
+- **`experiments/`.** Executed experiments, registered in [`EXPERIMENTS.md`](EXPERIMENTS.md). Their configs,
+  manifests, compact raw records and reports were imported after the runs, unchanged.
+
+## Research setup
+
+The setup lives on RIT's Oz GPU host as `~/vera_research`, which is the working tree of this fork. It is for
+studying VERA. VERA has a frozen VLM (InternVL2-8B) answer learned guiding questions about 8-frame windows, then
+turns the 0/1 answers into frame-level anomaly scores in three steps:
+
+1. **VLM decisions:** a 0/1 label and a short explanation per window.
+2. **Scene-context refinement:** ImageBind similarity between segments.
+3. **Temporal refinement:** Gaussian smoothing plus a position weighting.
+
+The longer-term question is whether VERA-style explanations help people judge alerts. Nothing here answers that yet.
+
+Status: see [`setup/SETUP_STATUS.md`](setup/SETUP_STATUS.md). Experiments: see [`EXPERIMENTS.md`](EXPERIMENTS.md).
+
+### Layout
+
+```text
+(root)      upstream VERA code (Data/, Inference/, Preprocessing/, training.py, generate_initial_score.py, ...)
+setup/      connection.md, SETUP_STATUS.md
+            source/README.md   which source the runs import; source/VERA itself is a local checkout (not tracked)
+            patches/           the local VERA change (commit 008ed401) as a git format-patch
+            environment/       requirements, pip_freeze.txt, conda_explicit.txt, REBUILD.md (env/ is local only)
+            scripts/           launch.sh, run_experiment.py, validate_run.py, summarize_run.py, tests, fetchers
+            logs/              setup logs, smoke tests, archive listings
+shared/     README.md + provenance only; model, videos, frames, features and reference outputs are local
+experiments/experimentNN/      README.md, config.yaml, runs/run_NNN/ (never overwritten)
+```
+
+### Adding an experiment
+
+1. Create `experiments/experimentNN/` with a `README.md` (purpose) and a `config.yaml`. Copy experiment01's config
+   and change the video, prompt or sampling fields.
+2. Add a row to `EXPERIMENTS.md`.
+3. Run through the launcher. It pins one idle ≥40 GB GPU by UUID and does not use a scheduler:
+
+   ```bash
+   RUN=experiments/experimentNN/runs/run_001
+   bash setup/scripts/launch.sh --name expNN --log-dir $RUN/logs -- \
+     setup/environment/env/bin/python setup/scripts/run_experiment.py --config experiments/experimentNN/config.yaml --run-dir $RUN --new-run
+   setup/environment/env/bin/python setup/scripts/validate_run.py --run-dir $RUN
+   ```
+
+The config's `source` block names the checkout the runner imports (`checkout`) and the commit it must be at
+(`expected_head`). The runner refuses a dirty checkout or a head that differs from the config. Old runs keep
+pointing at the revision they used. Shared caches are reused only when checksums match. The frame cache checks the
+source video sha256, the extractor sha256, the cv2 version and every frame's sha256.
+
+Videos without released VERA features would need the LAVAD/ImageBind feature runner. It is **not set up yet**; see
+`setup/environment/requirements-imagebind-optional.txt` and `setup/SETUP_STATUS.md`.
+
+### Licence and attribution
+
+- **Upstream code.** It has no licence file at `15b8bcb8`, and the code remains the VERA authors' work. This fork
+  adds no licence of its own.
+- **External artifacts.** These keep their own terms and are not redistributed here: InternVL2-8B (OpenGVLab;
+  model card: MIT), the UCF-Crime videos and annotations (UCF CRCV), and the VERA authors' released features and
+  initial scores (the Google Drive links in the upstream README).
+
+---
+
+<a id="upstream-vera-readme"></a>
+**Upstream VERA README.** Reproduced verbatim from `vera-framework/VERA@15b8bcb8`.
+
 # VERA: Explainable Video Anomaly Detection via Verbalized Learning of Vision-Language Models
 This is the code repo for the paper [`VERA: Explainable Video Anomaly Detection via Verbalized Learning of Vision-Language Models`](https://vera-framework.github.io/) (CVPR 2025).
 

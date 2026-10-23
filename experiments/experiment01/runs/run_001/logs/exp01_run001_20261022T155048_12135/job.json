@@ -1,0 +1,20 @@
+{
+  "job_id": "exp01_run001_20261022T155048_12135",
+  "mechanism": "direct execution on shared GPU server (no scheduler on oz); setsid+nohup, detached",
+  "submitted_at": "2026-10-22T15:50:48-04:00",
+  "host": "oz.gccis.rit.edu",
+  "user": "sp2117",
+  "gpu_uuid": "GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3",
+  "gpu": "4, NVIDIA RTX 6000 Ada Generation, 615.71.10, 46068 MiB",
+  "time_limit_s": null,
+  "threads": 16,
+  "command": [
+    "setup/environment/env/bin/python",
+    "setup/scripts/run_experiment.py",
+    "--config",
+    "experiments/experiment01/config.yaml",
+    "--run-dir",
+    "experiments/experiment01/runs/run_001",
+    "--new-run"
+  ]
+}

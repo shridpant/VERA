@@ -1,0 +1,106 @@
+{
+  "repo": "OpenGVLab/InternVL2-8B",
+  "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+  "source": "https://huggingface.co/OpenGVLab/InternVL2-8B/tree/6fb9ad6924f69424e57fab2ab061d707688f0296",
+  "files": {
+    ".gitattributes": {
+      "bytes": 1634,
+      "git_blob_sha1": "8146268512808cfd9623536c65bf0d0ef7efdc45"
+    },
+    "README.md": {
+      "bytes": 34348,
+      "git_blob_sha1": "d5d254b20190fb42473782e78051f69de8929116"
+    },
+    "added_tokens.json": {
+      "bytes": 179,
+      "git_blob_sha1": "35f5893c8e29d6102945a953529819a2d56c62a9"
+    },
+    "config.json": {
+      "bytes": 3954,
+      "git_blob_sha1": "2e9a7c19dc3d65029a8bab70b6cf998e552a94dd"
+    },
+    "configuration_intern_vit.py": {
+      "bytes": 5548,
+      "git_blob_sha1": "7e630c456eb9cf350e55bf850c3ff72f445a7e17"
+    },
+    "configuration_internlm2.py": {
+      "bytes": 7005,
+      "git_blob_sha1": "282b13b1e2066ecc074ecae87b35a19d251f0ed7"
+    },
+    "configuration_internvl_chat.py": {
+      "bytes": 4088,
+      "git_blob_sha1": "50d3ee82772f8abb4fa1ae6a7c80899df7ddd941"
+    },
+    "conversation.py": {
+      "bytes": 15309,
+      "git_blob_sha1": "5a771766f21ce3aeeb99b286fb8d188b0038a547"
+    },
+    "generation_config.json": {
+      "bytes": 115,
+      "git_blob_sha1": "d45dc4fdf649b1096e6d30f54fa59c1366ddecfb"
+    },
+    "model-00001-of-00004.safetensors": {
+      "bytes": 4939944336,
+      "sha256": "3a18c6c843dd1c046a7052129ac7ff5d3fa38e95149ea6ee763066dc1cc6579c"
+    },
+    "model-00002-of-00004.safetensors": {
+      "bytes": 4915914584,
+      "sha256": "e1967d2442fe5a38aba96e7ad7a18459962171591e5b7438aa0efa15db93b375"
+    },
+    "model-00003-of-00004.safetensors": {
+      "bytes": 4915914592,
+      "sha256": "9d31a1bd34e26858251c02741d450f64937b59bf3e45a2efede61a10c2086768"
+    },
+    "model-00004-of-00004.safetensors": {
+      "bytes": 1379026920,
+      "sha256": "5f20c98a99d6fcf5c01b70194b80984ad0b49220f365f7c415af7629743a5397"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 51167,
+      "git_blob_sha1": "8b024ee06fb58c2607a1c54a04b8ee0749d14f2c"
+    },
+    "modeling_intern_vit.py": {
+      "bytes": 18106,
+      "git_blob_sha1": "233b0293451a13c7b5211d65633deb73a13b240c"
+    },
+    "modeling_internlm2.py": {
+      "bytes": 61208,
+      "git_blob_sha1": "7c8c24d873f6ecd152d00fd65371e23ead981e1d"
+    },
+    "modeling_internvl_chat.py": {
+      "bytes": 15988,
+      "git_blob_sha1": "6dd05026716317d3483b2abd4a573e61cf1048c7"
+    },
+    "preprocessor_config.json": {
+      "bytes": 287,
+      "git_blob_sha1": "dfd7e50d9d4e67cd679b16b337b419a0c6cfa849"
+    },
+    "special_tokens_map.json": {
+      "bytes": 844,
+      "git_blob_sha1": "cbf34a50d27c43ed8d1e2823b800b4e6f66e637a"
+    },
+    "tokenization_internlm2.py": {
+      "bytes": 8791,
+      "git_blob_sha1": "1be581da37ef678de65f2737493fc0ed7160446e"
+    },
+    "tokenization_internlm2_fast.py": {
+      "bytes": 7788,
+      "git_blob_sha1": "aa0fccbd0f1d029d79e19821f2edcb01b594537c"
+    },
+    "tokenizer.model": {
+      "bytes": 1477754,
+      "sha256": "f868398fc4e05ee1e8aeba95ddf18ddcc45b8bce55d5093bead5bbf80429b48b"
+    },
+    "tokenizer_config.json": {
+      "bytes": 4005,
+      "git_blob_sha1": "1f32946df0f56d92ddbc1df79cabb4477b622480"
+    }
+  },
+  "skipped": [
+    "eval_llm_benchmark.log",
+    "examples/image1.jpg",
+    "examples/image2.jpg",
+    "examples/red-panda.mp4"
+  ],
+  "verified_at": "2026-10-22T19:24:21+00:00"
+}

@@ -1,0 +1,16 @@
+PASS C01 required artifacts exist: 17 files
+PASS C02 JSON artifacts parse and round-trip: all JSON round-trips
+PASS C03 manifest: all three stages ok, exactly one video: latest stage status {'frames': 'ok', 'vlm': 'ok', 'refine': 'ok'}; single video True
+PASS C04 Step 1 manifest is the one requested video, without benchmark labels: 1 entry; keys ['length', 'video']; video frames/RoadAccidents/RoadAccidents127_x264.mp4
+PASS C05 source video checksum, decoding and frame cache identity: video sha 618a6a63273d; decoded 2580 vs manifest 2580; 2580 frame files; digest match True
+PASS C06 one record per anchor, range(0, frames, 16), none missing or duplicated: 162 records; expected 162 (config 162); missing []
+PASS C07 every window: 8 in-range frames from the upstream formula, exact prompt, raw text, strict label: 0 problems []
+PASS C08 no video name, category or annotation frame in the prompt: searched prompt and rendered model input for ['RoadAccidents127_x264', 'RoadAccidents', '2160', '2300']: hits []
+PASS C09 strict parser on representative valid and malformed outputs: 13/13 parser cases as expected; failures []
+PASS C10 segment score files agree with the raw records: 13 of 162 anchors labelled 1; unparsed 0
+PASS C11 feature rows align one-to-one with scored anchors: shape (162, 1024) float64; rows vs anchors 162/162; sha f0c2470ccdae
+PASS C12 refined arrays numeric, finite, in range, frame scores match decoded frame count: scene [0.000,0.550] temporal [0.000,0.504] frames 2580 [0.0000,0.3882]
+PASS C13 frame scores identical to the unmodified upstream compute_auc.py: unmodified compute_auc.py @ 15b8bcb8: identical frame scores True (2580 values); its printed AUC 0.994941 vs ours 0.9949414519906323
+PASS C14 all artifacts reference the same source video checksum: 1 distinct video checksums across artifacts
+PASS C15 diagnostics scoped to this video; reference outputs labelled: scope: single video only; not a benchmark AUC/AP and not comparable...; reference block labelled True
+15/15 checks passed

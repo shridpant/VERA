@@ -1,0 +1,74 @@
+# experiment01: one-video end-to-end validation of the reusable VERA setup (not a research result).
+# Paths are relative to VERA_PROJECT_ROOT (~/vera_research on oz). Run:
+#   bash setup/scripts/launch.sh --name exp01 --log-dir <run_dir>/logs -- \
+#     setup/environment/env/bin/python setup/scripts/run_experiment.py --config experiments/experiment01/config.yaml --new-run
+experiment_id: experiment01
+purpose: one-video end-to-end setup validation of VERA Steps 1-3 on a paper-referenced UCF-Crime clip
+seed: 0
+
+source:
+  repo: https://github.com/vera-framework/VERA
+  base_commit: 15b8bcb8574a977c229c577f50bfe6f06d07106e
+  checkout: setup/source/VERA
+  branch: vera-research-local
+  expected_head: 008ed4019781c39e7cb16244b7500244f3986f92  # base + setup/patches/0001-*.patch
+
+model:
+  repo: OpenGVLab/InternVL2-8B
+  revision: 6fb9ad6924f69424e57fab2ab061d707688f0296
+  local_dir: shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296
+  dtype: bfloat16
+  use_flash_attn: true
+  frozen: true  # eval mode, no training
+
+video:
+  id: RoadAccidents127_x264
+  path: shared/videos/ucf_crime/RoadAccidents127_x264.mp4
+  sha256: 618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff
+  manifest_entry: frames/RoadAccidents/RoadAccidents127_x264.mp4  # key in VERA Data/UCF_Eval.json
+  expected_length: 2580
+  expected_anchor_count: 162
+  why: VERA appendix B.5 qualitative example
+
+frames:
+  cache_root: shared/frames/ucf_crime
+
+sampling:  # generate_initial_score.py defaults at the pinned commit
+  sampling_rate: 16       # one anchor every 16 frames
+  fps_for_windows: 30     # upstream constant used for window length; actual FPS is recorded separately
+  t_window_s: 10          # window [anchor - 150, anchor + 150) frames, clipped to the video
+  snippet_len: 8          # uniformly sampled frames per window
+  image_size: 448         # each frame resized to 448 x 448, one tile per frame
+
+generation:
+  num_beams: 1
+  max_new_tokens: 1024
+  do_sample: false
+
+prompt:
+  learner_instruct_file: VERA_learner_instruct.txt
+  guiding_questions:  # released UCF-Crime questions; must equal new_qs in the pinned source
+    - "1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?"
+    - "2. Are there any vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?"
+    - "3. Are there any objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?"
+    - "4. Is there any visible damage or unusual movement in the video that indicates an anomaly?"
+    - "5. Are there any unusual sounds or noises in the video that suggest an anomaly?"
+  audio_supplied: false  # question 5 asks about sound; only frames are given to the model
+
+features:
+  path: shared/features/vera_official_ucf_imagebind/RoadAccidents127_x264.npy
+  sha256: f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657
+  source: official VERA release ucf_crime_vision_features.zip (Google Drive id 1gwkgIKiPg6fpRaO5yXkxuRcN3X1-97LF), single member fetched by HTTP range
+  model: ImageBind (per the VERA README, extracted with LAVAD's code); exact extraction settings are not published with the file
+
+reference:
+  official_initial_scores: shared/reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json  # comparison only
+
+output:
+  runs_dir: experiments/experiment01/runs
+
+deviations:
+  - "Loop over windows runs in setup/scripts/run_experiment.py (same arithmetic as generate_initial_score.py main(); classes, transform, prompt and parser imported from the pinned source)."
+  - "Segment labels come from a strict parser of the 'Output:' field; the upstream parser's label is kept alongside for comparison. Unparseable output gets no label."
+  - "Model loaded from a local, checksum-verified copy of the pinned Hugging Face revision instead of the hub name and ./cache."
+  - "Scene refinement uses the authors' released ImageBind features for this video rather than features recomputed here."

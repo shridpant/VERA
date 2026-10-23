@@ -1,0 +1,22 @@
+{
+  "source_sha256": "618a6a63273de405bb70b4af61aa1d7d0ffb279dd41e531b1575332be48e06ff",
+  "extractor_sha256": "79d709e5d190020b001c64d687083fc57429aa9f3e179c1742def01b77a74697",
+  "cv2_version": "4.9.0",
+  "video": "shared/videos/ucf_crime/RoadAccidents127_x264.mp4",
+  "frames_dir": "shared/frames/ucf_crime/RoadAccidents127_x264",
+  "decoded_frame_count": 2580,
+  "naming": "{:06d}.jpg, zero-based, written by cv2.imwrite (default JPEG quality 95)",
+  "extractor": "setup/source/VERA/Preprocessing/extract_frames.py extract_frames() at VERA 008ed4019781c39e7cb16244b7500244f3986f92",
+  "video_metadata_cv2": {
+    "container_fps": 30.0,
+    "width": 320,
+    "height": 240,
+    "fourcc": "h264",
+    "container_frame_count": 2580
+  },
+  "duration_s_from_decoded": 86.0,
+  "frames_digest_sha256": "d14b4bf8021652d5ca57c5ae108a52afb1c0c6bd6fb86d79cf5789581c5c7ef7",
+  "per_frame_sha256_file": "shared/frames/ucf_crime/RoadAccidents127_x264.frames.sha256",
+  "extracted_at": "2026-10-22T19:49:32+00:00",
+  "extract_seconds": 46.3
+}

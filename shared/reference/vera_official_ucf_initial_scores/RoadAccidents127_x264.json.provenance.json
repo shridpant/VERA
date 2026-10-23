@@ -1,0 +1,22 @@
+{
+  "source_url": "https://drive.usercontent.google.com/download?id=1LIvPUE7Pv7tPxtXjpOU0sOpSZs6Y7xGv&export=download&confirm=t",
+  "resolved_url_host": "drive.usercontent.google.com",
+  "archive_bytes": 655612,
+  "archive_members": 292,
+  "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents127_x264.json",
+  "member_bytes": 8485,
+  "member_compressed_bytes": 1355,
+  "member_crc32": "969f64bc",
+  "member_date_time": [
+    2025,
+    4,
+    14,
+    22,
+    36,
+    42
+  ],
+  "sha256": "2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1",
+  "bytes_fetched_over_http": 655612,
+  "fetched_at": "2026-10-22T19:36:54+00:00",
+  "method": "HTTP Range reads of the zip central directory and this member only (fetch_zip_member.py)"
+}

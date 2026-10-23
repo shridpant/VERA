@@ -1,0 +1,31 @@
+PASS parser 'tions: 1. No. 2. No.\nOutput:\n0' (0, 'ok')
+PASS parser ' Yes, a car crashes.\nOutput:\n1' (1, 'ok')
+PASS parser 'rompt Questions: ...\nOutput: 1' (1, 'ok')
+PASS parser 'Questions: ...\n**Output:**\n[1]' (1, 'ok')
+PASS parser 't Questions: ...\nOutput:\n0\n```' (0, 'ok')
+PASS parser 'ompt Questions: ...\nOutput:\n1.' (1, 'ok')
+PASS parser 'rs to Prompt Questions: 1. No.' (None, 'missing_output_field')
+PASS parser 'Answers ...\nOutput:\n' (None, 'empty_output_field')
+PASS parser 'Answers ...\nOutput:\n0 or 1' (None, 'output_field_not_a_single_label')
+PASS parser 'tput:\nYes, there is an anomaly' (None, 'output_field_not_a_single_label')
+PASS parser 'Answers ...\nOutput:\n10' (None, 'output_field_not_a_single_label')
+PASS parser 'utput: 0\nAnswers ...\nOutput: 1' (None, 'multiple_output_fields')
+PASS parser '' (None, 'empty_response')
+PASS upstream root parser maps text without an output field to 1 (why it is not used for labels) 
+PASS upstream Inference-variant parser maps a trailing period to 0 
+PASS primary 2580 frames -> 162 anchors 
+PASS fallback 1181 frames -> 74 anchors 
+PASS windows for 2580 frames: 8 sorted in-range frames within [anchor-150, anchor+150) bad []
+PASS windows for 1181 frames: 8 sorted in-range frames within [anchor-150, anchor+150) bad []
+PASS windows for 300 frames: 8 sorted in-range frames within [anchor-150, anchor+150) bad []
+PASS windows for 17 frames: 8 sorted in-range frames within [anchor-150, anchor+150) bad []
+PASS vera_refine == unmodified compute_auc.py on synthetic 2580-frame video 2580 frame scores
+PASS frame scores length equals frame count (2580) 
+PASS vera_refine == unmodified compute_auc.py on synthetic 1181-frame video 1181 frame scores
+PASS frame scores length equals frame count (1181) 
+PASS vera_refine == unmodified compute_auc.py on synthetic 700-frame video 700 frame scores
+PASS frame scores length equals frame count (700) 
+PASS short video (10 segments): temporal smoothing output is 15 long (np.convolve 'same' keeps the longer length), so per-segment smoothed values are misaligned upstream top_n=1
+PASS very short video (6 segments): top_n == 0 makes every segment a neighbour upstream 
+PASS feature/anchor row mismatch raises 
+ALL PASS

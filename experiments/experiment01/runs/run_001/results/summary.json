@@ -1,0 +1,253 @@
+{
+  "video": "RoadAccidents127_x264",
+  "decoded_frames": 2580,
+  "fps": 30.0,
+  "duration_s": 86.0,
+  "video_metadata": {
+    "container_fps": 30.0,
+    "width": 320,
+    "height": 240,
+    "fourcc": "h264",
+    "container_frame_count": 2580
+  },
+  "windows": 162,
+  "parse_status_counts": {
+    "ok": 162
+  },
+  "raw_label_1_count": 13,
+  "raw_label_1_runs_anchor_frames": [
+    [
+      496,
+      496
+    ],
+    [
+      704,
+      704
+    ],
+    [
+      2128,
+      2128
+    ],
+    [
+      2176,
+      2176
+    ],
+    [
+      2208,
+      2288
+    ],
+    [
+      2320,
+      2320
+    ],
+    [
+      2352,
+      2368
+    ]
+  ],
+  "upstream_root_parser_disagreements": 0,
+  "upstream_inference_variant_parser_disagreements": 0,
+  "responses_mentioning_sound": 140,
+  "runtime_s": {
+    "total_generation": 346.2,
+    "mean": 2.14,
+    "median": 2.01,
+    "max": 3.4
+  },
+  "new_tokens": {
+    "mean": 76.5,
+    "max": 129,
+    "hit_limit": 0
+  },
+  "model_load_s": 4.2,
+  "attention": {
+    "vision_use_flash_attn": true,
+    "llm_attn_implementation": "flash_attention_2",
+    "llm_attention_class": "InternLM2FlashAttention2"
+  },
+  "peak_gpu_mem_allocated_gib": 17.96,
+  "scene_refined_range": [
+    0.0,
+    0.5502
+  ],
+  "temporal_refined_range": [
+    0.0,
+    0.5036
+  ],
+  "temporal_refined_argmax_anchor": 2240,
+  "frame_score_range": [
+    0.0,
+    0.3882
+  ],
+  "frame_score_argmax": 2208,
+  "frames_at_or_above_half_max": [
+    2128,
+    2479
+  ],
+  "benchmark_annotation": [
+    2160,
+    2300,
+    -1,
+    -1
+  ],
+  "diagnostics": {
+    "scope": "single video only; not a benchmark AUC/AP and not comparable to the paper's numbers",
+    "gt_positive_frames": 140,
+    "gt_negative_frames": 2440,
+    "frame_level_roc_auc_this_video": 0.9949414519906323,
+    "mean_score_inside_annotation": 0.3564626558813943,
+    "mean_score_outside_annotation": 0.03253706102605916,
+    "reference_official_initial_scores": {
+      "label": "REFERENCE ONLY: labels released by the VERA authors, not generated in this run",
+      "path": "shared/reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json",
+      "sha256": "2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1",
+      "same_anchor_keys": true,
+      "agreement_with_fresh_labels": 0.9629629629629629,
+      "official_anchors_labelled_1": [
+        672,
+        1280,
+        2128,
+        2176,
+        2192,
+        2208,
+        2240,
+        2256,
+        2272,
+        2288,
+        2320,
+        2352,
+        2368
+      ],
+      "frame_level_roc_auc_this_video": 0.9949414519906323
+    }
+  },
+  "example_selection_rule": "Example windows are chosen by a fixed rule, never by reading the text first:\nfive evenly spaced windows (positions round(q*(K-1)) for q in 0, .25, .5, .75, 1), plus the window with the\nhighest temporally refined score (earliest on ties) and the first window whose raw label is 1 (if any).\nUsage: python setup/scripts/summarize_run.py --run-dir experiments/experiment01/runs/run_001",
+  "examples": [
+    {
+      "rule": "evenly spaced q=0",
+      "window_index": 0,
+      "anchor_frame": 0,
+      "anchor_time_s": 0.0,
+      "window_frames": [
+        0,
+        150.0
+      ],
+      "window_time_s": [
+        0.0,
+        5.0
+      ],
+      "raw_label": 0,
+      "scene_refined": 0.0,
+      "temporal_refined": 0.0,
+      "raw_response": "Answers to Prompt Questions: The video shows a red truck and a white van driving on a road with other vehicles and traffic lights. The vehicles are in their typical positions and engaging in activities consistent with their usual behavior. There is no visible damage or unusual movement, and no unusual sounds or noises are indicated. Therefore, there is no anomaly in the video.\nOutput: 0"
+    },
+    {
+      "rule": "first raw label 1",
+      "window_index": 31,
+      "anchor_frame": 496,
+      "anchor_time_s": 16.53,
+      "window_frames": [
+        346.0,
+        646.0
+      ],
+      "window_time_s": [
+        11.53,
+        21.53
+      ],
+      "raw_label": 1,
+      "scene_refined": 0.0639,
+      "temporal_refined": 0.0338,
+      "raw_response": "Answers to Prompt Questions: The video shows a person crossing the road in a way that is not consistent with their usual behavior. There are no vehicles or objects in unusual positions, and no visible damage or unusual movement. There are no unusual sounds or noises. Based on the analysis, there is an anomaly in the video.\nOutput: 1"
+    },
+    {
+      "rule": "evenly spaced q=0.25",
+      "window_index": 40,
+      "anchor_frame": 640,
+      "anchor_time_s": 21.33,
+      "window_frames": [
+        490.0,
+        790.0
+      ],
+      "window_time_s": [
+        16.33,
+        26.33
+      ],
+      "raw_label": 0,
+      "scene_refined": 0.0386,
+      "temporal_refined": 0.0307,
+      "raw_response": "Answers to Prompt Questions: The people in the video are walking across the street in a typical manner, and there are no vehicles or objects in unusual positions or being used in a way that is not consistent with their usual function. There is no visible damage or unusual movement, and no unusual sounds or noises are present. Therefore, there is no anomaly in the video.\nOutput: 0"
+    },
+    {
+      "rule": "evenly spaced q=0.5",
+      "window_index": 80,
+      "anchor_frame": 1280,
+      "anchor_time_s": 42.67,
+      "window_frames": [
+        1130.0,
+        1430.0
+      ],
+      "window_time_s": [
+        37.67,
+        47.67
+      ],
+      "raw_label": 0,
+      "scene_refined": 0.0,
+      "temporal_refined": 0.0,
+      "raw_response": "Answers to Prompt Questions: There are no people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior. There are no vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function. There are no objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function. There is no visible damage or unusual movement in the video that indicates an anomaly. There are no unusual sounds or noises in the video that suggest an anomaly.\nOutput: 0"
+    },
+    {
+      "rule": "evenly spaced q=0.75",
+      "window_index": 121,
+      "anchor_frame": 1936,
+      "anchor_time_s": 64.53,
+      "window_frames": [
+        1786.0,
+        2086.0
+      ],
+      "window_time_s": [
+        59.53,
+        69.53
+      ],
+      "raw_label": 0,
+      "scene_refined": 0.0,
+      "temporal_refined": 0.0,
+      "raw_response": "Answers to Prompt Questions: The video shows a red truck driving on a road with no unusual behavior or activity. There are no people or objects in abnormal positions, and no visible damage or unusual movement. The video does not show any unusual sounds or noises.\nOutput: 0"
+    },
+    {
+      "rule": "highest temporally refined score",
+      "window_index": 140,
+      "anchor_frame": 2240,
+      "anchor_time_s": 74.67,
+      "window_frames": [
+        2090.0,
+        2390.0
+      ],
+      "window_time_s": [
+        69.67,
+        79.67
+      ],
+      "raw_label": 1,
+      "scene_refined": 0.5315,
+      "temporal_refined": 0.5036,
+      "raw_response": "Answers to Prompt Questions: The video shows a red truck and a train crossing the same road at the same time, which is an unusual and potentially dangerous situation. There is visible damage to the train, indicating an anomaly.\nOutput: 1"
+    },
+    {
+      "rule": "evenly spaced q=1",
+      "window_index": 161,
+      "anchor_frame": 2576,
+      "anchor_time_s": 85.87,
+      "window_frames": [
+        2426.0,
+        2580
+      ],
+      "window_time_s": [
+        80.87,
+        86.0
+      ],
+      "raw_label": 0,
+      "scene_refined": 0.2134,
+      "temporal_refined": 0.1167,
+      "raw_response": "Answers to Prompt Questions: The video shows a train on the tracks, and there are no people or vehicles in unusual positions or engaging in activities that are not consistent with their usual behavior. There is no visible damage or unusual movement in the video. There are no unusual sounds or noises in the video. Based on the analysis, there is no anomaly in the video.\nOutput: 0"
+    }
+  ]
+}

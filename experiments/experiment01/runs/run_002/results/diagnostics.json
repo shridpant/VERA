@@ -1,0 +1,31 @@
+{
+  "scope": "single video only; not a benchmark AUC/AP and not comparable to the paper's numbers",
+  "gt_positive_frames": 140,
+  "gt_negative_frames": 2440,
+  "frame_level_roc_auc_this_video": 0.9949414519906323,
+  "mean_score_inside_annotation": 0.3564626558813943,
+  "mean_score_outside_annotation": 0.03253706102605916,
+  "reference_official_initial_scores": {
+    "label": "REFERENCE ONLY: labels released by the VERA authors, not generated in this run",
+    "path": "shared/reference/vera_official_ucf_initial_scores/RoadAccidents127_x264.json",
+    "sha256": "2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1",
+    "same_anchor_keys": true,
+    "agreement_with_fresh_labels": 0.9629629629629629,
+    "official_anchors_labelled_1": [
+      672,
+      1280,
+      2128,
+      2176,
+      2192,
+      2208,
+      2240,
+      2256,
+      2272,
+      2288,
+      2320,
+      2352,
+      2368
+    ],
+    "frame_level_roc_auc_this_video": 0.9949414519906323
+  }
+}

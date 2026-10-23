@@ -1,0 +1,102 @@
+{
+  "passed": 16,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "C01",
+      "check": "required artifacts exist",
+      "status": "PASS",
+      "detail": "17 files"
+    },
+    {
+      "id": "C02",
+      "check": "JSON artifacts parse and round-trip",
+      "status": "PASS",
+      "detail": "all JSON round-trips"
+    },
+    {
+      "id": "C03",
+      "check": "manifest: all three stages ok, exactly one video",
+      "status": "PASS",
+      "detail": "latest stage status {'frames': 'ok', 'vlm': 'ok', 'refine': 'ok'}; single video True"
+    },
+    {
+      "id": "C04",
+      "check": "Step 1 manifest is the one requested video, without benchmark labels",
+      "status": "PASS",
+      "detail": "1 entry; keys ['length', 'video']; video frames/RoadAccidents/RoadAccidents127_x264.mp4"
+    },
+    {
+      "id": "C05",
+      "check": "source video checksum, decoding and frame cache identity",
+      "status": "PASS",
+      "detail": "video sha 618a6a63273d; decoded 2580 vs manifest 2580; 2580 frame files; digest match True"
+    },
+    {
+      "id": "C06",
+      "check": "one record per anchor, range(0, frames, 16), none missing or duplicated",
+      "status": "PASS",
+      "detail": "162 records; expected 162 (config 162); missing []"
+    },
+    {
+      "id": "C07",
+      "check": "every window: 8 in-range frames from the upstream formula, exact prompt, raw text, strict label",
+      "status": "PASS",
+      "detail": "0 problems []"
+    },
+    {
+      "id": "C08",
+      "check": "no video name, category or annotation frame in the prompt",
+      "status": "PASS",
+      "detail": "searched prompt and rendered model input for ['RoadAccidents127_x264', 'RoadAccidents', '2160', '2300']: hits []"
+    },
+    {
+      "id": "C09",
+      "check": "strict parser on representative valid and malformed outputs",
+      "status": "PASS",
+      "detail": "13/13 parser cases as expected; failures []"
+    },
+    {
+      "id": "C10",
+      "check": "segment score files agree with the raw records",
+      "status": "PASS",
+      "detail": "13 of 162 anchors labelled 1; unparsed 0"
+    },
+    {
+      "id": "C11",
+      "check": "feature rows align one-to-one with scored anchors",
+      "status": "PASS",
+      "detail": "shape (162, 1024) float64; rows vs anchors 162/162; sha f0c2470ccdae"
+    },
+    {
+      "id": "C12",
+      "check": "refined arrays numeric, finite, in range, frame scores match decoded frame count",
+      "status": "PASS",
+      "detail": "scene [0.000,0.550] temporal [0.000,0.504] frames 2580 [0.0000,0.3882]"
+    },
+    {
+      "id": "C13",
+      "check": "frame scores identical to the unmodified upstream compute_auc.py",
+      "status": "PASS",
+      "detail": "unmodified compute_auc.py @ 15b8bcb8: identical frame scores True (2580 values); its printed AUC 0.994941 vs ours 0.9949414519906323"
+    },
+    {
+      "id": "C14",
+      "check": "all artifacts reference the same source video checksum",
+      "status": "PASS",
+      "detail": "1 distinct video checksums across artifacts"
+    },
+    {
+      "id": "C15",
+      "check": "diagnostics scoped to this video; reference outputs labelled",
+      "status": "PASS",
+      "detail": "scope: single video only; not a benchmark AUC/AP and not comparable...; reference block labelled True"
+    },
+    {
+      "id": "C16",
+      "check": "REPORT.md has the rerun command and verbatim model text",
+      "status": "PASS",
+      "detail": "reproduction command present True; verbatim raw excerpt present True"
+    }
+  ]
+}
