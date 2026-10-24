@@ -16,63 +16,99 @@
   <button id="themeToggle" class="btn theme" type="button">☾ Dark</button>
 </nav></header>
 <main>
-  <section class="hero">
-    <div>
-      <div class="kicker">Interactive model probe</div>
-      <h1>See the images. Follow every VERA stage.</h1>
-      <p class="lead">Run one sampled window or a complete video. Inspect the inputs, generated text, parsed labels, and each available refinement stage.</p>
-      <div class="links">
-        <a class="btn link" href="/how-it-works">See the architecture →</a>
-        <a class="btn link" href="/scores">Understand the final timeline →</a>
-      </div>
-    </div>
-    <div class="illustration" role="img" aria-label="Eight sampled images and a text prompt enter one InternVL2 call. The answer is parsed and later refined across the complete video.">
-      <div class="flow">
-        <div class="node"><div class="tinygrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>8 sampled images</small></div>
-        <span class="arrow">+</span><div class="node">Text prompt</div>
-        <span class="arrow">→</span><div class="node">InternVL2<br><small>one call per window</small></div>
-        <span class="arrow">→</span><div class="node">Text + 0/1<br><small>then optional refinement</small></div>
-      </div>
-      <p class="hint">A full-video run repeats this call over overlapping windows. The model does not receive the unsampled frames or audio.</p>
-    </div>
+  <section class="intro">
+    <div class="kicker">Interactive model probe</div>
+    <h1>Run VERA. See what it saw and every stage it saved.</h1>
+    <p class="lead">Choose a video, set the knobs on the pipeline, and run one window or the full pipeline. Click any stage to jump to the setting that changes it.</p>
   </section>
 
-  <section class="card">
-    <h2>Run VERA</h2>
-    <p>Drop a video, enter a local path, or choose a random video from the configured library. Select the last stage you want to run. Earlier stages are saved too.</p>
-    <div id="drop" class="drop" tabindex="0" role="button" aria-label="Drop a video here or select a video file">
-      <strong>Drop a video here</strong>
-      <span>or click to choose MP4, AVI, MOV, or MKV · up to 200 MB</span>
-      <input id="file" type="file" accept=".mp4,.avi,.mov,.mkv,video/*">
-      <video id="preview" controls class="hidden"></video>
+  <section class="card workbench">
+    <p class="lane">Per window · what InternVL2 sees</p>
+    <ol class="pipeline" aria-label="Per-window stages. Stages that the selected run includes are highlighted.">
+      <li><button type="button" class="pnode" data-stage="input" data-focus="drop">
+        <span class="pnum">1</span><b>Video</b><small>drop, roll the die, or a path</small></button></li>
+      <li><button type="button" class="pnode" data-stage="preprocess" data-focus="anchor">
+        <span class="pnum">2</span><b id="windowsNode">One window</b><small>anchor every 16 frames, 10 s wide</small>
+        <span class="knob">window centre</span></button></li>
+      <li><button type="button" class="pnode" data-stage="preprocess" data-focus="anchor">
+        <span class="pnum">3</span><b>8 images</b><span class="strip8" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <small>evenly spaced stills, 448 px</small></button></li>
+      <li><button type="button" class="pnode" data-stage="infer" data-focus="questions">
+        <span class="pnum">4</span><b>Prompt</b><small>VERA instructions + guiding questions</small>
+        <span class="knob">questions</span></button></li>
+      <li class="wide"><button type="button" class="pnode model" data-stage="infer" data-focus="model">
+        <span class="pnum">5</span><b>InternVL2</b>
+        <span class="inner" aria-hidden="true"><span>InternViT<br>images → visual tokens</span><span>InternLM2<br>tokens → text</span></span>
+        <small>one call per window: all 8 images together</small>
+        <span class="knob">checkpoint · device · precision</span></button></li>
+      <li><button type="button" class="pnode" data-stage="infer" data-focus="target">
+        <span class="pnum">6</span><b>Text + 0/1</b><small>explanation, then strict “Output:” label</small></button></li>
+    </ol>
+    <p class="lane">Whole video · after every window has a label</p>
+    <ol class="pipeline after" aria-label="Whole-video stages. Stages that the selected run includes are highlighted.">
+      <li><button type="button" class="pnode" data-stage="refine" data-focus="feature">
+        <span class="pnum">7</span><b>Scene + temporal</b><small>similar-window vote, Gaussian smoothing</small>
+        <span class="knob">feature file</span></button></li>
+      <li><button type="button" class="pnode" data-stage="refine" data-focus="feature">
+        <span class="pnum">8</span><b>Frame timeline</b><small>expand ×16, round, position weight</small></button></li>
+      <li><button type="button" class="pnode" data-stage="evaluate" data-focus="annotation">
+        <span class="pnum">9</span><b>Metrics</b><small>frame ROC-AUC and AP</small>
+        <span class="knob">annotations</span></button></li>
+    </ol>
+    <p id="pipelineNote" class="hint">Highlighted stages run. The model never receives the frames between the 8 images, or audio.</p>
+
+    <div class="bench">
+      <div class="inputs">
+        <h2>1 · Video</h2>
+        <div id="drop" class="drop" tabindex="0" role="button" aria-label="Drop a video here or select a video file">
+          <span class="drop-icon" aria-hidden="true">▶</span>
+          <strong>Drop a video here</strong>
+          <span>or click to choose MP4, AVI, MOV, or MKV · up to 200 MB</span>
+          <input id="file" type="file" accept=".mp4,.avi,.mov,.mkv,video/*">
+          <video id="preview" controls class="hidden"></video>
+        </div>
+        <div class="actions">
+          <button id="lucky" class="btn dice" type="button"><span id="die" class="die" aria-hidden="true">⚄</span> I'm feeling lucky</button>
+          <span id="chosen" class="hint">No video selected</span>
+        </div>
+        <div class="field"><label for="path">…or a video path on the lab machine</label><input id="path" placeholder="/absolute/path/to/video.mp4"></div>
+      </div>
+
+      <div class="knobs">
+        <h2>2 · Knobs</h2>
+        <div class="controls">
+          <div class="field"><label for="target">Run through stage</label><select id="target">
+            <option value="window">One sampled window</option>
+            <option value="preprocess">Decode video and list windows</option>
+            <option value="segments">All windows: text and 0/1 labels</option>
+            <option value="refine">Scene, temporal, final frame scores</option>
+            <option value="evaluate">Refinement plus ground-truth metrics</option>
+          </select></div>
+          <div class="field"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>One-window mode picks the nearest anchor.</small></div>
+          <div class="field"><label for="device">Compute device</label><select id="device"><option>auto</option><option>mps</option><option>cuda</option><option>cpu</option></select></div>
+          <div class="field"><label for="dtype">Precision</label><select id="dtype"><option value="auto">Auto for device</option><option value="bfloat16">BF16</option><option value="float16">FP16</option><option value="float32">FP32</option></select><small>Auto: CUDA BF16, MPS FP16, CPU FP32.</small></div>
+          <div class="field wide"><label for="model">Model checkpoint path or Hub ID</label><input id="model" value="OpenGVLab/InternVL2-8B"><small>Local copies and OpenGVLab/InternVL2-8B use the pinned revision; other InternVL2 Hub IDs use their latest one, recorded with the result.</small></div>
+          <div class="field"><label for="download">Checkpoint download</label><label class="choice"><input id="download" type="checkbox">Allow if not cached</label></div>
+          <div class="field full"><label for="questions">Guiding questions · one per line</label><textarea id="questions" placeholder="Leave blank for VERA's released UCF-Crime questions"></textarea></div>
+          <div id="featureField" class="field full hidden"><label for="feature">Aligned ImageBind feature file (.npy)</label><input id="feature" placeholder="/absolute/path/VideoName.npy"><small>Required for scene and temporal refinement. Rows must match all ordered windows.</small></div>
+          <div id="annotationField" class="field full hidden"><label for="annotation">Ground-truth annotation manifest (.json)</label><input id="annotation" placeholder="/absolute/path/UCF_Eval.json"><small>Required only for evaluation. Uses the runner's UCF-style frame intervals.</small></div>
+        </div>
+      </div>
     </div>
-    <div class="actions"><button id="lucky" class="btn" type="button">⚄ I'm feeling lucky</button><span id="chosen" class="hint">No video selected</span></div>
-    <div class="controls">
-      <div class="field"><label for="target">Run through stage</label><select id="target">
-        <option value="window">One sampled window</option>
-        <option value="preprocess">Decode video and list windows</option>
-        <option value="segments">All windows: text and 0/1 labels</option>
-        <option value="refine">Scene, temporal, final frame scores</option>
-        <option value="evaluate">Refinement plus ground-truth metrics</option>
-      </select></div>
-      <div class="field"><label for="path">Video path (alternative to drop)</label><input id="path" placeholder="/absolute/path/to/video.mp4"></div>
-      <div class="field"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>Used only for one-window mode.</small></div>
-      <div class="field"><label for="device">Compute device</label><select id="device"><option>auto</option><option>mps</option><option>cuda</option><option>cpu</option></select></div>
-      <div class="field"><label for="dtype">Precision</label><select id="dtype"><option value="bfloat16">BF16</option><option value="float16">FP16</option><option value="float32">FP32</option></select></div>
-      <div class="field"><label for="model">Model checkpoint path or Hub ID</label><input id="model" value="OpenGVLab/InternVL2-8B"></div>
-      <div class="field"><label for="download">Checkpoint download</label><label class="choice"><input id="download" type="checkbox">Allow download if missing</label><small>Uses the runner's pinned revision.</small></div>
-      <div class="field full"><label for="questions">Guiding questions · one per line</label><textarea id="questions" placeholder="Leave blank for VERA's released UCF-Crime questions"></textarea></div>
-      <div id="featureField" class="field full hidden"><label for="feature">Aligned ImageBind feature file (.npy)</label><input id="feature" placeholder="/absolute/path/VideoName.npy"><small>Required for scene and temporal refinement. Rows must match all ordered windows.</small></div>
-      <div id="annotationField" class="field full hidden"><label for="annotation">Ground-truth annotation manifest (.json)</label><input id="annotation" placeholder="/absolute/path/UCF_Eval.json"><small>Required only for evaluation. This uses the runner's UCF-style frame intervals.</small></div>
+
+    <div class="runbar">
+      <button id="run" class="btn primary" type="button">Run one window</button>
+      <span id="warm" class="hint">Checking the model process…</span>
     </div>
-    <div class="actions"><button id="run" class="btn primary" type="button">Run VERA</button><span class="hint">RTX 6000 Ada: CUDA + BF16. Mac MPS: try FP16. CPU: FP32 may be slow.</span></div>
     <div id="status" class="status" role="status">Checking local dependencies…</div>
-    <div class="callout"><strong>What VERA does not establish:</strong> Its prose does not cite which sampled image supports each claim. Original VERA discards that prose after parsing the 0/1 label. This lab preserves it, but preservation is not evidence validation. Inspect the images and each numeric stage before trusting a claim.</div>
+    <div class="callout"><strong>What VERA does not establish:</strong> its prose does not cite which sampled image supports each claim. Original VERA discards that prose after parsing the 0/1 label. This lab keeps it, but keeping it is not validating it. Compare the images and each numeric stage before trusting a claim.</div>
   </section>
 
   <section id="results" class="card hidden">
     <h2 id="resultTitle">Run output</h2>
     <p id="resultMeta"></p>
+    <div id="windowStrip" class="windowstrip hidden" role="group" aria-label="Every window's parsed label. Select one to see its eight images and response."></div>
+    <p id="windowNote" class="hint hidden"></p>
     <div id="realFrames" class="resultframes"></div>
     <h3 id="responseHeading" class="hidden">Generated response</h3>
     <pre id="realResult" class="hidden"></pre>
