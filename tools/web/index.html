@@ -18,42 +18,45 @@
 <main>
   <section class="intro">
     <div class="kicker">Interactive model probe</div>
-    <h1>Run VERA. See what it saw and every stage it saved.</h1>
-    <p class="lead">Choose a video, set the knobs on the pipeline, and run one window or the full pipeline. Click any stage to jump to the setting that changes it.</p>
+    <h1>Run VERA. Watch what it sees, says and boxes.</h1>
+    <p class="lead">Pick a video and press Run. Everything below is read from the model process as it happens: the images it receives, the exact prompt, the text while it is generated, the parsed label, and boxes for the windows it calls anomalous.</p>
   </section>
 
   <section class="card workbench">
-    <p class="lane">Per window · what InternVL2 sees</p>
-    <ol class="pipeline" aria-label="Per-window stages. Stages that the selected run includes are highlighted.">
-      <li><button type="button" class="pnode" data-stage="input" data-focus="drop">
-        <span class="pnum">1</span><b>Video</b><small>drop, roll the die, or a path</small></button></li>
-      <li><button type="button" class="pnode" data-stage="preprocess" data-focus="anchor">
-        <span class="pnum">2</span><b id="windowsNode">One window</b><small>anchor every 16 frames, 10 s wide</small>
+    <p class="lane">Per window · what InternVL2 sees and says</p>
+    <ol class="pipeline" aria-label="Per-window stages. Highlighted stages run; the outlined one is running now.">
+      <li><button type="button" class="pnode" data-stage="input" data-node="video" data-focus="drop">
+        <span class="pnum">1</span><b>Video</b><small>drop, roll the die, or a path</small><em class="live"></em></button></li>
+      <li><button type="button" class="pnode" data-stage="preprocess" data-node="window" data-focus="anchor">
+        <span class="pnum">2</span><b id="windowsNode">One window</b><small>anchor every 16 frames, 10 s wide</small><em class="live"></em>
         <span class="knob" data-only="window">window centre</span></button></li>
-      <li><button type="button" class="pnode" data-stage="preprocess" data-focus="anchor">
+      <li><button type="button" class="pnode" data-stage="preprocess" data-node="images" data-focus="anchor">
         <span class="pnum">3</span><b>8 images</b><span class="strip8" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-        <small>evenly spaced stills, 448 px</small></button></li>
-      <li><button type="button" class="pnode" data-stage="infer" data-focus="questions">
-        <span class="pnum">4</span><b>Prompt</b><small>VERA instructions + guiding questions</small>
-        <span class="knob">questions</span></button></li>
-      <li class="wide"><button type="button" class="pnode model" data-stage="infer" data-focus="model">
+        <small>evenly spaced stills, 448 px</small><em class="live"></em></button></li>
+      <li><button type="button" class="pnode" data-stage="infer" data-node="prompt" data-focus="promptPanel">
+        <span class="pnum">4</span><b>Prompt</b><small>VERA instructions + guiding questions</small><em class="live"></em>
+        <span class="knob adv">questions</span></button></li>
+      <li class="wide"><button type="button" class="pnode model" data-stage="infer" data-node="model" data-focus="model">
         <span class="pnum">5</span><b>InternVL2</b>
         <span class="inner" aria-hidden="true"><span>InternViT<br>images → visual tokens</span><span>InternLM2<br>tokens → text</span></span>
-        <small>one call per window: all 8 images together</small>
-        <span class="knob">checkpoint · device · precision</span></button></li>
-      <li><button type="button" class="pnode" data-stage="infer" data-focus="target">
-        <span class="pnum">6</span><b>Text + 0/1</b><small>explanation, then strict “Output:” label</small></button></li>
+        <small>one call per window: all 8 images together</small><em class="live"></em>
+        <span class="knob adv">checkpoint · device · precision</span></button></li>
+      <li><button type="button" class="pnode" data-stage="infer" data-node="answer" data-focus="liveAnswer">
+        <span class="pnum">6</span><b>Text + 0/1</b><small>explanation, then strict “Output:” label</small><em class="live"></em></button></li>
+      <li><button type="button" class="pnode" data-stage="boxes" data-node="boxes" data-focus="boxPhrase">
+        <span class="pnum">7</span><b>Boxes</b><small>windows labelled 1: name it, then box it on each image</small><em class="live"></em>
+        <span class="knob adv">phrase</span></button></li>
     </ol>
     <p class="lane">Whole video · after every window has a label</p>
-    <ol class="pipeline after" aria-label="Whole-video stages. Stages that the selected run includes are highlighted.">
-      <li><button type="button" class="pnode" data-stage="refine" data-focus="feature">
-        <span class="pnum">7</span><b>Scene + temporal</b><small>similar-window vote, Gaussian smoothing</small>
-        <span class="knob">feature file</span></button></li>
-      <li><button type="button" class="pnode" data-stage="refine" data-focus="feature">
-        <span class="pnum">8</span><b>Frame timeline</b><small>expand ×16, round, position weight</small></button></li>
-      <li><button type="button" class="pnode" data-stage="evaluate" data-focus="annotation">
-        <span class="pnum">9</span><b>Metrics</b><small>frame ROC-AUC and AP</small>
-        <span class="knob">annotations</span></button></li>
+    <ol class="pipeline after" aria-label="Whole-video stages.">
+      <li><button type="button" class="pnode" data-stage="refine" data-node="refine" data-focus="feature">
+        <span class="pnum">8</span><b>Scene + temporal</b><small>similar-window vote, Gaussian smoothing</small><em class="live"></em>
+        <span class="knob adv">feature file</span></button></li>
+      <li><button type="button" class="pnode" data-stage="refine" data-node="timeline" data-focus="feature">
+        <span class="pnum">9</span><b>Frame timeline</b><small>expand ×16, round, position weight</small><em class="live"></em></button></li>
+      <li><button type="button" class="pnode" data-stage="evaluate" data-node="metrics" data-focus="annotation">
+        <span class="pnum">10</span><b>Metrics</b><small>frame ROC-AUC and AP</small><em class="live"></em>
+        <span class="knob adv">annotations</span></button></li>
     </ol>
     <p id="pipelineNote" class="hint">Highlighted stages run. The model never receives the frames between the 8 images, or audio.</p>
 
@@ -75,26 +78,42 @@
       </div>
 
       <div class="knobs">
-        <div class="knobs-head"><h2>2 · Knobs</h2><button id="reset" class="btn ghost" type="button" title="Restore VERA's original settings and clear the video">↺ Reset to VERA defaults</button></div>
+        <div class="knobs-head">
+          <h2>2 · Run</h2>
+          <div class="seg" role="group" aria-label="Settings view"><button id="simpleMode" type="button" aria-pressed="true">Simple</button><button id="advancedMode" type="button" aria-pressed="false">Advanced</button></div>
+          <button id="reset" class="btn ghost" type="button" title="Restore VERA's original settings and clear the video">↺ Reset to VERA defaults</button>
+        </div>
         <div class="controls">
-          <div class="field"><label for="target">Run through stage</label><select id="target">
+          <div class="field simple-only"><span class="label">What to run</span><div class="seg" role="group" aria-label="What to run"><button type="button" data-scope="window" aria-pressed="true">One window</button><button type="button" data-scope="full" aria-pressed="false">Whole video</button></div>
+            <small id="scopeHint">Simple uses VERA's original settings, with boxes for windows labelled 1.</small></div>
+          <div class="field adv"><label for="target">Run through stage</label><select id="target">
             <option value="window">One sampled window</option>
             <option value="preprocess">Decode video and list windows</option>
             <option value="segments">All windows: text and 0/1 labels</option>
             <option value="refine">Scene, temporal, final frame scores</option>
             <option value="evaluate">Refinement plus ground-truth metrics</option>
           </select></div>
-          <div class="field"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>Only for “One sampled window”: the anchor (one every 16 frames) nearest this time. The die picks one at random.</small></div>
-          <div class="field"><label for="device">Compute device</label><select id="device"><option>auto</option><option>mps</option><option>cuda</option><option>cpu</option></select></div>
-          <div class="field"><label for="dtype">Precision</label><select id="dtype"><option value="auto">Auto for device</option><option value="bfloat16">BF16</option><option value="float16">FP16</option><option value="float32">FP32</option></select><small>Auto: CUDA BF16, MPS FP16, CPU FP32.</small></div>
-          <div class="field wide"><label for="model">Model checkpoint path or Hub ID</label><input id="model" value="OpenGVLab/InternVL2-8B"><small>Local copies and OpenGVLab/InternVL2-8B use the pinned revision; other InternVL2 Hub IDs use their latest one, recorded with the result.</small></div>
-          <div class="field"><label for="download">Checkpoint download</label><label class="choice"><input id="download" type="checkbox">Allow if not cached</label></div>
-          <div class="field full"><label for="questions">Guiding questions · one per line</label><textarea id="questions" placeholder="Leave blank for VERA's released UCF-Crime questions"></textarea></div>
-          <div id="featureField" class="field full hidden"><label for="feature">Aligned ImageBind feature file (.npy)</label><input id="feature" placeholder="/absolute/path/VideoName.npy"><small>Required for scene and temporal refinement. Rows must match all ordered windows.</small></div>
-          <div id="annotationField" class="field full hidden"><label for="annotation">Ground-truth annotation manifest (.json)</label><input id="annotation" placeholder="/absolute/path/UCF_Eval.json"><small>Required only for evaluation. Uses the runner's UCF-style frame intervals.</small></div>
+          <div class="field" id="anchorField"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>The anchor (one every 16 frames) nearest this time. The die picks one at random.</small></div>
+          <div class="field adv"><label for="device">Compute device</label><select id="device"><option>auto</option><option>mps</option><option>cuda</option><option>cpu</option></select></div>
+          <div class="field adv"><label for="dtype">Precision</label><select id="dtype"><option value="auto">Auto for device</option><option value="bfloat16">BF16</option><option value="float16">FP16</option><option value="float32">FP32</option></select><small>Auto: CUDA BF16, MPS FP16, CPU FP32. FlashAttention is on for CUDA when installed.</small></div>
+          <div class="field wide adv"><label for="model">Model checkpoint path or Hub ID</label><input id="model" value="OpenGVLab/InternVL2-8B"><small>Local copies and OpenGVLab/InternVL2-8B use the pinned revision; other InternVL2 Hub IDs use their latest one, recorded with the result.</small></div>
+          <div class="field adv"><label for="download">Checkpoint download</label><label class="choice"><input id="download" type="checkbox">Allow if not cached</label></div>
+          <div class="field adv"><label for="boxesOn">Boxes</label><label class="choice"><input id="boxesOn" type="checkbox" checked>For windows labelled 1</label><small>Extra calls after the label; labels are unchanged.</small></div>
+          <div class="field adv"><label for="boxPhrase">What to box</label><input id="boxPhrase" maxlength="120" placeholder="Blank: the model names the anomaly"></div>
+          <div class="field full adv"><label for="questions">Guiding questions · one per line</label><textarea id="questions" placeholder="Leave blank for VERA's released UCF-Crime questions"></textarea></div>
+          <div id="featureField" class="field full adv hidden"><label for="feature">Aligned ImageBind feature file (.npy)</label><input id="feature" placeholder="/absolute/path/VideoName.npy"><small>Required for scene and temporal refinement. Rows must match all ordered windows.</small></div>
+          <div id="annotationField" class="field full adv hidden"><label for="annotation">Ground-truth annotation manifest (.json)</label><input id="annotation" placeholder="/absolute/path/UCF_Eval.json"><small>Required only for evaluation. Uses the runner's UCF-style frame intervals.</small></div>
         </div>
       </div>
     </div>
+
+    <details id="promptPanel" class="prompt-panel">
+      <summary><b>Exact prompt</b> sent with every window <span id="promptMeta" class="hint"></span></summary>
+      <pre id="promptText">Loading…</pre>
+      <p class="hint">VERA's call puts all 8 images where the first <code>&lt;image&gt;</code> placeholder is. The model's chat template and system message wrap this text; the full model input of the last run, below, shows exactly what the language model received.</p>
+      <details id="modelInputPanel" class="hidden"><summary>Full model input of the last run</summary><pre id="modelInputText"></pre></details>
+      <p class="hint">Box calls: naming <code id="namePrompt"></code> · then one image per call: <code id="groundPrompt"></code></p>
+    </details>
 
     <div class="runbar">
       <button id="run" class="btn primary" type="button">Run one window</button>
@@ -105,18 +124,41 @@
       <p id="usageHead" class="usage-head"></p>
       <div id="meters" class="meters"></div>
     </div>
-    <div class="callout"><strong>What VERA does not establish:</strong> its prose does not cite which sampled image supports each claim. Original VERA discards that prose after parsing the 0/1 label. This lab keeps it, but keeping it is not validating it. Compare the images and each numeric stage before trusting a claim.</div>
+    <div class="callout"><strong>What VERA does not establish:</strong> its prose does not cite which sampled image supports each claim, and original VERA discards that prose after parsing the 0/1 label. This lab keeps it. Boxes are the model's own answer to “where is this?”, not validated localization: UCF-Crime has no box annotations to score them against.</div>
+  </section>
+
+  <section id="live" class="card hidden" aria-live="off">
+    <div class="live-head"><h2 id="liveTitle">What VERA is doing</h2><span id="liveState" class="hint"></span></div>
+    <div id="windowStrip" class="windowstrip" role="group" aria-label="Every window in time order; red is labelled 1, a dot marks boxes"></div>
+    <div id="scoreTrack" class="scoretrack hidden"></div>
+    <div class="player">
+      <button id="prevWindow" class="btn" type="button" aria-label="Previous window">◀</button>
+      <button id="playWindows" class="btn" type="button">▶ Play</button>
+      <button id="nextWindow" class="btn" type="button" aria-label="Next window">▶</button>
+      <label class="choice">Speed <select id="speed"><option value="1000">1 window/s</option><option value="500" selected>2 windows/s</option><option value="200">5 windows/s</option></select></label>
+      <label class="choice"><input id="followLive" type="checkbox" checked>Follow live</label>
+    </div>
+    <p id="windowMeta" class="window-meta"></p>
+    <div id="frames" class="resultframes frames-live"></div>
+    <div class="live-grid">
+      <div id="liveAnswer" tabindex="-1"><h3>Model output for this window</h3><pre id="answerText" class="answer"></pre></div>
+      <div id="boxPanel">
+        <h3>Boxes</h3>
+        <p id="boxSummary" class="hint"></p>
+        <div id="boxRows" class="boxrows"></div>
+        <div class="manual">
+          <label class="choice"><input id="manualMode" type="checkbox">Pick frames to box</label>
+          <input id="manualPhrase" maxlength="120" placeholder="What to box, e.g. the red truck">
+          <button id="boxSelected" class="btn" type="button" disabled>Box 0 frames</button>
+          <p id="manualState" class="hint">Click images to pick them, in any window. Only picked frames are sent.</p>
+        </div>
+      </div>
+    </div>
+    <details class="eventlog"><summary>Event log <span id="eventCount" class="hint"></span></summary><ol id="eventLog"></ol></details>
   </section>
 
   <section id="results" class="card hidden">
-    <h2 id="resultTitle">Run output</h2>
-    <p id="resultMeta"></p>
-    <div id="windowStrip" class="windowstrip hidden" role="group" aria-label="Every window's parsed label. Select one to see its eight images and response."></div>
-    <p id="windowNote" class="hint hidden"></p>
-    <div id="realFrames" class="resultframes"></div>
-    <h3 id="responseHeading" class="hidden">Generated response</h3>
-    <pre id="realResult" class="hidden"></pre>
-    <h3>Stage artifacts</h3>
+    <h2>Stage files</h2>
     <p id="scratchPath" class="hint"></p>
     <div class="field"><label for="stageSelect">Choose a stage</label><select id="stageSelect"></select></div>
     <div id="stageFiles" class="stagefiles"></div>
