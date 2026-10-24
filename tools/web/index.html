@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Run VERA · VERA Lab</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header><nav>
+  <a class="brand" href="/">VERA Lab</a>
+  <a href="/" aria-current="page">Run VERA</a>
+  <a href="/how-it-works">How it works</a>
+  <a href="/frame-game">Frame game</a>
+  <a href="/scores">Score timeline</a>
+  <button id="themeToggle" class="btn theme" type="button">☾ Dark</button>
+</nav></header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="kicker">Interactive model probe</div>
+      <h1>See the images. Follow every VERA stage.</h1>
+      <p class="lead">Run one sampled window or a complete video. Inspect the inputs, generated text, parsed labels, and each available refinement stage.</p>
+      <div class="links">
+        <a class="btn link" href="/how-it-works">See the architecture →</a>
+        <a class="btn link" href="/scores">Understand the final timeline →</a>
+      </div>
+    </div>
+    <div class="illustration" role="img" aria-label="Eight sampled images and a text prompt enter one InternVL2 call. The answer is parsed and later refined across the complete video.">
+      <div class="flow">
+        <div class="node"><div class="tinygrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>8 sampled images</small></div>
+        <span class="arrow">+</span><div class="node">Text prompt</div>
+        <span class="arrow">→</span><div class="node">InternVL2<br><small>one call per window</small></div>
+        <span class="arrow">→</span><div class="node">Text + 0/1<br><small>then optional refinement</small></div>
+      </div>
+      <p class="hint">A full-video run repeats this call over overlapping windows. The model does not receive the unsampled frames or audio.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Run VERA</h2>
+    <p>Drop a video, enter a local path, or choose a random video from the configured library. Select the last stage you want to run. Earlier stages are saved too.</p>
+    <div id="drop" class="drop" tabindex="0" role="button" aria-label="Drop a video here or select a video file">
+      <strong>Drop a video here</strong>
+      <span>or click to choose MP4, AVI, MOV, or MKV · up to 200 MB</span>
+      <input id="file" type="file" accept=".mp4,.avi,.mov,.mkv,video/*">
+      <video id="preview" controls class="hidden"></video>
+    </div>
+    <div class="actions"><button id="lucky" class="btn" type="button">⚄ I'm feeling lucky</button><span id="chosen" class="hint">No video selected</span></div>
+    <div class="controls">
+      <div class="field"><label for="target">Run through stage</label><select id="target">
+        <option value="window">One sampled window</option>
+        <option value="preprocess">Decode video and list windows</option>
+        <option value="segments">All windows: text and 0/1 labels</option>
+        <option value="refine">Scene, temporal, final frame scores</option>
+        <option value="evaluate">Refinement plus ground-truth metrics</option>
+      </select></div>
+      <div class="field"><label for="path">Video path (alternative to drop)</label><input id="path" placeholder="/absolute/path/to/video.mp4"></div>
+      <div class="field"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>Used only for one-window mode.</small></div>
+      <div class="field"><label for="device">Compute device</label><select id="device"><option>auto</option><option>mps</option><option>cuda</option><option>cpu</option></select></div>
+      <div class="field"><label for="dtype">Precision</label><select id="dtype"><option value="bfloat16">BF16</option><option value="float16">FP16</option><option value="float32">FP32</option></select></div>
+      <div class="field"><label for="model">Model checkpoint path or Hub ID</label><input id="model" value="OpenGVLab/InternVL2-8B"></div>
+      <div class="field"><label for="download">Checkpoint download</label><label class="choice"><input id="download" type="checkbox">Allow download if missing</label><small>Uses the runner's pinned revision.</small></div>
+      <div class="field full"><label for="questions">Guiding questions · one per line</label><textarea id="questions" placeholder="Leave blank for VERA's released UCF-Crime questions"></textarea></div>
+      <div id="featureField" class="field full hidden"><label for="feature">Aligned ImageBind feature file (.npy)</label><input id="feature" placeholder="/absolute/path/VideoName.npy"><small>Required for scene and temporal refinement. Rows must match all ordered windows.</small></div>
+      <div id="annotationField" class="field full hidden"><label for="annotation">Ground-truth annotation manifest (.json)</label><input id="annotation" placeholder="/absolute/path/UCF_Eval.json"><small>Required only for evaluation. This uses the runner's UCF-style frame intervals.</small></div>
+    </div>
+    <div class="actions"><button id="run" class="btn primary" type="button">Run VERA</button><span class="hint">RTX 6000 Ada: CUDA + BF16. Mac MPS: try FP16. CPU: FP32 may be slow.</span></div>
+    <div id="status" class="status" role="status">Checking local dependencies…</div>
+    <div class="callout"><strong>What VERA does not establish:</strong> Its prose does not cite which sampled image supports each claim. Original VERA discards that prose after parsing the 0/1 label. This lab preserves it, but preservation is not evidence validation. Inspect the images and each numeric stage before trusting a claim.</div>
+  </section>
+
+  <section id="results" class="card hidden">
+    <h2 id="resultTitle">Run output</h2>
+    <p id="resultMeta"></p>
+    <div id="realFrames" class="resultframes"></div>
+    <h3 id="responseHeading" class="hidden">Generated response</h3>
+    <pre id="realResult" class="hidden"></pre>
+    <h3>Stage artifacts</h3>
+    <p id="scratchPath" class="hint"></p>
+    <div class="field"><label for="stageSelect">Choose a stage</label><select id="stageSelect"></select></div>
+    <div id="stageFiles" class="stagefiles"></div>
+    <div id="artifactPreview" class="artifact-preview"></div>
+  </section>
+</main>
+<script src="/static/common.js"></script>
+<script src="/static/model.js"></script>
+</body>
+</html>
