@@ -316,7 +316,6 @@ const live = {
 };
 
 function resetLive(job) {
-  clearInterval(live.playing);
   Object.assign(live, {job, after: {run: 0, manual: 0}, windows: [], byKey: new Map(), current: -1, fps: null,
     frames: null, total: 0, events: 0, dirty: true, playing: null, picked: new Set(), scores: null, boxing: false,
     scorePath: null, single: false});
@@ -368,6 +367,9 @@ function applyEvent(event, base) {
     case 'run':
       live.single = event.stages.includes('window');
       markNode('video', 'starting');
+      break;
+    case 'decoding':
+      markNode('video', 'decoding ' + event.video);
       break;
     case 'video':
       live.total = event.windows;
@@ -573,7 +575,9 @@ function renderFrames(row) {
 
 function renderBoxDetails(row) {
   const rows = [];
-  if (!row.boxes.length) {
+  if (!row.boxes.length && row.strict_label === undefined) {
+    $('boxSummary').textContent = 'Boxes come after the label, only if it is 1.';
+  } else if (!row.boxes.length) {
     $('boxSummary').textContent = row.strict_label === 1
       ? 'This window is labelled 1; its boxes appear here as each call returns.'
       : 'No boxes: only windows labelled 1 are boxed automatically. Pick frames below to ask for boxes yourself.';
@@ -598,6 +602,18 @@ function renderBoxDetails(row) {
   $('boxRows').replaceChildren(...rows);
 }
 
+// Fetch the next windows' images ahead of the player, so a timelapse never shows empty frames.
+function prefetch(from, count) {
+  for (const row of live.windows.slice(from, from + count)) {
+    for (const path of row.images) new Image().src = artifactURL(live.job, path);
+  }
+}
+
+function framesShown() {
+  const images = [...document.querySelectorAll('#frames img')];
+  return Promise.race([Promise.all(images.map(image => image.decode().catch(() => null))), sleep(8000)]);
+}
+
 function renderLive() {
   live.dirty = false;
   $('live').classList.remove('hidden');
@@ -620,6 +636,7 @@ function renderLive() {
   $('answerText').textContent = (row.raw_response || '…waiting for the model') + (row.partial ? '\n▌ generating' : '');
   renderBoxDetails(row);
   drawScoreCursor();
+  prefetch(live.current + 1, 2);
 }
 
 /* ---------- Timelapse player ---------- */
@@ -639,20 +656,24 @@ $('followLive').addEventListener('change', () => {
   }
 });
 function stopPlaying() {
-  clearInterval(live.playing);
   live.playing = null;
   $('playWindows').textContent = '▶ Play';
 }
-$('playWindows').addEventListener('click', () => {
+$('playWindows').addEventListener('click', async () => {
   if (live.playing) return stopPlaying();
   live.follow = false;
   $('followLive').checked = false;
   if (live.current >= live.windows.length - 1) live.current = -1;
   $('playWindows').textContent = '⏸ Pause';
-  live.playing = setInterval(() => {
-    if (live.current >= live.windows.length - 1) return stopPlaying();
+  const run = live.playing = Symbol('play');
+  // Each step waits for its images to be on screen, then for the rest of the chosen interval.
+  while (live.playing === run && live.current < live.windows.length - 1) {
+    const started = performance.now();
     step(1);
-  }, Number($('speed').value));
+    await framesShown();
+    await sleep(Math.max(0, Number($('speed').value) - (performance.now() - started)));
+  }
+  if (live.playing === run) stopPlaying();
 });
 $('speed').addEventListener('change', () => {
   if (live.playing) {
@@ -883,7 +904,7 @@ async function follow(job, finished = false) {
     const progress = result.progress;
     say(progress?.total_windows
       ? 'VERA is running: ' + (progress.completed_requests || 0) + ' of ' + progress.total_windows + ' windows · ' + (progress.stage || 'starting') + '.'
-      : 'VERA is running. Every step appears below as it happens.');
+      : 'VERA is running' + (progress?.stage ? ' · ' + progress.stage.replaceAll('_', ' ') : '') + '. Every step appears below as it happens.');
     $('liveState').textContent = 'live';
     await sleep(800);
   }

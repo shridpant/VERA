@@ -45,6 +45,7 @@ def run(cfg,run_dir,state,timeline):
     modes=['baseline'] if cfg['intervention']['mode']=='baseline' else ([ 'baseline',cfg['intervention']['mode']] if cfg['intervention']['probe'] else [cfg['intervention']['mode']])
     for item in items:
         dest=output/item['id'];dest.mkdir();state.update(video=item['id'],stage='preprocess')
+        timeline.emit('decoding',video=item['id'])
         info=preprocess(item,dest/'frames');write(dest/'video.json',info)
         anchors=list(windows(info['decoded_frames'],cfg['sampling']))
         limit=cfg['selection']['max_windows_per_video']
@@ -57,10 +58,12 @@ def run(cfg,run_dir,state,timeline):
             state['stage']='loading_model';timeline.emit('model_loading',path=cfg['model']['path'])
             loading=time.monotonic();backend=BACKENDS[cfg['model']['backend']](cfg)
             state['device']=backend.device
+            # One handle for the whole run: reopening per forward pass made every token a file-server round trip on NFS.
+            telemetry=(output/'model_progress.jsonl').open('a',buffering=1)
             def progress(stage,details):
                 state.update(model_stage=stage,model_progress=details)
                 record={'time':datetime.datetime.now(datetime.timezone.utc).isoformat(),'stage':stage,**details}
-                with (output/'model_progress.jsonl').open('a') as telemetry:telemetry.write(json.dumps(record)+'\n')
+                telemetry.write(json.dumps(record)+'\n')
                 print('MODEL',json.dumps(record),flush=True)
             backend.progress=progress
             identity=getattr(backend,'model_identity',{'synthetic':True})
@@ -188,7 +191,7 @@ def main():
         timeline.emit('error',message=f'{type(exc).__name__}: {exc}')
     finally:
         timer.cancel();stop.set();worker.join();state['finished_at']=datetime.datetime.now(datetime.timezone.utc).isoformat();write(out/'status.json',state)
-        timeline.emit('done',status=state['status'])
+        timeline.emit('done',status=state['status']);timeline.close()
         with (out/'diagnostic.log').open('w') as combined:
             for name in ('status.json','inference.log','error.txt'):
                 p=out/name

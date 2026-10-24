@@ -11,13 +11,17 @@ import time
 
 class Timeline:
     def __init__(self, path):
-        self.path = path
+        # Kept open and line-buffered: each event is visible at once, without a reopen per event.
+        self.handle = open(path, 'a', encoding='utf-8', buffering=1)
         self.lock = threading.Lock()
 
     def emit(self, event, **fields):
         line = json.dumps({'t': round(time.time(), 3), 'event': event, **fields}, ensure_ascii=False)
-        with self.lock, open(self.path, 'a', encoding='utf-8') as handle:
-            handle.write(line + '\n')
+        with self.lock:
+            self.handle.write(line + '\n')
+
+    def close(self):
+        self.handle.close()
 
     def streamer(self, **fields):
         """on_text callback for predict(): reports generated text at most every quarter second."""
@@ -31,3 +35,6 @@ class Silent:
 
     def streamer(self, **fields):
         return None
+
+    def close(self):
+        pass

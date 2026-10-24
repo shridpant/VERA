@@ -30,7 +30,7 @@ class BoxesPipelineTests(unittest.TestCase):
             self.assertTrue(all(len(b['frames'])==8 and b['phrase']=='mock anomaly' for b in boxed))
             self.assertEqual(boxed[0]['frames'][0]['status'],'box')
             events=[json.loads(x)['event'] for x in (out/'timeline.jsonl').read_text().splitlines()]
-            self.assertEqual(events[:5],['run','video','model_loading','model_ready','prompt'])
+            self.assertEqual(events[:6],['run','decoding','video','model_loading','model_ready','prompt'])
             self.assertEqual(events[-1],'done')
             self.assertEqual(events.count('window'),len(labels))
             self.assertEqual(events.count('box'),8*len(boxed))

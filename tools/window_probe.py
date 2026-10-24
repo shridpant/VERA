@@ -93,13 +93,16 @@ def probe(cfg, video, anchor_seconds, out, backend_for):
     except Exception as exc:
         timeline.emit('error', message=f'{type(exc).__name__}: {exc}')
         timeline.emit('done', status='failed')
+        timeline.close()
         raise
     timeline.emit('done', status='complete')
+    timeline.close()
     return result
 
 
 def sample_and_ask(cfg, video, anchor_seconds, out, backend_for, timeline):
     import cv2
+    timeline.emit('decoding', video=video.name)
     cap = cv2.VideoCapture(str(video))
     try:
         length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -190,6 +193,7 @@ def ground_saved(request, backend_for):
             handle.write(json.dumps(record, ensure_ascii=False) + '\n')
         windows_done.append(anchor)
     timeline.emit('manual_done', windows=windows_done)
+    timeline.close()
     return {'ok': True, 'boxed': len(request['items']), 'device': backend.device,
             'dtype': getattr(backend, 'model_identity', {}).get('dtype')}
 

@@ -356,12 +356,12 @@ class Handler(BaseHTTPRequestHandler):
     def local_host(self):
         return urlsplit('http://' + self.headers.get('Host', '')).hostname in ('127.0.0.1', 'localhost')
 
-    def send(self, code, payload, content_type='application/json'):
+    def send(self, code, payload, content_type='application/json', cache='no-store'):
         data = payload if isinstance(payload, bytes) else json.dumps(payload).encode('utf-8')
         self.send_response(code)
         self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', str(len(data)))
-        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Cache-Control', cache)
         self.end_headers()
         self.wfile.write(data)
 
@@ -464,7 +464,9 @@ class Handler(BaseHTTPRequestHandler):
                 mime = {'.json': 'application/json', '.jsonl': 'application/x-ndjson',
                         '.txt': 'text/plain; charset=utf-8', '.log': 'text/plain; charset=utf-8',
                         '.png': 'image/png', '.jpg': 'image/jpeg'}.get(selected.suffix, 'application/octet-stream')
-                return self.send(200, selected.read_bytes(), mime)
+                # Saved images never change within a run, and their URLs carry the run's job id.
+                cache = 'private, max-age=3600' if mime.startswith('image/') else 'no-store'
+                return self.send(200, selected.read_bytes(), mime, cache)
             except (ValueError, OSError) as exc:
                 return self.send(400, {'error': str(exc)})
         if route.path == '/api/windows':
