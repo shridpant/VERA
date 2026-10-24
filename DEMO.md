@@ -107,6 +107,21 @@ The page shows whether a model is loaded; each result reports load and
 inference seconds separately. Two consecutive windows, measured on 2026-10-24: Oz RTX 6000 Ada 31.0 s then 4.6 s;
 Mac M3 Max 35.3 s then 11.1 s.
 
+## Where it runs and what it uses
+
+Under the run status, a usage panel refreshes every few seconds (`GET /api/usage`).
+It names the machine the lab server runs on. Through the SSH tunnel that is `oz`,
+even though the page is open on your Mac. It also names the process holding the
+model (the full-video runner or the window model) and shows:
+
+- on CUDA, how busy each visible GPU is, its memory, and how much the model
+  process holds (`nvidia-smi`, limited to `CUDA_VISIBLE_DEVICES`);
+- on a Mac, Apple GPU utilization and GPU-allocated unified memory (`ioreg`), and
+  the model process's full memory footprint, GPU buffers included (`top`);
+- the model process's CPU use.
+
+Nothing here needs elevated rights or changes the run.
+
 ## Choose the final stage
 
 | UI choice | Existing code | Files you can inspect |

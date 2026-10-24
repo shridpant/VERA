@@ -2,6 +2,7 @@
 import http.client
 from http.server import ThreadingHTTPServer
 import json
+import os
 from pathlib import Path
 import tempfile
 import threading
@@ -58,6 +59,24 @@ class DemoServerTests(unittest.TestCase):
             code, content = self.call('GET', path)
             self.assertEqual(code, 200, path)
             self.assertIn(marker, content)
+
+    def test_usage_names_host_and_the_process_holding_the_model(self):
+        demo_server.JOBS.clear()
+        code, content = self.call('GET', '/api/usage')
+        self.assertEqual(code, 200)
+        idle = json.loads(content)
+        self.assertTrue(idle['host'])
+        self.assertEqual((idle['role'], idle['process'], idle['running']), (None, None, False))
+        running = mock.Mock(pid=os.getpid())
+        running.poll.return_value = None
+        demo_server.JOBS['busy'] = {'process': running, 'folder': self.root, 'mode': 'video',
+                                    'video_id': 'sample', 'target_stage': 'segments'}
+        try:
+            busy = json.loads(self.call('GET', '/api/usage')[1])
+        finally:
+            demo_server.JOBS.clear()
+        self.assertEqual((busy['role'], busy['running']), ('full-video runner', True))
+        self.assertEqual(busy['process']['pid'], os.getpid())
 
     def test_lucky_uses_random_index_over_sorted_videos(self):
         videos = [str(self.library / name) for name in ('other.mov', 'sample.mp4', 'third.avi')]

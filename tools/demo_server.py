@@ -18,6 +18,7 @@ from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+from tools import usage
 from tools.stage_view import stage_manifest
 from vera_runner.config import path as runner_path
 WEB = ROOT / 'tools' / 'web'
@@ -311,6 +312,18 @@ class Handler(BaseHTTPRequestHandler):
                                    'annotation_file': str(ANNOTATION_FILE) if ANNOTATION_FILE else '',
                                    'scratch_directory': str(CURRENT),
                                    'warm_model': WARM.describe()})
+        if route.path == '/api/usage':
+            # Which process holds the model right now, and what it and the GPU are using.
+            with LOCK:
+                running = next((job for job in JOBS.values() if job['process'].poll() is None), None)
+            warm = WARM.process
+            if running is not None and running['mode'] == 'video':
+                pid, role = running['process'].pid, 'full-video runner'
+            elif warm is not None and warm.poll() is None:
+                pid, role = warm.pid, 'window model' if running is not None else 'window model, loaded and idle'
+            else:
+                pid, role = None, None
+            return self.send(200, {**usage.sample(pid), 'role': role, 'running': running is not None})
         if route.path == '/api/lucky':
             try:
                 target = parse_qs(route.query).get('target', ['window'])[0]

@@ -67,6 +67,58 @@ function describeWarmModel(warm) {
     : 'No model loaded: the first window loads the checkpoint.';
 }
 
+const gigabytes = bytes => (bytes / 1e9).toFixed(1) + ' GB';
+
+function meter(label, fraction, text) {
+  const box = document.createElement('div');
+  box.className = 'meter';
+  const name = document.createElement('span');
+  name.textContent = label;
+  const value = document.createElement('b');
+  value.textContent = text;
+  box.append(name, value);
+  if (fraction !== null) {
+    const bar = document.createElement('i');
+    bar.style.setProperty('--fill', (Math.min(1, Math.max(0, fraction)) * 100).toFixed(1) + '%');
+    box.append(bar);
+  }
+  return box;
+}
+
+// Where the lab server runs, which process holds the model, and what it and the GPU use.
+async function refreshUsage() {
+  try {
+    const response = await fetch('/api/usage');
+    if (!response.ok) return;
+    const usage = await response.json();
+    const head = $('usageHead');
+    head.replaceChildren('Lab server ', Object.assign(document.createElement('b'), {textContent: usage.host}),
+      usage.role ? ' · ' + usage.role : ' · no model loaded',
+      usage.system === 'Darwin' ? ' · this is a Mac' : '');
+    const meters = [];
+    for (const gpu of usage.gpus) {
+      const memory = gpu.unified_memory ? 'GPU-allocated unified memory' : 'GPU memory';
+      meters.push(meter(gpu.name + ' busy', gpu.utilization_percent / 100, gpu.utilization_percent.toFixed(0) + ' %'));
+      if (gpu.memory_used_bytes !== null) {
+        meters.push(meter(memory, gpu.memory_used_bytes / gpu.memory_total_bytes,
+          gigabytes(gpu.memory_used_bytes) + ' / ' + gigabytes(gpu.memory_total_bytes)));
+      }
+      if (gpu.process_memory_bytes) meters.push(meter('of which this model', null, gigabytes(gpu.process_memory_bytes)));
+    }
+    if (usage.process) {
+      meters.push(meter('Model process CPU', null, usage.process.cpu_percent.toFixed(0) + ' %'));
+      meters.push(meter('Model process memory', null, gigabytes(usage.process.memory_bytes)));
+    }
+    if (!usage.gpus.length) meters.push(meter('GPU', null, 'none detected; CPU only'));
+    $('meters').replaceChildren(...meters);
+    $('usage').classList.remove('hidden');
+  } catch (error) {
+    // Usage is informational; a missed sample is simply retried.
+  }
+}
+refreshUsage();
+setInterval(() => { if (document.visibilityState === 'visible') refreshUsage(); }, 4000);
+
 // Pipeline stages each run target executes; the diagram dims the rest.
 const TARGET_STAGES = {
   window: ['input', 'preprocess', 'infer'],
