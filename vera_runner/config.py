@@ -100,7 +100,10 @@ def load(filename, overrides=None):
         raise ValueError('Unsupported device or dtype')
     if m['revision'] is not None and not isinstance(m['revision'], str):
         raise ValueError('model.revision must be a string or null (null uses the Hub default branch)')
-    for key in ('flash_attention', 'mps_cpu_fallback', 'local_files_only'):
+    # flash_attention 'auto' is on only for CUDA with flash-attn installed, as upstream VERA ran.
+    if type(m['flash_attention']) is not bool and m['flash_attention'] != 'auto':
+        raise ValueError('model.flash_attention must be boolean or "auto"')
+    for key in ('mps_cpu_fallback', 'local_files_only'):
         if type(m[key]) is not bool:
             raise ValueError('model.' + key + ' must be boolean')
     iv = cfg['intervention']

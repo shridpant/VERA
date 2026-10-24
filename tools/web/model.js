@@ -140,6 +140,7 @@ function updateTargetFields() {
     node.classList.toggle('on', on);
     node.classList.toggle('off', !on);
   }
+  for (const tag of document.querySelectorAll('.knob[data-only]')) tag.classList.toggle('hidden', tag.dataset.only !== target);
 }
 $('target').addEventListener('change', updateTargetFields);
 updateTargetFields();
@@ -160,7 +161,33 @@ for (const node of document.querySelectorAll('.pnode')) {
   });
 }
 
+let serverDefaults = {};
+
+// VERA's original settings: released questions, pinned InternVL2-8B, device-matched precision.
+function resetKnobs() {
+  selection += 1;
+  selectedFile = null;
+  uploadedPath = '';
+  if (previewURL) URL.revokeObjectURL(previewURL);
+  previewURL = '';
+  $('preview').classList.add('hidden');
+  $('file').value = '';
+  $('chosen').textContent = 'No video selected';
+  for (const [id, value] of Object.entries({
+    target: 'window', anchor: '5', device: 'auto', dtype: 'auto', path: '', questions: '', feature: '',
+    model: serverDefaults.model_path || 'OpenGVLab/InternVL2-8B', annotation: serverDefaults.annotation_file || ''})) {
+    $(id).value = value;
+  }
+  $('download').checked = false;
+  updateTargetFields();
+}
+$('reset').addEventListener('click', () => {
+  resetKnobs();
+  say("Reset to VERA's original settings. Choose a video to run.");
+});
+
 fetch('/api/defaults').then(response => response.json()).then(defaults => {
+  serverDefaults = defaults;
   sessionToken = defaults.session_token;
   $('model').value = defaults.model_path;
   if (defaults.annotation_file) $('annotation').value = defaults.annotation_file;

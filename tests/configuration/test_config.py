@@ -24,8 +24,8 @@ class ConfigurationTests(unittest.TestCase):
     def test_model_dtype_and_revision(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)/'c.json'
-            p.write_text('{"model":{"dtype":"auto","revision":null}}')
+            p.write_text('{"model":{"dtype":"auto","revision":null,"flash_attention":"auto"}}')
             self.assertEqual(load(p)['model']['dtype'],'auto')
-            for bad in ('{"model":{"dtype":"int8"}}','{"model":{"revision":7}}'):
+            for bad in ('{"model":{"dtype":"int8"}}','{"model":{"revision":7}}','{"model":{"flash_attention":"yes"}}'):
                 p.write_text(bad)
                 with self.assertRaises(ValueError):load(p)

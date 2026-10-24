@@ -91,14 +91,18 @@ class InternVL2:
             raise RuntimeError('MPS requested but unavailable to this process')
         if self.device == 'cuda' and not torch.cuda.is_available():
             raise RuntimeError('CUDA requested but unavailable')
-        if settings['flash_attention'] and self.device != 'cuda':
+        flash = settings['flash_attention']
+        if flash == 'auto':
+            import importlib.util
+            flash = self.device == 'cuda' and importlib.util.find_spec('flash_attn') is not None
+        if flash and self.device != 'cuda':
             raise ValueError('FlashAttention requires CUDA')
         dtype = DTYPE_FOR_DEVICE[self.device] if settings['dtype'] == 'auto' else settings['dtype']
         self.dtype = getattr(torch, dtype)
         torch.manual_seed(cfg['seed'])
         source = resolve_checkpoint(settings)
         self.model_identity = {'repo_or_path': settings['path'], 'resolved_source': source, 'revision': settings['revision'],
-                               'device': self.device, 'dtype': dtype, 'files': {}}
+                               'device': self.device, 'dtype': dtype, 'flash_attention': flash, 'files': {}}
         if path(source).is_dir():
             from .data import sha256
             directory = path(source)
@@ -122,7 +126,7 @@ class InternVL2:
                         if got != expected['git_blob_sha1']:raise ValueError('Model metadata checksum mismatch: '+name)
         self.model = AutoModel.from_pretrained(source, revision=settings['revision'],
             torch_dtype=self.dtype, low_cpu_mem_usage=True, trust_remote_code=True,
-            use_flash_attn=settings['flash_attention'], local_files_only=settings['local_files_only']).eval().to(self.device)
+            use_flash_attn=flash, local_files_only=settings['local_files_only']).eval().to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(source, revision=settings['revision'],
             trust_remote_code=True, local_files_only=settings['local_files_only'])
         self.model_identity['resolved_commit'] = getattr(self.model.config, '_commit_hash', None)

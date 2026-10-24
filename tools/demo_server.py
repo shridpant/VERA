@@ -510,13 +510,13 @@ class Handler(BaseHTTPRequestHandler):
             # The pinned commit belongs to the baseline repository and verified local copies.
             # Another Hub repository uses its default branch; the backend records the loaded commit.
             pinned = model_path == cfg['model']['path'] or runner_path(model_path).is_dir()
-            cfg['model'].update(path=model_path, device=device, dtype=dtype,
+            # Defaults follow upstream VERA: FlashAttention on CUDA, BF16, 1024 new tokens (baseline.json).
+            cfg['model'].update(path=model_path, device=device, dtype=dtype, flash_attention='auto',
                                 revision=cfg['model']['revision'] if pinned else None,
                                 local_files_only=not allow_download,
                                 # 'auto' resolves to MPS on a Mac, so it needs the same CPU fallback.
                                 mps_cpu_fallback=device in ('mps', 'auto'))
             cfg['prompt']['guiding_questions'] = qlist if qlist else 'upstream_ucf'
-            cfg['generation']['max_new_tokens'] = 512
             mode = 'window' if target_stage == 'window' else 'video'
             cfg['runtime']['timeout_seconds'] = WINDOW_TIMEOUT if mode == 'window' else VIDEO_TIMEOUT
             cfg['stages'] = STAGE_TARGETS[target_stage]

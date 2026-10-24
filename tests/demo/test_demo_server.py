@@ -272,6 +272,9 @@ class DemoServerTests(unittest.TestCase):
             model = submit.call_args.args[0]
             self.assertEqual(model, json.loads((demo_server.CURRENT / 'config.json').read_text())['model'])
             self.assertEqual(model['dtype'], dtype, extra)
+            self.assertEqual(model['flash_attention'], 'auto')
+            cfg = json.loads((demo_server.CURRENT / 'config.json').read_text())
+            self.assertEqual(cfg['generation']['max_new_tokens'], 1024)
             self.assertEqual(model['mps_cpu_fallback'], fallback, extra)
             # Only the baseline repository and local copies keep the pinned baseline commit.
             self.assertEqual(model['revision'] is not None, pinned, extra)

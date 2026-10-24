@@ -29,7 +29,7 @@
         <span class="pnum">1</span><b>Video</b><small>drop, roll the die, or a path</small></button></li>
       <li><button type="button" class="pnode" data-stage="preprocess" data-focus="anchor">
         <span class="pnum">2</span><b id="windowsNode">One window</b><small>anchor every 16 frames, 10 s wide</small>
-        <span class="knob">window centre</span></button></li>
+        <span class="knob" data-only="window">window centre</span></button></li>
       <li><button type="button" class="pnode" data-stage="preprocess" data-focus="anchor">
         <span class="pnum">3</span><b>8 images</b><span class="strip8" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
         <small>evenly spaced stills, 448 px</small></button></li>
@@ -75,7 +75,7 @@
       </div>
 
       <div class="knobs">
-        <h2>2 · Knobs</h2>
+        <div class="knobs-head"><h2>2 · Knobs</h2><button id="reset" class="btn ghost" type="button" title="Restore VERA's original settings and clear the video">↺ Reset to VERA defaults</button></div>
         <div class="controls">
           <div class="field"><label for="target">Run through stage</label><select id="target">
             <option value="window">One sampled window</option>
@@ -84,7 +84,7 @@
             <option value="refine">Scene, temporal, final frame scores</option>
             <option value="evaluate">Refinement plus ground-truth metrics</option>
           </select></div>
-          <div class="field"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>One-window mode picks the nearest anchor.</small></div>
+          <div class="field"><label for="anchor">Window centre · seconds</label><input id="anchor" type="number" min="0" step="0.1" value="5"><small>Only for “One sampled window”: the anchor (one every 16 frames) nearest this time. The die picks one at random.</small></div>
           <div class="field"><label for="device">Compute device</label><select id="device"><option>auto</option><option>mps</option><option>cuda</option><option>cpu</option></select></div>
           <div class="field"><label for="dtype">Precision</label><select id="dtype"><option value="auto">Auto for device</option><option value="bfloat16">BF16</option><option value="float16">FP16</option><option value="float32">FP32</option></select><small>Auto: CUDA BF16, MPS FP16, CPU FP32.</small></div>
           <div class="field wide"><label for="model">Model checkpoint path or Hub ID</label><input id="model" value="OpenGVLab/InternVL2-8B"><small>Local copies and OpenGVLab/InternVL2-8B use the pinned revision; other InternVL2 Hub IDs use their latest one, recorded with the result.</small></div>
