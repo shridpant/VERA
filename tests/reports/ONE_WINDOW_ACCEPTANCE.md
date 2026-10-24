@@ -1,13 +1,39 @@
-# One-window real-model acceptance: NOT PASSED
+# Real-model acceptance: PASSED on CUDA and MPS (2026-10-24)
 
-Attempted 2026-10-23, using the new configurable runner and the staged InternVL2-8B checkpoint.
+`tests/run_tests.py --suite real-model`, unchanged pass criteria: one completed
+nonsynthetic run, one raw response, a strict 0/1 label, captured input token IDs and
+all eight saved input images. Scope: RoadAccidents127_x264, opening window (anchor 0),
+original eight frames, 448-square inputs, baseline, unchanged VERA prompt, greedy
+generation (maximum 1024 new tokens), verified InternVL2-8B checkpoint at revision
+6fb9ad69 with its MODEL_PROVENANCE.json checks.
 
-Scope: one RoadAccidents011 window, original eight frames, 448-square inputs, baseline/no intervention, BF16, unchanged VERA prompt and greedy generation (maximum 1024 new tokens). No mock outputs were substituted.
+| Machine | Device, precision | Wall time | Generation | Label | Input tokens | `real_model_passed` |
+|---|---|---|---|---|---|---|
+| Oz, RTX 6000 Ada | CUDA, BF16 | 78 s | 4.9 s | 0 | 2487 | true |
+| MacBook Pro, M3 Max, 128 GB | MPS, FP16, CPU fallback | 28 s | 16.5 s | 0 | 2487 | true |
 
-- MPS attempt from the agent process: failed before checkpoint loading because MPS is inaccessible in this execution context. Artifacts: tests/artifacts/real_model/run 3/output/.
-- CPU attempt: checkpoint loaded and video preprocessing succeeded; vision forward completed and the request entered language generation. Timed out at the configured 300-second wall limit with zero complete responses. Artifacts: tests/artifacts/real_model_cpu/run 1/output/.
-- CPU test report: tests/reports/real-model/20261023T211659848082Z/.
+Both runs gave the same label and the same tokenized model input. The reports are local
+and ignored by Git (`tests/reports/real-model/20261024T201741184491Z/` on Oz,
+`tests/reports/real-model/20261024T202210383031Z/` on the Mac). The first Oz attempt
+completed inference but errored afterwards: the test wrote `last_console.log` into
+`tests/reports/real_model/`, which a fresh checkout does not have. The test now creates
+that folder.
 
-Conclusion: the new runner has not passed real-model one-window acceptance on this Mac within the five-minute test budget. This does not establish that generation can never complete; it is an unsuccessful bounded execution test. The earlier vanilla run 7 did return a real strict label 0 for the same opening window after 5838.89 seconds (~97.3 minutes), but that older output is not counted as a pass for the new adapter.
+## Beyond one window (VERA Lab, same runner)
 
-No further heavy run is left running by these tests. No push was performed. The test budget, backbone, input count, precision and response requirements were not relaxed to manufacture a pass.
+- Full video on Oz (CUDA BF16, flash attention off, 512 new tokens): RoadAccidents127,
+  all 162 windows parsed, frame ROC-AUC 0.9949414519906323 and AP 0.9183852264069265.
+  The AUC equals experiment01's value for this video. Window labels match experiment01
+  except the window at anchor 496 (1 there, 0 here); experiment01 used flash attention and
+  1024 tokens. The identical AUC partly reflects VERA's 0.1 rounding of refined scores.
+  Evidence: `~/vera_research/experiments/vera_lab_acceptance/2026-10-24_full_video_RoadAccidents127_x264/` on Oz.
+- Warm model, two consecutive windows at 72 s and 74 s (labels 0 and 1 on both machines):
+  Oz CUDA 31.0 s then 4.6 s; Mac MPS 35.3 s then 11.1 s. The second window reuses the
+  loaded model.
+
+## History: not passed on 2026-10-23
+
+Earlier attempts on a Mac, with a RoadAccidents011 window and BF16, did not pass. MPS was
+inaccessible to the agent process, and a CPU run timed out at the 300-second limit
+without a complete response. An older vanilla run returned a label after about 97
+minutes; it was never counted as a pass. Those artifacts stayed local to that machine.

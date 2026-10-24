@@ -1,23 +1,23 @@
 # Runner tests
 
 All tests, test documentation, test configs and reports live under `tests/`.
-Run from the `VERA-configurable` checkout using Python 3.11 with requirements-runner.txt
-installed. On this Mac the existing interpreter is
-`../VERA/experiments/vanilla/.env/bin/python`.
+Run from the checkout root using Python 3.11 with requirements-runner.txt installed
+(`.venv/bin/python` below; on Oz, `~/vera_research/setup/environment/env/bin/python`).
 
 ## Categories
 
 | Folder / suite | What it checks | Uses trained model weights? |
 |---|---|---|
-| `configuration/` | Unknown config fields are rejected | No |
+| `configuration/` | Unknown config fields, `dtype: auto` and revision values | No |
 | `datasets/` | Named dataset/split lookup, manifest membership, duplicate ID errors | No |
 | `preprocessing/` | Window sampling, OpenCV/JPEG byte equivalence, resized RGB equality against original VERA | No |
-| `backends/` | Exact prompt equality with original forward using a fake model | No |
+| `backends/` | Exact prompt equality with original forward using a fake model; local and cached-Hub checkpoint resolution | No |
 | `interventions/` | Baseline identity, exact blur pixels, exact grey pixels | No |
 | `parsing/` | Valid labels and refusal to invent labels for invalid responses | No |
 | `refinement/` | Numerical equality against unmodified compute_auc.py on synthetic data | No |
 | `integration/` | Synthetic video → mock predictions → probe outputs and refinement/evaluation | No; explicitly mock |
 | `runtime/` | Prior-process guard, including stopped processes with recent heartbeats | No |
+| `demo/` (suite `lab`) | VERA Lab HTTP API, uploads, die selection, model settings, scratch run, and the warm window process (real subprocesses, mock backend) | No; explicitly mock |
 | `real_model/` | Real UCF clip → InternVL2-8B → one complete parsed response and saved inputs/token IDs/logs | Yes; explicit opt-in |
 | `reports/` | Historical and timestamped test reports, logs and pass/fail/skip counts | Evidence, not tests |
 | `artifacts/` | Ignored numbered real-model runs, their exact configs and output files | Local artifacts |
@@ -29,7 +29,7 @@ anomaly predictions. A skipped or blocked real-model test is NOT a pass.
 ## Run the local automated suite
 
 ```bash
-../VERA/experiments/vanilla/.env/bin/python tests/run_tests.py --suite all
+.venv/bin/python tests/run_tests.py --suite all
 ```
 
 This runs the categories and explicitly skips real-model acceptance. A timestamped
@@ -41,21 +41,21 @@ it defaults to skipping real-model acceptance.
 ## Real-model acceptance
 
 1. Copy `real_model/config.example.json` to `real_model/config.local.json` and configure
-   a verified checkpoint path, dataset registry and one available test video. This
-   machine's local config already points to the staged InternVL2-8B and RoadAccidents011.
+   a verified checkpoint path, dataset registry, device and one available test video.
 2. Ensure the previous 8B inference run is stopped or complete. The local config checks
    its recorded PID directly. A stopped process is allowed immediately, even if its heartbeat is recent; an existing process or inaccessible process state blocks a second model.
    The test never kills the old process or guesses it is dead.
-3. Run in regular Terminal, where MPS is accessible:
+3. Run it on the machine that has the checkpoint and accelerator:
 
 ```bash
-../VERA/experiments/vanilla/.env/bin/python tests/run_tests.py --suite real-model
+.venv/bin/python tests/run_tests.py --suite real-model
 ```
 
-The real config uses the original prompt, eight resized frames and greedy generation,
-with BF16/MPS and explicit CPU fallback for unsupported MPS operators. The test is
-bounded to one original window and a 300-second runner wall limit; there is no
-reduction to one token or change to another backbone just to pass the test.
+The example config uses the original prompt, eight resized frames and greedy generation.
+Set `device`/`dtype` for the machine: `cuda`/`bfloat16` on an RTX 6000 Ada, `mps`/`float16`
+with CPU fallback on a Mac. The test is bounded to one original window and a 300-second
+runner wall limit; there is no reduction to one token or change to another backbone just
+to pass the test. Results so far are in `reports/ONE_WINDOW_ACCEPTANCE.md`.
 
 Pass criteria: a completed nonsynthetic inference run, exactly one raw response, a
 strict 0/1 label, captured input token IDs and all eight saved input images. Label

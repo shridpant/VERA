@@ -2,8 +2,7 @@
 
 A configurable inference layer built from vanilla `origin/main` at
 `15b8bcb8574a977c229c577f50bfe6f06d07106e` on branch `feature/configurable-runner`.
-The original Python scripts and prompts are unchanged. This is a separate checkout;
-previous `experiments/vanilla` runs in the other checkout are not modified.
+The original Python scripts and prompts are unchanged.
 
 ## What vanilla expects
 
@@ -40,19 +39,11 @@ Use the appropriate PyTorch build for your CUDA system if applicable. FlashAtten
 is optional and separately installed for CUDA. `trust_remote_code=True` is needed by
 InternVL2; use a trusted, pinned model revision. Model weights are not bundled.
 
-On this Mac, an existing isolated environment can run the new checkout without a
-second install:
-
-```bash
-../VERA/experiments/vanilla/.env/bin/python run_vera.py --config configs/local_smoke.json --check
-```
-
-`configs/local_smoke.json` and `datasets.local.json` have already been created for this
-machine and are ignored by Git because they contain local paths. The former selects
-up to three manifest-matched test videos and the first window per video, explicitly requests MPS and enables CPU
-fallback for unsupported MPS operations. It has not completed real inference. The
-older run 7 in the other checkout may still be running; do not start another large
-model concurrently. Agent execution cannot detect MPS although regular Terminal can.
+With `uv`, the equivalent is `uv venv --seed --python 3.11 .venv` followed by
+`uv pip install --python .venv/bin/python -r requirements-runner.txt`. Keep `--seed`:
+the runner records `pip freeze` in every run's `environment.txt`. On Apple silicon the
+same requirements give an MPS-enabled torch. `configs/datasets.local.json` and any
+`configs/local_*.json` hold machine paths and are ignored by Git.
 
 ## One experiment = one JSON
 
@@ -75,7 +66,7 @@ files and the captured source/environment must remain available for reproduction
 | `configs/blur_probe.json` | Baseline and Gaussian-blurred slot 0 for every window; label comparisons |
 | `configs/grey_probe.json` | Baseline and grey-replaced slot 0 for every window; label comparisons |
 | `configs/end_to_end.json` | Preprocess → infer → refine → frame ROC-AUC/AP; requires features and labels |
-| `configs/local_smoke.json` | This Mac's untracked, partial, MPS baseline smoke configuration |
+| `configs/local_*.json` | Your machine-specific copies; ignored by Git |
 
 Copy any config before changing an experiment. Set `selection.video_ids`, `max_videos`
 or `max_windows_per_video` for bounded runs. `split: train` only selects the training
@@ -154,10 +145,12 @@ question 5 still asks about sound unless you explicitly replace the questions.
 ## Backbones
 
 `model.backend: internvl2` implements the InternVL2 batch-chat input convention and
-supports CPU, MPS or CUDA; `auto` selects CUDA then MPS then CPU. BF16, FP16 and FP32
-are explicit; changing precision/backend is not numerical equivalence to the paper.
-FlashAttention defaults off for portability. MPS CPU fallback is explicit and recorded.
-No memory limits are disabled. Large unquantized models may not fit this Mac.
+supports CPU, MPS or CUDA; `auto` selects CUDA then MPS then CPU. `dtype` is BF16, FP16,
+FP32, or `auto`, which follows the resolved device: CUDA BF16, MPS FP16, CPU FP32.
+`model_identity.json` records the device and precision actually used. Changing
+precision/backend is not numerical equivalence to the paper. FlashAttention defaults
+off for portability. MPS CPU fallback is explicit and recorded. No memory limits are
+disabled; InternVL2-8B in FP16 needs about 16 GB of GPU or unified memory.
 
 To add a different model family, implement an adapter with `predict(images) ->
 {raw_response, input_token_ids}` and a `device` field in `vera_runner/backends.py`,
@@ -230,7 +223,11 @@ is implemented: a new invocation deliberately starts a new run.
 
 Local models have file hashes recorded; an existing MODEL_PROVENANCE.json additionally
 verifies all its files against hashes. Hub-model downloads use the configured revision;
-for the strongest provenance, stage a verified local model first.
+`revision: null` uses the repository's default branch, and `model_identity.json` then
+records the commit actually loaded as `resolved_commit`. With `local_files_only: true`
+a Hub ID still works when that revision is already in the Hugging Face cache (`HF_HOME`,
+default `.cache/huggingface` in this checkout); nothing is downloaded. For the strongest
+provenance, stage a verified local model first.
 
 ```bash
 .venv/bin/python tests/run_tests.py --suite all
@@ -241,10 +238,12 @@ strict parsing, unknown-setting rejection, refinement equality to unmodified ups
 and a synthetic video end-to-end probe + refine + evaluate workflow. Passing these tests
 does not establish that InternVL2 inference works on MPS or reproduces CUDA predictions.
 
-The local sample contains three originals, but only RoadAccidents011_x264 matches the released UCF test manifest. Local test-split configs therefore select that one video; the other sample clips are not silently reassigned to the test set. To infer on all three as an unlabeled custom collection, register their folder under a separate name without a manifest.
-
-On this machine, the untracked registry also includes `salvaged_sample` (all three provided clips, no benchmark annotation). Use `--dataset salvaged_sample` for that explicitly unlabeled collection.
+Clips that are not in a split's annotation manifest are never silently assigned to that
+split. To run unlabeled clips, register their folder under a separate dataset name
+without a manifest.
 
 ## Categorized acceptance tests
 
 All tests and reports are now under [tests/](tests/README.md). The default suite explicitly skips real-model acceptance; run `tests/run_tests.py --suite real-model` for that separate opt-in check. A skipped, failed, or blocked real-model test is never evidence of working real-model inference.
+
+On 2026-10-24 the real-model suite passed on an RTX 6000 Ada (CUDA, BF16) and on an M3 Max Mac (MPS, FP16); see [ONE_WINDOW_ACCEPTANCE.md](tests/reports/ONE_WINDOW_ACCEPTANCE.md). [DEMO.md](DEMO.md) describes VERA Lab, a local page over this runner.

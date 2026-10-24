@@ -87,3 +87,5 @@ If you use this code or find our work helpful, please consider citing our paper.
 ## Configurable runner
 
 For JSON-configured dataset selection, preprocessing, model adapters, baseline/blur/grey interventions, and optional refinement/evaluation, see [RUNNER.md](RUNNER.md). The original scripts above remain unchanged.
+
+To run one window or a full video from a local web page and inspect every stage's saved files, see [DEMO.md](DEMO.md) (VERA Lab).
