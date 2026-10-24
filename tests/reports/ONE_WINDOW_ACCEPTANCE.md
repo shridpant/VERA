@@ -21,12 +21,15 @@ that folder.
 
 ## Beyond one window (VERA Lab, same runner)
 
-- Full video on Oz (CUDA BF16, flash attention off, 512 new tokens): RoadAccidents127,
-  all 162 windows parsed, frame ROC-AUC 0.9949414519906323 and AP 0.9183852264069265.
-  The AUC equals experiment01's value for this video. Window labels match experiment01
-  except the window at anchor 496 (1 there, 0 here); experiment01 used flash attention and
-  1024 tokens. The identical AUC partly reflects VERA's 0.1 rounding of refined scores.
-  Evidence: `~/vera_research/experiments/vera_lab_acceptance/2026-10-24_full_video_RoadAccidents127_x264/` on Oz.
+- Full video on Oz with VERA's original settings (CUDA, BF16, FlashAttention, greedy,
+  1024 new tokens), the lab's defaults since 03e72a5: RoadAccidents127, all 162 responses
+  are word for word identical to experiment01, with the same 13 windows labelled 1,
+  frame ROC-AUC 0.9949414519906323 and AP 0.9183852264069265, in 7.7 minutes.
+  Evidence: `~/vera_research/experiments/vera_lab_acceptance/2026-10-24_paper_defaults_RoadAccidents127_x264/` on Oz.
+- The same video without FlashAttention and with 512 new tokens (the lab's earlier
+  settings) took 17 minutes and differed in one window (anchor 496: 0 instead of 1), with
+  the same AUC; VERA rounds refined scores to 0.1. Evidence:
+  `~/vera_research/experiments/vera_lab_acceptance/2026-10-24_full_video_RoadAccidents127_x264/`.
 - Warm model, two consecutive windows at 72 s and 74 s (labels 0 and 1 on both machines):
   Oz CUDA 31.0 s then 4.6 s; Mac MPS 35.3 s then 11.1 s. The second window reuses the
   loaded model.

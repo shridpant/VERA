@@ -148,8 +148,11 @@ question 5 still asks about sound unless you explicitly replace the questions.
 supports CPU, MPS or CUDA; `auto` selects CUDA then MPS then CPU. `dtype` is BF16, FP16,
 FP32, or `auto`, which follows the resolved device: CUDA BF16, MPS FP16, CPU FP32.
 `model_identity.json` records the device and precision actually used. Changing
-precision/backend is not numerical equivalence to the paper. FlashAttention defaults
-off for portability. MPS CPU fallback is explicit and recorded. No memory limits are
+precision/backend is not numerical equivalence to the paper. `flash_attention` is a
+boolean or `auto` (on for CUDA when flash-attn is installed, as upstream ran); the
+default stays off for portability, and `model_identity.json` records what was used.
+With `auto`, BF16 and 1024 new tokens, a full RoadAccidents127 run reproduced
+experiment01's 162 responses word for word. MPS CPU fallback is explicit and recorded. No memory limits are
 disabled; InternVL2-8B in FP16 needs about 16 GB of GPU or unified memory.
 
 To add a different model family, implement an adapter with `predict(images) ->

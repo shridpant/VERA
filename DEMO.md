@@ -73,8 +73,13 @@ setting carries a ⚙ tag; click the stage to jump to that setting.
 | Window centre | 2–3 · which anchor's eight images | 5 s (nearest anchor) |
 | Guiding questions | 4 · prompt | VERA's released UCF-Crime questions |
 | Checkpoint, device, precision, download | 5 · InternVL2 | verified local copy, auto, auto, no download |
+| (fixed) FlashAttention, generation | 5 · InternVL2 | on for CUDA when installed; greedy, 1024 new tokens |
 | Feature file | 7–8 · scene and temporal refinement | library match, if any |
 | Annotations | 9 · metrics | the server's `--annotation-file` |
+
+Defaults are VERA's original settings. **↺ Reset to VERA defaults** restores every
+knob and clears the video. With these settings a full RoadAccidents127 run on Oz
+reproduced experiment01's 162 responses word for word.
 
 The die only fills in a video; it never starts inference. For refinement targets
 it picks only videos that have a matching feature file. A dropped video is
