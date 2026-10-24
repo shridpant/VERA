@@ -2,17 +2,22 @@
 """Run one real VERA window through the existing InternVL2 backend.
 
 This is an educational probe. It does not perform whole-video refinement or AUC.
+With --serve it stays alive and answers one JSON request per stdin line, so
+repeated windows reuse the loaded model instead of reloading its weights.
 """
 import argparse
 import io
 import json
+import math
 import os
 from pathlib import Path
+import signal
 import sys
 import time
+import traceback
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from vera_runner.config import load
+from vera_runner.config import load, prepare_environment
 from vera_runner.data import windows
 from vera_runner.backends import BACKENDS, prompt, strict_label
 
@@ -50,25 +55,22 @@ def extract(video, indices, size):
     return [found[i] for i in indices], count, fps
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--config', required=True)
-    ap.add_argument('--video', required=True)
-    ap.add_argument('--anchor-seconds', type=float, required=True)
-    ap.add_argument('--output', required=True)
-    args = ap.parse_args()
-    video = Path(args.video).expanduser().resolve()
+def fresh_backend(cfg):
+    return BACKENDS[cfg['model']['backend']](cfg), False
+
+
+def probe(cfg, video, anchor_seconds, out, backend_for):
+    """Sample one window, save its exact inputs, and ask the backend once."""
+    video = Path(video).expanduser().resolve()
     if not video.is_file():
         raise ValueError(f'Video not found: {video}')
-    if args.anchor_seconds < 0:
-        raise ValueError('anchor-seconds must be nonnegative')
-    cfg = load(args.config)
-    os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1' if cfg['model']['mps_cpu_fallback'] else '0'
+    if not math.isfinite(anchor_seconds) or anchor_seconds < 0:
+        raise ValueError('anchor-seconds must be a nonnegative finite number')
     if cfg['stages'] != ['preprocess', 'infer']:
         raise ValueError('Window probe requires stages=[preprocess,infer]')
     if cfg['model']['backend'] not in ('internvl2', 'mock'):
         raise ValueError('Unknown backend')
-    out = Path(args.output).expanduser().resolve()
+    out = Path(out).expanduser().resolve()
     out.mkdir(parents=True, exist_ok=False)
     import cv2
     cap = cv2.VideoCapture(str(video))
@@ -80,7 +82,7 @@ def main():
     if length < 1 or actual_fps <= 0:
         raise ValueError('Video must report positive frame count and FPS')
     anchors = list(windows(length, cfg['sampling']))
-    target = args.anchor_seconds * actual_fps
+    target = anchor_seconds * actual_fps
     win = min(anchors, key=lambda w: abs(w['anchor'] - target))
     images, decoded, fps = extract(video, win['frame_indices'], cfg['preprocessing']['image_size'])
     frame_dir = out / 'frames'
@@ -97,23 +99,85 @@ def main():
     }, indent=2) + '\n', encoding='utf-8')
     (out / 'prompt.txt').write_text(prompt(cfg), encoding='utf-8')
     start = time.monotonic()
-    backend = BACKENDS[cfg['model']['backend']](cfg)
+    backend, reused = backend_for(cfg)
+    loaded = time.monotonic()
     prediction = backend.predict(images)
-    elapsed = time.monotonic() - start
+    finished = time.monotonic()
     result = {
         'video': str(video), 'video_frames': decoded, 'actual_fps': fps,
-        'requested_anchor_seconds': args.anchor_seconds,
+        'requested_anchor_seconds': anchor_seconds,
         'anchor_frame': win['anchor'], 'window_start_frame': win['start'],
         'window_end_frame': win['end'], 'sampled_frame_indices': win['frame_indices'],
         'sampled_times_seconds': [i / fps for i in win['frame_indices']],
         'model_backend': cfg['model']['backend'], 'model_path': cfg['model']['path'],
-        'device': backend.device, 'raw_response': prediction['raw_response'],
-        'parsed_label': strict_label(prediction['raw_response']), 'elapsed_seconds': elapsed,
+        'device': backend.device, 'dtype': getattr(backend, 'model_identity', {}).get('dtype'),
+        'raw_response': prediction['raw_response'],
+        'parsed_label': strict_label(prediction['raw_response']),
+        'model_reused': reused, 'model_load_seconds': loaded - start,
+        'inference_seconds': finished - loaded, 'elapsed_seconds': finished - start,
         'synthetic': cfg['model']['backend'] == 'mock',
         'note': 'One window only. No scene refinement, full timeline, or evaluation.'
     }
     (out / 'result.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({'result': str(out / 'result.json'), 'parsed_label': result['parsed_label']}))
+    return result
+
+
+def serve(idle_seconds):
+    """Answer one JSON request per stdin line until EOF or idle_seconds without a request."""
+    # Model libraries may print while loading. Keep the real stdout for one JSON reply per request.
+    replies = os.fdopen(os.dup(1), 'w', buffering=1)
+    os.dup2(2, 1)
+    loaded = {}
+
+    def backend_for(cfg):
+        if 'backend' in loaded:
+            loaded['backend'].configure(cfg)
+            return loaded['backend'], True
+        prepare_environment(cfg)
+        loaded['backend'] = BACKENDS[cfg['model']['backend']](cfg)
+        return loaded['backend'], False
+
+    def idle(signum, frame):
+        raise SystemExit(0)
+
+    signal.signal(signal.SIGALRM, idle)
+    while True:
+        # The idle alarm covers only the wait for the next request, never a running one.
+        signal.setitimer(signal.ITIMER_REAL, idle_seconds)
+        line = sys.stdin.readline()
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        if not line:
+            break
+        try:
+            request = json.loads(line)
+            result = probe(load(request['config']), request['video'], float(request['anchor_seconds']),
+                           request['output'], backend_for)
+            reply = {'ok': True, 'parsed_label': result['parsed_label'], 'model_reused': result['model_reused'],
+                     'device': result['device'], 'dtype': result['dtype']}
+        except Exception:
+            reply = {'ok': False, 'error': traceback.format_exc()}
+            print(reply['error'], file=sys.stderr, flush=True)
+        replies.write(json.dumps(reply) + '\n')
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--config')
+    ap.add_argument('--video')
+    ap.add_argument('--anchor-seconds', type=float)
+    ap.add_argument('--output')
+    ap.add_argument('--serve', action='store_true', help='Keep the model loaded and read JSON requests from stdin')
+    ap.add_argument('--idle-seconds', type=float, default=900, help='Exit --serve after this long without a request')
+    args = ap.parse_args()
+    if args.serve:
+        return serve(args.idle_seconds)
+    if None in (args.config, args.video, args.anchor_seconds, args.output):
+        ap.error('--config, --video, --anchor-seconds and --output are required without --serve')
+    cfg = load(args.config)
+    prepare_environment(cfg)
+    result = probe(cfg, args.video, args.anchor_seconds, args.output, fresh_backend)
+    print(json.dumps({'result': str(Path(args.output).resolve() / 'result.json'),
+                      'parsed_label': result['parsed_label']}))
 
 
 if __name__ == '__main__':

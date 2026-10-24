@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Local-only teaching UI for a single real VERA window."""
+"""Local-only VERA Lab: run one window or a full video and inspect every saved stage."""
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+import atexit
 import fcntl
 import importlib.util
 import json
@@ -11,13 +12,16 @@ import shutil
 import subprocess
 import sys
 import threading
+import time
 import uuid
 from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.stage_view import stage_manifest
+from vera_runner.config import path as runner_path
 WEB = ROOT / 'tools' / 'web'
+BASE_CONFIG = ROOT / 'configs' / 'baseline.json'
 RUNS = ROOT / 'demo_runs'
 CURRENT = RUNS / 'current'
 JOBS = {}
@@ -28,6 +32,10 @@ MODEL_PATH = 'OpenGVLab/InternVL2-8B'
 FEATURE_DIR = None
 ANNOTATION_FILE = None
 VIDEO_SUFFIXES = {'.mp4', '.avi', '.mov', '.mkv'}
+PIPELINE_OUTPUT = Path('pipeline') / 'run 1' / 'output'
+WINDOW_TIMEOUT = 3600
+VIDEO_TIMEOUT = 4 * 3600
+WORKER_IDLE_SECONDS = 900
 STAGE_TARGETS = {
     'window': ['preprocess', 'infer'],
     'preprocess': ['preprocess'],
@@ -51,7 +59,7 @@ STATIC = {
 def choose_random_video(library, require_feature=False):
     if library is None or not library.is_dir():
         raise ValueError('No sample library configured. Start the server with --video-dir.')
-    candidates = [p for p in library.rglob('*') if p.is_file() and p.suffix.lower() in VIDEO_SUFFIXES]
+    candidates = sorted(p for p in library.rglob('*') if p.is_file() and p.suffix.lower() in VIDEO_SUFFIXES)
     if require_feature:
         candidates = [p for p in candidates if FEATURE_DIR is not None and
                       (FEATURE_DIR / (p.stem + '.npy')).is_file()]
@@ -136,12 +144,142 @@ def restore_current_job():
     if saved['mode'] == 'window':
         ok = (CURRENT / 'probe' / 'result.json').is_file()
     else:
-        status = CURRENT / 'pipeline' / 'run 1' / 'output' / 'status.json'
+        status = CURRENT / PIPELINE_OUTPUT / 'status.json'
         ok = status.is_file() and json.loads(status.read_text()).get('status') == 'complete'
     JOBS[saved['job']] = {'process': FinishedRun(0 if ok else 1),
                           'folder': CURRENT, 'mode': saved['mode'],
                           'video_id': saved['video_id'],
                           'target_stage': saved['target_stage']}
+
+
+class WorkerJob:
+    """One window request answered by the warm model process; polls like Popen."""
+    def __init__(self):
+        self.returncode = None
+        self.done = threading.Event()
+
+    def poll(self):
+        return self.returncode
+
+    def finish(self, code):
+        self.returncode = code
+        self.done.set()
+
+
+class WarmModel:
+    """Keep one window-probe process, and its loaded weights, between window runs."""
+    # Retire the worker this long before its own idle exit, so a request never races that exit.
+    IDLE_MARGIN = 60
+
+    def __init__(self):
+        self.process = None
+        self.settings = None
+        self.loaded = None  # Device and precision the worker actually resolved.
+        self.last_reply = 0.0
+
+    def usable(self, process):
+        return (process is not None and process.poll() is None and
+                time.monotonic() - self.last_reply < WORKER_IDLE_SECONDS - self.IDLE_MARGIN)
+
+    def describe(self):
+        process, settings, loaded = self.process, self.settings, self.loaded
+        alive = loaded is not None and settings is not None and self.usable(process)
+        return {'loaded': alive, 'model_path': settings['path'] if alive else None,
+                **(loaded if alive else {'device': None, 'dtype': None}),
+                'idle_seconds': WORKER_IDLE_SECONDS}
+
+    def stop(self, force=False):
+        process, self.process, self.settings, self.loaded = self.process, None, None, None
+        if process is None:
+            return
+        if process.poll() is None:
+            if force:
+                process.kill()
+            else:
+                try:
+                    process.stdin.close()  # The worker exits at end of input.
+                except OSError:
+                    pass
+            try:
+                process.wait(timeout=30)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait()
+        for pipe in (process.stdin, process.stdout):
+            try:
+                pipe.close()
+            except OSError:
+                pass
+
+    def start(self, settings):
+        cmd = [sys.executable, str(ROOT / 'tools' / 'window_probe.py'), '--serve',
+               '--idle-seconds', str(WORKER_IDLE_SECONDS)]
+        with (RUNS / 'model_worker.log').open('w') as log_file:
+            # Fixed argument list without a shell; request values travel over stdin as JSON.
+            self.process = subprocess.Popen(cmd, cwd=ROOT, stdin=subprocess.PIPE,  # nosemgrep
+                                            stdout=subprocess.PIPE, stderr=log_file, text=True)
+        self.settings = settings
+        self.last_reply = time.monotonic()
+
+    def send(self, request):
+        self.process.stdin.write(json.dumps(request) + '\n')
+        self.process.stdin.flush()
+
+    def submit(self, settings, request, console):
+        """Send one window request; start or replace the worker when model settings change."""
+        reused = self.usable(self.process) and settings == self.settings
+        if not reused:
+            self.stop()
+            self.start(settings)
+        try:
+            self.send(request)
+        except OSError:  # The worker exited after the check; start a fresh one once.
+            self.stop()
+            self.start(settings)
+            self.send(request)
+            reused = False
+        console.write_text('Reusing the loaded model process.\n' if reused else
+                           'Started a model process. The first window loads the checkpoint.\n')
+        job = WorkerJob()
+        threading.Thread(target=self.wait, args=(self.process, job, console), daemon=True).start()
+        threading.Thread(target=self.watch, args=(self.process, job, console), daemon=True).start()
+        return job
+
+    def wait(self, process, job, console):
+        ok = False
+        try:
+            try:
+                line = process.stdout.readline()
+            except (OSError, ValueError):  # stop() closed the pipe of a killed process.
+                line = ''
+            reply = json.loads(line) if line else {
+                'ok': False, 'error': 'The model process exited before replying. See demo_runs/model_worker.log.'}
+            ok = reply['ok']
+            if line and process is self.process:
+                self.last_reply = time.monotonic()
+                if ok:
+                    self.loaded = {'device': reply['device'], 'dtype': reply['dtype']}
+            with console.open('a') as log_file:
+                log_file.write(json.dumps({key: value for key, value in reply.items() if key != 'error'}) + '\n')
+                if not ok:
+                    log_file.write(reply['error'] + '\n')
+        finally:
+            job.finish(0 if ok else 1)
+
+    def watch(self, process, job, console):
+        if job.done.wait(WINDOW_TIMEOUT):
+            return
+        with console.open('a') as log_file:
+            log_file.write(f'\nVERA Lab stopped the model process after {WINDOW_TIMEOUT} seconds.\n')
+        if process is self.process:
+            self.stop(force=True)
+        else:
+            process.kill()
+        if not job.done.wait(30):
+            job.finish(1)
+
+
+WARM = WarmModel()
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -171,7 +309,8 @@ class Handler(BaseHTTPRequestHandler):
                                    'missing_dependencies': missing_dependencies('window'),
                                    'feature_dir': str(FEATURE_DIR) if FEATURE_DIR else '',
                                    'annotation_file': str(ANNOTATION_FILE) if ANNOTATION_FILE else '',
-                                   'scratch_directory': str(CURRENT)})
+                                   'scratch_directory': str(CURRENT),
+                                   'warm_model': WARM.describe()})
         if route.path == '/api/lucky':
             try:
                 target = parse_qs(route.query).get('target', ['window'])[0]
@@ -195,7 +334,7 @@ class Handler(BaseHTTPRequestHandler):
             log = log_file.read_text(errors='replace')[-4000:] if state != 'running' and log_file.is_file() else ''
             progress = None
             if job['mode'] == 'video':
-                output = job['folder'] / 'pipeline' / 'run 1' / 'output'
+                output = job['folder'] / PIPELINE_OUTPUT
                 status_file = output / 'status.json'
                 coverage_file = output / job['video_id'] / 'coverage.json'
                 if status_file.is_file():
@@ -235,6 +374,19 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send(200, selected.read_bytes(), mime)
             except (ValueError, OSError) as exc:
                 return self.send(400, {'error': str(exc)})
+        if route.path == '/api/windows':
+            if job is None:
+                return self.send(404, {'error': 'Unknown job'})
+            # Compact per-window view of the runner's raw responses, without token IDs.
+            video = PIPELINE_OUTPUT / job['video_id']
+            raw = job['folder'] / video / 'raw_responses.jsonl'
+            if job['mode'] != 'video' or job['process'].poll() is None or not raw.is_file():
+                return self.send(200, {'windows': []})
+            keep = ('anchor', 'start', 'end', 'condition', 'frame_indices', 'strict_label', 'raw_response', 'seconds')
+            rows = [{key: row[key] for key in keep} for row in map(json.loads, raw.read_text().splitlines())]
+            info = job['folder'] / video / 'video.json'
+            fps = json.loads(info.read_text())['fps_actual'] if info.is_file() else 30.0
+            return self.send(200, {'windows': rows, 'fps': fps, 'inputs': str(video / 'inputs')})
         if route.path == '/api/list':
             if job is None:
                 return self.send(404, {'error': 'Unknown job'})
@@ -307,8 +459,8 @@ class Handler(BaseHTTPRequestHandler):
             device = request.get('device', 'auto')
             if device not in ('auto', 'mps', 'cuda', 'cpu'):
                 raise ValueError('Invalid device')
-            dtype = request.get('dtype', 'bfloat16')
-            if dtype not in ('bfloat16', 'float16', 'float32'):
+            dtype = request.get('dtype', 'auto')
+            if dtype not in ('auto', 'bfloat16', 'float16', 'float32'):
                 raise ValueError('Invalid dtype')
             target_stage = request.get('target_stage', 'window')
             if target_stage not in STAGE_TARGETS:
@@ -341,15 +493,20 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError('Evaluation needs an existing UCF-style annotation JSON file')
             job_id = uuid.uuid4().hex[:12]
             folder = CURRENT
-            cfg = json.loads((ROOT / 'configs' / 'baseline.json').read_text())
+            cfg = json.loads(BASE_CONFIG.read_text())
+            # The pinned commit belongs to the baseline repository and verified local copies.
+            # Another Hub repository uses its default branch; the backend records the loaded commit.
+            pinned = model_path == cfg['model']['path'] or runner_path(model_path).is_dir()
             cfg['model'].update(path=model_path, device=device, dtype=dtype,
+                                revision=cfg['model']['revision'] if pinned else None,
                                 local_files_only=not allow_download,
-                                mps_cpu_fallback=(device == 'mps'))
+                                # 'auto' resolves to MPS on a Mac, so it needs the same CPU fallback.
+                                mps_cpu_fallback=device in ('mps', 'auto'))
             cfg['prompt']['guiding_questions'] = qlist if qlist else 'upstream_ucf'
             cfg['generation']['max_new_tokens'] = 512
-            cfg['runtime']['timeout_seconds'] = 3600
-            cfg['stages'] = STAGE_TARGETS[target_stage]
             mode = 'window' if target_stage == 'window' else 'video'
+            cfg['runtime']['timeout_seconds'] = WINDOW_TIMEOUT if mode == 'window' else VIDEO_TIMEOUT
+            cfg['stages'] = STAGE_TARGETS[target_stage]
             with LOCK:
                 if any(j['process'].poll() is None for j in JOBS.values()):
                     raise ValueError('A model call is already running. Wait for it to finish.')
@@ -367,10 +524,14 @@ class Handler(BaseHTTPRequestHandler):
                     shutil.rmtree(pending)
                 config_file = folder / 'config.json'
                 if mode == 'window':
-                    cmd = [sys.executable, str(ROOT / 'tools' / 'window_probe.py'),
-                           '--config', str(config_file), '--video', str(video),
-                           '--anchor-seconds', str(anchor), '--output', str(folder / 'probe')]
+                    config_file.write_text(json.dumps(cfg, indent=2) + '\n')
+                    job = WARM.submit(cfg['model'], {
+                        'config': str(config_file), 'video': str(video),
+                        'anchor_seconds': anchor, 'output': str(folder / 'probe')},
+                        folder / 'console.log')
                 else:
+                    # The runner loads its own copy of the model; free the warm one first.
+                    WARM.stop()
                     inputs = folder / 'input'
                     inputs.mkdir()
                     (inputs / video.name).symlink_to(video)
@@ -385,14 +546,16 @@ class Handler(BaseHTTPRequestHandler):
                     cfg.update(dataset='lab_video', split='test', registry=str(folder / 'registry.json'),
                                output_root=str(folder / 'pipeline'))
                     cfg['selection']['video_ids'] = [video.stem]
+                    config_file.write_text(json.dumps(cfg, indent=2) + '\n')
                     cmd = [sys.executable, str(ROOT / 'run_vera.py'), '--config', str(config_file)]
-                config_file.write_text(json.dumps(cfg, indent=2) + '\n')
-                with (folder / 'console.log').open('w') as log_file:
-                    proc = subprocess.Popen(cmd, cwd=ROOT, stdout=log_file, stderr=subprocess.STDOUT)
-                threading.Thread(target=stop_stalled_job, args=(proc, folder, 3600),
-                                 daemon=True).start()
+                    with (folder / 'console.log').open('w') as log_file:
+                        # Fixed argument list without a shell; user input is only in the config file.
+                        job = subprocess.Popen(cmd, cwd=ROOT, stdout=log_file,  # nosemgrep
+                                               stderr=subprocess.STDOUT)
+                    threading.Thread(target=stop_stalled_job, args=(job, folder, VIDEO_TIMEOUT),
+                                     daemon=True).start()
                 JOBS.clear()
-                JOBS[job_id] = {'process': proc, 'folder': folder, 'mode': mode,
+                JOBS[job_id] = {'process': job, 'folder': folder, 'mode': mode,
                                 'video_id': video_id, 'target_stage': target_stage}
                 (folder / 'lab_job.json').write_text(json.dumps({
                     'job': job_id, 'mode': mode, 'video_id': video_id,
@@ -460,6 +623,7 @@ def main():
     except BlockingIOError:
         ap.error('Another VERA Lab server already owns this scratch directory')
     restore_current_job()
+    atexit.register(WARM.stop)
     server = ThreadingHTTPServer(('127.0.0.1', args.port), Handler)
     print(f'Open http://127.0.0.1:{args.port}/', flush=True)
     server.serve_forever()

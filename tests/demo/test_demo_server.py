@@ -19,7 +19,8 @@ class DemoServerTests(unittest.TestCase):
         cls.root = Path(cls.temp.name)
         cls.library = cls.root / 'library'
         cls.library.mkdir()
-        (cls.library / 'sample.mp4').write_bytes(b'not a real video: API selection test')
+        for name in ('sample.mp4', 'other.mov', 'third.avi', 'notes.txt'):
+            (cls.library / name).write_bytes(b'not a real video: API selection test')
         demo_server.LIBRARY = cls.library
         demo_server.RUNS = cls.root / 'runs'
         demo_server.CURRENT = demo_server.RUNS / 'current'
@@ -58,22 +59,35 @@ class DemoServerTests(unittest.TestCase):
             self.assertEqual(code, 200, path)
             self.assertIn(marker, content)
 
-    def test_lucky_selects_from_configured_library(self):
-        code, content = self.call('GET', '/api/lucky')
-        self.assertEqual(code, 200)
-        result = json.loads(content)
-        self.assertEqual(result['path'], str(self.library / 'sample.mp4'))
-        self.assertGreaterEqual(result['anchor_seconds'], 0)
+    def test_lucky_uses_random_index_over_sorted_videos(self):
+        videos = [str(self.library / name) for name in ('other.mov', 'sample.mp4', 'third.avi')]
+        for index in range(3):
+            with mock.patch.object(demo_server.secrets, 'randbelow', return_value=index) as pick:
+                code, content = self.call('GET', '/api/lucky')
+            self.assertEqual(code, 200)
+            result = json.loads(content)
+            self.assertEqual(result['path'], videos[index])
+            # The die covers every video and only videos; notes.txt is never a candidate.
+            self.assertEqual(pick.call_args_list[0].args, (3,))
+            self.assertGreaterEqual(result['anchor_seconds'], 0)
+
+    def test_lucky_for_refinement_requires_matching_features(self):
         code, content = self.call('GET', '/api/lucky?target=refine')
         self.assertEqual(code, 400)
         self.assertIn(b'required for this stage', content)
         feature_dir = self.root / 'features'
         feature_dir.mkdir(exist_ok=True)
-        (feature_dir / 'sample.npy').write_bytes(b'fixture')
-        with mock.patch.object(demo_server, 'FEATURE_DIR', feature_dir):
+        (feature_dir / 'third.npy').write_bytes(b'fixture')
+        with mock.patch.object(demo_server, 'FEATURE_DIR', feature_dir), \
+             mock.patch.object(demo_server.secrets, 'randbelow', return_value=0) as pick:
             code, content = self.call('GET', '/api/lucky?target=refine')
         self.assertEqual(code, 200)
-        self.assertEqual(json.loads(content)['feature_file'], str(feature_dir / 'sample.npy'))
+        self.assertEqual(pick.call_args_list[0].args, (1,))
+        result = json.loads(content)
+        self.assertEqual(result['path'], str(self.library / 'third.avi'))
+        self.assertEqual(result['feature_file'], str(feature_dir / 'third.npy'))
+        code, _ = self.call('GET', '/api/lucky?target=everything')
+        self.assertEqual(code, 400)
 
     def test_post_requires_same_origin_token(self):
         client = http.client.HTTPConnection('127.0.0.1', self.server.server_port, timeout=5)
@@ -132,10 +146,12 @@ class DemoServerTests(unittest.TestCase):
         fake_process.poll.return_value = 0
         fake_process.returncode = 0
         with mock.patch.object(demo_server, 'missing_dependencies', return_value=[]), \
+             mock.patch.object(demo_server.WARM, 'stop') as release, \
              mock.patch.object(demo_server.subprocess, 'Popen', return_value=fake_process) as launched:
             code, content = self.call('POST', '/api/run', request,
                                       {'Content-Type': 'application/json'})
         self.assertEqual(code, 202, content)
+        release.assert_called_once()
         self.assertFalse(old.exists())
         cfg = json.loads((demo_server.CURRENT / 'config.json').read_text())
         self.assertEqual(cfg['stages'], ['preprocess', 'infer', 'refine'])
@@ -152,6 +168,17 @@ class DemoServerTests(unittest.TestCase):
         self.assertEqual(json.loads(content)['mode'], 'video')
         self.assertEqual(json.loads(content)['progress']['total_windows'], 3)
         self.assertTrue((demo_server.CURRENT / 'stage_manifest.json').is_file())
+        rows = [{'anchor': anchor, 'start': 0, 'end': 48, 'condition': 'baseline',
+                 'frame_indices': list(range(8)), 'strict_label': label, 'raw_response': 'Output: %s' % label,
+                 'seconds': 1.5, 'input_token_ids': [[1, 2, 3]]} for anchor, label in ((0, 0), (16, 1))]
+        (output / 'sample' / 'raw_responses.jsonl').write_text(''.join(json.dumps(row) + '\n' for row in rows))
+        (output / 'sample' / 'video.json').write_text(json.dumps({'fps_actual': 25.0}))
+        code, content = self.call('GET', '/api/windows?job=' + job)
+        self.assertEqual(code, 200)
+        windows = json.loads(content)
+        self.assertEqual([row['strict_label'] for row in windows['windows']], [0, 1])
+        self.assertNotIn('input_token_ids', windows['windows'][0])
+        self.assertEqual((windows['fps'], windows['inputs']), (25.0, 'pipeline/run 1/output/sample/inputs'))
 
     def test_stage_inventory_and_artifact_confinement(self):
         folder = self.root / 'inventory'
@@ -200,18 +227,51 @@ class DemoServerTests(unittest.TestCase):
                                    'Content-Type': 'application/octet-stream'})
         self.assertEqual(code, 201)
         uploaded = json.loads(content)['path']
-        fake_process = mock.Mock()
-        fake_process.poll.return_value = 0
-        fake_process.returncode = 0
         request = json.dumps({'video': uploaded, 'target_stage': 'window'}).encode()
         with mock.patch.object(demo_server, 'missing_dependencies', return_value=[]), \
-             mock.patch.object(demo_server.subprocess, 'Popen', return_value=fake_process):
+             mock.patch.object(demo_server.WARM, 'submit', return_value=finished_job()):
             code, content = self.call('POST', '/api/run', request,
                                       {'Content-Type': 'application/json'})
         self.assertEqual(code, 202, content)
         self.assertFalse(Path(uploaded).exists())
         self.assertEqual((demo_server.CURRENT / 'uploaded' / 'my_clip.mp4').read_bytes(), b'video bytes')
         self.assertFalse((demo_server.RUNS / 'uploads').exists())
+
+    def test_window_model_settings(self):
+        video = str(self.library / 'sample.mp4')
+        cases = [({}, 'auto', True, True),
+                 ({'device': 'cuda', 'dtype': 'bfloat16'}, 'bfloat16', False, True),
+                 ({'model_path': 'OpenGVLab/InternVL2-2B'}, 'auto', True, False),
+                 ({'model_path': str(self.root)}, 'auto', True, True)]
+        for extra, dtype, fallback, pinned in cases:
+            request = json.dumps({'video': video, 'target_stage': 'window', **extra}).encode()
+            with mock.patch.object(demo_server, 'missing_dependencies', return_value=[]), \
+                 mock.patch.object(demo_server.WARM, 'submit', return_value=finished_job()) as submit:
+                code, content = self.call('POST', '/api/run', request,
+                                          {'Content-Type': 'application/json'})
+            self.assertEqual(code, 202, content)
+            model = submit.call_args.args[0]
+            self.assertEqual(model, json.loads((demo_server.CURRENT / 'config.json').read_text())['model'])
+            self.assertEqual(model['dtype'], dtype, extra)
+            self.assertEqual(model['mps_cpu_fallback'], fallback, extra)
+            # Only the baseline repository and local copies keep the pinned baseline commit.
+            self.assertEqual(model['revision'] is not None, pinned, extra)
+            self.assertEqual(submit.call_args.args[1]['output'], str(demo_server.CURRENT / 'probe'))
+
+    def test_window_probe_rejects_non_finite_anchor(self):
+        from tools.window_probe import fresh_backend, probe
+        from vera_runner.config import load
+        cfg = load(demo_server.BASE_CONFIG)
+        for anchor in (float('nan'), float('inf'), -1.0):
+            with self.assertRaisesRegex(ValueError, 'finite'):
+                probe(cfg, self.library / 'sample.mp4', anchor, self.root / 'never', fresh_backend)
+        self.assertFalse((self.root / 'never').exists())
+
+
+def finished_job():
+    job = demo_server.WorkerJob()
+    job.finish(0)
+    return job
 
 
 if __name__ == '__main__':

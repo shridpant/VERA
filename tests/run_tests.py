@@ -20,6 +20,7 @@ SUITES={
  'refinement':'tests.refinement',
  'integration':'tests.integration',
  'runtime':'tests.runtime',
+ 'lab':'tests.demo',
  'real-model':'tests.real_model',
 }
 
