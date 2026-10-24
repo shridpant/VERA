@@ -11,11 +11,11 @@ Run from the checkout root using Python 3.11 with requirements-runner.txt instal
 | `configuration/` | Unknown config fields, `dtype: auto` and revision values | No |
 | `datasets/` | Named dataset/split lookup, manifest membership, duplicate ID errors | No |
 | `preprocessing/` | Window sampling, OpenCV/JPEG byte equivalence, resized RGB equality against original VERA | No |
-| `backends/` | Exact prompt equality with original forward using a fake model; local and cached-Hub checkpoint resolution | No |
+| `backends/` | Exact prompt equality with original forward using a fake model; local and cached-Hub checkpoint resolution; box parser on WI-01's real tagged outputs | No |
 | `interventions/` | Baseline identity, exact blur pixels, exact grey pixels | No |
 | `parsing/` | Valid labels and refusal to invent labels for invalid responses | No |
 | `refinement/` | Numerical equality against unmodified compute_auc.py on synthetic data | No |
-| `integration/` | Synthetic video → mock predictions → probe outputs and refinement/evaluation | No; explicitly mock |
+| `integration/` | Synthetic video → mock predictions → probe outputs and refinement/evaluation; only windows labelled 1 boxed, every step on the timeline | No; explicitly mock |
 | `runtime/` | Prior-process guard, including stopped processes with recent heartbeats | No |
 | `demo/` (suite `lab`) | VERA Lab HTTP API, uploads, die selection, model settings, scratch run, and the warm window process (real subprocesses, mock backend) | No; explicitly mock |
 | `real_model/` | Real UCF clip → InternVL2-8B → one complete parsed response and saved inputs/token IDs/logs | Yes; explicit opt-in |

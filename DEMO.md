@@ -61,12 +61,20 @@ is not exposed to other computers.
 
 ## The run page
 
-The page opens on the pipeline, drawn in two lanes: what InternVL2 sees for one
-window, and what happens across the whole video once every window has a label.
-Stages that the selected run includes are highlighted. Each stage that has a
-setting carries a ⚙ tag; click the stage to jump to that setting.
+The page opens on the pipeline, drawn in two lanes: what InternVL2 sees and says
+for one window, and what happens across the whole video once every window has a
+label. Stages the selected run includes are highlighted. During a run, the stage
+working now is outlined and prints its latest real value (frames decoded, window
+number, tokens generated so far, label, box status). Click a stage to jump to the
+setting that changes it.
 
-| Knob | Stage it changes | Default |
+**Simple** (the default) asks only for the video and *One window* or *Whole video*,
+and uses VERA's original settings with boxes on. *Whole video* runs as far as the
+lab's inputs allow: refinement and metrics when the server has the video's feature
+file and annotation, otherwise all windows with labels and boxes. **Advanced**
+shows every knob; Simple never sends them.
+
+| Knob (Advanced) | Stage it changes | Default |
 |---|---|---|
 | Video: drop, ⚄ die, or path | 1 · input | none; the die picks a random library video and start time |
 | Run through stage | which stages run | one sampled window |
@@ -74,8 +82,16 @@ setting carries a ⚙ tag; click the stage to jump to that setting.
 | Guiding questions | 4 · prompt | VERA's released UCF-Crime questions |
 | Checkpoint, device, precision, download | 5 · InternVL2 | verified local copy, auto, auto, no download |
 | (fixed) FlashAttention, generation | 5 · InternVL2 | on for CUDA when installed; greedy, 1024 new tokens |
-| Feature file | 7–8 · scene and temporal refinement | library match, if any |
-| Annotations | 9 · metrics | the server's `--annotation-file` |
+| Boxes, what to box | 7 · boxes | on for windows labelled 1; the model names the anomaly |
+| Feature file | 8–9 · scene and temporal refinement | library match, if any |
+| Annotations | 10 · metrics | the server's `--annotation-file` |
+
+**Exact prompt** shows the text sent with every window, rendered by the runner's
+own `prompt()` as you edit the questions. After a run it also shows that run's full
+language-model input: InternVL2's chat template, its built-in (Chinese) system
+message, VERA's prompt, and the image-token run counted (`<IMG_CONTEXT>×2048` for
+eight images). VERA's call puts all eight images where the first `<image>`
+placeholder is; the other `Frame N: <image>` lines stay as text, exactly as upstream.
 
 Defaults are VERA's original settings. **↺ Reset to VERA defaults** restores every
 knob and clears the video. With these settings a full RoadAccidents127 run on Oz
@@ -112,6 +128,62 @@ The page shows whether a model is loaded; each result reports load and
 inference seconds separately. Two consecutive windows, measured on 2026-10-24: Oz RTX 6000 Ada 31.0 s then 4.6 s;
 Mac M3 Max 35.3 s then 11.1 s.
 
+## Watching a run
+
+Nothing on this view is animated for effect. The model process appends each step
+to `timeline.jsonl` as it happens: decoding, the window and its eight images, the
+text so far (every quarter second), the parsed label, the naming call and each box,
+refinement and metrics. The page reads that file about once a second.
+
+- **Follow live** shows each window as soon as its images are sampled, then its
+  text while it is generated, its label and its boxes.
+- The strip above shows every window in time order: red is labelled 1, grey 0,
+  striped unparsed, faded not reached yet, and a dot marks boxes. Click any window.
+- **Play** steps through the windows in order at 1, 2 or 5 per second, a timelapse
+  of what the model saw and said. After refinement, the final frame-score curve
+  appears with a cursor at the window on screen.
+- **Event log** lists every recorded event with its values.
+
+## Boxes
+
+For each window labelled 1 (with boxes on), the lab makes extra calls after VERA's
+answer; labels and refinement are unchanged:
+
+1. **Name it.** In the same conversation as the window (same eight images): “In at
+   most eight words, name the main anomalous object or event in these images. Reply
+   with the phrase only.” In Advanced you can type the phrase instead.
+2. **Box it on each image.** One image per call, with InternVL2's model-card
+   grounding prompt, 100 new tokens, greedy: “Please provide the bounding box
+   coordinates of the region this sentence describes: `<ref>phrase</ref>`”.
+
+The reply is read from the decode that keeps InternVL2's special tokens, for
+example `<ref> red truck </ref> <box> [[342, 126, 1000, 712]] </box>`, on a 0–1000
+grid of the 448×448 image the model saw, so the boxes are drawn on exactly those
+images. Each image's result is one of:
+
+- **box**: drawn in red, with its share of the image;
+- **whole image**: the first box covers at least 95 % of the image. It is drawn
+  dashed and labelled “not a location”;
+- **no box**, or **unreadable box**: nothing is drawn.
+
+The tagged text of every call is shown under the images and saved in
+`boxes.jsonl` (full video) or `probe/boxes.json` (one window). These are the
+model's own answers to “where is this?”. UCF-Crime has no box annotations, so
+they are not validated localization. Grounding pilot WI-01 showed many whole-image
+replies on later crash frames. On RoadAccidents127 at 74 s the Mac boxed the truck
+on images 1–4 and returned whole-image replies for 5, 6 and 8.
+
+**Your own boxes:** tick *Pick frames to box*, click images in any windows,
+including ones labelled 0, type what to box, and press *Box N frames*. Only the
+picked frames are sent, through the warm model, which loads first if needed. They
+are drawn in orange and saved in `manual_boxes.jsonl`, with their events in
+`manual_timeline.jsonl`. Nothing is boxed for windows labelled 0 unless you ask
+this way.
+
+Cost: on Oz each grounding call takes about 0.6 s and the naming call about 2.6 s
+(WI-01), so a window labelled 1 adds about 8 s. On the Mac (MPS) it is about
+2 s per image.
+
 ## Where it runs and what it uses
 
 Under the run status, a usage panel refreshes every few seconds (`GET /api/usage`).
@@ -142,9 +214,6 @@ For refinement, supply the official aligned ImageBind `.npy` with exactly one
 row per ordered window. Its filename must match the video stem. For evaluation,
 also supply the UCF-style annotation JSON.
 
-After a full-video run, a strip shows every window's parsed label (red = 1,
-grey = 0, striped = unparsed). Select a window to see its eight model inputs and
-the response it produced.
 
 ## Scratch files and stage names
 
@@ -153,7 +222,8 @@ location. Uploaded input is moved into that directory; unused uploads are
 cleared. Save any artifact you need **before the next run**. Reloading the
 page or restarting the lab server restores the last completed scratch run.
 The app writes `stage_manifest.json` with ordered names such as
-`01_sampled_input`, `03_window_predictions`, and `06_frame_timeline`. The stage
+`01_sampled_input`, `03_window_predictions`, `04_anomaly_boxes`, and
+`07_frame_timeline`; `timeline.jsonl` and `model_input.txt` are listed too. The stage
 selector displays available files and lets you preview or download them.
 Directories open 50 entries at a time, so you can inspect individual sampled and
 decoded frames. Score arrays are plotted against their index; the downloadable
@@ -177,9 +247,11 @@ for file in tools/web/*.js; do node --check "$file"; done
 ```
 
 The `lab` suite runs the HTTP API with mocked launches and the real warm process
-with the mock backend. It covers stage selection, dependency preflight, model
-settings, die selection, scratch replacement, uploads, the per-window strip, and
-artifact confinement. Real-model results are recorded in
+with the mock backend. It covers stage selection (including *Whole video*),
+dependency preflight, model settings, die selection, scratch replacement, uploads,
+the timeline and prompt endpoints, manual boxes, and artifact confinement. Runner
+tests cover the box parser on WI-01's real outputs, and a mock run in which only
+windows labelled 1 are boxed and every step reaches the timeline. Real-model results are recorded in
 `tests/reports/ONE_WINDOW_ACCEPTANCE.md`. On 2026-10-24 the real-model test passed on Oz
 (CUDA, BF16) and on the Mac (MPS, FP16). A full 162-window RoadAccidents127 run on
 Oz reproduced experiment01's frame ROC-AUC for that video (0.99494).

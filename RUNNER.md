@@ -186,6 +186,19 @@ They are not a full-dataset result unless coverage matches the benchmark; generi
 is NOT the XD-specific published AP pipeline. There is no invented whole-video
 classification obtained by aggregating windows.
 
+## Boxes from the answering model
+
+`boxes: {"mode": "alerts", "phrase": null, "max_new_tokens": 100}` adds calls after
+each baseline window labelled 1. The model names the anomaly in the same
+conversation, unless `phrase` is set. Then each of the window's images is
+grounded, one per call, with InternVL2's model-card prompt. `vera_runner/grounding.py`
+reads `<box> [[x1, y1, x2, y2]] </box>` on a 0–1000 grid from the decode that keeps
+special tokens. A first box covering at least 95 % of the image is `full_frame`, not
+a location; `no_box` and `malformed` are reported as such. One line per boxed
+window goes to `<video>/boxes.jsonl`: the phrase, the naming prompt and reply, and
+each image's tagged text, boxes, status and area. The default is `off`, so plain
+runs stay VERA's. Labels and refinement never use boxes.
+
 ## Output, reliability and tests
 
 ```
@@ -202,6 +215,8 @@ runs/vanilla/
       environment.txt
       model_identity.json
       prompt.txt
+      model_input.txt               # the first window's exact language-model input
+      timeline.jsonl                # one JSON event per step, for live display
       <video>/
         frames/
         inputs/
@@ -210,6 +225,7 @@ runs/vanilla/
         raw_responses.jsonl
         segment_scores.json
         probe_comparison.json       # probes only
+        boxes.jsonl                 # boxes.mode alerts only
         frame_scores.npy            # refinement only
       summary.json
       metrics.json                  # evaluation only
