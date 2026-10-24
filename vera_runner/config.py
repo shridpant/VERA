@@ -24,6 +24,8 @@ DEFAULTS = {
                    'smoothing_size': 15, 'smoothing_sigma': 10.0,
                    'round_decimals': 1, 'position_weighting': True},
     'runtime': {'timeout_seconds': 3600},
+    # Boxes from the answering model for windows it labels 1; off keeps runs exactly as VERA's.
+    'boxes': {'mode': 'off', 'phrase': None, 'max_new_tokens': 100},
 }
 
 
@@ -129,6 +131,12 @@ def load(filename, overrides=None):
         raise ValueError('round_decimals must be nonnegative integer')
     if type(ref['position_weighting']) is not bool:
         raise ValueError('position_weighting must be boolean')
+    boxes = cfg['boxes']
+    if boxes['mode'] not in ('off', 'alerts'):
+        raise ValueError('boxes.mode must be off or alerts')
+    if boxes['phrase'] is not None and (not isinstance(boxes['phrase'], str) or not boxes['phrase'].strip() or len(boxes['phrase']) > 120):
+        raise ValueError('boxes.phrase must be null or a phrase of at most 120 characters')
+    positive(boxes['max_new_tokens'], 'boxes.max_new_tokens', True)
     if 'refine' in cfg['stages'] and (sel['max_windows_per_video'] is not None or iv['probe']):
         raise ValueError('Refinement requires all windows and one condition per window; probe or partial windows cannot be refined')
     return cfg

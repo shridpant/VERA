@@ -197,7 +197,9 @@ class DemoServerTests(unittest.TestCase):
         windows = json.loads(content)
         self.assertEqual([row['strict_label'] for row in windows['windows']], [0, 1])
         self.assertNotIn('input_token_ids', windows['windows'][0])
-        self.assertEqual((windows['fps'], windows['inputs']), (25.0, 'pipeline/run 1/output/sample/inputs'))
+        self.assertEqual(windows['fps'], 25.0)
+        self.assertEqual(windows['windows'][1]['images'][3], 'pipeline/run 1/output/sample/inputs/16/baseline/03.png')
+        self.assertEqual(windows['windows'][1]['boxes'], [])
 
     def test_stage_inventory_and_artifact_confinement(self):
         folder = self.root / 'inventory'
@@ -279,6 +281,28 @@ class DemoServerTests(unittest.TestCase):
             # Only the baseline repository and local copies keep the pinned baseline commit.
             self.assertEqual(model['revision'] is not None, pinned, extra)
             self.assertEqual(submit.call_args.args[1]['output'], str(demo_server.CURRENT / 'probe'))
+
+    def test_whole_video_runs_as_far_as_the_inputs_allow(self):
+        features = self.root / 'whole_features'
+        features.mkdir(exist_ok=True)
+        (features / 'sample.npy').write_bytes(b'fixture')
+        annotation = self.root / 'whole_annotation.json'
+        annotation.write_text(json.dumps([{'video': 'videos/sample.mp4', 'temporal_label': [-1, -1]}]))
+        fake = mock.Mock(poll=mock.Mock(return_value=0), returncode=0)
+        cases = [(None, None, ['preprocess', 'infer']), (features, None, ['preprocess', 'infer', 'refine']),
+                 (features, annotation, ['preprocess', 'infer', 'refine', 'evaluate'])]
+        for feature_dir, annotation_file, stages in cases:
+            request = json.dumps({'video': str(self.library / 'sample.mp4'), 'target_stage': 'full'}).encode()
+            with mock.patch.object(demo_server, 'FEATURE_DIR', feature_dir), \
+                 mock.patch.object(demo_server, 'ANNOTATION_FILE', annotation_file), \
+                 mock.patch.object(demo_server, 'missing_dependencies', return_value=[]), \
+                 mock.patch.object(demo_server.WARM, 'stop'), \
+                 mock.patch.object(demo_server.subprocess, 'Popen', return_value=fake):
+                code, content = self.call('POST', '/api/run', request, {'Content-Type': 'application/json'})
+            self.assertEqual(code, 202, content)
+            cfg = json.loads((demo_server.CURRENT / 'config.json').read_text())
+            self.assertEqual(cfg['stages'], stages)
+            self.assertEqual(cfg['boxes']['mode'], 'alerts')
 
     def test_window_probe_rejects_non_finite_anchor(self):
         from tools.window_probe import fresh_backend, probe

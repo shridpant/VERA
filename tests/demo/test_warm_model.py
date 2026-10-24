@@ -129,6 +129,44 @@ class WarmModelTests(unittest.TestCase):
         replies, _ = process.communicate(requests, timeout=60)
         self.assertEqual([json.loads(line)['ok'] for line in replies.splitlines()], [True, True])
 
+    def test_timeline_prompt_and_manual_boxes(self):
+        first = self.run_window()
+        job = self.call('GET', '/api/defaults')[1]['current_job']
+        timeline = self.call('GET', '/api/timeline?job=' + job)[1]
+        events = [event['event'] for event in timeline['events']['run']]
+        self.assertEqual(timeline['base']['run'], 'probe')
+        self.assertEqual(events[0], 'run')
+        self.assertIn('answer', events)
+        self.assertEqual(events[-1], 'done')
+        window = next(event for event in timeline['events']['run'] if event['event'] == 'window')
+        self.assertIsNone(first['result']['boxes'])
+        # Event paths are relative to the timeline's base folder.
+        self.assertTrue((demo_server.CURRENT / timeline['base']['run'] / window['images'][0]).is_file())
+        # The page shows the exact prompt for the questions being typed, from the runner's prompt().
+        code, rendered = self.call('GET', '/api/prompt?questions=Is%20anything%20on%20fire%3F')
+        self.assertEqual(code, 200)
+        self.assertIn('Is anything on fire?', rendered['prompt'])
+        self.assertIn('<ref>{}</ref>', rendered['ground_prompt'])
+        # A dark mock window is labelled 0, so nothing is boxed until the user asks for frames.
+        windows = self.call('GET', '/api/windows?job=' + job)[1]
+        self.assertEqual((windows['windows'][0]['strict_label'], windows['windows'][0]['boxes']), (0, []))
+        anchor = windows['windows'][0]['anchor']
+        body = json.dumps({'job': job, 'phrase': 'the car', 'frames': [{'anchor': anchor, 'slot': 0},
+                                                                         {'anchor': anchor, 'slot': 3}]}).encode()
+        code, started = self.call('POST', '/api/boxes', body)
+        self.assertEqual(code, 202, started)
+        deadline = time.monotonic() + 30
+        while self.call('GET', '/api/windows?job=' + job)[1]['boxing'] and time.monotonic() < deadline:
+            time.sleep(0.1)
+        manual = self.call('GET', '/api/windows?job=' + job)[1]['windows'][0]['boxes']
+        self.assertEqual([(record['mode'], record['phrase']) for record in manual], [('manual', 'the car')])
+        self.assertEqual([(row['slot'], row['status']) for row in manual[0]['frames']], [(0, 'box'), (3, 'box')])
+        manual_events = self.call('GET', '/api/timeline?job=' + job)[1]['events']['manual']
+        self.assertEqual([event['event'] for event in manual_events].count('box'), 2)
+        code, refused = self.call('POST', '/api/boxes', json.dumps({'job': job, 'phrase': 'x', 'frames': [
+            {'anchor': anchor, 'slot': 9}]}).encode())
+        self.assertEqual(code, 400)
+
     def test_failed_request_keeps_worker_serving(self):
         self.run_window()
         process = demo_server.WARM.process

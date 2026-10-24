@@ -19,8 +19,10 @@ def stage_manifest(folder, mode, video_id):
         groups = [
             ('00_request', ['lab_job.json', 'config.json', 'console.log']),
             ('01_sampled_input', ['probe/sample_manifest.json', 'probe/frames']),
-            ('02_model_prompt', ['probe/prompt.txt']),
+            ('02_model_prompt', ['probe/prompt.txt', 'probe/model_input.txt']),
             ('03_local_prediction', ['probe/result.json']),
+            ('04_anomaly_boxes', ['probe/boxes.json', 'manual_boxes.jsonl', 'manual_console.log']),
+            ('05_timeline', ['probe/timeline.jsonl', 'manual_timeline.jsonl']),
         ]
     else:
         output = Path('pipeline/run 1/output')
@@ -32,17 +34,18 @@ def stage_manifest(folder, mode, video_id):
                             output / 'source_snapshot', output / 'environment.txt']),
             ('01_preprocess', [video / 'video.json', video / 'coverage.json',
                                video / 'frames']),
-            ('02_model_prompt', [output / 'prompt.txt', output / 'model_identity.json',
-                                 output / 'model_progress.jsonl']),
+            ('02_model_prompt', [output / 'prompt.txt', output / 'model_input.txt',
+                                 output / 'model_identity.json', output / 'model_progress.jsonl']),
             ('03_window_predictions', [video / 'raw_responses.jsonl',
                                        video / 'segment_scores.json', video / 'inputs',
                                        video / 'probe_comparison.json']),
-            ('04_scene_refinement', [video / 'feature_identity.json', video / 'scene.npy']),
-            ('05_temporal_smoothing', [video / 'temporal.npy']),
-            ('06_frame_timeline', [video / 'frame_scores.npy']),
-            ('07_evaluation', [output / 'metrics.json']),
-            ('08_diagnostics', [output / 'summary.json', output / 'status.json',
-                                output / 'inference.log', output / 'diagnostic.log',
+            ('04_anomaly_boxes', [video / 'boxes.jsonl', 'manual_boxes.jsonl', 'manual_console.log']),
+            ('05_scene_refinement', [video / 'feature_identity.json', video / 'scene.npy']),
+            ('06_temporal_smoothing', [video / 'temporal.npy']),
+            ('07_frame_timeline', [video / 'frame_scores.npy']),
+            ('08_evaluation', [output / 'metrics.json']),
+            ('09_diagnostics', [output / 'summary.json', output / 'status.json', output / 'timeline.jsonl',
+                                'manual_timeline.jsonl', output / 'inference.log', output / 'diagnostic.log',
                                 output / 'error.txt']),
         ]
     return [{'stage': name, 'artifacts': [entry for item in items

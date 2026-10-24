@@ -3,7 +3,9 @@
 
 This is an educational probe. It does not perform whole-video refinement or AUC.
 With --serve it stays alive and answers one JSON request per stdin line, so
-repeated windows reuse the loaded model instead of reloading its weights.
+repeated windows reuse the loaded model instead of reloading its weights. A request
+with "kind": "ground" boxes a phrase on chosen saved images instead (manual boxes).
+Every step is appended to timeline.jsonl for the lab's live view.
 """
 import argparse
 import io
@@ -20,6 +22,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from vera_runner.config import load, prepare_environment
 from vera_runner.data import windows
 from vera_runner.backends import BACKENDS, prompt, strict_label
+from vera_runner.grounding import box_images, box_window
+from vera_runner.timeline import Timeline
 
 
 def extract(video, indices, size):
@@ -55,8 +59,18 @@ def extract(video, indices, size):
     return [found[i] for i in indices], count, fps
 
 
-def fresh_backend(cfg):
-    return BACKENDS[cfg['model']['backend']](cfg), False
+def load_backend(cfg, timeline):
+    timeline.emit('model_loading', path=cfg['model']['path'])
+    begin = time.monotonic()
+    backend = BACKENDS[cfg['model']['backend']](cfg)
+    identity = getattr(backend, 'model_identity', {})
+    timeline.emit('model_ready', device=backend.device, dtype=identity.get('dtype'),
+                  flash_attention=identity.get('flash_attention'), seconds=time.monotonic() - begin)
+    return backend
+
+
+def fresh_backend(cfg, timeline):
+    return load_backend(cfg, timeline), False
 
 
 def probe(cfg, video, anchor_seconds, out, backend_for):
@@ -72,6 +86,19 @@ def probe(cfg, video, anchor_seconds, out, backend_for):
         raise ValueError('Unknown backend')
     out = Path(out).expanduser().resolve()
     out.mkdir(parents=True, exist_ok=False)
+    timeline = Timeline(out / 'timeline.jsonl')
+    timeline.emit('run', stages=['window'], videos=[video.name], model=cfg['model']['path'], boxes=cfg['boxes']['mode'])
+    try:
+        result = sample_and_ask(cfg, video, anchor_seconds, out, backend_for, timeline)
+    except Exception as exc:
+        timeline.emit('error', message=f'{type(exc).__name__}: {exc}')
+        timeline.emit('done', status='failed')
+        raise
+    timeline.emit('done', status='complete')
+    return result
+
+
+def sample_and_ask(cfg, video, anchor_seconds, out, backend_for, timeline):
     import cv2
     cap = cv2.VideoCapture(str(video))
     try:
@@ -84,11 +111,18 @@ def probe(cfg, video, anchor_seconds, out, backend_for):
     anchors = list(windows(length, cfg['sampling']))
     target = anchor_seconds * actual_fps
     win = min(anchors, key=lambda w: abs(w['anchor'] - target))
+    timeline.emit('video', video=video.name, frames=length, fps=actual_fps, windows=len(anchors))
     images, decoded, fps = extract(video, win['frame_indices'], cfg['preprocessing']['image_size'])
     frame_dir = out / 'frames'
     frame_dir.mkdir()
+    paths = []
     for index, image in enumerate(images):
-        image.save(frame_dir / f'{index:02d}_source_{win["frame_indices"][index]:06d}.png')
+        name = f'{index:02d}_source_{win["frame_indices"][index]:06d}.png'
+        image.save(frame_dir / name)
+        paths.append('frames/' + name)
+    where = dict(video=video.name, anchor=win['anchor'], condition='baseline')
+    timeline.emit('window', **where, index=anchors.index(win), total=len(anchors), start=win['start'], end=win['end'],
+                  frame_indices=win['frame_indices'], images=paths)
     (out / 'sample_manifest.json').write_text(json.dumps({
         'video': str(video), 'video_frames': decoded, 'actual_fps': fps,
         'anchor_frame': win['anchor'], 'window_start_frame': win['start'],
@@ -98,11 +132,22 @@ def probe(cfg, video, anchor_seconds, out, backend_for):
                         for i, source in enumerate(win['frame_indices'])],
     }, indent=2) + '\n', encoding='utf-8')
     (out / 'prompt.txt').write_text(prompt(cfg), encoding='utf-8')
+    timeline.emit('prompt', text=prompt(cfg), generation=cfg['generation'])
     start = time.monotonic()
-    backend, reused = backend_for(cfg)
+    backend, reused = backend_for(cfg, timeline)
     loaded = time.monotonic()
-    prediction = backend.predict(images)
+    prediction = backend.predict(images, on_text=timeline.streamer(**where))
     finished = time.monotonic()
+    label = strict_label(prediction['raw_response'])
+    rendered = backend.rendered_input()
+    (out / 'model_input.txt').write_text(rendered, encoding='utf-8')
+    timeline.emit('model_input', text=rendered)
+    timeline.emit('answer', **where, text=prediction['raw_response'], label=label, seconds=finished - loaded)
+    boxes = None
+    if cfg['boxes']['mode'] == 'alerts' and label == 1:
+        boxes = box_window(backend, images, prediction['raw_response'], cfg['boxes'], timeline,
+                           win['frame_indices'], paths, **where)
+        (out / 'boxes.json').write_text(json.dumps(boxes, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     result = {
         'video': str(video), 'video_frames': decoded, 'actual_fps': fps,
         'requested_anchor_seconds': anchor_seconds,
@@ -112,7 +157,7 @@ def probe(cfg, video, anchor_seconds, out, backend_for):
         'model_backend': cfg['model']['backend'], 'model_path': cfg['model']['path'],
         'device': backend.device, 'dtype': getattr(backend, 'model_identity', {}).get('dtype'),
         'raw_response': prediction['raw_response'],
-        'parsed_label': strict_label(prediction['raw_response']),
+        'parsed_label': label, 'boxes': boxes,
         'model_reused': reused, 'model_load_seconds': loaded - start,
         'inference_seconds': finished - loaded, 'elapsed_seconds': finished - start,
         'synthetic': cfg['model']['backend'] == 'mock',
@@ -122,6 +167,33 @@ def probe(cfg, video, anchor_seconds, out, backend_for):
     return result
 
 
+def ground_saved(request, backend_for):
+    """Manual boxes: one phrase on saved model inputs, grouped by window, appended to request['output']."""
+    from PIL import Image
+    cfg = load(request['config'])
+    timeline = Timeline(request['timeline'])
+    phrase = request['phrase'].strip()
+    if not phrase or len(phrase) > 120:
+        raise ValueError('Give a phrase of 1-120 characters to box')
+    timeline.emit('manual_boxes', phrase=phrase, frames=len(request['items']))
+    backend, _ = backend_for(cfg, timeline)
+    windows_done = []
+    for anchor in sorted({item['anchor'] for item in request['items']}):
+        items = []
+        for item in (entry for entry in request['items'] if entry['anchor'] == anchor):
+            with Image.open(item['file']) as image:
+                items.append({'image': image.convert('RGB'), 'slot': item['slot'],
+                              'frame_index': item['frame_index'], 'path': item['path']})
+        rows = box_images(backend, items, phrase, cfg['boxes']['max_new_tokens'], timeline, anchor=anchor, mode='manual')
+        record = {'anchor': anchor, 'mode': 'manual', 'phrase': phrase, 'frames': rows}
+        with open(request['output'], 'a', encoding='utf-8') as handle:
+            handle.write(json.dumps(record, ensure_ascii=False) + '\n')
+        windows_done.append(anchor)
+    timeline.emit('manual_done', windows=windows_done)
+    return {'ok': True, 'boxed': len(request['items']), 'device': backend.device,
+            'dtype': getattr(backend, 'model_identity', {}).get('dtype')}
+
+
 def serve(idle_seconds):
     """Answer one JSON request per stdin line until EOF or idle_seconds without a request."""
     # Model libraries may print while loading. Keep the real stdout for one JSON reply per request.
@@ -129,12 +201,13 @@ def serve(idle_seconds):
     os.dup2(2, 1)
     loaded = {}
 
-    def backend_for(cfg):
+    def backend_for(cfg, timeline):
         if 'backend' in loaded:
             loaded['backend'].configure(cfg)
+            timeline.emit('model_reused', device=loaded['backend'].device)
             return loaded['backend'], True
         prepare_environment(cfg)
-        loaded['backend'] = BACKENDS[cfg['model']['backend']](cfg)
+        loaded['backend'] = load_backend(cfg, timeline)
         return loaded['backend'], False
 
     def idle(signum, frame):
@@ -150,10 +223,13 @@ def serve(idle_seconds):
             break
         try:
             request = json.loads(line)
-            result = probe(load(request['config']), request['video'], float(request['anchor_seconds']),
-                           request['output'], backend_for)
-            reply = {'ok': True, 'parsed_label': result['parsed_label'], 'model_reused': result['model_reused'],
-                     'device': result['device'], 'dtype': result['dtype']}
+            if request.get('kind') == 'ground':
+                reply = ground_saved(request, backend_for)
+            else:
+                result = probe(load(request['config']), request['video'], float(request['anchor_seconds']),
+                               request['output'], backend_for)
+                reply = {'ok': True, 'parsed_label': result['parsed_label'], 'model_reused': result['model_reused'],
+                         'device': result['device'], 'dtype': result['dtype']}
         except Exception:
             reply = {'ok': False, 'error': traceback.format_exc()}
             print(reply['error'], file=sys.stderr, flush=True)

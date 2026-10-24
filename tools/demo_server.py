@@ -20,12 +20,15 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools import usage
 from tools.stage_view import stage_manifest
-from vera_runner.config import path as runner_path
+from vera_runner import grounding
+from vera_runner.backends import prompt as runner_prompt
+from vera_runner.config import load as runner_load, path as runner_path
 WEB = ROOT / 'tools' / 'web'
 BASE_CONFIG = ROOT / 'configs' / 'baseline.json'
 RUNS = ROOT / 'demo_runs'
 CURRENT = RUNS / 'current'
 JOBS = {}
+MANUAL = {'job': None}  # The manual-box request in flight, if any; one model job at a time.
 LOCK = threading.Lock()
 SESSION_TOKEN = secrets.token_urlsafe(32)
 LIBRARY = None
@@ -87,6 +90,20 @@ def choose_random_video(library, require_feature=False):
             'annotation_file': str(ANNOTATION_FILE) if ANNOTATION_FILE else ''}
 
 
+def full_video_stage(video_id, request):
+    """Simple mode's "whole video": the furthest stage this video has inputs for, filled into request."""
+    feature = FEATURE_DIR / (video_id + '.npy') if FEATURE_DIR else None
+    if feature is None or not feature.is_file():
+        return 'segments'
+    request['feature_file'] = str(feature)
+    annotated = ANNOTATION_FILE is not None and any(
+        Path(entry['video']).stem == video_id for entry in json.loads(ANNOTATION_FILE.read_text()))
+    if not annotated:
+        return 'refine'
+    request['annotation_file'] = str(ANNOTATION_FILE)
+    return 'evaluate'
+
+
 def missing_dependencies(target):
     modules = ['cv2', 'PIL', 'numpy']
     if target != 'preprocess':
@@ -134,6 +151,58 @@ class FinishedRun:
 
     def poll(self):
         return self.returncode
+
+
+def busy(job):
+    return job is not None and job.poll() is None
+
+
+def read_jsonl(path):
+    """Complete lines only: a writer may be midway through the last one."""
+    if not path.is_file():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding='utf-8').split('\n')[:-1] if line.strip()]
+
+
+def question_lines(questions):
+    if not isinstance(questions, str) or len(questions) > 3000:
+        raise ValueError('Questions too long')
+    lines = [line.strip() for line in questions.splitlines() if line.strip()]
+    if len(lines) > 10:
+        raise ValueError('Use at most 10 question lines')
+    return lines
+
+
+def job_windows(job):
+    """A finished job's windows: model inputs, answer, label, and auto and manual boxes, as saved."""
+    folder = job['folder']
+    if job['mode'] == 'window':
+        result_file = folder / 'probe' / 'result.json'
+        if not result_file.is_file():
+            return [], None
+        result = json.loads(result_file.read_text())
+        files = json.loads((folder / 'probe' / 'sample_manifest.json').read_text())['frame_files']
+        rows = [{'anchor': result['anchor_frame'], 'start': result['window_start_frame'], 'end': result['window_end_frame'],
+                 'condition': 'baseline', 'frame_indices': result['sampled_frame_indices'],
+                 'strict_label': result['parsed_label'], 'raw_response': result['raw_response'],
+                 'seconds': result.get('inference_seconds', result['elapsed_seconds']),
+                 'images': ['probe/frames/' + name for name in files]}]
+        auto, fps = ([result['boxes']] if result.get('boxes') else []), result['actual_fps']
+    else:
+        video = PIPELINE_OUTPUT / job['video_id']
+        keep = ('anchor', 'start', 'end', 'condition', 'frame_indices', 'strict_label', 'raw_response', 'seconds')
+        rows = [{**{key: row[key] for key in keep},
+                 'images': [f'{video}/inputs/{row["anchor"]}/{row["condition"]}/{slot:02d}.png'
+                            for slot in range(len(row['frame_indices']))]}
+                for row in read_jsonl(folder / video / 'raw_responses.jsonl')]
+        auto = read_jsonl(folder / video / 'boxes.jsonl')
+        info = folder / video / 'video.json'
+        fps = json.loads(info.read_text())['fps_actual'] if info.is_file() else None
+    found = auto + read_jsonl(folder / 'manual_boxes.jsonl')
+    for row in rows:
+        row['boxes'] = [record for record in found if record['anchor'] == row['anchor']
+                        and record.get('condition', 'baseline') == row['condition']]
+    return rows, fps
 
 
 def restore_current_job():
@@ -324,6 +393,17 @@ class Handler(BaseHTTPRequestHandler):
             else:
                 pid, role = None, None
             return self.send(200, {**usage.sample(pid), 'role': role, 'running': running is not None})
+        if route.path == '/api/prompt':
+            # The exact text VERA sends with every window, rendered by the runner's own prompt().
+            try:
+                cfg = runner_load(BASE_CONFIG)
+                lines = question_lines(parse_qs(route.query).get('questions', [''])[0])
+                cfg['prompt']['guiding_questions'] = lines or 'upstream_ucf'
+                return self.send(200, {'prompt': runner_prompt(cfg), 'generation': cfg['generation'],
+                                       'questions': 'yours' if lines else "VERA's released UCF-Crime questions",
+                                       'name_prompt': grounding.NAME_PROMPT, 'ground_prompt': grounding.GROUND_PROMPT})
+            except ValueError as exc:
+                return self.send(400, {'error': str(exc)})
         if route.path == '/api/lucky':
             try:
                 target = parse_qs(route.query).get('target', ['window'])[0]
@@ -390,16 +470,29 @@ class Handler(BaseHTTPRequestHandler):
         if route.path == '/api/windows':
             if job is None:
                 return self.send(404, {'error': 'Unknown job'})
-            # Compact per-window view of the runner's raw responses, without token IDs.
-            video = PIPELINE_OUTPUT / job['video_id']
-            raw = job['folder'] / video / 'raw_responses.jsonl'
-            if job['mode'] != 'video' or job['process'].poll() is None or not raw.is_file():
-                return self.send(200, {'windows': []})
-            keep = ('anchor', 'start', 'end', 'condition', 'frame_indices', 'strict_label', 'raw_response', 'seconds')
-            rows = [{key: row[key] for key in keep} for row in map(json.loads, raw.read_text().splitlines())]
-            info = job['folder'] / video / 'video.json'
-            fps = json.loads(info.read_text())['fps_actual'] if info.is_file() else 30.0
-            return self.send(200, {'windows': rows, 'fps': fps, 'inputs': str(video / 'inputs')})
+            # Per-window view of the saved outputs, without token IDs.
+            manual = MANUAL['job']
+            boxing = manual is not None and manual.poll() is None
+            if job['process'].poll() is None:
+                return self.send(200, {'windows': [], 'boxing': boxing})
+            rows, fps = job_windows(job)
+            return self.send(200, {'windows': rows, 'fps': fps, 'mode': job['mode'], 'video': job['video_id'],
+                                   'boxing': boxing, 'boxing_failed': manual is not None and manual.poll() == 1})
+        if route.path == '/api/timeline':
+            if job is None:
+                return self.send(404, {'error': 'Unknown job'})
+            # Live record of what the model process did, from each run's timeline.jsonl.
+            run_base = 'probe' if job['mode'] == 'window' else str(PIPELINE_OUTPUT)
+            sources = {'run': (job['folder'] / run_base / 'timeline.jsonl', run_base),
+                       'manual': (job['folder'] / 'manual_timeline.jsonl', '')}
+            skip = set(args.get('skip', [''])[0].split(','))
+            reply = {'events': {}, 'next': {}, 'base': {}}
+            for name, (path, base) in sources.items():
+                start = int(args.get('after_' + name, ['0'])[0])
+                events = read_jsonl(path)
+                reply['events'][name] = [event for event in events[start:] if event['event'] not in skip]
+                reply['next'][name], reply['base'][name] = len(events), base
+            return self.send(200, reply)
         if route.path == '/api/list':
             if job is None:
                 return self.send(404, {'error': 'Unknown job'})
@@ -423,18 +516,6 @@ class Handler(BaseHTTPRequestHandler):
                                        'items': visible, 'next_offset': offset + 50 if offset + 50 < len(children) else None})
             except (ValueError, OSError) as exc:
                 return self.send(400, {'error': str(exc)})
-        if route.path == '/api/image':
-            if job is None:
-                return self.send(404, {'error': 'Unknown job'})
-            try:
-                slot = int(args.get('slot', [''])[0])
-            except ValueError:
-                return self.send(400, {'error': 'Invalid slot'})
-            if slot not in range(8):
-                return self.send(400, {'error': 'Slot outside 0–7'})
-            matches = sorted((job['folder'] / 'probe' / 'frames').glob(f'{slot:02d}_source_*.png'))
-            frame = matches[0] if matches else None
-            return self.send(200, frame.read_bytes(), 'image/png') if frame and frame.is_file() else self.send(404, {'error': 'Frame unavailable'})
         return self.send(404, {'error': 'Unknown path'})
 
     def do_POST(self):
@@ -450,15 +531,12 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(403, {'error': 'Cross-origin requests are not accepted'})
         if self.path == '/api/upload':
             return self.upload()
+        if self.path == '/api/boxes':
+            return self.manual_boxes()
         if self.path != '/api/run':
             return self.send(404, {'error': 'Unknown path'})
         try:
-            length = int(self.headers.get('Content-Length', '0'))
-            if length < 1 or length > 16384:
-                raise ValueError('Request must be 1–16384 bytes')
-            request = json.loads(self.rfile.read(length))
-            if self.headers.get('Content-Type', '').split(';', 1)[0].strip() != 'application/json':
-                raise ValueError('Run request must be application/json')
+            request = self.json_body()
             video = Path(request['video']).expanduser().resolve()
             if video.suffix.lower() not in VIDEO_SUFFIXES or not video.is_file():
                 raise ValueError('Enter an existing video path (.mp4, .avi, .mov, .mkv)')
@@ -476,6 +554,8 @@ class Handler(BaseHTTPRequestHandler):
             if dtype not in ('auto', 'bfloat16', 'float16', 'float32'):
                 raise ValueError('Invalid dtype')
             target_stage = request.get('target_stage', 'window')
+            if target_stage == 'full':
+                target_stage = full_video_stage(video_id, request)
             if target_stage not in STAGE_TARGETS:
                 raise ValueError('Choose a supported stage: window, preprocess, segments, refine, evaluate')
             missing = missing_dependencies(target_stage)
@@ -485,12 +565,11 @@ class Handler(BaseHTTPRequestHandler):
             model_path = request.get('model_path', MODEL_PATH)
             if not isinstance(model_path, str) or not model_path or len(model_path) > 512:
                 raise ValueError('Invalid model path')
-            questions = request.get('questions', '')
-            if not isinstance(questions, str) or len(questions) > 3000:
-                raise ValueError('Questions too long')
-            qlist = [line.strip() for line in questions.splitlines() if line.strip()]
-            if len(qlist) > 10:
-                raise ValueError('Use at most 10 question lines')
+            qlist = question_lines(request.get('questions', ''))
+            boxes = request.get('boxes', True)
+            phrase = request.get('box_phrase', '') or None
+            if type(boxes) is not bool or (phrase is not None and (not isinstance(phrase, str) or len(phrase) > 120)):
+                raise ValueError('Invalid box settings')
             allow_download = request.get('allow_download', False)
             if type(allow_download) is not bool:
                 raise ValueError('Invalid download setting')
@@ -517,11 +596,14 @@ class Handler(BaseHTTPRequestHandler):
                                 # 'auto' resolves to MPS on a Mac, so it needs the same CPU fallback.
                                 mps_cpu_fallback=device in ('mps', 'auto'))
             cfg['prompt']['guiding_questions'] = qlist if qlist else 'upstream_ucf'
+            # Boxes are extra calls after VERA's answer, only for windows labelled 1; labels are unchanged.
+            cfg['boxes'] = {'mode': 'alerts' if boxes else 'off', 'phrase': phrase.strip() if phrase else None,
+                            'max_new_tokens': 100}
             mode = 'window' if target_stage == 'window' else 'video'
             cfg['runtime']['timeout_seconds'] = WINDOW_TIMEOUT if mode == 'window' else VIDEO_TIMEOUT
             cfg['stages'] = STAGE_TARGETS[target_stage]
             with LOCK:
-                if any(j['process'].poll() is None for j in JOBS.values()):
+                if any(j['process'].poll() is None for j in JOBS.values()) or busy(MANUAL['job']):
                     raise ValueError('A model call is already running. Wait for it to finish.')
                 # Only the tool-owned scratch location is cleared. Source videos and features stay untouched.
                 if folder.exists():
@@ -573,7 +655,51 @@ class Handler(BaseHTTPRequestHandler):
                 (folder / 'lab_job.json').write_text(json.dumps({
                     'job': job_id, 'mode': mode, 'video_id': video_id,
                     'target_stage': target_stage}, indent=2) + '\n')
-            return self.send(202, {'job': job_id, 'scratch_directory': str(folder)})
+            return self.send(202, {'job': job_id, 'scratch_directory': str(folder), 'target_stage': target_stage})
+        except (KeyError, ValueError, TypeError, OSError, json.JSONDecodeError) as exc:
+            return self.send(400, {'error': str(exc)})
+
+    def json_body(self):
+        length = int(self.headers.get('Content-Length', '0'))
+        if length < 1 or length > 16384:
+            raise ValueError('Request must be 1–16384 bytes')
+        request = json.loads(self.rfile.read(length))
+        if self.headers.get('Content-Type', '').split(';', 1)[0].strip() != 'application/json':
+            raise ValueError('Request must be application/json')
+        return request
+
+    def manual_boxes(self):
+        """Box a phrase on frames the user picked, with the warm model; saved beside the run."""
+        try:
+            request = self.json_body()
+            with LOCK:
+                job = JOBS.get(request.get('job', ''))
+            if job is None or job['process'].poll() is None:
+                raise ValueError('Boxes need a finished run; wait for it, or reload the page')
+            phrase = request.get('phrase', '')
+            frames = request.get('frames', [])
+            if not isinstance(phrase, str) or not phrase.strip() or len(phrase) > 120:
+                raise ValueError('Type what to box: 1–120 characters')
+            if not isinstance(frames, list) or not 1 <= len(frames) <= 64:
+                raise ValueError('Pick 1–64 frames to box')
+            windows = {row['anchor']: row for row in job_windows(job)[0]}
+            items = []
+            for frame in frames:
+                row = windows.get(frame.get('anchor')) if isinstance(frame, dict) else None
+                slot = frame.get('slot') if row else None
+                if row is None or type(slot) is not int or not 0 <= slot < len(row['images']):
+                    raise ValueError('Unknown window or frame')
+                items.append({'file': str(output_file(job, row['images'][slot])), 'path': row['images'][slot],
+                              'slot': slot, 'frame_index': row['frame_indices'][slot], 'anchor': row['anchor']})
+            config = job['folder'] / 'config.json'
+            with LOCK:
+                if any(j['process'].poll() is None for j in JOBS.values()) or busy(MANUAL['job']):
+                    raise ValueError('A model call is already running. Wait for it to finish.')
+                MANUAL['job'] = WARM.submit(json.loads(config.read_text())['model'], {
+                    'kind': 'ground', 'config': str(config), 'items': items, 'phrase': phrase.strip(),
+                    'output': str(job['folder'] / 'manual_boxes.jsonl'),
+                    'timeline': str(job['folder'] / 'manual_timeline.jsonl')}, job['folder'] / 'manual_console.log')
+            return self.send(202, {'frames': len(items)})
         except (KeyError, ValueError, TypeError, OSError, json.JSONDecodeError) as exc:
             return self.send(400, {'error': str(exc)})
 
