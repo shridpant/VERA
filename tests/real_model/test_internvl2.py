@@ -35,7 +35,9 @@ class RealModelAcceptance(unittest.TestCase):
         result=subprocess.run([sys.executable,str(ROOT/'run_vera.py'),'--config',str(cfg_file)],
                               cwd=ROOT,capture_output=True,text=True,
                               timeout=cfg['runtime']['timeout_seconds']+30)
-        (ROOT/'tests/reports/real_model/last_console.log').write_text(result.stdout+'\n'+result.stderr)
+        console=ROOT/'tests/reports/real_model/last_console.log'
+        console.parent.mkdir(parents=True,exist_ok=True)  # Ignored by Git, so absent in a fresh checkout.
+        console.write_text(result.stdout+'\n'+result.stderr)
         self.assertEqual(result.returncode,0,'Real runner failed. See tests/reports/real_model/last_console.log and tests/artifacts/real_model/run N/output/diagnostic.log')
         created=set(output_root.glob('run *'))-before
         self.assertEqual(len(created),1)

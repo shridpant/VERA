@@ -1,5 +1,6 @@
 import copy
 import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +46,12 @@ def path(value):
     return p.resolve() if p.is_absolute() else (ROOT / p).resolve()
 
 
+def prepare_environment(cfg):
+    """Set process variables that torch and Hugging Face read at import time."""
+    os.environ['PYTORCH_ENABLE_MPS_FALLBACK'] = '1' if cfg['model']['mps_cpu_fallback'] else '0'
+    os.environ.setdefault('HF_HOME', str(ROOT / '.cache/huggingface'))
+
+
 def positive(value, name, integer=False):
     import math
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value <= 0:
@@ -88,8 +95,11 @@ def load(filename, overrides=None):
         raise ValueError('Unknown backend; implement/register an adapter in backends.py first')
     if m['backend'] == 'internvl2' and cfg['preprocessing']['image_size'] != 448:
         raise ValueError('InternVL2 adapter is validated for 448px tiles only')
-    if m['device'] not in ('auto', 'cpu', 'mps', 'cuda') or m['dtype'] not in ('bfloat16', 'float16', 'float32'):
+    # dtype 'auto' resolves after the device: CUDA BF16, MPS FP16, CPU FP32.
+    if m['device'] not in ('auto', 'cpu', 'mps', 'cuda') or m['dtype'] not in ('auto', 'bfloat16', 'float16', 'float32'):
         raise ValueError('Unsupported device or dtype')
+    if m['revision'] is not None and not isinstance(m['revision'], str):
+        raise ValueError('model.revision must be a string or null (null uses the Hub default branch)')
     for key in ('flash_attention', 'mps_cpu_fallback', 'local_files_only'):
         if type(m[key]) is not bool:
             raise ValueError('model.' + key + ' must be boolean')

@@ -14,7 +14,7 @@ import sys
 import threading
 import time
 import traceback
-from vera_runner.config import ROOT, load, path
+from vera_runner.config import ROOT, load, path, prepare_environment
 from vera_runner.data import resolve, sha256, preprocess, windows
 
 
@@ -119,8 +119,7 @@ def main():
     folder=allocate(root/ 'checks' if args.check else root);out=folder/'output';out.mkdir()
     write(folder/'command.json',cfg);write(out/'invocation.json',{'argv':sys.argv,'cwd':os.getcwd(),'python':sys.executable})
     # Set before importing torch; no side effects on global user configuration.
-    os.environ['PYTORCH_ENABLE_MPS_FALLBACK']='1' if cfg['model']['mps_cpu_fallback'] else '0'
-    os.environ.setdefault('HF_HOME',str(ROOT/'.cache/huggingface'))
+    prepare_environment(cfg)
     state={'status':'checking','pid':os.getpid(),'started_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
            'inference_completed':False,'synthetic':cfg['model']['backend']=='mock'}
     write(out/'status.json',state);print('Run directory:',folder,flush=True)
@@ -156,7 +155,8 @@ def main():
                 import torch,transformers,torchvision,cv2,accelerate,einops,timm,sentencepiece
                 state['mps_available']=torch.backends.mps.is_available();state['cuda_available']=torch.cuda.is_available()
                 if cfg['model']['device']=='mps' and not state['mps_available']:raise RuntimeError('MPS unavailable to this process')
-                if cfg['model']['local_files_only'] and not path(cfg['model']['path']).is_dir():raise ValueError('Local model directory missing')
+                from vera_runner.backends import resolve_checkpoint
+                state['checkpoint']=resolve_checkpoint(cfg['model'])
             state['status']='check_passed'
         else:
             state['status']='running'

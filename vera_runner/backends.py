@@ -59,6 +59,25 @@ def install_progress_hooks(model, report):
     return handles
 
 
+DTYPE_FOR_DEVICE = {'cuda': 'bfloat16', 'mps': 'float16', 'cpu': 'float32'}
+
+
+def resolve_checkpoint(settings):
+    """Return a local checkpoint directory, or a Hub ID only when downloads are allowed."""
+    source = settings['path']
+    if path(source).is_dir():
+        return str(path(source))
+    if not settings['local_files_only']:
+        return source
+    from huggingface_hub import snapshot_download
+    from huggingface_hub.utils import LocalEntryNotFoundError
+    try:
+        # A cached Hub snapshot is already local; local_files_only only forbids network access.
+        return snapshot_download(source, revision=settings['revision'], local_files_only=True)
+    except LocalEntryNotFoundError as exc:
+        raise ValueError('local_files_only requires a model directory or a cached Hub snapshot of this revision') from exc
+
+
 class InternVL2:
     def __init__(self, cfg):
         import torch
@@ -74,12 +93,13 @@ class InternVL2:
             raise RuntimeError('CUDA requested but unavailable')
         if settings['flash_attention'] and self.device != 'cuda':
             raise ValueError('FlashAttention requires CUDA')
-        self.dtype = getattr(torch, settings['dtype'])
+        dtype = DTYPE_FOR_DEVICE[self.device] if settings['dtype'] == 'auto' else settings['dtype']
+        self.dtype = getattr(torch, dtype)
         torch.manual_seed(cfg['seed'])
-        source = settings['path']
-        self.model_identity = {'repo_or_path': source, 'revision': settings['revision'], 'files': {}}
+        source = resolve_checkpoint(settings)
+        self.model_identity = {'repo_or_path': settings['path'], 'resolved_source': source, 'revision': settings['revision'],
+                               'device': self.device, 'dtype': dtype, 'files': {}}
         if path(source).is_dir():
-            source = str(path(source))
             from .data import sha256
             directory = path(source)
             prov_path = directory / 'MODEL_PROVENANCE.json'
@@ -100,13 +120,12 @@ class InternVL2:
                     else:
                         got=hashlib.sha1(b'blob %d\0' % expected['bytes']+file.read_bytes()).hexdigest()
                         if got != expected['git_blob_sha1']:raise ValueError('Model metadata checksum mismatch: '+name)
-        elif settings['local_files_only']:
-            raise ValueError('local_files_only requires an existing model path')
         self.model = AutoModel.from_pretrained(source, revision=settings['revision'],
             torch_dtype=self.dtype, low_cpu_mem_usage=True, trust_remote_code=True,
             use_flash_attn=settings['flash_attention'], local_files_only=settings['local_files_only']).eval().to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(source, revision=settings['revision'],
             trust_remote_code=True, local_files_only=settings['local_files_only'])
+        self.model_identity['resolved_commit'] = getattr(self.model.config, '_commit_hash', None)
         self.question = prompt(cfg)
         self.progress = lambda stage,details: None
         def report(stage,details):
@@ -128,6 +147,12 @@ class InternVL2:
             return original(*args, **kwargs)
         self.model.generate = captured
 
+    def configure(self, cfg):
+        """Reuse the loaded weights with another request's prompt and generation settings."""
+        if cfg['model'] != self.cfg['model']:
+            raise ValueError('Model settings changed; load the new model in a new process')
+        self.cfg, self.question = cfg, prompt(cfg)
+
     def predict(self, images):
         import torchvision.transforms as T
         from torchvision.transforms.functional import InterpolationMode
@@ -145,6 +170,8 @@ class Mock:
     def __init__(self, cfg):
         self.question = prompt(cfg)
         self.device = 'mock'
+    def configure(self, cfg):
+        self.question = prompt(cfg)
     def predict(self, images):
         return {'raw_response': 'MOCK OUTPUT — NOT A MODEL PREDICTION\nOutput:\n0', 'input_token_ids': None}
 
