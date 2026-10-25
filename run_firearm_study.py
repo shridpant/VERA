@@ -7,6 +7,7 @@
   validate  preflight: config, prompts, registry, inventory, model files, GPU, storage
   run       run or resume A/G/AG inference; with --videos/--max-windows/--run-dir a smoke run
   reconcile every scheduled unit with a disposition (complete, exhausted, pending)
+  refine    VERA's refinement of A and AG strict labels, identical features, explicit exclusions
   features  ImageBind segment features (LAVAD procedure) from the run's decoded frames
   features-check  validation gate: our extractor vs VERA's released UCF features
 """
@@ -205,6 +206,23 @@ def features_check(args):
     return 0 if report['gate_passed'] else 1
 
 
+def refine_command(args):
+    from vera_runner.config import path
+    from vera_runner.study import final_records, reconcile
+    from studies.firearm.refinement import run_refinement
+    study = overridden(args)
+    run_dir = path(study['execution']['run_dir'])
+    reconcile(study, run_dir)
+    final, spec = final_records(study, run_dir)
+    rows = run_refinement(study, spec, final, path(study['features']['dir']), run_dir / 'refined')
+    summary = {}
+    for r in rows:
+        key = f"{r['condition']}:{'refined' if r['refined'] else r['reasons']}"
+        summary[key] = summary.get(key, 0) + 1
+    print(json.dumps(summary, indent=1, sort_keys=True))
+    return 0
+
+
 def overridden(args):
     """The study with command-line selection overrides (smoke runs); they are part of its spec."""
     from vera_runner.study import load_study
@@ -259,7 +277,8 @@ def main(argv=None):
     p.set_defaults(func=convert)
     for name, func, text in (('validate', validate, 'preflight checks; no model call'),
                              ('run', run, 'run or resume A/G/AG inference (one GPU process)'),
-                             ('reconcile', reconcile_command, 'give every scheduled unit a disposition')):
+                             ('reconcile', reconcile_command, 'give every scheduled unit a disposition'),
+                             ('refine', refine_command, 'refine A and AG labels with identical features')):
         p = sub.add_parser(name, help=text)
         p.add_argument('--config', required=True, help='study JSON (made by convert)')
         p.add_argument('--run-dir', help='override execution.run_dir (smoke runs)')

@@ -386,6 +386,34 @@ def run_study(study, inventory_path=None, backend=None):
         lock.close()
 
 
+def final_records(study, run_dir):
+    """{condition: {(video, anchor): record}}: the complete record of each unit that reconcile counts as
+    complete (the latest, if a unit was ever completed twice). Analyses read nothing else."""
+    run_dir = Path(run_dir)
+    result = json.loads((run_dir / 'reconcile.json').read_text()) if (run_dir / 'reconcile.json').exists() else None
+    if result is None:
+        reconcile(study, run_dir)
+        result = json.loads((run_dir / 'reconcile.json').read_text())
+    spec = {k: v for k, v in json.loads((run_dir / 'spec.json').read_text()).items() if k != 'spec_sha256'}
+    config_hash = digest({k: spec[k] for k in SPEC_KEYS})
+    complete = {u['unit'] for u in result['units'] if u['disposition'] == 'complete'}
+    out = {c: {} for c in study['conditions']['order']}
+    inputs = {}
+    for unit, rows in complete_records(run_dir).items():
+        if unit not in complete:
+            continue
+        video, anchor, _ = unit.split('|')
+        if (video, anchor) not in inputs:
+            saved = run_dir / 'videos' / video / 'inputs' / anchor / 'hashes.json'
+            inputs[(video, anchor)] = digest(''.join(json.loads(saved.read_text())))
+        good = [r for r in rows if r['hashes']['config'] == config_hash and r['hashes']['model'] == result['model_sha256']
+                and r['hashes']['prompt'] == spec['prompt_sha256'][r['condition']] and r['hashes']['input'] == inputs[(video, anchor)]]
+        if good:
+            r = good[-1]
+            out[r['condition']][(r['video'], r['anchor'])] = r
+    return out, spec
+
+
 def reconcile(study, run_dir, spec=None, model_sha256=None):
     """Every scheduled unit with one disposition: complete, exhausted (out of attempts) or pending.
 
