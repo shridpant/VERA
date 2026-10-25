@@ -8,6 +8,7 @@
   run       run or resume A/G/AG inference; with --videos/--max-windows/--run-dir a smoke run
   reconcile every scheduled unit with a disposition (complete, exhausted, pending)
   refine    VERA's refinement of A and AG strict labels, identical features, explicit exclusions
+  analyze   tables T1-T11, figures P1-P9 and the cited numbers from a finished run
   features  ImageBind segment features (LAVAD procedure) from the run's decoded frames
   features-check  validation gate: our extractor vs VERA's released UCF features
 """
@@ -223,6 +224,15 @@ def refine_command(args):
     return 0
 
 
+def analyze_command(args):
+    from vera_runner.config import path
+    from studies.firearm.analysis.run import analyze
+    study = overridden(args)
+    manifest = analyze(study, path(study['data']['inventory']), args.original, args.out, args.features_check)
+    print(json.dumps({k: (len(v) if isinstance(v, list) else v) for k, v in manifest.items()}, indent=1))
+    return 0
+
+
 def overridden(args):
     """The study with command-line selection overrides (smoke runs); they are part of its spec."""
     from vera_runner.study import load_study
@@ -245,7 +255,11 @@ def run(args):
     def interrupted(signum, frame):
         raise KeyboardInterrupt(f'Signal {signum}')
     signal.signal(signal.SIGTERM, interrupted)
-    code = run_study(overridden(args))
+    try:
+        code = run_study(overridden(args))
+    except ValueError as exc:  # configuration or spec mismatch: resuming cannot help
+        print(json.dumps({'exit': 2, 'error': str(exc)}))
+        return 2
     print(json.dumps({'exit': code}))
     return code
 
@@ -286,6 +300,13 @@ def main(argv=None):
         p.add_argument('--max-windows', type=int, help='first N windows per video (smoke runs)')
         p.add_argument('--study-id', help='override study_id (smoke runs)')
         p.set_defaults(func=func)
+    p = sub.add_parser('analyze', help='tables T1-T11, figures P1-P9 and the report numbers from a finished run')
+    p.add_argument('--config', required=True)
+    p.add_argument('--original', required=True, help='extracted dataset folder (for the existing boxes)')
+    p.add_argument('--out', required=True)
+    p.add_argument('--features-check', help='features_check.json of the validation gate')
+    p.add_argument('--run-dir'); p.add_argument('--videos'); p.add_argument('--max-windows', type=int); p.add_argument('--study-id')
+    p.set_defaults(func=analyze_command)
     p = sub.add_parser('features', help='ImageBind features (LAVAD procedure) from a run\'s decoded frames')
     p.add_argument('--config', required=True)
     p.set_defaults(func=features, run_dir=None, videos=None, max_windows=None, study_id=None)
