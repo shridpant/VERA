@@ -7,7 +7,5 @@ $Grounding
 [$Data]
 Please give your output strictly in the following format:
 ```
-Firearm boxes:
-[One line per frame, Frame1 to Frame8, as described in Task.]
-```
+$BoxFormat```
 Please ONLY reply according to this format, don't give me any other words.
