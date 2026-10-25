@@ -21,6 +21,7 @@ SUITES={
  'integration':'tests.integration',
  'runtime':'tests.runtime',
  'lab':'tests.demo',
+ 'firearm':'tests.firearm',
  'real-model':'tests.real_model',
 }
 
