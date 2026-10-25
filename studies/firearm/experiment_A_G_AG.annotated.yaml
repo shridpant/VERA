@@ -1,0 +1,93 @@
+# Firearm Localization and Its Effect on VERA's Anomaly Judgments: the exact study configuration.
+#
+# `run_firearm_study.py convert` turns this file into experiment_A_G_AG.json, the study JSON the
+# commands read. Every knob is tagged:
+#   [scientific]   changes what the model is shown or asked, or how outputs are scored. Changing
+#                  it is a different experiment; inside `runner` and `conditions` it changes the
+#                  run spec, and `run` refuses to resume.
+#   [operational]  where and how the work runs; outputs are unchanged.
+# Paths are on Oz (oz.gccis.rit.edu). Relative paths are anchored to the checkout root.
+
+study_schema: 1                # [operational] format version of this file
+study_id: firearm_a_g_ag_v1    # [scientific] names the run; part of the spec
+
+# The configurable runner's own experiment (vera_runner/config.py). It must pass the runner's
+# validation unchanged, and with stages [preprocess, infer] it is condition A exactly as
+# run_vera.py runs it (`validate` writes it out as runner_A.json for that check).
+runner:
+  schema_version: 1                          # [operational] runner config format
+  dataset: firearm_visilab                   # [operational] name in the registry below
+  split: test                                # [operational] the registry's only split; no training
+  registry: /local/datasets/sp2117/firearm_visilab/registry.json   # [operational] made by `prepare`
+  output_root: /local/datasets/sp2117/firearm_visilab/runner_runs  # [operational] only for run_vera.py checks
+  stages: [preprocess, infer]                # [scientific] refinement runs later on saved labels (`refine`)
+  seed: 0                                    # [operational] torch seed; greedy decoding uses no randomness
+  selection:
+    video_ids: []                            # [scientific] empty = every inventory video (full inclusion)
+    max_videos: null                         # [scientific] null = no cap
+    max_windows_per_video: null              # [scientific] null = every window; smoke runs override it
+  preprocessing:
+    image_size: 448                          # [scientific] one 448x448 tile per frame, PIL resize, no crop
+  sampling:                                  # [scientific] VERA's original window arithmetic
+    stride: 16                               #   one window (anchor) every 16 decoded frames
+    window_seconds: 10.0                     #   centred window length at the nominal rate
+    fps: 30.0                                #   NOMINAL: 300 frames = 10 s at 30 FPS, 12 s at 25 FPS
+    frames_per_window: 8                     #   eight RGB samples per window
+  model:
+    backend: internvl2                       # [scientific] adapter in vera_runner/backends.py
+    path: /home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296
+                                             # [operational] verified local copy (MODEL_PROVENANCE.json checked at load)
+    revision: 6fb9ad6924f69424e57fab2ab061d707688f0296   # [scientific] frozen InternVL2-8B commit
+    device: cuda                             # [scientific] CUDA, as the paper ran
+    dtype: bfloat16                          # [scientific] BF16
+    flash_attention: true                    # [scientific] upstream's use_flash_attn=True
+    mps_cpu_fallback: false                  # [operational] Mac only
+    local_files_only: true                   # [operational] never download weights during a run
+  generation:                                # [scientific] identical for A, G and AG
+    num_beams: 1                             #   one beam
+    max_new_tokens: 1024                     #   VERA's cap; truncation is recorded, never raised silently
+    do_sample: false                         #   greedy
+  prompt:
+    instruction_file: VERA_learner_instruct.txt   # [scientific] VERA's learner instruction, unchanged
+    guiding_questions: upstream_ucf               # [scientific] the five released UCF questions, unchanged
+  intervention: {mode: baseline, slots: [], blur_radius_fraction: 0.04, grey_rgb: [127, 127, 127], probe: false}
+                                             # [scientific] no image intervention in any condition
+  refinement:                                # [scientific] VERA's original refinement (compute_auc.py)
+    neighbor_fraction: 0.15                  #   top 15 % most similar windows
+    similarity_temperature: 10.0             #   softmax over 10 x cosine similarity
+    smoothing_size: 15                       #   Gaussian kernel length; fewer windows -> excluded, not padded
+    smoothing_sigma: 10.0
+    round_decimals: 1                        #   upstream rounds window scores to 0.1
+    position_weighting: true                 #   upstream's centred positional Gaussian
+  runtime: {timeout_seconds: 3600}           # [operational] run_vera.py wall limit (only its checks)
+  boxes: {mode: 'off', phrase: null, max_new_tokens: 100}   # [scientific] the Lab's box calls stay off
+
+conditions:
+  order: [A, G, AG]                          # [operational, frozen] per-window call order; each call is fresh
+  prompt_dir: studies/firearm/prompts        # [scientific] grounding_core / G_template / AG_insert_template
+
+data:
+  inventory: /local/datasets/sp2117/firearm_visilab/inventory.json   # [operational] made by `prepare`
+  annotation_policy: studies/firearm/annotation_policy.json          # [scientific] audit decisions (origin, statuses, size bins)
+
+execution:
+  run_dir: /local/datasets/sp2117/firearm_visilab/runs/firearm_a_g_ag_v1   # [operational] one run per spec
+  per_call_timeout_seconds: 600              # [operational] a stuck call ends the process (exit 124); the job relaunches
+  max_attempts: 3                            # [operational] retries of a call after an exception or timeout
+  max_consecutive_failures: 3                # [operational] end a session early on repeated failures
+
+features:                                    # [scientific] LAVAD's ImageBind segment features (06_refine)
+  dir: /local/datasets/sp2117/firearm_visilab/features   # [operational] one .npy per video
+  clip_seconds: 10.0                         #   clip of int(10 x 30) = 300 decoded frames centred on each anchor
+  fps: 30.0                                  #   nominal, as LAVAD's script and the VERA windows
+  num_samples: 10                            #   uniformly subsampled frames per clip (LAVAD N)
+  weights: /local/datasets/sp2117/models/imagebind/imagebind_huge.pth   # [operational] sha256 recorded
+  batch_size: 16                             # [operational] clips per forward pass
+
+matching:
+  iou_thresholds: [0.5, 0.75]                # [scientific] one-to-one matching thresholds
+
+analysis:
+  bootstrap_resamples: 2000                  # [scientific] paired video-cluster bootstrap draws
+  bootstrap_seed: 20261025                   # [scientific] fixed seed
+  ci_level: 0.95                             # [scientific] percentile interval
