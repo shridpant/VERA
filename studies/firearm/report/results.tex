@@ -1,0 +1,42 @@
+% PROSE PENDING: written from the saved analysis after the full run. Floats below are final.
+\subsection{Coverage}
+\input{tables/T1.tex}
+\input{tables/T2.tex}
+
+\subsection{Original VERA behaviour (question 1)}
+\input{tables/T3.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P1_predictions.pdf}
+\caption{A and AG predictions per dataset category as a share of scheduled windows, including invalid answers (hatched).}\label{fig:P1}\end{figure}
+
+\subsection{Localization (question 2)}
+\input{tables/T7.tex}
+\input{tables/T8.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P6_box_status.pdf}
+\caption{Parse status of every scheduled window slot for G and AG.}\label{fig:P6}\end{figure}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P7_localization.pdf}
+\caption{Precision, recall and F1 at IoU 0.50 and 0.75 on the identical evaluable slots; n/a where not defined.}\label{fig:P7}\end{figure}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P7b_iou_and_size.pdf}
+\caption{IoU of matched boxes and recall by ground-truth size.}\label{fig:P7b}\end{figure}
+
+\subsection{Requesting localization in the same response (question 3)}
+\input{tables/T4.tex}
+\input{tables/T5.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P2_paired_video_fractions.pdf}
+\caption{Per-video anomaly fractions of A and AG on paired windows (top) and their differences (bottom).}\label{fig:P2}\end{figure}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P3_transitions.pdf}
+\caption{Window-level transitions from A to AG on paired valid windows.}\label{fig:P3}\end{figure}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P5_camera_strata.pdf}
+\caption{Anomaly rate by camera and resolution with window counts; descriptive, not a causal effect of resolution.}\label{fig:P5}\end{figure}
+
+\subsection{Refined scores}
+\input{tables/T6.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P4_refined_scores.pdf}
+\caption{Per-video mean refined frame score (left) and paired A versus AG values on videos eligible in both (right).}\label{fig:P4}\end{figure}
+
+\subsection{Computation}
+\input{tables/T10.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P9_runtime_tokens.pdf}
+\caption{Generation time and generated tokens per call.}\label{fig:P9}\end{figure}
+
+\subsection{Qualitative cases}
+Appendix~\ref{app:cases} shows the cases chosen by the fixed rule (T11, P8).

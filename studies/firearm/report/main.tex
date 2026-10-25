@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\lstset{basicstyle=\scriptsize\ttfamily,breaklines=true,columns=fullflexible,keepspaces=true}
+\captionsetup{font=small}
+\input{numbers.tex}
+\newcommand{\pp}{\,pp}
+
+\title{Firearm Localization and Its Effect on VERA's Anomaly Judgments}
+\author{Exploratory study on the VISILAB firearm-action dataset}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\section{Questions and scope}
+VERA~\cite{ye2025vera} asks a frozen vision-language model (InternVL2-8B~\cite{chen2024internvl15}) a fixed set of guiding questions about eight frames of a video window and reads a binary anomaly label from the answer. This study asks three questions on the complete VISILAB firearm-action dataset~\cite{ruizsantaquiteria2024firearm,visilab2023data}:
+(1) which anomaly judgments unchanged VERA produces in each dataset category;
+(2) how accurately the frozen backbone localizes firearms against the dataset's existing boxes; and
+(3) whether requesting localization in the same response changes the anomaly judgments and the localization outcomes.
+No weights are trained, no prompt is optimized and no new human labels are collected. The dataset categories (Handgun, Machine\_Gun, No\_Gun) describe what was staged in front of the camera; they are \emph{not} anomaly ground truth. A change in anomaly prediction is therefore not evidence of improvement, and no anomaly accuracy, AUC or AP is reported. The existing firearm boxes support object-localization evaluation only. Prompt wording was revised after a bounded pilot that checked output format (Section~\ref{sec:prompts}), so the study is exploratory.
+
+\section{Methods}
+\subsection{Data}
+The dataset~\cite{ruizsantaquiteria2024firearm} was downloaded once (2,248,654,752 bytes; Zenodo md5 \texttt{1bcf357d\ldots}, Mendeley sha256 \texttt{b52fa773\ldots}, both verified) and extracted read-only. Mendeley lists the data under CC~BY-NC~3.0 and Zenodo under CC~BY~4.0; we use it non-commercially with attribution. All \val{videos} videos are included: \val{T1_Handgun_videos} Handgun, \val{T1_MachineGun_videos} Machine\_Gun and \val{T1_NoGun_videos} No\_Gun. Camera C1 is an IP camera (640$\times$480, 25\,FPS), camera C2 a phone (1920$\times$1080, 30 or 29.92\,FPS); each video keeps its native resolution and frame rate, and results are stratified by camera. Faces were blurred by the dataset authors. Every video is a single subject at one of five locations; the cameras were at disjoint locations, so no event was filmed twice. Repeated takes of one scripted action by one subject at one place form a \emph{recording group}, used for a sensitivity analysis of the bootstrap.
+
+\paragraph{Existing annotations.} Each firearm video has a COCO file with one image entry per decoded frame (ids $1..N$) and at most one box per image; No\_Gun videos have none. All 280 files validate (ids, sizes, categories, bounds). The image-id-to-frame origin is 1 (MATLAB Video Labeler numbering, the only bijection onto decoded frames $0..N-1$); origin 0 is reported as a sensitivity analysis. Visual checks (39 alignment montages, 48 unboxed frames, 24 No\_Gun frames) showed boxes on the firearm, unboxed frames that sometimes contain a partly visible or distant subject, and No\_Gun frames without firearms (phones, bottles and similar objects present). Accordingly, boxed frames support recall and precision under a single-firearm assumption, frames listed without a box support neither, and No\_Gun frames support false-positive counts only. Native boxes are converted to the model's 0--1000 grid of the $448\times448$ input by dividing by the native width and height; this is exact for the non-aspect-preserving resize and leaves IoU unchanged (verified with synthetic geometry for both resolutions).
+
+\subsection{Conditions}
+Every window is VERA's original sampling: an anchor every 16 decoded frames, a centred window of $10\,\text{s}\times30$ nominal FPS $=300$ frames (12\,s at 25\,FPS), eight evenly spaced RGB frames, PIL resize to $448\times448$, ImageNet normalization, no crop. The run is offline inference, not early warning. For each window, three fresh calls are made in the fixed order A, G, AG, each with the identical eight images (identical RGB hashes are recorded per call) and identical generation settings (CUDA BF16, FlashAttention as upstream, greedy, one beam, 1024 new tokens). InternVL2's \texttt{batch\_chat} with eight patches places all eight images, as one run of 2,048 image tokens, at the first \texttt{<image>} of the prompt; the strings \texttt{Frame2: <image>}\ldots\texttt{Frame8: <image>} remain literal text. A uses this packing unchanged; G and AG keep it, so ``Frame$K$'' is a text label over one image block.
+
+\begin{description}
+\item[A] VERA's learner instruction and the five released UCF questions, byte-identical to the configurable runner. On the pilot windows, \texttt{run\_vera.py} produced byte-identical answers, inputs and labels.
+\item[G] A grounding-only prompt laid out like VERA's (instructions, the same input block, an output format) asking for every visible firearm (handguns and long guns, one class) in each frame as \texttt{Frame}$K$\texttt{: [[x1, y1, x2, y2], ...]} on a 0--1000 grid, \texttt{[]} for none seen and \texttt{unknown} for cannot assess. It receives no category, annotation or answer of another condition.
+\item[AG] A with two declared insertions: the same grounding paragraph as question~6, immediately before VERA's concluding instruction, and the same eight box lines in the output format immediately before VERA's final \texttt{Output:} field, which stays byte-identical. AG is a modified-prompt condition.
+\end{description}
+
+\subsection{Prompt pilot and lock}\label{sec:prompts}
+Six videos (one per category and camera, seed 20261025) and their first two windows served as a bounded format pilot; they remain in the full run. Prompt v1 failed on format: G copied a one-line placeholder (\texttt{Firearm boxes: []}) and AG never gave box lines. Prompt v2 (above) produced all eight parseable lines in G and AG for 12/12 windows, but every slot was \texttt{[]}, also when seven of eight frames were greyed and only one frame with a visible handgun remained. A bounded probe of two further wordings (InternVL2's native \texttt{<ref>/<box>} syntax; a coordinate template) produced no frame-specific coordinates, only empty lists, whole-frame boxes, one repeated box or degenerate text, so v2 was locked by hash. No localization score was computed before the lock. The prompt texts are in Appendix~\ref{app:prompts}.
+
+\subsection{Parsing}
+The anomaly label is read strictly from the \emph{final} \texttt{Output:} field, whose remainder must be exactly 0 or 1; anything else, and any truncated answer, is a missing label, never ``normal''. VERA's original rule (``0 if any 0 follows the last Output'') and the runner's one-field rule are saved for comparison; box digits after an \texttt{Output} field corrupt only the original rule. Box lines are parsed per slot into boxes, empty, unknown, malformed (any invalid box makes the whole slot malformed), missing, duplicate or truncated, without repair or rescaling. A box covering at least 95\,\% of the frame is flagged as whole-image and kept in the metrics.
+
+\subsection{Refinement}
+VERA's offline refinement (scene-similarity weighting over the 15\,\% most similar windows, Gaussian temporal smoothing of width 15, rounding to 0.1 and positional weighting, as in its \texttt{compute\_auc.py}) is applied to the strict labels of A and AG with the \emph{identical} ImageBind~\cite{girdhar2023imagebind} features of each video. G has no anomaly label. Features follow LAVAD's procedure~\cite{zanella2024lavad} (a 300-frame clip centred on each anchor, ten uniformly subsampled frames, PyTorchVideo~\cite{fan2021pytorchvideo} clip sampling, three spatial crops, ImageBind-Huge in FP32), re-implemented on the official ImageBind package. On the one UCF-Crime~\cite{sultani2018ucfcrime} video for which VERA's features were available, the re-extracted features match the released ones with median row cosine \val{fc_cosine_median} (minimum \val{fc_cosine_min}); they are not bit-identical, and refined scores differ by up to \val{fc_refined_maxdiff} (details in the repository's \texttt{FEATURES\_VALIDATION.md}). A video is excluded from refinement, never padded, when it has fewer than 15 windows (the smoothing length), any invalid label, missing features or a missing record; all reasons are reported.
+
+\subsection{Localization metrics}
+G and AG are scored on the identical set of evaluable window slots, including windows that A labels normal. For each slot, predicted and existing boxes are matched one-to-one with the assignment that maximizes the number of matches with IoU at or above the threshold (0.50 and 0.75) and then total IoU~\cite{kuhn1955hungarian}; ties resolve independently of input order. Unmatched predictions count as false positives where precision is supported; a slot without a usable answer misses its firearm (end-to-end recall). The model emits no confidence, so precision, recall and F1 are fixed operating points and no ranked mAP is reported. Matched IoU is reported separately from misses, and recall is broken down by ground-truth size (area tertiles of all annotated boxes).
+
+\subsection{Statistics}
+Anomaly percentages use valid windows; invalid rates use all scheduled windows; A-versus-AG comparisons use windows valid in both. Windows overlap and share source frames, so they are not independent: intervals are 95\,\% percentile intervals from 2,000 paired bootstrap draws that resample source videos within category (seed 20261025)~\cite{efron1993bootstrap}; a sensitivity version resamples recording groups. Pooled-window and equal-video summaries are reported separately.
+
+\subsection{Execution}
+All conditions ran sequentially on one NVIDIA RTX 6000 Ada (pinned by UUID), one process at a time, under a resumable unit ledger: a window--condition call is skipped on resume only when a complete record matches the configuration, model, prompt and input hashes, and every failed or interrupted attempt is kept. Every scheduled unit received a disposition (Table~\ref{tab:T2}).
+
+\section{Results}
+\input{results.tex}
+
+\section{Limitations}
+\input{limitations.tex}
+
+\section{Future work}
+Human judgments of the windows and explanations; action-state labels (carrying, raising, pointing) to separate firearm presence from threatening use; VERA's question learning on firearm data; a causal, early-warning evaluation; and a separately declared packing or single-frame grounding condition, which this handoff excluded.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+\section{Prompts}\label{app:prompts}
+\subsection*{A (VERA, unchanged)}
+\lstinputlisting{prompt_A.txt}
+\subsection*{G}
+\lstinputlisting{prompt_G.txt}
+\subsection*{AG}
+\lstinputlisting{prompt_AG.txt}
+
+\section{Qualitative cases (T11)}\label{app:cases}
+Cases were chosen by a rule fixed before the full run: the two videos with the largest positive and the two with the largest negative AG$-$A anomaly fraction, two unchanged videos drawn with the seed, and the videos with the highest and lowest AG recall (when any recall exists). Within a video the first window whose labels differ is shown, else the window with most boxed frames, else the middle window.
+\input{qualitative_cases.tex}
+
+\section{Per-video results (T9)}
+\input{tables/T9.tex}
+
+\end{document}
