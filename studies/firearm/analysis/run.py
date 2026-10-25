@@ -6,6 +6,7 @@ from .latex import write_csv, write_numbers, write_tex
 from .load import CATEGORIES, load
 from .per_video import t9
 from .tables import t1, t2, t2b, t3, t4, t5, t6, t7, t8, t10, table
+from .views import views
 
 T9_TEX = ['video', 'category', 'camera', 'duration_s', 'scheduled_windows', 'A_anomaly_fraction', 'AG_anomaly_fraction',
           'A_invalid', 'AG_invalid', 'A_refined_mean', 'AG_refined_mean']
@@ -87,10 +88,9 @@ def analyze(study, inventory_path, original_root, out_dir, features_check=None):
                           ['Texts are the complete model answers; slot summaries list each frame\'s parse status and boxes.'])
     for t in tables.values():
         write_csv(t, out / 'tables')
-        if t['id'] == 'T9':
-            write_tex(t, out / 'tables', columns=T9_TEX, longtable=True)
-        elif t['id'] != 'T11':
-            write_tex(t, out / 'tables')
+    write_tex(tables['T9'], out / 'tables', columns=T9_TEX, longtable=True)
+    for v in views(tables):  # readable subsets for the PDF; the CSVs keep every column
+        write_tex(v, out / 'tables', raw=True)
     figures = [plots.p1(d, out / 'figures'), plots.p2(d, out / 'figures'), plots.p3(d, out / 'figures'),
                plots.p4(d, out / 'figures'), plots.p5(d, out / 'figures'), plots.p6(d, out / 'figures'),
                plots.p7(d, tables['T8']['rows'], out / 'figures'), plots.p9(d, out / 'figures')]

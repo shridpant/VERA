@@ -2,6 +2,7 @@
 import csv
 import json
 import math
+import re
 from pathlib import Path
 
 ESCAPE = {'\\': r'\textbackslash{}', '&': r'\&', '%': r'\%', '$': r'\$', '#': r'\#', '_': r'\_', '{': r'\{', '}': r'\}',
@@ -36,10 +37,15 @@ def write_csv(t, directory):
             writer.writerow({k: row.get(k) for k in t['columns']})
 
 
-def write_tex(t, directory, columns=None, longtable=False, size=r'\scriptsize'):
+def write_tex(t, directory, columns=None, longtable=False, size=r'\scriptsize', raw=False):
+    """raw=True: headers and cells are already LaTeX (report views); otherwise values are formatted and escaped."""
     columns = columns or t['columns']
-    head = ' & '.join(esc(c).replace(r'\_', r'\_\allowbreak{}') for c in columns) + r' \\'
-    body = '\n'.join(' & '.join(fmt(r.get(c), c) for c in columns) + r' \\' for r in t['rows'])
+    if raw:
+        head = ' & '.join(r'\multicolumn{1}{p{1.15cm}}{\raggedright ' + re.sub(r'(?<!\\)%', r'\\%', c) + '}' for c in columns) + r' \\'
+        body = '\n'.join(' & '.join(str(r.get(c)) for c in columns) + r' \\' for r in t['rows'])
+    else:
+        head = ' & '.join(esc(c).replace(r'\_', r'\_\allowbreak{}') for c in columns) + r' \\'
+        body = '\n'.join(' & '.join(fmt(r.get(c), c) for c in columns) + r' \\' for r in t['rows'])
     notes = ' '.join(esc(n) for n in t['notes'])
     spec = 'l' * min(2, len(columns)) + 'r' * max(0, len(columns) - 2)
     if longtable:
@@ -48,8 +54,8 @@ def write_tex(t, directory, columns=None, longtable=False, size=r'\scriptsize'):
                 f'\\toprule\n{head}\n\\midrule\n\\endhead\n{body}\n\\bottomrule\n\\end{{longtable}}}}\n')
     else:
         text = (f'\\begin{{table}}[htbp]\n\\centering\n{size}\n\\caption{{{esc(t["title"])}}}\\label{{tab:{t["id"]}}}\n'
-                f'\\resizebox{{\\textwidth}}{{!}}{{%\n\\begin{{tabular}}{{{spec}}}\n\\toprule\n{head}\n\\midrule\n{body}\n'
-                f'\\bottomrule\n\\end{{tabular}}}}\n\\par\\smallskip\\parbox{{\\textwidth}}{{\\tiny {notes}}}\n\\end{{table}}\n')
+                f'\\begin{{adjustbox}}{{max width=\\textwidth}}\n\\begin{{tabular}}{{{spec}}}\n\\toprule\n{head}\n'
+                f'\\midrule\n{body}\n\\bottomrule\n\\end{{tabular}}\n\\end{{adjustbox}}\n\\par\\smallskip\\parbox{{\\textwidth}}{{\\footnotesize {notes}}}\n\\end{{table}}\n')
     (Path(directory) / f"{t['id']}.tex").write_text(text)
 
 
