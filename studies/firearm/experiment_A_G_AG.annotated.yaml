@@ -64,7 +64,11 @@ runner:
 
 conditions:
   order: [A, G, AG]                          # [operational, frozen] per-window call order; each call is fresh
-  prompt_dir: studies/firearm/prompts        # [scientific] grounding_core / G_template / AG_insert_template
+  prompt_dir: studies/firearm/prompts        # [scientific] grounding_core / box_format / G_template / AG_insert_template
+  prompt_sha256:                             # [scientific] lock of prompt v2 (PROMPT_LOG.md); any other text is refused
+    A: f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924
+    G: 1fba432b24ab4569fff8a6e41a1de4a8160aa3cc784e9f95152182256dd63a4d
+    AG: 03dbf44a69c166a9ca7c6c3e68d84b78de472d8e5036c5bd139140114374b1c8
 
 data:
   inventory: /local/datasets/sp2117/firearm_visilab/inventory.json   # [operational] made by `prepare`

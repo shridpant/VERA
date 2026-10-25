@@ -80,3 +80,22 @@ class ValidateCommandTests(unittest.TestCase):
             # Smoke overrides change the selection only; the runner_A.json check uses the study as written.
             self.assertEqual((result['ok'], result['checks']['units']), (True, 3))
             self.assertTrue(list((Path(td) / 'not/yet/created/checks').glob('validate_v_*.json')))
+
+
+class PromptLockTests(unittest.TestCase):
+    def test_locked_hashes_match_the_prompt_files_and_a_change_is_refused(self):
+        import shutil
+        from vera_runner.study import build_spec
+        from tests.firearm.test_study_run import make_study
+        raw = yaml.safe_load(YAML.read_text())
+        with tempfile.TemporaryDirectory() as td:
+            make_study(td)
+            prompts = Path(td) / 'prompts'
+            shutil.copytree('studies/firearm/prompts', prompts)
+            raw['conditions']['prompt_dir'] = str(prompts)
+            raw['runner']['selection']['video_ids'] = ['Handgun__PAH1_C1_P1_V1_HB_1']
+            spec, _ = build_spec(load_study(copy.deepcopy(raw)), Path(td) / 'inventory.json')
+            self.assertEqual(spec['prompt_sha256'], raw['conditions']['prompt_sha256'])
+            (prompts / 'box_format.txt').write_text('Firearm boxes:\n')
+            with self.assertRaises(ValueError):
+                build_spec(load_study(copy.deepcopy(raw)), Path(td) / 'inventory.json')

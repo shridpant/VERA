@@ -28,7 +28,7 @@ from .ledger import JsonlAppender, Ledger, now, read_jsonl, unit_key
 
 STUDY_DEFAULTS = {
     'study_schema': 1, 'study_id': None, 'runner': None,
-    'conditions': {'order': ['A', 'G', 'AG'], 'prompt_dir': 'studies/firearm/prompts'},
+    'conditions': {'order': ['A', 'G', 'AG'], 'prompt_dir': 'studies/firearm/prompts', 'prompt_sha256': None},
     'data': {'inventory': None, 'annotation_policy': 'studies/firearm/annotation_policy.json'},
     'execution': {'run_dir': None, 'per_call_timeout_seconds': 600, 'max_attempts': 3, 'max_consecutive_failures': 3},
     'features': {'dir': None, 'clip_seconds': 10.0, 'fps': 30.0, 'num_samples': 10, 'weights': None, 'batch_size': 16},
@@ -90,6 +90,9 @@ def select(study, inventory):
 def build_spec(study, inventory_path):
     inventory = json.loads(Path(inventory_path).read_text())
     prompts = prompt_texts(study['runner'], study['conditions']['prompt_dir'])
+    locked = study['conditions']['prompt_sha256']
+    if locked is not None and locked != {c: digest(t) for c, t in prompts.items()}:
+        raise ValueError('Prompt texts differ from the locked conditions.prompt_sha256')
     chosen = select(study, inventory)
     spec = {k: study[k] for k in SPEC_KEYS}
     spec.update(prompts=prompts, prompt_sha256={c: digest(t) for c, t in prompts.items()},

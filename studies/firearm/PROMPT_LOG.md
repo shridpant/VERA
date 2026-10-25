@@ -15,6 +15,8 @@ prompt wording, so the study is reported as **exploratory**.
 - [Packing](#packing)
 - [v1](#v1)
 - [v2](#v2)
+- [v3 probe](#v3-probe)
+- [Lock](#lock)
 
 ## Packing
 
@@ -68,3 +70,49 @@ Frame8: [boxes for Frame8]
 - AG: the block is inserted into VERA's output format between `Answers to Prompt Questions`
   and the final `Output:` field. AG = A + two declared insertions; the final Output field and
   everything after it are byte-identical to A.
+
+| Prompt | sha256 |
+|---|---|
+| A | f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924 (unchanged) |
+| G | 1fba432b24ab4569fff8a6e41a1de4a8160aa3cc784e9f95152182256dd63a4d |
+| AG | 03dbf44a69c166a9ca7c6c3e68d84b78de472d8e5036c5bd139140114374b1c8 |
+
+Pilot run `firearm_pilot_v2` (same windows; 12 × 3 calls, all complete with EOS, none truncated):
+
+- G: 12/12 answers had the heading and all eight lines. Every slot was `[]` (96/96, 37–41 tokens).
+- AG: 12/12 valid labels (all 1), the heading and all eight lines, every slot `[]` (96/96);
+  62–145 tokens. The answers mention the firearm in text (e.g. "He is holding a firearm and
+  appears to be aiming it") while every box line is empty.
+- A: 12/12 valid (11 × 1, 1 × 0); A preservation again all identical.
+- Mean seconds per call: A 1.62, G 1.22, AG 2.16.
+- Slot check (G v2): keeping slot 0, 3 or 7 of two Handgun windows and greying the other seven
+  gave `[]` on every line (6/6), as did the all-grey control (2/2). The model reported no firearm
+  even with one real frame visible, so slot interpretability could not be shown either way.
+
+## v3 probe
+
+`prompt_probe.py` (`jobs/probe.sh`, result `firearm_pilot_v2/probe_v3.json`) asked G and AG on
+five pilot windows (both Handgun and Machine_Gun videos and N7_C2, anchor 16) with three
+prompt folders. This was a format check only; no localization score was computed.
+
+| Folder | Change | G | AG |
+|---|---|---|---|
+| prompts (v2) | control | 5/5 all `[]` | 5/5 all `[]` |
+| v3a | InternVL2-native `<ref>firearm</ref><box>[[x1, y1, x2, y2]]</box>` in the paragraph and lines | 5/5 all `[]` | 3/5 all `[]`; PAH9_C2: a full-frame `[[0, 0, 1000, 1000]]` on Frame1, then repeated non-English tokens to the 1,024-token cap (no label); PAW8_C1: the same unbracketed `380, 400, 420, 460` on all eight lines (malformed) |
+| v3b | plain lines with a `[[x1, y1, x2, y2]]` template | 5/5 all `[]` | 3/5 all `[]`; PAH9_C2 and PAW8_C1: `[[0, 0, 1000, 1000]]` on all eight lines |
+
+Neither change produced frame-specific coordinates. Both added malformed, truncated or
+whole-image answers.
+
+## Lock
+
+**v2 is locked** (`conditions.prompt_sha256` in the study YAML; any other text is refused):
+
+- It is the only version that the model follows cleanly in both G and AG: all lines parse,
+  nothing is truncated, nothing is degenerate.
+- More rewording would be tuning on box presence.
+- The handoff fixes the eight-image packing, so a single-image condition is out of scope.
+
+The full run therefore measures the frozen backbone under VERA's packing with a
+format-compliant prompt. The pilot predicts that G and AG will rarely localize; that is
+reported as a result, not repaired.
