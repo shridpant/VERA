@@ -2,6 +2,7 @@
 """Firearm A/G/AG study on top of the configurable runner. See studies/firearm/README.md.
 
   prepare   inventory, staged IDs and runner registry for the VISILAB dataset
+  audit     validate the existing boxes and draw visual-check montages
 """
 import argparse
 import collections
@@ -28,6 +29,15 @@ def prepare(args):
     return 0
 
 
+def audit(args):
+    from studies.firearm.audit import run_audit
+    validation, cover, manifest = run_audit(args.inventory, args.original, args.out)
+    problems = {k: v for k, v in validation.items() if v['problems']}
+    print(json.dumps({'label_files': len(validation), 'with_problems': problems,
+                      'montages': {k: len(v) for k, v in manifest.items() if isinstance(v, list)}}, indent=2))
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -36,6 +46,11 @@ def main(argv=None):
     p.add_argument('--data-root', required=True, help='study data folder; staged/, inventory and registry go here')
     p.add_argument('--workers', type=int, default=16)
     p.set_defaults(func=prepare)
+    p = sub.add_parser('audit', help='validate existing boxes and draw visual-check montages')
+    p.add_argument('--inventory', required=True)
+    p.add_argument('--original', required=True)
+    p.add_argument('--out', required=True)
+    p.set_defaults(func=audit)
     args = ap.parse_args(argv)
     return args.func(args)
 
