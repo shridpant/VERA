@@ -90,7 +90,10 @@ def validate(args):
                 if not (directory / name).is_file() or (directory / name).stat().st_size != expected['bytes']:
                     problems.append(f'model file missing or truncated: {name}')
     run_dir = path(study['execution']['run_dir'])
-    free = shutil.disk_usage(run_dir.parent if not run_dir.exists() else run_dir).free
+    existing = run_dir
+    while not existing.exists():
+        existing = existing.parent
+    free = shutil.disk_usage(existing).free
     estimate = sum(len(w) for _, w in chosen) * 8 * 400_000 + sum(r['bytes'] for r, _ in chosen) * 12
     checks.update(free_bytes=free, storage_estimate_bytes=estimate, gpu=gpu_description())
     if free < 1.5 * estimate:

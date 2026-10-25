@@ -57,3 +57,23 @@ class ConvertTests(unittest.TestCase):
         spec = lambda s: digest({k: s[k] for k in SPEC_KEYS})
         self.assertNotEqual(spec(base), spec(load_study(changed)))
         self.assertEqual(spec(base), spec(load_study(operational)))
+
+
+class ValidateCommandTests(unittest.TestCase):
+    def test_validate_passes_on_a_mock_study_with_a_new_run_folder(self):
+        import subprocess, sys
+        from vera_runner.config import ROOT
+        from tests.firearm.test_study_run import make_study
+        with tempfile.TemporaryDirectory() as td:
+            make_study(td)
+            config = {'study_id': 'v', 'runner': {'dataset': 'firearm_visilab', 'registry': str(Path(td) / 'registry.json'),
+                                                  'model': {'backend': 'mock'}},
+                      'data': {'inventory': str(Path(td) / 'inventory.json')},
+                      'execution': {'run_dir': str(Path(td) / 'not/yet/created/run')}}
+            (Path(td) / 'study.json').write_text(json.dumps(config))
+            out = subprocess.run([sys.executable, str(ROOT / 'run_firearm_study.py'), 'validate', '--config', str(Path(td) / 'study.json')],
+                                 cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(out.returncode, 0, out.stderr + out.stdout)
+            result = json.loads(out.stdout)
+            self.assertEqual((result['ok'], result['checks']['units']), (True, 15))
+            self.assertTrue(list((Path(td) / 'not/yet/created/checks').glob('validate_v_*.json')))
