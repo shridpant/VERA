@@ -14,10 +14,10 @@ def write_video(path, frames, size=(64, 48), fps=25, value=None):
     writer.release()
 
 
-def coco(frames, size, boxes):
+def coco(frames, size, boxes, category='Handgun'):
     """label.json as the dataset writes it: one image per frame (ids 1..N), boxes {image_id: xywh}."""
     return {'info': {'year': 2023}, 'licenses': [{'id': '1', 'name': 'CC BY NC 3.0'}],
-            'categories': [{'id': 1, 'name': 'Handgun'}],
+            'categories': [{'id': 1, 'name': category}],
             'images': [{'id': i + 1, 'width': size[0], 'height': size[1], 'file_name': 'video.mp4', 'license': '1'}
                        for i in range(frames)],
             'annotations': [{'id': n + 1, 'image_id': image_id, 'category_id': 1, 'area': b[2] * b[3], 'bbox': b, 'iscrowd': 0}
@@ -30,5 +30,5 @@ def make_dataset(root, videos):
     for category, folder, frames, size, fps, boxes in videos:
         write_video(root / category / folder / 'video.mp4', frames, size, fps)
         if boxes is not None:
-            (root / category / folder / 'label.json').write_text(json.dumps(coco(frames, size, boxes)))
+            (root / category / folder / 'label.json').write_text(json.dumps(coco(frames, size, boxes, category)))
     return root
