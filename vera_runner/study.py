@@ -121,9 +121,26 @@ def gpu_description():
         return {'cuda_visible_devices': uuid, 'nvidia_smi': None}
 
 
-def model_hash(identity):
+LIBRARIES = ('torch', 'transformers', 'flash-attn', 'accelerate', 'timm', 'einops', 'sentencepiece', 'pillow',
+             'opencv-python', 'opencv-python-headless', 'numpy', 'torchvision')
+
+
+def library_versions():
+    from importlib import metadata
+    out = {}
+    for name in LIBRARIES:
+        try:
+            out[name] = metadata.version(name)
+        except metadata.PackageNotFoundError:
+            out[name] = None
+    return out
+
+
+def model_hash(identity, versions=None):
+    """Weights, precision, attention and the libraries that execute them: a resume in another
+    environment is a different model and reruns the units."""
     keep = {k: identity.get(k) for k in ('repo_or_path', 'revision', 'device', 'dtype', 'flash_attention', 'files', 'synthetic')}
-    return digest(keep)
+    return digest({**keep, 'libraries': versions or {}})
 
 
 def load_images(frames_dir, indices, size):
@@ -224,12 +241,17 @@ class Abort(Exception):
 
 
 def run_study(study, inventory_path=None, backend=None):
-    """Run or resume. Returns 0 when every unit is complete or out of attempts, 1 otherwise."""
+    """Run or resume. Returns 0 when every unit is complete, 3 when every unit has a disposition but
+    some are exhausted or preprocess_failed, and 1 while units are pending. A configuration, spec or
+    storage problem raises ValueError before any attempt is spent."""
     run_dir = path(study['execution']['run_dir'])
     run_dir.mkdir(parents=True, exist_ok=True)
     lock = (run_dir / 'run.lock').open('a+')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     spec, chosen = build_spec(study, inventory_path or path(study['data']['inventory']))
+    unreachable = [row['id'] for row, _ in chosen if not os.access(row['staged_path'], os.R_OK)]
+    if unreachable:  # storage problem, not a property of the videos: spend no attempts on it
+        raise ValueError(f'{len(unreachable)} staged videos are unreachable, e.g. {unreachable[:3]}')
     spec_path = run_dir / 'spec.json'
     if spec_path.exists():
         old = json.loads(spec_path.read_text())
@@ -264,9 +286,12 @@ def run_study(study, inventory_path=None, backend=None):
             tmp.replace(status_file)
     threading.Thread(target=beat, daemon=True).start()
     ledger = Ledger(run_dir)
-    if ledger.torn:
-        ledger.note(session, note='torn last ledger line skipped', text=ledger.torn)
+    if ledger.torn or ledger.out.sealed:
+        ledger.note(session, note='torn last ledger line set aside', text=ledger.torn, sidecar=str(ledger.out.sealed))
     writers = {c: JsonlAppender(run_dir / 'records' / f'{c}.jsonl') for c in CONDITIONS}
+    for c, w in writers.items():
+        if w.sealed:
+            ledger.note(session, note=f'torn last line of records/{c}.jsonl set aside', sidecar=str(w.sealed))
     done = complete_records(run_dir)
     cfg = study['runner']
     order, max_attempts = study['conditions']['order'], study['execution']['max_attempts']
@@ -281,7 +306,8 @@ def run_study(study, inventory_path=None, backend=None):
             backend = BACKENDS[cfg['model']['backend']](cfg)
             state['model_load_seconds'] = time.monotonic() - loading
         identity = getattr(backend, 'model_identity', {'synthetic': True})
-        state.update(status='running', model_identity=identity, model_sha256=model_hash(identity))
+        versions = library_versions()
+        state.update(status='running', model_identity=identity, library_versions=versions, model_sha256=model_hash(identity, versions))
         (sdir / 'session.json').write_text(json.dumps(state, indent=2) + '\n')
         base_hashes = {'config': digest({k: spec[k] for k in SPEC_KEYS}), 'model': state['model_sha256']}
         failures_in_a_row = 0
@@ -367,9 +393,13 @@ def run_study(study, inventory_path=None, backend=None):
                     if not rendered.exists():
                         rendered.write_text(backend.rendered_input())
         dispositions = reconcile(study, run_dir, spec=spec, model_sha256=state['model_sha256'])
-        open_units = dispositions['counts'].get('pending', 0)
-        state['status'] = 'complete' if open_units == 0 else 'incomplete'
-        return 0 if open_units == 0 else 1
+        counts = dispositions['counts']
+        if counts.get('pending', 0):
+            state['status'] = 'incomplete'
+            return 1
+        failed = counts.get('exhausted', 0) + counts.get('preprocess_failed', 0)
+        state['status'] = 'complete' if not failed else 'finished_with_failed_units'
+        return 0 if not failed else 3
     except Abort as exc:
         state.update(status='aborted', error=str(exc))
         return 1
@@ -418,7 +448,8 @@ def final_records(study, run_dir):
 
 
 def reconcile(study, run_dir, spec=None, model_sha256=None):
-    """Every scheduled unit with one disposition: complete, exhausted (out of attempts) or pending.
+    """Every scheduled unit with one disposition: complete, exhausted (out of attempts),
+    preprocess_failed (out of attempts, every one a decode failure) or pending.
 
     Without model_sha256, the model hash of the newest session that loaded a model is used, and all
     complete records must share it."""
@@ -429,10 +460,12 @@ def reconcile(study, run_dir, spec=None, model_sha256=None):
         model_sha256 = next((s['model_sha256'] for s in reversed(seen) if s.get('model_sha256')), None)
     done = complete_records(run_dir)
     ledger_events, _ = read_jsonl(run_dir / 'ledger.jsonl')
-    attempts = {}
+    attempts, end_status = {}, {}
     for e in ledger_events:
         if e['event'] == 'start':
             attempts[e['unit']] = max(attempts.get(e['unit'], 0), e['attempt'])
+        elif e['event'] == 'end':
+            end_status.setdefault(e['unit'], set()).add(e['status'])
     config_hash = digest({k: spec[k] for k in SPEC_KEYS})
     max_attempts = study['execution']['max_attempts']
     rows, counts = [], {}
@@ -446,6 +479,8 @@ def reconcile(study, run_dir, spec=None, model_sha256=None):
                 good = [r for r in done.get(unit, []) if input_hash and matches(r, hashes)]
                 n = attempts.get(unit, 0)
                 disposition = 'complete' if good else ('exhausted' if n >= max_attempts else 'pending')
+                if disposition == 'exhausted' and end_status.get(unit) == {'preprocess_failed'}:
+                    disposition = 'preprocess_failed'
                 counts[disposition] = counts.get(disposition, 0) + 1
                 rows.append({'unit': unit, 'video': v['id'], 'category': v['category'], 'anchor': anchor, 'condition': c,
                              'disposition': disposition, 'attempts': n, 'complete_records': len(good)})

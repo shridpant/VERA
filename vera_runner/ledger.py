@@ -19,10 +19,42 @@ def unit_key(video, anchor, condition):
     return f'{video}|{anchor}|{condition}'
 
 
+def seal(path):
+    """Make an existing JSONL file end with a complete line before anything is appended.
+
+    A process killed mid-write leaves a last line without its newline. If that line is complete
+    JSON, only the newline is added. Otherwise its bytes move to '<file>.torn.<n>' and the file is
+    cut back to its last complete line, so later appends never fuse with a fragment. Returns the
+    sidecar path or None."""
+    path = Path(path)
+    if not path.exists() or path.stat().st_size == 0:
+        return None
+    data = path.read_bytes()
+    if data.endswith(b'\n'):
+        return None
+    cut = data.rfind(b'\n') + 1
+    tail = data[cut:]
+    try:
+        json.loads(tail.decode('utf-8'))
+        with path.open('ab') as f:
+            f.write(b'\n')
+        return None
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        n = 1
+        while path.with_name(f'{path.name}.torn.{n}').exists():
+            n += 1
+        sidecar = path.with_name(f'{path.name}.torn.{n}')
+        sidecar.write_bytes(tail)
+        with path.open('r+b') as f:
+            f.truncate(cut)
+        return sidecar
+
+
 class JsonlAppender:
     """One open handle; each line is flushed and fsynced before the call returns."""
     def __init__(self, path):
         Path(path).parent.mkdir(parents=True, exist_ok=True)
+        self.sealed = seal(path)
         self.handle = open(path, 'a', encoding='utf-8')
 
     def write(self, record):

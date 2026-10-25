@@ -99,7 +99,20 @@ def validate(args):
         existing = existing.parent
     free = shutil.disk_usage(existing).free
     estimate = sum(len(w) for _, w in chosen) * 8 * 400_000 + sum(r['bytes'] for r, _ in chosen) * 12
-    checks.update(free_bytes=free, storage_estimate_bytes=estimate, gpu=gpu_description())
+    gpu = gpu_description()
+    checks.update(free_bytes=free, storage_estimate_bytes=estimate, gpu=gpu)
+    if model['backend'] == 'internvl2' and model['device'] == 'cuda':
+        visible = (gpu['cuda_visible_devices'] or '').split(',')
+        if len(visible) != 1 or not visible[0].startswith('GPU-'):
+            problems.append('CUDA_VISIBLE_DEVICES must name exactly one GPU by UUID')
+        elif 'RTX 6000 Ada' not in (gpu['nvidia_smi'] or ''):
+            problems.append(f"the visible GPU is not an RTX 6000 Ada: {gpu['nvidia_smi']}")
+        else:
+            import subprocess
+            busy = subprocess.run(['nvidia-smi', '--query-compute-apps=gpu_uuid,pid', '--format=csv,noheader'],
+                                  capture_output=True, text=True).stdout
+            if visible[0] in busy:
+                problems.append(f'the GPU already runs a process: {busy.strip()}')
     if free < 1.5 * estimate:
         problems.append(f'free space {free / 1e9:.1f} GB < 1.5 x estimate {estimate / 1e9:.1f} GB')
     result = {'checked_at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'spec_sha256': digest(spec),

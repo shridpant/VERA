@@ -66,3 +66,12 @@ class QuestionTests(unittest.TestCase):
         self.assertIsNone(final_output_label(g))
         self.assertEqual([s['status'] for s in parse_slots(g)['slots']], ['boxes'] * 4 + ['empty'] * 4)
         self.assertEqual((final_output_label(ag), parse_slots(ag)['slots'][0]['status']), (1, 'boxes'))
+
+
+class RenderTests(unittest.TestCase):
+    def test_spaced_image_token_runs_collapse(self):
+        backend = InternVL2.__new__(InternVL2)
+        backend.last_ids = [[1]]
+        backend.tokenizer = type('T', (), {'decode': lambda self, ids, skip_special_tokens=False:
+                                           'Frame1: <img> ' + ' '.join(['<IMG_CONTEXT>'] * 2048) + ' </img>\nFrame2: <image>'})()
+        self.assertEqual(backend.rendered_input(), 'Frame1: <img> <IMG_CONTEXT>×2048 </img>\nFrame2: <image>')

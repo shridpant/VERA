@@ -58,3 +58,18 @@ class LocalizationTests(unittest.TestCase):
         self.assertEqual(size_bin([0, 0, 50, 50], edges), 'small')
         self.assertEqual(size_bin([0, 0, 80, 80], edges), 'medium')
         self.assertEqual(size_bin([0, 0, 200, 200], edges), 'large')
+
+
+class CardinalityTests(unittest.TestCase):
+    def test_more_matches_always_beat_higher_total_iou(self):
+        # Reviewer's counterexample: a diagonal at IoU 0.5 (5 matches) against four off-diagonal pairs at 1.0.
+        import numpy as np
+        from unittest import mock
+        import vera_runner.localization as L
+        m = np.zeros((5, 5))
+        np.fill_diagonal(m, 0.5)
+        for i in range(4):
+            m[i, i + 1] = 1.0
+        boxes = [[i, 0, i + 1, 1] for i in range(5)]
+        with mock.patch.object(L, 'iou', lambda a, b: m[int(a[0]), int(b[0])]):
+            self.assertEqual(len(L.match(boxes, boxes, 0.5)), 5)

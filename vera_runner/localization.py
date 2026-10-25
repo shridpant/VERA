@@ -30,7 +30,9 @@ def match(preds, gts, threshold):
     p_order = sorted(range(len(preds)), key=lambda i: tuple(preds[i]))
     g_order = sorted(range(len(gts)), key=lambda i: tuple(gts[i]))
     ious = np.array([[iou(preds[i], gts[j]) for j in g_order] for i in p_order])
-    cost = np.where(ious >= threshold, -(1.0 + ious), 0.0)
+    # Each eligible pair is worth more than the IoU of any whole matching, so cardinality comes first.
+    weight = min(len(preds), len(gts)) + 1.0
+    cost = np.where(ious >= threshold, -(weight + ious), 0.0)
     rows, cols = linear_sum_assignment(cost)
     return sorted((p_order[r], g_order[c], float(ious[r, c])) for r, c in zip(rows, cols) if ious[r, c] >= threshold)
 

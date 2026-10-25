@@ -5,7 +5,8 @@ brackets, quotes or a trailing period) must be exactly 0 or 1. Anything else is 
 never 0. AG answers contain box digits, which corrupt the upstream rule ('0' anywhere after the
 last 'Output'); that legacy label is kept for comparison only.
 
-Boxes: one line per frame, 'FrameK: [[x1, y1, x2, y2], ...]' on a 0-1000 grid, '[]' for none
+Boxes: one line per frame after the last 'Firearm boxes:' heading (the whole text if there is
+none), 'FrameK: [[x1, y1, x2, y2], ...]' on a 0-1000 grid, '[]' for none
 seen, 'unknown' for cannot assess. InternVL <ref>/<box> tags around a list are accepted and noted.
 A slot is boxes | empty | unknown | malformed | missing | duplicate | truncated. A slot with any
 invalid box is malformed as a whole. A box covering >= 95 % of the frame is flagged whole_image
@@ -20,6 +21,7 @@ LINE = re.compile(r'^[\s>*_`-]*frame\s*(\d+)\s*[*_`]*\s*[:：]\s*(.*?)\s*$', re.
 NUMBER = r'-?\d+(?:\.\d+)?'
 SPECIAL = re.compile(r'</?s>|<\|im_end\|>|<\|im_start\|>')
 LIST = re.compile(r'^\[\s*(?:\[[^\[\]]*\]\s*,?\s*)+\]$')
+HEADING = re.compile(r'firearm boxes\s*:', re.I)
 
 
 def final_output_label(text):
@@ -71,9 +73,14 @@ def _boxes(content):
 
 def parse_slots(text, n_slots=8, truncated=False):
     clean = SPECIAL.sub(' ', text)
+    # Only the block after the last 'Firearm boxes:' heading holds the box lines; an AG answer may
+    # also start lines with 'FrameK:' in its free text. Without a heading every line is read.
+    headings = list(HEADING.finditer(clean))
+    block = clean[headings[-1].end():] if headings else clean
+    outside = sum(1 for line in clean[:headings[-1].start()].splitlines() if LINE.match(line)) if headings else 0
     lines = {}
     extra = []
-    for line in clean.splitlines():
+    for line in block.splitlines():
         match = LINE.match(line)
         if not match:
             continue
@@ -101,5 +108,5 @@ def parse_slots(text, n_slots=8, truncated=False):
     return {'response_status': 'truncated' if truncated else ('ok' if lines else 'no_slots'),
             'slots': slots, 'extra_frame_lines': extra,
             'scale_suspect': bool(coords) and max(coords) <= 1,
-            'heading': 'firearm boxes:' in clean.lower(),
+            'heading': bool(headings), 'lines_outside_block': outside,
             'slot_lines_after_output': sum(1 for line in (field or '').splitlines() if LINE.match(line))}

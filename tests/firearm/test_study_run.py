@@ -124,8 +124,28 @@ class StudyRunTests(unittest.TestCase):
             study = make_study(td, max_attempts=2, max_consecutive_failures=100)
             for _ in range(2):
                 run_study(study, backend=Recording(study['runner'], always_fail=True))
-            self.assertEqual(run_study(study, backend=Recording(study['runner'])), 0)
+            self.assertEqual(run_study(study, backend=Recording(study['runner'])), 3)  # finished, but not complete
             self.assertEqual(reconcile(study, Path(td) / 'run')['counts'], {'exhausted': 15})
+
+    def test_unreachable_videos_stop_the_run_without_spending_attempts(self):
+        with tempfile.TemporaryDirectory() as td:
+            study = make_study(td)
+            for link in (Path(td) / 'staged').iterdir():
+                link.unlink()
+                link.symlink_to(Path(td) / 'unmounted' / link.name)
+            with self.assertRaises(ValueError):
+                run_study(study, backend=Recording(study['runner']))
+            self.assertFalse((Path(td) / 'run/ledger.jsonl').exists())
+
+    def test_an_undecodable_video_ends_as_preprocess_failed(self):
+        with tempfile.TemporaryDirectory() as td:
+            study = make_study(td, max_attempts=2)
+            target = (Path(td) / 'staged/No_Gun__N1_C1_P2_V1_HB_1.mp4').resolve()
+            target.write_bytes(b'not a video')
+            for _ in range(2):
+                run_study(study, backend=Recording(study['runner']))
+            self.assertEqual(run_study(study, backend=Recording(study['runner'])), 3)
+            self.assertEqual(reconcile(study, Path(td) / 'run')['counts'], {'complete': 9, 'preprocess_failed': 6})
 
     def test_timeout_fires_its_callback(self):
         fired = threading.Event()

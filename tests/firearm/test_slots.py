@@ -91,3 +91,19 @@ class SlotTests(unittest.TestCase):
         p = parse_slots('Output: 1\nFrame1: [[1, 2, 3, 4]]')
         self.assertEqual(p['slot_lines_after_output'], 1)
         self.assertEqual(parse_slots('Frame1: []\nOutput:\n1')['slot_lines_after_output'], 0)
+
+
+class BlockTests(unittest.TestCase):
+    def test_free_text_frame_lines_before_the_heading_are_ignored(self):
+        ag = ('Answers to Prompt Questions: Frame1: A man holds a pistol.\nFrame2: He raises it.\n'
+              'Firearm boxes:\nFrame1: [[1, 2, 3, 4]]\nFrame2: []\nFrame3: []\nFrame4: []\nFrame5: []\n'
+              'Frame6: []\nFrame7: []\nFrame8: []\nOutput:\n1')
+        p = parse_slots(ag)
+        self.assertEqual(statuses(p), ['boxes'] + ['empty'] * 7)
+        self.assertTrue(p['heading'])
+        self.assertEqual(p['lines_outside_block'], 1)  # 'Frame2: He raises it.' starts a line; Frame1 does not
+
+    def test_without_a_heading_every_line_is_read_and_noted(self):
+        p = parse_slots('Frame1: []\nFrame2: [[1, 2, 3, 4]]')
+        self.assertEqual(statuses(p)[:2], ['empty', 'boxes'])
+        self.assertFalse(p['heading'])

@@ -222,7 +222,8 @@ class InternVL2:
         if not self.last_ids:
             return ''
         text = self.tokenizer.decode(self.last_ids[0], skip_special_tokens=False)
-        return re.sub(r'(?:<IMG_CONTEXT>)+', lambda m: f'<IMG_CONTEXT>×{len(m.group(0)) // len("<IMG_CONTEXT>")}', text)
+        # The decode separates special tokens with spaces, so runs are matched with optional whitespace.
+        return re.sub(r'<IMG_CONTEXT>(?:\s*<IMG_CONTEXT>)*', lambda m: f'<IMG_CONTEXT>×{m.group(0).count("<IMG_CONTEXT>")}', text)
 
     def name_anomaly(self, images, response):
         """Follow-up in the same conversation: the model names the anomaly it described."""
