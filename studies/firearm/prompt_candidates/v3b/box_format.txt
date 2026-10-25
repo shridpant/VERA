@@ -1,0 +1,9 @@
+Firearm boxes:
+Frame1: [[x1, y1, x2, y2]]
+Frame2: [[x1, y1, x2, y2]]
+Frame3: [[x1, y1, x2, y2]]
+Frame4: [[x1, y1, x2, y2]]
+Frame5: [[x1, y1, x2, y2]]
+Frame6: [[x1, y1, x2, y2]]
+Frame7: [[x1, y1, x2, y2]]
+Frame8: [[x1, y1, x2, y2]]

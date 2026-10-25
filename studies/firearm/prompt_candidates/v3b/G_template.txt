@@ -1,0 +1,11 @@
+You are the model.
+** Model Description: **
+You are designed to locate firearms. The input is a sequence of video frames; you need to output the bounding boxes of the firearms visible in each frame.
+** Task: **
+$Grounding
+** Input: **
+[$Data]
+Please give your output strictly in the following format:
+```
+$BoxFormat```
+Please ONLY reply according to this format, don't give me any other words.
