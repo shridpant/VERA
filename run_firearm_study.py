@@ -7,6 +7,8 @@
   validate  preflight: config, prompts, registry, inventory, model files, GPU, storage
   run       run or resume A/G/AG inference; with --videos/--max-windows/--run-dir a smoke run
   reconcile every scheduled unit with a disposition (complete, exhausted, pending)
+  features  ImageBind segment features (LAVAD procedure) from the run's decoded frames
+  features-check  validation gate: our extractor vs VERA's released UCF features
 """
 import argparse
 import collections
@@ -62,14 +64,14 @@ def validate(args):
     import shutil
     from vera_runner.config import load, path
     from vera_runner.data import resolve
-    from vera_runner.study import build_spec, digest, gpu_description
+    from vera_runner.study import build_spec, digest, gpu_description, load_study
     study = overridden(args)
     checks, problems = {}, []
     spec, chosen = build_spec(study, path(study['data']['inventory']))
     checks['units'] = spec['units']
     checks['prompt_sha256'] = spec['prompt_sha256']
     runner_json = Path(args.config).with_name(Path(args.config).stem + '.runner_A.json')
-    if runner_json.exists() and load(runner_json) != study['runner']:
+    if runner_json.exists() and load(runner_json) != load_study(args.config)['runner']:
         problems.append(f'{runner_json} differs from the runner block')
     resolved = {item['id']: item['path'] for item in resolve(study['runner'])}
     missing = [row['id'] for row, _ in chosen if row['id'] not in resolved]
@@ -105,6 +107,102 @@ def validate(args):
     (out / f"validate_{study['study_id']}_{result['checked_at'][:19].replace(':', '')}.json").write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))
     return 0 if not problems else 1
+
+
+def weights_identity(weights):
+    from vera_runner.data import sha256
+    return {'path': str(weights), 'bytes': Path(weights).stat().st_size, 'sha256': sha256(weights)}
+
+
+def package_versions():
+    from importlib import metadata
+    out = {}
+    for name in ('imagebind', 'pytorchvideo', 'torch', 'torchvision', 'av'):
+        try:
+            dist = metadata.distribution(name)
+            direct = dist.read_text('direct_url.json')
+            out[name] = json.loads(direct) if direct else dist.version
+        except metadata.PackageNotFoundError:
+            out[name] = None
+    return out
+
+
+def features(args):
+    """ImageBind features for every video of a finished run, from the run's own decoded frames."""
+    import numpy as np
+    from vera_runner.config import path
+    from vera_runner.data import sha256
+    from vera_runner.imagebind_features import Extractor, anchors, extract_video, write_manifest
+    from vera_runner.study import digest
+    study = overridden(args)
+    settings, run_dir = study['features'], path(study['execution']['run_dir'])
+    out = path(settings['dir'])
+    out.mkdir(parents=True, exist_ok=True)
+    spec = json.loads((run_dir / 'spec.json').read_text())
+    identity = {'weights': weights_identity(settings['weights']), 'packages': package_versions(),
+                'settings': {k: settings[k] for k in ('clip_seconds', 'fps', 'num_samples')}, 'precision': 'float32'}
+    key = digest(identity)
+    extractor = Extractor(settings['weights'])
+    videos = {}
+    for v in spec['videos']:
+        npy, side = out / f"{v['id']}.npy", out / f"{v['id']}.json"
+        if side.exists() and json.loads(side.read_text()).get('identity_sha256') == key and npy.exists() \
+                and sha256(npy) == json.loads(side.read_text())['npy_sha256']:
+            videos[v['id']] = 'reused'
+            continue
+        frames = run_dir / 'videos' / v['id'] / 'frames'
+        info = run_dir / 'videos' / v['id'] / 'video.json'
+        if not info.exists() or json.loads(info.read_text())['decoded_frames'] != v['frames']:
+            videos[v['id']] = 'missing_frames'
+            continue
+        began = __import__('time').monotonic()
+        rows, used = extract_video(extractor, frames, v['frames'], settings, study['runner']['sampling']['stride'])
+        if len(rows) != len(anchors(v['frames'], study['runner']['sampling']['stride'])):
+            raise ValueError(f"{v['id']}: feature rows do not match the anchors")
+        np.save(npy, rows)
+        side.write_text(json.dumps({'video': v['id'], 'identity_sha256': key, 'npy_sha256': sha256(npy), 'rows': len(rows),
+                                    'clip_frame_indices': used, 'seconds': __import__('time').monotonic() - began}) + '\n')
+        videos[v['id']] = 'extracted'
+        print(v['id'], len(rows), flush=True)
+    write_manifest(out / 'features_manifest.json', {'identity': identity, 'identity_sha256': key, 'run_dir': str(run_dir), 'videos': videos})
+    missing = [k for k, s in videos.items() if s == 'missing_frames']
+    print(json.dumps({'videos': len(videos), 'missing_frames': missing}))
+    return 0 if not missing else 1
+
+
+def features_check(args):
+    """Validation gate: our extractor on a UCF video vs the features VERA released for it."""
+    import numpy as np
+    from vera_runner.config import DEFAULTS
+    from vera_runner.data import preprocess
+    from vera_runner.imagebind_features import Extractor, compare, extract_video
+    from vera_runner.refine import refine
+    from vera_runner.study import load_study
+    study = load_study(args.config)
+    out = Path(args.out)
+    frames = out / 'frames'
+    if not (out / 'video.json').exists():
+        out.mkdir(parents=True, exist_ok=True)
+        info = preprocess({'id': Path(args.video).stem, 'path': args.video, 'annotation': {}}, frames)
+        (out / 'video.json').write_text(json.dumps(info) + '\n')
+    info = json.loads((out / 'video.json').read_text())
+    settings = {**study['features'], 'fps': args.fps}
+    rows, _ = extract_video(Extractor(settings['weights']), frames, info['decoded_frames'], settings)
+    np.save(out / 'ours.npy', rows)
+    released = np.load(args.released)
+    report = {'video': args.video, 'released': args.released, 'decoded_frames': info['decoded_frames'],
+              'weights': weights_identity(settings['weights']), 'packages': package_versions(), **compare(rows, released)}
+    if args.labels:
+        scores = json.loads(Path(args.labels).read_text())['anchors']
+        records = [{'strict_label': s['score'], 'anchor': int(a), 'end': s['end']} for a, s in sorted(scores.items(), key=lambda x: int(x[0]))]
+        a = refine(records, released, info['decoded_frames'], 16, DEFAULTS['refinement'])['frame_scores']
+        b = refine(records, rows, info['decoded_frames'], 16, DEFAULTS['refinement'])['frame_scores']
+        report['refined_frame_scores_max_abs_diff'] = float(np.abs(a - b).max())
+        report['refined_frame_scores_identical'] = bool(np.array_equal(a, b))
+    report['gate_passed'] = bool(report.get('same_shape') and report['cosine_median'] >= 0.99)
+    (out / 'features_check.json').write_text(json.dumps(report, indent=1) + '\n')
+    print(json.dumps(report, indent=1))
+    return 0 if report['gate_passed'] else 1
 
 
 def overridden(args):
@@ -169,6 +267,17 @@ def main(argv=None):
         p.add_argument('--max-windows', type=int, help='first N windows per video (smoke runs)')
         p.add_argument('--study-id', help='override study_id (smoke runs)')
         p.set_defaults(func=func)
+    p = sub.add_parser('features', help='ImageBind features (LAVAD procedure) from a run\'s decoded frames')
+    p.add_argument('--config', required=True)
+    p.set_defaults(func=features, run_dir=None, videos=None, max_windows=None, study_id=None)
+    p = sub.add_parser('features-check', help='validation gate against a released VERA feature file')
+    p.add_argument('--config', required=True)
+    p.add_argument('--video', required=True)
+    p.add_argument('--released', required=True)
+    p.add_argument('--labels', help='experiment01 segment_scores.json for the refinement comparison')
+    p.add_argument('--fps', type=float, default=30.0)
+    p.add_argument('--out', required=True)
+    p.set_defaults(func=features_check)
     args = ap.parse_args(argv)
     return args.func(args)
 

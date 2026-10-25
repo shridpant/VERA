@@ -71,9 +71,12 @@ class ValidateCommandTests(unittest.TestCase):
                       'data': {'inventory': str(Path(td) / 'inventory.json')},
                       'execution': {'run_dir': str(Path(td) / 'not/yet/created/run')}}
             (Path(td) / 'study.json').write_text(json.dumps(config))
-            out = subprocess.run([sys.executable, str(ROOT / 'run_firearm_study.py'), 'validate', '--config', str(Path(td) / 'study.json')],
+            (Path(td) / 'study.runner_A.json').write_text(json.dumps(config['runner']))
+            out = subprocess.run([sys.executable, str(ROOT / 'run_firearm_study.py'), 'validate', '--config', str(Path(td) / 'study.json'),
+                                  '--videos', 'No_Gun__N1_C1_P2_V1_HB_1', '--max-windows', '1'],
                                  cwd=ROOT, capture_output=True, text=True)
             self.assertEqual(out.returncode, 0, out.stderr + out.stdout)
             result = json.loads(out.stdout)
-            self.assertEqual((result['ok'], result['checks']['units']), (True, 15))
+            # Smoke overrides change the selection only; the runner_A.json check uses the study as written.
+            self.assertEqual((result['ok'], result['checks']['units']), (True, 3))
             self.assertTrue(list((Path(td) / 'not/yet/created/checks').glob('validate_v_*.json')))
