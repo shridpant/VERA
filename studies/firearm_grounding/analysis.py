@@ -26,6 +26,12 @@ def ci(units, stat, name):
     return cluster_bootstrap(units, 'recording_group', 'category', stat, B, SEED, name)
 
 
+def rho(records):
+    if len(records) < 5 or len({r['lift'] for r in records}) < 2 or len({r['reliance'] for r in records}) < 2:
+        return None
+    return float(spearmanr([r['lift'] for r in records], [r['reliance'] for r in records]).correlation)
+
+
 def correct(r):
     return r['pred']['category'] == r['category']
 
@@ -115,15 +121,13 @@ def r2(d, boxes=None, edges=None):
     for name, v in (g.get('V3') or {}).items():
         rows.append({'measure': f'V3 {name} category (mean lift)', 'estimate': v.get('mean_lift'), 'mean_reliance': v.get('mean_reliance'),
                      'videos': v.get('videos')})
-    for name, keep in (('correct', True), ('incorrect', False)):
-        sub = [r for r in d['phase1'] if r.get('lift') is not None and r.get('reliance') is not None
-               and (r['pred']['category'] == r['category']) == keep]
-        rows.append({'measure': f'Spearman rho within {name} category (not pre-registered)', 'videos': len(sub),
-                     'estimate': float(spearmanr([r['lift'] for r in sub], [r['reliance'] for r in sub]).correlation) if len(sub) >= 5 else None})
-    for size in ('small', 'medium', 'large') if boxes else ():
-        sub = [r for r in d['phase1'] if r.get('lift') is not None and r.get('reliance') is not None and size_bin(r, boxes, edges) == size]
-        rows.append({'measure': f'Spearman rho within {size} boxes (not pre-registered)', 'videos': len(sub),
-                     'estimate': float(spearmanr([r['lift'] for r in sub], [r['reliance'] for r in sub]).correlation) if len(sub) >= 5 else None})
+    paired = [r for r in d['phase1'] if r.get('lift') is not None and r.get('reliance') is not None]
+    strata = [(f'{name} category', [r for r in paired if correct(r) == keep]) for name, keep in (('correct', True), ('incorrect', False))]
+    strata += [(f'{size} boxes', [r for r in paired if size_bin(r, boxes, edges) == size]) for size in ('small', 'medium', 'large') if boxes]
+    for label, sub in strata:
+        est, lo, hi, _ = ci(sub, rho, f'R2 rho within {label}')
+        rows.append({'measure': f'Spearman rho within {label} (not pre-registered)', 'videos': len(sub), 'estimate': est,
+                     'ci_low': lo, 'ci_high': hi})
     gate_table = table('R2', 'Phase 1 validity gate (seed questions, all splits)',
                        ['measure', 'estimate', 'ci_low', 'ci_high', 'mean_reliance', 'videos', 'passed'], rows,
                        [f"Gate {'passed' if g.get('gate_passed') else 'not passed'}: V1 and V2 lower bounds above 0 (pre-registered). "
@@ -362,6 +366,13 @@ def numbers(tables, d):
     for r in tables['R2s']['rows']:
         n[f"sens_{r['set'].replace(' ', '').replace(',', '_')}_median_lift"] = r.get('median_lift')
     n['phase1_videos'] = len(d['phase1'])
+    occ = [r for r in d['phase1'] if r.get('occlusion') and correct(r)]
+    n['phase1_correct_with_occlusion'] = len(occ)
+    n['phase1_correct_flip_box_pct'] = pct(share(flipped(r, 'box') for r in occ)) if occ else None
+    n['phase1_correct_flip_control_pct'] = pct(share(flipped(r, 'control') for r in occ)) if occ else None
+    wrong = [r for r in d['phase1'] if r.get('lift') is not None and not correct(r)]
+    n['phase1_wrong_said_no_gun_pct'] = pct(share(r['pred']['category'] == 'No_Gun' for r in wrong)) if wrong else None
+    n['phase1_wrong_lift_above_chance_pct'] = pct(share(r['lift'] > 1 for r in wrong)) if wrong else None
     n['phase1_evaluable'] = sum(r.get('lift') is not None for r in d['phase1'])
     n['phase1_with_reliance'] = sum(r.get('reliance') is not None for r in d['phase1'])
     n['phase1_decision_excluded'] = sum(r.get('decision') is None for r in d['phase1'])
