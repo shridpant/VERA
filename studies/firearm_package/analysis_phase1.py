@@ -14,6 +14,11 @@ GUN = ('Handgun', 'Machine_Gun')
 EXPECTED_LABEL = {'Handgun': 'handgun', 'Machine_Gun': 'long gun'}
 
 
+def latest_successful(records, key):
+    """One successful result per unit; retries must not weight the analysis."""
+    return list({r[key]: r for r in records if r['status'] != 'failed'}.values())
+
+
 def ci(units, stat, name):
     est, lo, hi, _ = cluster_bootstrap(units, 'recording_group', 'category', stat, B, SEED, name)
     return {'est': est, 'low': lo, 'high': hi}
@@ -26,9 +31,7 @@ def ratio(num, den):
 def e1_units(manifest, records):
     by_id = {f['frame_id']: f for f in manifest}
     out = []
-    for r in records:
-        if r['status'] == 'failed':
-            continue
+    for r in latest_successful(records, 'frame_id'):
         f = by_id[r['frame_id']]
         areas = [(g[2] - g[0]) * (g[3] - g[1]) / 1e6 for g in f['gt']]
         out.append({**r, 'recording_group': f['recording_group'], 'gt_area': max(areas) if areas else None,
@@ -88,17 +91,17 @@ def analyze_e1(out_root, manifest_path, seed_measurements, arms, rules):
             base = {u['frame_id']: u for u in e1_units(manifest, read_jsonl(Path(out_root) / 'e1' / name[:-3] / 'records.jsonl')[0])}
             pairs = [(base[u['frame_id']], u) for u in units if u['frame_id'] in base and u['category'] in GUN]
             result[name]['repeat_agreement_tp50'] = (sum((a['score']['tp50'] > 0) == (b['score']['tp50'] > 0) for a, b in pairs) / len(pairs)) if pairs else None
-    ranked = sorted((n for n, r in result.items() if not n.endswith('_r2') and usable(r['subset300'], rules)),
+    ranked = sorted((n for n, r in result.items() if not n.endswith('_r2') and n != 'internvl35_38b_on' and usable(r['subset300'], rules)),
                     key=lambda n: (-result[n]['subset300']['recall50']['est'], (result[n]['subset300']['nogun_fp'] or {}).get('est', 0),
                                    result[n]['subset300']['seconds_median']))
     gate = {'usable': ranked, 'chosen': ranked[0] if ranked else None, 'rules': rules,
-            'note': 'ranked on subset300, the frames every main arm ran; _r2 arms measure sampling variance only'}
+            'note': 'ranked on subset300, the frames every main arm ran; _r2 arms measure sampling variance only; 38B thinking is reported only'}
     return result, gate
 
 
 def e2_metrics(recs, name):
-    units = [r for r in recs if r['status'] == 'complete']
-    acc = lambda k: (lambda u: sum(x['pred'][k] == x['target'][i] for x in u) / len(u))
+    units = [r for r in latest_successful(recs, 'video') if r['status'] == 'complete']
+    acc = lambda k, i: (lambda u: sum(x['pred'][k] == x['target'][i] for x in u) / len(u))
     m = {'videos': len(units), 'invalid': sum(u['pred']['category'] is None for u in units),
          'truncated': sum(bool(u.get('truncated')) for u in units),
          'seconds_median': float(np.median([u['seconds'] for u in units])) if units else None,
@@ -107,14 +110,14 @@ def e2_metrics(recs, name):
         m[k] = ci(units, lambda u, i=i, k=k: sum(x['pred'][k] == x['target'][i] for x in u) / len(u), f'{name} {k}')
     for cat in ('Handgun', 'Machine_Gun', 'No_Gun'):
         part = [u for u in units if u['category'] == cat]
-        m[f'category_{cat}'] = acc('category')(part) if part else None
+        m[f'category_{cat}'] = acc('category', 0)(part) if part else None
     return m
 
 
 def paired(a, b, k, i, name):
     """b minus a on field k (target index i), same videos."""
     ia = {r['video']: r for r in a if r['status'] == 'complete'}
-    rows = [{**ia[r['video']], 'other': r} for r in b if r['status'] == 'complete' and r['video'] in ia]
+    rows = [{**ia[r['video']], 'other': r} for r in latest_successful(b, 'video') if r['status'] == 'complete' and r['video'] in ia]
     stat = lambda u: (sum(x['other']['pred'][k] == x['target'][i] for x in u) - sum(x['pred'][k] == x['target'][i] for x in u)) / len(u)
     return ci(rows, stat, name)
 

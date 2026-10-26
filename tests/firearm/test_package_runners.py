@@ -121,17 +121,32 @@ class Phase1AnalysisTests(unittest.TestCase):
             write(cfg, mpath)
             arm = {'model': 'm', 'family': 'internvl', 'thinking': False, 'frames': 'all', 'max_new_tokens': 64, 'max_num': 6}
             e1.run_arm(cfg, 'good', arm, mpath, out / 'e1/good', model=FakeDetector())
+            e1.run_arm(cfg, 'internvl35_38b_on', arm, mpath, out / 'e1/internvl35_38b_on', model=FakeDetector())
             seeds = Path(td) / 'seed.jsonl'
             seeds.write_text(''.join(json.dumps({'video': f['video'], 'category': f['category'],
                                                  'pred': {'category': 'No_Gun'}}) + '\n' for f in json.loads(mpath.read_text())))
-            result, gate = analyze_e1(out, mpath, seeds, ['good'], {'min_recall50': 0.5, 'max_whole_image': 0.1, 'max_nogun_fp': 0.1})
+            result, gate = analyze_e1(out, mpath, seeds, ['good', 'internvl35_38b_on'], {'min_recall50': 0.5, 'max_whole_image': 0.1, 'max_nogun_fp': 0.1})
             self.assertEqual(result['good']['own']['recall50']['est'], 1.0)
             self.assertEqual(result['good']['own']['nogun_fp']['est'], 0.0)
             self.assertEqual(result['good']['own']['recall50_handgun_missed_by_seed'], 1.0)
             self.assertEqual(gate['chosen'], 'good')
+            self.assertEqual(gate['usable'], ['good'])
             for n in ('iv2_packed', 'iv35_packed', 'iv35_frames'):
                 e2.run_arm(cfg, n, {'model': 'm', 'input': n.split('_')[1], 'thinking': False, 'max_new_tokens': 64}, out / 'e2' / n,
                            ROOT, model=FakeLearner())
             result, gate = analyze_e2(out, ['iv2_packed', 'iv35_packed', 'iv35_frames'])
             self.assertEqual(result['iv35_packed']['vs_reference_category']['est'], 0.0)
+            self.assertEqual(result['iv2_packed']['category_Handgun'], 1.0)
+            self.assertEqual(result['iv2_packed']['category_No_Gun'], 1.0)
             self.assertEqual((gate['backbone']['chosen'], gate['input']['chosen']), ('internvl2_8b', 'packed'))
+
+
+class RetryAnalysisTests(unittest.TestCase):
+    def test_retries_count_successful_units_once(self):
+        from studies.firearm_package.analysis_phase1 import e1_units, latest_successful, paired
+        rows = [{'frame_id': 'f', 'status': 'failed'},
+                {'frame_id': 'f', 'status': 'none', 'video': 'v'},
+                {'frame_id': 'f', 'status': 'none', 'video': 'v'}]
+        manifest = [{'frame_id': 'f', 'gt': [], 'recording_group': 'g', 'subset300': True, 'subset100': True}]
+        self.assertEqual(len(e1_units(manifest, rows)), 1)
+        self.assertEqual(len(latest_successful(rows, 'frame_id')), 1)
