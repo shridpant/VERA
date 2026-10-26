@@ -15,14 +15,19 @@ class FakeScorer:
         def __call__(self, text, add_special_tokens=False):
             return type('E', (), {'input_ids': [1, 2, 3]})()
 
-    def __init__(self):
-        self.tok = self.Tok()
+    def __init__(self, decides=True):
+        self.tok, self.decides = self.Tok(), decides
+
+    def decision(self, ids):
+        return (0, ' ', 'Handgun') if self.decides else None
 
     def query_ids(self, question, n):
         import torch
         return torch.tensor([[0] * 5]), '<|im_end|>'
 
     def score(self, images, query, ids, attention=True):
+        if not self.decides:
+            return None
         a = np.zeros((16, 16))
         a[:4, :4] = 1
         a = (a / a.sum()).reshape(-1)
@@ -39,15 +44,16 @@ def boxes_for(data):
     return out
 
 
-PHASE1 = {'train_frame_lifts': [0.5, 1.0, 2.0, 4.0], 'train_video_mean_frame_lift_quartiles': [1.0, 3.0]}
+PHASE1 = {'train_video_frame_lifts': [[0.5, 1.0], [2.0, 4.0, 8.0]], 'train_frame_lifts': [0.5, 1.0, 2.0, 4.0, 8.0],
+          'train_video_mean_frame_lift_quartiles': [1.0, 3.0]}
 
 
 class ArmTests(unittest.TestCase):
-    def run_arm(self, td, arm):
+    def run_arm(self, td, arm, scorer=None):
         data = make_split(td)
         run_dir = Path(td) / arm
         run_dir.mkdir()
-        run = GroundedRun(spec(), run_dir, data, Path(td) / 'frames', FakeCalls(), BOOK, FakeScorer(), boxes_for(data), arm, PHASE1)
+        run = GroundedRun(spec(), run_dir, data, Path(td) / 'frames', FakeCalls(), BOOK, scorer or FakeScorer(), boxes_for(data), arm, PHASE1)
         self.assertEqual(run.train('001'), 'complete')
         return run, read_jsonl(run_dir / 'steps.jsonl')[0], read_jsonl(run_dir / 'validations.jsonl')[0]
 
@@ -68,13 +74,22 @@ class ArmTests(unittest.TestCase):
             self.assertIn('no firearm in the frames', block)
             self.assertAlmostEqual(vals[1]['metrics']['pooled_lift'], 16.0)
 
-    def test_placebo_draws_from_the_pool_with_a_seeded_generator(self):
+    def test_placebo_draws_one_training_video_per_video_with_a_seeded_generator(self):
         with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as td2:
             _, steps, _ = self.run_arm(td, 'P')
             _, again, _ = self.run_arm(td2, 'P')
-            values = [v for s in steps for g in s['grounding_values'] if g['frames'] for v in g['frames'].values()]
-            self.assertTrue(set(values) <= set(PHASE1['train_frame_lifts']))
+            drawn = [set(g['frames'].values()) for s in steps for g in s['grounding_values'] if g['frames']]
+            self.assertTrue(drawn)
+            self.assertTrue(all(any(d <= set(v) for v in PHASE1['train_video_frame_lifts']) for d in drawn))
             self.assertEqual([s['grounding_block'] for s in steps], [s['grounding_block'] for s in again])
+
+    def test_grounded_and_placebo_report_a_missing_decision_alike(self):
+        for arm in ('G', 'P'):
+            with tempfile.TemporaryDirectory() as td:
+                _, steps, _ = self.run_arm(td, arm, FakeScorer(decides=False))
+                block = '\n'.join(s['grounding_block'] for s in steps)
+                self.assertIn('no decision to measure', block, arm)
+                self.assertNotIn('Frame1', block, arm)
 
     def test_selection_prefers_lift_among_accuracy_eligible_steps(self):
         with tempfile.TemporaryDirectory() as td:
@@ -93,3 +108,4 @@ class ArmTests(unittest.TestCase):
         self.assertIn('[$Grounding]', t)
         summary = phase1_summary([{'split': 'train', 'frame_lifts': {'0': 1.0, '1': 3.0}}, {'split': 'val', 'frame_lifts': {'0': 9.0}}])
         self.assertEqual(summary['train_frame_lifts'], [1.0, 3.0])
+        self.assertEqual(summary['train_video_frame_lifts'], [[1.0, 3.0]])

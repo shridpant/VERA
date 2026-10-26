@@ -1,7 +1,8 @@
 """Phase 1 gate of the grounding pre-registration, from a measurement JSONL (seed questions, all splits).
 
 V1 spatial specificity: mean(lift with true boxes - lift with shuffled boxes) over grounding-evaluable
-   videos that have both; 95 % CI from 2,000 draws resampling recording groups within category.
+   videos that have both, on the same frames (true lift restricted to the frames the donor has boxed, D2);
+   95 % CI from 2,000 draws resampling recording groups within category.
 V2 agreement: Spearman rho between video lift and occlusion reliance; same bootstrap.
 V3 behaviour (descriptive): lift and reliance for correct vs incorrect categories.
 Gate: V1 CI above 0 and V2 CI above 0. Otherwise Phase 2 does not run.
@@ -21,10 +22,11 @@ def evaluable(records):
 
 
 def v1(records):
-    rows = [r for r in evaluable(records) if r.get('lift_shuffled') is not None]
-    units = [{'g': r['recording_group'], 'category': r['category'], 'd': r['lift'] - r['lift_shuffled']} for r in rows]
+    rows = [r for r in evaluable(records) if r.get('lift_shuffled') is not None and r.get('lift_shared') is not None]
+    units = [{'g': r['recording_group'], 'category': r['category'], 'd': r['lift_shared'] - r['lift_shuffled']} for r in rows]
     est, lo, hi, n = cluster_bootstrap(units, 'g', 'category', lambda u: float(np.mean([x['d'] for x in u])) if u else None, B, SEED, 'V1')
     return {'videos': len(rows), 'mean_lift_true': float(np.mean([r['lift'] for r in rows])) if rows else None,
+            'mean_lift_true_shared_frames': float(np.mean([r['lift_shared'] for r in rows])) if rows else None,
             'mean_lift_shuffled': float(np.mean([r['lift_shuffled'] for r in rows])) if rows else None,
             'median_lift_true': float(np.median([r['lift'] for r in rows])) if rows else None,
             'mean_difference': est, 'ci': [lo, hi], 'draws': n, 'passed': lo is not None and lo > 0}
@@ -53,8 +55,13 @@ def v3(records):
     return out
 
 
-def gate(path, out_path=None):
+def gate(path, out_path=None, expected=None):
+    """expected: the video ids Phase 1 must cover; the gate refuses (ValueError) to run on fewer."""
     records = read_jsonl(path)[0]
+    if expected is not None:
+        missing = set(expected) - {r['video'] for r in records}
+        if missing:
+            raise ValueError(f'Phase 1 is incomplete: {len(missing)} of {len(set(expected))} videos have no record')
     result = {'records': len(records), 'grounding_evaluable': len(evaluable(records)),
               'no_decision': sum(r.get('decision') is None for r in records), 'V1': v1(records), 'V2': v2(records), 'V3': v3(records)}
     result['gate_passed'] = result['V1']['passed'] and result['V2']['passed']

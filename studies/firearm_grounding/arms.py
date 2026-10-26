@@ -5,10 +5,12 @@ G   the optimizer prompt also lists, per video, the attention lift on the annota
     boxed frame (training boxes only) with an overall low/typical/high level, and one fixed sentence.
     Selection: among validated steps within 5 points of the arm's best validation category accuracy,
     the highest pooled validation lift, then category accuracy, then the earliest step.
-P   placebo: the same block and sentence, each frame lift drawn (seeded per step) from Phase 1's
-    training-split frame lifts; the level is computed from the drawn values. Selection as G, on true
-    validation lifts.
-Attention for the block is read from the learner's own answer (re-tokenized) for the same images.
+P   placebo: the same block and sentence; per video, the frame lifts of one randomly drawn Phase 1
+    training video (seeded per step; its frames sampled without replacement, or with replacement when it
+    has fewer boxed frames), so within-video correlation and the low/typical/high mix match G's (D3).
+    The level is computed from the drawn values. Selection as G, on true validation lifts.
+Attention for the block is read from the learner's own answer (re-tokenized) for the same images. Both G
+and P say 'no decision to measure' under the same rule (Scorer.decision on the re-tokenized answer).
 """
 import json
 from pathlib import Path
@@ -41,7 +43,7 @@ class GroundedRun(Run):
         if arm not in ('T1', 'G', 'P'):
             raise ValueError(arm)
         self.scorer, self.boxes, self.arm = scorer, boxes, arm
-        self.pool = np.array(phase1['train_frame_lifts'], dtype=float)
+        self.pool = [np.array(v, dtype=float) for v in phase1['train_video_frame_lifts']]
         self.q25, self.q75 = phase1['train_video_mean_frame_lift_quartiles']
         if arm != 'T1':
             self.optimizer_template = grounded_template(self.optimizer_template)
@@ -64,14 +66,21 @@ class GroundedRun(Run):
         for i, (row, images, text) in enumerate(zip(rows, videos, texts), 1):
             boxes = self.boxes_of(row)
             if not boxes:
-                lines.append(f'Video {i}: no firearm in the frames.')
+                if row['category'] == 'No_Gun':
+                    lines.append(f'Video {i}: no firearm in the frames.')
+                else:
+                    lines.append(f'Video {i} (target {row["category"]}): the firearm is not annotated in these frames.')
                 logged.append({'video': row['id'], 'frames': {}})
                 continue
             if self.arm == 'G':
                 att = self.attention(row, images, prompt, text)
                 values = frame_lifts(att, boxes) if att is not None else None
+            elif self.scorer.decision(self.scorer.tok(text, add_special_tokens=False).input_ids) is None:
+                values = None
             else:
-                values = {k: float(rng.choice(self.pool)) for k in boxes}
+                donor = self.pool[int(rng.integers(len(self.pool)))]
+                drawn = rng.choice(donor, size=len(boxes), replace=len(donor) < len(boxes))
+                values = {k: float(v) for k, v in zip(sorted(boxes), drawn)}
             if not values:
                 lines.append(f'Video {i} (target {row["category"]}): no decision to measure (the answer had no Category field).')
                 logged.append({'video': row['id'], 'frames': None})
@@ -124,12 +133,15 @@ class GroundedRun(Run):
 
 
 def phase1_summary(records):
-    """Frame-lift pool and video quartiles from Phase 1's training-split records (seed questions)."""
+    """Per-video frame-lift vectors, the pooled frame lifts and the video quartiles from Phase 1's
+    training-split records (seed questions)."""
     train = [r for r in records if r.get('split') == 'train' and r.get('frame_lifts')]
     frames = [v for r in train for v in r['frame_lifts'].values() if v is not None]
     means = [float(np.mean([v for v in r['frame_lifts'].values() if v is not None])) for r in train
              if any(v is not None for v in r['frame_lifts'].values())]
     if not frames or not means:
         raise ValueError('Phase 1 has no training-split frame lifts')
-    return {'train_frame_lifts': frames, 'train_video_mean_frame_lift_quartiles': [float(np.quantile(means, 0.25)), float(np.quantile(means, 0.75))],
+    vectors = [[v for v in r['frame_lifts'].values() if v is not None] for r in train]
+    return {'train_video_frame_lifts': [v for v in vectors if v], 'train_frame_lifts': frames,
+            'train_video_mean_frame_lift_quartiles': [float(np.quantile(means, 0.25)), float(np.quantile(means, 0.75))],
             'train_videos': len(means)}

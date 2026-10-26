@@ -22,7 +22,7 @@ def record(i, split, reliance_shift=0.0, wrong=False):
     if firearm:
         lift = 2.0 + 0.1 * i + reliance_shift
         same = {'pred': {'category': pred}}
-        r.update(occlusion={'box': {'pred': {'category': 'No_Gun'}}, 'control': same}, lift=lift, lift_shuffled=1.0, lift_sink_excluded=lift * 1.1, frame_lifts={'1': lift, '2': lift},
+        r.update(occlusion={'box': {'pred': {'category': 'No_Gun'}}, 'control': same}, lift=lift, lift_shared=lift, lift_shuffled=1.0, control_gaps={'1': 100.0 if i % 2 else 10.0}, lift_sink_excluded=lift * 1.1, frame_lifts={'1': lift, '2': lift},
                  lift_layers={'early': 1.0, 'middle': lift, 'late': lift}, reliance=0.5 + 0.05 * i + reliance_shift)
     return r
 
@@ -76,6 +76,10 @@ class GroundingAnalysisTests(unittest.TestCase):
             with (out / 'tables/R5.csv').open() as f:
                 g = next(r for r in csv.DictReader(f) if r['arm'] == 'G')
             self.assertEqual((float(g['flip_box_mask']), float(g['flip_control_mask'])), (1.0, 0.0))
+            with (out / 'tables/R7.csv').open() as f:
+                far = next(csv.DictReader(f))
+            self.assertEqual(int(far['videos']), 8)  # half of the 16 firearm test videos have controls >= 1 cell away
+            self.assertAlmostEqual(float(far['estimate']), 1.0)
             self.assertIn('G, seed 1 (step 100)', (out / 'questions.tex').read_text())
 
 

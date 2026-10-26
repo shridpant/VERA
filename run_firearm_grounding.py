@@ -6,7 +6,8 @@ Design: docs/superpowers/specs/2026-10-26-firearm-grounding-design.md
             token-grid orientation by vision-feature occlusion
   measure   M1-M4 for one question set on chosen splits (resumable JSONL)
   gate      Phase 1 validity gate (V1 true vs shuffled boxes, V2 attention-occlusion agreement) and the
-            training-split lift pool used by the grounded and placebo arms
+            training-split lift pool used by the grounded and placebo arms; exit 2 if Phase 1 is incomplete,
+            3 if the gate fails
   train-arm Phase 2: one arm (T1, G or P) with one training-order seed, then nothing else (resumable)
   evaluate  the selected questions of a trained arm on the test split (M1-M4)
   adopt-t1  Training 1's own run as the T1 arm's first seed (VERA's selection rule on its validation log)
@@ -82,7 +83,12 @@ def gate_command(args):
     from studies.firearm_grounding.gate import gate
     cfg = config(args.config)
     root = Path(cfg['root'])
-    result = gate(args.measurements, root / 'gate.json')
+    expected = [r['id'] for s in ('train', 'val', 'test') for r in json.loads((Path(cfg['data']['dir']) / f'{s}.json').read_text())]
+    try:
+        result = gate(args.measurements, root / 'gate.json', expected)
+    except ValueError as e:
+        print(str(e), file=sys.stderr)
+        return 2
     summary = phase1_summary(read_jsonl(args.measurements)[0])
     (root / 'phase1_pool.json').write_text(json.dumps(summary) + '\n')
     print(json.dumps({k: v for k, v in result.items()}, indent=1))

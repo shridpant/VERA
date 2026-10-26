@@ -2,10 +2,11 @@
 
 For one video and one question set: the greedy answer, its parsed category/group/code, the decision
 probabilities, the attention lift with the true boxes and with shuffled boxes (another grounding-evaluable
-video of the same camera, frame by frame), layer-group and sink-excluded lifts, and, for grounding-evaluable
+video of the same camera, frame by frame; `lift_shared` is the true lift on the same frames, for the paired
+V1 difference), layer-group and sink-excluded lifts, and, for grounding-evaluable
 videos, occlusion reliance: log p_true with control masks minus with box masks, each after regenerating the
 answer from the masked frames. Frames whose box has no equal-sized disjoint control position are left out
-of both masks and recorded.
+of both masks and recorded; so is each control's distance to the firearm box.
 """
 import json
 import math
@@ -15,11 +16,11 @@ import time
 from pathlib import Path
 import numpy as np
 from vera_runner.ledger import JsonlAppender, now, read_jsonl
-from vera_runner.reliance import control_box, frame_lifts, lift, mask_image
+from vera_runner.reliance import control_box, control_gap, frame_lifts, lift, mask_image
 from vera_runner.verbalized import learner_prompt, load_images, parse_answer, sample_indices, extract_frames
 
 LAYER_GROUPS = {'early': range(0, 11), 'middle': range(11, 22), 'late': range(22, 32)}
-WEAPON = re.compile(r'\b(gun|guns|pistol|handgun|rifle|firearm|firearms|weapon|weapons|machine gun|machine-gun)\b', re.I)
+WEAPON = re.compile(r'\b(gun|pistol|handgun|rifle|firearm|weapon|machine[ -]gun)s?\b', re.I)
 SEED = 20261026
 
 
@@ -50,9 +51,11 @@ def shuffled_donors(rows, frames_of):
 
 
 def sink_excluded(att):
+    """(attention without the frame's most-attended token, renormalised; that token's index)."""
     a = np.array(att, dtype=float)
-    a[np.argmax(a)] = 0.0
-    return a / a.sum()
+    top = int(np.argmax(a))
+    a[top] = 0.0
+    return a / a.sum(), top
 
 
 def measure_video(scorer, row, images, question, boxes_true, boxes_shuffled, occlusion=True):
@@ -65,16 +68,19 @@ def measure_video(scorer, row, images, question, boxes_true, boxes_shuffled, occ
     s = scorer.score(images, gen['query_ids'], gen['ids'], attention=True)  # eager: attention rows (M1)
     f = scorer.score(images, gen['query_ids'], gen['ids'], attention=False, eager=False)  # FlashAttention: probabilities (D1)
     if s is None or f is None:
-        rec.update(decision=None, seconds=time.monotonic() - t0)
+        rec.update(decision=None, decision_excluded=scorer.last_exclusion, seconds=time.monotonic() - t0)
         return rec
     rec['decision'] = {'p': f['category_p'], 'logp': f['category_logp'], 'p_true': f['category_p'][row['category']],
+                       'written': f['written'], 'lead': f['lead'], 'candidate_mass': f['candidate_mass'],
                        'eager_p_true': s['category_p'][row['category']], 'frame_mass': s['frame_mass']}
     if boxes_true:
         att = {k: np.array(v) for k, v in s['frame_attention'].items()}
         rec['lift'] = lift(att, boxes_true)
         rec['frame_lifts'] = frame_lifts(att, boxes_true)
         rec['lift_shuffled'] = lift(att, boxes_shuffled) if boxes_shuffled else None
-        rec['lift_sink_excluded'] = lift({k: sink_excluded(v) for k, v in att.items()}, boxes_true)
+        rec['lift_shared'] = lift(att, {k: boxes_true[k] for k in boxes_shuffled}) if boxes_shuffled else None
+        sink = {k: sink_excluded(att[k]) for k in boxes_true}
+        rec['lift_sink_excluded'] = lift({k: a for k, (a, _) in sink.items()}, boxes_true, exclude={k: t for k, (_, t) in sink.items()})
         rec['lift_layers'] = {}
         for name, layers in LAYER_GROUPS.items():
             mean = np.mean([s['layer_rows'][i] for i in layers], axis=0)
@@ -86,6 +92,7 @@ def measure_video(scorer, row, images, question, boxes_true, boxes_shuffled, occ
         usable = {k for k, cs in controls.items() if all(c is not None for c in cs)}
         rec['occlusion_frames'] = sorted(usable)
         rec['occlusion_dropped_frames'] = sorted(set(boxes_true) - usable)
+        rec['control_gaps'] = {str(k): min(control_gap(c, b) for c in controls[k] for b in boxes_true[k]) for k in usable}
         if usable:
             results = {}
             for name, boxes in (('box', {k: boxes_true[k] for k in usable}), ('control', {k: controls[k] for k in usable})):
@@ -93,6 +100,7 @@ def measure_video(scorer, row, images, question, boxes_true, boxes_shuffled, occ
                 g = scorer.generate(masked, question)
                 sm = scorer.score(masked, g['query_ids'], g['ids'], attention=False, eager=False)
                 results[name] = {'answer': g['text'], 'pred': parse_answer(g['text'], scorer.book),
+                                 'decision_excluded': scorer.last_exclusion if sm is None else None,
                                  'p_true': sm['category_p'][row['category']] if sm else None,
                                  'logp_true': math.log(max(sm['category_p'][row['category']], 1e-300)) if sm else None}
             rec['occlusion'] = results

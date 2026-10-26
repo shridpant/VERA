@@ -7,7 +7,8 @@ Pre-registered in docs/superpowers/specs/2026-10-26-firearm-grounding-design.md.
   16x16 grid; token (r, c) covers rows [62.5r, 62.5(r+1)) and columns [62.5c, 62.5(c+1)).
 - control_box(box): an equal-sized box at the horizontal mirror, else the vertical mirror, else
   the non-overlapping position closest to the centre (scan order fixed, no randomness).
-- decision_split(...): the answer cut where the category name starts after the last 'Category:'.
+- decision_split(...): the answer cut where the category name starts after the last 'Category:';
+  None unless one of the category names, written exactly, follows the colon and whitespace.
 - Scorer: replays prompt + the model's own answer prefix with eager attention in every layer and
   returns the decision position's attention to each frame's 256 image tokens (mean over heads and
   selected layers) and the normalised probabilities of the three category names, read with an FP32
@@ -70,13 +71,21 @@ def mask_image(image, boxes, rgb=(127, 127, 127)):
     return out
 
 
-def lift(frame_attention, boxes_by_frame):
-    """Pooled lift over boxed frames: sum(inside) / sum(chance). frame_attention: {k: (256,) normalised}."""
+def lift(frame_attention, boxes_by_frame, exclude=None):
+    """Pooled lift over boxed frames: sum(inside) / sum(chance). frame_attention: {k: (256,) normalised}.
+
+    exclude: {k: token index} removed from frame k (its attention must already be 0 and the rest renormalised);
+    the token then leaves the chance term too, which is over the remaining 255 tokens."""
     inside = chance = 0.0
     for k, boxes in boxes_by_frame.items():
         cov = np.clip(sum(coverage(b) for b in boxes), 0, 1).reshape(-1)
+        n = TOKENS_PER_FRAME
+        if exclude is not None:
+            cov = cov.copy()
+            cov[exclude[k]] = 0.0
+            n -= 1
         inside += float(np.dot(frame_attention[k], cov))
-        chance += float(cov.sum() / TOKENS_PER_FRAME)
+        chance += float(cov.sum() / n)
     return inside / chance if chance > 0 else None
 
 
@@ -89,9 +98,30 @@ def frame_lifts(frame_attention, boxes_by_frame):
     return out
 
 
+def control_gap(control, box):
+    """Distance between two 0-1000 boxes (0 when they touch or overlap)."""
+    dx = max(0.0, control[0] - box[2], box[0] - control[2])
+    dy = max(0.0, control[1] - box[3], box[1] - control[3])
+    return float(math.hypot(dx, dy))
+
+
+def name_after(text, categories):
+    """The category name written right after the last 'Category:' and any whitespace, or None."""
+    fields = list(CATEGORY_FIELD.finditer(text))
+    if not fields:
+        return None
+    rest = text[fields[-1].end():].lstrip()
+    return next((c for c in categories if re.match(re.escape(c) + r'(?![A-Za-z0-9_])', rest)), None)
+
+
 def decision_split(pieces, categories):
-    """pieces: decoded text of each generated token. Returns (j, leading_whitespace) where token j starts the
-    category name after the last 'Category:' field, or None when there is no such field or name."""
+    """pieces: decoded text of each generated token. Returns (j, leading_whitespace, name) where token j starts
+    the category name after the last 'Category:' field, or None when there is no such field, when anything
+    but a category name (e.g. '**', '[', 'Pistol', 'Machine Gun') follows it, or when one token holds both
+    the colon and the name."""
+    name = name_after(''.join(pieces), categories)
+    if name is None:
+        return None
     text = ''.join(pieces)
     fields = list(CATEGORY_FIELD.finditer(text))
     if not fields:
@@ -104,7 +134,7 @@ def decision_split(pieces, categories):
             if pos < end:  # one token holds both the colon and the name: no clean decision position
                 return None
             stripped = piece.lstrip()
-            return j, piece[:len(piece) - len(stripped)]
+            return j, piece[:len(piece) - len(stripped)], name
         pos = nxt
     return None
 
@@ -138,6 +168,7 @@ class Scorer:
         self.get_conv_template = module.get_conv_template
         self.img_context = self.tok.convert_tokens_to_ids('<IMG_CONTEXT>')
         self.model.img_context_token_id = self.img_context  # chat()/batch_chat() set this before generate(); so do we
+        self.last_exclusion = None
 
     def query_ids(self, question, n_frames):
         """Exactly batch_chat's query for one video: all frames' tokens at the first <image>."""
@@ -171,17 +202,34 @@ class Scorer:
             flat[sel] = vit.reshape(-1, flat.shape[-1]).to(flat.dtype)
         return flat.reshape(emb.shape)
 
-    def score(self, images, query_ids, gen_ids, layers=None, attention=True, eager=True):
-        """p over the categories at the decision position, and per-frame attention from that position.
-
-        Returns None when the answer has no 'Category:' field followed by a name."""
-        torch = self.torch
+    def decision(self, gen_ids):
+        """(j, lead, name) for an answer's token ids, or None with the reason in self.last_exclusion:
+        'no_name' (no 'Category:' field followed by a category name) or 'token_mismatch' (the written name
+        does not tokenise, with its leading whitespace, to the generated tokens, so its score would be of a
+        sequence the model did not produce). Pre-specified before any Phase 1 or Phase 2 record is used."""
         pieces = [self.tok.decode(gen_ids[:i + 1], skip_special_tokens=True)[len(self.tok.decode(gen_ids[:i], skip_special_tokens=True)):]
                   for i in range(len(gen_ids))]
         split = decision_split(pieces, self.categories)
         if split is None:
+            self.last_exclusion = 'no_name'
             return None
-        j, lead = split
+        j, lead, name = split
+        cand = self.tok(lead + name, add_special_tokens=False).input_ids
+        if list(gen_ids[j:j + len(cand)]) != list(cand):
+            self.last_exclusion = 'token_mismatch'
+            return None
+        self.last_exclusion = None
+        return split
+
+    def score(self, images, query_ids, gen_ids, layers=None, attention=True, eager=True):
+        """p over the categories at the decision position, and per-frame attention from that position.
+
+        Returns None when decision() excludes the answer (reason in self.last_exclusion)."""
+        torch = self.torch
+        split = self.decision(gen_ids)
+        if split is None:
+            return None
+        j, lead, written = split
         prefix = query_ids + [t for t in gen_ids[:j] if t != self.tok.bos_token_id]
         ids = torch.tensor([prefix], device=self.b.device)
         img = [i for i, t in enumerate(prefix) if t == self.img_context]
@@ -217,8 +265,8 @@ class Scorer:
                 logp.append(total)
         logp = np.array(logp)
         probs = np.exp(logp - np.logaddexp.reduce(logp))
-        result = {'decision_token': j, 'lead': lead, 'category_logp': dict(zip(self.categories, logp.tolist())),
-                  'category_p': dict(zip(self.categories, probs.tolist()))}
+        result = {'decision_token': j, 'lead': lead, 'written': written, 'category_logp': dict(zip(self.categories, logp.tolist())),
+                  'category_p': dict(zip(self.categories, probs.tolist())), 'candidate_mass': float(np.exp(logp).sum())}
         if attention:
             use = layers if layers is not None else sorted(rows)
             mean = np.mean([rows[i] for i in use], axis=0)

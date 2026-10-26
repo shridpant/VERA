@@ -34,12 +34,19 @@ def rfwr(r):
 
 
 def flipped(r, mask):
-    return r['occlusion'][mask]['pred']['category'] != r['pred']['category']
+    """The unmasked answer is right and the answer regenerated under the mask is not."""
+    return correct(r) and r['occlusion'][mask]['pred']['category'] != r['category']
+
+
+def far_controls(r):
+    """Every control patch at least one token cell (62.5 of 1000) from the firearm boxes."""
+    gaps = (r.get('control_gaps') or {}).values()
+    return bool(gaps) and min(gaps) >= 62.5
 
 
 def size_bin(r, boxes, edges):
-    areas = [(b[2] - b[0]) * (b[3] - b[1]) / 1e6 for k in r['boxed_slots']
-             for b in boxes[r['video']]['boxes'].get(str(r['frame_indices'][k]), [])]
+    own = boxes.get(r['video'], {}).get('boxes', {})
+    areas = [(b[2] - b[0]) * (b[3] - b[1]) / 1e6 for k in r['boxed_slots'] for b in own.get(str(r['frame_indices'][k]), [])]
     if not areas:
         return None
     a = float(np.mean(areas))
@@ -96,9 +103,9 @@ def lift_summary(records, label):
     return row
 
 
-def r2(d):
+def r2(d, boxes=None, edges=None):
     g = d['gate'] or {}
-    rows = [{'measure': 'V1 lift true - shuffled (mean)', 'estimate': g.get('V1', {}).get('mean_difference'),
+    rows = [{'measure': 'V1 lift true - shuffled, same frames (mean)', 'estimate': g.get('V1', {}).get('mean_difference'),
              'ci_low': (g.get('V1', {}).get('ci') or [None, None])[0], 'ci_high': (g.get('V1', {}).get('ci') or [None, None])[1],
              'videos': g.get('V1', {}).get('videos'), 'passed': g.get('V1', {}).get('passed')},
             {'measure': 'V2 Spearman rho(lift, reliance)', 'estimate': g.get('V2', {}).get('rho'),
@@ -112,10 +119,15 @@ def r2(d):
                and (r['pred']['category'] == r['category']) == keep]
         rows.append({'measure': f'Spearman rho within {name} category (not pre-registered)', 'videos': len(sub),
                      'estimate': float(spearmanr([r['lift'] for r in sub], [r['reliance'] for r in sub]).correlation) if len(sub) >= 5 else None})
+    for size in ('small', 'medium', 'large') if boxes else ():
+        sub = [r for r in d['phase1'] if r.get('lift') is not None and r.get('reliance') is not None and size_bin(r, boxes, edges) == size]
+        rows.append({'measure': f'Spearman rho within {size} boxes (not pre-registered)', 'videos': len(sub),
+                     'estimate': float(spearmanr([r['lift'] for r in sub], [r['reliance'] for r in sub]).correlation) if len(sub) >= 5 else None})
     gate_table = table('R2', 'Phase 1 validity gate (seed questions, all splits)',
                        ['measure', 'estimate', 'ci_low', 'ci_high', 'mean_reliance', 'videos', 'passed'], rows,
                        [f"Gate {'passed' if g.get('gate_passed') else 'not passed'}: V1 and V2 lower bounds above 0 (pre-registered). "
-                        'V3 (descriptive): mean lift and mean reliance for answers with the correct and an incorrect category.'])
+                        'V3 (descriptive): mean lift and mean reliance for answers with the correct and an incorrect category. '
+                        'Rows marked not pre-registered were added after the independent review, before the gate was read.'])
     sens = [lift_summary(d['phase1'], 'seed questions, all splits'), lift_summary(d['seed_test'].values(), 'seed questions, test')]
     sens += [lift_summary(arm_records(d, arm), f'{arm}, test') for arm in ARMS if arm_records(d, arm)]
     sens_table = table('R2s', 'Lift by layer group and sink exclusion', list(sens[0]), sens,
@@ -207,6 +219,7 @@ def r5(d):
         rows.append({'arm': arm, 'answers': len(recs), 'category_acc': share(correct(r) for r in recs),
                      'group_acc': share(r['pred']['group'] == r['target'][1] for r in recs),
                      'no_decision': sum(r.get('decision') is None for r in recs), 'evaluable': len(ev),
+                     'missing_reliance': sum(r.get('reliance') is None for r in ev),
                      'mean_lift': share(r['lift'] for r in ev), 'median_lift': float(np.median([r['lift'] for r in ev])) if ev else None,
                      'mean_reliance': share(r['reliance'] for r in ev if r.get('reliance') is not None),
                      'right_for_wrong_reasons': share(rfwr(r) for r in ev if r.get('reliance') is not None),
@@ -216,7 +229,9 @@ def r5(d):
                      'weapon_mentioned_no_gun': share(r['weapon_mentioned'] for r in nogun)})
     return table('R5', 'Secondary outcomes by arm (test split, pooled over seeds)', list(rows[0]) if rows else ['arm'], rows, [
         'seed questions = untrained reference (one run). Right for the wrong reasons: correct category with reliance <= 0. '
-        'Flip: the regenerated answer under the mask names a different category than the unmasked answer. '
+        'Flip: the unmasked answer has the true category and the answer regenerated under the mask does not (share of '
+        'videos with occlusion). Missing reliance: grounding-evaluable videos without a reliance value (no usable control '
+        'or an excluded decision under a mask). '
         'Weapon mentioned: the explanation (text before Category:) names a weapon; on No_Gun videos this is a false mention.'])
 
 
@@ -233,13 +248,17 @@ def r6(d, boxes, edges):
 
 
 def r7(d):
-    rows = []
+    far = {v for e in d['runs'].values() for v, r in e['test'].items() if far_controls(r)}
+    sub = {'runs': {k: {**e, 'test': {v: r for v, r in e['test'].items() if v in far}} for k, e in d['runs'].items()}}
+    rows = [{**contrast(sub, 'G', 'P', 'reliance', 'R7 H1 far controls'), 'contrast': 'G - P (controls >= 1 cell away)'}]
     for a, b in (('G', 'T1'), ('P', 'T1'), ('G', 'P')):
         for field in ('lift', 'reliance', 'correct'):
             rows.append(contrast(d, a, b, field, f'R7 {a}-{b} {field}'))
     return table('R7', 'Secondary contrasts (test split, paired by video, mean over seeds)', ['contrast', 'measure', 'videos', 'estimate',
                                                                                             'ci_low', 'ci_high'], rows, [
-        'Same bootstrap as R4. Not corrected for multiplicity; read as descriptive.'])
+        'Same bootstrap as R4. Not corrected for multiplicity; read as descriptive. First row: H1 on the videos whose '
+        'control patches all lie at least one token cell from the firearm (not pre-registered; a control next to the gun '
+        'can cover part of the hand or gun and pull reliance toward 0).'])
 
 
 def figures(d, out):
@@ -367,7 +386,7 @@ def analyze(root, boxes_dir, policy_path, out_dir):
     edges = json.loads(Path(policy_path).read_text())['size_bins_area_fraction']
     out = Path(out_dir)
     (out / 'tables').mkdir(parents=True, exist_ok=True)
-    r2a, r2b = r2(d)
+    r2a, r2b = r2(d, boxes, edges)
     tables = {t['id']: t for t in (r1(d), r2a, r2b, r3(d), r4(d), r5(d), r6(d, boxes, edges), r7(d))}
     views = {'R2s': 'set', 'R5': 'arm'}
     for t in tables.values():
