@@ -356,15 +356,15 @@ def views(tables):
     s4 = tables['S4']
     rows = []
     for r in s4['rows']:
-        rows.append({'Questions': esc(r['questions']), 'Videos': fmt(r['videos']),
+        rows.append({'Ques\\-tions': esc(r['questions']), 'Videos': fmt(r['videos']),
                      'Category acc. \\% [95\\% CI]': interval(r['category_acc'], r['category_low'], r['category_high']),
                      'Category macro-F1 [95\\% CI]': interval(r['category_macro_f1'], r['macro_low'], r['macro_high'], 1.0, 3),
                      'Action-group acc. \\%': interval(r['group_acc'], r['group_low'], r['group_high']),
                      'Code acc. \\%': interval(r['code_acc'], r['code_low'], r['code_high']),
-                     'Invalid (cat./group/code)': '--' if r['questions'] == 'learned - seed' else
+                     'Invalid: cat. / group / code': '--' if r['questions'] == 'learned - seed' else
                      f"{r['category_invalid']}/{r['group_invalid']}/{r['code_invalid']}",
                      'At token cap': '--' if r['questions'] == 'learned - seed' else fmt(r['answers_at_token_cap'])})
-    out['S4'] = table('S4', s4['title'], list(rows[0]) if rows else ['Questions'], rows, s4['notes'])
+    out['S4'] = table('S4', s4['title'], list(rows[0]) if rows else ['Ques\\-tions'], rows, s4['notes'])
     s9 = tables['S9']
     out['S9'] = table('S9', s9['title'], ['measure', 'value'],
                       [{'measure': esc(k.replace('_', ' ')), 'value': fmt(v, k)} for r in s9['rows'] for k, v in r.items()], s9['notes'])
