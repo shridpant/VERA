@@ -5,6 +5,10 @@ Design: docs/superpowers/specs/2026-10-26-firearm-grounding-design.md
   phase0    real-model checks: our generate == batch_chat, eager replay == greedy tokens, eager == flash scores,
             token-grid orientation by vision-feature occlusion
   measure   M1-M4 for one question set on chosen splits (resumable JSONL)
+  gate      Phase 1 validity gate (V1 true vs shuffled boxes, V2 attention-occlusion agreement) and the
+            training-split lift pool used by the grounded and placebo arms
+  train-arm Phase 2: one arm (T1, G or P) with one training-order seed, then nothing else (resumable)
+  evaluate  the selected questions of a trained arm on the test split (M1-M4)
 """
 import argparse
 import json
@@ -70,6 +74,81 @@ def measure_command(args):
     return 0
 
 
+def gate_command(args):
+    from vera_runner.ledger import read_jsonl
+    from studies.firearm_grounding.arms import phase1_summary
+    from studies.firearm_grounding.gate import gate
+    cfg = config(args.config)
+    root = Path(cfg['root'])
+    result = gate(args.measurements, root / 'gate.json')
+    summary = phase1_summary(read_jsonl(args.measurements)[0])
+    (root / 'phase1_pool.json').write_text(json.dumps(summary) + '\n')
+    print(json.dumps({k: v for k, v in result.items()}, indent=1))
+    return 0 if result['gate_passed'] else 3
+
+
+def arm_paths(cfg, arm, seed):
+    return Path(cfg['root']) / 'arms' / f'{arm}_s{seed}'
+
+
+def train_arm_command(args):
+    import fcntl
+    import run_firearm_training as t1
+    from studies.firearm_grounding.arms import GroundedRun, grounded_template
+    gcfg = config(args.config)
+    root = Path(gcfg['root'])
+    gate = json.loads((root / 'gate.json').read_text())
+    if not gate['gate_passed'] and not args.ignore_gate:
+        raise SystemExit('Phase 1 gate did not pass; Phase 2 does not run (pre-registration)')
+    phase1 = json.loads((root / 'phase1_pool.json').read_text())
+    run_dir = arm_paths(gcfg, args.arm, args.seed)
+    cfg = t1.load_config(ROOT / 'studies/firearm_training/training1.json',
+                         {'run_dir': str(run_dir), 'experiment_id': f'grounding_{args.arm}_s{args.seed}', 'training.seed': args.seed,
+                          'training.eval_limit': args.eval_limit, 'training.val_check_interval': args.val_check_interval})
+    run_dir.mkdir(parents=True, exist_ok=True)
+    lock = (run_dir / 'run.lock').open('a+')
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    spec, runner = t1.build_spec(cfg)
+    spec['grounding'] = {'arm': args.arm, 'phase1_pool_sha256': __import__('hashlib').sha256((root / 'phase1_pool.json').read_bytes()).hexdigest(),
+                         'optimizer_template': grounded_template(spec['prompts']['optimizer_instruct']) if args.arm != 'T1' else None,
+                         'design': 'docs/superpowers/specs/2026-10-26-firearm-grounding-design.md'}
+    sdir, info = t1.session_for(run_dir, spec)
+    status = 'failed'
+    try:
+        model = t1.open_model(spec, runner, info, sdir)
+        from vera_runner.reliance import Scorer
+        book = json.loads((ROOT / cfg['training']['codebook']).read_text())
+        scorer = Scorer(model.b, runner['generation'], list(book['categories']))
+        boxes = {}
+        for s in ('train', 'val'):  # never the test boxes during training
+            boxes.update(json.loads((Path(cfg['data']['dir']) / f'boxes_{s}.json').read_text()))
+        run = GroundedRun(spec, run_dir, cfg['data']['dir'], cfg['data']['frames'], model, book, scorer, boxes, args.arm, phase1)
+        status = run.train(sdir.name, stop_after=args.max_steps)
+        if status == 'complete':
+            best = run.select()
+            (run_dir / 'selected.json').write_text(json.dumps({'step': best['step'], 'questions': best['questions'],
+                                                               'metrics': best['metrics']}, indent=1) + '\n')
+        return 0
+    finally:
+        import datetime
+        info.update(status=status, finished_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
+        (sdir / 'session.json').write_text(json.dumps(info, indent=1, default=str) + '\n')
+        print(json.dumps({'session': sdir.name, 'status': status}))
+
+
+def evaluate_command(args):
+    from studies.firearm_grounding.measure import Measurer
+    gcfg = config(args.config)
+    selected = json.loads((Path(args.run_dir) / 'selected.json').read_text())
+    out = Path(args.run_dir) / 'test_measurements.jsonl'
+    scorer, backend, info = open_scorer(gcfg, Path(args.run_dir))
+    (Path(args.run_dir) / 'test_measurements.session.json').write_text(json.dumps({**info, 'selected': selected}, indent=1, default=str) + '\n')
+    measurer = Measurer(scorer, gcfg['data']['dir'], gcfg['data']['frames'], gcfg['data']['dir'], (ROOT / gcfg['learner_instruct_file']).read_text())
+    measurer.run(['test'], selected['questions'], out, limit=args.limit)
+    print(json.dumps({'out': str(out)}))
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -85,6 +164,24 @@ def main(argv=None):
     p.add_argument('--limit', type=int)
     p.add_argument('--no-occlusion', action='store_true')
     p.set_defaults(func=measure_command)
+    p = sub.add_parser('gate')
+    p.add_argument('--config', default='studies/firearm_grounding/grounding.json')
+    p.add_argument('--measurements', required=True)
+    p.set_defaults(func=gate_command)
+    p = sub.add_parser('train-arm')
+    p.add_argument('--config', default='studies/firearm_grounding/grounding.json')
+    p.add_argument('--arm', choices=['T1', 'G', 'P'], required=True)
+    p.add_argument('--seed', type=int, required=True)
+    p.add_argument('--max-steps', type=int)
+    p.add_argument('--eval-limit', type=int)
+    p.add_argument('--val-check-interval', type=int)
+    p.add_argument('--ignore-gate', action='store_true', help='smoke runs only')
+    p.set_defaults(func=train_arm_command)
+    p = sub.add_parser('evaluate')
+    p.add_argument('--config', default='studies/firearm_grounding/grounding.json')
+    p.add_argument('--run-dir', required=True)
+    p.add_argument('--limit', type=int)
+    p.set_defaults(func=evaluate_command)
     args = ap.parse_args(argv)
     return args.func(args)
 

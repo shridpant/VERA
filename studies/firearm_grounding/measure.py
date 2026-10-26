@@ -62,12 +62,13 @@ def measure_video(scorer, row, images, question, boxes_true, boxes_shuffled, occ
            'target': [row['category'], row['action_group'], row['action']], 'answer': gen['text'],
            'pred': parse_answer(gen['text'], scorer.book), 'generated_tokens': len(gen['ids']),
            'weapon_mentioned': bool(WEAPON.search(explanation(gen['text']))), 'boxed_slots': sorted(boxes_true)}
-    s = scorer.score(images, gen['query_ids'], gen['ids'], attention=True)
-    if s is None:
+    s = scorer.score(images, gen['query_ids'], gen['ids'], attention=True)  # eager: attention rows (M1)
+    f = scorer.score(images, gen['query_ids'], gen['ids'], attention=False, eager=False)  # FlashAttention: probabilities (D1)
+    if s is None or f is None:
         rec.update(decision=None, seconds=time.monotonic() - t0)
         return rec
-    rec['decision'] = {'p': s['category_p'], 'logp': s['category_logp'], 'p_true': s['category_p'][row['category']],
-                       'frame_mass': s['frame_mass']}
+    rec['decision'] = {'p': f['category_p'], 'logp': f['category_logp'], 'p_true': f['category_p'][row['category']],
+                       'eager_p_true': s['category_p'][row['category']], 'frame_mass': s['frame_mass']}
     if boxes_true:
         att = {k: np.array(v) for k, v in s['frame_attention'].items()}
         rec['lift'] = lift(att, boxes_true)
@@ -90,7 +91,7 @@ def measure_video(scorer, row, images, question, boxes_true, boxes_shuffled, occ
             for name, boxes in (('box', {k: boxes_true[k] for k in usable}), ('control', {k: controls[k] for k in usable})):
                 masked = [mask_image(im, boxes[k]) if k in boxes else im for k, im in enumerate(images)]
                 g = scorer.generate(masked, question)
-                sm = scorer.score(masked, g['query_ids'], g['ids'], attention=False)
+                sm = scorer.score(masked, g['query_ids'], g['ids'], attention=False, eager=False)
                 results[name] = {'answer': g['text'], 'pred': parse_answer(g['text'], scorer.book),
                                  'p_true': sm['category_p'][row['category']] if sm else None,
                                  'logp_true': math.log(max(sm['category_p'][row['category']], 1e-300)) if sm else None}
