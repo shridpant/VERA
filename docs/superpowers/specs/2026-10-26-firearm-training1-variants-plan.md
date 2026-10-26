@@ -105,6 +105,21 @@ history would outgrow that within a few steps.
   `firearm_vera_fixed_v1_aborted1`.
 - The bank chain on GPU 6 was not touched.
 
+## Depth decision and a third GPU (user-approved)
+
+`decide` ran at 08:27 ET:
+
+- **VERA, fixed** won (selected step 80, validation category 66.1 %, action group 37.1 %) and is
+  successful: it beats the seed questions' 54.8 %.
+- **The bank** selected step 60 at 53.2 %.
+- Test results were not read before the decision.
+
+GPU 7 then started `training1b_fixed_seed2.json`. Under the declared order, GPU 6 would run the
+no-scoring ablation until after 10:30, so the winner would get only one replication. Asked at
+08:29 ET, the user approved running `training1b_fixed_seed3.json` on the idle GPU 5. The answer
+arrived at 10:17, and the run was claimed and launched then. It is expected to end around 14:30 ET;
+nothing else in the plan changed.
+
 ## Report
 
 `run_firearm_training.py compare` writes tables C1–C4 and figures G1–G3. They form the section
