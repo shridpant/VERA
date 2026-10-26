@@ -6,7 +6,9 @@ run makes the same choices. See studies/firearm_training/LITERATURE.md for the p
 
 FixedRun ('vera_fixed') changes VERA's loop where the faithful run's logs show it failing:
   - each step sees a class-balanced batch (training.videos_per_class per category) instead of 2 i.i.d.
-    videos; the learner still answers in pairs, the optimizer sees every video of the batch;
+    videos; the learner still answers in pairs with all frames, the optimizer sees every video of the
+    batch with training.optimizer_frames evenly spaced frames each, so that its input stays inside the
+    model's context (checked before every call);
   - the optimizer prompt lists the last training.history question sets with their check accuracy
     (OPRO's score history);
   - a new question set is kept only if its category accuracy, then action-group accuracy, on a fixed
@@ -97,6 +99,7 @@ class FixedRun(VariantBase):
         check_ids = {r['id'] for r in self.check}
         self.pool = {c: [r for r in by_cat[c] if r['id'] not in check_ids] for c in CATS}
         self.steps_per_epoch = min(len(v) for v in self.pool.values()) // self.vpc
+        self.opt_frames = sorted({int(i) for i in np.linspace(0, self.k - 1, tr.get('optimizer_frames') or self.k).round()})
 
     def batch(self, epoch, j):
         rows = []
@@ -115,7 +118,7 @@ class FixedRun(VariantBase):
                          f'action group {h["group_accuracy"]:.0%}' for h in history) or 'none yet'
         text = (self.optimizer_template.replace('[$Prediction]', str(preds)).replace('[$GroundTruth]', str(targets))
                 .replace('[$History]', hist))
-        block = '[' + ('[' + frame_prefix(self.k) + '] ') * len(preds) + ']\n'
+        block = '[' + ('[' + frame_prefix(len(self.opt_frames)) + '] ') * len(preds) + ']\n'
         i = text.find('** Model Descriptions: **')
         text = text[:i] + block + text[i - 1:]
         j = text.find('Based on the analysis above')
@@ -155,7 +158,13 @@ class FixedRun(VariantBase):
                         targets = [target_of(r) for r in rows]
                         t1 = time.monotonic()
                         prompt = self.optimizer_text(questions, preds, targets, history[-self.history_n:])
-                        opt_text, opt_tokens = self.model.optimize([self.images(r)[0] for r in rows], prompt)
+                        shown = [[self.images(r)[0][i] for i in self.opt_frames] for r in rows]
+                        n_in = self.model.input_tokens(sum(map(len, shown)), prompt) if hasattr(self.model, 'input_tokens') else None
+                        new = self.spec.get('runner', {}).get('generation', {}).get('max_new_tokens', 0)
+                        if n_in is not None and n_in + new > self.model.context_limit():
+                            raise ValueError(f'optimizer input of about {n_in} tokens plus {new} new tokens exceeds the '
+                                             f'model context of {self.model.context_limit()}')
+                        opt_text, opt_tokens = self.model.optimize(shown, prompt)
                         t2 = time.monotonic()
                         proposed, how = new_questions(opt_text, questions)
                         reason = 'no update' if how != 'updated' else acceptable(proposed)
@@ -172,7 +181,7 @@ class FixedRun(VariantBase):
                     step_log.write({**record, 'status': 'complete', 'learner_responses': [t for _, _, t, _ in out],
                                     'learner_tokens': [k for _, _, _, k in out], 'predictions': preds, 'targets': targets,
                                     'optimizer_prompt': prompt, 'optimizer_response': opt_text, 'optimizer_tokens': opt_tokens,
-                                    'proposed': proposed, 'rejected_because': reason, 'candidate_check': cand,
+                                    'optimizer_frames': self.opt_frames, 'optimizer_input_tokens': n_in, 'proposed': proposed, 'rejected_because': reason, 'candidate_check': cand,
                                     'candidate_check_predictions': cand_videos, 'accepted': accepted, 'questions_after': questions,
                                     'current_check': current, 'history_after': history[-self.history_n:],
                                     'learner_seconds': t1 - t0, 'optimizer_seconds': t2 - t1, 'check_seconds': t3 - t2, 'finished_at': now()})

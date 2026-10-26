@@ -66,7 +66,7 @@ def build_spec(cfg):
     return spec, runner
 
 
-VARIANT_KEYS = {'vera_fixed': ('videos_per_class', 'check_per_class', 'history', 'val_every_steps')}
+VARIANT_KEYS = {'vera_fixed': ('videos_per_class', 'check_per_class', 'history', 'val_every_steps', 'optimizer_frames')}
 VARIANT_KEYS.update({m: ('rounds', 'refresh_every', 'score_per_class', 'keep_threshold', 'top_k', 'per_pair_cap')
                      for m in ('bank', 'bank_random', 'bank_noscore')})
 
@@ -126,7 +126,8 @@ def train_command(args, test=False):
     from vera_runner.verbalized import Run
     from vera_runner.verbalized_variants import VARIANTS
     cfg = load_config(args.config, {'run_dir': args.run_dir, 'experiment_id': args.experiment_id,
-                                    'training.val_check_interval': args.val_check_interval, 'training.eval_limit': args.eval_limit})
+                                    'training.val_check_interval': args.val_check_interval, 'training.eval_limit': args.eval_limit,
+                                    **{k: json.loads(v) for k, v in (s.split('=', 1) for s in args.set)}})
     run_dir = Path(cfg['run_dir'])
     run_dir.mkdir(parents=True, exist_ok=True)
     lock = (run_dir / 'run.lock').open('a+')
@@ -203,6 +204,8 @@ def main(argv=None):
         p.add_argument('--max-steps', type=int, help='stop after this many new training steps (smoke runs)')
         p.add_argument('--val-check-interval', type=int, help='override training.val_check_interval (smoke runs)')
         p.add_argument('--eval-limit', type=int, help='evaluate only the first N videos of val/test (smoke runs)')
+        p.add_argument('--set', action='append', default=[], metavar='KEY=JSON', help='override a config value, e.g. '
+                       'training.val_every_steps=1 (smoke runs)')
         p.set_defaults(func=func)
     p = sub.add_parser('check-spec')
     p.add_argument('--config', required=True)

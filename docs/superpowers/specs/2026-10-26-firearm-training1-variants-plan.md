@@ -77,6 +77,24 @@ and batches, and the bank's pair, video and scoring draws.
    - the paired test comparison with the seed questions (recording-group bootstrap);
    - the replications.
 
+## Smoke failure and fix (05:05 ET, before any variant result)
+
+Both chains stopped at their smoke test (exit 3).
+
+- **Cause 1:** the smoke ran two steps or rounds, but the variants validate every 20, so no checkpoint
+  could be selected. The smoke now validates after one (`--set training.val_every_steps=1` or
+  `training.refresh_every=1`).
+- **Cause 2:** the fixed variant's optimizer saw 6 videos × 8 frames. That is an input of about
+  14,600 tokens against InternVL2-8B's 8,192-token context, so the smoke ran beyond the context the
+  model was trained for.
+  - It now sees each of the 6 videos with 3 evenly spaced frames (frames 1, 5 and 8 of the 8):
+    18 frames, against VERA's 16. The learner still sees all 8 frames.
+  - Every optimizer call checks that its input plus 1,024 new tokens fits the context; a call that
+    does not fit stops the run.
+
+The failed smoke folders are kept as `smoke_*_failed1`. The fixed configs gain `optimizer_frames: 3`;
+nothing else changes.
+
 ## Report
 
 `run_firearm_training.py compare` writes tables C1–C4 and figures G1–G3. They form the section

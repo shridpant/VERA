@@ -12,7 +12,7 @@ for c in training1.json training1_seed2.json training1_seed3.json; do
 done
 FIRST=training1b_fixed.json
 NAME=$(basename "$FIRST" .json)
-SMOKE=(--config $C/$FIRST --run-dir $R/smoke_$NAME --experiment-id smoke_$NAME --eval-limit 4)
+SMOKE=(--config $C/$FIRST --run-dir $R/smoke_$NAME --experiment-id smoke_$NAME --eval-limit 4 --set training.val_every_steps=1)  # validates after one unit
 $PY -B run_firearm_training.py train "${SMOKE[@]}" --max-steps 2 || { echo "smoke train failed"; exit 3; }
 $PY -B run_firearm_training.py test "${SMOKE[@]}" || { echo "smoke test failed"; exit 3; }
 for c in training1b_fixed.json; do

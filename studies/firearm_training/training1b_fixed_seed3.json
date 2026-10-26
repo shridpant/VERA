@@ -32,7 +32,8 @@
     "videos_per_class": 2,
     "check_per_class": 8,
     "history": 5,
-    "val_every_steps": 20
+    "val_every_steps": 20,
+    "optimizer_frames": 3
   },
   "data": {
     "dir": "/local/datasets/sp2117/firearm_visilab/training1/data",

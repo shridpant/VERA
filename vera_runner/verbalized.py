@@ -160,6 +160,13 @@ class InternVL2Calls:
             text = self.b.model.chat(self.b.tokenizer, pixels, prompt, dict(self.generation))
         return text, self._tokens(text)
 
+    def input_tokens(self, n_images, prompt):
+        """Upper estimate of a chat input: the prompt text plus each image's context tokens and its two markers (variants only)."""
+        return self._tokens(prompt) + n_images * (self.b.model.num_image_token + 2)
+
+    def context_limit(self):
+        return self.b.tokenizer.model_max_length
+
 
 def digest(value):
     return hashlib.sha256((value if isinstance(value, str) else json.dumps(value, sort_keys=True)).encode('utf-8')).hexdigest()

@@ -124,6 +124,42 @@ class FixedRunTests(unittest.TestCase):
             self.assertGreater(best['step'], 0)
 
 
+    def test_optimizer_frames_and_context_guard(self):
+        class Counting(FakeCalls):
+            def __init__(self, limit):
+                super().__init__()
+                self.shown, self.limit = [], limit
+
+            def optimize(self, videos, prompt):
+                self.shown.append(([len(v) for v in videos], prompt.count('Frame1: <image>'), prompt.count('<image>')))
+                return super().optimize(videos, prompt)
+
+            def input_tokens(self, n_images, prompt):
+                return n_images * 258 + len(prompt.split())
+
+            def context_limit(self):
+                return self.limit
+
+        with tempfile.TemporaryDirectory() as td:
+            data = make_split(td)
+            (Path(td) / 'run').mkdir()
+            model = Counting(8192)
+            run = FixedRun(spec('vera_fixed', **FIXED, optimizer_frames=3), Path(td) / 'run', data, Path(td) / 'frames', model, BOOK)
+            self.assertEqual(run.opt_frames, [0, 4, 7])
+            run.train('001', stop_after=1)
+            self.assertEqual(model.shown[0], ([3] * 6, 6, 18))  # six videos, three frames each
+            step = read(Path(td) / 'run', 'steps.jsonl')[0]
+            self.assertEqual((step['optimizer_frames'], step['optimizer_input_tokens'] > 18 * 258), ([0, 4, 7], True))
+        with tempfile.TemporaryDirectory() as td:
+            data = make_split(td)
+            (Path(td) / 'run').mkdir()
+            run = FixedRun(spec('vera_fixed', **FIXED), Path(td) / 'run', data, Path(td) / 'frames', Counting(8192), BOOK)
+            run.spec['runner'] = {'generation': {'max_new_tokens': 1024}}
+            with self.assertRaisesRegex(ValueError, 'exceeds the model context'):  # 48 frames do not fit
+                run.train('001', stop_after=1)
+            self.assertEqual(read(Path(td) / 'run', 'steps.jsonl')[0]['status'], 'failed')
+
+
 class BankRunTests(unittest.TestCase):
     def run_bank(self, method, td):
         data = make_split(td)
