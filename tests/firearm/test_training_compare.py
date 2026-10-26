@@ -15,12 +15,13 @@ class CompareTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             data = make_split(td)
             dirs = []
-            for name, method, cls, extra in (('faithful', None, Run, {}), ('fixed', 'vera_fixed', FixedRun, FIXED),
+            for name, method, cls, extra in (('faithful', None, Run, {}), ('faithful2', None, Run, {}), ('fixed', 'vera_fixed', FixedRun, FIXED),
                                              ('bank', 'bank', BankRun, BANK), ('random', 'bank_random', BankRun, BANK)):
                 s = spec(method or 'vera', **extra)
                 if method is None:
                     s['training'].pop('method')
                     s['training']['val_check_interval'] = 3
+                    s['training']['seed'] += name == 'faithful2'
                 run_dir = Path(td) / name
                 run_dir.mkdir()
                 (run_dir / 'spec.json').write_text(json.dumps({**s, 'experiment_id': name, 'spec_sha256': 'x'}))
@@ -34,12 +35,16 @@ class CompareTests(unittest.TestCase):
             self.assertIn('G1_validation_all_runs', result['figures'])
             with (out / 'tables/C1.csv').open() as f:
                 rows = list(csv.DictReader(f))
-            self.assertEqual(len(rows), 4)
+            self.assertEqual(len(rows), 5)
             self.assertTrue(all(r['seed_test_disagreements'] == '0' for r in rows))  # deterministic fake
             with (out / 'tables/C4.csv').open() as f:
                 c4 = {r['run'].rsplit(' (', 1)[0]: r for r in csv.DictReader(f)}
             self.assertEqual(set(c4), {'VERA (faithful)', 'VERA, fixed', 'Question bank', 'Bank, random pairs'})
             self.assertIn('lstlisting', (out / 'selected_questions.tex').read_text())
+            with (out / 'tables/C3.csv').open() as f:
+                c3 = list(csv.DictReader(f))
+            self.assertEqual({r['method'] for r in c3}, {'VERA (faithful)'})  # only the faithful method has two runs here
+            self.assertIn('cmp_vera_test_category_mean_pct', json.loads((out / 'numbers.json').read_text()))
 
 
 def fake_run(root, name, method, val, finished=True, seed_val=0.5):

@@ -112,17 +112,21 @@ def c2(runs, reference):
 
 
 def c3(runs):
-    faithful = [r for r in runs if r['method'] == 'vera' and 'learned' in r['tests']]
     rows = []
-    for key, get in (('validation category acc. (selected)', lambda r: r['selected']['metrics']['category_accuracy']),
-                     ('test category acc.', lambda r: acc(r['tests']['learned']['predictions'], 0)),
-                     ('test action-group acc.', lambda r: acc(r['tests']['learned']['predictions'], 1))):
-        values = [get(r) for r in faithful]
-        if values:
-            rows.append({'measure': key, 'runs': len(values), 'mean': float(np.mean(values)), 'sd': float(np.std(values, ddof=1)) if len(values) > 1 else None,
-                         'min': min(values), 'max': max(values), 'values': ', '.join(f'{v:.3f}' for v in values)})
-    return table('C3', 'Faithful VERA across run seeds', ['measure', 'runs', 'mean', 'sd', 'min', 'max', 'values'], rows, [
-        'Same split, prompts, seed questions and model; only the shuffled training order differs.'])
+    for method in dict.fromkeys(r['method'] for r in runs):
+        group = [r for r in runs if r['method'] == method and 'learned' in r['tests']]
+        if len(group) < 2:
+            continue
+        for key, get in (('validation category acc. (selected)', lambda r: r['selected']['metrics']['category_accuracy']),
+                         ('test category acc.', lambda r: acc(r['tests']['learned']['predictions'], 0)),
+                         ('test action-group acc.', lambda r: acc(r['tests']['learned']['predictions'], 1))):
+            values = [get(r) for r in group]
+            rows.append({'method': NAMES.get(method, method), 'measure': key, 'runs': len(values), 'mean': float(np.mean(values)),
+                         'sd': float(np.std(values, ddof=1)), 'min': min(values), 'max': max(values),
+                         'values': ', '.join(f'{v:.3f}' for v in values), 'key': method})
+    return table('C3', 'Spread across run seeds', ['method', 'measure', 'runs', 'mean', 'sd', 'min', 'max', 'values'], rows, [
+        'Methods with at least two runs. Same split, prompts, seed questions and model; the run seed sets the training order '
+        '(and, for the variants, the check set or the bank draws).'])
 
 
 def c4(runs):
@@ -238,11 +242,11 @@ def compare(run_dirs, out_dir):
                      'vs faithful: category (pp)': interval(r.get('vs_faithful_category'), r.get('vs_faithful_category_low'), r.get('vs_faithful_category_high')),
                      'vs faithful: group (pp)': interval(r.get('vs_faithful_group'), r.get('vs_faithful_group_low'), r.get('vs_faithful_group_high'))})
     views['C2'] = table('C2', tables['C2']['title'], list(rows[0]) if rows else ['Run'], rows, tables['C2']['notes'])
-    heads = {'C3': {'measure': 'Measure', 'runs': 'Runs', 'mean': 'Mean', 'sd': 'SD', 'min': 'Min', 'max': 'Max', 'values': 'Values'},
+    heads = {'C3': {'method': 'Method', 'measure': 'Measure', 'runs': 'Runs', 'mean': 'Mean', 'sd': 'SD', 'min': 'Min', 'max': 'Max', 'values': 'Values'},
              'C4': {'run': 'Run', 'units': 'Steps or rounds', 'proposed_and_checked': 'Checked', 'rejected_format': 'Rejected (format)',
                     'no_update': 'No update', 'accepted': 'Accepted', 'kept_or_bank_size': 'Distinct sets / bank', 'mean_score': 'Mean score'}}
     for tid, names in heads.items():
-        rows = [{names[k]: fmt(v, k) for k, v in r.items()} for r in tables[tid]['rows']]
+        rows = [{names[k]: fmt(v, k) for k, v in r.items() if k in names} for r in tables[tid]["rows"]]
         views[tid] = table(tid, tables[tid]['title'], list(names.values()), rows, tables[tid]['notes'])
     for tid in ('C1', 'C2', 'C3', 'C4'):
         write_tex(views[tid], out / 'tables', raw=True)
@@ -272,8 +276,8 @@ def compare(run_dirs, out_dir):
         name = {'validation category acc. (selected)': 'val_category', 'test category acc.': 'test_category',
                 'test action-group acc.': 'test_group'}[r['measure']]
         for stat in ('mean', 'sd', 'min', 'max'):
-            numbers[f'cmp_faithful_{name}_{stat}_pct'] = pct(r[stat])
-        numbers['cmp_faithful_runs'] = r['runs']
+            numbers[f"cmp_{r['key']}_{name}_{stat}_pct"] = pct(r[stat])
+        numbers[f"cmp_{r['key']}_runs"] = r['runs']
     for r in tables['C4']['rows']:
         key = next(f"{x['method']}_{x['run_seed']}" for x in tables['C1']['rows'] if x['run'] == r['run'])
         for col in ('units', 'proposed_and_checked', 'rejected_format', 'accepted', 'kept_or_bank_size'):
