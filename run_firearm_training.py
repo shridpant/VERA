@@ -6,6 +6,7 @@
   test      the seed and the selected questions on the test split
   analyze   tables S1-S10, figures F1-F4, qualitative answers and the report numbers
   compare   tables C1-C4, figures G1-G3 across faithful seeds and variants
+  decide    the depth-run queue from the candidates' validation logs (variants plan, rules 3-5)
 """
 import argparse
 import json
@@ -176,6 +177,15 @@ def compare_command(args):
     return 0
 
 
+def decide_command(args):
+    from datetime import datetime
+    from studies.firearm_training.analysis.compare import decide
+    deadline = datetime.fromisoformat(args.deadline).timestamp() if args.deadline else None
+    decision = decide([(c, load_config(c, {})['run_dir']) for c in args.candidates], args.out, deadline)
+    print(json.dumps(decision, indent=1))
+    return 0 if decision['queue'] else 2
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -206,6 +216,11 @@ def main(argv=None):
     p.add_argument('--runs', nargs='+', required=True, help='run folders; the first faithful one is the reference')
     p.add_argument('--out', required=True)
     p.set_defaults(func=compare_command)
+    p = sub.add_parser('decide')
+    p.add_argument('--candidates', nargs='+', required=True, help='configs of the depth-run candidates')
+    p.add_argument('--out', required=True, help='write-once decision file shared by the GPUs')
+    p.add_argument('--deadline', help='ISO time; stop waiting for unfinished candidates then')
+    p.set_defaults(func=decide_command)
     args = ap.parse_args(argv)
     return args.func(args)
 

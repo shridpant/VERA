@@ -6,9 +6,11 @@ so their seed-question test answers must agree; C1 reports any disagreement as a
 Validation scores of several methods on the same 62 videos are optimistic; the test split decides.
 """
 import json
+import os
 from pathlib import Path
+import time
 import numpy as np
-from vera_runner.ledger import read_jsonl
+from vera_runner.ledger import now, read_jsonl
 from .latex import esc, fmt, write_csv, write_numbers, write_tex
 from .run import FIELDS, acc, correct, interval, table
 from .stats import cluster_bootstrap, pct, share
@@ -19,12 +21,13 @@ NAMES = {'vera': 'VERA (faithful)', 'vera_fixed': 'VERA, fixed', 'bank': 'Questi
 COLORS = ['#2a78d6', '#6250d6', '#008300', '#eb6834', '#1baf7a', '#e87ba4', '#eda100', '#e34948']
 
 
-def load_run(run_dir):
+def load_run(run_dir, tests=True):
     run_dir = Path(run_dir)
     spec = json.loads((run_dir / 'spec.json').read_text())
     tr = spec['training']
     r = {'dir': run_dir, 'id': spec['experiment_id'], 'method': tr.get('method', 'vera'), 'seed': tr['seed'], 'spec': spec,
-         'validations': read_jsonl(run_dir / 'validations.jsonl')[0], 'tests': {t['name']: t for t in read_jsonl(run_dir / 'test.jsonl')[0]},
+         'validations': read_jsonl(run_dir / 'validations.jsonl')[0],
+         'tests': {t['name']: t for t in read_jsonl(run_dir / 'test.jsonl')[0]} if tests else {},
          'steps': [s for s in read_jsonl(run_dir / 'steps.jsonl')[0] if s['status'] == 'complete'],
          'rounds': [s for s in read_jsonl(run_dir / 'rounds.jsonl')[0] if s['status'] == 'complete'],
          'passes': read_jsonl(run_dir / 'passes.jsonl')[0],
@@ -257,3 +260,45 @@ def compare(run_dirs, out_dir):
     (out / 'numbers_defs.tex').write_text('\n'.join(defs))  # loaded after the main analysis' numbers.tex
     (out / 'compare_manifest.json').write_text(json.dumps({'runs': [str(r['dir']) for r in runs], 'tables': sorted(tables), 'figures': made}, indent=1) + '\n')
     return {'runs': [r['label'] for r in runs], 'tables': sorted(tables), 'figures': made}
+
+
+def finished(run_dir):
+    """train.sh tests right after training, so a run has finished when its test log names the selected questions."""
+    return any(t['name'] == 'learned' for t in read_jsonl(Path(run_dir) / 'test.jsonl')[0])
+
+
+def decide(candidates, out_path, deadline=None, poll=300, clock=time.time, sleep=time.sleep):
+    """Depth-run decision (variants plan, rules 3-5) from validation logs alone; candidates = [(config path, run dir)].
+
+    Waits until every candidate has finished or the deadline (epoch seconds) passes, then ranks the finished ones. The queue
+    is the winner's _seed2/_seed3 configs, then the runner-up's. Write-once, so both GPUs follow the same decision.
+    """
+    out_path = Path(out_path)
+    while not out_path.exists() and not all(finished(d) for _, d in candidates) and (deadline is None or clock() < deadline):
+        sleep(poll)
+    if out_path.exists():
+        return json.loads(out_path.read_text())
+    rows = []
+    for cfg, d in candidates:
+        r = load_run(d, tests=False) if finished(d) else None
+        if r is None or r['selected'] is None:
+            rows.append({'config': str(cfg), 'run_dir': str(d), 'finished': False})
+            continue
+        sel = r['selected']
+        rows.append({'config': str(cfg), 'run_dir': str(d), 'finished': True, 'method': r['method'], 'selected_step': sel['step'],
+                     'val_category_acc': sel['metrics']['category_accuracy'], 'val_group_acc': sel['metrics']['group_accuracy'],
+                     'train_gpu_hours': hours(r),
+                     'seed_val_category_acc': next(v for v in r['validations'] if v['reference_only'])['metrics']['category_accuracy']})
+    ranked = sorted((x for x in rows if x['finished']), key=lambda x: (-x['val_category_acc'], -x['val_group_acc'], x['train_gpu_hours']))
+    decision = {'rule': 'docs/superpowers/specs/2026-10-26-firearm-training1-variants-plan.md, rules 3-5', 'candidates': rows,
+                'winner': ranked[0]['config'] if ranked else None,
+                'successful': bool(ranked) and ranked[0]['val_category_acc'] > ranked[0]['seed_val_category_acc'],
+                'queue': [str(Path(x['config']).with_name(f"{Path(x['config']).stem}_seed{n}.json")) for x in ranked for n in (2, 3)],
+                'decided_at': now()}
+    try:
+        fd = os.open(out_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        return json.loads(out_path.read_text())
+    with os.fdopen(fd, 'w') as f:
+        f.write(json.dumps(decision, indent=1) + '\n')
+    return decision

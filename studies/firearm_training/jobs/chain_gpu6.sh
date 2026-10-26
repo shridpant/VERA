@@ -19,3 +19,4 @@ for c in training1c_bank.json training1c_bank_random.json training1c_bank_noscor
   echo "$(date -u +%FT%TZ) starting $c"
   bash $C/jobs/train.sh $C/$c
 done
+bash $C/jobs/depth.sh

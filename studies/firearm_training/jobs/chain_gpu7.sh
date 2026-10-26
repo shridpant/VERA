@@ -19,3 +19,4 @@ for c in training1b_fixed.json; do
   echo "$(date -u +%FT%TZ) starting $c"
   bash $C/jobs/train.sh $C/$c
 done
+bash $C/jobs/depth.sh
