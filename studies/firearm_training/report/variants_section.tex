@@ -25,12 +25,12 @@ The runs, their order and the rules for choosing between them were declared befo
 
 \input{tables/C1.tex}
 \input{tables/C2.tex}
-\IfFileExists{tables/C3.tex}{\input{tables/C3.tex}}{}
+\IfFileExists{./tables/C3.tex}{\input{tables/C3.tex}}{}
 \input{tables/C4.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G1_validation_all_runs.pdf}
 \caption{Validation category accuracy of the learned questions in every run, against the fraction of the run; the dashed line is the seed questions.}\label{fig:G1}\end{figure}
-\IfFileExists{figures/G2_test_all_runs.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G2_test_all_runs.pdf}
+\IfFileExists{./figures/G2_test_all_runs.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G2_test_all_runs.pdf}
 \caption{Test accuracy of each run's selected questions with 95\,\% recording-group bootstrap intervals; dashed lines are the seed questions.}\label{fig:G2}\end{figure}}{}
-\IfFileExists{figures/G3_bank_scores.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G3_bank_scores.pdf}
+\IfFileExists{./figures/G3_bank_scores.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G3_bank_scores.pdf}
 \caption{Balanced accuracy of the questions proposed in the bank runs on their own pair; the line is the keep threshold.}\label{fig:G3}\end{figure}}{}
-\IfFileExists{compare_questions.tex}{Appendix~\ref{app:compare-questions} lists the questions selected in every run.}{}
+\IfFileExists{./compare_questions.tex}{Appendix~\ref{app:compare-questions} lists the questions selected in every run.}{}

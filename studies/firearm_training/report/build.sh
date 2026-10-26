@@ -14,7 +14,7 @@ cp "$ANALYSIS"/figures/*.pdf "$OUT/figures/"
 cp "$ANALYSIS"/{numbers.tex,qualitative.tex,questions_seed.txt,questions_selected.txt,learner_instruct.txt,optimizer_instruct.txt} "$OUT/"
 if [ -n "${3:-}" ]; then
   COMPARE="$(cd "$3" && pwd)"
-  cp "$HERE/compare.tex" "$OUT/"
+  cp "$HERE/variants_section.tex" "$OUT/"
   cp "$COMPARE"/tables/*.tex "$OUT/tables/"
   cp "$COMPARE"/figures/*.pdf "$OUT/figures/"
   cp "$COMPARE/numbers_defs.tex" "$OUT/compare_numbers.tex"

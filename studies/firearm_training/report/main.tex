@@ -16,7 +16,7 @@
 \lstset{basicstyle=\scriptsize\ttfamily,breaklines=true,columns=fullflexible,keepspaces=true}
 \captionsetup{font=small}
 \input{numbers.tex}
-\IfFileExists{compare_numbers.tex}{\input{compare_numbers.tex}}{}
+\IfFileExists{./compare_numbers.tex}{\input{./compare_numbers.tex}}{}
 
 \title{Adapting VERA to Firearm Categories and Actions by Verbalized Learning (Training 1)}
 \author{VISILAB firearm-action dataset, frozen InternVL2-8B}
@@ -47,7 +47,7 @@ All 398 videos are used. The category is the dataset folder; the action code is 
 \section{Results}
 \input{results.tex}
 
-\IfFileExists{compare.tex}{\input{compare.tex}}{}
+\IfFileExists{./variants_section.tex}{\input{./variants_section.tex}}{}
 
 \section{Limitations}
 \input{limitations.tex}
@@ -66,7 +66,7 @@ All 398 videos are used. The category is the dataset folder; the action code is 
 \subsection*{Selected questions}
 \lstinputlisting{questions_selected.txt}
 
-\IfFileExists{compare_questions.tex}{\section{Questions selected in every run}\label{app:compare-questions}\input{compare_questions.tex}}{}
+\IfFileExists{./compare_questions.tex}{\section{Questions selected in every run}\label{app:compare-questions}\input{./compare_questions.tex}}{}
 
 \section{Qualitative answers}\label{app:cases}
 For each true category, the first test video (by ID) whose category the selected questions got right and the first they got wrong.

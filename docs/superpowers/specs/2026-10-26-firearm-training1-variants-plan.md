@@ -80,4 +80,4 @@ and batches, and the bank's pair, video and scoring draws.
 ## Report
 
 `run_firearm_training.py compare` writes tables C1–C4 and figures G1–G3. They form the section
-"Variants and replications" of the Training 1 report (`report/compare.tex`).
+"Variants and replications" of the Training 1 report (`report/variants_section.tex`).
