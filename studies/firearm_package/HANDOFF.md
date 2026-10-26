@@ -1,4 +1,31 @@
-# Firearm VERA package: handoff (2026-10-26, about 17:45 ET)
+# Firearm VERA package: execution update (2026-10-26, 19:22 ET)
+
+- Setup completed: both CUDA environments work and all 36 InternVL3.5-38B files were verified.
+- The run checkout was synced from cb0c5ed, then advanced to 47c867a for the observed model-loading fixes. The branch remains unpushed.
+- The non-test manifest has 1,003 frames: 394 Handgun, 433 Machine_Gun, 176 No_Gun, with nested 300/100 subsets.
+- All seven initial format settings completed (60 real calls). No prompt switch or coordinate scaling was indicated. See DEVIATIONS.md for backend details and exclusions.
+- Three analysis implementation errors were fixed in 61ae6e9 before Phase 1: the 38B thinking ranking exclusion, per-category target indexing, and duplicate retry accounting.
+- The 38B A16 model exposed two runtime issues: automatic placement filled a card during loading, and InternVL silently selected eager attention. Explicit weight-memory ceilings and the intended SDPA language backend are now enforced (019766e, 47c867a). Pre-SDPA InternVL records were preserved in package/diagnostics/pre_sdpa and excluded from analysis.
+- All 47 firearm tests pass. The completion checker was verified to block missing records or failed jobs and run analysis only on complete inputs.
+
+## Active jobs on oz
+
+All paths below are under `/local/datasets/sp2117/firearm_visilab/package/logs/`.
+
+- Ada 4: `firearm_package_e1a_sdpa_20261026T192229_257962`. Repeats both InternVL3.5-8B probes with SDPA, checks the predeclared prompt rule, then runs E1a.
+- Ada 5: `firearm_package_e2_20261026T191611_256791` (recognition; continued unchanged).
+- Ada 6: `firearm_package_e1b_20261026T191612_256838` (Qwen detectors; continued unchanged).
+- A16 indices 0, 1, 2, 3, 8, 9: `firearm_package_e1c_sdpa_20261026T192230_258008`. Probes 38B before E1c; all six GPUs have usage samples.
+- Ada 7 remains free.
+- CPU dependency job: `firearm_package_gates_sdpa_20261026T192231_258054`. Waits for all four jobs, checks every expected frame/video, and runs analyze1 only if complete. It writes `package/analysis/completion.json`; results will be `package/analysis/phase1.json`. The reproducible checker is `jobs/finish_phase1.py`; the launched copy is `package/finish_phase1.py`.
+- `package/phase1_submission.json` records current job paths and superseded attempts. Do not double-launch jobs. Inspect records, completion.json, and each job's exit_status before resuming or interpreting gates.
+
+Phase 1 is still running; no gate decision is available yet. Phase 2, importance, package assembly, and the report remain unbuilt.
+
+---
+
+## Original handoff (2026-10-26, about 17:45 ET; historical)
+
 
 ## Where things are
 
