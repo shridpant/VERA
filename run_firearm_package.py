@@ -34,6 +34,8 @@ def main(argv=None):
         p.add_argument('--arm', required=True)
         p.add_argument('--limit', type=int, help='at most N new frames (smoke runs)')
         p.add_argument('--out', help='override the output folder (smoke runs)')
+        if name == 'detect':
+            p.add_argument('--prompt', choices=('detection', 'referring'), help='InternVL prompt selected by the declared probe rule')
     p = sub.add_parser('recognise')
     p.add_argument('--arm', required=True)
     p.add_argument('--limit', type=int)
@@ -52,8 +54,12 @@ def main(argv=None):
         print('\n'.join(json.dumps(r) for r in rows))
     elif args.command == 'detect':
         from studies.firearm_package.e1 import run_arm
+        from vera_runner.detector import INTERNVL_PROMPT, INTERNVL_REC_PROMPT
+        if args.prompt and arms('e1')[args.arm]['family'] != 'internvl':
+            ap.error('--prompt is only supported for InternVL')
+        prompt = {'detection': INTERNVL_PROMPT, 'referring': INTERNVL_REC_PROMPT}.get(args.prompt)
         print(json.dumps(run_arm(cfg, args.arm, arms('e1')[args.arm], manifest_path, args.out or out_root / 'e1' / args.arm,
-                                 limit=args.limit)))
+                                 limit=args.limit, prompt=prompt)))
     elif args.command == 'recognise':
         from studies.firearm_package.e2 import run_arm
         print(json.dumps(run_arm(cfg, args.arm, arms('e2')[args.arm], args.out or out_root / 'e2' / args.arm, ROOT, limit=args.limit)))

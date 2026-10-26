@@ -156,3 +156,15 @@ class RetryAnalysisTests(unittest.TestCase):
         manifest = [{'frame_id': 'f', 'gt': [], 'recording_group': 'g', 'subset300': True, 'subset100': True}]
         self.assertEqual(len(e1_units(manifest, rows)), 1)
         self.assertEqual(len(latest_successful(rows, 'frame_id')), 1)
+
+
+class ProbeDecisionTests(unittest.TestCase):
+    def test_only_firearm_detection_prompt_boxes_prevent_switch(self):
+        from studies.firearm_package.jobs.e1c_pipeline import choose_prompt
+        from vera_runner.detector import INTERNVL_PROMPT, INTERNVL_REC_PROMPT
+        calls = [{'category': 'No_Gun', 'prompt': INTERNVL_PROMPT, 'found': [{}]},
+                 {'category': 'Handgun', 'prompt': INTERNVL_REC_PROMPT, 'found': [{}]},
+                 {'category': 'Machine_Gun', 'prompt': INTERNVL_PROMPT, 'found': []}]
+        self.assertEqual(choose_prompt(calls), ('referring', 0))
+        calls.append({'category': 'Handgun', 'prompt': INTERNVL_PROMPT, 'found': [{}]})
+        self.assertEqual(choose_prompt(calls), ('detection', 1))
