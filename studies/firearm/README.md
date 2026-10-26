@@ -1,7 +1,7 @@
 # Firearm A/G/AG study
 
 Firearm localization and its effect on VERA's anomaly judgments, on the 398-video VISILAB
-firearm-action dataset with frozen InternVL2-8B. Specification: [HANDOFF.md](HANDOFF.md).
+firearm-action dataset with frozen InternVL2-8B. **Results:** [RESULTS.md](RESULTS.md) (report: `results/firearm_a_g_ag_v1/report.pdf`). Specification: [HANDOFF.md](HANDOFF.md).
 Plan: [../../docs/superpowers/plans/2026-10-25-firearm-a-g-ag-study.md](../../docs/superpowers/plans/2026-10-25-firearm-a-g-ag-study.md).
 
 ## Contents

@@ -1,0 +1,9 @@
+condition,category,answers,final_valid,runner_strict_valid,final_vs_runner_differ,final_vs_legacy_differ_where_final_valid,legacy_0_where_final_missing,legacy_1_where_final_missing
+A,Handgun,2235,2235,2235,0,0,0,0
+A,Machine_Gun,2285,2285,2285,0,0,0,0
+A,No_Gun,1855,1855,1855,0,0,0,0
+A,All,6375,6375,6375,0,0,0,0
+AG,Handgun,2235,2234,2234,0,0,1,0
+AG,Machine_Gun,2285,2282,2282,0,0,3,0
+AG,No_Gun,1855,1854,1854,0,0,1,0
+AG,All,6375,6370,6370,0,0,5,0

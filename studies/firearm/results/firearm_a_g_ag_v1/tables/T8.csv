@@ -1,0 +1,51 @@
+origin,iou,condition,category,size,evaluable_slots,positive_slots,gt_objects,no_record_slots,tp,fp_on_boxed_frames,fn,precision,recall,f1,precision_incl_no_gun_frames,answered_recall,matched_iou_mean,matched_iou_median,negative_slots,negative_box_rate,paired_executed_slots,recall_diff_AG_minus_G,recall_diff_ci_low,recall_diff_ci_high,precision_diff_AG_minus_G,precision_diff_ci_low,precision_diff_ci_high,negative_box_rate_diff,negative_box_rate_diff_ci_low,negative_box_rate_diff_ci_high,na_reason
+primary,0.5,G,Handgun,,11454,11454,11454,0,0,29,11454,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+primary,0.5,G,Handgun,small,,,7549,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,Handgun,medium,,,3897,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,Handgun,large,,,8,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,Handgun,,11454,11454,11454,0,0,14,11454,0.0,0.0,0.0,,0.0,,,0,,11454,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+primary,0.5,AG,Handgun,small,,,7549,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,Handgun,medium,,,3897,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,Handgun,large,,,8,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,Machine_Gun,,12387,12387,12387,0,0,135,12387,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+primary,0.5,G,Machine_Gun,small,,,424,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,Machine_Gun,medium,,,4035,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,Machine_Gun,large,,,7928,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,Machine_Gun,,12387,12387,12387,0,0,17,12387,0.0,0.0,0.0,,0.0,,,0,,12387,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+primary,0.5,AG,Machine_Gun,small,,,424,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,Machine_Gun,medium,,,4035,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,Machine_Gun,large,,,7928,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,0.0,,,,,,,,,,,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+primary,0.5,AG,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,6.738544474393532e-05,14840,,,,,,,6.738544474393532e-05,0.0,0.00020515629820035976,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+primary,0.5,G,All,,38681,23841,23841,0,0,164,23841,0.0,0.0,0.0,0.0,0.0,,,14840,0.0,,,,,,,,,,,
+primary,0.5,G,All,small,,,7973,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,All,medium,,,7932,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,G,All,large,,,7936,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,All,,38681,23841,23841,0,0,31,23841,0.0,0.0,0.0,0.0,0.0,,,14840,6.738544474393532e-05,38681,0.0,0.0,0.0,0.0,0.0,0.0,6.738544474393532e-05,0.0,0.00020967056209794286,
+primary,0.5,AG,All,small,,,7973,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,All,medium,,,7932,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.5,AG,All,large,,,7936,,0,,,,0.0,,,,,,,,,,,,,,,,,,
+primary,0.75,G,Handgun,,11454,11454,11454,0,0,29,11454,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+primary,0.75,AG,Handgun,,11454,11454,11454,0,0,14,11454,0.0,0.0,0.0,,0.0,,,0,,11454,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+primary,0.75,G,Machine_Gun,,12387,12387,12387,0,0,135,12387,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+primary,0.75,AG,Machine_Gun,,12387,12387,12387,0,0,17,12387,0.0,0.0,0.0,,0.0,,,0,,12387,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+primary,0.75,G,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,0.0,,,,,,,,,,,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+primary,0.75,AG,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,6.738544474393532e-05,14840,,,,,,,6.738544474393532e-05,0.0,0.0002042483660130719,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+primary,0.75,G,All,,38681,23841,23841,0,0,164,23841,0.0,0.0,0.0,0.0,0.0,,,14840,0.0,,,,,,,,,,,
+primary,0.75,AG,All,,38681,23841,23841,0,0,31,23841,0.0,0.0,0.0,0.0,0.0,,,14840,6.738544474393532e-05,38681,0.0,0.0,0.0,0.0,0.0,0.0,6.738544474393532e-05,0.0,0.00020593646779871626,
+sensitivity,0.5,G,Handgun,,11482,11482,11482,0,0,30,11482,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+sensitivity,0.5,AG,Handgun,,11482,11482,11482,0,0,13,11482,0.0,0.0,0.0,,0.0,,,0,,11482,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+sensitivity,0.5,G,Machine_Gun,,12359,12359,12359,0,0,135,12359,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+sensitivity,0.5,AG,Machine_Gun,,12359,12359,12359,0,0,17,12359,0.0,0.0,0.0,,0.0,,,0,,12359,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+sensitivity,0.5,G,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,0.0,,,,,,,,,,,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+sensitivity,0.5,AG,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,6.738544474393532e-05,14840,,,,,,,6.738544474393532e-05,0.0,0.0002050328750988511,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+sensitivity,0.5,G,All,,38681,23841,23841,0,0,165,23841,0.0,0.0,0.0,0.0,0.0,,,14840,0.0,,,,,,,,,,,
+sensitivity,0.5,AG,All,,38681,23841,23841,0,0,30,23841,0.0,0.0,0.0,0.0,0.0,,,14840,6.738544474393532e-05,38681,0.0,0.0,0.0,0.0,0.0,0.0,6.738544474393532e-05,0.0,0.0002047111381213619,
+sensitivity,0.75,G,Handgun,,11482,11482,11482,0,0,30,11482,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+sensitivity,0.75,AG,Handgun,,11482,11482,11482,0,0,13,11482,0.0,0.0,0.0,,0.0,,,0,,11482,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+sensitivity,0.75,G,Machine_Gun,,12359,12359,12359,0,0,135,12359,0.0,0.0,0.0,,0.0,,,0,,,,,,,,,,,,
+sensitivity,0.75,AG,Machine_Gun,,12359,12359,12359,0,0,17,12359,0.0,0.0,0.0,,0.0,,,0,,12359,0.0,0.0,0.0,0.0,0.0,0.0,,,,
+sensitivity,0.75,G,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,0.0,,,,,,,,,,,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+sensitivity,0.75,AG,No_Gun,,14840,0,0,0,0,0,0,,,,,,,,14840,6.738544474393532e-05,14840,,,,,,,6.738544474393532e-05,0.0,0.00020857961253347736,no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives
+sensitivity,0.75,G,All,,38681,23841,23841,0,0,165,23841,0.0,0.0,0.0,0.0,0.0,,,14840,0.0,,,,,,,,,,,
+sensitivity,0.75,AG,All,,38681,23841,23841,0,0,30,23841,0.0,0.0,0.0,0.0,0.0,,,14840,6.738544474393532e-05,38681,0.0,0.0,0.0,0.0,0.0,0.0,6.738544474393532e-05,0.0,0.00020707364154746235,
