@@ -1,0 +1,19 @@
+{
+  "out_root": "/local/datasets/sp2117/firearm_visilab/package",
+  "data_dir": "/local/datasets/sp2117/firearm_visilab/training1/data",
+  "frames_dir": "/local/datasets/sp2117/firearm_visilab/training1/frames",
+  "seed_measurements": "/local/datasets/sp2117/firearm_visilab/grounding1/phase1_seed_measurements.jsonl",
+  "codebook": "studies/firearm_training/codebook.json",
+  "learner_instruct_file": "studies/firearm_training/prompts/learner_instruct.txt",
+  "seed_questions_file": "studies/firearm_training/prompts/seed_questions.txt",
+  "seed": 20261026,
+  "models": {
+    "internvl2_8b": "/home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "internvl35_8b": "/local/datasets/sp2117/models/OpenGVLab/InternVL3_5-8B/9bb6a56ad9cc69db95e2d4eeb15a52bbcac4ef79",
+    "internvl35_38b": "/local/datasets/sp2117/models/OpenGVLab/InternVL3_5-38B/de99855be3642cd44fe97c9b72d70e5ce2c07f69",
+    "qwen3vl_8b_instruct": "/local/datasets/sp2117/models/Qwen/Qwen3-VL-8B-Instruct/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "qwen3vl_8b_thinking": "/local/datasets/sp2117/models/Qwen/Qwen3-VL-8B-Thinking/92f3c4b4feadd3a016ef468d103bb5f58b2a2c6b",
+    "qwen35_9b": "/local/datasets/sp2117/models/Qwen/Qwen3.5-9B/c202236235762e1c871ad0ccb60c8ee5ba337b9a"
+  },
+  "manifest": {"firearm_frames_per_video": 4, "nogun_frames_per_video": 2, "subset300": 300, "subset100": 100}
+}

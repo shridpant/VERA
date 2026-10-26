@@ -1,0 +1,14 @@
+{
+  "internvl35_8b_off":   {"model": "internvl35_8b", "family": "internvl", "thinking": false, "frames": "all",       "max_new_tokens": 512,  "max_num": 6},
+  "internvl35_8b_on":    {"model": "internvl35_8b", "family": "internvl", "thinking": true,  "frames": "subset300", "max_new_tokens": 4096, "max_num": 6},
+  "internvl35_8b_on_r2": {"model": "internvl35_8b", "family": "internvl", "thinking": true,  "frames": "subset100", "max_new_tokens": 4096, "max_num": 6, "seed_offset": 1},
+  "internvl2_8b_off":    {"model": "internvl2_8b",  "family": "internvl", "thinking": false, "frames": "all",       "max_new_tokens": 512,  "max_num": 6, "flash": true},
+  "qwen3vl_8b_instruct": {"model": "qwen3vl_8b_instruct", "family": "qwen3vl", "thinking": false, "frames": "all",   "max_new_tokens": 512},
+  "qwen3vl_8b_thinking": {"model": "qwen3vl_8b_thinking", "family": "qwen3vl", "thinking": true, "frames": "subset300", "max_new_tokens": 4096},
+  "qwen3vl_8b_thinking_r2": {"model": "qwen3vl_8b_thinking", "family": "qwen3vl", "thinking": true, "frames": "subset100", "max_new_tokens": 4096, "seed_offset": 1},
+  "qwen35_9b_off":       {"model": "qwen35_9b", "family": "qwen35", "thinking": false, "frames": "all",       "max_new_tokens": 512},
+  "qwen35_9b_on":        {"model": "qwen35_9b", "family": "qwen35", "thinking": true,  "frames": "subset300", "max_new_tokens": 4096},
+  "qwen35_9b_on_r2":     {"model": "qwen35_9b", "family": "qwen35", "thinking": true,  "frames": "subset100", "max_new_tokens": 4096, "seed_offset": 1},
+  "internvl35_38b_off":  {"model": "internvl35_38b", "family": "internvl", "thinking": false, "frames": "subset300", "max_new_tokens": 512,  "max_num": 6, "device_map": "auto"},
+  "internvl35_38b_on":   {"model": "internvl35_38b", "family": "internvl", "thinking": true,  "frames": "subset100", "max_new_tokens": 4096, "max_num": 6, "device_map": "auto"}
+}

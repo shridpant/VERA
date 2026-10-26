@@ -1,0 +1,10 @@
+{
+  "iv2_packed":        {"model": "internvl2_8b",  "input": "packed", "thinking": false, "flash": true,  "max_new_tokens": 1024},
+  "iv2_frames":        {"model": "internvl2_8b",  "input": "frames", "thinking": false, "flash": true,  "max_new_tokens": 1024},
+  "iv2_crops":         {"model": "internvl2_8b",  "input": "crops",  "thinking": false, "flash": true,  "max_new_tokens": 1024},
+  "iv35_packed":       {"model": "internvl35_8b", "input": "packed", "thinking": false, "max_new_tokens": 1024},
+  "iv35_frames":       {"model": "internvl35_8b", "input": "frames", "thinking": false, "max_new_tokens": 1024},
+  "iv35_tiles":        {"model": "internvl35_8b", "input": "tiles",  "thinking": false, "max_new_tokens": 1024, "max_num": 6},
+  "iv35_crops":        {"model": "internvl35_8b", "input": "crops",  "thinking": false, "max_new_tokens": 1024},
+  "iv35_think_frames": {"model": "internvl35_8b", "input": "frames", "thinking": true,  "max_new_tokens": 4096}
+}
