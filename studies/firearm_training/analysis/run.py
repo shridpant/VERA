@@ -338,15 +338,52 @@ def numbers(d, tables):
     return n
 
 
+def interval(est, lo, hi, scale=100.0, digits=1):
+    if est is None:
+        return '--'
+    text = f'{est * scale:.{digits}f}'
+    return text if lo is None else f'{text} [{lo * scale:.{digits}f}, {hi * scale:.{digits}f}]'
+
+
+def views(tables):
+    """Readable LaTeX versions (raw cells) of the wide tables; the CSVs keep every column."""
+    out = {}
+    s1 = tables['S1']
+    keys = [c for c in s1['columns'] if c != 'split']
+    label = lambda c: c.replace('cat_', '').replace('grp_', 'group: ').replace('_', ' ')
+    out['S1'] = table('S1', s1['title'], ['attribute'] + [r['split'] for r in s1['rows']],
+                      [{'attribute': esc(label(k)), **{r['split']: fmt(r[k]) for r in s1['rows']}} for k in keys], s1['notes'])
+    s4 = tables['S4']
+    rows = []
+    for r in s4['rows']:
+        rows.append({'Questions': esc(r['questions']), 'Videos': fmt(r['videos']),
+                     'Category acc. \\% [95\\% CI]': interval(r['category_acc'], r['category_low'], r['category_high']),
+                     'Category macro-F1 [95\\% CI]': interval(r['category_macro_f1'], r['macro_low'], r['macro_high'], 1.0, 3),
+                     'Action-group acc. \\%': interval(r['group_acc'], r['group_low'], r['group_high']),
+                     'Code acc. \\%': interval(r['code_acc'], r['code_low'], r['code_high']),
+                     'Invalid (cat./group/code)': '--' if r['questions'] == 'learned - seed' else
+                     f"{r['category_invalid']}/{r['group_invalid']}/{r['code_invalid']}",
+                     'At token cap': '--' if r['questions'] == 'learned - seed' else fmt(r['answers_at_token_cap'])})
+    out['S4'] = table('S4', s4['title'], list(rows[0]) if rows else ['Questions'], rows, s4['notes'])
+    s9 = tables['S9']
+    out['S9'] = table('S9', s9['title'], ['measure', 'value'],
+                      [{'measure': esc(k.replace('_', ' ')), 'value': fmt(v, k)} for r in s9['rows'] for k, v in r.items()], s9['notes'])
+    return out
+
+
 def analyze(run_dir, data_dir, codebook_path, out_dir):
     d = load(run_dir, data_dir)
     d['book'] = json.loads(Path(codebook_path).read_text())
     out = Path(out_dir)
     (out / 'tables').mkdir(parents=True, exist_ok=True)
     tables = {t['id']: t for t in (s1(d), s2(d), s4(d), s5(d), s6(d), s7(d), s8(d), s9(d), s10(d))}
+    readable = views(tables)
     for t in tables.values():
         write_csv(t, out / 'tables')
-        write_tex(t, out / 'tables')
+        if t['id'] in readable:
+            write_tex(readable[t['id']], out / 'tables', raw=True)
+        else:
+            write_tex(t, out / 'tables')
     made = figures(d, out / 'figures')
     write_numbers(numbers(d, tables), out)
     cases = qualitative(d)
