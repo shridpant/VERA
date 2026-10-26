@@ -51,3 +51,40 @@ def quantiles(values, qs=(0.25, 0.5, 0.75)):
 
 def pct(x):
     return None if x is None else 100.0 * x
+
+
+def cluster_bootstrap_sums(units, cluster_key, strata_key, values, statistic, resamples, seed, name, level=0.95):
+    """cluster_bootstrap for statistics of summed quantities, vectorised.
+
+    values(unit) -> k numbers; statistic(totals) maps an (n, k) array of column sums to n values
+    (nan where undefined). Each cluster's values are summed once; a draw resamples clusters with
+    replacement within each stratum and adds their sums. Same estimator as cluster_bootstrap,
+    without rebuilding every draw in Python."""
+    sums, strata = {}, {}
+    for u in units:
+        key = (u[strata_key], u[cluster_key])
+        v = np.asarray(values(u), dtype=float)
+        sums[key] = sums[key] + v if key in sums else v
+    if not sums:
+        return None, None, None, 0
+    keys = list(sums)
+    matrix = np.stack([sums[k] for k in keys])
+    with np.errstate(divide='ignore', invalid='ignore'):
+        estimate = float(statistic(matrix.sum(axis=0)[None, :])[0])
+    if not np.isfinite(estimate):
+        return None, None, None, 0
+    for i, k in enumerate(keys):
+        strata.setdefault(k[0], []).append(i)
+    rng = rng_for(seed, name)
+    counts = np.zeros((resamples, len(keys)))
+    rows = np.arange(resamples)[:, None]
+    for members in strata.values():
+        members = np.asarray(members)
+        np.add.at(counts, (rows, members[rng.integers(0, len(members), (resamples, len(members)))]), 1)
+    with np.errstate(divide='ignore', invalid='ignore'):
+        draws = statistic(counts @ matrix)
+    draws = draws[np.isfinite(draws)]
+    if not len(draws):
+        return estimate, None, None, 0
+    alpha = (1 - level) / 2
+    return estimate, float(np.quantile(draws, alpha)), float(np.quantile(draws, 1 - alpha)), len(draws)

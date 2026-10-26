@@ -8,7 +8,7 @@ truth: no accuracy, AUC or AP is computed anywhere.
 import numpy as np
 from vera_runner.localization import prf, score_instance, size_bin
 from .load import CATEGORIES
-from .stats import cluster_bootstrap, pct, quantiles, share
+from .stats import cluster_bootstrap_sums, pct, quantiles, share
 
 CATS = CATEGORIES + ('All',)
 STATUSES = ('boxes', 'empty', 'unknown', 'malformed', 'missing', 'duplicate', 'truncated', 'no_record')
@@ -162,9 +162,15 @@ def t4(d):
     rows = []
     for cat in CATS:
         ws = [{**w, 'group': groups[w['video']]} for w in paired_windows(d, cat)]
-        est, lo, hi, _ = cluster_bootstrap(ws, 'video', 'category', pooled_diff, B, seed, f'T4 pooled {cat}', level)
-        _, glo, ghi, _ = cluster_bootstrap(ws, 'group', 'category', pooled_diff, B, seed, f'T4 pooled group {cat}', level)
-        eq, elo, ehi, _ = cluster_bootstrap(ws, 'video', 'category', equal_video_diff, B, seed, f'T4 equal {cat}', level)
+        diff = lambda w: (w['AG_label'] - w['A_label'], 1)
+        ratio = lambda t: t[:, 0] / t[:, 1]
+        est, lo, hi, _ = cluster_bootstrap_sums(ws, 'video', 'category', diff, ratio, B, seed, f'T4 pooled {cat}', level)
+        _, glo, ghi, _ = cluster_bootstrap_sums(ws, 'group', 'category', diff, ratio, B, seed, f'T4 pooled group {cat}', level)
+        per_video = {}
+        for w in ws:
+            per_video.setdefault((w['video'], w['category']), []).append(w['AG_label'] - w['A_label'])
+        videos = [{'video': v, 'category': c, 'mean': share(x)} for (v, c), x in per_video.items()]
+        eq, elo, ehi, _ = cluster_bootstrap_sums(videos, 'video', 'category', lambda u: (u['mean'], 1), ratio, B, seed, f'T4 equal {cat}', level)
         all_ws = subset(d.windows, cat)
         a_valid = [w['A_label'] for w in all_ws if valid(w['A_label'])]
         ag_valid = [w['AG_label'] for w in all_ws if valid(w['AG_label'])]
@@ -236,7 +242,8 @@ def t6(d):
             if c == 'AG':
                 common = [{'video': r['video'], 'category': r['category'], 'diff': ref[('AG', r['video'])]['mean'] - ref[('A', r['video'])]['mean']}
                           for r in rs if ('AG', r['video']) in ref and ('A', r['video']) in ref]
-                est, lo, hi, _ = cluster_bootstrap(common, 'video', 'category', lambda u: share(x['diff'] for x in u), B, seed, f'T6 {cat}', level)
+                est, lo, hi, _ = cluster_bootstrap_sums(common, 'video', 'category', lambda u: (u['diff'], 1), lambda t: t[:, 0] / t[:, 1],
+                                                        B, seed, f'T6 {cat}', level)
                 row.update(common_videos=len(common), paired_mean_diff=est, paired_ci_low=lo, paired_ci_high=hi,
                            paired_median_diff=float(np.median([x['diff'] for x in common])) if common else None)
             rows.append(row)
@@ -349,22 +356,20 @@ def t8(d):
                            'na_reason': 'no ground-truth firearms: precision and recall undefined; boxes on No_Gun frames are false positives' if no_truth else ''}
                     if c == 'AG':
                         row['paired_executed_slots'] = len(paired)
-                        def recall_diff(sample):
-                            g = sum(u['gt'] for u in sample)
-                            return (sum(u['AG']['tp'] for u in sample) - sum(u['G']['tp'] for u in sample)) / g if g else None
-                        def precision_diff(sample):
-                            a, b = precision_of(sample, 'AG'), precision_of(sample, 'G')
-                            return a - b if a is not None and b is not None else None
-                        def negative_diff(sample):
-                            a, b = negative_box_rate(sample, 'AG'), negative_box_rate(sample, 'G')
-                            return a - b if a is not None and b is not None else None
                         name = f'T8 {origin_name} {thr} {cat}'
+                        firearm_paired = [u for u in paired if u['category'] != 'No_Gun']
                         if not no_truth:
-                            for label, fn_ in (('recall', recall_diff), ('precision', precision_diff)):
-                                est, lo, hi, _ = cluster_bootstrap([u for u in paired if u['category'] != 'No_Gun'], 'video', 'category', fn_, B, seed, f'{name} {label}', level)
+                            recall_v = lambda u: (u['AG']['tp'] - u['G']['tp'], u['gt'])
+                            prec_v = lambda u: ((u['AG']['tp'], u['AG']['fp'] or 0, u['G']['tp'], u['G']['fp'] or 0) if u['positive'] else (0, 0, 0, 0))
+                            for label, vals, stat in (('recall', recall_v, lambda t: t[:, 0] / t[:, 1]),
+                                                      ('precision', prec_v, lambda t: t[:, 0] / (t[:, 0] + t[:, 1]) - t[:, 2] / (t[:, 2] + t[:, 3]))):
+                                est, lo, hi, _ = cluster_bootstrap_sums(firearm_paired, 'video', 'category', vals, stat, B, seed, f'{name} {label}', level)
                                 row.update({f'{label}_diff_AG_minus_G': est, f'{label}_diff_ci_low': lo, f'{label}_diff_ci_high': hi})
                         if cat in ('No_Gun', 'All'):
-                            est, lo, hi, _ = cluster_bootstrap(paired, 'video', 'category', negative_diff, B, seed, f'{name} negative', level)
+                            neg_v = lambda u: ((bool(u['AG']['fp']), 1, bool(u['G']['fp']), 1) if not u['positive'] and u['AG']['answered'] and u['G']['answered']
+                                               else (0, 0, 0, 0))
+                            est, lo, hi, _ = cluster_bootstrap_sums(paired, 'video', 'category', neg_v, lambda t: t[:, 0] / t[:, 1] - t[:, 2] / t[:, 3],
+                                                                    B, seed, f'{name} negative', level)
                             row.update(negative_box_rate_diff=est, negative_box_rate_diff_ci_low=lo, negative_box_rate_diff_ci_high=hi)
                     rows.append(row)
                     if origin_name == 'primary' and thr == d.study['matching']['iou_thresholds'][0] and not no_truth:
