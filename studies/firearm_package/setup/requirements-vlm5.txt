@@ -1,0 +1,6 @@
+torch==2.14.1
+torchvision
+transformers==5.21.0
+accelerate
+pillow
+numpy
