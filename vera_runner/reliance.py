@@ -137,6 +137,7 @@ class Scorer:
         module = importlib.import_module(type(self.model).__module__)
         self.get_conv_template = module.get_conv_template
         self.img_context = self.tok.convert_tokens_to_ids('<IMG_CONTEXT>')
+        self.model.img_context_token_id = self.img_context  # chat()/batch_chat() set this before generate(); so do we
 
     def query_ids(self, question, n_frames):
         """Exactly batch_chat's query for one video: all frames' tokens at the first <image>."""
