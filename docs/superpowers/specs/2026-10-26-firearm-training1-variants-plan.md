@@ -60,10 +60,14 @@ and batches, and the bank's pair, video and scoring draws.
    It is decided from `validations.jsonl` alone, once both candidates have finished training.
 4. **The winner is successful** if its selected validation category accuracy is above the seed
    questions' (54.8 %, 34 of 62).
-5. **Depth runs** are the winner's `_seed2` and `_seed3` configs, one on each GPU as it frees up.
-   - They run even if the winner is not successful. They then measure the spread of a method that
-     did not beat the seed questions.
-   - They run past 12:30 ET if needed and are reported when they finish.
+5. **Depth runs** form a queue: the winner's `_seed2` and `_seed3` configs, then the runner-up's.
+   - At the end of its chain, each GPU claims the next unclaimed run (`jobs/depth.sh`; amended
+     00:25 ET, still before any variant result).
+   - The decision waits for both candidates until 10:30 ET, then ranks the finished ones. No depth
+     run starts after 10:30 ET; a run started before then finishes, past 12:30 ET if needed, and
+     is reported when it ends.
+   - Depth runs happen even if the winner is not successful. They then measure the spread of a
+     method that did not beat the seed questions.
 6. **Test results of the variants are not read** before the depth decision. `test.jsonl` is written
    at the end of each run; the comparison is run once all runs have finished.
 7. **No run is stopped for its scores.** A run is stopped and replaced only if it crashes or its
