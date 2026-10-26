@@ -145,6 +145,27 @@ def optimizer_instruct(book):
             "Please ONLY reply according to this format. Don't give me any other words.")
 
 
+def optimizer_fixed(book):
+    """VERA's optimizer prompt plus the fixed variant's score history and short-answer rule (verbalized_variants.FixedRun)."""
+    base = optimizer_instruct(book)
+    history = ('** Earlier prompt questions and their accuracy on a fixed check set (most recent last): **\n[$History]\n')
+    base = base.replace("If the model is doing well,", history + "If the model is doing well,", 1)
+    rule = ("Limit your 'New Prompt Questions' to be no more than five questions! Each question must be answerable from the "
+            "frames with yes or no or a short phrase; do not ask the model to describe, explain or list.")
+    return base.replace("Limit your 'New Prompt Questions' to be no more than five questions!", rule, 1)
+
+
+BANK_PROPOSER = ('You are the optimizer for a model. The model classifies surveillance videos by answering prompt questions about the '
+                 'video frames. Your goal is to write one new prompt question that helps the model tell two classes apart.\n'
+                 '** Inputs (two videos, each a sequence of frames): **\n$Videos'
+                 'Video 1 shows: $ClassA\nVideo 2 shows: $ClassB\n$Relation\n'
+                 'Write ONE question about something visible in the frames that can be answered with yes or no and whose answer is '
+                 'different for Video 1 and Video 2. Do not name the classes or the action codes. Please think step by step and give '
+                 'your outputs strictly in the following format:\n```\nReasoning:\n[compare what is visible in the two videos]\n'
+                 'Question:\n[one yes/no question]\n```\nPlease ONLY reply according to this format. Don\'t give me any other words.')
+YES_NO = '$DataAnswer the following question about the video frames with only yes or no.\nQuestion: $Question\nAnswer:'
+
+
 def write(directory=HERE):
     book = codebook()
     (directory / 'codebook.json').write_text(json.dumps(book, indent=1) + '\n')
@@ -153,6 +174,9 @@ def write(directory=HERE):
     (prompts / 'learner_instruct.txt').write_text(learner_instruct(book))
     (prompts / 'optimizer_instruct.txt').write_text(optimizer_instruct(book))
     (prompts / 'seed_questions.txt').write_text(SEED_QUESTIONS)
+    (prompts / 'optimizer_fixed.txt').write_text(optimizer_fixed(book))
+    (prompts / 'bank_proposer.txt').write_text(BANK_PROPOSER)
+    (prompts / 'yes_no.txt').write_text(YES_NO)
     return book
 
 

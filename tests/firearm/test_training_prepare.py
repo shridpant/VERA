@@ -12,7 +12,8 @@ class CodebookTests(unittest.TestCase):
     def test_committed_files_equal_the_generator(self):
         with tempfile.TemporaryDirectory() as td:
             codebook.write(Path(td))
-            for name in ('codebook.json', 'prompts/learner_instruct.txt', 'prompts/optimizer_instruct.txt', 'prompts/seed_questions.txt'):
+            for name in ('codebook.json', 'prompts/learner_instruct.txt', 'prompts/optimizer_instruct.txt', 'prompts/seed_questions.txt',
+                         'prompts/optimizer_fixed.txt', 'prompts/bank_proposer.txt', 'prompts/yes_no.txt'):
                 self.assertEqual((Path(td) / name).read_text(), (HERE / name).read_text(), name)
 
     def test_codes_groups_and_prompt_structure(self):

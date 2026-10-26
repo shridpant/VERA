@@ -53,7 +53,20 @@ def build_spec(cfg):
             'splits_sha256': {s: hashlib.sha256((data / f'{s}.json').read_bytes()).hexdigest() for s in ('train', 'val', 'test')}}
     spec['training']['seed_questions'] = read(tr['seed_questions_file'])
     spec['training']['eval_limit'] = tr.get('eval_limit')  # smoke runs only; None evaluates every video
+    method = tr.get('method', 'vera')
+    if method != 'vera':  # variants only: the faithful runs' specs stay exactly as before
+        spec['training']['method'] = method
+        for key in VARIANT_KEYS[method]:
+            spec['training'][key] = tr[key]
+        for name in ('bank_proposer', 'yes_no'):
+            if f'{name}_file' in tr:
+                spec['prompts'][name] = read(tr[f'{name}_file'])
     return spec, runner
+
+
+VARIANT_KEYS = {'vera_fixed': ('videos_per_class', 'check_per_class', 'history', 'val_every_steps')}
+VARIANT_KEYS.update({m: ('rounds', 'refresh_every', 'score_per_class', 'keep_threshold', 'top_k', 'per_pair_cap')
+                     for m in ('bank', 'bank_random', 'bank_noscore')})
 
 
 def session_for(run_dir, spec):
@@ -109,6 +122,7 @@ def open_model(spec, runner, info, sdir):
 def train_command(args, test=False):
     import fcntl
     from vera_runner.verbalized import Run
+    from vera_runner.verbalized_variants import VARIANTS
     cfg = load_config(args.config, {'run_dir': args.run_dir, 'experiment_id': args.experiment_id,
                                     'training.val_check_interval': args.val_check_interval, 'training.eval_limit': args.eval_limit})
     run_dir = Path(cfg['run_dir'])
@@ -121,7 +135,8 @@ def train_command(args, test=False):
     try:
         model = open_model(spec, runner, info, sdir)
         book = json.loads((ROOT / cfg['training']['codebook']).read_text())
-        run = Run(spec, run_dir, cfg['data']['dir'], cfg['data']['frames'], model, book)
+        method = spec['training'].get('method', 'vera')
+        run = (Run if method == 'vera' else VARIANTS[method])(spec, run_dir, cfg['data']['dir'], cfg['data']['frames'], model, book)
         if test:
             best = run.test(sdir.name)
             status = f"tested (selected step {best['step']})"
@@ -133,6 +148,17 @@ def train_command(args, test=False):
         info.update(status=status, finished_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
         (sdir / 'session.json').write_text(json.dumps(info, indent=1) + '\n')
         print(json.dumps({'session': sdir.name, 'status': status}))
+
+
+def check_spec_command(args):
+    """Does this code still build exactly the locked spec of an existing run? (Needed before resuming it.)"""
+    from vera_runner.verbalized import digest
+    cfg = load_config(args.config, {})
+    spec, _ = build_spec(cfg)
+    stored = json.loads((Path(cfg['run_dir']) / 'spec.json').read_text())['spec_sha256']
+    same = digest(spec) == stored
+    print(json.dumps({'run_dir': cfg['run_dir'], 'spec_matches': same}))
+    return 0 if same else 1
 
 
 def analyze_command(args):
@@ -161,6 +187,9 @@ def main(argv=None):
         p.add_argument('--val-check-interval', type=int, help='override training.val_check_interval (smoke runs)')
         p.add_argument('--eval-limit', type=int, help='evaluate only the first N videos of val/test (smoke runs)')
         p.set_defaults(func=func)
+    p = sub.add_parser('check-spec')
+    p.add_argument('--config', required=True)
+    p.set_defaults(func=check_spec_command)
     p = sub.add_parser('analyze')
     p.add_argument('--config', required=True)
     p.add_argument('--run-dir', help='override run_dir')
