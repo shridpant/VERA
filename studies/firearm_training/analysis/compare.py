@@ -178,7 +178,7 @@ def figures(runs, out):
     seed_val = next((v['metrics']['category_accuracy'] for r in runs for v in r['validations'] if v['reference_only']), None)
     panels = [(title, [r for r in runs if r['method'] in methods]) for title, methods in PANELS]
     panels = [(t, rs) for t, rs in panels if rs]
-    fig, axes = plt.subplots(1, len(panels), figsize=(7.2, 2.8), sharey=True, squeeze=False)
+    fig, axes = plt.subplots(1, len(panels), figsize=(7.2, 3.4), sharey=True, squeeze=False)
     for ax, (title, members) in zip(axes[0], panels):
         for r in members:
             learned = sorted((v for v in r['validations'] if not v['reference_only']), key=lambda v: v['step'])
@@ -186,12 +186,13 @@ def figures(runs, out):
                 continue
             color, marker, line = style(runs, r)
             x = np.arange(1, len(learned) + 1) / len(learned)
+            one_method = len({m['method'] for m in members}) == 1
             ax.plot(x, [v['metrics']['category_accuracy'] for v in learned], marker=marker, markersize=4, linewidth=1.5, linestyle=line,
-                    color=color, label=r['label'].replace(' (run seed', '\n(run seed'))
+                    color=color, label=f"run seed {r['seed']}" if one_method else NAMES.get(r['method'], r['method']))
         if seed_val is not None:
             ax.axhline(seed_val, color='#898781', linewidth=0.9, linestyle=(0, (2, 2)), label='seed questions')
         ax.set_title(title, fontsize=8), ax.set_xlabel('fraction of the run'), ax.set_ylim(0, 1)
-        ax.legend(loc='lower left', fontsize=5)
+        ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.22), fontsize=6)
     axes[0][0].set_ylabel('validation category accuracy')
     fig.tight_layout()
     for ext in ('pdf', 'png'):
