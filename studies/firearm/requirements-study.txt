@@ -1,0 +1,3 @@
+# Added to requirements-runner.txt for the firearm study (convert, analysis, plots).
+pyyaml==6.0.1
+matplotlib==3.8.4

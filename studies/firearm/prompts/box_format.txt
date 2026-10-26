@@ -1,0 +1,9 @@
+Firearm boxes:
+Frame1: [boxes for Frame1]
+Frame2: [boxes for Frame2]
+Frame3: [boxes for Frame3]
+Frame4: [boxes for Frame4]
+Frame5: [boxes for Frame5]
+Frame6: [boxes for Frame6]
+Frame7: [boxes for Frame7]
+Frame8: [boxes for Frame8]

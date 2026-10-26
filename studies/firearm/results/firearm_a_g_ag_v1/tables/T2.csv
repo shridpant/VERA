@@ -1,0 +1,13 @@
+condition,category,scheduled,complete,exhausted,preprocess_failed,pending,videos_complete,failed_attempts,timeouts,interrupted,decode_failures,starts_without_end,valid_labels,unparsed_labels,truncated,all_slots_answered,any_malformed,unknown_slots,refined_videos,refinement_excluded
+A,Handgun,2235,2235,0,0,0,141,0,0,0,0,0,2235,0,0,,,,106,35
+A,Machine_Gun,2285,2285,0,0,0,139,0,0,0,0,0,2285,0,0,,,,95,44
+A,No_Gun,1855,1855,0,0,0,118,0,0,0,0,0,1855,0,0,,,,77,41
+A,All,6375,6375,0,0,0,398,0,0,0,0,0,6375,0,0,,,,278,120
+G,Handgun,2235,2235,0,0,0,141,0,0,0,0,0,,,0,2235,0,0,,
+G,Machine_Gun,2285,2285,0,0,0,139,0,0,0,0,0,,,1,2284,0,0,,
+G,No_Gun,1855,1855,0,0,0,118,0,0,0,0,0,,,0,1855,0,0,,
+G,All,6375,6375,0,0,0,398,0,0,0,0,0,,,1,6374,0,0,,
+AG,Handgun,2235,2235,0,0,0,141,0,0,0,0,0,2234,1,0,2235,0,0,105,36
+AG,Machine_Gun,2285,2285,0,0,0,139,0,0,0,0,0,2282,3,0,2284,1,0,93,46
+AG,No_Gun,1855,1855,0,0,0,118,0,0,0,0,0,1854,1,0,1855,0,0,76,42
+AG,All,6375,6375,0,0,0,398,0,0,0,0,0,6370,5,0,6374,1,0,274,124

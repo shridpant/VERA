@@ -1,0 +1,118 @@
+{
+  "study_schema": 1,
+  "study_id": "firearm_a_g_ag_v1",
+  "runner": {
+    "schema_version": 1,
+    "dataset": "firearm_visilab",
+    "split": "test",
+    "registry": "/local/datasets/sp2117/firearm_visilab/registry.json",
+    "output_root": "/local/datasets/sp2117/firearm_visilab/runner_runs",
+    "stages": [
+      "preprocess",
+      "infer"
+    ],
+    "seed": 0,
+    "selection": {
+      "video_ids": [],
+      "max_videos": null,
+      "max_windows_per_video": null
+    },
+    "preprocessing": {
+      "image_size": 448
+    },
+    "sampling": {
+      "stride": 16,
+      "window_seconds": 10.0,
+      "fps": 30.0,
+      "frames_per_window": 8
+    },
+    "model": {
+      "backend": "internvl2",
+      "path": "/home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+      "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+      "device": "cuda",
+      "dtype": "bfloat16",
+      "flash_attention": true,
+      "mps_cpu_fallback": false,
+      "local_files_only": true
+    },
+    "generation": {
+      "num_beams": 1,
+      "max_new_tokens": 1024,
+      "do_sample": false
+    },
+    "prompt": {
+      "instruction_file": "VERA_learner_instruct.txt",
+      "guiding_questions": "upstream_ucf"
+    },
+    "intervention": {
+      "mode": "baseline",
+      "slots": [],
+      "blur_radius_fraction": 0.04,
+      "grey_rgb": [
+        127,
+        127,
+        127
+      ],
+      "probe": false
+    },
+    "refinement": {
+      "neighbor_fraction": 0.15,
+      "similarity_temperature": 10.0,
+      "smoothing_size": 15,
+      "smoothing_sigma": 10.0,
+      "round_decimals": 1,
+      "position_weighting": true
+    },
+    "runtime": {
+      "timeout_seconds": 3600
+    },
+    "boxes": {
+      "mode": "off",
+      "phrase": null,
+      "max_new_tokens": 100
+    }
+  },
+  "conditions": {
+    "order": [
+      "A",
+      "G",
+      "AG"
+    ],
+    "prompt_dir": "studies/firearm/prompts",
+    "prompt_sha256": {
+      "A": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924",
+      "G": "1fba432b24ab4569fff8a6e41a1de4a8160aa3cc784e9f95152182256dd63a4d",
+      "AG": "03dbf44a69c166a9ca7c6c3e68d84b78de472d8e5036c5bd139140114374b1c8"
+    }
+  },
+  "data": {
+    "inventory": "/local/datasets/sp2117/firearm_visilab/inventory.json",
+    "annotation_policy": "studies/firearm/annotation_policy.json"
+  },
+  "execution": {
+    "run_dir": "/local/datasets/sp2117/firearm_visilab/runs/firearm_a_g_ag_v1",
+    "per_call_timeout_seconds": 600,
+    "max_attempts": 3,
+    "max_consecutive_failures": 3
+  },
+  "features": {
+    "dir": "/local/datasets/sp2117/firearm_visilab/features",
+    "clip_seconds": 10.0,
+    "fps": 30.0,
+    "num_samples": 10,
+    "weights": "/local/datasets/sp2117/models/imagebind/imagebind_huge.pth",
+    "batch_size": 16
+  },
+  "matching": {
+    "iou_thresholds": [
+      0.5,
+      0.75
+    ]
+  },
+  "analysis": {
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 20261025,
+    "ci_level": 0.95
+  }
+}

@@ -1,0 +1,10 @@
+\begin{itemize}
+\item \textbf{No anomaly ground truth.} The dataset's categories describe staged firearm presence, not anomalies; anomaly rates and their changes are judgments, never accuracy.
+\item \textbf{Packing.} VERA's \texttt{batch\_chat} call places all eight frames in one image block at the first \texttt{<image>}; ``Frame$K$'' is a text label over that block. The absence of localization may be specific to this packing. A per-frame packing or single-image grounding condition was outside this study.
+\item \textbf{Bundled prompt change.} AG adds a question and eight output lines to VERA's prompt. Its effect on anomaly judgments cannot be attributed to localization, and AG almost never localized.
+\item \textbf{Exploratory prompt design.} The G/AG wording was revised twice after a format pilot on six videos (no localization score was computed); the pilot videos stay in the analysis.
+\item \textbf{Annotations.} Frames listed without a box are excluded from evaluation because subjects are sometimes visible there without a box. Boxed frames are treated as complete under a single-firearm assumption. The image-id origin is structural (MATLAB numbering); the origin-0 sensitivity analysis gives the same result.
+\item \textbf{Dependence.} Windows overlap; repeated takes form recording groups; four subjects appear, and subject V1 is in \val{subject_V1_videos} of the \val{videos} videos. Intervals resample videos or recording groups, not subjects.
+\item \textbf{Refinement.} VERA's refinement needs at least 15 windows, so short videos are excluded rather than padded. The ImageBind features follow LAVAD's procedure and match VERA's released features closely but not bit-identically (median row cosine \val{fc_cosine_median}); A and AG use identical features.
+\item \textbf{Other.} Faces are blurred by the dataset authors; decoding is greedy with a 1,024-token cap; the evaluation is offline and says nothing about early warning.
+\end{itemize}

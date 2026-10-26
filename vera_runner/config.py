@@ -63,7 +63,12 @@ def positive(value, name, integer=False):
 
 
 def load(filename, overrides=None):
-    cfg = merge(DEFAULTS, json.loads(Path(filename).read_text()))
+    return from_dict(json.loads(Path(filename).read_text()), overrides)
+
+
+def from_dict(data, overrides=None):
+    """Merge and validate an experiment given as a dict (load() reads it from a JSON file)."""
+    cfg = merge(DEFAULTS, data)
     for key, value in (overrides or {}).items():
         if value is not None:
             cfg[key] = value

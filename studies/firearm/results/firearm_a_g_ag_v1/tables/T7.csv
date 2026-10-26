@@ -1,0 +1,9 @@
+condition,category,scheduled_slots,submitted_slots,boxes,empty,unknown,malformed,missing,duplicate,truncated,boxes_emitted,whole_image_boxes,unit_scale_slots,responses,responses_with_boxes,responses_same_boxes_every_boxed_slot,responses_only_whole_image,frames_positive,frames_listed_no_box,frames_negative_category,frames_unknown
+G,Handgun,17880,17880,36,17844,0,0,0,0,0,36,36,0,2235,8,4,8,11454,6426,0,0
+G,Machine_Gun,18280,18280,152,18120,0,0,0,0,8,159,159,0,2285,40,16,40,12387,5893,0,0
+G,No_Gun,14840,14840,0,14840,0,0,0,0,0,0,0,0,1855,0,0,0,0,0,14840,0
+G,All,51000,51000,188,50804,0,0,0,0,8,195,195,0,6375,48,20,48,23841,12319,14840,0
+AG,Handgun,17880,17880,17,17863,0,0,0,0,0,17,17,0,2235,3,2,3,11454,6426,0,0
+AG,Machine_Gun,18280,18280,21,18258,0,1,0,0,0,21,21,0,2285,7,2,7,12387,5893,0,0
+AG,No_Gun,14840,14840,1,14839,0,0,0,0,0,1,1,0,1855,1,0,1,0,0,14840,0
+AG,All,51000,51000,39,50960,0,1,0,0,0,39,39,0,6375,11,4,11,23841,12319,14840,0

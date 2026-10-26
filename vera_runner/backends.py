@@ -80,6 +80,16 @@ def install_progress_hooks(model, report):
     return handles
 
 
+def generated(tokenizer, output_ids, seconds, peak_gpu_bytes):
+    """Telemetry of one generation. With inputs_embeds, generate() returns a leading <s> before the
+    new tokens; EOS is InternVL2's <|im_end|>, which batch_chat sets as eos_token_id."""
+    ids = list(output_ids or [])
+    new = ids[1:] if ids and ids[0] == tokenizer.bos_token_id else ids
+    return {'output_ids': ids, 'tagged_text': tokenizer.decode(ids, skip_special_tokens=False),
+            'eos': tokenizer.convert_tokens_to_ids('<|im_end|>') in new, 'generated_tokens': len(new),
+            'seconds': seconds, 'peak_gpu_bytes': peak_gpu_bytes}
+
+
 DTYPE_FOR_DEVICE = {'cuda': 'bfloat16', 'mps': 'float16', 'cpu': 'float32'}
 
 
@@ -187,14 +197,24 @@ class InternVL2:
             T.ToTensor(), T.Normalize((.485,.456,.406),(.229,.224,.225))])
         return self.torch.stack([transform(im) for im in images]).to(device=self.device,dtype=self.dtype)
 
-    def predict(self, images, on_text=None):
-        """VERA's call: all images and the prompt in one batch_chat. on_text(text, tokens, done) streams it."""
+    def predict(self, images, on_text=None, question=None):
+        """VERA's call: all images and the prompt in one batch_chat. on_text(text, tokens, done) streams it.
+
+        question=None sends the configured VERA prompt. The firearm study passes its G/AG prompt here,
+        so every condition gets the same images, packing and generation settings. last_call keeps
+        the generated ids, their decode with special tokens, EOS and peak GPU memory."""
         generation = dict(self.cfg['generation'])
         if on_text is not None:
             generation['streamer'] = TextProgress(self.tokenizer, on_text)
+        cuda = self.device == 'cuda'
+        if cuda:
+            self.torch.cuda.reset_peak_memory_stats()
+        begin = time.monotonic()
         with self.torch.inference_mode():
             answer = self.model.batch_chat(self.tokenizer, self.pixels(images), num_patches_list=[len(images)],
-                questions=[self.question], generation_config=generation)[0]
+                questions=[self.question if question is None else question], generation_config=generation)[0]
+        self.last_call = generated(self.tokenizer, self.last_output_ids, time.monotonic() - begin,
+                                   self.torch.cuda.max_memory_allocated() if cuda else None)
         return {'raw_response': answer, 'input_token_ids': self.last_ids}
 
     def rendered_input(self):
@@ -202,7 +222,8 @@ class InternVL2:
         if not self.last_ids:
             return ''
         text = self.tokenizer.decode(self.last_ids[0], skip_special_tokens=False)
-        return re.sub(r'(?:<IMG_CONTEXT>)+', lambda m: f'<IMG_CONTEXT>×{len(m.group(0)) // len("<IMG_CONTEXT>")}', text)
+        # The decode separates special tokens with spaces, so runs are matched with optional whitespace.
+        return re.sub(r'<IMG_CONTEXT>(?:\s*<IMG_CONTEXT>)*', lambda m: f'<IMG_CONTEXT>×{m.group(0).count("<IMG_CONTEXT>")}', text)
 
     def name_anomaly(self, images, response):
         """Follow-up in the same conversation: the model names the anomaly it described."""
@@ -237,11 +258,19 @@ class Mock:
         self.device = 'mock'
     def configure(self, cfg):
         self.question = prompt(cfg)
-    def predict(self, images, on_text=None):
-        label = int(sum(images[0].convert('L').getdata()) / (images[0].width * images[0].height) >= 128)
-        text = f'MOCK OUTPUT — NOT A MODEL PREDICTION\nOutput:\n{label}'
+    def predict(self, images, on_text=None, question=None):
+        question = self.question if question is None else question
+        bright = [int(sum(im.convert('L').getdata()) / (im.width * im.height) >= 128) for im in images]
+        text = 'MOCK OUTPUT — NOT A MODEL PREDICTION\n'
+        if 'Firearm localization' in question:  # firearm study G/AG: a fixed box on every bright slot
+            text += 'Firearm boxes:\n' + ''.join(f'Frame{i+1}: ' + ('[[100, 200, 600, 700]]' if b else '[]') + '\n'
+                                                 for i, b in enumerate(bright))
+        if 'Is there any anomaly' in question:
+            text += f'Output:\n{bright[0]}'
         if on_text is not None:
             on_text(text, 1, True)
+        self.last_call = {'output_ids': [], 'tagged_text': text, 'eos': True, 'generated_tokens': len(text.split()),
+                          'seconds': 0.0, 'peak_gpu_bytes': None}
         return {'raw_response': text, 'input_token_ids': None}
     def rendered_input(self):
         return 'MOCK INPUT — NO TOKENIZER\n' + self.question
