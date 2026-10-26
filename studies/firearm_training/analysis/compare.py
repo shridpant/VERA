@@ -19,7 +19,10 @@ from .stats import cluster_bootstrap, pct, share
 SEED, B = 20261026, 2000
 NAMES = {'vera': 'VERA (faithful)', 'vera_fixed': 'VERA, fixed', 'bank': 'Question bank', 'bank_random': 'Bank, random pairs',
          'bank_noscore': 'Bank, no scoring'}
-COLORS = ['#2a78d6', '#6250d6', '#008300', '#eb6834', '#1baf7a', '#e87ba4', '#eda100', '#e34948']
+# Colour follows the method (validated categorical slots 1-5); marker and line style follow the run seed.
+COLORS = {'vera': '#2a78d6', 'vera_fixed': '#eb6834', 'bank': '#1baf7a', 'bank_random': '#eda100', 'bank_noscore': '#e87ba4'}
+MARKERS, LINES = ('o', 's', '^'), ('-', '--', ':')
+PANELS = (('VERA (faithful)', ('vera',)), ('VERA, fixed', ('vera_fixed',)), ('Question bank and ablations', ('bank', 'bank_random', 'bank_noscore')))
 
 
 def load_run(run_dir, tests=True):
@@ -157,6 +160,13 @@ def c4(runs):
         'accuracy >= 0.75 (no-scoring ablation keeps all); mean score = mean balanced accuracy of scored questions.'])
 
 
+def style(runs, r):
+    """(colour, marker, line style) of a run: colour by method, the rest by its seed's rank within the method."""
+    seeds = sorted({x['seed'] for x in runs if x['method'] == r['method']})
+    i = seeds.index(r['seed']) % len(MARKERS)
+    return COLORS.get(r['method'], '#898781'), MARKERS[i], LINES[i]
+
+
 def figures(runs, out):
     import matplotlib
     matplotlib.use('Agg')
@@ -165,35 +175,42 @@ def figures(runs, out):
                          'legend.frameon': False, 'pdf.fonttype': 42, 'savefig.dpi': 200})
     out.mkdir(parents=True, exist_ok=True)
     made = []
-    fig, ax = plt.subplots(figsize=(7.2, 3.0))
-    seed_val = None
-    for r, color in zip(runs, COLORS):
-        learned = sorted((v for v in r['validations'] if not v['reference_only']), key=lambda v: v['step'])
-        if not learned:
-            continue
-        x = np.arange(1, len(learned) + 1) / len(learned)
-        ax.plot(x, [v['metrics']['category_accuracy'] for v in learned], marker='o', markersize=3, linewidth=1.6, color=color, label=r['label'])
-        seed_val = seed_val or next((v['metrics']['category_accuracy'] for v in r['validations'] if v['reference_only']), None)
-    if seed_val is not None:
-        ax.axhline(seed_val, color='#898781', linewidth=0.9, linestyle=(0, (2, 2)), label='seed questions')
-    ax.set_xlabel('fraction of the run (validation checkpoints)'), ax.set_ylabel('validation category accuracy'), ax.set_ylim(0, 1)
-    ax.legend(loc='upper left', fontsize=6, ncol=2)
+    seed_val = next((v['metrics']['category_accuracy'] for r in runs for v in r['validations'] if v['reference_only']), None)
+    panels = [(title, [r for r in runs if r['method'] in methods]) for title, methods in PANELS]
+    panels = [(t, rs) for t, rs in panels if rs]
+    fig, axes = plt.subplots(1, len(panels), figsize=(7.2, 2.8), sharey=True, squeeze=False)
+    for ax, (title, members) in zip(axes[0], panels):
+        for r in members:
+            learned = sorted((v for v in r['validations'] if not v['reference_only']), key=lambda v: v['step'])
+            if not learned:
+                continue
+            color, marker, line = style(runs, r)
+            x = np.arange(1, len(learned) + 1) / len(learned)
+            ax.plot(x, [v['metrics']['category_accuracy'] for v in learned], marker=marker, markersize=4, linewidth=1.5, linestyle=line,
+                    color=color, label=r['label'].replace(' (run seed', '\n(run seed'))
+        if seed_val is not None:
+            ax.axhline(seed_val, color='#898781', linewidth=0.9, linestyle=(0, (2, 2)), label='seed questions')
+        ax.set_title(title, fontsize=8), ax.set_xlabel('fraction of the run'), ax.set_ylim(0, 1)
+        ax.legend(loc='lower left', fontsize=5)
+    axes[0][0].set_ylabel('validation category accuracy')
+    fig.tight_layout()
     for ext in ('pdf', 'png'):
         fig.savefig(out / f'G1_validation_all_runs.{ext}', bbox_inches='tight')
     plt.close(fig)
     made.append('G1_validation_all_runs')
     tested = [r for r in runs if 'learned' in r['tests']]
     if tested:
-        fig, axes = plt.subplots(1, 2, figsize=(7.2, 0.45 * len(tested) + 1.2), sharey=True)
-        for ax, k, title in ((axes[0], 0, 'category'), (axes[1], 1, 'action group')):
-            for i, (r, color) in enumerate(zip(tested, COLORS)):
+        fig, axes = plt.subplots(1, 2, figsize=(7.2, 0.4 * len(tested) + 1.2), sharey=True)
+        for ax, k, title in ((axes[0], 0, 'test category accuracy'), (axes[1], 1, 'test action-group accuracy')):
+            for i, r in enumerate(tested):
                 p = [{**x, 'group_key': x['recording_group']} for x in r['tests']['learned']['predictions']]
                 est, lo, hi, _ = cluster_bootstrap(p, 'group_key', 'category', lambda u, k=k: acc(u, k), B, SEED, f'S4 learned {FIELDS[k]}')
-                ax.errorbar(est, i, xerr=[[est - lo], [hi - est]], fmt='o', color=color, capsize=2)
+                color, marker, _ = style(runs, r)
+                ax.errorbar(est, i, xerr=[[est - lo], [hi - est]], fmt=marker, markersize=5, color=color, capsize=2)
             seed = tested[0]['tests'].get('seed')
             if seed:
                 ax.axvline(acc(seed['predictions'], k), color='#898781', linewidth=0.9, linestyle=(0, (2, 2)))
-            ax.set_title(f'test {title} accuracy (dashed: seed questions)', fontsize=8), ax.set_xlim(0, 1)
+            ax.set_title(title, fontsize=8), ax.set_xlim(0, 1)
         axes[0].set_yticks(range(len(tested)), [r['label'] for r in tested], fontsize=6)
         fig.tight_layout()
         for ext in ('pdf', 'png'):
@@ -203,8 +220,9 @@ def figures(runs, out):
     banks = [r for r in runs if r['rounds'] and any(x['score'] is not None for x in r['rounds'])]
     if banks:
         fig, ax = plt.subplots(figsize=(7.2, 2.4))
-        for r, color in zip(banks, COLORS[2:]):
-            ax.hist([x['score'] for x in r['rounds'] if x['score'] is not None], bins=np.linspace(0.5, 1, 11), alpha=0.6, color=color, label=r['label'])
+        for r in banks:
+            ax.hist([x['score'] for x in r['rounds'] if x['score'] is not None], bins=np.linspace(0.5, 1, 11), alpha=0.6,
+                    color=style(runs, r)[0], label=r['label'])
         ax.axvline(0.75, color='#898781', linewidth=0.9)
         ax.set_xlabel('balanced accuracy of a proposed question on its pair (keep threshold 0.75)'), ax.set_ylabel('questions')
         ax.legend(fontsize=6)
