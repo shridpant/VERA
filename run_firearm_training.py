@@ -4,6 +4,7 @@
   prepare   leak-free split, per-split label files and Training 2 box files
   train     VERA's verbalized learning: learner + optimizer, validation every 100 batches (resumable)
   test      the seed and the selected questions on the test split
+  analyze   tables S1-S10, figures F1-F4, qualitative answers and the report numbers
 """
 import argparse
 import json
@@ -134,6 +135,14 @@ def train_command(args, test=False):
         print(json.dumps({'session': sdir.name, 'status': status}))
 
 
+def analyze_command(args):
+    from studies.firearm_training.analysis.run import analyze
+    cfg = load_config(args.config, {'run_dir': args.run_dir})
+    manifest = analyze(cfg['run_dir'], cfg['data']['dir'], ROOT / cfg['training']['codebook'], args.out)
+    print(json.dumps(manifest, indent=1))
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -152,6 +161,11 @@ def main(argv=None):
         p.add_argument('--val-check-interval', type=int, help='override training.val_check_interval (smoke runs)')
         p.add_argument('--eval-limit', type=int, help='evaluate only the first N videos of val/test (smoke runs)')
         p.set_defaults(func=func)
+    p = sub.add_parser('analyze')
+    p.add_argument('--config', required=True)
+    p.add_argument('--run-dir', help='override run_dir')
+    p.add_argument('--out', required=True)
+    p.set_defaults(func=analyze_command)
     args = ap.parse_args(argv)
     return args.func(args)
 
