@@ -21,7 +21,7 @@ def fmt(value, column=''):
     if isinstance(value, int):
         return f'{value:,}'
     if isinstance(value, float):
-        if 'pct' in column or '_pp' in column:
+        if 'pct' in column or '_pp' in column or re.search(r'pp(ci|$)', column):  # macro keys drop underscores: diffpp, diffppcilow
             return f'{value:.1f}'
         if any(k in column for k in ('hours', 'gib', 'duration', '_s')):
             return f'{value:.2f}'

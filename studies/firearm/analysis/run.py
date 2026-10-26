@@ -52,6 +52,7 @@ def numbers_from(tables, d, extra):
         if 'eligible' in r:
             n[key('T6', r['condition'], r['category'], 'eligible')] = r['eligible']
             n[key('T6', r['condition'], r['category'], 'too_few')] = r['excluded_too_few_windows']
+            n[key('T6', r['condition'], r['category'], 'invalid')] = r['excluded_invalid_labels']
             if r['condition'] == 'AG':
                 for col in ('paired_mean_diff', 'paired_ci_low', 'paired_ci_high', 'common_videos'):
                     n[key('T6', r['category'], col)] = r[col]
@@ -90,9 +91,8 @@ def analyze(study, inventory_path, original_root, out_dir, features_check=None):
                           ['Texts are the complete model answers; slot summaries list each frame\'s parse status and boxes.'])
     for t in tables.values():
         write_csv(t, out / 'tables')
-    write_tex(tables['T9'], out / 'tables', columns=T9_TEX, longtable=True)
     for v in views(tables):  # readable subsets for the PDF; the CSVs keep every column
-        write_tex(v, out / 'tables', raw=True)
+        write_tex(v, out / 'tables', raw=True, longtable=v['id'] == 'T9', size=r'\tiny' if v['id'] == 'T9' else r'\scriptsize')
     figures = [plots.p1(d, out / 'figures'), plots.p2(d, out / 'figures'), plots.p3(d, out / 'figures'),
                plots.p4(d, out / 'figures'), plots.p5(d, out / 'figures'), plots.p6(d, out / 'figures'),
                plots.p7(d, tables['T8']['rows'], out / 'figures'), plots.p9(d, out / 'figures')]

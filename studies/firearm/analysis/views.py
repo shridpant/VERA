@@ -1,5 +1,5 @@
 """Report views: readable subsets of the full tables for the PDF. The CSVs keep every column."""
-from .latex import fmt
+from .latex import esc, fmt
 from .tables import table
 
 CAT = {'Handgun': 'Handgun', 'Machine_Gun': 'Machine gun', 'No_Gun': 'No gun', 'All': 'All'}
@@ -115,6 +115,12 @@ def views(tables):
         ('Hours', get('total_hours')), ('Median s', get('median_s')), ('p95 s', get('p95_s')), ('Tokens', get('tokens_total')),
         ('Median tokens', get('tokens_median', 'x_pp')), ('p95 tokens', get('tokens_p95', 'x_pp')), ('Truncated', get('truncated')),
         ('Peak GPU GiB', get('peak_gpu_gib'))]))
+    t = tables['T9']
+    v.append(view(t, 'T9', t['title'], [
+        ('Video', lambda r: esc(r['video'])), ('Cam.', get('camera')), ('Dur.\\ s', get('duration_s')), ('Windows', get('scheduled_windows')),
+        ('A anomaly fraction', lambda r: fmt(r['A_anomaly_fraction'], 'x')), ('AG anomaly fraction', lambda r: fmt(r['AG_anomaly_fraction'], 'x')),
+        ('A invalid', get('A_invalid')), ('AG invalid', get('AG_invalid')),
+        ('A refined mean', lambda r: fmt(r['A_refined_mean'], 'x')), ('AG refined mean', lambda r: fmt(r['AG_refined_mean'], 'x'))]))
     t = tables['T1']
     v.append(view(t, 'T1', t['title'], [
         ('Category', lambda r: CAT[r['category']]), ('Camera', get('camera')), ('Resolution', get('resolution')), ('FPS', get('fps')),
