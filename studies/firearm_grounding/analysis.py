@@ -14,6 +14,7 @@ from studies.firearm_training.analysis.stats import cluster_bootstrap, pct, shar
 
 SEED, B = 20261026, 2000
 ARMS = ('T1', 'G', 'P')
+CATS = ('Handgun', 'Machine_Gun', 'No_Gun')
 COLORS = {'T1': '#2a78d6', 'G': '#eb6834', 'P': '#1baf7a', 'seed questions': '#898781'}
 
 
@@ -207,12 +208,15 @@ def arm_records(d, arm):
     return [r for (a, _), e in d['runs'].items() if a == arm for r in e['test'].values()]
 
 
+def record_sets(d):
+    """(label, records): Phase 1 on all splits and by true category, the seed questions on test, then each arm."""
+    sets = [('seed, all splits', d['phase1'])] + [(f'seed, {c}', [r for r in d['phase1'] if r['category'] == c]) for c in CATS]
+    return [(label, recs) for label, recs in sets + [(arm, arm_records(d, arm)) for arm in ('seed questions',) + ARMS] if recs]
+
+
 def r5(d):
     rows = []
-    for arm in ('seed questions',) + ARMS:
-        recs = arm_records(d, arm)
-        if not recs:
-            continue
+    for arm, recs in record_sets(d):
         ev = [r for r in recs if r.get('lift') is not None]
         firearm = [r for r in recs if r['category'] != 'No_Gun']
         nogun = [r for r in recs if r['category'] == 'No_Gun']
@@ -227,8 +231,9 @@ def r5(d):
                      'flip_control_mask': share(flipped(r, 'control') for r in ev if r.get('occlusion')),
                      'weapon_mentioned_firearm': share(r['weapon_mentioned'] for r in firearm),
                      'weapon_mentioned_no_gun': share(r['weapon_mentioned'] for r in nogun)})
-    return table('R5', 'Secondary outcomes by arm (test split, pooled over seeds)', list(rows[0]) if rows else ['arm'], rows, [
-        'seed questions = untrained reference (one run). Right for the wrong reasons: correct category with reliance <= 0. '
+    return table('R5', 'Behaviour, grounding and reliance by question set (seed rows: Phase 1; others: test split, pooled over seeds)', list(rows[0]) if rows else ['arm'], rows, [
+        'seed, ...: Phase 1 (seed questions) on all 398 videos, then by true category. seed questions: the same questions on the '
+        'test split only, the reference for the arms. Right for the wrong reasons: correct category with reliance <= 0. '
         'Flip: the unmasked answer has the true category and the answer regenerated under the mask does not (share of '
         'videos with occlusion). Missing reliance: grounding-evaluable videos without a reliance value (no usable control '
         'or an excluded decision under a mask). '
@@ -237,13 +242,13 @@ def r5(d):
 
 def r6(d, boxes, edges):
     rows = []
-    for arm in ('seed questions',) + ARMS:
-        recs = [r for r in arm_records(d, arm) if r.get('lift') is not None]
+    for arm, all_recs in [(a, r) for a, r in record_sets(d) if a == 'seed, all splits' or not a.startswith('seed,')]:
+        recs = [r for r in all_recs if r.get('lift') is not None]
         for size in ('small', 'medium', 'large'):
             sub = [r for r in recs if size_bin(r, boxes, edges) == size]
             rows.append({'arm': arm, 'size': size, 'videos': len(sub), 'mean_lift': share(r['lift'] for r in sub),
                          'mean_reliance': share(r['reliance'] for r in sub if r.get('reliance') is not None)})
-    return table('R6', 'Lift and reliance by firearm size (test split)', ['arm', 'size', 'videos', 'mean_lift', 'mean_reliance'], rows,
+    return table('R6', 'Lift and reliance by firearm size (Phase 1 on all splits; question sets on the test split)', ['arm', 'size', 'videos', 'mean_lift', 'mean_reliance'], rows,
                  ['Size: mean annotated box area of the video\'s boxed sampled frames, binned at the GT-area tertiles of the annotation audit.'])
 
 
@@ -285,7 +290,10 @@ def figures(d, out):
         axes[0].axvline(1, color='#52514e', linewidth=0.8)
         axes[0].set_xscale('log'), axes[0].set_xlabel('attention lift (1 = chance)'), axes[0].set_ylabel('videos'), axes[0].legend()
         rel = [r for r in ev if r.get('reliance') is not None]
-        axes[1].scatter([r['lift'] for r in rel], [r['reliance'] for r in rel], s=8, color='#2a78d6', alpha=0.7)
+        for keep, label, color in ((True, 'correct category', '#1baf7a'), (False, 'wrong category', '#eb6834')):
+            sub = [r for r in rel if correct(r) == keep]
+            axes[1].scatter([r['lift'] for r in sub], [r['reliance'] for r in sub], s=8, color=color, alpha=0.7, label=label)
+        axes[1].legend(loc='center left')
         axes[1].set_xscale('log'), axes[1].axhline(0, color='#52514e', linewidth=0.8), axes[1].axvline(1, color='#52514e', linewidth=0.8)
         axes[1].set_xticks([0.25, 0.5, 1, 2, 4, 8], ['0.25', '0.5', '1', '2', '4', '8']), axes[1].xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
         axes[1].set_xlabel('attention lift (1 = chance)'), axes[1].set_ylabel('occlusion reliance (nats)')
@@ -347,12 +355,24 @@ def numbers(tables, d):
         n.update({f'{key}_estimate': r['estimate'], f'{key}_low': r['ci_low'], f'{key}_high': r['ci_high'], f'{key}_videos': r['videos'],
                   f'{key}_supported': r['supported']})
     for r in tables['R5']['rows']:
-        key = r['arm'].replace(' ', '')
-        for c in ('category_acc', 'mean_lift', 'median_lift', 'mean_reliance', 'right_for_wrong_reasons', 'weapon_mentioned_firearm'):
+        key = r['arm'].replace(' ', '').replace(',', '_')
+        for c in ('answers', 'evaluable', 'category_acc', 'group_acc', 'mean_lift', 'median_lift', 'mean_reliance', 'right_for_wrong_reasons',
+                  'flip_box_mask', 'flip_control_mask', 'weapon_mentioned_firearm', 'weapon_mentioned_no_gun'):
             n[f'R5_{key}_{c}'] = r.get(c)
     for r in tables['R2s']['rows']:
         n[f"sens_{r['set'].replace(' ', '').replace(',', '_')}_median_lift"] = r.get('median_lift')
     n['phase1_videos'] = len(d['phase1'])
+    n['phase1_evaluable'] = sum(r.get('lift') is not None for r in d['phase1'])
+    n['phase1_with_reliance'] = sum(r.get('reliance') is not None for r in d['phase1'])
+    n['phase1_decision_excluded'] = sum(r.get('decision') is None for r in d['phase1'])
+    mass = [r['decision']['candidate_mass'] for r in d['phase1'] if r.get('decision') and 'candidate_mass' in r['decision']]
+    n['phase1_min_candidate_mass'] = min(mass) if mass else None
+    gaps = [g for r in d['phase1'] for g in (r.get('control_gaps') or {}).values()]
+    n['phase1_controls_within_one_cell_pct'] = pct(share(g < 62.5 for g in gaps)) if gaps else None
+    for r in tables['R2']['rows']:
+        if 'within' in r['measure']:
+            key = r['measure'].split('within ')[1].split(' (')[0].replace(' ', '_')
+            n[f'rho_within_{key}'], n[f'rho_within_{key}_videos'] = r.get('estimate'), r.get('videos')
     n['runs'] = len(d['runs'])
     return n
 
