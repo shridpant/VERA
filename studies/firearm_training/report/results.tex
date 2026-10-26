@@ -1,11 +1,18 @@
-% PROSE PENDING: written from the saved analysis after the run. Floats below are final.
 \subsection{Training}
+The optimizer rewrote the questions in \val{opt_updated} of \val{opt_steps} steps, producing \val{opt_distinct_question_sets} distinct question sets (Table~\ref{tab:S9}). It kept a set only when its answer gave no new questions, because VERA's update has no memory of earlier scores. Validation accuracy moved up and down between checkpoints with no upward trend (Table~\ref{tab:S2}, Figure~\ref{fig:F1}). No learned checkpoint reached the seed questions' \val{val_seed_category_acc_pct}\,\% category accuracy. The selected checkpoint, step \val{selected_step} (epoch \val{selected_epoch}), scored \val{val_selected_category_acc_pct}\,\% category and \val{val_selected_group_acc_pct}\,\% action-group accuracy. VERA's selection chooses among learned checkpoints only, so the selected questions were tested even though they score below the seed questions on validation. Several question sets asked the learner to describe the scene. Under greedy decoding these set off repetition loops that ran to the 1,024-token cap: \val{opt_learner_answers_at_token_cap} of \val{opt_learner_answers} training answers. At steps 340--700 such loops made 12 to 21 of the 62 validation answers invalid.
+
 \input{tables/S2.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F1_validation_trajectory.pdf}
 \caption{Validation accuracy of the learned questions at each validation step; dashed lines are the seed questions.}\label{fig:F1}\end{figure}
 \input{tables/S9.tex}
 
 \subsection{Test}
+Category accuracy on the test split was \val{test_learned_category_acc_pct}\,\% (95\,\% interval \val{test_learned_category_low_pct}--\val{test_learned_category_high_pct}) for the selected questions and \val{test_seed_category_acc_pct}\,\% (\val{test_seed_category_low_pct}--\val{test_seed_category_high_pct}) for the seed questions (Table~\ref{tab:S4}). The paired difference was \val{test_learnedminusseed_category_acc_pct} points (\val{test_learnedminusseed_category_low_pct} to \val{test_learnedminusseed_category_high_pct}). Action group differed by \val{test_learnedminusseed_group_acc_pct} points (\val{test_learnedminusseed_group_low_pct} to \val{test_learnedminusseed_group_high_pct}) and exact code by \val{test_learnedminusseed_code_acc_pct} points (\val{test_learnedminusseed_code_low_pct} to \val{test_learnedminusseed_code_high_pct}). Category macro-F1 was \val{test_learned_macro_f1} against \val{test_seed_macro_f1}. Every interval includes zero, so the run shows no improvement over the seed questions. With the selected questions, five answers were invalid and five reached the token cap; the seed questions produced neither.
+
+The two question sets fail in the same place: handgun videos called No\_Gun (Table~\ref{tab:S5}, Figure~\ref{fig:F2}). With the seed questions, 32 of the 37 test handgun videos were called No\_Gun and five were correct. The selected questions ask first whether a firearm is held and then whether it is a handgun or a long gun. They got 12 handgun videos right, but still called 23 of them No\_Gun. They lost three machine-gun videos (22 to 19 of 29) and two No\_Gun videos, both invalid (Figure~\ref{fig:F3}). In the wrong handgun case of Appendix~\ref{app:cases}, the explanation states that no firearm is held and that the person holds a phone. The errors suggest that the model often does not perceive the handgun in its eight frames, which rewording the questions cannot fix.
+
+For action groups (Table~\ref{tab:S6}), the seed questions answered phone for 53 of the 96 videos, including 31 of the 66 firearm videos (carry or aim). The selected questions answered move for 40 videos and recognised more aim videos: 18 of 36 against 11. Exact codes were right for five or six of 96 videos (Table~\ref{tab:S8}). More than half of the wrong codes had the right category, so code accuracy stays exploratory. Both question sets were more accurate on the phone camera (C2) than on the IP camera (C1) (Table~\ref{tab:S7}); these strata are descriptive.
+
 \input{tables/S4.tex}
 \input{tables/S5.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F2_category_confusion.pdf}
@@ -17,6 +24,8 @@
 \input{tables/S8.tex}
 
 \subsection{Computation}
+The run took \val{hours_learner} learner hours, \val{hours_optimizer} optimizer hours, \val{hours_validation} validation hours and \val{hours_test} test hours on one RTX~6000 Ada (Table~\ref{tab:S10}). The median step took 3.6\,s for the learner and 6.3\,s for the optimizer. The 95th percentile of learner time was 30\,s, the cost of answers that loop to the token cap. In steps 300--419, the mean learner time was 15--17\,s, against 5--10\,s in the rest of the run (Figure~\ref{fig:F4}).
+
 \input{tables/S10.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F4_runtime.pdf}
 \caption{Learner and optimizer time per training step.}\label{fig:F4}\end{figure}
