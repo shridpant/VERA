@@ -1,0 +1,24 @@
+% PROSE PENDING: written from the saved analysis after the run. Floats below are final.
+\subsection{Training}
+\input{tables/S2.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F1_validation_trajectory.pdf}
+\caption{Validation accuracy of the learned questions at each validation step; dashed lines are the seed questions.}\label{fig:F1}\end{figure}
+\input{tables/S9.tex}
+
+\subsection{Test}
+\input{tables/S4.tex}
+\input{tables/S5.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F2_category_confusion.pdf}
+\caption{Category confusion on the test split for the seed and the selected questions.}\label{fig:F2}\end{figure}
+\input{tables/S6.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F3_accuracy_by_category.pdf}
+\caption{Test accuracy by true category, seed versus selected questions.}\label{fig:F3}\end{figure}
+\input{tables/S7.tex}
+\input{tables/S8.tex}
+
+\subsection{Computation}
+\input{tables/S10.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/F4_runtime.pdf}
+\caption{Learner and optimizer time per training step.}\label{fig:F4}\end{figure}
+
+Appendix~\ref{app:prompts} lists the prompts and the questions; Appendix~\ref{app:cases} shows answers chosen by a fixed rule.
