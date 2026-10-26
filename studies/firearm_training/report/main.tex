@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\lstset{basicstyle=\scriptsize\ttfamily,breaklines=true,columns=fullflexible,keepspaces=true}
+\captionsetup{font=small}
+\input{numbers.tex}
+\IfFileExists{./compare_numbers.tex}{\input{./compare_numbers.tex}}{}
+
+\title{Adapting VERA to Firearm Categories and Actions by Verbalized Learning (Training 1)}
+\author{VISILAB firearm-action dataset, frozen InternVL2-8B}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\section{Aim}
+VERA~\cite{ye2025vera} adapts a frozen vision-language model to a new video task without changing its weights: the same model, acting as an optimizer, rewrites the guiding questions that the learner answers before it gives its decision, and the questions with the best validation score are kept. Training~1 applies this procedure to the VISILAB firearm-action dataset~\cite{ruizsantaquiteria2024firearm}. Each answer explains what the model sees (its answers to the guiding questions, as in VERA on UCF-Crime~\cite{sultani2018ucfcrime}) and then names the category (Handgun, Machine\_Gun, No\_Gun), the action group and the exact action code. Boxes are not used; they are Training~2.
+
+\section{Data and split}
+All 398 videos are used. The category is the dataset folder; the action code is the folder name's first field (41 codes; PAW7 of the paper has no video). Codes map to six action groups: carry and aim for firearm videos (reload variants have aim codes) and move, phone, bottle and heavy object for No\_Gun videos; descriptions are composed from the paper's Tables~1--3. Repeated takes of one scripted action by one subject at one place (a recording group) are near-duplicates and never span two splits. Per action code, recording groups were shuffled with a fixed seed and assigned so that every code appears in every split, with video targets of 60/15/25\,\%: \val{split_train_videos} training, \val{split_val_videos} validation and \val{split_test_videos} test videos (Table~\ref{tab:S1}). A subject-held-out split is impossible because the handgun videos were filmed with two of the four subjects only.
+
+\input{tables/S1.tex}
+
+\section{Method}
+\paragraph{Faithful to VERA's \texttt{training.py}.} Learner and optimizer are the same frozen InternVL2-8B~\cite{chen2024internvl15} (revision 6fb9ad69, CUDA BF16, FlashAttention, greedy decoding, one beam, 1,024 new tokens). A batch holds two training videos with eight frames each, sampled evenly over the whole video as VERA's training data loader does. The learner answers both videos in one \texttt{batch\_chat} call; the optimizer sees both videos' sixteen frames, the current questions, the batch's predictions and targets, and answers with reasoning followed by ``New Prompt Questions'', from which VERA's rule takes at most five lines. The prompt assembly and the question update were checked against VERA's own code by executing its \texttt{forward} and \texttt{training\_step} on a fake model. Validation runs every 100 training batches within an epoch over ten epochs; the validated questions with the highest validation category accuracy (then action-group accuracy, then the earliest step) are selected.
+
+\paragraph{Adapted to this task.} VERA's binary model description and its optimizer instruction were rewritten for three categories, six action groups and 41 codes, with the same structure and wording elsewhere (Appendix~\ref{app:prompts}). Predictions and targets given to the optimizer are [category, action group, code] triples. Answers are parsed strictly: an unparseable field is invalid and counts as wrong, never as a default. The seed questions are neutral for the task. The training order is shuffled with a fixed seed. The seed questions are also validated before training, for reference only. VERA's temporal score refinement is not used: it is defined for one binary anomaly score.
+
+\paragraph{Evaluation.} The seed questions and the selected questions are each run once on the test split. Accuracy is video-level; intervals are 95\,\% percentile intervals from 2,000 bootstrap draws that resample recording groups within category (seed 20261026); the learned-minus-seed difference is paired on the same videos.
+
+\section{Results}
+\input{results.tex}
+
+\IfFileExists{./variants_section.tex}{\input{./variants_section.tex}}{}
+
+\section{Limitations}
+\input{limitations.tex}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+\section{Prompts and questions}\label{app:prompts}
+\subsection*{Learner instruction}
+\lstinputlisting{learner_instruct.txt}
+\subsection*{Optimizer instruction}
+\lstinputlisting{optimizer_instruct.txt}
+\subsection*{Seed questions}
+\lstinputlisting{questions_seed.txt}
+\subsection*{Selected questions}
+\lstinputlisting{questions_selected.txt}
+
+\IfFileExists{./compare_questions.tex}{\section{Questions selected in every run}\label{app:compare-questions}\input{./compare_questions.tex}}{}
+
+\section{Qualitative answers}\label{app:cases}
+For each true category, the first test video (by ID) whose category the selected questions got right and the first they got wrong.
+\input{qualitative.tex}
+\end{document}

@@ -1,0 +1,13 @@
+You are the optimizer for a model. The model classifies surveillance videos by answering prompt questions about the video frames. Your goal is to write one new prompt question that helps the model tell two classes apart.
+** Inputs (two videos, each a sequence of frames): **
+$VideosVideo 1 shows: $ClassA
+Video 2 shows: $ClassB
+$Relation
+Write ONE question about something visible in the frames that can be answered with yes or no and whose answer is different for Video 1 and Video 2. Do not name the classes or the action codes. Please think step by step and give your outputs strictly in the following format:
+```
+Reasoning:
+[compare what is visible in the two videos]
+Question:
+[one yes/no question]
+```
+Please ONLY reply according to this format. Don't give me any other words.

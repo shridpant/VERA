@@ -1,0 +1,9 @@
+\begin{itemize}
+\item \textbf{Small validation and test sets.} Selection uses \val{split_val_videos} validation videos, so one video moves validation accuracy by 1.6 points, and the selected checkpoint can be a lucky one. The test split has \val{split_test_videos} videos in few recording groups per action code, so test intervals are wide and exact-code accuracy is exploratory.
+\item \textbf{One split, one model, one decoding.} The results hold for this split, the frozen InternVL2-8B at one revision, eight frames per video and greedy decoding. A subject-held-out split is impossible: the handgun videos show two of the four subjects.
+\item \textbf{The seed questions and the prompts are ours.} VERA's prompts were rewritten for three categories and six action groups, and the neutral seed questions are our choice. A different start or wording may train differently.
+\item \textbf{Strict parsing.} An unparseable field counts as wrong, so accuracy measures answering in the required format as well as recognising the scene. Greedy repetition loops that reach the 1,024-token cap are counted, not suppressed.
+\item \textbf{Faithful means faithful to VERA's training loop.} The optimizer keeps no record of earlier scores and rewrites the questions after every batch, as in VERA.\IfFileExists{./variants_section.tex}{ The variants in Section~\ref{sec:variants} change this; the faithful run does not.}{}
+\IfFileExists{./variants_section.tex}{\item \textbf{Three runs per method, one for each bank variant.} The spread across run seeds is estimated from three runs of VERA and three of the fixed variant; the bank and its ablations ran once. The variants were designed after seeing the first faithful run's training logs, though not its test results.}{}
+\item \textbf{No boxes, no temporal refinement.} Box supervision is Training~2. VERA's temporal score refinement is defined for one binary anomaly score and is not used.
+\end{itemize}

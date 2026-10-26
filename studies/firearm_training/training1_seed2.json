@@ -1,0 +1,37 @@
+{
+  "experiment_id": "firearm_vera_training1_seed2",
+  "runner": {
+    "dataset": "firearm_visilab",
+    "registry": "/local/datasets/sp2117/firearm_visilab/registry.json",
+    "model": {
+      "backend": "internvl2",
+      "path": "/home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+      "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+      "device": "cuda",
+      "dtype": "bfloat16",
+      "flash_attention": true,
+      "local_files_only": true
+    },
+    "generation": {
+      "num_beams": 1,
+      "max_new_tokens": 1024,
+      "do_sample": false
+    }
+  },
+  "training": {
+    "batch_size": 2,
+    "frames_per_video": 8,
+    "max_epochs": 10,
+    "val_check_interval": 100,
+    "seed": 20261027,
+    "seed_questions_file": "studies/firearm_training/prompts/seed_questions.txt",
+    "learner_instruct_file": "studies/firearm_training/prompts/learner_instruct.txt",
+    "optimizer_instruct_file": "studies/firearm_training/prompts/optimizer_instruct.txt",
+    "codebook": "studies/firearm_training/codebook.json"
+  },
+  "data": {
+    "dir": "/local/datasets/sp2117/firearm_visilab/training1/data",
+    "frames": "/local/datasets/sp2117/firearm_visilab/training1/frames"
+  },
+  "run_dir": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_training1_seed2"
+}

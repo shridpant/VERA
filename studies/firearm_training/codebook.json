@@ -1,0 +1,519 @@
+{
+ "source": "Ruiz-Santaquiteria et al., Data in Brief 52 (2024) 110030, Tables 1-3",
+ "not_in_data": {
+  "PAW7": [
+   "Kneel down while aiming",
+   "Both",
+   "Any",
+   "Fully extended",
+   "Crouched",
+   "Stealth"
+  ]
+ },
+ "categories": {
+  "Handgun": "a person carries, aims or reloads a handgun (a pistol)",
+  "Machine_Gun": "a person carries, aims or reloads a long gun, such as a rifle or a machine gun",
+  "No_Gun": "a person without any firearm walks, jogs, runs or sneaks with empty hands, or holds a phone, a water bottle or soda can, or something heavy"
+ },
+ "groups": {
+  "carry": {
+   "categories": "Handgun, Machine_Gun",
+   "meaning": "carries a firearm without aiming it; it may point at the floor or the ceiling"
+  },
+  "aim": {
+   "categories": "Handgun, Machine_Gun",
+   "meaning": "aims a firearm, including reloading it while aiming"
+  },
+  "move": {
+   "categories": "No_Gun",
+   "meaning": "walks, jogs, runs or sneaks with empty hands"
+  },
+  "phone": {
+   "categories": "No_Gun",
+   "meaning": "holds a phone, looks at it or records a video with it"
+  },
+  "bottle": {
+   "categories": "No_Gun",
+   "meaning": "holds a water bottle or soda can, or drinks from it"
+  },
+  "heavy_object": {
+   "categories": "No_Gun",
+   "meaning": "holds something heavy with both hands"
+  }
+ },
+ "codes": {
+  "N1": {
+   "category": "No_Gun",
+   "group": "move",
+   "meaning": "walking with empty hands",
+   "table_attributes": [
+    "Walking with empty hands"
+   ]
+  },
+  "N2": {
+   "category": "No_Gun",
+   "group": "move",
+   "meaning": "jogging",
+   "table_attributes": [
+    "Jogging"
+   ]
+  },
+  "N3": {
+   "category": "No_Gun",
+   "group": "move",
+   "meaning": "running",
+   "table_attributes": [
+    "Running"
+   ]
+  },
+  "N4": {
+   "category": "No_Gun",
+   "group": "move",
+   "meaning": "sneaking up with empty hands",
+   "table_attributes": [
+    "Sneaking up with empty hands"
+   ]
+  },
+  "N5": {
+   "category": "No_Gun",
+   "group": "phone",
+   "meaning": "holding a phone with a single hand (Right/Left) in a relaxed state",
+   "table_attributes": [
+    "Holding a phone with a single hand (Right/Left) in a relaxed state"
+   ]
+  },
+  "N6": {
+   "category": "No_Gun",
+   "group": "phone",
+   "meaning": "holding a phone with a single hand (Right/Left) looking at it",
+   "table_attributes": [
+    "Holding a phone with a single hand (Right/Left) looking at it"
+   ]
+  },
+  "N7": {
+   "category": "No_Gun",
+   "group": "phone",
+   "meaning": "holding a phone with both hands looking at it",
+   "table_attributes": [
+    "Holding a phone with both hands looking at it"
+   ]
+  },
+  "N8": {
+   "category": "No_Gun",
+   "group": "phone",
+   "meaning": "holding a phone with a single hand recording a video",
+   "table_attributes": [
+    "Holding a phone with a single hand recording a video"
+   ]
+  },
+  "N9": {
+   "category": "No_Gun",
+   "group": "phone",
+   "meaning": "holding a phone with both hands recording a video",
+   "table_attributes": [
+    "Holding a phone with both hands recording a video"
+   ]
+  },
+  "N10": {
+   "category": "No_Gun",
+   "group": "bottle",
+   "meaning": "holding a water bottle or soda can with one hand in a relaxed state",
+   "table_attributes": [
+    "Holding a water bottle or soda can with one hand in a relaxed state"
+   ]
+  },
+  "N11": {
+   "category": "No_Gun",
+   "group": "bottle",
+   "meaning": "drinking from a water bottle or soda can",
+   "table_attributes": [
+    "Drinking from a water bottle or soda can"
+   ]
+  },
+  "N12": {
+   "category": "No_Gun",
+   "group": "heavy_object",
+   "meaning": "holding something heavy with both hands",
+   "table_attributes": [
+    "Holding something heavy with both hands"
+   ]
+  },
+  "PCH1": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with one hand, standing",
+   "table_attributes": [
+    "Carry",
+    "One",
+    "Any",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCH2": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with both hands, pointed at the floor, standing",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Floor",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCH3": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with both hands, pointed at the ceiling, standing",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Ceiling",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCH4": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with both hands, pointed at the floor, crouched, moving stealthily",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Floor",
+    "Any",
+    "Crouched",
+    "Stealth"
+   ]
+  },
+  "PCH5": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with both hands, pointed at the ceiling, standing, moving stealthily",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Ceiling",
+    "Any",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PCH6": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with both hands, pointed at the floor, crouched",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Floor",
+    "Any",
+    "Crouched",
+    "Normal"
+   ]
+  },
+  "PCH7": {
+   "category": "Handgun",
+   "group": "carry",
+   "meaning": "carries a handgun with both hands, pointed at the ceiling, crouched",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Ceiling",
+    "Any",
+    "Crouched",
+    "Normal"
+   ]
+  },
+  "PAH1": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with one hand, arm fully extended, standing",
+   "table_attributes": [
+    "Aim",
+    "One",
+    "Any",
+    "Fully extended",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAH2": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with one hand, arm fully extended, standing, moving stealthily",
+   "table_attributes": [
+    "Aim",
+    "One",
+    "Any",
+    "Fully extended",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PAH3": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with one hand, arm tucked in, standing",
+   "table_attributes": [
+    "Aim",
+    "One",
+    "Any",
+    "Tucked",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAH4": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with one hand, arm tucked in, standing, moving stealthily",
+   "table_attributes": [
+    "Aim",
+    "One",
+    "Any",
+    "Tucked",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PAH5": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with both hands, pointed at the floor, standing",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Floor",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAH6": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with both hands, pointed forward, standing",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Forward",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAH7": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with both hands, pointed at the floor, standing, moving stealthily",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Floor",
+    "Any",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PAH8": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "aims a handgun with both hands, pointed forward, standing, moving stealthily",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Forward",
+    "Any",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PAH9": {
+   "category": "Handgun",
+   "group": "aim",
+   "meaning": "reloads a handgun with both hands, arms fully extended, standing",
+   "table_attributes": [
+    "Reload",
+    "Both",
+    "Any",
+    "Fully extended",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCW1": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with both hands, arms tucked in, standing",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Any",
+    "Tucked",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCW2": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with both hands, pointed at the floor, standing",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Floor",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCW4": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with both hands, pointed at the floor, standing, moving stealthily",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Floor",
+    "Any",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PCW5": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with both hands, pointed at the ceiling, standing",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Ceiling",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCW7": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with both hands, pointed at the floor, crouched",
+   "table_attributes": [
+    "Carry",
+    "Both",
+    "Floor",
+    "Any",
+    "Crouched",
+    "Normal"
+   ]
+  },
+  "PCW8": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with one hand, pointed at the floor, standing",
+   "table_attributes": [
+    "Carry",
+    "One",
+    "Floor",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PCW9": {
+   "category": "Machine_Gun",
+   "group": "carry",
+   "meaning": "carries a long gun with one hand, pointed at the ceiling, standing",
+   "table_attributes": [
+    "Carry",
+    "One",
+    "Ceiling",
+    "Any",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAW1": {
+   "category": "Machine_Gun",
+   "group": "aim",
+   "meaning": "aims a long gun with both hands, pointed at the floor, arms fully extended, standing",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Floor",
+    "Fully extended",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAW2": {
+   "category": "Machine_Gun",
+   "group": "aim",
+   "meaning": "aims a long gun with both hands, pointed forward, arms fully extended, standing",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Forward",
+    "Fully extended",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAW4": {
+   "category": "Machine_Gun",
+   "group": "aim",
+   "meaning": "aims a long gun with both hands, pointed forward and tilted to one side, arms fully extended, standing",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Forward (tilted to one side)",
+    "Fully extended",
+    "Standing",
+    "Normal"
+   ]
+  },
+  "PAW5": {
+   "category": "Machine_Gun",
+   "group": "aim",
+   "meaning": "aims a long gun with both hands, pointed at the floor, standing, moving stealthily",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Floor",
+    "Any",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PAW6": {
+   "category": "Machine_Gun",
+   "group": "aim",
+   "meaning": "aims a long gun with both hands, pointed forward, arms fully extended, standing, moving stealthily",
+   "table_attributes": [
+    "Aim",
+    "Both",
+    "Forward",
+    "Fully extended",
+    "Standing",
+    "Stealth"
+   ]
+  },
+  "PAW8": {
+   "category": "Machine_Gun",
+   "group": "aim",
+   "meaning": "reloads a long gun while aiming with both hands, arms fully extended, standing",
+   "table_attributes": [
+    "Reload while aiming",
+    "Both",
+    "Any",
+    "Fully extended",
+    "Standing",
+    "Normal"
+   ]
+  }
+ }
+}
