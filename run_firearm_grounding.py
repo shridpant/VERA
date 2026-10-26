@@ -9,6 +9,7 @@ Design: docs/superpowers/specs/2026-10-26-firearm-grounding-design.md
             training-split lift pool used by the grounded and placebo arms
   train-arm Phase 2: one arm (T1, G or P) with one training-order seed, then nothing else (resumable)
   evaluate  the selected questions of a trained arm on the test split (M1-M4)
+  adopt-t1  Training 1's own run as the T1 arm's first seed (VERA's selection rule on its validation log)
 """
 import argparse
 import json
@@ -149,6 +150,27 @@ def evaluate_command(args):
     return 0
 
 
+def adopt_t1_command(args):
+    from vera_runner.ledger import read_jsonl
+    gcfg = config(args.config)
+    src = Path(args.training_run)
+    steps = [s for s in read_jsonl(src / 'steps.jsonl')[0] if s['status'] == 'complete']
+    spec = json.loads((src / 'spec.json').read_text())
+    n_train = len(json.loads((Path(gcfg['data']['dir']) / 'train.json').read_text()))
+    expected = spec['training']['max_epochs'] * -(-n_train // spec['training']['batch_size'])
+    if len(steps) < expected:
+        print(json.dumps({'adopted': False, 'reason': f'Training 1 has {len(steps)} of {expected} steps'}))
+        return 4
+    vals = [v for v in read_jsonl(src / 'validations.jsonl')[0] if not v['reference_only']]
+    best = max(vals, key=lambda v: (v['metrics']['category_accuracy'], v['metrics']['group_accuracy'], -v['step']))
+    dest = arm_paths(gcfg, 'T1', spec['training']['seed'])
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / 'selected.json').write_text(json.dumps({'step': best['step'], 'questions': best['questions'], 'metrics': best['metrics'],
+                                                   'adopted_from': str(src), 'spec_sha256': spec['spec_sha256']}, indent=1) + '\n')
+    print(json.dumps({'adopted': True, 'step': best['step'], 'dest': str(dest)}))
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -182,6 +204,10 @@ def main(argv=None):
     p.add_argument('--run-dir', required=True)
     p.add_argument('--limit', type=int)
     p.set_defaults(func=evaluate_command)
+    p = sub.add_parser('adopt-t1')
+    p.add_argument('--config', default='studies/firearm_grounding/grounding.json')
+    p.add_argument('--training-run', required=True)
+    p.set_defaults(func=adopt_t1_command)
     args = ap.parse_args(argv)
     return args.func(args)
 
