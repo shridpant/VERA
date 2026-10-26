@@ -10,7 +10,7 @@ FixedRun ('vera_fixed') changes VERA's loop where the faithful run's logs show i
     batch with training.optimizer_frames evenly spaced frames each, so that its input stays inside the
     model's context (checked before every call);
   - the optimizer prompt lists the last training.history question sets with their check accuracy
-    (OPRO's score history);
+    (OPRO's score history), dropping the oldest when the prompt would not fit the context;
   - a new question set is kept only if its category accuracy, then action-group accuracy, on a fixed
     check set (training.check_per_class training videos per category, never in a batch) is not
     lower than the current set's (accept-if-not-worse);
@@ -124,6 +124,19 @@ class FixedRun(VariantBase):
         j = text.find('Based on the analysis above')
         return text[:j] + questions + text[j:]
 
+    def fitted_prompt(self, questions, preds, targets, history, n_images):
+        """(prompt, input tokens, history entries shown): the most recent history that fits input + new tokens in the context."""
+        new = self.spec.get('runner', {}).get('generation', {}).get('max_new_tokens', 0)
+        for start in range(len(history) + 1):
+            prompt = self.optimizer_text(questions, preds, targets, history[start:])
+            if not hasattr(self.model, 'input_tokens'):
+                return prompt, None, len(history) - start
+            n_in = self.model.input_tokens(n_images, prompt)
+            if n_in + new <= self.model.context_limit():
+                return prompt, n_in, len(history) - start
+        raise ValueError(f'optimizer input of about {n_in} tokens plus {new} new tokens exceeds the model context of '
+                         f'{self.model.context_limit()} even without history')
+
     def train(self, session, stop_after=None):
         tr = self.spec['training']
         steps_path, vals_path = self.dir / 'steps.jsonl', self.dir / 'validations.jsonl'
@@ -157,13 +170,9 @@ class FixedRun(VariantBase):
                         preds = [as_feedback(p) for _, p, _, _ in out]
                         targets = [target_of(r) for r in rows]
                         t1 = time.monotonic()
-                        prompt = self.optimizer_text(questions, preds, targets, history[-self.history_n:])
                         shown = [[self.images(r)[0][i] for i in self.opt_frames] for r in rows]
-                        n_in = self.model.input_tokens(sum(map(len, shown)), prompt) if hasattr(self.model, 'input_tokens') else None
-                        new = self.spec.get('runner', {}).get('generation', {}).get('max_new_tokens', 0)
-                        if n_in is not None and n_in + new > self.model.context_limit():
-                            raise ValueError(f'optimizer input of about {n_in} tokens plus {new} new tokens exceeds the '
-                                             f'model context of {self.model.context_limit()}')
+                        prompt, n_in, n_hist = self.fitted_prompt(questions, preds, targets, history[-self.history_n:],
+                                                                  sum(map(len, shown)))
                         opt_text, opt_tokens = self.model.optimize(shown, prompt)
                         t2 = time.monotonic()
                         proposed, how = new_questions(opt_text, questions)
@@ -181,7 +190,8 @@ class FixedRun(VariantBase):
                     step_log.write({**record, 'status': 'complete', 'learner_responses': [t for _, _, t, _ in out],
                                     'learner_tokens': [k for _, _, _, k in out], 'predictions': preds, 'targets': targets,
                                     'optimizer_prompt': prompt, 'optimizer_response': opt_text, 'optimizer_tokens': opt_tokens,
-                                    'optimizer_frames': self.opt_frames, 'optimizer_input_tokens': n_in, 'proposed': proposed, 'rejected_because': reason, 'candidate_check': cand,
+                                    'optimizer_frames': self.opt_frames, 'optimizer_input_tokens': n_in, 'history_shown': n_hist,
+                                    'proposed': proposed, 'rejected_because': reason, 'candidate_check': cand,
                                     'candidate_check_predictions': cand_videos, 'accepted': accepted, 'questions_after': questions,
                                     'current_check': current, 'history_after': history[-self.history_n:],
                                     'learner_seconds': t1 - t0, 'optimizer_seconds': t2 - t1, 'check_seconds': t3 - t2, 'finished_at': now()})

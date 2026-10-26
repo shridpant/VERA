@@ -158,6 +158,21 @@ class FixedRunTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'exceeds the model context'):  # 48 frames do not fit
                 run.train('001', stop_after=1)
             self.assertEqual(read(Path(td) / 'run', 'steps.jsonl')[0]['status'], 'failed')
+        with tempfile.TemporaryDirectory() as td:  # history is dropped, oldest first, until the prompt fits
+            data = make_split(td)
+            (Path(td) / 'run').mkdir()
+            model = Counting(10 ** 6)
+            run = FixedRun(spec('vera_fixed', **FIXED, optimizer_frames=3), Path(td) / 'run', data, Path(td) / 'frames', model, BOOK)
+            run.spec['runner'] = {'generation': {'max_new_tokens': 1024}}
+            history = [{'questions': f'{i}. Is it bright? ' + 'long words ' * 40, 'category_accuracy': 0.5, 'group_accuracy': 0.5}
+                       for i in range(3)]
+            full = model.input_tokens(18, run.optimizer_text('1. Q?\n', [], [], history))
+            two = model.input_tokens(18, run.optimizer_text('1. Q?\n', [], [], history[1:]))
+            model.limit = two + 1024
+            prompt, n_in, shown = run.fitted_prompt('1. Q?\n', [], [], history, 18)
+            self.assertEqual((shown, n_in), (2, two))
+            self.assertNotIn('0. Is it bright?', prompt)
+            self.assertGreater(full, two)
 
 
 class BankRunTests(unittest.TestCase):

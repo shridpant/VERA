@@ -95,6 +95,16 @@ Both chains stopped at their smoke test (exit 3).
 The failed smoke folders are kept as `smoke_*_failed1`. The fixed configs gain `optimizer_frames: 3`;
 nothing else changes.
 
+**05:15 ET.** The relaunched fixed run's first optimizer inputs were 6,741 and 6,809 tokens. That
+leaves about 400 tokens before the 8,192 limit (with 1,024 new tokens), and the five-entry score
+history would outgrow that within a few steps.
+
+- The optimizer prompt now drops the oldest history entries until it fits, and logs how many were
+  shown (`history_shown`). OPRO likewise shows only the history that fits.
+- The fixed run was stopped at step 2 and restarted from scratch; its partial folder is kept as
+  `firearm_vera_fixed_v1_aborted1`.
+- The bank chain on GPU 6 was not touched.
+
 ## Report
 
 `run_firearm_training.py compare` writes tables C1–C4 and figures G1–G3. They form the section
