@@ -1,0 +1,73 @@
+You are the optimizer for a model. Your goal is to learn the best prompt questions to identify the category and the action in surveillance videos for the model. The model used the Current Prompt Questions below to predict the category, action group and action code for the given inputs. You are given the targets. Please optimize the Current Prompt Questions for better prediction.
+** Inputs (a batch of i.i.d. video frames): **
+** Model Descriptions: **
+You are designed to do three-class classification of surveillance videos and to name the action shown. The input is a sequence of video frames showing one person. You need to output the category, i.e., one of {Handgun, Machine_Gun, No_Gun}, the action group and the action code. Your answers to the prompt questions are the explanation of your decision: describe what you see in the frames that supports the category and action.
+Categories:
+Handgun: a person carries, aims or reloads a handgun (a pistol).
+Machine_Gun: a person carries, aims or reloads a long gun, such as a rifle or a machine gun.
+No_Gun: a person without any firearm walks, jogs, runs or sneaks with empty hands, or holds a phone, a water bottle or soda can, or something heavy.
+Action groups:
+carry (Handgun, Machine_Gun): the person carries a firearm without aiming it; it may point at the floor or the ceiling.
+aim (Handgun, Machine_Gun): the person aims a firearm, including reloading it while aiming.
+move (No_Gun): the person walks, jogs, runs or sneaks with empty hands.
+phone (No_Gun): the person holds a phone, looks at it or records a video with it.
+bottle (No_Gun): the person holds a water bottle or soda can, or drinks from it.
+heavy_object (No_Gun): the person holds something heavy with both hands.
+Action codes:
+N1 (No_Gun, move): the person walking with empty hands.
+N2 (No_Gun, move): the person jogging.
+N3 (No_Gun, move): the person running.
+N4 (No_Gun, move): the person sneaking up with empty hands.
+N5 (No_Gun, phone): the person holding a phone with a single hand (Right/Left) in a relaxed state.
+N6 (No_Gun, phone): the person holding a phone with a single hand (Right/Left) looking at it.
+N7 (No_Gun, phone): the person holding a phone with both hands looking at it.
+N8 (No_Gun, phone): the person holding a phone with a single hand recording a video.
+N9 (No_Gun, phone): the person holding a phone with both hands recording a video.
+N10 (No_Gun, bottle): the person holding a water bottle or soda can with one hand in a relaxed state.
+N11 (No_Gun, bottle): the person drinking from a water bottle or soda can.
+N12 (No_Gun, heavy_object): the person holding something heavy with both hands.
+PCH1 (Handgun, carry): the person carries a handgun with one hand, standing.
+PCH2 (Handgun, carry): the person carries a handgun with both hands, pointed at the floor, standing.
+PCH3 (Handgun, carry): the person carries a handgun with both hands, pointed at the ceiling, standing.
+PCH4 (Handgun, carry): the person carries a handgun with both hands, pointed at the floor, crouched, moving stealthily.
+PCH5 (Handgun, carry): the person carries a handgun with both hands, pointed at the ceiling, standing, moving stealthily.
+PCH6 (Handgun, carry): the person carries a handgun with both hands, pointed at the floor, crouched.
+PCH7 (Handgun, carry): the person carries a handgun with both hands, pointed at the ceiling, crouched.
+PAH1 (Handgun, aim): the person aims a handgun with one hand, arm fully extended, standing.
+PAH2 (Handgun, aim): the person aims a handgun with one hand, arm fully extended, standing, moving stealthily.
+PAH3 (Handgun, aim): the person aims a handgun with one hand, arm tucked in, standing.
+PAH4 (Handgun, aim): the person aims a handgun with one hand, arm tucked in, standing, moving stealthily.
+PAH5 (Handgun, aim): the person aims a handgun with both hands, pointed at the floor, standing.
+PAH6 (Handgun, aim): the person aims a handgun with both hands, pointed forward, standing.
+PAH7 (Handgun, aim): the person aims a handgun with both hands, pointed at the floor, standing, moving stealthily.
+PAH8 (Handgun, aim): the person aims a handgun with both hands, pointed forward, standing, moving stealthily.
+PAH9 (Handgun, aim): the person reloads a handgun with both hands, arms fully extended, standing.
+PCW1 (Machine_Gun, carry): the person carries a long gun with both hands, arms tucked in, standing.
+PCW2 (Machine_Gun, carry): the person carries a long gun with both hands, pointed at the floor, standing.
+PCW4 (Machine_Gun, carry): the person carries a long gun with both hands, pointed at the floor, standing, moving stealthily.
+PCW5 (Machine_Gun, carry): the person carries a long gun with both hands, pointed at the ceiling, standing.
+PCW7 (Machine_Gun, carry): the person carries a long gun with both hands, pointed at the floor, crouched.
+PCW8 (Machine_Gun, carry): the person carries a long gun with one hand, pointed at the floor, standing.
+PCW9 (Machine_Gun, carry): the person carries a long gun with one hand, pointed at the ceiling, standing.
+PAW1 (Machine_Gun, aim): the person aims a long gun with both hands, pointed at the floor, arms fully extended, standing.
+PAW2 (Machine_Gun, aim): the person aims a long gun with both hands, pointed forward, arms fully extended, standing.
+PAW4 (Machine_Gun, aim): the person aims a long gun with both hands, pointed forward and tilted to one side, arms fully extended, standing.
+PAW5 (Machine_Gun, aim): the person aims a long gun with both hands, pointed at the floor, standing, moving stealthily.
+PAW6 (Machine_Gun, aim): the person aims a long gun with both hands, pointed forward, arms fully extended, standing, moving stealthily.
+PAW8 (Machine_Gun, aim): the person reloads a long gun while aiming with both hands, arms fully extended, standing.
+Please answer the prompt questions.
+** Current Prompt Questions:**
+Answer the following questions based on what you saw from the video frames and provide an explanation in one sentence. 
+Based on the analysis above, please conclude your answer to 'Which category and action does the video show?'
+** The model predictions (category, action group, action code per video): **
+[$Prediction]
+** The targets: **
+[$GroundTruth]
+If the model is doing well, you can keep using the current prompt questions. However, if the model is not performing well, please update the model by improving upon the 'Current Prompt Questions', which should results in lower classification error both on the current and the next batch of i.i.d. data. Limit your 'New Prompt Questions' to be no more than five questions! Please think step by step and give your outputs strictly in the following format:
+```
+Reasoning:
+[be explicit and verbose, improve the Current Prompt Questionss by yourself; please show your work and use the features in the videos; note that you don't have access to computers]
+New Prompt Questions:
+[put your new prompt questions here, the questions MUST be based on the features in the input videos. please limit prompt questions to be at most five!]
+```
+Please ONLY reply according to this format. Don't give me any other words.
