@@ -360,12 +360,18 @@ def numbers(tables, d):
                   f'{key}_supported': r['supported']})
     for r in tables['R5']['rows']:
         key = r['arm'].replace(' ', '').replace(',', '_')
-        for c in ('answers', 'evaluable', 'category_acc', 'group_acc', 'mean_lift', 'median_lift', 'mean_reliance', 'right_for_wrong_reasons',
-                  'flip_box_mask', 'flip_control_mask', 'weapon_mentioned_firearm', 'weapon_mentioned_no_gun'):
+        for c in ('answers', 'evaluable', 'mean_lift', 'median_lift', 'mean_reliance'):
             n[f'R5_{key}_{c}'] = r.get(c)
+        for c in ('category_acc', 'group_acc', 'right_for_wrong_reasons', 'flip_box_mask', 'flip_control_mask', 'weapon_mentioned_firearm',
+                  'weapon_mentioned_no_gun'):
+            n[f'R5_{key}_{c}_pct'] = pct(r.get(c))
     for r in tables['R2s']['rows']:
         n[f"sens_{r['set'].replace(' ', '').replace(',', '_')}_median_lift"] = r.get('median_lift')
     n['phase1_videos'] = len(d['phase1'])
+    shuffled = [r['lift_shuffled'] for r in d['phase1'] if r.get('lift_shuffled') is not None]
+    n['phase1_median_lift_shuffled'] = float(np.median(shuffled)) if shuffled else None
+    for name, v in (g.get('V3') or {}).items():
+        n[f'V3_{name}_mean_lift'], n[f'V3_{name}_mean_reliance'], n[f'V3_{name}_videos'] = v.get('mean_lift'), v.get('mean_reliance'), v.get('videos')
     occ = [r for r in d['phase1'] if r.get('occlusion') and correct(r)]
     n['phase1_correct_with_occlusion'] = len(occ)
     n['phase1_correct_flip_box_pct'] = pct(share(flipped(r, 'box') for r in occ)) if occ else None
@@ -401,7 +407,7 @@ def appendix(d, out):
             parts.append(listing(f"{arm}, seed {seed_} (step {sel['step']})", sel['questions']))
     (out / 'questions.tex').write_text('\n'.join(parts) or 'No run has selected questions.\n')
     example = next((s for (arm, _), e in sorted(d['runs'].items()) if arm == 'G' for s in e['steps'] if s.get('grounding_block')), None)
-    (out / 'grounding_example.txt').write_text(f"step {example['step']}\n{example['grounding_block']}\n" if example else 'none\n')
+    (out / 'grounding_example.txt').write_text(f"step {example['step']}\n{example['grounding_block']}\n" if example else 'Phase 2 did not run.\n')
     from .arms import grounded_template
     t1 = (Path(__file__).resolve().parents[1] / 'firearm_training/prompts/optimizer_instruct.txt').read_text()
     (out / 'optimizer_grounded.txt').write_text(grounded_template(t1))

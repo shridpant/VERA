@@ -1,2 +1,10 @@
-% PROSE PENDING
-Pending.
+\begin{itemize}
+\item \textbf{One frozen model and one question set.} RQ1 is answered for InternVL2-8B with the seed questions. Learned questions could change where the model looks and how it decides; that was Phase~2's question.
+\item \textbf{Lift depends on box size.} The ceiling of $256/\text{covered tokens}$ makes lifts of small and large firearms hard to compare, and it lowers the pooled correlation with reliance. The pre-registered gate pools sizes; the size-stratified correlations are descriptive and were not pre-registered.
+\item \textbf{Reliance is nearly binary.} With the seed questions, a correct firearm answer flips whenever the firearm is masked, and a wrong one rarely changes. Reliance therefore measures mostly whether a firearm was recognised, and its correlation with any other measure inherits that.
+\item \textbf{Masks and boxes.} Grey patches create edges, which the equal-sized control handles; but \val{phase1_controls_within_one_cell_pct}\,\% of control patches lie within one token cell of a firearm and may cover part of the hand or firearm, pulling reliance toward 0. Boxes are interpolated between keyframes and can be loose; only audited positive frames count.
+\item \textbf{Eight frames in one image block.} Each frame's 256 tokens are located exactly, but the model can mix information across frames, so per-frame attention is not per-frame use.
+\item \textbf{Weapon mentions} (M4) count denials such as ``not holding a firearm'' as mentions, as pre-registered.
+\item \textbf{The dataset} has four actors, mostly one viewpoint per room and scripted actions; a model that misses handguns here may behave differently on surveillance footage.
+\item \textbf{Disclosed look at partial data.} The gate was computed on the first 72 videos while testing this report, before the review-driven fixes and the restart (Section~\ref{sec:deviations}).
+\end{itemize}
