@@ -10,6 +10,7 @@ Design: docs/superpowers/specs/2026-10-26-firearm-grounding-design.md
   train-arm Phase 2: one arm (T1, G or P) with one training-order seed, then nothing else (resumable)
   evaluate  the selected questions of a trained arm on the test split (M1-M4)
   adopt-t1  Training 1's own run as the T1 arm's first seed (VERA's selection rule on its validation log)
+  analyze   tables R1-R7, figures and number macros from the saved artifacts (no model; needs matplotlib)
 """
 import argparse
 import json
@@ -171,6 +172,15 @@ def adopt_t1_command(args):
     return 0
 
 
+def analyze_command(args):
+    from studies.firearm_grounding.analysis import analyze
+    cfg = config(args.config)
+    out = Path(args.out or Path(cfg['root']) / 'analysis')
+    manifest = analyze(cfg['root'], cfg['data']['dir'], ROOT / 'studies/firearm/annotation_policy.json', out)
+    print(json.dumps({**manifest, 'out': str(out)}, indent=1))
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -208,6 +218,10 @@ def main(argv=None):
     p.add_argument('--config', default='studies/firearm_grounding/grounding.json')
     p.add_argument('--training-run', required=True)
     p.set_defaults(func=adopt_t1_command)
+    p = sub.add_parser('analyze')
+    p.add_argument('--config', default='studies/firearm_grounding/grounding.json')
+    p.add_argument('--out', help='default: <root>/analysis')
+    p.set_defaults(func=analyze_command)
     args = ap.parse_args(argv)
     return args.func(args)
 

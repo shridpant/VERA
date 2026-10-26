@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\lstset{basicstyle=\scriptsize\ttfamily,breaklines=true,columns=fullflexible,keepspaces=true}
+\captionsetup{font=small}
+\input{numbers.tex}
+
+\title{Right for the Right Reasons? Firearm Grounding Feedback in VERA's Verbalized Learning}
+\author{VISILAB firearm-action dataset, frozen InternVL2-8B}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\section{Questions}
+Training~1 adapted VERA~\cite{ye2025vera} to the VISILAB firearm-action dataset~\cite{ruizsantaquiteria2024firearm}: a frozen InternVL2-8B~\cite{chen2024internvl15} rewrites its own guiding questions from the errors it makes, and only the answer text is scored. An answer can be right for the wrong reasons~\cite{ross2017right}: the category Handgun can come from the room, the actor or the pose rather than from the gun. The dataset's firearm boxes let us look beyond the text. This study asks two questions.
+\begin{enumerate}
+\item \textbf{RQ1 (measurement).} When the frozen model decides a clip's category, does it look at the annotated firearm (attention), does it rely on it (occlusion), and do the two agree?
+\item \textbf{RQ2 (training).} If VERA's optimizer is also told where the model looked, do the learned questions make the model rely more on the firearm, without losing more than 5 points of category accuracy?
+\end{enumerate}
+The design, the gate and the outcomes were fixed in a pre-registration before any grounding number was taken; the one deviation (D1) is in Section~\ref{sec:deviations}.
+
+\section{Setting}
+Everything that is not about grounding is Training~1 unchanged: the 240/62/96 split by recording group, the codebook and learner prompt, eight frames per video sampled evenly over the whole video, InternVL2-8B revision 6fb9ad69 in BF16 with greedy decoding and 1,024 new tokens, batches of two videos, ten epochs and validation every 100 batches within an epoch. Boxes come from the dataset's annotations after the audit of the earlier study. A sampled frame is \emph{boxed} when its audited status is positive, and a video is \emph{grounding-evaluable} when at least one of its eight frames is boxed; No\_Gun videos never are. Training reads training-split boxes only, selection reads validation boxes, and test boxes are read only for the final evaluation.
+
+\section{Measures}
+All measures are taken on the model's own greedy answer under the questions being evaluated.
+
+\paragraph{Decision.} The answer is cut at its last \texttt{Category:} field. The three category names are scored as continuations of that prefix (summed token log-probabilities, normalised over the three, FP32 head), giving $p_\text{true}$. The decision position is the last token before the category name.
+
+\paragraph{M1, attention lift (correlational).} One scoring forward pass with eager attention keeps the decision position's attention row in every layer. Frame $k$'s image tokens are the $k$-th run of 256 tokens in the single image span; token $(r,c)$ covers a $62.5\times62.5$ cell of the 0--1000 grid of the $448\times448$ input. With $a$ the frame's attention (mean over 32 layers and 32 heads, renormalised within the frame) and $c$ each token's fractional box coverage, the video lift is $\sum_k a_k\!\cdot\!c_k \,/\, \sum_k \lVert c_k\rVert_1/256$ over boxed frames: 1.0 is chance. Sensitivities: layer groups 0--10, 11--21 and 22--31, and removing each frame's single most-attended token before renormalising (attention sinks~\cite{xiao2024sinks,darcet2024registers}).
+
+\paragraph{M2, occlusion reliance (causal).} Following occlusion analysis~\cite{zeiler2014visualizing}, the answer is regenerated twice: once with every boxed frame's firearm box filled with grey (127), once with an equal-sized grey box at a control position (horizontal mirror, else vertical mirror, else the disjoint position closest to the centre). Reliance $=\log p_\text{true}(\text{control}) - \log p_\text{true}(\text{box})$, in nats: positive when hiding the gun hurts the true answer more than hiding an equal patch elsewhere. Frames whose box has no disjoint control position are left out of both masks.
+
+\paragraph{M3 and M4.} Category, action-group and code accuracy with Training~1's strict parser, and the share of answers whose explanation names a weapon (on No\_Gun videos, a false mention). A grounding-evaluable video with the correct category and reliance $\le 0$ is \emph{right for the wrong reasons}.
+
+\section{Design}
+\paragraph{Phase 0.} Real-model checks before any grounding number: our generation equals the runner's \texttt{batch\_chat}; an eager replay reproduces the greedy tokens; eager and FlashAttention category scores agree within 0.05 nats; greying one cell changes the vision token at that cell (token-grid orientation).
+
+\paragraph{Phase 1 and the gate.} The seed questions on all 398 videos. V1 (spatial specificity): lift with the true boxes minus lift with \emph{shuffled} boxes (another grounding-evaluable video of the same camera, frame by frame). V2 (agreement): Spearman $\rho$ between lift and reliance. Phase~2 runs only if both 95\,\% intervals lie above 0; attention is otherwise not a valid training signal and the study stops at RQ1, because attention and reliance need not agree~\cite{jain2019attention}.
+
+\paragraph{Phase 2.} Three arms with three training-order seeds each (20261026, 20261027, 20261028), paired by seed. \textbf{T1} is Training~1 (its own run is seed 20261026). \textbf{G} adds a block to the optimizer prompt after the targets: for each video in the batch, the attention lift on the annotated firearm in each boxed frame, measured on the learner's own answer, with an overall level (low/typical/high at Phase~1's training-split quartiles) and one fixed sentence asking for questions that lead the model to look at the firearm without lowering accuracy (Appendix~\ref{app:prompts}). \textbf{P} (placebo) shows the identical block with each frame's value drawn at random from Phase~1's training-split frame lifts, so that any effect of G beyond P comes from the measured values, not from the block's presence or its sentence. T1 selects by validation category accuracy; G and P select, among validated steps within 5 points of their best validation category accuracy, the step with the highest pooled validation lift. Training feedback is attention (M1) while the primary outcome is occlusion (M2), so questions that move attention without changing reliance cannot pass.
+
+\paragraph{Outcomes.} On the test split: \textbf{H1 (primary)} mean reliance of G exceeds P, as the per-video G$-$P difference averaged over seeds; \textbf{H2 (co-primary)} category accuracy of G is at least T1's minus 5 points (lower bound of the paired difference above $-0.05$). Intervals are 95\,\% percentile intervals from 2,000 bootstrap draws resampling test recording groups within category (seed 20261026)~\cite{efron1993bootstrap}. Secondary contrasts are descriptive and not corrected for multiplicity.
+
+\section{Results}
+\input{results.tex}
+
+\section{Deviations}\label{sec:deviations}
+\textbf{D1} (after Phase~0, before Phase~1). Phase~0's checks b2 (eager replay reproduces 207 of 209 greedy tokens) and b3 (largest eager--FlashAttention gap 0.12 nats) failed their strict thresholds. A diagnostic found the same two token mismatches in a FlashAttention replay, at near-ties (margins $-0.19$ and $-0.42$), and the 0.12-nat gap on a class at $p\approx0.002$; for the chosen class the gap was at most 0.0007 nats. Attention is therefore read from the eager pass and every probability from a FlashAttention pass, the kernels that generate the answers. Nothing else changed.
+
+\section{Limitations}
+\input{limitations.tex}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+\section{Prompts}\label{app:prompts}
+\subsection*{Optimizer instruction of G and P}
+Training~1's optimizer instruction with the grounding block inserted after the targets; T1 uses it without the block.
+\lstinputlisting{optimizer_grounded.txt}
+\subsection*{A grounding block from G's training}
+\lstinputlisting{grounding_example.txt}
+
+\section{Questions}\label{app:questions}
+\input{questions.tex}
+\end{document}
