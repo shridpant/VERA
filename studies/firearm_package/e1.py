@@ -58,7 +58,7 @@ def spec_for(cfg, name, arm, manifest_path, prompt):
 def run_arm(cfg, name, arm, manifest_path, out_dir, model=None, limit=None, prompt=None):
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    prompt = prompt or PROMPTS[arm['family']]
+    prompt = prompt or (INTERNVL_REC_PROMPT if arm.get('prompt') == 'referring' else PROMPTS[arm['family']])
     spec = spec_for(cfg, name, arm, manifest_path, prompt)
     spec_file = out / 'spec.json'
     if spec_file.exists():

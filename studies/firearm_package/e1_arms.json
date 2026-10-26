@@ -1,7 +1,7 @@
 {
   "internvl35_8b_off":   {"model": "internvl35_8b", "family": "internvl", "thinking": false, "frames": "all",       "max_new_tokens": 512,  "max_num": 6},
-  "internvl35_8b_on":    {"model": "internvl35_8b", "family": "internvl", "thinking": true,  "frames": "subset300", "max_new_tokens": 4096, "max_num": 6},
-  "internvl35_8b_on_r2": {"model": "internvl35_8b", "family": "internvl", "thinking": true,  "frames": "subset100", "max_new_tokens": 4096, "max_num": 6, "seed_offset": 1},
+  "internvl35_8b_on":    {"prompt": "referring", "model": "internvl35_8b", "family": "internvl", "thinking": true,  "frames": "subset300", "max_new_tokens": 4096, "max_num": 6},
+  "internvl35_8b_on_r2": {"prompt": "referring", "model": "internvl35_8b", "family": "internvl", "thinking": true,  "frames": "subset100", "max_new_tokens": 4096, "max_num": 6, "seed_offset": 1},
   "internvl2_8b_off":    {"model": "internvl2_8b",  "family": "internvl", "thinking": false, "frames": "all",       "max_new_tokens": 512,  "max_num": 6, "flash": true},
   "qwen3vl_8b_instruct": {"model": "qwen3vl_8b_instruct", "family": "qwen3vl", "thinking": false, "frames": "all",   "max_new_tokens": 512},
   "qwen3vl_8b_thinking": {"model": "qwen3vl_8b_thinking", "family": "qwen3vl", "thinking": true, "frames": "subset300", "max_new_tokens": 4096},

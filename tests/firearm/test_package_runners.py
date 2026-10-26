@@ -38,8 +38,10 @@ def make_data(td, per_class=(6, 2)):
 class FakeDetector:
     def __init__(self):
         self.calls = []
+        self.questions = []
 
     def chat(self, images_per_slot, question, max_new_tokens, seed=0, packed=False):
+        self.questions.append(question)
         self.calls.append((len(images_per_slot), seed))
         im = images_per_slot[0][0].convert('L')
         bright = sum(im.getdata()) / (im.width * im.height) > 100
@@ -90,6 +92,10 @@ class E1Tests(unittest.TestCase):
             gun = [r for r in recs if r['category'] != 'No_Gun']
             self.assertTrue(all(r['score']['tp50'] == 1 for r in gun))
             self.assertTrue(all(r['status'] == 'none' for r in recs if r['category'] == 'No_Gun'))
+            e1.run_arm(cfg, 'referring', {**arm, 'prompt': 'referring'}, mpath, Path(td) / 'referring', model=fake, limit=1)
+            self.assertIn(e1.INTERNVL_REC_PROMPT, fake.questions[-1])
+            spec = json.loads((Path(td) / 'referring/spec.json').read_text())
+            self.assertEqual(spec['prompt'], e1.INTERNVL_REC_PROMPT)
             with self.assertRaisesRegex(ValueError, 'spec changed'):
                 e1.run_arm(cfg, 'a', {**arm, 'max_new_tokens': 65}, mpath, Path(td) / 'run', model=fake)
 
