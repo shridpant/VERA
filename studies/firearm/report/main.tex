@@ -58,7 +58,7 @@ Six videos (one per category and camera, seed 20261025) and their first two wind
 \subsection{Parsing}
 The anomaly label is read strictly from the \emph{final} \texttt{Output:} field, whose remainder must be exactly 0 or 1; anything else, and any truncated answer, is a missing label, never ``normal''. VERA's original rule (``0 if any 0 follows the last Output'') and the runner's one-field rule are saved for comparison; box digits after an \texttt{Output} field corrupt only the original rule. Box lines are parsed per slot into boxes, empty, unknown, malformed (any invalid box makes the whole slot malformed), missing, duplicate or truncated, without repair or rescaling. A box covering at least 95\,\% of the frame is flagged as whole-image and kept in the metrics.
 
-\subsection{Refinement}
+\subsection{Refinement}\label{sec:methods-refinement}
 VERA's offline refinement (scene-similarity weighting over the 15\,\% most similar windows, Gaussian temporal smoothing of width 15, rounding to 0.1 and positional weighting, as in its \texttt{compute\_auc.py}) is applied to the strict labels of A and AG with the \emph{identical} ImageBind~\cite{girdhar2023imagebind} features of each video. G has no anomaly label. Features follow LAVAD's procedure~\cite{zanella2024lavad} (a 300-frame clip centred on each anchor, ten uniformly subsampled frames, PyTorchVideo~\cite{fan2021pytorchvideo} clip sampling, three spatial crops, ImageBind-Huge in FP32), re-implemented on the official ImageBind package. On the one UCF-Crime~\cite{sultani2018ucfcrime} video for which VERA's features were available, the re-extracted features match the released ones with median row cosine \val{fc_cosine_median} (minimum \val{fc_cosine_min}); they are not bit-identical, and refined scores differ by up to \val{fc_refined_maxdiff} (details in the repository's \texttt{FEATURES\_VALIDATION.md}). A video is excluded from refinement, never padded, when it has fewer than 15 windows (the smoothing length), any invalid label, missing features or a missing record; all reasons are reported.
 
 \subsection{Localization metrics}
@@ -92,7 +92,7 @@ Human judgments of the windows and explanations; action-state labels (carrying, 
 \lstinputlisting{prompt_AG.txt}
 
 \section{Qualitative cases (T11)}\label{app:cases}
-Cases were chosen by a rule fixed before the full run: the two videos with the largest positive and the two with the largest negative AG$-$A anomaly fraction, two unchanged videos drawn with the seed, and the videos with the highest and lowest AG recall (when any recall exists). Within a video the first window whose labels differ is shown, else the window with most boxed frames, else the middle window.
+Cases were chosen by a rule fixed before the full run: the two videos with the largest positive and the two with the largest negative AG$-$A anomaly fraction, two unchanged videos drawn with the seed, and the videos with the highest and lowest AG recall (when any recall exists). Within a video the first window whose labels differ is shown, else the window with most boxed frames, else the middle window. Every video's AG recall is zero here, so the highest- and lowest-recall rule selects the same video, the first eligible one by ID, and it is shown once.
 \input{qualitative_cases.tex}
 
 \section{Per-video results (T9)}

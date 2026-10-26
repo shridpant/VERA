@@ -20,6 +20,8 @@ def key(*parts):
 
 def numbers_from(tables, d, extra):
     n = {'videos': len(d.videos), 'windows': len(d.windows), 'units': d.reconcile['expected_units']}
+    for subject in sorted({v['subject'] for v in d.videos}):
+        n[key('subject', subject, 'videos')] = sum(v['subject'] == subject for v in d.videos)
     for disposition, count in d.reconcile['counts'].items():
         n[key('units', disposition)] = count
     for r in tables['T1']['rows']:

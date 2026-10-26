@@ -1,15 +1,17 @@
-% PROSE PENDING: written from the saved analysis after the full run. Floats below are final.
 \subsection{Coverage}
+All \val{units} scheduled window--condition calls completed in one session, with no failed, timed-out or retried call (Table~\ref{tab:T2}). Every A answer had a valid strict label. AG had \val{T2_AG_All_unparsedlabels} answers without one and no truncation; G had \val{T7_G_All_truncated} truncated slots (\val{T2_G_All_truncated} answer). The strict, runner-strict and original parsers agree on every A answer; for the \val{T2b_AG_All_legacy0wherefinalmissing} AG answers that the strict parser rejects, VERA's original rule would have reported ``normal'' (Table~\ref{tab:T2b}).
 \input{tables/T1.tex}
 \input{tables/T2.tex}
 \input{tables/T2b.tex}
 
 \subsection{Original VERA behaviour (question 1)}
+Unchanged VERA labels \val{T3_All_anomalypct}\,\% of all windows anomalous: \val{T3_Handgun_anomalypct}\,\% of Handgun, \val{T3_MachineGun_anomalypct}\,\% of Machine\_Gun and \val{T3_NoGun_anomalypct}\,\% of No\_Gun windows (Table~\ref{tab:T3}, Figure~\ref{fig:P1}). The median firearm video has every window flagged; the median No\_Gun video has \val{T3_NoGun_pervideoanomalymedianpct}\,\%. Firearm windows are flagged more often, but VERA's UCF-Crime questions also flag a majority of the staged no-firearm scenes. These are anomaly judgments, not accuracy: the categories are not anomaly labels.
 \input{tables/T3.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P1_predictions.pdf}
 \caption{A and AG predictions per dataset category as a share of scheduled windows, including invalid answers (hatched).}\label{fig:P1}\end{figure}
 
 \subsection{Localization (question 2)}
+Under VERA's packing the frozen backbone does not localize firearms. G answered \texttt{[]} for \val{T7_G_All_empty} of \val{T7_G_All_submittedslots} slots and AG for \val{T7_AG_All_empty}. The boxes it did write are all whole-image boxes (\val{T7_G_All_wholeimageboxes} in G, \val{T7_AG_All_wholeimageboxes} in AG), and in \val{T7_G_All_responsessameboxeseveryboxedslot} of the \val{T7_G_All_responseswithboxes} G answers with boxes the same box repeats on every boxed slot (Table~\ref{tab:T7}). Against the \val{T8_primary_G_All_iou50_gtobjects} annotated firearms on evaluable slots, G and AG reach zero true positives at IoU~0.50 and 0.75: recall, precision and F1 are 0 in every firearm category, and the paired AG$-$G recall difference is 0 with a degenerate interval (Tables~\ref{tab:T8}--\ref{tab:T8o}). The origin-0 sensitivity analysis and the size breakdown change nothing. Because no slot is localized, slot interpretability under the eight-in-one packing (Section~\ref{sec:prompts}) could not be shown either way.
 \input{tables/T7.tex}
 \input{tables/T8.tex}
 \input{tables/T8d.tex}
@@ -23,6 +25,7 @@
 \caption{IoU of matched boxes and recall by ground-truth size.}\label{fig:P7b}\end{figure}
 
 \subsection{Requesting localization in the same response (question 3)}
+On the \val{T4_All_pairedwindows} windows valid in both conditions, AG labels \val{T4_All_AGanomalypct}\,\% anomalous against \val{T4_All_Aanomalypct}\,\% for A: a difference of \val{T4_All_diffpp}\,pp (95\,\% CI \val{T4_All_diffppcilow} to \val{T4_All_diffppcihigh} resampling videos; \val{T4_All_diffppcigrouplow} to \val{T4_All_diffppcigrouphigh} resampling recording groups). The equal-video summary agrees (\val{T4_All_equalvideodiffpp}\,pp). The drop is largest for No\_Gun windows and smallest, with an interval that includes zero, for Machine\_Gun windows (Table~\ref{tab:T4}). It comes from both directions: \val{T5_All_anomalynormalpct}\,\% of paired windows go from anomaly to normal and \val{T5_All_normalanomalypct}\,\% from normal to anomaly (Table~\ref{tab:T5}, Figure~\ref{fig:P3}). Since AG almost never wrote a box, this change cannot come from localization; it is the effect of the bundled prompt change (the extra question and output lines). It is a change in judgment, not evidence of improvement: there is no anomaly ground truth.
 \input{tables/T4.tex}
 \input{tables/T5.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P2_paired_video_fractions.pdf}
@@ -33,11 +36,13 @@
 \caption{Anomaly rate by camera and resolution with window counts; descriptive, not a causal effect of resolution.}\label{fig:P5}\end{figure}
 
 \subsection{Refined scores}
+\input{refinement_text.tex}
 \input{tables/T6.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P4_refined_scores.pdf}
 \caption{Per-video mean refined frame score (left) and paired A versus AG values on videos eligible in both (right).}\label{fig:P4}\end{figure}
 
 \subsection{Computation}
+Inference took \val{T10_A_hours}, \val{T10_G_hours} and \val{T10_AG_hours} GPU-hours for A, G and AG on one RTX 6000 Ada, with median calls of \val{T10_A_medians}, \val{T10_G_medians} and \val{T10_AG_medians}\,s (Table~\ref{tab:T10}).
 \input{tables/T10.tex}
 \begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/P9_runtime_tokens.pdf}
 \caption{Generation time and generated tokens per call.}\label{fig:P9}\end{figure}
