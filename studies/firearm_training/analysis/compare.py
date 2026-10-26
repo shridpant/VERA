@@ -1,7 +1,8 @@
 """Comparison of Training 1 runs (faithful seeds and declared variants) from their saved logs only.
 
-Tables C1-C6 and figures G1-G3. Test intervals resample recording groups within category (2,000
-draws, seed 20261026), as in run.py. Every run tests the same seed questions with greedy decoding,
+Tables C1-C4 and figures G1-G3. Test intervals resample recording groups within category (2,000
+draws, seed 20261026) with run.py's stream names, so all runs share the same draws and the faithful
+run's intervals equal Table S4. Every run tests the same seed questions with greedy decoding,
 so their seed-question test answers must agree; C1 reports any disagreement as a determinism check.
 Validation scores of several methods on the same 62 videos are optimistic; the test split decides.
 """
@@ -81,7 +82,7 @@ def c1(runs):
             p = t['predictions']
             units = [{**x, 'group_key': x['recording_group']} for x in p]
             for k, f in enumerate(FIELDS):
-                est, lo, hi, _ = cluster_bootstrap(units, 'group_key', 'category', lambda u, k=k: acc(u, k), B, SEED, f"C1 {r['id']} {f}")
+                est, lo, hi, _ = cluster_bootstrap(units, 'group_key', 'category', lambda u, k=k: acc(u, k), B, SEED, f'S4 learned {f}')
                 row.update({f'test_{f}_acc': est, f'test_{f}_low': lo, f'test_{f}_high': hi})
             row['test_invalid'] = sum(x['pred']['category'] is None for x in p)
             row['test_at_cap'] = sum(x['generated_tokens'] >= 1024 for x in p)
@@ -98,11 +99,11 @@ def c2(runs, reference):
             continue
         row = {'run': r['label']}
         for k, f in enumerate(FIELDS[:2]):
-            est, lo, hi, _ = paired(r['tests']['seed']['predictions'], r['tests']['learned']['predictions'], k, f"C2 seed {r['id']} {f}")
+            est, lo, hi, _ = paired(r['tests']['seed']['predictions'], r['tests']['learned']['predictions'], k, f'S4 diff {f}')
             row.update({f'vs_seed_{f}': est, f'vs_seed_{f}_low': lo, f'vs_seed_{f}_high': hi})
             if reference is not None and r is not reference and 'learned' in reference['tests']:
                 est, lo, hi, _ = paired(reference['tests']['learned']['predictions'], r['tests']['learned']['predictions'], k,
-                                        f"C2 ref {r['id']} {f}")
+                                        f'C2 vs faithful {f}')
                 row.update({f'vs_faithful_{f}': est, f'vs_faithful_{f}_low': lo, f'vs_faithful_{f}_high': hi})
         rows.append(row)
     cols = ['run'] + [f'vs_{w}_{f}{s}' for w in ('seed', 'faithful') for f in FIELDS[:2] for s in ('', '_low', '_high')]
@@ -183,7 +184,7 @@ def figures(runs, out):
         for ax, k, title in ((axes[0], 0, 'category'), (axes[1], 1, 'action group')):
             for i, (r, color) in enumerate(zip(tested, COLORS)):
                 p = [{**x, 'group_key': x['recording_group']} for x in r['tests']['learned']['predictions']]
-                est, lo, hi, _ = cluster_bootstrap(p, 'group_key', 'category', lambda u, k=k: acc(u, k), B, SEED, f"G2 {r['id']} {k}")
+                est, lo, hi, _ = cluster_bootstrap(p, 'group_key', 'category', lambda u, k=k: acc(u, k), B, SEED, f'S4 learned {FIELDS[k]}')
                 ax.errorbar(est, i, xerr=[[est - lo], [hi - est]], fmt='o', color=color, capsize=2)
             seed = tested[0]['tests'].get('seed')
             if seed:
