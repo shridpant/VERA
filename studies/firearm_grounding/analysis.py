@@ -7,6 +7,7 @@ H2 (co-primary): per test video, mean over seeds of correct(G) - correct(T1); lo
 import json
 from pathlib import Path
 import numpy as np
+from scipy.stats import spearmanr
 from vera_runner.ledger import read_jsonl
 from studies.firearm_training.analysis.latex import esc, fmt, write_csv, write_numbers, write_tex
 from studies.firearm_training.analysis.stats import cluster_bootstrap, pct, share
@@ -66,11 +67,19 @@ def load(root):
 
 
 def r1(d):
-    rows = [{'check': k, 'passed': v['passed'], 'detail': json.dumps({x: y for x, y in v.items() if x != 'passed'})}
-            for k, v in (d['phase0'] or {}).get('checks', {}).items()]
+    def detail(v):
+        return '; '.join(f'{x} {y:.4g}' if isinstance(y, float) else f'{x} {y}' for x, y in v.items() if x != 'passed')
+    rows = [{'check': k, 'passed': v['passed'], 'detail': detail(v)} for k, v in (d['phase0'] or {}).get('checks', {}).items()]
     return table('R1', 'Phase 0 measurement checks', ['check', 'passed', 'detail'], rows, [
         'b2/b3 failed their strict thresholds; the diagnostic (DEVIATIONS.md, D1) found the same two near-tie mismatches with a '
         'FlashAttention replay, so attention is read with eager attention and every probability with FlashAttention.'])
+
+
+def transposed(t, key, title=None):
+    """Report view of a wide table: one row per measure, one column per value of `key`."""
+    cols = [str(r[key]) for r in t['rows']]
+    rows = [{'measure': c, **{str(r[key]): r.get(c) for r in t['rows']}} for c in t['columns'] if c != key]
+    return {**t, 'columns': ['measure'] + cols, 'rows': rows, 'title': title or t['title']}
 
 
 def lift_summary(records, label):
@@ -98,6 +107,11 @@ def r2(d):
     for name, v in (g.get('V3') or {}).items():
         rows.append({'measure': f'V3 {name} category (mean lift)', 'estimate': v.get('mean_lift'), 'mean_reliance': v.get('mean_reliance'),
                      'videos': v.get('videos')})
+    for name, keep in (('correct', True), ('incorrect', False)):
+        sub = [r for r in d['phase1'] if r.get('lift') is not None and r.get('reliance') is not None
+               and (r['pred']['category'] == r['category']) == keep]
+        rows.append({'measure': f'Spearman rho within {name} category (not pre-registered)', 'videos': len(sub),
+                     'estimate': float(spearmanr([r['lift'] for r in sub], [r['reliance'] for r in sub]).correlation) if len(sub) >= 5 else None})
     gate_table = table('R2', 'Phase 1 validity gate (seed questions, all splits)',
                        ['measure', 'estimate', 'ci_low', 'ci_high', 'mean_reliance', 'videos', 'passed'], rows,
                        [f"Gate {'passed' if g.get('gate_passed') else 'not passed'}: V1 and V2 lower bounds above 0 (pre-registered). "
@@ -232,6 +246,7 @@ def figures(d, out):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
+    import matplotlib.ticker
     plt.rcParams.update({'font.size': 8, 'axes.spines.top': False, 'axes.spines.right': False, 'axes.grid': True, 'grid.color': '#e1e0d9',
                          'grid.linewidth': 0.5, 'axes.axisbelow': True, 'legend.frameon': False, 'pdf.fonttype': 42, 'savefig.dpi': 200})
     out.mkdir(parents=True, exist_ok=True)
@@ -253,7 +268,8 @@ def figures(d, out):
         rel = [r for r in ev if r.get('reliance') is not None]
         axes[1].scatter([r['lift'] for r in rel], [r['reliance'] for r in rel], s=8, color='#2a78d6', alpha=0.7)
         axes[1].set_xscale('log'), axes[1].axhline(0, color='#52514e', linewidth=0.8), axes[1].axvline(1, color='#52514e', linewidth=0.8)
-        axes[1].set_xlabel('attention lift'), axes[1].set_ylabel('occlusion reliance (nats)')
+        axes[1].xaxis.set_major_formatter(matplotlib.ticker.ScalarFormatter()), axes[1].xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+        axes[1].set_xlabel('attention lift (1 = chance)'), axes[1].set_ylabel('occlusion reliance (nats)')
         fig.tight_layout()
         save(fig, 'F1_phase1_lift_and_reliance')
     if d['runs']:
@@ -353,9 +369,10 @@ def analyze(root, boxes_dir, policy_path, out_dir):
     (out / 'tables').mkdir(parents=True, exist_ok=True)
     r2a, r2b = r2(d)
     tables = {t['id']: t for t in (r1(d), r2a, r2b, r3(d), r4(d), r5(d), r6(d, boxes, edges), r7(d))}
+    views = {'R2s': 'set', 'R5': 'arm'}
     for t in tables.values():
         write_csv(t, out / 'tables')
-        write_tex(t, out / 'tables')
+        write_tex(transposed(t, views[t['id']]) if t['id'] in views and t['rows'] else t, out / 'tables')
     made = figures(d, out / 'figures')
     appendix(d, out)
     write_numbers(numbers(tables, d), out)
