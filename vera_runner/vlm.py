@@ -77,6 +77,14 @@ class InternVL:
         kwargs = dict(torch_dtype=torch.bfloat16, low_cpu_mem_usage=True, trust_remote_code=True, use_flash_attn=flash)
         if device_map:
             kwargs['device_map'] = device_map
+            if device_map == 'auto':
+                # A16 automatic placement otherwise fills cards to their capacity and
+                # can OOM while loading shards. Reserve vision/KV/allocator headroom.
+                gib = 1024 ** 3
+                kwargs['max_memory'] = {
+                    i: min(int(torch.cuda.mem_get_info(i)[0] * 0.9), (12 if i == 0 else 13) * gib)
+                    for i in range(torch.cuda.device_count())
+                }
         self.model = AutoModel.from_pretrained(path, **kwargs).eval()
         if not device_map:
             self.model = self.model.to('cuda')
