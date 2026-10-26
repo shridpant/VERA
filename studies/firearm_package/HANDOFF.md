@@ -1,26 +1,43 @@
-# Firearm VERA package: execution update (2026-10-26, 19:22 ET)
+# Firearm VERA package: execution update (2026-10-26, 19:31 ET)
 
-- Setup completed: both CUDA environments work and all 36 InternVL3.5-38B files were verified.
-- The run checkout was synced from cb0c5ed, then advanced to 47c867a for the observed model-loading fixes. The branch remains unpushed.
+Setup is complete. Phase 1 is running; no gate decision is available yet. Phase 2, importance, package assembly and the report remain unbuilt. Nothing was pushed or merged.
+
+## Verified
+
+- Both environments report CUDA available; all 36 InternVL3.5-38B files passed verification.
 - The non-test manifest has 1,003 frames: 394 Handgun, 433 Machine_Gun, 176 No_Gun, with nested 300/100 subsets.
-- All seven initial format settings completed (60 real calls). No prompt switch or coordinate scaling was indicated. See DEVIATIONS.md for backend details and exclusions.
-- Three analysis implementation errors were fixed in 61ae6e9 before Phase 1: the 38B thinking ranking exclusion, per-category target indexing, and duplicate retry accounting.
-- The 38B A16 model exposed two runtime issues: automatic placement filled a card during loading, and InternVL silently selected eager attention. Explicit weight-memory ceilings and the intended SDPA language backend are now enforced (019766e, 47c867a). Pre-SDPA InternVL records were preserved in package/diagnostics/pre_sdpa and excluded from analysis.
-- All 47 firearm tests pass. The completion checker was verified to block missing records or failed jobs and run analysis only on complete inputs.
+- All seven initial format settings completed (60 real calls). InternVL3.5 probes were repeated after the SDPA correction; the 38B off-probe also completed (12 calls).
+- Qwen3-VL Instruct completed 1,003/1,003 E1 frames and InternVL2 packed completed 302/302 E2 videos, with zero call failures. These are completion counts, not gate conclusions.
+- All 48 firearm tests pass. The completion checker was verified against missing records, failed jobs and complete inputs.
+
+## Corrections and declared decisions
+
+- 61ae6e9 corrected the 38B thinking ranking exclusion, per-category target indexing, and duplicate retry accounting before Phase 1.
+- 019766e and 47c867a fixed observed A16 memory failures: explicit weight-memory ceilings and the intended SDPA language backend. InternVL remote code had silently selected eager attention. Preliminary InternVL records are preserved under `package/diagnostics/pre_sdpa/` and excluded from analysis.
+- The repeated SDPA probes returned a parseable firearm box with the detection prompt for 8B thinking off, but none for thinking on. Under the predeclared rule, the thinking arm and its repeat now use the referring prompt (1cc7086). The existing parser still marks a thinking response without a closed trace as truncated; this can mean protocol noncompliance rather than token-limit exhaustion. See DEVIATIONS.md.
+- The 38B off-probe returned parseable firearm boxes and retains the detection prompt. Its originally omitted thinking-on probe is now required before either 38B ablation arm. Pipeline 087aa42 applies the same predeclared prompt rule, records both decisions before detection, and checks successful record completeness between retries.
+- No threshold, seed, model weight, frame selection or scoring parser was changed.
 
 ## Active jobs on oz
 
-All paths below are under `/local/datasets/sp2117/firearm_visilab/package/logs/`.
+The run checkout is `/local/datasets/sp2117/firearm_visilab/code/VERA-package-runs`, at 087aa42. The Ada 5/6 jobs began at 61ae6e9 and continued through the compatible loader/analysis corrections; current InternVL jobs use 087aa42. Local later handoff commits do not change running code.
 
-- Ada 4: `firearm_package_e1a_sdpa_20261026T192229_257962`. Repeats both InternVL3.5-8B probes with SDPA, checks the predeclared prompt rule, then runs E1a.
-- Ada 5: `firearm_package_e2_20261026T191611_256791` (recognition; continued unchanged).
-- Ada 6: `firearm_package_e1b_20261026T191612_256838` (Qwen detectors; continued unchanged).
-- A16 indices 0, 1, 2, 3, 8, 9: `firearm_package_e1c_sdpa_20261026T192230_258008`. Probes 38B before E1c; all six GPUs have usage samples.
-- Ada 7 remains free.
-- CPU dependency job: `firearm_package_gates_sdpa_20261026T192231_258054`. Waits for all four jobs, checks every expected frame/video, and runs analyze1 only if complete. It writes `package/analysis/completion.json`; results will be `package/analysis/phase1.json`. The reproducible checker is `jobs/finish_phase1.py`; the launched copy is `package/finish_phase1.py`.
-- `package/phase1_submission.json` records current job paths and superseded attempts. Do not double-launch jobs. Inspect records, completion.json, and each job's exit_status before resuming or interpreting gates.
+All job directories are under `/local/datasets/sp2117/firearm_visilab/package/logs/`.
 
-Phase 1 is still running; no gate decision is available yet. Phase 2, importance, package assembly, and the report remain unbuilt.
+- Ada 4, InternVL detector: `firearm_package_e1a_probed_20261026T193049_258688`.
+- Ada 5, recognition: `firearm_package_e2_20261026T191611_256791`.
+- Ada 6, Qwen detectors: `firearm_package_e1b_20261026T191612_256838`.
+- A16 indices 0, 1, 2, 3, 8, 9, 38B probes and detectors: `firearm_package_e1c_probed_20261026T193050_258735`.
+- CPU dependency job: `firearm_package_gates_probed_20261026T193051_258781`.
+- Ada 7 remains free. The A16 job records usage samples for all six cards.
+
+The CPU job waits for all four jobs, verifies every expected frame/video, then runs `analyze1`. Its status is `package/analysis/completion.json`; results will be `package/analysis/phase1.json`. The committed checker is `jobs/finish_phase1.py`; the launched copy is `package/finish_phase1.py`.
+
+`package/phase1_submission.json` records current jobs and superseded attempts. Do not double-launch. Inspect job exit_status, records and completion.json before interpreting gates or restarting. The 38B pipeline will append its probe decisions to the remote DEVIATIONS.md before ablation; preserve those notes and bring them back to the Mac before any future code sync. That expected documentation change can make the remote checkout dirty.
+
+## Next
+
+Allow the active jobs to complete, inspect completion.json and phase1.json, then apply G1/G2 before building Phase 2. The running CPU dependency job does not send notifications.
 
 ---
 
