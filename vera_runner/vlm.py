@@ -86,6 +86,12 @@ class InternVL:
                     for i in range(torch.cuda.device_count())
                 }
         self.model = AutoModel.from_pretrained(path, **kwargs).eval()
+        if not flash:
+            # InternVL remote code forces eager attention when FlashAttention is off.
+            # Select the planned SDPA backend explicitly on the native language model.
+            self.model.language_model.set_attn_implementation('sdpa')
+            if self.model.language_model.config._attn_implementation != 'sdpa':
+                raise RuntimeError('InternVL language model did not enable SDPA')
         if not device_map:
             self.model = self.model.to('cuda')
         self.tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, use_fast=False)
