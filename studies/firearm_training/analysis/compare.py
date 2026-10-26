@@ -75,6 +75,7 @@ def c1(runs):
                'units': len(r['steps']) or len(r['rounds']), 'validations': len([v for v in r['validations'] if not v['reference_only']]),
                'selected_step': r['selected']['step'] if r['selected'] else None,
                'val_category_acc': r['selected']['metrics']['category_accuracy'] if r['selected'] else None,
+               'val_group_acc': r['selected']['metrics']['group_accuracy'] if r['selected'] else None,
                'seed_test_disagreements': disagree, 'gpu_hours': hours(r)}
         if t:
             p = t['predictions']
@@ -254,7 +255,34 @@ def compare(run_dirs, out_dir):
         for f in FIELDS:
             numbers[f'cmp_{key}_test_{f}_pct'] = pct(r.get(f'test_{f}_acc'))
         numbers[f'cmp_{key}_val_category_pct'] = pct(r['val_category_acc'])
+        numbers[f'cmp_{key}_val_group_pct'] = pct(r.get('val_group_acc'))
+        numbers[f'cmp_{key}_selected_step'] = r['selected_step']
         numbers[f'cmp_{key}_seed_disagreements'] = r['seed_test_disagreements']
+        numbers[f'cmp_{key}_gpu_hours'] = r['gpu_hours']
+        for f in FIELDS:
+            for b in ('low', 'high'):
+                numbers[f'cmp_{key}_test_{f}_{b}_pct'] = pct(r.get(f'test_{f}_{b}'))
+    for r, diff in ((r, next((x for x in tables['C2']['rows'] if x['run'] == r['run']), {})) for r in tables['C1']['rows']):
+        key = f"{r['method']}_{r['run_seed']}"
+        for col, v in diff.items():
+            if col != 'run' and v is not None:
+                numbers[f'cmp_{key}_{col}_pp'] = 100 * v
+    for r in tables['C3']['rows']:
+        name = {'validation category acc. (selected)': 'val_category', 'test category acc.': 'test_category',
+                'test action-group acc.': 'test_group'}[r['measure']]
+        for stat in ('mean', 'sd', 'min', 'max'):
+            numbers[f'cmp_faithful_{name}_{stat}_pct'] = pct(r[stat])
+        numbers['cmp_faithful_runs'] = r['runs']
+    for r in tables['C4']['rows']:
+        key = next(f"{x['method']}_{x['run_seed']}" for x in tables['C1']['rows'] if x['run'] == r['run'])
+        for col in ('units', 'proposed_and_checked', 'rejected_format', 'accepted', 'kept_or_bank_size'):
+            numbers[f'cmp_{key}_{col}'] = r[col]
+        numbers[f'cmp_{key}_mean_score'] = r['mean_score']
+    seed = next((r['tests']['seed'] for r in runs if 'seed' in r['tests']), None)
+    if seed:
+        for k, f in enumerate(FIELDS):
+            numbers[f'cmp_seed_test_{f}_pct'] = pct(acc(seed['predictions'], k))
+        numbers['cmp_seed_val_category_pct'] = pct(next(v['metrics']['category_accuracy'] for v in runs[0]['validations'] if v['reference_only']))
     write_numbers(numbers, out)
     defs = [l for l in (out / 'numbers.tex').read_text().split('\n') if not l.startswith(r'\newcommand')]
     (out / 'numbers_defs.tex').write_text('\n'.join(defs))  # loaded after the main analysis' numbers.tex
