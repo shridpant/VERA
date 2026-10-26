@@ -5,6 +5,7 @@
   train     VERA's verbalized learning: learner + optimizer, validation every 100 batches (resumable)
   test      the seed and the selected questions on the test split
   analyze   tables S1-S10, figures F1-F4, qualitative answers and the report numbers
+  compare   tables C1-C4, figures G1-G3 across faithful seeds and variants
 """
 import argparse
 import json
@@ -169,6 +170,12 @@ def analyze_command(args):
     return 0
 
 
+def compare_command(args):
+    from studies.firearm_training.analysis.compare import compare
+    print(json.dumps(compare(args.runs, args.out), indent=1))
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='command', required=True)
@@ -195,6 +202,10 @@ def main(argv=None):
     p.add_argument('--run-dir', help='override run_dir')
     p.add_argument('--out', required=True)
     p.set_defaults(func=analyze_command)
+    p = sub.add_parser('compare')
+    p.add_argument('--runs', nargs='+', required=True, help='run folders; the first faithful one is the reference')
+    p.add_argument('--out', required=True)
+    p.set_defaults(func=compare_command)
     args = ap.parse_args(argv)
     return args.func(args)
 
