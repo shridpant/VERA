@@ -268,7 +268,7 @@ def figures(d, out):
         rel = [r for r in ev if r.get('reliance') is not None]
         axes[1].scatter([r['lift'] for r in rel], [r['reliance'] for r in rel], s=8, color='#2a78d6', alpha=0.7)
         axes[1].set_xscale('log'), axes[1].axhline(0, color='#52514e', linewidth=0.8), axes[1].axvline(1, color='#52514e', linewidth=0.8)
-        axes[1].xaxis.set_major_formatter(matplotlib.ticker.ScalarFormatter()), axes[1].xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+        axes[1].set_xticks([0.25, 0.5, 1, 2, 4, 8], ['0.25', '0.5', '1', '2', '4', '8']), axes[1].xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
         axes[1].set_xlabel('attention lift (1 = chance)'), axes[1].set_ylabel('occlusion reliance (nats)')
         fig.tight_layout()
         save(fig, 'F1_phase1_lift_and_reliance')
