@@ -16,6 +16,8 @@
 \lstset{basicstyle=\scriptsize\ttfamily,breaklines=true,columns=fullflexible,keepspaces=true}
 \captionsetup{font=small}
 \input{numbers.tex}
+% A figure is skipped when the analysis did not make it (e.g. Phase 2 figures when the gate stopped the study).
+\newcommand{\fig}[3]{\IfFileExists{figures/#1.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/#1.pdf}\caption{#2}\label{#3}\end{figure}}{}}
 
 \title{Right for the Right Reasons? Firearm Grounding Feedback in VERA's Verbalized Learning}
 \author{VISILAB firearm-action dataset, frozen InternVL2-8B}
