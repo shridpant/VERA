@@ -132,7 +132,9 @@ def r2(d, boxes=None, edges=None):
                        ['measure', 'estimate', 'ci_low', 'ci_high', 'mean_reliance', 'videos', 'passed'], rows,
                        [f"Gate {'passed' if g.get('gate_passed') else 'not passed'}: V1 and V2 lower bounds above 0 (pre-registered). "
                         'V3 (descriptive): mean lift and mean reliance for answers with the correct and an incorrect category. '
-                        'Rows marked not pre-registered were added after the independent review, before the gate was read.'])
+                        'Rows marked not pre-registered are descriptive: the correctness rows were added after a look at 72 Phase 1 '
+                        'videos and the size rows after the independent review, both before the full gate was read; their intervals '
+                        '(same bootstrap) were added after it.'])
     sens = [lift_summary(d['phase1'], 'seed questions, all splits'), lift_summary(d['seed_test'].values(), 'seed questions, test')]
     sens += [lift_summary(arm_records(d, arm), f'{arm}, test') for arm in ARMS if arm_records(d, arm)]
     sens_table = table('R2s', 'Lift by layer group and sink exclusion', list(sens[0]), sens,

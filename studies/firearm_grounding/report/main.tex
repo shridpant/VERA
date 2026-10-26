@@ -36,10 +36,10 @@ Training~1 adapted VERA~\cite{ye2025vera} to the VISILAB firearm-action dataset~
 \item \textbf{RQ1 (measurement).} When the frozen model decides a clip's category, does it look at the annotated firearm (attention), does it rely on it (occlusion), and do the two agree?
 \item \textbf{RQ2 (training).} If VERA's optimizer is also told where the model looked, do the learned questions make the model rely more on the firearm, without losing more than 5 points of category accuracy?
 \end{enumerate}
-The design, the gate and the outcomes were fixed in a pre-registration before any grounding number was taken; the one deviation (D1) is in Section~\ref{sec:deviations}.
+The design, the gate and the outcomes were fixed in a pre-registration before any grounding number was taken; the deviations (D1--D7) are in Section~\ref{sec:deviations}.
 
 \section{Setting}
-Everything that is not about grounding is Training~1 unchanged: the 240/62/96 split by recording group, the codebook and learner prompt, eight frames per video sampled evenly over the whole video, InternVL2-8B revision 6fb9ad69 in BF16 with greedy decoding and 1,024 new tokens, batches of two videos, ten epochs and validation every 100 batches within an epoch. Boxes come from the dataset's annotations after the audit of the earlier study. A sampled frame is \emph{boxed} when its audited status is positive, and a video is \emph{grounding-evaluable} when at least one of its eight frames is boxed; No\_Gun videos never are. Training reads training-split boxes only, selection reads validation boxes, and test boxes are read only for the final evaluation.
+Everything that is not about grounding is Training~1 unchanged: the 240/62/96 split by recording group, the codebook and learner prompt, eight frames per video sampled evenly over the whole video, InternVL2-8B revision 6fb9ad69 in BF16 with greedy decoding and 1,024 new tokens, batches of two videos, ten epochs and validation every 100 batches within an epoch. Boxes come from the dataset's annotations after the audit of the earlier study. A sampled frame is \emph{boxed} when its audited status is positive, and a video is \emph{grounding-evaluable} when at least one of its eight frames is boxed; No\_Gun videos never are. Training reads training-split boxes only and selection reads validation boxes. Test boxes are read by Phase~1, which measures all splits for the gate, and by the final evaluation; never by training or selection.
 
 \section{Measures}
 All measures are taken on the model's own greedy answer under the questions being evaluated.
@@ -83,7 +83,7 @@ All deviations are listed with their evidence in \texttt{studies/firearm\_ground
 Training~1's optimizer instruction with the grounding block inserted after the targets; T1 uses it without the block.
 \lstinputlisting{optimizer_grounded.txt}
 \subsection*{A grounding block from G's training}
-The first block G's optimizer saw, if Phase~2 ran.
+The first block G's optimizer saw (Phase~2 did not run, so there is none).
 \lstinputlisting{grounding_example.txt}
 
 \section{Questions}\label{app:questions}
