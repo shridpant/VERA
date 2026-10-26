@@ -1,6 +1,7 @@
 #!/bin/bash
 # Build the Training 1 report from an analysis folder: pdflatex + bibtex, then the Overleaf-ready source zip.
-# Usage: bash studies/firearm_training/report/build.sh ANALYSIS_DIR [OUT_DIR]
+# Usage: bash studies/firearm_training/report/build.sh ANALYSIS_DIR [OUT_DIR] [COMPARE_DIR]
+# With COMPARE_DIR (from run_firearm_training.py compare) the report gains the section on variants and replications.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ANALYSIS="$(cd "$1" && pwd)"
@@ -11,6 +12,14 @@ cp "$HERE"/{main.tex,references.bib,abstract.tex,results.tex,limitations.tex} "$
 cp "$ANALYSIS"/tables/*.tex "$OUT/tables/"
 cp "$ANALYSIS"/figures/*.pdf "$OUT/figures/"
 cp "$ANALYSIS"/{numbers.tex,qualitative.tex,questions_seed.txt,questions_selected.txt,learner_instruct.txt,optimizer_instruct.txt} "$OUT/"
+if [ -n "${3:-}" ]; then
+  COMPARE="$(cd "$3" && pwd)"
+  cp "$HERE/compare.tex" "$OUT/"
+  cp "$COMPARE"/tables/*.tex "$OUT/tables/"
+  cp "$COMPARE"/figures/*.pdf "$OUT/figures/"
+  cp "$COMPARE/numbers_defs.tex" "$OUT/compare_numbers.tex"
+  cp "$COMPARE/selected_questions.tex" "$OUT/compare_questions.tex"
+fi
 cd "$OUT"
 pdflatex -interaction=nonstopmode -halt-on-error main.tex > build.log
 bibtex main >> build.log

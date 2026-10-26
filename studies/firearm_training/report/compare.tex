@@ -1,0 +1,36 @@
+\section{Variants and replications}\label{sec:variants}
+% PROSE PENDING (results paragraphs): written from the saved comparison after all runs. Methods and floats below are final.
+The runs, their order and the rules for choosing between them were declared before any of their results existed (\texttt{docs/superpowers/specs/2026-10-26-firearm-training1-variants-plan.md}). Every run uses the same frozen model, split, learner prompt, strict parser, validation videos and selection rule as the faithful run, and runs its seed and selected questions once on the test split. The run seed sets every random choice of a run.
+
+\paragraph{Replications.} The faithful procedure is repeated with run seeds 20261027 and 20261028; only the training order changes.
+
+\paragraph{VERA, fixed.} This variant changes VERA's loop where the faithful run's logs show it failing, with ideas taken from text prompt optimisation~\cite{yang2024opro,zhou2023ape,pryzant2023protegi}.
+\begin{itemize}
+\item Each step sees two training videos per category (six videos); the learner answers them in pairs and the optimizer sees all six.
+\item A fixed check set of eight training videos per category, drawn once and never in a batch, scores every proposed question set. The new set replaces the current one only if its check category accuracy, then action-group accuracy, is not lower.
+\item The optimizer prompt lists the last five proposed sets with their check accuracy, as in OPRO~\cite{yang2024opro}, and asks for questions answerable with yes/no or a short phrase. A set that asks to describe, explain or list, or has more than five questions, is rejected without a check.
+\item Five epochs; validation every 20 steps.
+\end{itemize}
+
+\paragraph{Confusion-pair question bank.} This variant adapts confusion-targeted concept discovery for images, ESCHER~\cite{sehgal2025escher} and FuDD~\cite{esfandiarpoor2024fudd}, to VERA's setting. It learns single yes/no questions; the same frozen model proposes, answers and scores them.
+\begin{itemize}
+\item Before the first round and every 20 rounds, the learner answers all training videos with the current questions. Its errors give the confused pairs: true category versus predicted category and, within a correct category, true versus predicted action group.
+\item Each round draws a confused pair in proportion to its count. The model sees one video it put in the wrong class and one correctly classified video of the other class, and writes one yes/no question about a visible difference. The question must end with a question mark, have at most 30 words and name no label.
+\item The question alone is asked on eight other training videos of each class of the pair. It enters the bank when its answers separate the two classes with balanced accuracy of at least 0.75, in either orientation.
+\item The learner prompt uses the bank's five best questions, at most two per pair, and the seed questions while the bank is empty. 160 rounds; validation every 20 rounds.
+\item Ablations: \emph{random pairs} draws pairs and videos uniformly instead of from the confusions (no training passes); \emph{no scoring} keeps every valid question and uses the five newest.
+\end{itemize}
+
+\paragraph{Comparison.} Every run's test intervals and paired differences resample recording groups within category, as in the faithful analysis. Greedy decoding makes the seed questions' test answers identical in every run; Table~\ref{tab:C1} reports any disagreement. Several methods are compared on the same 62 validation videos, so validation scores of the best method are optimistic; conclusions rest on the paired test differences and the replications.
+
+\input{tables/C1.tex}
+\input{tables/C2.tex}
+\IfFileExists{tables/C3.tex}{\input{tables/C3.tex}}{}
+\input{tables/C4.tex}
+\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G1_validation_all_runs.pdf}
+\caption{Validation category accuracy of the learned questions in every run, against the fraction of the run; the dashed line is the seed questions.}\label{fig:G1}\end{figure}
+\IfFileExists{figures/G2_test_all_runs.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G2_test_all_runs.pdf}
+\caption{Test accuracy of each run's selected questions with 95\,\% recording-group bootstrap intervals; dashed lines are the seed questions.}\label{fig:G2}\end{figure}}{}
+\IfFileExists{figures/G3_bank_scores.pdf}{\begin{figure}[htbp]\centering\includegraphics[width=\textwidth]{figures/G3_bank_scores.pdf}
+\caption{Balanced accuracy of the questions proposed in the bank runs on their own pair; the line is the keep threshold.}\label{fig:G3}\end{figure}}{}
+\IfFileExists{compare_questions.tex}{Appendix~\ref{app:compare-questions} lists the questions selected in every run.}{}

@@ -31,7 +31,7 @@ def load_run(run_dir):
          'sessions': [json.loads(p.read_text()) for p in sorted((run_dir / 'sessions').glob('*/session.json'))]}
     learned = [v for v in r['validations'] if not v['reference_only']]
     r['selected'] = max(learned, key=lambda v: (v['metrics']['category_accuracy'], v['metrics']['group_accuracy'], -v['step'])) if learned else None
-    r['label'] = f"{NAMES.get(r['method'], r['method'])} (order seed {r['seed']})"
+    r['label'] = f"{NAMES.get(r['method'], r['method'])} (run seed {r['seed']})"
     return r
 
 
@@ -68,7 +68,7 @@ def c1(runs):
         if s and seed_reference is None:
             seed_reference = by_video(s['predictions'])
         disagree = None if not s else sum(by_video(s['predictions'])[v]['response'] != seed_reference[v]['response'] for v in seed_reference)
-        row = {'run': r['label'], 'method': r['method'], 'order_seed': r['seed'],
+        row = {'run': r['label'], 'method': r['method'], 'run_seed': r['seed'],
                'units': len(r['steps']) or len(r['rounds']), 'validations': len([v for v in r['validations'] if not v['reference_only']]),
                'selected_step': r['selected']['step'] if r['selected'] else None,
                'val_category_acc': r['selected']['metrics']['category_accuracy'] if r['selected'] else None,
@@ -83,7 +83,7 @@ def c1(runs):
             row['test_at_cap'] = sum(x['generated_tokens'] >= 1024 for x in p)
         rows.append(row)
     return table('C1', 'All Training 1 runs: selected questions on the test split', list(rows[0]) if rows else ['run'], rows, [
-        'Selection on validation category accuracy, then action-group accuracy, then the earliest step. seed_test_disagreements: test videos '
+        'Selection on validation category accuracy, then action-group accuracy, then the earliest step. Seed disagreements: test videos '
         'whose seed-question answer differs from the first run\'s (greedy decoding should make it 0).'])
 
 
@@ -103,7 +103,7 @@ def c2(runs, reference):
         rows.append(row)
     cols = ['run'] + [f'vs_{w}_{f}{s}' for w in ('seed', 'faithful') for f in FIELDS[:2] for s in ('', '_low', '_high')]
     return table('C2', 'Paired test differences: learned questions minus seed questions, and minus the faithful run', cols, rows, [
-        'Same 96 test videos; recording-group bootstrap. The faithful reference is the first faithful run (order seed 20261026).'])
+        'Same 96 test videos; recording-group bootstrap. The faithful reference is the first faithful run (run seed 20261026).'])
 
 
 def c3(runs):
@@ -116,7 +116,7 @@ def c3(runs):
         if values:
             rows.append({'measure': key, 'runs': len(values), 'mean': float(np.mean(values)), 'sd': float(np.std(values, ddof=1)) if len(values) > 1 else None,
                          'min': min(values), 'max': max(values), 'values': ', '.join(f'{v:.3f}' for v in values)})
-    return table('C3', 'Faithful VERA across training-order seeds', ['measure', 'runs', 'mean', 'sd', 'min', 'max', 'values'], rows, [
+    return table('C3', 'Faithful VERA across run seeds', ['measure', 'runs', 'mean', 'sd', 'min', 'max', 'values'], rows, [
         'Same split, prompts, seed questions and model; only the shuffled training order differs.'])
 
 
@@ -145,7 +145,7 @@ def c4(runs):
                                                                  'accepted', 'kept_or_bank_size', 'mean_score'], rows, [
         'Faithful: accepted = rewrites (VERA keeps every rewrite), kept = distinct question sets. Fixed: a rewrite is checked unless its '
         'format is rejected and is accepted when not worse on the check set. Bank: a valid question is scored; kept when balanced '
-        'accuracy >= 0.75 (no-scoring ablation keeps all); mean_score = mean balanced accuracy of scored questions.'])
+        'accuracy >= 0.75 (no-scoring ablation keeps all); mean score = mean balanced accuracy of scored questions.'])
 
 
 def figures(runs, out):
@@ -222,7 +222,8 @@ def compare(run_dirs, out_dir):
                      'Test category \\% [95\\% CI]': interval(r.get('test_category_acc'), r.get('test_category_low'), r.get('test_category_high')),
                      'Test action group \\%': interval(r.get('test_group_acc'), r.get('test_group_low'), r.get('test_group_high')),
                      'Test code \\%': interval(r.get('test_code_acc'), r.get('test_code_low'), r.get('test_code_high')),
-                     'Invalid / at cap': f"{fmt(r.get('test_invalid'))} / {fmt(r.get('test_at_cap'))}", 'GPU h': fmt(r['gpu_hours'], 'hours')})
+                     'Invalid / at cap': f"{fmt(r.get('test_invalid'))} / {fmt(r.get('test_at_cap'))}",
+                     'Seed disagreements': fmt(r['seed_test_disagreements']), 'GPU h': fmt(r['gpu_hours'], 'hours')})
     views['C1'] = table('C1', tables['C1']['title'], list(rows[0]) if rows else ['Run'], rows, tables['C1']['notes'])
     rows = []
     for r in tables['C2']['rows']:
@@ -232,21 +233,27 @@ def compare(run_dirs, out_dir):
                      'vs faithful: category (pp)': interval(r.get('vs_faithful_category'), r.get('vs_faithful_category_low'), r.get('vs_faithful_category_high')),
                      'vs faithful: group (pp)': interval(r.get('vs_faithful_group'), r.get('vs_faithful_group_low'), r.get('vs_faithful_group_high'))})
     views['C2'] = table('C2', tables['C2']['title'], list(rows[0]) if rows else ['Run'], rows, tables['C2']['notes'])
-    for tid in ('C1', 'C2'):
+    heads = {'C3': {'measure': 'Measure', 'runs': 'Runs', 'mean': 'Mean', 'sd': 'SD', 'min': 'Min', 'max': 'Max', 'values': 'Values'},
+             'C4': {'run': 'Run', 'units': 'Steps or rounds', 'proposed_and_checked': 'Checked', 'rejected_format': 'Rejected (format)',
+                    'no_update': 'No update', 'accepted': 'Accepted', 'kept_or_bank_size': 'Distinct sets / bank', 'mean_score': 'Mean score'}}
+    for tid, names in heads.items():
+        rows = [{names[k]: fmt(v, k) for k, v in r.items()} for r in tables[tid]['rows']]
+        views[tid] = table(tid, tables[tid]['title'], list(names.values()), rows, tables[tid]['notes'])
+    for tid in ('C1', 'C2', 'C3', 'C4'):
         write_tex(views[tid], out / 'tables', raw=True)
-    for tid in ('C3', 'C4'):
-        write_tex(tables[tid], out / 'tables')
     made = figures(runs, out / 'figures')
     questions = ''.join(f"\\subsection*{{{esc(r['label'])}: selected at step {r['selected']['step']}}}\n\\begin{{lstlisting}}\n"
                         f"{r['selected']['questions'].rstrip()}\n\\end{{lstlisting}}\n" for r in runs if r['selected'])
     (out / 'selected_questions.tex').write_text(questions)
     numbers = {}
     for r in tables['C1']['rows']:
-        key = f"{r['method']}_{r['order_seed']}"
+        key = f"{r['method']}_{r['run_seed']}"
         for f in FIELDS:
             numbers[f'cmp_{key}_test_{f}_pct'] = pct(r.get(f'test_{f}_acc'))
         numbers[f'cmp_{key}_val_category_pct'] = pct(r['val_category_acc'])
         numbers[f'cmp_{key}_seed_disagreements'] = r['seed_test_disagreements']
     write_numbers(numbers, out)
+    defs = [l for l in (out / 'numbers.tex').read_text().split('\n') if not l.startswith(r'\newcommand')]
+    (out / 'numbers_defs.tex').write_text('\n'.join(defs))  # loaded after the main analysis' numbers.tex
     (out / 'compare_manifest.json').write_text(json.dumps({'runs': [str(r['dir']) for r in runs], 'tables': sorted(tables), 'figures': made}, indent=1) + '\n')
     return {'runs': [r['label'] for r in runs], 'tables': sorted(tables), 'figures': made}
