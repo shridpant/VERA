@@ -1,0 +1,14 @@
+{
+  "frozen_files": {
+    "PROTOCOL.md": true,
+    "verify_assets.py": true,
+    "reconstruct.py": true,
+    "metrics.py": true,
+    "check_metrics.py": true,
+    "analyze.py": true,
+    "evidence/assets.json": true
+  },
+  "input_files_rehashed": 580,
+  "all_passed": true,
+  "gpu_calls": 0
+}

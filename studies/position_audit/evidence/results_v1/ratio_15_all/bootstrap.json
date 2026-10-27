@@ -1,0 +1,6002 @@
+[
+  {
+    "replicate": 0,
+    "worst_benefit": 0.03342748938330897,
+    "unshifted_cost": 0.01370457412475623,
+    "spread": 0.0471320635080652
+  },
+  {
+    "replicate": 1,
+    "worst_benefit": 0.030174898309778042,
+    "unshifted_cost": 0.015907596369857835,
+    "spread": 0.04608249467963588
+  },
+  {
+    "replicate": 2,
+    "worst_benefit": 0.042039589674823574,
+    "unshifted_cost": 0.010506693615984997,
+    "spread": 0.05254628329080857
+  },
+  {
+    "replicate": 3,
+    "worst_benefit": 0.019585984104572907,
+    "unshifted_cost": 0.0029341600042532834,
+    "spread": 0.02252014410882619
+  },
+  {
+    "replicate": 4,
+    "worst_benefit": 0.03228015214729951,
+    "unshifted_cost": 0.006921005431889227,
+    "spread": 0.04056718789818292
+  },
+  {
+    "replicate": 5,
+    "worst_benefit": 0.030192701728728566,
+    "unshifted_cost": 0.010342130800820803,
+    "spread": 0.04053483252954937
+  },
+  {
+    "replicate": 6,
+    "worst_benefit": 0.03083469036362463,
+    "unshifted_cost": 0.01085047006682971,
+    "spread": 0.04168516043045434
+  },
+  {
+    "replicate": 7,
+    "worst_benefit": 0.04161757536566024,
+    "unshifted_cost": 0.008984803560821875,
+    "spread": 0.05060237892648212
+  },
+  {
+    "replicate": 8,
+    "worst_benefit": 0.016854562794693106,
+    "unshifted_cost": 0.003026469188087688,
+    "spread": 0.019881031982780795
+  },
+  {
+    "replicate": 9,
+    "worst_benefit": 0.026690175852778664,
+    "unshifted_cost": 0.015177673571589723,
+    "spread": 0.041867849424368386
+  },
+  {
+    "replicate": 10,
+    "worst_benefit": 0.03227818527563875,
+    "unshifted_cost": 0.011118541152602135,
+    "spread": 0.043396726428240884
+  },
+  {
+    "replicate": 11,
+    "worst_benefit": 0.01855040451334955,
+    "unshifted_cost": 0.010089845073408155,
+    "spread": 0.028640249586757704
+  },
+  {
+    "replicate": 12,
+    "worst_benefit": 0.02846451166900732,
+    "unshifted_cost": 0.008053001959865913,
+    "spread": 0.03651751362887323
+  },
+  {
+    "replicate": 13,
+    "worst_benefit": 0.022980262280104857,
+    "unshifted_cost": 0.008753119797682563,
+    "spread": 0.03173338207778742
+  },
+  {
+    "replicate": 14,
+    "worst_benefit": 0.021745848263810097,
+    "unshifted_cost": 0.010402971884444279,
+    "spread": 0.032148820148254376
+  },
+  {
+    "replicate": 15,
+    "worst_benefit": 0.023838652349517986,
+    "unshifted_cost": 0.00037142085000518854,
+    "spread": 0.024210073199523174
+  },
+  {
+    "replicate": 16,
+    "worst_benefit": 0.03979516675552197,
+    "unshifted_cost": 0.013915471843372385,
+    "spread": 0.053710638598894356
+  },
+  {
+    "replicate": 17,
+    "worst_benefit": 0.02157191405081449,
+    "unshifted_cost": 0.01259971761346701,
+    "spread": 0.0341716316642815
+  },
+  {
+    "replicate": 18,
+    "worst_benefit": 0.031131865888663235,
+    "unshifted_cost": 0.005359095024849991,
+    "spread": 0.036490960913513226
+  },
+  {
+    "replicate": 19,
+    "worst_benefit": 0.01869068888296388,
+    "unshifted_cost": 0.008596418839558972,
+    "spread": 0.027287107722522852
+  },
+  {
+    "replicate": 20,
+    "worst_benefit": 0.027866818286429007,
+    "unshifted_cost": 0.008988290055439108,
+    "spread": 0.036855108341868115
+  },
+  {
+    "replicate": 21,
+    "worst_benefit": 0.02497426279270132,
+    "unshifted_cost": 0.009049240780562795,
+    "spread": 0.03402350357326411
+  },
+  {
+    "replicate": 22,
+    "worst_benefit": 0.025129201986465177,
+    "unshifted_cost": 0.007671805237087548,
+    "spread": 0.032801007223552725
+  },
+  {
+    "replicate": 23,
+    "worst_benefit": 0.03017321153804653,
+    "unshifted_cost": 0.009070580482472557,
+    "spread": 0.039243792020519086
+  },
+  {
+    "replicate": 24,
+    "worst_benefit": 0.012075340699859494,
+    "unshifted_cost": 0.0055341161669866246,
+    "spread": 0.021140009327665576
+  },
+  {
+    "replicate": 25,
+    "worst_benefit": 0.0252375815467607,
+    "unshifted_cost": 0.012720656735607516,
+    "spread": 0.04215887684054742
+  },
+  {
+    "replicate": 26,
+    "worst_benefit": 0.02032983307352154,
+    "unshifted_cost": 0.007131626391258528,
+    "spread": 0.02746145946478007
+  },
+  {
+    "replicate": 27,
+    "worst_benefit": 0.025433409193890033,
+    "unshifted_cost": 0.008058244679462478,
+    "spread": 0.03349165387335251
+  },
+  {
+    "replicate": 28,
+    "worst_benefit": 0.026846153261275263,
+    "unshifted_cost": 0.00847460008104206,
+    "spread": 0.035320753342317324
+  },
+  {
+    "replicate": 29,
+    "worst_benefit": 0.018137497859449514,
+    "unshifted_cost": 0.012296208910058337,
+    "spread": 0.03043370676950785
+  },
+  {
+    "replicate": 30,
+    "worst_benefit": 0.04666048111054488,
+    "unshifted_cost": 0.010589708564751277,
+    "spread": 0.05725018967529616
+  },
+  {
+    "replicate": 31,
+    "worst_benefit": 0.03620384752639705,
+    "unshifted_cost": 0.010579574835249073,
+    "spread": 0.04678342236164612
+  },
+  {
+    "replicate": 32,
+    "worst_benefit": 0.026052173427891345,
+    "unshifted_cost": 0.011135613841155467,
+    "spread": 0.03718778726904681
+  },
+  {
+    "replicate": 33,
+    "worst_benefit": 0.028288649654465314,
+    "unshifted_cost": 0.012106500573417112,
+    "spread": 0.040395150227882426
+  },
+  {
+    "replicate": 34,
+    "worst_benefit": 0.024116350177770807,
+    "unshifted_cost": 0.010121674735105612,
+    "spread": 0.03423802491287642
+  },
+  {
+    "replicate": 35,
+    "worst_benefit": 0.03280128459578657,
+    "unshifted_cost": 0.01212052420862908,
+    "spread": 0.04492180880441565
+  },
+  {
+    "replicate": 36,
+    "worst_benefit": 0.03181899828910095,
+    "unshifted_cost": 0.007289114876208647,
+    "spread": 0.0391081131653096
+  },
+  {
+    "replicate": 37,
+    "worst_benefit": 0.01606636679754636,
+    "unshifted_cost": 0.0035373663263463806,
+    "spread": 0.01960373312389274
+  },
+  {
+    "replicate": 38,
+    "worst_benefit": 0.0184959469571232,
+    "unshifted_cost": 0.013976987043587519,
+    "spread": 0.03247293400071072
+  },
+  {
+    "replicate": 39,
+    "worst_benefit": 0.023331764548929268,
+    "unshifted_cost": 0.010469857005996563,
+    "spread": 0.03380162155492583
+  },
+  {
+    "replicate": 40,
+    "worst_benefit": 0.024250437113229606,
+    "unshifted_cost": 0.009473744807694029,
+    "spread": 0.035605212535265385
+  },
+  {
+    "replicate": 41,
+    "worst_benefit": 0.024451056737406773,
+    "unshifted_cost": 0.007040382562655267,
+    "spread": 0.03149143930006204
+  },
+  {
+    "replicate": 42,
+    "worst_benefit": 0.028419823956851165,
+    "unshifted_cost": 0.0068101022616398055,
+    "spread": 0.03522992621849097
+  },
+  {
+    "replicate": 43,
+    "worst_benefit": 0.04962053385802978,
+    "unshifted_cost": 0.016925603121482724,
+    "spread": 0.0665461369795125
+  },
+  {
+    "replicate": 44,
+    "worst_benefit": 0.021152577265325267,
+    "unshifted_cost": 0.009987392010992635,
+    "spread": 0.031139969276317903
+  },
+  {
+    "replicate": 45,
+    "worst_benefit": 0.02755206612310912,
+    "unshifted_cost": 0.008130127663510844,
+    "spread": 0.035682193786619965
+  },
+  {
+    "replicate": 46,
+    "worst_benefit": 0.041185200065932515,
+    "unshifted_cost": 0.01704153207825565,
+    "spread": 0.058226732144188165
+  },
+  {
+    "replicate": 47,
+    "worst_benefit": 0.023828115185398957,
+    "unshifted_cost": 0.005252921044385905,
+    "spread": 0.029081036229784862
+  },
+  {
+    "replicate": 48,
+    "worst_benefit": 0.030650603269827492,
+    "unshifted_cost": 0.014032521792725072,
+    "spread": 0.044683125062552564
+  },
+  {
+    "replicate": 49,
+    "worst_benefit": 0.037110877182253366,
+    "unshifted_cost": 0.02156537702248995,
+    "spread": 0.05867625420474332
+  },
+  {
+    "replicate": 50,
+    "worst_benefit": 0.033779313906785235,
+    "unshifted_cost": 0.018923223915362053,
+    "spread": 0.05270253782214729
+  },
+  {
+    "replicate": 51,
+    "worst_benefit": 0.025562208998423097,
+    "unshifted_cost": 0.009390095401033416,
+    "spread": 0.03495230439945651
+  },
+  {
+    "replicate": 52,
+    "worst_benefit": 0.029476780900896227,
+    "unshifted_cost": 0.004663930511454861,
+    "spread": 0.03414071141235109
+  },
+  {
+    "replicate": 53,
+    "worst_benefit": 0.019052135628136457,
+    "unshifted_cost": 0.0029472124236498143,
+    "spread": 0.02199934805178627
+  },
+  {
+    "replicate": 54,
+    "worst_benefit": 0.019687882331689943,
+    "unshifted_cost": 0.00508444338814773,
+    "spread": 0.024772325719837673
+  },
+  {
+    "replicate": 55,
+    "worst_benefit": 0.027945926539668764,
+    "unshifted_cost": 0.008032446778327706,
+    "spread": 0.03597837331799647
+  },
+  {
+    "replicate": 56,
+    "worst_benefit": 0.02403915643195942,
+    "unshifted_cost": 0.012684466068385802,
+    "spread": 0.03672362250034522
+  },
+  {
+    "replicate": 57,
+    "worst_benefit": 0.03912656796367353,
+    "unshifted_cost": 0.010573485571170438,
+    "spread": 0.04970005353484397
+  },
+  {
+    "replicate": 58,
+    "worst_benefit": 0.030239745488903957,
+    "unshifted_cost": 0.014491887452705687,
+    "spread": 0.044731632941609645
+  },
+  {
+    "replicate": 59,
+    "worst_benefit": 0.04634712840760502,
+    "unshifted_cost": 0.010761028984939802,
+    "spread": 0.05710815739254482
+  },
+  {
+    "replicate": 60,
+    "worst_benefit": 0.03907551789736008,
+    "unshifted_cost": 0.014209258794351087,
+    "spread": 0.053284776691711166
+  },
+  {
+    "replicate": 61,
+    "worst_benefit": 0.029215845854201117,
+    "unshifted_cost": 0.005399555633521347,
+    "spread": 0.034615401487722464
+  },
+  {
+    "replicate": 62,
+    "worst_benefit": 0.03248895145585762,
+    "unshifted_cost": 0.012719936502817775,
+    "spread": 0.04520888795867539
+  },
+  {
+    "replicate": 63,
+    "worst_benefit": 0.027698996086323646,
+    "unshifted_cost": 0.013519482853512899,
+    "spread": 0.041218478939836545
+  },
+  {
+    "replicate": 64,
+    "worst_benefit": 0.026777802468073597,
+    "unshifted_cost": 0.005494970060218596,
+    "spread": 0.03227277252829219
+  },
+  {
+    "replicate": 65,
+    "worst_benefit": 0.02586753240597317,
+    "unshifted_cost": 0.014653031345854162,
+    "spread": 0.04052056375182733
+  },
+  {
+    "replicate": 66,
+    "worst_benefit": 0.023391804355902934,
+    "unshifted_cost": 0.005649772235193695,
+    "spread": 0.02904157659109663
+  },
+  {
+    "replicate": 67,
+    "worst_benefit": 0.02196515378358077,
+    "unshifted_cost": 0.008036853125630516,
+    "spread": 0.030002006909211287
+  },
+  {
+    "replicate": 68,
+    "worst_benefit": 0.015433447262775069,
+    "unshifted_cost": 0.0017205279730698742,
+    "spread": 0.020813322240672116
+  },
+  {
+    "replicate": 69,
+    "worst_benefit": 0.02796742745294334,
+    "unshifted_cost": 0.012491028394507553,
+    "spread": 0.04323387339428286
+  },
+  {
+    "replicate": 70,
+    "worst_benefit": 0.023097893742856535,
+    "unshifted_cost": 0.01608529969436645,
+    "spread": 0.039183193437222985
+  },
+  {
+    "replicate": 71,
+    "worst_benefit": 0.018710793340461218,
+    "unshifted_cost": 0.006755035553319244,
+    "spread": 0.025465828893780462
+  },
+  {
+    "replicate": 72,
+    "worst_benefit": 0.022548792018160624,
+    "unshifted_cost": 0.003603982661288252,
+    "spread": 0.026152774679448876
+  },
+  {
+    "replicate": 73,
+    "worst_benefit": 0.02411254568550103,
+    "unshifted_cost": 0.014431399369324027,
+    "spread": 0.03854394505482506
+  },
+  {
+    "replicate": 74,
+    "worst_benefit": 0.028169466685506572,
+    "unshifted_cost": 0.005795598462934315,
+    "spread": 0.03407696063064236
+  },
+  {
+    "replicate": 75,
+    "worst_benefit": 0.0173434771161064,
+    "unshifted_cost": 0.008153412880559596,
+    "spread": 0.025496889996665995
+  },
+  {
+    "replicate": 76,
+    "worst_benefit": 0.031171155427709096,
+    "unshifted_cost": 0.007510624181797043,
+    "spread": 0.043837323604361655
+  },
+  {
+    "replicate": 77,
+    "worst_benefit": 0.021904733607324145,
+    "unshifted_cost": -0.0001242310673055247,
+    "spread": 0.023342284231339105
+  },
+  {
+    "replicate": 78,
+    "worst_benefit": 0.036552541711198816,
+    "unshifted_cost": 0.010104472648519547,
+    "spread": 0.04665701435971836
+  },
+  {
+    "replicate": 79,
+    "worst_benefit": 0.03532570830881321,
+    "unshifted_cost": 0.009528478427876186,
+    "spread": 0.044854186736689394
+  },
+  {
+    "replicate": 80,
+    "worst_benefit": 0.015640757781444803,
+    "unshifted_cost": 0.005064656431202463,
+    "spread": 0.020705414212647266
+  },
+  {
+    "replicate": 81,
+    "worst_benefit": 0.020823863572536294,
+    "unshifted_cost": 0.01097176726460447,
+    "spread": 0.031795630837140765
+  },
+  {
+    "replicate": 82,
+    "worst_benefit": 0.021684613273170505,
+    "unshifted_cost": 0.0075813380637437255,
+    "spread": 0.02996984475309039
+  },
+  {
+    "replicate": 83,
+    "worst_benefit": 0.04668226901357786,
+    "unshifted_cost": 0.014469607717763067,
+    "spread": 0.061151876731340926
+  },
+  {
+    "replicate": 84,
+    "worst_benefit": 0.03193327907827137,
+    "unshifted_cost": 0.007405501611053356,
+    "spread": 0.039338780689324726
+  },
+  {
+    "replicate": 85,
+    "worst_benefit": 0.024980226794650395,
+    "unshifted_cost": 0.008090820527268283,
+    "spread": 0.03307104732191868
+  },
+  {
+    "replicate": 86,
+    "worst_benefit": 0.020927539626144465,
+    "unshifted_cost": 0.01419015458474393,
+    "spread": 0.035117694210888395
+  },
+  {
+    "replicate": 87,
+    "worst_benefit": 0.028722329290236548,
+    "unshifted_cost": 0.0125232300972683,
+    "spread": 0.04124555938750485
+  },
+  {
+    "replicate": 88,
+    "worst_benefit": 0.02487777244243461,
+    "unshifted_cost": 0.012242259403850375,
+    "spread": 0.037120031846284984
+  },
+  {
+    "replicate": 89,
+    "worst_benefit": 0.02106725943434873,
+    "unshifted_cost": 0.008544860617928474,
+    "spread": 0.029612120052277202
+  },
+  {
+    "replicate": 90,
+    "worst_benefit": 0.01982256630171253,
+    "unshifted_cost": 0.009671114437162065,
+    "spread": 0.029493680738874595
+  },
+  {
+    "replicate": 91,
+    "worst_benefit": 0.03292389981630672,
+    "unshifted_cost": 0.009408800901964942,
+    "spread": 0.04507301622764193
+  },
+  {
+    "replicate": 92,
+    "worst_benefit": 0.0261680639384283,
+    "unshifted_cost": 0.006736537092353445,
+    "spread": 0.032904601030781744
+  },
+  {
+    "replicate": 93,
+    "worst_benefit": 0.022413836206537474,
+    "unshifted_cost": 0.013542199842432212,
+    "spread": 0.035956036048969686
+  },
+  {
+    "replicate": 94,
+    "worst_benefit": 0.029734001557834455,
+    "unshifted_cost": 0.004727161210949071,
+    "spread": 0.034461162768783526
+  },
+  {
+    "replicate": 95,
+    "worst_benefit": 0.020493286644637898,
+    "unshifted_cost": 0.0051288641032881666,
+    "spread": 0.025622150747926065
+  },
+  {
+    "replicate": 96,
+    "worst_benefit": 0.033240540401398566,
+    "unshifted_cost": 0.012760583482925969,
+    "spread": 0.046001123884324535
+  },
+  {
+    "replicate": 97,
+    "worst_benefit": 0.031241891107961273,
+    "unshifted_cost": 0.009203637563445,
+    "spread": 0.04044552867140627
+  },
+  {
+    "replicate": 98,
+    "worst_benefit": 0.027229354669602412,
+    "unshifted_cost": 0.008186581177821117,
+    "spread": 0.03541593584742353
+  },
+  {
+    "replicate": 99,
+    "worst_benefit": 0.020223316342585895,
+    "unshifted_cost": 0.008122189323834128,
+    "spread": 0.028345505666420023
+  },
+  {
+    "replicate": 100,
+    "worst_benefit": 0.017584352784217328,
+    "unshifted_cost": 0.006086998453157633,
+    "spread": 0.02367135123737496
+  },
+  {
+    "replicate": 101,
+    "worst_benefit": 0.018845213314029996,
+    "unshifted_cost": 0.0098967633011523,
+    "spread": 0.028741976615182296
+  },
+  {
+    "replicate": 102,
+    "worst_benefit": 0.04513166232683319,
+    "unshifted_cost": 0.016259194867037863,
+    "spread": 0.06139085719387105
+  },
+  {
+    "replicate": 103,
+    "worst_benefit": 0.011556582055735176,
+    "unshifted_cost": 0.00870976739230267,
+    "spread": 0.020266349448037846
+  },
+  {
+    "replicate": 104,
+    "worst_benefit": 0.02432655503956027,
+    "unshifted_cost": 0.007751649815091688,
+    "spread": 0.03207820485465196
+  },
+  {
+    "replicate": 105,
+    "worst_benefit": 0.03713866163902002,
+    "unshifted_cost": 0.021024576330975542,
+    "spread": 0.05816323796999556
+  },
+  {
+    "replicate": 106,
+    "worst_benefit": 0.03630571808876826,
+    "unshifted_cost": 0.02031525689474678,
+    "spread": 0.0572034559165292
+  },
+  {
+    "replicate": 107,
+    "worst_benefit": 0.022429808018823993,
+    "unshifted_cost": 0.006348329150338006,
+    "spread": 0.028778137169162
+  },
+  {
+    "replicate": 108,
+    "worst_benefit": 0.016988934400881006,
+    "unshifted_cost": 0.0064806023192836015,
+    "spread": 0.023469536720164608
+  },
+  {
+    "replicate": 109,
+    "worst_benefit": 0.02264177105287113,
+    "unshifted_cost": 0.010925954599591003,
+    "spread": 0.03356772565246213
+  },
+  {
+    "replicate": 110,
+    "worst_benefit": 0.034075224202947174,
+    "unshifted_cost": 0.012976080618298691,
+    "spread": 0.047051304821245865
+  },
+  {
+    "replicate": 111,
+    "worst_benefit": 0.018353983978485977,
+    "unshifted_cost": 0.0065168986588588496,
+    "spread": 0.024870882637344827
+  },
+  {
+    "replicate": 112,
+    "worst_benefit": 0.04081077510603459,
+    "unshifted_cost": 0.011797976304717461,
+    "spread": 0.05260875141075205
+  },
+  {
+    "replicate": 113,
+    "worst_benefit": 0.03431345519139728,
+    "unshifted_cost": 0.008428998082349204,
+    "spread": 0.042742453273746484
+  },
+  {
+    "replicate": 114,
+    "worst_benefit": 0.019879486449343453,
+    "unshifted_cost": 0.007753199496108754,
+    "spread": 0.027632685945452207
+  },
+  {
+    "replicate": 115,
+    "worst_benefit": 0.03160925542596926,
+    "unshifted_cost": 0.010048752246457182,
+    "spread": 0.04179748962674723
+  },
+  {
+    "replicate": 116,
+    "worst_benefit": 0.028184685476236537,
+    "unshifted_cost": 0.01320331110031403,
+    "spread": 0.04138799657655057
+  },
+  {
+    "replicate": 117,
+    "worst_benefit": 0.02929807554554742,
+    "unshifted_cost": 0.01072783500329244,
+    "spread": 0.04002591054883986
+  },
+  {
+    "replicate": 118,
+    "worst_benefit": 0.028842219557459026,
+    "unshifted_cost": 0.01167582813834489,
+    "spread": 0.040518047695803916
+  },
+  {
+    "replicate": 119,
+    "worst_benefit": 0.0427803039603597,
+    "unshifted_cost": 0.014407750817127418,
+    "spread": 0.05718805477748712
+  },
+  {
+    "replicate": 120,
+    "worst_benefit": 0.0233815863635517,
+    "unshifted_cost": 0.010954002587291067,
+    "spread": 0.034335588950842766
+  },
+  {
+    "replicate": 121,
+    "worst_benefit": 0.030157083050912692,
+    "unshifted_cost": 0.007178483758501608,
+    "spread": 0.0373355668094143
+  },
+  {
+    "replicate": 122,
+    "worst_benefit": 0.023665112793677556,
+    "unshifted_cost": 0.011272145148949364,
+    "spread": 0.03493725794262692
+  },
+  {
+    "replicate": 123,
+    "worst_benefit": 0.0231913917351535,
+    "unshifted_cost": 0.007828484976920458,
+    "spread": 0.031019876712073957
+  },
+  {
+    "replicate": 124,
+    "worst_benefit": 0.030601340832664636,
+    "unshifted_cost": 0.012224384054933757,
+    "spread": 0.04282572488759839
+  },
+  {
+    "replicate": 125,
+    "worst_benefit": 0.017620724102283547,
+    "unshifted_cost": 0.00473061187864765,
+    "spread": 0.022351335980931197
+  },
+  {
+    "replicate": 126,
+    "worst_benefit": 0.02335382563778221,
+    "unshifted_cost": 0.005727812256819287,
+    "spread": 0.029081637894601498
+  },
+  {
+    "replicate": 127,
+    "worst_benefit": 0.019001742098671337,
+    "unshifted_cost": 0.007388523652699264,
+    "spread": 0.0263902657513706
+  },
+  {
+    "replicate": 128,
+    "worst_benefit": 0.01704730449058567,
+    "unshifted_cost": 0.008015936476263863,
+    "spread": 0.02506324096684953
+  },
+  {
+    "replicate": 129,
+    "worst_benefit": 0.03129565848668192,
+    "unshifted_cost": 0.007559078021764143,
+    "spread": 0.038854736508446064
+  },
+  {
+    "replicate": 130,
+    "worst_benefit": 0.027474934517403682,
+    "unshifted_cost": 0.0155278435667211,
+    "spread": 0.04300277808412478
+  },
+  {
+    "replicate": 131,
+    "worst_benefit": 0.022436846864595128,
+    "unshifted_cost": 0.008186405093936644,
+    "spread": 0.030623251958531772
+  },
+  {
+    "replicate": 132,
+    "worst_benefit": 0.013864885219667888,
+    "unshifted_cost": 0.004658771950230678,
+    "spread": 0.018523657169898566
+  },
+  {
+    "replicate": 133,
+    "worst_benefit": 0.029959112097549423,
+    "unshifted_cost": 0.008378230345142179,
+    "spread": 0.0383373424426916
+  },
+  {
+    "replicate": 134,
+    "worst_benefit": 0.017938337219454925,
+    "unshifted_cost": 0.004903618823551059,
+    "spread": 0.022841956043005984
+  },
+  {
+    "replicate": 135,
+    "worst_benefit": 0.022351042942635346,
+    "unshifted_cost": 0.016589325747818573,
+    "spread": 0.03894036869045392
+  },
+  {
+    "replicate": 136,
+    "worst_benefit": 0.023110332774496145,
+    "unshifted_cost": 0.010621504141289706,
+    "spread": 0.03373183691578585
+  },
+  {
+    "replicate": 137,
+    "worst_benefit": 0.022494346603112447,
+    "unshifted_cost": 0.008101431253705327,
+    "spread": 0.030595777856817774
+  },
+  {
+    "replicate": 138,
+    "worst_benefit": 0.02896776830451342,
+    "unshifted_cost": 0.008119345798045075,
+    "spread": 0.037087114102558494
+  },
+  {
+    "replicate": 139,
+    "worst_benefit": 0.03294940641350197,
+    "unshifted_cost": 0.008388892301062656,
+    "spread": 0.04268067490105065
+  },
+  {
+    "replicate": 140,
+    "worst_benefit": 0.036775736330320496,
+    "unshifted_cost": 0.018172566522611122,
+    "spread": 0.05494830285293162
+  },
+  {
+    "replicate": 141,
+    "worst_benefit": 0.030181123132087206,
+    "unshifted_cost": 0.006287814149688042,
+    "spread": 0.03646893728177525
+  },
+  {
+    "replicate": 142,
+    "worst_benefit": 0.015182588072661374,
+    "unshifted_cost": 0.011301065347897543,
+    "spread": 0.026483653420558917
+  },
+  {
+    "replicate": 143,
+    "worst_benefit": 0.030041555618458116,
+    "unshifted_cost": 0.013523194650150172,
+    "spread": 0.04356475026860829
+  },
+  {
+    "replicate": 144,
+    "worst_benefit": 0.02993385658423864,
+    "unshifted_cost": 0.012139684429092412,
+    "spread": 0.04207354101333105
+  },
+  {
+    "replicate": 145,
+    "worst_benefit": 0.02163135819295614,
+    "unshifted_cost": 0.009376867531804778,
+    "spread": 0.03100822572476092
+  },
+  {
+    "replicate": 146,
+    "worst_benefit": 0.007512249860867626,
+    "unshifted_cost": 0.011611819564604997,
+    "spread": 0.019124069425472623
+  },
+  {
+    "replicate": 147,
+    "worst_benefit": 0.029354547679865006,
+    "unshifted_cost": 0.013983735886656579,
+    "spread": 0.043338283566521585
+  },
+  {
+    "replicate": 148,
+    "worst_benefit": 0.018748718660935193,
+    "unshifted_cost": 0.007291432708512402,
+    "spread": 0.026040151369447595
+  },
+  {
+    "replicate": 149,
+    "worst_benefit": 0.03729555842512233,
+    "unshifted_cost": 0.013341822004921178,
+    "spread": 0.05063738043004351
+  },
+  {
+    "replicate": 150,
+    "worst_benefit": 0.023076458232706876,
+    "unshifted_cost": 0.009022330615843344,
+    "spread": 0.03209878884855022
+  },
+  {
+    "replicate": 151,
+    "worst_benefit": 0.025375155523495563,
+    "unshifted_cost": 0.004028399535826899,
+    "spread": 0.03406508718082668
+  },
+  {
+    "replicate": 152,
+    "worst_benefit": 0.030105088487915932,
+    "unshifted_cost": 0.009628423448609369,
+    "spread": 0.0397335119365253
+  },
+  {
+    "replicate": 153,
+    "worst_benefit": 0.02863905801061406,
+    "unshifted_cost": 0.014239446535384004,
+    "spread": 0.04554475199211472
+  },
+  {
+    "replicate": 154,
+    "worst_benefit": 0.034561513713415204,
+    "unshifted_cost": 0.01235511022931124,
+    "spread": 0.04691662394272644
+  },
+  {
+    "replicate": 155,
+    "worst_benefit": 0.027672784450472165,
+    "unshifted_cost": 0.017124671017898496,
+    "spread": 0.04479745546837066
+  },
+  {
+    "replicate": 156,
+    "worst_benefit": 0.030165620408213467,
+    "unshifted_cost": 0.012462327957952879,
+    "spread": 0.042627948366166346
+  },
+  {
+    "replicate": 157,
+    "worst_benefit": 0.024550276227074286,
+    "unshifted_cost": 0.01085897632751065,
+    "spread": 0.035409252554584936
+  },
+  {
+    "replicate": 158,
+    "worst_benefit": 0.01448235005551235,
+    "unshifted_cost": 0.0004663765213058779,
+    "spread": 0.014948726576818228
+  },
+  {
+    "replicate": 159,
+    "worst_benefit": 0.022999229280457945,
+    "unshifted_cost": 0.0007433936068184099,
+    "spread": 0.023742622887276355
+  },
+  {
+    "replicate": 160,
+    "worst_benefit": 0.018276228837340813,
+    "unshifted_cost": 0.008292119298909162,
+    "spread": 0.026568348136249975
+  },
+  {
+    "replicate": 161,
+    "worst_benefit": 0.02747312140801428,
+    "unshifted_cost": 0.010980839252872188,
+    "spread": 0.04009222055569128
+  },
+  {
+    "replicate": 162,
+    "worst_benefit": 0.026485637915821036,
+    "unshifted_cost": 0.007907373281293428,
+    "spread": 0.034393011197114465
+  },
+  {
+    "replicate": 163,
+    "worst_benefit": 0.030849014688444476,
+    "unshifted_cost": 0.00693412432626328,
+    "spread": 0.037783139014707756
+  },
+  {
+    "replicate": 164,
+    "worst_benefit": 0.01816921556469442,
+    "unshifted_cost": 0.004891271842497491,
+    "spread": 0.02306048740719191
+  },
+  {
+    "replicate": 165,
+    "worst_benefit": 0.012945936935816027,
+    "unshifted_cost": 0.0047536370356188185,
+    "spread": 0.017699573971434845
+  },
+  {
+    "replicate": 166,
+    "worst_benefit": 0.0311828638677617,
+    "unshifted_cost": 0.008457789224104673,
+    "spread": 0.039640653091866374
+  },
+  {
+    "replicate": 167,
+    "worst_benefit": 0.02220466977747204,
+    "unshifted_cost": 0.013508047442542415,
+    "spread": 0.035712717220014456
+  },
+  {
+    "replicate": 168,
+    "worst_benefit": 0.023918457334426324,
+    "unshifted_cost": 0.007337926441509546,
+    "spread": 0.03125638377593587
+  },
+  {
+    "replicate": 169,
+    "worst_benefit": 0.041449066740818385,
+    "unshifted_cost": 0.014114407736259493,
+    "spread": 0.05621167977264385
+  },
+  {
+    "replicate": 170,
+    "worst_benefit": 0.028956927863139748,
+    "unshifted_cost": 0.016997956640843692,
+    "spread": 0.04595488450398344
+  },
+  {
+    "replicate": 171,
+    "worst_benefit": 0.03071375090069961,
+    "unshifted_cost": 0.00890763966762187,
+    "spread": 0.03962139056832148
+  },
+  {
+    "replicate": 172,
+    "worst_benefit": 0.048204635435597054,
+    "unshifted_cost": 0.01536369422752315,
+    "spread": 0.0635683296631202
+  },
+  {
+    "replicate": 173,
+    "worst_benefit": 0.026766240641226235,
+    "unshifted_cost": 0.007219170033659017,
+    "spread": 0.03398541067488525
+  },
+  {
+    "replicate": 174,
+    "worst_benefit": 0.03443150724339028,
+    "unshifted_cost": 0.009727385270076438,
+    "spread": 0.04415889251346672
+  },
+  {
+    "replicate": 175,
+    "worst_benefit": 0.026756031459423957,
+    "unshifted_cost": 0.010743491347801837,
+    "spread": 0.037499522807225794
+  },
+  {
+    "replicate": 176,
+    "worst_benefit": 0.024794382168570994,
+    "unshifted_cost": 0.007764843919103037,
+    "spread": 0.03255922608767403
+  },
+  {
+    "replicate": 177,
+    "worst_benefit": 0.02678677515650707,
+    "unshifted_cost": 0.007666350630750163,
+    "spread": 0.03445312578725723
+  },
+  {
+    "replicate": 178,
+    "worst_benefit": 0.016307114688438706,
+    "unshifted_cost": 0.002726959589919864,
+    "spread": 0.01903407427835857
+  },
+  {
+    "replicate": 179,
+    "worst_benefit": 0.03685241295914765,
+    "unshifted_cost": 0.015753419798088975,
+    "spread": 0.052605832757236626
+  },
+  {
+    "replicate": 180,
+    "worst_benefit": 0.03541839635862376,
+    "unshifted_cost": 0.010910131335857831,
+    "spread": 0.04632852769448159
+  },
+  {
+    "replicate": 181,
+    "worst_benefit": 0.025704711452365192,
+    "unshifted_cost": 0.011238225905523369,
+    "spread": 0.03694293735788856
+  },
+  {
+    "replicate": 182,
+    "worst_benefit": 0.01939591077406566,
+    "unshifted_cost": 0.009119867280173444,
+    "spread": 0.028515778054239105
+  },
+  {
+    "replicate": 183,
+    "worst_benefit": 0.02343015684629768,
+    "unshifted_cost": 0.016090991142362232,
+    "spread": 0.03952114798865991
+  },
+  {
+    "replicate": 184,
+    "worst_benefit": 0.011879047264000464,
+    "unshifted_cost": 0.010646367479494212,
+    "spread": 0.022525414743494676
+  },
+  {
+    "replicate": 185,
+    "worst_benefit": 0.018690793287702845,
+    "unshifted_cost": 0.009622079492575986,
+    "spread": 0.02831287278027883
+  },
+  {
+    "replicate": 186,
+    "worst_benefit": 0.020208076357140725,
+    "unshifted_cost": 0.0032978826051625054,
+    "spread": 0.02350595896230323
+  },
+  {
+    "replicate": 187,
+    "worst_benefit": 0.02514109464008185,
+    "unshifted_cost": 0.01540568599769132,
+    "spread": 0.04054678063777317
+  },
+  {
+    "replicate": 188,
+    "worst_benefit": 0.03060638726282283,
+    "unshifted_cost": 0.00841806555943736,
+    "spread": 0.03902445282226019
+  },
+  {
+    "replicate": 189,
+    "worst_benefit": 0.02868092059854732,
+    "unshifted_cost": 0.011577349374918167,
+    "spread": 0.04025826997346549
+  },
+  {
+    "replicate": 190,
+    "worst_benefit": 0.03701335219875368,
+    "unshifted_cost": 0.00969773249037753,
+    "spread": 0.04671108468913121
+  },
+  {
+    "replicate": 191,
+    "worst_benefit": 0.029514694443013467,
+    "unshifted_cost": 0.007041310333854023,
+    "spread": 0.03655600477686749
+  },
+  {
+    "replicate": 192,
+    "worst_benefit": 0.024869918209165953,
+    "unshifted_cost": 0.014473715296140388,
+    "spread": 0.03934363350530634
+  },
+  {
+    "replicate": 193,
+    "worst_benefit": 0.015982017191610076,
+    "unshifted_cost": 0.008055971233689507,
+    "spread": 0.024037988425299583
+  },
+  {
+    "replicate": 194,
+    "worst_benefit": 0.03182866459685252,
+    "unshifted_cost": 0.013618810192088548,
+    "spread": 0.04544747478894107
+  },
+  {
+    "replicate": 195,
+    "worst_benefit": 0.026943256039336227,
+    "unshifted_cost": 0.00824973568912346,
+    "spread": 0.03519299172845969
+  },
+  {
+    "replicate": 196,
+    "worst_benefit": 0.030427857382395396,
+    "unshifted_cost": 0.012023654838911657,
+    "spread": 0.04245151222130705
+  },
+  {
+    "replicate": 197,
+    "worst_benefit": 0.02115617147004112,
+    "unshifted_cost": 0.0075011434997395154,
+    "spread": 0.028657314969780634
+  },
+  {
+    "replicate": 198,
+    "worst_benefit": 0.01873914199473692,
+    "unshifted_cost": 0.010958356584775397,
+    "spread": 0.029697498579512316
+  },
+  {
+    "replicate": 199,
+    "worst_benefit": 0.028914291715050666,
+    "unshifted_cost": 0.004257214728353498,
+    "spread": 0.033171506443404164
+  },
+  {
+    "replicate": 200,
+    "worst_benefit": 0.032103940199434855,
+    "unshifted_cost": 0.0076936039647730325,
+    "spread": 0.03979754416420789
+  },
+  {
+    "replicate": 201,
+    "worst_benefit": 0.0182071061678708,
+    "unshifted_cost": 0.01562014200659434,
+    "spread": 0.03382724817446514
+  },
+  {
+    "replicate": 202,
+    "worst_benefit": 0.021080516165600693,
+    "unshifted_cost": 0.00843913108672012,
+    "spread": 0.029519647252320813
+  },
+  {
+    "replicate": 203,
+    "worst_benefit": 0.02704132243720947,
+    "unshifted_cost": 0.01242340297112332,
+    "spread": 0.03946472540833279
+  },
+  {
+    "replicate": 204,
+    "worst_benefit": 0.0396703020542194,
+    "unshifted_cost": 0.0097888926746873,
+    "spread": 0.0494591947289067
+  },
+  {
+    "replicate": 205,
+    "worst_benefit": 0.03922158789663599,
+    "unshifted_cost": 0.016389664559839034,
+    "spread": 0.055611252456475024
+  },
+  {
+    "replicate": 206,
+    "worst_benefit": 0.04529882399822949,
+    "unshifted_cost": 0.01231562292972399,
+    "spread": 0.05761444692795348
+  },
+  {
+    "replicate": 207,
+    "worst_benefit": 0.03711234518937945,
+    "unshifted_cost": 0.01849603376301634,
+    "spread": 0.05560837895239579
+  },
+  {
+    "replicate": 208,
+    "worst_benefit": 0.022844098032152482,
+    "unshifted_cost": 0.008821893631326239,
+    "spread": 0.03166599166347872
+  },
+  {
+    "replicate": 209,
+    "worst_benefit": 0.021788087990124994,
+    "unshifted_cost": 0.0024048581418275594,
+    "spread": 0.024192946131952553
+  },
+  {
+    "replicate": 210,
+    "worst_benefit": 0.023127393714246214,
+    "unshifted_cost": 0.014697410928744437,
+    "spread": 0.03782480464299065
+  },
+  {
+    "replicate": 211,
+    "worst_benefit": 0.022740705893996016,
+    "unshifted_cost": 0.015433693483940969,
+    "spread": 0.038174399377936985
+  },
+  {
+    "replicate": 212,
+    "worst_benefit": 0.035637916153412275,
+    "unshifted_cost": 0.009866462062701142,
+    "spread": 0.04550437821611342
+  },
+  {
+    "replicate": 213,
+    "worst_benefit": 0.020646386082488255,
+    "unshifted_cost": 0.009040040384128867,
+    "spread": 0.029686426466617122
+  },
+  {
+    "replicate": 214,
+    "worst_benefit": 0.026655504617914105,
+    "unshifted_cost": 0.00855706616220897,
+    "spread": 0.035212570780123076
+  },
+  {
+    "replicate": 215,
+    "worst_benefit": 0.03260800265812236,
+    "unshifted_cost": 0.01020324335222722,
+    "spread": 0.04281124601034958
+  },
+  {
+    "replicate": 216,
+    "worst_benefit": 0.026770744063370766,
+    "unshifted_cost": 0.012924885740680847,
+    "spread": 0.03969562980405161
+  },
+  {
+    "replicate": 217,
+    "worst_benefit": 0.01865236731444997,
+    "unshifted_cost": 0.008536483828275543,
+    "spread": 0.027188851142725512
+  },
+  {
+    "replicate": 218,
+    "worst_benefit": 0.033610098984719006,
+    "unshifted_cost": 0.012033828647378897,
+    "spread": 0.0456439276320979
+  },
+  {
+    "replicate": 219,
+    "worst_benefit": 0.02442173060994568,
+    "unshifted_cost": 0.007058775980712806,
+    "spread": 0.03545491202700124
+  },
+  {
+    "replicate": 220,
+    "worst_benefit": 0.04595524747372959,
+    "unshifted_cost": 0.007275408229900804,
+    "spread": 0.05323065570363039
+  },
+  {
+    "replicate": 221,
+    "worst_benefit": 0.053447615145478466,
+    "unshifted_cost": 0.014693995563175744,
+    "spread": 0.06814161070865421
+  },
+  {
+    "replicate": 222,
+    "worst_benefit": 0.017888508559868566,
+    "unshifted_cost": 0.004204530407676543,
+    "spread": 0.02209303896754511
+  },
+  {
+    "replicate": 223,
+    "worst_benefit": 0.037486983182445366,
+    "unshifted_cost": 0.012125811729980729,
+    "spread": 0.049612794912426095
+  },
+  {
+    "replicate": 224,
+    "worst_benefit": 0.03629569870655247,
+    "unshifted_cost": 0.013627414306775498,
+    "spread": 0.04992311301332797
+  },
+  {
+    "replicate": 225,
+    "worst_benefit": 0.021244560856637063,
+    "unshifted_cost": 0.011933786871521357,
+    "spread": 0.03533151063726103
+  },
+  {
+    "replicate": 226,
+    "worst_benefit": 0.029850675654062298,
+    "unshifted_cost": 0.004825371341558804,
+    "spread": 0.0346760469956211
+  },
+  {
+    "replicate": 227,
+    "worst_benefit": 0.04142431641593347,
+    "unshifted_cost": 0.014890232380249224,
+    "spread": 0.056314548796182695
+  },
+  {
+    "replicate": 228,
+    "worst_benefit": 0.019691730333844637,
+    "unshifted_cost": 0.006316339868499443,
+    "spread": 0.02600807020234408
+  },
+  {
+    "replicate": 229,
+    "worst_benefit": 0.03424585306376682,
+    "unshifted_cost": 0.009676171701211156,
+    "spread": 0.043922024764977974
+  },
+  {
+    "replicate": 230,
+    "worst_benefit": 0.02259908822003731,
+    "unshifted_cost": 0.008551765340000683,
+    "spread": 0.031150853560037994
+  },
+  {
+    "replicate": 231,
+    "worst_benefit": 0.027588995470041233,
+    "unshifted_cost": 0.008906300852321802,
+    "spread": 0.03761494646448649
+  },
+  {
+    "replicate": 232,
+    "worst_benefit": 0.03913342000053932,
+    "unshifted_cost": 0.008751650338795325,
+    "spread": 0.05127050357736418
+  },
+  {
+    "replicate": 233,
+    "worst_benefit": 0.026941523753297614,
+    "unshifted_cost": 0.018571342409976488,
+    "spread": 0.0455128661632741
+  },
+  {
+    "replicate": 234,
+    "worst_benefit": 0.030083240965160907,
+    "unshifted_cost": 0.009729287125179065,
+    "spread": 0.03981252809033997
+  },
+  {
+    "replicate": 235,
+    "worst_benefit": 0.04268148821699891,
+    "unshifted_cost": 0.019655084000067213,
+    "spread": 0.06233657221706612
+  },
+  {
+    "replicate": 236,
+    "worst_benefit": 0.02560821617506792,
+    "unshifted_cost": 0.009347629551323178,
+    "spread": 0.0349558457263911
+  },
+  {
+    "replicate": 237,
+    "worst_benefit": 0.02488264249802319,
+    "unshifted_cost": 0.009029865819880079,
+    "spread": 0.03391250831790327
+  },
+  {
+    "replicate": 238,
+    "worst_benefit": 0.03525189638978665,
+    "unshifted_cost": 0.007734939839320165,
+    "spread": 0.04298683622910682
+  },
+  {
+    "replicate": 239,
+    "worst_benefit": 0.023656236460725344,
+    "unshifted_cost": 0.003336619220049797,
+    "spread": 0.02699285568077514
+  },
+  {
+    "replicate": 240,
+    "worst_benefit": 0.04277425253409306,
+    "unshifted_cost": 0.02259636931692932,
+    "spread": 0.06537062185102238
+  },
+  {
+    "replicate": 241,
+    "worst_benefit": 0.015256762950127345,
+    "unshifted_cost": 0.007276543823251269,
+    "spread": 0.022533306773378614
+  },
+  {
+    "replicate": 242,
+    "worst_benefit": 0.027472193687889668,
+    "unshifted_cost": 0.013130100801404532,
+    "spread": 0.0406022944892942
+  },
+  {
+    "replicate": 243,
+    "worst_benefit": 0.022241756345593222,
+    "unshifted_cost": 0.006425378386496372,
+    "spread": 0.028667134732089594
+  },
+  {
+    "replicate": 244,
+    "worst_benefit": 0.03704402574354371,
+    "unshifted_cost": 0.021956617002597212,
+    "spread": 0.05900064274614092
+  },
+  {
+    "replicate": 245,
+    "worst_benefit": 0.027319416549000164,
+    "unshifted_cost": 0.01131660410625357,
+    "spread": 0.03863602065525373
+  },
+  {
+    "replicate": 246,
+    "worst_benefit": 0.0189960795020937,
+    "unshifted_cost": 0.00877554355298471,
+    "spread": 0.02777162305507841
+  },
+  {
+    "replicate": 247,
+    "worst_benefit": 0.038379424892239444,
+    "unshifted_cost": 0.00944787482241638,
+    "spread": 0.049049692917314314
+  },
+  {
+    "replicate": 248,
+    "worst_benefit": 0.027448802893745183,
+    "unshifted_cost": 0.00978312821220495,
+    "spread": 0.03723193110595013
+  },
+  {
+    "replicate": 249,
+    "worst_benefit": 0.02366802052495509,
+    "unshifted_cost": 0.011294360432272166,
+    "spread": 0.03496238095722726
+  },
+  {
+    "replicate": 250,
+    "worst_benefit": 0.026116488507032076,
+    "unshifted_cost": 0.005973610978526778,
+    "spread": 0.032090099485558854
+  },
+  {
+    "replicate": 251,
+    "worst_benefit": 0.018167194284322452,
+    "unshifted_cost": 0.012430446822579433,
+    "spread": 0.030597641106901885
+  },
+  {
+    "replicate": 252,
+    "worst_benefit": 0.03892876676901591,
+    "unshifted_cost": 0.02251173605791501,
+    "spread": 0.06144050282693092
+  },
+  {
+    "replicate": 253,
+    "worst_benefit": 0.03267003560506532,
+    "unshifted_cost": 0.00639759038826293,
+    "spread": 0.03906762599332825
+  },
+  {
+    "replicate": 254,
+    "worst_benefit": 0.02192341145210641,
+    "unshifted_cost": 0.009320085458894956,
+    "spread": 0.031243496911001367
+  },
+  {
+    "replicate": 255,
+    "worst_benefit": 0.029601400577180303,
+    "unshifted_cost": 0.007193285387295689,
+    "spread": 0.03679468596447599
+  },
+  {
+    "replicate": 256,
+    "worst_benefit": 0.023750198028560043,
+    "unshifted_cost": 0.0052345033744447544,
+    "spread": 0.028984701403004798
+  },
+  {
+    "replicate": 257,
+    "worst_benefit": 0.020516623025324865,
+    "unshifted_cost": 0.010411993571147082,
+    "spread": 0.030928616596471947
+  },
+  {
+    "replicate": 258,
+    "worst_benefit": 0.029820409189436847,
+    "unshifted_cost": 0.014835606966334347,
+    "spread": 0.044656016155771194
+  },
+  {
+    "replicate": 259,
+    "worst_benefit": 0.03644464809155323,
+    "unshifted_cost": 0.009565211365475168,
+    "spread": 0.0460098594570284
+  },
+  {
+    "replicate": 260,
+    "worst_benefit": 0.02498082767521692,
+    "unshifted_cost": 0.010707529950167882,
+    "spread": 0.0356883576253848
+  },
+  {
+    "replicate": 261,
+    "worst_benefit": 0.0263250630853632,
+    "unshifted_cost": 0.00840454229990073,
+    "spread": 0.03472960538526393
+  },
+  {
+    "replicate": 262,
+    "worst_benefit": 0.019255831948439495,
+    "unshifted_cost": 0.00866458101314127,
+    "spread": 0.027920412961580765
+  },
+  {
+    "replicate": 263,
+    "worst_benefit": 0.019769210769102763,
+    "unshifted_cost": 0.0016170942010685918,
+    "spread": 0.021386304970171355
+  },
+  {
+    "replicate": 264,
+    "worst_benefit": 0.037020447006487545,
+    "unshifted_cost": 0.01507747682412841,
+    "spread": 0.052097923830615955
+  },
+  {
+    "replicate": 265,
+    "worst_benefit": 0.01994518490662245,
+    "unshifted_cost": 0.004439130532308266,
+    "spread": 0.024384315438930715
+  },
+  {
+    "replicate": 266,
+    "worst_benefit": 0.026527812169596765,
+    "unshifted_cost": 0.01140462033114753,
+    "spread": 0.037932432500744295
+  },
+  {
+    "replicate": 267,
+    "worst_benefit": 0.01746421221666894,
+    "unshifted_cost": -0.002165598410989067,
+    "spread": 0.015298613805679873
+  },
+  {
+    "replicate": 268,
+    "worst_benefit": 0.022180486117282294,
+    "unshifted_cost": 0.010431479827661572,
+    "spread": 0.032611965944943866
+  },
+  {
+    "replicate": 269,
+    "worst_benefit": 0.02482848041415442,
+    "unshifted_cost": 0.00687191348154037,
+    "spread": 0.03170039389569479
+  },
+  {
+    "replicate": 270,
+    "worst_benefit": 0.027930004953829135,
+    "unshifted_cost": 0.006896942423631813,
+    "spread": 0.03750608255134813
+  },
+  {
+    "replicate": 271,
+    "worst_benefit": 0.028218206164225434,
+    "unshifted_cost": 0.01712198116985575,
+    "spread": 0.04534018733408118
+  },
+  {
+    "replicate": 272,
+    "worst_benefit": 0.03825072721491052,
+    "unshifted_cost": 0.010071411467401425,
+    "spread": 0.048322138682311944
+  },
+  {
+    "replicate": 273,
+    "worst_benefit": 0.03191665661687837,
+    "unshifted_cost": 0.013652087446987982,
+    "spread": 0.04556874406386635
+  },
+  {
+    "replicate": 274,
+    "worst_benefit": 0.019818213891822922,
+    "unshifted_cost": 0.008096116433590761,
+    "spread": 0.027914330325413683
+  },
+  {
+    "replicate": 275,
+    "worst_benefit": 0.02153764567138161,
+    "unshifted_cost": 0.014838851144369891,
+    "spread": 0.0363764968157515
+  },
+  {
+    "replicate": 276,
+    "worst_benefit": 0.031223719172211784,
+    "unshifted_cost": 0.008737963306813978,
+    "spread": 0.03996168247902576
+  },
+  {
+    "replicate": 277,
+    "worst_benefit": 0.030147587485460647,
+    "unshifted_cost": 0.014886348639956859,
+    "spread": 0.045033936125417506
+  },
+  {
+    "replicate": 278,
+    "worst_benefit": 0.038183364853725865,
+    "unshifted_cost": 0.013897723090047664,
+    "spread": 0.05208108794377353
+  },
+  {
+    "replicate": 279,
+    "worst_benefit": 0.02258215183185286,
+    "unshifted_cost": 0.009557454592523218,
+    "spread": 0.03213960642437608
+  },
+  {
+    "replicate": 280,
+    "worst_benefit": 0.014396983569445077,
+    "unshifted_cost": 0.004086757855847889,
+    "spread": 0.018483741425292965
+  },
+  {
+    "replicate": 281,
+    "worst_benefit": 0.0546457771616512,
+    "unshifted_cost": 0.018513559180084016,
+    "spread": 0.07315933634173521
+  },
+  {
+    "replicate": 282,
+    "worst_benefit": 0.03281382166831859,
+    "unshifted_cost": 0.002924901209900632,
+    "spread": 0.03573872287821922
+  },
+  {
+    "replicate": 283,
+    "worst_benefit": 0.031706664131307516,
+    "unshifted_cost": 0.017471593887171233,
+    "spread": 0.04917825801847875
+  },
+  {
+    "replicate": 284,
+    "worst_benefit": 0.026571694110106958,
+    "unshifted_cost": 0.008066322741996923,
+    "spread": 0.03463801685210388
+  },
+  {
+    "replicate": 285,
+    "worst_benefit": 0.028942304603917335,
+    "unshifted_cost": 0.012404196082428598,
+    "spread": 0.04134650068634593
+  },
+  {
+    "replicate": 286,
+    "worst_benefit": 0.02452370034028939,
+    "unshifted_cost": 0.009800510908961058,
+    "spread": 0.036380959621713616
+  },
+  {
+    "replicate": 287,
+    "worst_benefit": 0.029016824513838357,
+    "unshifted_cost": 0.007265170813096078,
+    "spread": 0.036281995326934435
+  },
+  {
+    "replicate": 288,
+    "worst_benefit": 0.011904443161499079,
+    "unshifted_cost": 0.010194873396960014,
+    "spread": 0.022099316558459092
+  },
+  {
+    "replicate": 289,
+    "worst_benefit": 0.020008125419983536,
+    "unshifted_cost": 0.010620162498664043,
+    "spread": 0.03062828791864758
+  },
+  {
+    "replicate": 290,
+    "worst_benefit": 0.035090529429512296,
+    "unshifted_cost": 0.010204315321740931,
+    "spread": 0.04529484475125323
+  },
+  {
+    "replicate": 291,
+    "worst_benefit": 0.03896098656415614,
+    "unshifted_cost": 0.01716301168523693,
+    "spread": 0.05612399824939307
+  },
+  {
+    "replicate": 292,
+    "worst_benefit": 0.020075126188901615,
+    "unshifted_cost": 0.006490141135367167,
+    "spread": 0.026565267324268782
+  },
+  {
+    "replicate": 293,
+    "worst_benefit": 0.05431433505174488,
+    "unshifted_cost": 0.0209034142706076,
+    "spread": 0.07521774932235248
+  },
+  {
+    "replicate": 294,
+    "worst_benefit": 0.025507264426361198,
+    "unshifted_cost": 0.021275102160248527,
+    "spread": 0.046782366586609725
+  },
+  {
+    "replicate": 295,
+    "worst_benefit": 0.03317945448545556,
+    "unshifted_cost": 0.013669916844276209,
+    "spread": 0.04684937132973177
+  },
+  {
+    "replicate": 296,
+    "worst_benefit": 0.030753656343865732,
+    "unshifted_cost": 0.012931817845699745,
+    "spread": 0.043685474189565476
+  },
+  {
+    "replicate": 297,
+    "worst_benefit": 0.020977672294438032,
+    "unshifted_cost": 0.0075491298397847295,
+    "spread": 0.028526802134222762
+  },
+  {
+    "replicate": 298,
+    "worst_benefit": 0.0219863855998762,
+    "unshifted_cost": 0.015736825629775186,
+    "spread": 0.03772321122965139
+  },
+  {
+    "replicate": 299,
+    "worst_benefit": 0.03401057738265745,
+    "unshifted_cost": 0.014208525764637159,
+    "spread": 0.048219103147294606
+  },
+  {
+    "replicate": 300,
+    "worst_benefit": 0.01626411916020487,
+    "unshifted_cost": 0.005097838536553656,
+    "spread": 0.021361957696758527
+  },
+  {
+    "replicate": 301,
+    "worst_benefit": 0.03569721416755489,
+    "unshifted_cost": 0.011655115633662616,
+    "spread": 0.04735232980121751
+  },
+  {
+    "replicate": 302,
+    "worst_benefit": 0.017246070543135095,
+    "unshifted_cost": 0.010255580997371005,
+    "spread": 0.0275016515405061
+  },
+  {
+    "replicate": 303,
+    "worst_benefit": 0.024504469662121275,
+    "unshifted_cost": 0.007041090259777172,
+    "spread": 0.03154555992189845
+  },
+  {
+    "replicate": 304,
+    "worst_benefit": 0.03421579610715464,
+    "unshifted_cost": 0.012437436234584265,
+    "spread": 0.046653232341738904
+  },
+  {
+    "replicate": 305,
+    "worst_benefit": 0.0436983867308357,
+    "unshifted_cost": 0.015870778854146783,
+    "spread": 0.059569165584982486
+  },
+  {
+    "replicate": 306,
+    "worst_benefit": 0.027264440608213758,
+    "unshifted_cost": 0.014714307912691571,
+    "spread": 0.04197874852090533
+  },
+  {
+    "replicate": 307,
+    "worst_benefit": 0.02365137803425077,
+    "unshifted_cost": 0.00476130422901877,
+    "spread": 0.031270835447042455
+  },
+  {
+    "replicate": 308,
+    "worst_benefit": 0.021946781077766153,
+    "unshifted_cost": 0.0032772515426028326,
+    "spread": 0.025224032620368986
+  },
+  {
+    "replicate": 309,
+    "worst_benefit": 0.01875036021136489,
+    "unshifted_cost": 0.006006483953223785,
+    "spread": 0.024756844164588676
+  },
+  {
+    "replicate": 310,
+    "worst_benefit": 0.02673403655357698,
+    "unshifted_cost": 0.01348098187478508,
+    "spread": 0.04021501842836206
+  },
+  {
+    "replicate": 311,
+    "worst_benefit": 0.03527620972419998,
+    "unshifted_cost": 0.012082199103162772,
+    "spread": 0.04735840882736275
+  },
+  {
+    "replicate": 312,
+    "worst_benefit": 0.017002689492722656,
+    "unshifted_cost": 0.014222899418180668,
+    "spread": 0.031225588910903324
+  },
+  {
+    "replicate": 313,
+    "worst_benefit": 0.031147998409690514,
+    "unshifted_cost": 0.01188777173675315,
+    "spread": 0.043035770146443664
+  },
+  {
+    "replicate": 314,
+    "worst_benefit": 0.015116237281859846,
+    "unshifted_cost": 0.008214990357409802,
+    "spread": 0.023331227639269647
+  },
+  {
+    "replicate": 315,
+    "worst_benefit": 0.029975599083610027,
+    "unshifted_cost": 0.01776322836256261,
+    "spread": 0.04773882744617264
+  },
+  {
+    "replicate": 316,
+    "worst_benefit": 0.021137947861524564,
+    "unshifted_cost": 0.010721530229056309,
+    "spread": 0.03185947809058087
+  },
+  {
+    "replicate": 317,
+    "worst_benefit": 0.0362052689497494,
+    "unshifted_cost": 0.009493283015829301,
+    "spread": 0.045698551965578704
+  },
+  {
+    "replicate": 318,
+    "worst_benefit": 0.03354583469529693,
+    "unshifted_cost": 0.018558984968806147,
+    "spread": 0.052104819664103075
+  },
+  {
+    "replicate": 319,
+    "worst_benefit": 0.03771942964657837,
+    "unshifted_cost": 0.01348461749173857,
+    "spread": 0.051204047138316944
+  },
+  {
+    "replicate": 320,
+    "worst_benefit": 0.012318887460921357,
+    "unshifted_cost": 0.006310994850326934,
+    "spread": 0.01862988231124829
+  },
+  {
+    "replicate": 321,
+    "worst_benefit": 0.025856027825107764,
+    "unshifted_cost": 0.009387352228527046,
+    "spread": 0.03524338005363481
+  },
+  {
+    "replicate": 322,
+    "worst_benefit": 0.03754199312255202,
+    "unshifted_cost": 0.01633876983735061,
+    "spread": 0.05388076295990263
+  },
+  {
+    "replicate": 323,
+    "worst_benefit": 0.03442060865252894,
+    "unshifted_cost": 0.012662886412345253,
+    "spread": 0.04708349506487419
+  },
+  {
+    "replicate": 324,
+    "worst_benefit": 0.03317596108636034,
+    "unshifted_cost": 0.00909580457542225,
+    "spread": 0.04309342026362861
+  },
+  {
+    "replicate": 325,
+    "worst_benefit": 0.0238204062662154,
+    "unshifted_cost": 0.014690795661817746,
+    "spread": 0.038511201928033145
+  },
+  {
+    "replicate": 326,
+    "worst_benefit": 0.012197139492948206,
+    "unshifted_cost": 0.00744256633574869,
+    "spread": 0.019639705828696896
+  },
+  {
+    "replicate": 327,
+    "worst_benefit": 0.023446733664754582,
+    "unshifted_cost": 0.010639863555727547,
+    "spread": 0.03408659722048213
+  },
+  {
+    "replicate": 328,
+    "worst_benefit": 0.024660167601141425,
+    "unshifted_cost": 0.01156406785955233,
+    "spread": 0.036224235460693754
+  },
+  {
+    "replicate": 329,
+    "worst_benefit": 0.02796357426080398,
+    "unshifted_cost": 0.01070983045815832,
+    "spread": 0.0386734047189623
+  },
+  {
+    "replicate": 330,
+    "worst_benefit": 0.038898644390145676,
+    "unshifted_cost": 0.0165959654493264,
+    "spread": 0.055494609839472075
+  },
+  {
+    "replicate": 331,
+    "worst_benefit": 0.028999290143606804,
+    "unshifted_cost": 0.010172325994928788,
+    "spread": 0.03917161613853559
+  },
+  {
+    "replicate": 332,
+    "worst_benefit": 0.026455116957715186,
+    "unshifted_cost": 0.013738431103813786,
+    "spread": 0.04019354806152897
+  },
+  {
+    "replicate": 333,
+    "worst_benefit": 0.017275686127895318,
+    "unshifted_cost": 0.004194280033455233,
+    "spread": 0.022555529397153662
+  },
+  {
+    "replicate": 334,
+    "worst_benefit": 0.019482397132508766,
+    "unshifted_cost": 0.007962272561201189,
+    "spread": 0.027444669693709955
+  },
+  {
+    "replicate": 335,
+    "worst_benefit": 0.03266496603771141,
+    "unshifted_cost": 0.014248459241853806,
+    "spread": 0.04691342527956521
+  },
+  {
+    "replicate": 336,
+    "worst_benefit": 0.014579778521493392,
+    "unshifted_cost": 0.007775039483776003,
+    "spread": 0.022354818005269395
+  },
+  {
+    "replicate": 337,
+    "worst_benefit": 0.014294694963085552,
+    "unshifted_cost": 0.009832495294567312,
+    "spread": 0.024127190257652864
+  },
+  {
+    "replicate": 338,
+    "worst_benefit": 0.0277510091319354,
+    "unshifted_cost": 0.005578147586815629,
+    "spread": 0.03332915671875103
+  },
+  {
+    "replicate": 339,
+    "worst_benefit": 0.012474791748960046,
+    "unshifted_cost": 0.004716451639372732,
+    "spread": 0.020321758832248515
+  },
+  {
+    "replicate": 340,
+    "worst_benefit": 0.04367208613432538,
+    "unshifted_cost": 0.01579347710413348,
+    "spread": 0.05946556323845886
+  },
+  {
+    "replicate": 341,
+    "worst_benefit": 0.023084926434380204,
+    "unshifted_cost": 0.009784130955023618,
+    "spread": 0.033104016543727854
+  },
+  {
+    "replicate": 342,
+    "worst_benefit": 0.01744996490945705,
+    "unshifted_cost": 0.0071747927979459725,
+    "spread": 0.024624757707403022
+  },
+  {
+    "replicate": 343,
+    "worst_benefit": 0.03324124606144219,
+    "unshifted_cost": 0.012739645160411261,
+    "spread": 0.04598089122185345
+  },
+  {
+    "replicate": 344,
+    "worst_benefit": 0.019027547921027232,
+    "unshifted_cost": 0.01147929463907249,
+    "spread": 0.030506842560099723
+  },
+  {
+    "replicate": 345,
+    "worst_benefit": 0.0166405878717657,
+    "unshifted_cost": 0.009077608291816586,
+    "spread": 0.02614320337530962
+  },
+  {
+    "replicate": 346,
+    "worst_benefit": 0.025878140619693846,
+    "unshifted_cost": 0.00558335621192918,
+    "spread": 0.031461496831623026
+  },
+  {
+    "replicate": 347,
+    "worst_benefit": 0.02022013445674975,
+    "unshifted_cost": 0.008153830616889124,
+    "spread": 0.028373965073638874
+  },
+  {
+    "replicate": 348,
+    "worst_benefit": 0.04269966802368208,
+    "unshifted_cost": 0.015613822036437353,
+    "spread": 0.05831349006011943
+  },
+  {
+    "replicate": 349,
+    "worst_benefit": 0.04352298479719441,
+    "unshifted_cost": 0.01597769723154918,
+    "spread": 0.05950068202874359
+  },
+  {
+    "replicate": 350,
+    "worst_benefit": 0.01714366148721802,
+    "unshifted_cost": 0.007163323899347707,
+    "spread": 0.024306985386565727
+  },
+  {
+    "replicate": 351,
+    "worst_benefit": 0.022860654752065668,
+    "unshifted_cost": 0.0074020808680532735,
+    "spread": 0.03026273562011894
+  },
+  {
+    "replicate": 352,
+    "worst_benefit": 0.017427981503552625,
+    "unshifted_cost": 0.009475732079814336,
+    "spread": 0.02690371358336696
+  },
+  {
+    "replicate": 353,
+    "worst_benefit": 0.025184451807693464,
+    "unshifted_cost": 0.013443942762646044,
+    "spread": 0.03862839457033951
+  },
+  {
+    "replicate": 354,
+    "worst_benefit": 0.037831532726421035,
+    "unshifted_cost": 0.012079440015868359,
+    "spread": 0.049910972742289395
+  },
+  {
+    "replicate": 355,
+    "worst_benefit": 0.02920351145832456,
+    "unshifted_cost": 0.009151377393050053,
+    "spread": 0.03835488885137461
+  },
+  {
+    "replicate": 356,
+    "worst_benefit": 0.02422715019759858,
+    "unshifted_cost": 0.007812711712466336,
+    "spread": 0.032039861910064915
+  },
+  {
+    "replicate": 357,
+    "worst_benefit": 0.03262228520904331,
+    "unshifted_cost": 0.008816293053448554,
+    "spread": 0.041438578262491865
+  },
+  {
+    "replicate": 358,
+    "worst_benefit": 0.021383268984193404,
+    "unshifted_cost": 0.006384935768835365,
+    "spread": 0.02776820475302877
+  },
+  {
+    "replicate": 359,
+    "worst_benefit": 0.0377984120151823,
+    "unshifted_cost": 0.005128725483260821,
+    "spread": 0.044314021241099066
+  },
+  {
+    "replicate": 360,
+    "worst_benefit": 0.027537629884481274,
+    "unshifted_cost": 0.015063078011656295,
+    "spread": 0.04260070789613757
+  },
+  {
+    "replicate": 361,
+    "worst_benefit": 0.021640338028139805,
+    "unshifted_cost": 0.008840486637944012,
+    "spread": 0.030480824666083817
+  },
+  {
+    "replicate": 362,
+    "worst_benefit": 0.03544964359755032,
+    "unshifted_cost": 0.01337789411910939,
+    "spread": 0.04882753771665971
+  },
+  {
+    "replicate": 363,
+    "worst_benefit": 0.028110191945129426,
+    "unshifted_cost": 0.006099260642577042,
+    "spread": 0.035796685214730894
+  },
+  {
+    "replicate": 364,
+    "worst_benefit": 0.03031164589666957,
+    "unshifted_cost": 0.008183194583089137,
+    "spread": 0.03849484047975871
+  },
+  {
+    "replicate": 365,
+    "worst_benefit": 0.027309862130182605,
+    "unshifted_cost": 0.011242923064001875,
+    "spread": 0.03855278519418448
+  },
+  {
+    "replicate": 366,
+    "worst_benefit": 0.026298936554296937,
+    "unshifted_cost": 0.011986953863415972,
+    "spread": 0.03828589041771291
+  },
+  {
+    "replicate": 367,
+    "worst_benefit": 0.032509116529855775,
+    "unshifted_cost": 0.003285746084186525,
+    "spread": 0.0357948626140423
+  },
+  {
+    "replicate": 368,
+    "worst_benefit": 0.0369133104613647,
+    "unshifted_cost": 0.01618494612363075,
+    "spread": 0.05309825658499545
+  },
+  {
+    "replicate": 369,
+    "worst_benefit": 0.04142378594434304,
+    "unshifted_cost": 0.020447909791411423,
+    "spread": 0.06187169573575446
+  },
+  {
+    "replicate": 370,
+    "worst_benefit": 0.018606698704939806,
+    "unshifted_cost": 0.01145280490922329,
+    "spread": 0.030059503614163097
+  },
+  {
+    "replicate": 371,
+    "worst_benefit": 0.029619862210757852,
+    "unshifted_cost": 0.015461210957095628,
+    "spread": 0.04508107316785348
+  },
+  {
+    "replicate": 372,
+    "worst_benefit": 0.03600651739742067,
+    "unshifted_cost": 0.017205732861806933,
+    "spread": 0.05516009211252282
+  },
+  {
+    "replicate": 373,
+    "worst_benefit": 0.031818141381192544,
+    "unshifted_cost": 0.007958582105073386,
+    "spread": 0.03977672348626593
+  },
+  {
+    "replicate": 374,
+    "worst_benefit": 0.030597688498758102,
+    "unshifted_cost": 0.015996050048091348,
+    "spread": 0.04659373854684945
+  },
+  {
+    "replicate": 375,
+    "worst_benefit": 0.03444174043551984,
+    "unshifted_cost": 0.012007922346519817,
+    "spread": 0.04644966278203966
+  },
+  {
+    "replicate": 376,
+    "worst_benefit": 0.029673324614208907,
+    "unshifted_cost": 0.013285018959110939,
+    "spread": 0.042958343573319846
+  },
+  {
+    "replicate": 377,
+    "worst_benefit": 0.04236047201179782,
+    "unshifted_cost": 0.022548390256122763,
+    "spread": 0.06490886226792059
+  },
+  {
+    "replicate": 378,
+    "worst_benefit": 0.032750556845182244,
+    "unshifted_cost": 0.020451638696766805,
+    "spread": 0.05320219554194905
+  },
+  {
+    "replicate": 379,
+    "worst_benefit": 0.017515779026865963,
+    "unshifted_cost": 0.006438855222334783,
+    "spread": 0.023954634249200746
+  },
+  {
+    "replicate": 380,
+    "worst_benefit": 0.024906478060675696,
+    "unshifted_cost": 0.005227394666370455,
+    "spread": 0.03013387272704615
+  },
+  {
+    "replicate": 381,
+    "worst_benefit": 0.030636449107272812,
+    "unshifted_cost": 0.012045516450573945,
+    "spread": 0.04268196555784676
+  },
+  {
+    "replicate": 382,
+    "worst_benefit": 0.022429659999065432,
+    "unshifted_cost": 0.013904107561043433,
+    "spread": 0.036333767560108865
+  },
+  {
+    "replicate": 383,
+    "worst_benefit": 0.017799623766662886,
+    "unshifted_cost": 0.007805153662365116,
+    "spread": 0.025604777429028003
+  },
+  {
+    "replicate": 384,
+    "worst_benefit": 0.020796594968292004,
+    "unshifted_cost": 0.009678565487404311,
+    "spread": 0.030475160455696315
+  },
+  {
+    "replicate": 385,
+    "worst_benefit": 0.02949642590250512,
+    "unshifted_cost": 0.02221625469416111,
+    "spread": 0.05171268059666623
+  },
+  {
+    "replicate": 386,
+    "worst_benefit": 0.03360169416350467,
+    "unshifted_cost": 0.010413780438099818,
+    "spread": 0.04576461593839942
+  },
+  {
+    "replicate": 387,
+    "worst_benefit": 0.023649891104991938,
+    "unshifted_cost": 0.01147909181490192,
+    "spread": 0.03512898291989386
+  },
+  {
+    "replicate": 388,
+    "worst_benefit": 0.02900303061474696,
+    "unshifted_cost": 0.006318968521105139,
+    "spread": 0.0353219991358521
+  },
+  {
+    "replicate": 389,
+    "worst_benefit": 0.028108359456173293,
+    "unshifted_cost": 0.010191378910800797,
+    "spread": 0.03829973836697409
+  },
+  {
+    "replicate": 390,
+    "worst_benefit": 0.019955916512752747,
+    "unshifted_cost": 0.0015340470594841227,
+    "spread": 0.02148996357223687
+  },
+  {
+    "replicate": 391,
+    "worst_benefit": 0.02386190009787359,
+    "unshifted_cost": 0.012519146668982128,
+    "spread": 0.03638104676685572
+  },
+  {
+    "replicate": 392,
+    "worst_benefit": 0.015996699778671908,
+    "unshifted_cost": 0.009409178666145435,
+    "spread": 0.025405878444817342
+  },
+  {
+    "replicate": 393,
+    "worst_benefit": 0.030720133708720954,
+    "unshifted_cost": 0.005209752590846772,
+    "spread": 0.035929886299567726
+  },
+  {
+    "replicate": 394,
+    "worst_benefit": 0.01446497604502317,
+    "unshifted_cost": 0.0016986871824883343,
+    "spread": 0.016163663227511504
+  },
+  {
+    "replicate": 395,
+    "worst_benefit": 0.03335469746900244,
+    "unshifted_cost": 0.011499083814049738,
+    "spread": 0.044853781283052174
+  },
+  {
+    "replicate": 396,
+    "worst_benefit": 0.021941207496989468,
+    "unshifted_cost": 0.012473140464593468,
+    "spread": 0.034414347961582936
+  },
+  {
+    "replicate": 397,
+    "worst_benefit": 0.03116347689882981,
+    "unshifted_cost": 0.005714290021378465,
+    "spread": 0.039164082229767194
+  },
+  {
+    "replicate": 398,
+    "worst_benefit": 0.02849746396132291,
+    "unshifted_cost": 0.009230363751944193,
+    "spread": 0.037727827713267104
+  },
+  {
+    "replicate": 399,
+    "worst_benefit": 0.03325273519185301,
+    "unshifted_cost": 0.01289591493696074,
+    "spread": 0.04614865012881375
+  },
+  {
+    "replicate": 400,
+    "worst_benefit": 0.030408364324564507,
+    "unshifted_cost": 0.0118263808226573,
+    "spread": 0.04223474514722181
+  },
+  {
+    "replicate": 401,
+    "worst_benefit": 0.03658229349874764,
+    "unshifted_cost": 0.012727188482511087,
+    "spread": 0.04954685516119606
+  },
+  {
+    "replicate": 402,
+    "worst_benefit": 0.030002634959975127,
+    "unshifted_cost": 0.013274958723835995,
+    "spread": 0.04327759368381112
+  },
+  {
+    "replicate": 403,
+    "worst_benefit": 0.021201763488421843,
+    "unshifted_cost": 0.006550171758388457,
+    "spread": 0.02931813420465179
+  },
+  {
+    "replicate": 404,
+    "worst_benefit": 0.030949966751778857,
+    "unshifted_cost": 0.013092807541029927,
+    "spread": 0.044042774292808784
+  },
+  {
+    "replicate": 405,
+    "worst_benefit": 0.02713057381028605,
+    "unshifted_cost": 0.012294631738458572,
+    "spread": 0.039425205548744624
+  },
+  {
+    "replicate": 406,
+    "worst_benefit": 0.03083384613339124,
+    "unshifted_cost": 0.009824322918897344,
+    "spread": 0.040658169052288584
+  },
+  {
+    "replicate": 407,
+    "worst_benefit": 0.02332983473130157,
+    "unshifted_cost": 0.00677883209248098,
+    "spread": 0.03010866682378255
+  },
+  {
+    "replicate": 408,
+    "worst_benefit": 0.0294383908356608,
+    "unshifted_cost": 0.010180223366580088,
+    "spread": 0.03961861420224089
+  },
+  {
+    "replicate": 409,
+    "worst_benefit": 0.014604908222836777,
+    "unshifted_cost": 0.009164797046213535,
+    "spread": 0.023769705269050312
+  },
+  {
+    "replicate": 410,
+    "worst_benefit": 0.030423108486950512,
+    "unshifted_cost": 0.00845065225569308,
+    "spread": 0.03887376074264359
+  },
+  {
+    "replicate": 411,
+    "worst_benefit": 0.032806737494488813,
+    "unshifted_cost": 0.006504117487491579,
+    "spread": 0.03931085498198039
+  },
+  {
+    "replicate": 412,
+    "worst_benefit": 0.01984760173668998,
+    "unshifted_cost": 0.0045979481129519995,
+    "spread": 0.02444554984964198
+  },
+  {
+    "replicate": 413,
+    "worst_benefit": 0.034180162085838184,
+    "unshifted_cost": 0.01179388308660001,
+    "spread": 0.045974045172438194
+  },
+  {
+    "replicate": 414,
+    "worst_benefit": 0.03927513649884129,
+    "unshifted_cost": 0.011976414065534735,
+    "spread": 0.051251550564376025
+  },
+  {
+    "replicate": 415,
+    "worst_benefit": 0.029379611235947567,
+    "unshifted_cost": 0.013178515999863971,
+    "spread": 0.04255812723581154
+  },
+  {
+    "replicate": 416,
+    "worst_benefit": 0.031073410862249573,
+    "unshifted_cost": 0.012041050087187477,
+    "spread": 0.043337965965483116
+  },
+  {
+    "replicate": 417,
+    "worst_benefit": 0.031294599091157504,
+    "unshifted_cost": 0.01295968170980133,
+    "spread": 0.04488541642375765
+  },
+  {
+    "replicate": 418,
+    "worst_benefit": 0.043314490119703564,
+    "unshifted_cost": 0.014602169977181778,
+    "spread": 0.05791666009688534
+  },
+  {
+    "replicate": 419,
+    "worst_benefit": 0.0277085434872284,
+    "unshifted_cost": 0.014232416051154662,
+    "spread": 0.04194095953838306
+  },
+  {
+    "replicate": 420,
+    "worst_benefit": 0.03499574719830467,
+    "unshifted_cost": 0.018073924865062985,
+    "spread": 0.05306967206336766
+  },
+  {
+    "replicate": 421,
+    "worst_benefit": 0.010751683210261431,
+    "unshifted_cost": 0.002472578993250041,
+    "spread": 0.013224262203511472
+  },
+  {
+    "replicate": 422,
+    "worst_benefit": 0.02957946743116846,
+    "unshifted_cost": 0.014034808236511709,
+    "spread": 0.04361427566768017
+  },
+  {
+    "replicate": 423,
+    "worst_benefit": 0.017122648331982182,
+    "unshifted_cost": 0.011337101660471527,
+    "spread": 0.02845974999245371
+  },
+  {
+    "replicate": 424,
+    "worst_benefit": 0.02962800948152955,
+    "unshifted_cost": 0.016330609460784795,
+    "spread": 0.045958618942314344
+  },
+  {
+    "replicate": 425,
+    "worst_benefit": 0.03201304928223858,
+    "unshifted_cost": 0.014160112557694338,
+    "spread": 0.04617316183993292
+  },
+  {
+    "replicate": 426,
+    "worst_benefit": 0.01920781430175178,
+    "unshifted_cost": 0.00545627825987538,
+    "spread": 0.02466409256162716
+  },
+  {
+    "replicate": 427,
+    "worst_benefit": 0.03237347414221048,
+    "unshifted_cost": 0.005874297136131967,
+    "spread": 0.038247771278342446
+  },
+  {
+    "replicate": 428,
+    "worst_benefit": 0.05150311881619296,
+    "unshifted_cost": 0.01755765496944961,
+    "spread": 0.07131730817619109
+  },
+  {
+    "replicate": 429,
+    "worst_benefit": 0.011234190874737315,
+    "unshifted_cost": 0.0031209446153362963,
+    "spread": 0.014355135490073612
+  },
+  {
+    "replicate": 430,
+    "worst_benefit": 0.018999071954440505,
+    "unshifted_cost": 0.014106230458976632,
+    "spread": 0.03310530241341714
+  },
+  {
+    "replicate": 431,
+    "worst_benefit": 0.020164416667229235,
+    "unshifted_cost": 0.005831375806954364,
+    "spread": 0.0259957924741836
+  },
+  {
+    "replicate": 432,
+    "worst_benefit": 0.02254890351190242,
+    "unshifted_cost": 0.01443147687011348,
+    "spread": 0.0369803803820159
+  },
+  {
+    "replicate": 433,
+    "worst_benefit": 0.024080013620194518,
+    "unshifted_cost": 0.0026816006485176347,
+    "spread": 0.026761614268712153
+  },
+  {
+    "replicate": 434,
+    "worst_benefit": 0.026884448648251458,
+    "unshifted_cost": 0.004860454587416463,
+    "spread": 0.03174490323566792
+  },
+  {
+    "replicate": 435,
+    "worst_benefit": 0.017039217908964566,
+    "unshifted_cost": 0.005176475611844422,
+    "spread": 0.022215693520808988
+  },
+  {
+    "replicate": 436,
+    "worst_benefit": 0.03382019393534563,
+    "unshifted_cost": 0.010067520372510685,
+    "spread": 0.04388771430785632
+  },
+  {
+    "replicate": 437,
+    "worst_benefit": 0.03258389288074848,
+    "unshifted_cost": 0.01086663671705368,
+    "spread": 0.04345052959780216
+  },
+  {
+    "replicate": 438,
+    "worst_benefit": 0.03466822629832833,
+    "unshifted_cost": 0.012542322267323325,
+    "spread": 0.047210548565651655
+  },
+  {
+    "replicate": 439,
+    "worst_benefit": 0.030167803875344346,
+    "unshifted_cost": 0.018781219060208798,
+    "spread": 0.048949022935553144
+  },
+  {
+    "replicate": 440,
+    "worst_benefit": 0.029563962251637932,
+    "unshifted_cost": 0.008003748748967032,
+    "spread": 0.037567711000604964
+  },
+  {
+    "replicate": 441,
+    "worst_benefit": 0.03249416901753377,
+    "unshifted_cost": 0.021990548789033393,
+    "spread": 0.05448471780656716
+  },
+  {
+    "replicate": 442,
+    "worst_benefit": 0.02592527197349026,
+    "unshifted_cost": 0.009694565840682623,
+    "spread": 0.03614435407209682
+  },
+  {
+    "replicate": 443,
+    "worst_benefit": 0.023531535388750746,
+    "unshifted_cost": 0.007841094888576428,
+    "spread": 0.031372630277327174
+  },
+  {
+    "replicate": 444,
+    "worst_benefit": 0.02159070167943211,
+    "unshifted_cost": 0.009481129114422227,
+    "spread": 0.031071830793854338
+  },
+  {
+    "replicate": 445,
+    "worst_benefit": 0.0430271562743374,
+    "unshifted_cost": 0.014488735266063868,
+    "spread": 0.057515891540401265
+  },
+  {
+    "replicate": 446,
+    "worst_benefit": 0.024383982588894404,
+    "unshifted_cost": 0.008311777208741322,
+    "spread": 0.032695759797635726
+  },
+  {
+    "replicate": 447,
+    "worst_benefit": 0.024864080237265274,
+    "unshifted_cost": 0.015601427886563268,
+    "spread": 0.04046550812382854
+  },
+  {
+    "replicate": 448,
+    "worst_benefit": 0.03419610429991782,
+    "unshifted_cost": 0.006383817264041802,
+    "spread": 0.04057992156395962
+  },
+  {
+    "replicate": 449,
+    "worst_benefit": 0.02571070378323903,
+    "unshifted_cost": 0.008941111446015504,
+    "spread": 0.034651815229254535
+  },
+  {
+    "replicate": 450,
+    "worst_benefit": 0.02933412847893202,
+    "unshifted_cost": 0.011573577130897683,
+    "spread": 0.0409077056098297
+  },
+  {
+    "replicate": 451,
+    "worst_benefit": 0.025316272700016573,
+    "unshifted_cost": 0.012242673253141989,
+    "spread": 0.03755894595315856
+  },
+  {
+    "replicate": 452,
+    "worst_benefit": 0.02146730217938475,
+    "unshifted_cost": 0.012700647708539292,
+    "spread": 0.03416794988792404
+  },
+  {
+    "replicate": 453,
+    "worst_benefit": 0.018404003243450706,
+    "unshifted_cost": 0.010835792171565828,
+    "spread": 0.029239795415016534
+  },
+  {
+    "replicate": 454,
+    "worst_benefit": 0.024911576887857723,
+    "unshifted_cost": 0.008106534054230785,
+    "spread": 0.03301811094208851
+  },
+  {
+    "replicate": 455,
+    "worst_benefit": 0.03653648038697366,
+    "unshifted_cost": 0.017671958708185165,
+    "spread": 0.05420843909515882
+  },
+  {
+    "replicate": 456,
+    "worst_benefit": 0.022274350190304992,
+    "unshifted_cost": 0.010807658682851273,
+    "spread": 0.033082008873156266
+  },
+  {
+    "replicate": 457,
+    "worst_benefit": 0.012418403037924741,
+    "unshifted_cost": 0.0006987729636270812,
+    "spread": 0.013117176001551822
+  },
+  {
+    "replicate": 458,
+    "worst_benefit": 0.02594798845051105,
+    "unshifted_cost": 0.011297797711747881,
+    "spread": 0.03724578616225893
+  },
+  {
+    "replicate": 459,
+    "worst_benefit": 0.0453845902101655,
+    "unshifted_cost": 0.014870720656480318,
+    "spread": 0.06025531086664582
+  },
+  {
+    "replicate": 460,
+    "worst_benefit": 0.028676430100065597,
+    "unshifted_cost": 0.007724150077370817,
+    "spread": 0.036400580177436415
+  },
+  {
+    "replicate": 461,
+    "worst_benefit": 0.02060643724158473,
+    "unshifted_cost": 0.009613253585298853,
+    "spread": 0.030219690826883583
+  },
+  {
+    "replicate": 462,
+    "worst_benefit": 0.020372500517893966,
+    "unshifted_cost": 0.0069051506278836605,
+    "spread": 0.027277651145777626
+  },
+  {
+    "replicate": 463,
+    "worst_benefit": 0.02557043467710607,
+    "unshifted_cost": 0.010220804053321708,
+    "spread": 0.03579123873042778
+  },
+  {
+    "replicate": 464,
+    "worst_benefit": 0.02315845226276314,
+    "unshifted_cost": 0.00784868112408954,
+    "spread": 0.033385060193811156
+  },
+  {
+    "replicate": 465,
+    "worst_benefit": 0.033375469364453236,
+    "unshifted_cost": 0.009797181733249283,
+    "spread": 0.04317265109770252
+  },
+  {
+    "replicate": 466,
+    "worst_benefit": 0.03403108162601842,
+    "unshifted_cost": 0.005569396523957604,
+    "spread": 0.039600478149976026
+  },
+  {
+    "replicate": 467,
+    "worst_benefit": 0.03157213762438216,
+    "unshifted_cost": 0.010193229061148945,
+    "spread": 0.0417653666855311
+  },
+  {
+    "replicate": 468,
+    "worst_benefit": 0.020579353483783258,
+    "unshifted_cost": 0.004774359319351995,
+    "spread": 0.025353712803135253
+  },
+  {
+    "replicate": 469,
+    "worst_benefit": 0.02778253251772289,
+    "unshifted_cost": 0.005923962996125076,
+    "spread": 0.03370649551384797
+  },
+  {
+    "replicate": 470,
+    "worst_benefit": 0.03025033574452851,
+    "unshifted_cost": 0.00974248266516331,
+    "spread": 0.044963565678835304
+  },
+  {
+    "replicate": 471,
+    "worst_benefit": 0.03047253887901058,
+    "unshifted_cost": 0.009715020124159368,
+    "spread": 0.04018755900316995
+  },
+  {
+    "replicate": 472,
+    "worst_benefit": 0.03450828517318172,
+    "unshifted_cost": 0.006577738653602894,
+    "spread": 0.04108602382678461
+  },
+  {
+    "replicate": 473,
+    "worst_benefit": 0.030746084921835615,
+    "unshifted_cost": 0.010713364235282241,
+    "spread": 0.041459449157117856
+  },
+  {
+    "replicate": 474,
+    "worst_benefit": 0.031084987715529366,
+    "unshifted_cost": 0.0074807288190773535,
+    "spread": 0.03856571653460672
+  },
+  {
+    "replicate": 475,
+    "worst_benefit": 0.020357545841835245,
+    "unshifted_cost": 0.004518239673323321,
+    "spread": 0.024875785515158566
+  },
+  {
+    "replicate": 476,
+    "worst_benefit": 0.025604339582158686,
+    "unshifted_cost": 0.007000563660543024,
+    "spread": 0.03260490324270171
+  },
+  {
+    "replicate": 477,
+    "worst_benefit": 0.02267894401041215,
+    "unshifted_cost": 0.0070375462340690476,
+    "spread": 0.033179422394825075
+  },
+  {
+    "replicate": 478,
+    "worst_benefit": 0.031419601302788536,
+    "unshifted_cost": 0.013869763674342561,
+    "spread": 0.0452893649771311
+  },
+  {
+    "replicate": 479,
+    "worst_benefit": 0.020477561495551133,
+    "unshifted_cost": 0.0005143695043321461,
+    "spread": 0.02099193099988328
+  },
+  {
+    "replicate": 480,
+    "worst_benefit": 0.026525928405013444,
+    "unshifted_cost": 0.002864863293453812,
+    "spread": 0.031442508865405894
+  },
+  {
+    "replicate": 481,
+    "worst_benefit": 0.02935301390633649,
+    "unshifted_cost": 0.008963320694832744,
+    "spread": 0.03831633460116923
+  },
+  {
+    "replicate": 482,
+    "worst_benefit": 0.021614684438268084,
+    "unshifted_cost": 0.00820148268336085,
+    "spread": 0.029816167121628934
+  },
+  {
+    "replicate": 483,
+    "worst_benefit": 0.028774411245942266,
+    "unshifted_cost": 0.007502089286629765,
+    "spread": 0.03627650053257203
+  },
+  {
+    "replicate": 484,
+    "worst_benefit": 0.021827670632698193,
+    "unshifted_cost": 0.009845445184967994,
+    "spread": 0.031673115817666186
+  },
+  {
+    "replicate": 485,
+    "worst_benefit": 0.03194379444935236,
+    "unshifted_cost": 0.007308243862840347,
+    "spread": 0.039252038312192705
+  },
+  {
+    "replicate": 486,
+    "worst_benefit": 0.020061732355174722,
+    "unshifted_cost": 0.013229742499310526,
+    "spread": 0.03329147485448525
+  },
+  {
+    "replicate": 487,
+    "worst_benefit": 0.03200872548971434,
+    "unshifted_cost": 0.006823715059882995,
+    "spread": 0.04029163295339733
+  },
+  {
+    "replicate": 488,
+    "worst_benefit": 0.01851036872788281,
+    "unshifted_cost": 0.011301291537059388,
+    "spread": 0.029811660264942197
+  },
+  {
+    "replicate": 489,
+    "worst_benefit": 0.025958783690875342,
+    "unshifted_cost": 0.01442019341500922,
+    "spread": 0.04037897710588456
+  },
+  {
+    "replicate": 490,
+    "worst_benefit": 0.036029453770297426,
+    "unshifted_cost": 0.015433426913414428,
+    "spread": 0.051462880683711854
+  },
+  {
+    "replicate": 491,
+    "worst_benefit": 0.03885786267638369,
+    "unshifted_cost": 0.015817787646647874,
+    "spread": 0.054675650323031566
+  },
+  {
+    "replicate": 492,
+    "worst_benefit": 0.025358751419547576,
+    "unshifted_cost": 0.0037782872384166666,
+    "spread": 0.029137038657964243
+  },
+  {
+    "replicate": 493,
+    "worst_benefit": 0.02855879783980786,
+    "unshifted_cost": 0.005562790168470055,
+    "spread": 0.034121588008277914
+  },
+  {
+    "replicate": 494,
+    "worst_benefit": 0.040056260909098196,
+    "unshifted_cost": 0.01679529023442372,
+    "spread": 0.05685155114352192
+  },
+  {
+    "replicate": 495,
+    "worst_benefit": 0.023844836573913897,
+    "unshifted_cost": 0.01005123823961962,
+    "spread": 0.03389607481353352
+  },
+  {
+    "replicate": 496,
+    "worst_benefit": 0.012984638031688811,
+    "unshifted_cost": -0.0005510858731186952,
+    "spread": 0.012433552158570116
+  },
+  {
+    "replicate": 497,
+    "worst_benefit": 0.0362898010595849,
+    "unshifted_cost": 0.01319997341532142,
+    "spread": 0.04948977447490632
+  },
+  {
+    "replicate": 498,
+    "worst_benefit": 0.03188614399908429,
+    "unshifted_cost": 0.013025325028105272,
+    "spread": 0.044911469027189566
+  },
+  {
+    "replicate": 499,
+    "worst_benefit": 0.02434620211959926,
+    "unshifted_cost": 0.007530511977970056,
+    "spread": 0.031876714097569314
+  },
+  {
+    "replicate": 500,
+    "worst_benefit": 0.04439767952610829,
+    "unshifted_cost": 0.01613265692230237,
+    "spread": 0.06053033644841066
+  },
+  {
+    "replicate": 501,
+    "worst_benefit": 0.014988329068220563,
+    "unshifted_cost": 0.005181469677435935,
+    "spread": 0.020169798745656498
+  },
+  {
+    "replicate": 502,
+    "worst_benefit": 0.02797428080803388,
+    "unshifted_cost": 0.00926992677224947,
+    "spread": 0.03724420758028335
+  },
+  {
+    "replicate": 503,
+    "worst_benefit": 0.028947279635480827,
+    "unshifted_cost": 0.010926617711168096,
+    "spread": 0.03987389734664892
+  },
+  {
+    "replicate": 504,
+    "worst_benefit": 0.04432902980463105,
+    "unshifted_cost": 0.01084296556855091,
+    "spread": 0.05517199537318196
+  },
+  {
+    "replicate": 505,
+    "worst_benefit": 0.024179234223232315,
+    "unshifted_cost": 0.001580997530829631,
+    "spread": 0.030609731519814165
+  },
+  {
+    "replicate": 506,
+    "worst_benefit": 0.03374764094142124,
+    "unshifted_cost": 0.01333950772592385,
+    "spread": 0.04708714866734509
+  },
+  {
+    "replicate": 507,
+    "worst_benefit": 0.03668018412978269,
+    "unshifted_cost": 0.009742770029432024,
+    "spread": 0.04642295415921471
+  },
+  {
+    "replicate": 508,
+    "worst_benefit": 0.013320651198361233,
+    "unshifted_cost": 0.007989437832776836,
+    "spread": 0.02131008903113807
+  },
+  {
+    "replicate": 509,
+    "worst_benefit": 0.030069785378821212,
+    "unshifted_cost": 0.009458236735647496,
+    "spread": 0.03952802211446871
+  },
+  {
+    "replicate": 510,
+    "worst_benefit": 0.023812720084794847,
+    "unshifted_cost": 0.005597301112390984,
+    "spread": 0.02954674792160794
+  },
+  {
+    "replicate": 511,
+    "worst_benefit": 0.0156656246611232,
+    "unshifted_cost": 0.0024211139355873046,
+    "spread": 0.018086738596710505
+  },
+  {
+    "replicate": 512,
+    "worst_benefit": 0.029476260157246692,
+    "unshifted_cost": 0.013345780049940137,
+    "spread": 0.04282204020718683
+  },
+  {
+    "replicate": 513,
+    "worst_benefit": 0.03372210163026934,
+    "unshifted_cost": 0.0067096997062061625,
+    "spread": 0.040431801336475504
+  },
+  {
+    "replicate": 514,
+    "worst_benefit": 0.025801143444368235,
+    "unshifted_cost": 0.008240812672680176,
+    "spread": 0.03404195611704841
+  },
+  {
+    "replicate": 515,
+    "worst_benefit": 0.02264952535967979,
+    "unshifted_cost": 0.009382007900460065,
+    "spread": 0.032031533260139855
+  },
+  {
+    "replicate": 516,
+    "worst_benefit": 0.014665357566084447,
+    "unshifted_cost": 0.0027880112934289825,
+    "spread": 0.01745336885951343
+  },
+  {
+    "replicate": 517,
+    "worst_benefit": 0.03151749594028841,
+    "unshifted_cost": 0.013976851731567819,
+    "spread": 0.04549434767185623
+  },
+  {
+    "replicate": 518,
+    "worst_benefit": 0.0332750493361329,
+    "unshifted_cost": 0.012025654516463757,
+    "spread": 0.04530070385259666
+  },
+  {
+    "replicate": 519,
+    "worst_benefit": 0.026598007359535103,
+    "unshifted_cost": 0.006196974228775298,
+    "spread": 0.0327949815883104
+  },
+  {
+    "replicate": 520,
+    "worst_benefit": 0.029883614099658673,
+    "unshifted_cost": 0.014505926475200881,
+    "spread": 0.04467960929242509
+  },
+  {
+    "replicate": 521,
+    "worst_benefit": 0.01715961110851061,
+    "unshifted_cost": 0.01279411629932492,
+    "spread": 0.02995372740783553
+  },
+  {
+    "replicate": 522,
+    "worst_benefit": 0.024831969387092312,
+    "unshifted_cost": 0.00673573849864173,
+    "spread": 0.03156770788573404
+  },
+  {
+    "replicate": 523,
+    "worst_benefit": 0.031576684868823035,
+    "unshifted_cost": 0.014253571403186394,
+    "spread": 0.04583025627200943
+  },
+  {
+    "replicate": 524,
+    "worst_benefit": 0.028656669953248226,
+    "unshifted_cost": 0.004645312241664756,
+    "spread": 0.03330198219491298
+  },
+  {
+    "replicate": 525,
+    "worst_benefit": 0.0330778433502128,
+    "unshifted_cost": 0.013880368066020554,
+    "spread": 0.04695821141623335
+  },
+  {
+    "replicate": 526,
+    "worst_benefit": 0.028753529667934208,
+    "unshifted_cost": 0.014070631079522555,
+    "spread": 0.04282416074745676
+  },
+  {
+    "replicate": 527,
+    "worst_benefit": 0.02332599233528576,
+    "unshifted_cost": 0.005916699083428956,
+    "spread": 0.030675318950736608
+  },
+  {
+    "replicate": 528,
+    "worst_benefit": 0.03584536559179741,
+    "unshifted_cost": 0.01700120080405121,
+    "spread": 0.052846566395848615
+  },
+  {
+    "replicate": 529,
+    "worst_benefit": 0.033763295204552346,
+    "unshifted_cost": 0.004945691809982944,
+    "spread": 0.03870898701453529
+  },
+  {
+    "replicate": 530,
+    "worst_benefit": 0.02790140418189735,
+    "unshifted_cost": 0.01743747014368735,
+    "spread": 0.0453388743255847
+  },
+  {
+    "replicate": 531,
+    "worst_benefit": 0.030625206350483825,
+    "unshifted_cost": 0.014735200174072705,
+    "spread": 0.04536040652455653
+  },
+  {
+    "replicate": 532,
+    "worst_benefit": 0.02288896275926866,
+    "unshifted_cost": 0.007435271437260305,
+    "spread": 0.030324234196528965
+  },
+  {
+    "replicate": 533,
+    "worst_benefit": 0.02071768014568054,
+    "unshifted_cost": 0.006819342451606869,
+    "spread": 0.02753702259728741
+  },
+  {
+    "replicate": 534,
+    "worst_benefit": 0.028916215408287482,
+    "unshifted_cost": 0.008348349100313568,
+    "spread": 0.03726456450860105
+  },
+  {
+    "replicate": 535,
+    "worst_benefit": 0.026920863158863106,
+    "unshifted_cost": 0.017577407629593367,
+    "spread": 0.04449827078845647
+  },
+  {
+    "replicate": 536,
+    "worst_benefit": 0.030690789230626403,
+    "unshifted_cost": 0.01248884050788368,
+    "spread": 0.043179629738510084
+  },
+  {
+    "replicate": 537,
+    "worst_benefit": 0.02969902466023633,
+    "unshifted_cost": 0.011818553297255785,
+    "spread": 0.04151757795749211
+  },
+  {
+    "replicate": 538,
+    "worst_benefit": 0.028853047934271014,
+    "unshifted_cost": 0.002530072722230492,
+    "spread": 0.031842565750500484
+  },
+  {
+    "replicate": 539,
+    "worst_benefit": 0.02591554841374366,
+    "unshifted_cost": 0.009626885165159638,
+    "spread": 0.0355424335789033
+  },
+  {
+    "replicate": 540,
+    "worst_benefit": 0.034833494663058295,
+    "unshifted_cost": 0.015883908394670576,
+    "spread": 0.05071740305772887
+  },
+  {
+    "replicate": 541,
+    "worst_benefit": 0.025906110312983954,
+    "unshifted_cost": 0.015974618839109778,
+    "spread": 0.04188072915209373
+  },
+  {
+    "replicate": 542,
+    "worst_benefit": 0.0399448755683397,
+    "unshifted_cost": 0.014297947746915729,
+    "spread": 0.05424282331525543
+  },
+  {
+    "replicate": 543,
+    "worst_benefit": 0.030725735282531308,
+    "unshifted_cost": 0.012210275999498643,
+    "spread": 0.043235083416298115
+  },
+  {
+    "replicate": 544,
+    "worst_benefit": 0.029501287543261423,
+    "unshifted_cost": 0.009185103885561263,
+    "spread": 0.038686391428822686
+  },
+  {
+    "replicate": 545,
+    "worst_benefit": 0.022441896339748135,
+    "unshifted_cost": 0.012747452869072418,
+    "spread": 0.03518934920882055
+  },
+  {
+    "replicate": 546,
+    "worst_benefit": 0.022257220845238956,
+    "unshifted_cost": 0.004365801873256636,
+    "spread": 0.026623022718495593
+  },
+  {
+    "replicate": 547,
+    "worst_benefit": 0.03456392123268692,
+    "unshifted_cost": 0.014927212109263177,
+    "spread": 0.0494911333419501
+  },
+  {
+    "replicate": 548,
+    "worst_benefit": 0.022370060308310902,
+    "unshifted_cost": 0.008986297376366248,
+    "spread": 0.03135635768467715
+  },
+  {
+    "replicate": 549,
+    "worst_benefit": 0.02358776105928906,
+    "unshifted_cost": 0.013049788502174642,
+    "spread": 0.0366375495614637
+  },
+  {
+    "replicate": 550,
+    "worst_benefit": 0.029721462168358914,
+    "unshifted_cost": 0.011770616226920105,
+    "spread": 0.04149207839527902
+  },
+  {
+    "replicate": 551,
+    "worst_benefit": 0.009150396841251074,
+    "unshifted_cost": 0.0005953725920735398,
+    "spread": 0.009745769433324614
+  },
+  {
+    "replicate": 552,
+    "worst_benefit": 0.020439528998287604,
+    "unshifted_cost": 0.0061060361523455065,
+    "spread": 0.02654556515063311
+  },
+  {
+    "replicate": 553,
+    "worst_benefit": 0.027532697512467785,
+    "unshifted_cost": 0.011664108076174795,
+    "spread": 0.03919680558864258
+  },
+  {
+    "replicate": 554,
+    "worst_benefit": 0.036978387657115586,
+    "unshifted_cost": 0.008534498902047938,
+    "spread": 0.04551288655916352
+  },
+  {
+    "replicate": 555,
+    "worst_benefit": 0.021630043816160405,
+    "unshifted_cost": 0.008316884104021427,
+    "spread": 0.02994692792018183
+  },
+  {
+    "replicate": 556,
+    "worst_benefit": 0.024511202958737432,
+    "unshifted_cost": 0.008042706414817191,
+    "spread": 0.032553909373554624
+  },
+  {
+    "replicate": 557,
+    "worst_benefit": 0.03354501809596189,
+    "unshifted_cost": 0.02199724044966389,
+    "spread": 0.05554225854562578
+  },
+  {
+    "replicate": 558,
+    "worst_benefit": 0.03894560234600186,
+    "unshifted_cost": 0.009391174178835282,
+    "spread": 0.04980056126129584
+  },
+  {
+    "replicate": 559,
+    "worst_benefit": 0.04049651701697765,
+    "unshifted_cost": 0.007334653178483697,
+    "spread": 0.04783117019546135
+  },
+  {
+    "replicate": 560,
+    "worst_benefit": 0.03941603399056526,
+    "unshifted_cost": 0.014951076942140484,
+    "spread": 0.05436711093270574
+  },
+  {
+    "replicate": 561,
+    "worst_benefit": 0.035254487640060894,
+    "unshifted_cost": 0.014167323171620505,
+    "spread": 0.0494218108116814
+  },
+  {
+    "replicate": 562,
+    "worst_benefit": 0.03499659701418045,
+    "unshifted_cost": 0.010889114104724706,
+    "spread": 0.04588571111890516
+  },
+  {
+    "replicate": 563,
+    "worst_benefit": 0.05692594244908722,
+    "unshifted_cost": 0.01975393787572821,
+    "spread": 0.07667988032481543
+  },
+  {
+    "replicate": 564,
+    "worst_benefit": 0.01736729048630581,
+    "unshifted_cost": 0.017219645449819243,
+    "spread": 0.03458693593612505
+  },
+  {
+    "replicate": 565,
+    "worst_benefit": 0.026915246437604567,
+    "unshifted_cost": 0.012440237885602778,
+    "spread": 0.039355484323207346
+  },
+  {
+    "replicate": 566,
+    "worst_benefit": 0.03614915297331922,
+    "unshifted_cost": 0.013717073909306321,
+    "spread": 0.04986622688262554
+  },
+  {
+    "replicate": 567,
+    "worst_benefit": 0.01590561901109122,
+    "unshifted_cost": 0.0060049813900894256,
+    "spread": 0.021910600401180647
+  },
+  {
+    "replicate": 568,
+    "worst_benefit": 0.030822216765867605,
+    "unshifted_cost": 0.005083925756615648,
+    "spread": 0.03590614252248325
+  },
+  {
+    "replicate": 569,
+    "worst_benefit": 0.024094017072182394,
+    "unshifted_cost": 0.004365786685691875,
+    "spread": 0.028979729516483865
+  },
+  {
+    "replicate": 570,
+    "worst_benefit": 0.018431823691480553,
+    "unshifted_cost": 0.008676725234790794,
+    "spread": 0.027108548926271347
+  },
+  {
+    "replicate": 571,
+    "worst_benefit": 0.02081421943790307,
+    "unshifted_cost": 0.007035953050864574,
+    "spread": 0.027850172488767644
+  },
+  {
+    "replicate": 572,
+    "worst_benefit": 0.03536942655362796,
+    "unshifted_cost": 0.014465094152390057,
+    "spread": 0.049834520706018015
+  },
+  {
+    "replicate": 573,
+    "worst_benefit": 0.03442555963411009,
+    "unshifted_cost": 0.012236572020641212,
+    "spread": 0.046662131654751304
+  },
+  {
+    "replicate": 574,
+    "worst_benefit": 0.051554043410719674,
+    "unshifted_cost": 0.012165106013788396,
+    "spread": 0.06864771856904317
+  },
+  {
+    "replicate": 575,
+    "worst_benefit": 0.035302145670316976,
+    "unshifted_cost": 0.013415814628472966,
+    "spread": 0.04871796029878994
+  },
+  {
+    "replicate": 576,
+    "worst_benefit": 0.021435051128020022,
+    "unshifted_cost": 0.013801849337341299,
+    "spread": 0.03523690046536132
+  },
+  {
+    "replicate": 577,
+    "worst_benefit": 0.01781320825619026,
+    "unshifted_cost": 0.006761953453434222,
+    "spread": 0.024575161709624482
+  },
+  {
+    "replicate": 578,
+    "worst_benefit": 0.023366310765627674,
+    "unshifted_cost": 0.01210259606041486,
+    "spread": 0.035468906826042534
+  },
+  {
+    "replicate": 579,
+    "worst_benefit": 0.015057972553431664,
+    "unshifted_cost": 0.00723475501998927,
+    "spread": 0.022292727573420934
+  },
+  {
+    "replicate": 580,
+    "worst_benefit": 0.03366118096068449,
+    "unshifted_cost": 0.015150792448453299,
+    "spread": 0.04881197340913779
+  },
+  {
+    "replicate": 581,
+    "worst_benefit": 0.03376328746407131,
+    "unshifted_cost": 0.021656113880282213,
+    "spread": 0.055419401344353525
+  },
+  {
+    "replicate": 582,
+    "worst_benefit": 0.037660839656151746,
+    "unshifted_cost": 0.01294192301259367,
+    "spread": 0.050602762668745416
+  },
+  {
+    "replicate": 583,
+    "worst_benefit": 0.017296968607026342,
+    "unshifted_cost": 0.00021219353304935407,
+    "spread": 0.017509162140075696
+  },
+  {
+    "replicate": 584,
+    "worst_benefit": 0.016915011887087772,
+    "unshifted_cost": 0.007461798394201802,
+    "spread": 0.024376810281289574
+  },
+  {
+    "replicate": 585,
+    "worst_benefit": 0.02863479008497538,
+    "unshifted_cost": 0.009281214917616576,
+    "spread": 0.03791600500259196
+  },
+  {
+    "replicate": 586,
+    "worst_benefit": 0.02779473867441007,
+    "unshifted_cost": 0.008557870755810493,
+    "spread": 0.03635260943022056
+  },
+  {
+    "replicate": 587,
+    "worst_benefit": 0.03333181674208563,
+    "unshifted_cost": 0.013712090564506174,
+    "spread": 0.0470439073065918
+  },
+  {
+    "replicate": 588,
+    "worst_benefit": 0.035054948904452266,
+    "unshifted_cost": 0.017068564223142513,
+    "spread": 0.05212351312759478
+  },
+  {
+    "replicate": 589,
+    "worst_benefit": 0.03776301500671697,
+    "unshifted_cost": 0.0172839626491621,
+    "spread": 0.05504697765587907
+  },
+  {
+    "replicate": 590,
+    "worst_benefit": 0.030258364723176556,
+    "unshifted_cost": 0.008024817171192855,
+    "spread": 0.03828318189436941
+  },
+  {
+    "replicate": 591,
+    "worst_benefit": 0.018726844275998134,
+    "unshifted_cost": 0.008765383187914644,
+    "spread": 0.027492227463912777
+  },
+  {
+    "replicate": 592,
+    "worst_benefit": 0.024292985502757714,
+    "unshifted_cost": 0.006972796746049559,
+    "spread": 0.03126578224880727
+  },
+  {
+    "replicate": 593,
+    "worst_benefit": 0.028787738643365923,
+    "unshifted_cost": 0.011371019537653959,
+    "spread": 0.04015875818101988
+  },
+  {
+    "replicate": 594,
+    "worst_benefit": 0.03185081065618689,
+    "unshifted_cost": 0.011384603363944978,
+    "spread": 0.04323541402013187
+  },
+  {
+    "replicate": 595,
+    "worst_benefit": 0.021300718053709033,
+    "unshifted_cost": 0.012657262994186902,
+    "spread": 0.033957981047895935
+  },
+  {
+    "replicate": 596,
+    "worst_benefit": 0.022588243824692267,
+    "unshifted_cost": 0.004671703887404788,
+    "spread": 0.027259947712097055
+  },
+  {
+    "replicate": 597,
+    "worst_benefit": 0.02081832832121866,
+    "unshifted_cost": 0.008602519426767152,
+    "spread": 0.029420847747985812
+  },
+  {
+    "replicate": 598,
+    "worst_benefit": 0.041595280495959286,
+    "unshifted_cost": 0.014983971709780497,
+    "spread": 0.05657925220573978
+  },
+  {
+    "replicate": 599,
+    "worst_benefit": 0.01858919865317743,
+    "unshifted_cost": 0.003897811418376973,
+    "spread": 0.0285459069855013
+  },
+  {
+    "replicate": 600,
+    "worst_benefit": 0.024605804087176497,
+    "unshifted_cost": 0.0123872689075325,
+    "spread": 0.036993072994709
+  },
+  {
+    "replicate": 601,
+    "worst_benefit": 0.022085134393443617,
+    "unshifted_cost": 0.0077853060878332325,
+    "spread": 0.02987044048127685
+  },
+  {
+    "replicate": 602,
+    "worst_benefit": 0.02107354486426971,
+    "unshifted_cost": 0.00850585622200939,
+    "spread": 0.03561472956532141
+  },
+  {
+    "replicate": 603,
+    "worst_benefit": 0.028256360357200583,
+    "unshifted_cost": 0.009380464407213629,
+    "spread": 0.03763682476441421
+  },
+  {
+    "replicate": 604,
+    "worst_benefit": 0.022725469438755974,
+    "unshifted_cost": 0.00811052223238884,
+    "spread": 0.030835991671144813
+  },
+  {
+    "replicate": 605,
+    "worst_benefit": 0.027636671237862398,
+    "unshifted_cost": 0.0063566158771641845,
+    "spread": 0.03399328711502658
+  },
+  {
+    "replicate": 606,
+    "worst_benefit": 0.020885861072920564,
+    "unshifted_cost": 0.011164064054137168,
+    "spread": 0.03204992512705773
+  },
+  {
+    "replicate": 607,
+    "worst_benefit": 0.03973813589848574,
+    "unshifted_cost": 0.009491873771709791,
+    "spread": 0.04923000967019553
+  },
+  {
+    "replicate": 608,
+    "worst_benefit": 0.03190025318402223,
+    "unshifted_cost": 0.014303817335951763,
+    "spread": 0.046204070519973994
+  },
+  {
+    "replicate": 609,
+    "worst_benefit": 0.02778262092852468,
+    "unshifted_cost": 0.009851815486866533,
+    "spread": 0.037634436415391215
+  },
+  {
+    "replicate": 610,
+    "worst_benefit": 0.036664364143577766,
+    "unshifted_cost": 0.011185061304809785,
+    "spread": 0.04784942544838755
+  },
+  {
+    "replicate": 611,
+    "worst_benefit": 0.03041515853668053,
+    "unshifted_cost": 0.016697250566019783,
+    "spread": 0.047112409102700314
+  },
+  {
+    "replicate": 612,
+    "worst_benefit": 0.036734291201173885,
+    "unshifted_cost": 0.011300696399564214,
+    "spread": 0.0480349876007381
+  },
+  {
+    "replicate": 613,
+    "worst_benefit": 0.03780035846644347,
+    "unshifted_cost": 0.013690676643454691,
+    "spread": 0.051491035109898164
+  },
+  {
+    "replicate": 614,
+    "worst_benefit": 0.026149201805269917,
+    "unshifted_cost": 0.002754795011227995,
+    "spread": 0.028903996816497912
+  },
+  {
+    "replicate": 615,
+    "worst_benefit": 0.0174068625275422,
+    "unshifted_cost": 0.0025702198487675965,
+    "spread": 0.019977082376309796
+  },
+  {
+    "replicate": 616,
+    "worst_benefit": 0.03288184853865228,
+    "unshifted_cost": 0.01989726291694771,
+    "spread": 0.05277911145559999
+  },
+  {
+    "replicate": 617,
+    "worst_benefit": 0.031241430791969504,
+    "unshifted_cost": 0.008591128659065306,
+    "spread": 0.04204016285677725
+  },
+  {
+    "replicate": 618,
+    "worst_benefit": 0.02518258304448917,
+    "unshifted_cost": 0.012878802988696592,
+    "spread": 0.03806138603318576
+  },
+  {
+    "replicate": 619,
+    "worst_benefit": 0.020999913911173174,
+    "unshifted_cost": 0.009295895660783482,
+    "spread": 0.030295809571956656
+  },
+  {
+    "replicate": 620,
+    "worst_benefit": 0.04333559465092773,
+    "unshifted_cost": 0.021322056988772653,
+    "spread": 0.06465765163970039
+  },
+  {
+    "replicate": 621,
+    "worst_benefit": 0.02089805218425944,
+    "unshifted_cost": 0.006230772497542669,
+    "spread": 0.02712882468180211
+  },
+  {
+    "replicate": 622,
+    "worst_benefit": 0.033901222261364494,
+    "unshifted_cost": 0.011289301376667726,
+    "spread": 0.052792974219798894
+  },
+  {
+    "replicate": 623,
+    "worst_benefit": 0.036386754377537134,
+    "unshifted_cost": 0.008807546373400199,
+    "spread": 0.04519430075093733
+  },
+  {
+    "replicate": 624,
+    "worst_benefit": 0.022170928001415846,
+    "unshifted_cost": 0.009331789504397503,
+    "spread": 0.03150271750581335
+  },
+  {
+    "replicate": 625,
+    "worst_benefit": 0.021903291622442977,
+    "unshifted_cost": 0.01011126387363337,
+    "spread": 0.03201455549607635
+  },
+  {
+    "replicate": 626,
+    "worst_benefit": 0.026422362738512728,
+    "unshifted_cost": 0.010401817590214302,
+    "spread": 0.03682418032872703
+  },
+  {
+    "replicate": 627,
+    "worst_benefit": 0.0183221226331427,
+    "unshifted_cost": 0.006643453611933969,
+    "spread": 0.02496557624507667
+  },
+  {
+    "replicate": 628,
+    "worst_benefit": 0.021737393995058807,
+    "unshifted_cost": 0.007620090321442841,
+    "spread": 0.029357484316501647
+  },
+  {
+    "replicate": 629,
+    "worst_benefit": 0.04082695814248494,
+    "unshifted_cost": 0.005049915087550927,
+    "spread": 0.045876873230035864
+  },
+  {
+    "replicate": 630,
+    "worst_benefit": 0.0235761214337451,
+    "unshifted_cost": 0.0057550222305324805,
+    "spread": 0.030829715575360406
+  },
+  {
+    "replicate": 631,
+    "worst_benefit": 0.021074138920902707,
+    "unshifted_cost": 0.012172434790560183,
+    "spread": 0.03324657371146289
+  },
+  {
+    "replicate": 632,
+    "worst_benefit": 0.02171905369690219,
+    "unshifted_cost": 0.012169423560926873,
+    "spread": 0.033888477257829064
+  },
+  {
+    "replicate": 633,
+    "worst_benefit": 0.0278616248191611,
+    "unshifted_cost": 0.01096351402468665,
+    "spread": 0.04248355400196324
+  },
+  {
+    "replicate": 634,
+    "worst_benefit": 0.0307718570864699,
+    "unshifted_cost": 0.01431738831015239,
+    "spread": 0.04508924539662229
+  },
+  {
+    "replicate": 635,
+    "worst_benefit": 0.02822215516017068,
+    "unshifted_cost": 0.011292350253736538,
+    "spread": 0.041919935259280394
+  },
+  {
+    "replicate": 636,
+    "worst_benefit": 0.029898231561972577,
+    "unshifted_cost": 0.009541229047698385,
+    "spread": 0.03943946060967096
+  },
+  {
+    "replicate": 637,
+    "worst_benefit": 0.012653822865928532,
+    "unshifted_cost": 0.005326489416660696,
+    "spread": 0.017980312282589228
+  },
+  {
+    "replicate": 638,
+    "worst_benefit": 0.031877084575911985,
+    "unshifted_cost": 0.01759264865826704,
+    "spread": 0.049469733234179025
+  },
+  {
+    "replicate": 639,
+    "worst_benefit": 0.012119224228982706,
+    "unshifted_cost": 0.0035405836244134514,
+    "spread": 0.015659807853396157
+  },
+  {
+    "replicate": 640,
+    "worst_benefit": 0.020236413731508085,
+    "unshifted_cost": 0.008627102004820086,
+    "spread": 0.02886351573632817
+  },
+  {
+    "replicate": 641,
+    "worst_benefit": 0.02890435119447765,
+    "unshifted_cost": 0.00860656649045155,
+    "spread": 0.0375109176849292
+  },
+  {
+    "replicate": 642,
+    "worst_benefit": 0.03621725245689533,
+    "unshifted_cost": 0.008954233655846244,
+    "spread": 0.04517148611274158
+  },
+  {
+    "replicate": 643,
+    "worst_benefit": 0.015191975748127251,
+    "unshifted_cost": 0.00853369985310437,
+    "spread": 0.023805483385109794
+  },
+  {
+    "replicate": 644,
+    "worst_benefit": 0.028595501079379693,
+    "unshifted_cost": 0.01279987374423286,
+    "spread": 0.04139537482361255
+  },
+  {
+    "replicate": 645,
+    "worst_benefit": 0.027754687604114592,
+    "unshifted_cost": 0.011877003631457161,
+    "spread": 0.03963169123557175
+  },
+  {
+    "replicate": 646,
+    "worst_benefit": 0.047435637136470254,
+    "unshifted_cost": 0.008417895632749528,
+    "spread": 0.05585353276921978
+  },
+  {
+    "replicate": 647,
+    "worst_benefit": 0.03814756627075855,
+    "unshifted_cost": 0.013356597163906914,
+    "spread": 0.05150416343466546
+  },
+  {
+    "replicate": 648,
+    "worst_benefit": 0.03494313031541674,
+    "unshifted_cost": 0.011104630681062266,
+    "spread": 0.046047760996479004
+  },
+  {
+    "replicate": 649,
+    "worst_benefit": 0.02834179735325204,
+    "unshifted_cost": 0.010132711222007651,
+    "spread": 0.03847450857525969
+  },
+  {
+    "replicate": 650,
+    "worst_benefit": 0.02380669812613123,
+    "unshifted_cost": 0.014312344083016515,
+    "spread": 0.03811904220914775
+  },
+  {
+    "replicate": 651,
+    "worst_benefit": 0.03621931323483474,
+    "unshifted_cost": 0.013440099782070614,
+    "spread": 0.04965941301690535
+  },
+  {
+    "replicate": 652,
+    "worst_benefit": 0.02045403569809201,
+    "unshifted_cost": 0.014242897847049796,
+    "spread": 0.034696933545141806
+  },
+  {
+    "replicate": 653,
+    "worst_benefit": 0.03577729068638347,
+    "unshifted_cost": 0.010642868973962938,
+    "spread": 0.046420159660346405
+  },
+  {
+    "replicate": 654,
+    "worst_benefit": 0.02504862106799055,
+    "unshifted_cost": 0.013828782295727926,
+    "spread": 0.03887740336371848
+  },
+  {
+    "replicate": 655,
+    "worst_benefit": 0.026439610122854784,
+    "unshifted_cost": 0.012603714448293446,
+    "spread": 0.03904332457114823
+  },
+  {
+    "replicate": 656,
+    "worst_benefit": 0.023487567239895535,
+    "unshifted_cost": 0.003907495153949503,
+    "spread": 0.027395062393845038
+  },
+  {
+    "replicate": 657,
+    "worst_benefit": 0.030989521008865428,
+    "unshifted_cost": 0.00957665175104827,
+    "spread": 0.0405661727599137
+  },
+  {
+    "replicate": 658,
+    "worst_benefit": 0.026797701730415735,
+    "unshifted_cost": 0.008664584102085149,
+    "spread": 0.03893823760749471
+  },
+  {
+    "replicate": 659,
+    "worst_benefit": 0.03716805369206366,
+    "unshifted_cost": 0.011593550229411442,
+    "spread": 0.048761603921475105
+  },
+  {
+    "replicate": 660,
+    "worst_benefit": 0.034365176952368404,
+    "unshifted_cost": 0.010732834053673201,
+    "spread": 0.045098011006041605
+  },
+  {
+    "replicate": 661,
+    "worst_benefit": 0.010265309104854015,
+    "unshifted_cost": 0.003987254009956698,
+    "spread": 0.014252563114810712
+  },
+  {
+    "replicate": 662,
+    "worst_benefit": 0.03253700754085542,
+    "unshifted_cost": 0.004947326659786366,
+    "spread": 0.03986084311982896
+  },
+  {
+    "replicate": 663,
+    "worst_benefit": 0.02097982271974763,
+    "unshifted_cost": 0.0098289346768492,
+    "spread": 0.03080875739659683
+  },
+  {
+    "replicate": 664,
+    "worst_benefit": 0.023344170671957598,
+    "unshifted_cost": 0.011273375925063833,
+    "spread": 0.03461754659702143
+  },
+  {
+    "replicate": 665,
+    "worst_benefit": 0.029733819405944217,
+    "unshifted_cost": 0.011640199439402421,
+    "spread": 0.04137401884534664
+  },
+  {
+    "replicate": 666,
+    "worst_benefit": 0.044396331454719884,
+    "unshifted_cost": 0.010763274225868202,
+    "spread": 0.055159605680588086
+  },
+  {
+    "replicate": 667,
+    "worst_benefit": 0.02672048919401404,
+    "unshifted_cost": 0.010352613500225427,
+    "spread": 0.03707310269423947
+  },
+  {
+    "replicate": 668,
+    "worst_benefit": 0.021307688171810613,
+    "unshifted_cost": 0.005471961755977861,
+    "spread": 0.026779649927788474
+  },
+  {
+    "replicate": 669,
+    "worst_benefit": 0.0320985333706838,
+    "unshifted_cost": 0.009051270967558867,
+    "spread": 0.04114980433824267
+  },
+  {
+    "replicate": 670,
+    "worst_benefit": 0.034075940455619014,
+    "unshifted_cost": 0.015410669834096224,
+    "spread": 0.04948661028971524
+  },
+  {
+    "replicate": 671,
+    "worst_benefit": 0.02675167413655455,
+    "unshifted_cost": 0.009056643301600165,
+    "spread": 0.03580831743815471
+  },
+  {
+    "replicate": 672,
+    "worst_benefit": 0.03378095580214946,
+    "unshifted_cost": 0.004422472798810029,
+    "spread": 0.03820342860095949
+  },
+  {
+    "replicate": 673,
+    "worst_benefit": 0.03676768687721188,
+    "unshifted_cost": 0.01187372847238477,
+    "spread": 0.04864141534959665
+  },
+  {
+    "replicate": 674,
+    "worst_benefit": 0.020456959120296547,
+    "unshifted_cost": 0.0031003544156578133,
+    "spread": 0.02355731353595436
+  },
+  {
+    "replicate": 675,
+    "worst_benefit": 0.02328369221951465,
+    "unshifted_cost": 0.009827854811182202,
+    "spread": 0.03311154703069685
+  },
+  {
+    "replicate": 676,
+    "worst_benefit": 0.011317735786226524,
+    "unshifted_cost": 0.0039426430427466075,
+    "spread": 0.015260378828973131
+  },
+  {
+    "replicate": 677,
+    "worst_benefit": 0.022517341973572025,
+    "unshifted_cost": 0.004549939537626724,
+    "spread": 0.027306535065441673
+  },
+  {
+    "replicate": 678,
+    "worst_benefit": 0.029026021847829986,
+    "unshifted_cost": 0.01407184664266492,
+    "spread": 0.043097868490494906
+  },
+  {
+    "replicate": 679,
+    "worst_benefit": 0.02274679465485374,
+    "unshifted_cost": 0.0087710912568284,
+    "spread": 0.03151788591168214
+  },
+  {
+    "replicate": 680,
+    "worst_benefit": 0.018806610923679856,
+    "unshifted_cost": 0.006295700476909416,
+    "spread": 0.025102311400589272
+  },
+  {
+    "replicate": 681,
+    "worst_benefit": 0.025560545088446296,
+    "unshifted_cost": 0.009114320013796529,
+    "spread": 0.034674865102242824
+  },
+  {
+    "replicate": 682,
+    "worst_benefit": 0.027255812140339897,
+    "unshifted_cost": 0.0044284449170803875,
+    "spread": 0.031684257057420284
+  },
+  {
+    "replicate": 683,
+    "worst_benefit": 0.04335696930404809,
+    "unshifted_cost": 0.025703138790880375,
+    "spread": 0.06906010809492846
+  },
+  {
+    "replicate": 684,
+    "worst_benefit": 0.02415234688852208,
+    "unshifted_cost": 0.01545585221671364,
+    "spread": 0.03960819910523572
+  },
+  {
+    "replicate": 685,
+    "worst_benefit": 0.019718745714983443,
+    "unshifted_cost": 0.010108538778457854,
+    "spread": 0.029827284493441297
+  },
+  {
+    "replicate": 686,
+    "worst_benefit": 0.024436871727280707,
+    "unshifted_cost": 0.010239569236305202,
+    "spread": 0.03467644096358591
+  },
+  {
+    "replicate": 687,
+    "worst_benefit": 0.019662619718870844,
+    "unshifted_cost": -0.0011006560747308658,
+    "spread": 0.018561963644139978
+  },
+  {
+    "replicate": 688,
+    "worst_benefit": 0.03902314766813442,
+    "unshifted_cost": 0.012587435428636495,
+    "spread": 0.05161058309677091
+  },
+  {
+    "replicate": 689,
+    "worst_benefit": 0.03096647274110942,
+    "unshifted_cost": 0.011796274889610658,
+    "spread": 0.04276274763072008
+  },
+  {
+    "replicate": 690,
+    "worst_benefit": 0.01311329447251286,
+    "unshifted_cost": 0.004952730046272613,
+    "spread": 0.018066024518785473
+  },
+  {
+    "replicate": 691,
+    "worst_benefit": 0.026792982567713564,
+    "unshifted_cost": 0.011752196543320048,
+    "spread": 0.03854517911103361
+  },
+  {
+    "replicate": 692,
+    "worst_benefit": 0.018881062533065207,
+    "unshifted_cost": 0.00788308903369317,
+    "spread": 0.026764151566758376
+  },
+  {
+    "replicate": 693,
+    "worst_benefit": 0.02017231247366691,
+    "unshifted_cost": 0.0033873914090037927,
+    "spread": 0.0235597038826707
+  },
+  {
+    "replicate": 694,
+    "worst_benefit": 0.02189220147876436,
+    "unshifted_cost": 0.011543219135344618,
+    "spread": 0.03343542061410898
+  },
+  {
+    "replicate": 695,
+    "worst_benefit": 0.027662099401772,
+    "unshifted_cost": 0.014593708743009914,
+    "spread": 0.042255808144781914
+  },
+  {
+    "replicate": 696,
+    "worst_benefit": 0.019559166419610197,
+    "unshifted_cost": 0.009595555362306274,
+    "spread": 0.02915472178191647
+  },
+  {
+    "replicate": 697,
+    "worst_benefit": 0.01289696089172665,
+    "unshifted_cost": 0.0067278004629469645,
+    "spread": 0.019624761354673614
+  },
+  {
+    "replicate": 698,
+    "worst_benefit": 0.016306102710242687,
+    "unshifted_cost": 0.008929125867504384,
+    "spread": 0.02523522857774707
+  },
+  {
+    "replicate": 699,
+    "worst_benefit": 0.027223585113971493,
+    "unshifted_cost": 0.00767764706163554,
+    "spread": 0.03490123217560703
+  },
+  {
+    "replicate": 700,
+    "worst_benefit": 0.017302471458539026,
+    "unshifted_cost": 0.012205857606190862,
+    "spread": 0.029508329064729888
+  },
+  {
+    "replicate": 701,
+    "worst_benefit": 0.018242672649413483,
+    "unshifted_cost": 0.005988873147701579,
+    "spread": 0.02423154579711506
+  },
+  {
+    "replicate": 702,
+    "worst_benefit": 0.023846422385847776,
+    "unshifted_cost": 0.006355040228202435,
+    "spread": 0.030201462614050212
+  },
+  {
+    "replicate": 703,
+    "worst_benefit": 0.03377868792030769,
+    "unshifted_cost": 0.016892984752635787,
+    "spread": 0.05067167267294348
+  },
+  {
+    "replicate": 704,
+    "worst_benefit": 0.030375317768915444,
+    "unshifted_cost": 0.01813307114076379,
+    "spread": 0.048508388909679234
+  },
+  {
+    "replicate": 705,
+    "worst_benefit": 0.01651466676126434,
+    "unshifted_cost": 0.0034020583027251083,
+    "spread": 0.01991672506398945
+  },
+  {
+    "replicate": 706,
+    "worst_benefit": 0.03356245642921596,
+    "unshifted_cost": 0.015062615406375546,
+    "spread": 0.048625071835591505
+  },
+  {
+    "replicate": 707,
+    "worst_benefit": 0.018023530354075223,
+    "unshifted_cost": 0.008204504295986292,
+    "spread": 0.026228034650061516
+  },
+  {
+    "replicate": 708,
+    "worst_benefit": 0.027736575082533466,
+    "unshifted_cost": 0.013694341116095021,
+    "spread": 0.04143091619862849
+  },
+  {
+    "replicate": 709,
+    "worst_benefit": 0.030324010421301062,
+    "unshifted_cost": 0.013510230136792423,
+    "spread": 0.043834240558093485
+  },
+  {
+    "replicate": 710,
+    "worst_benefit": 0.02606479073586765,
+    "unshifted_cost": 0.008928340487461606,
+    "spread": 0.034993131223329255
+  },
+  {
+    "replicate": 711,
+    "worst_benefit": 0.03477659411924561,
+    "unshifted_cost": 0.012393902772909748,
+    "spread": 0.047170496892155356
+  },
+  {
+    "replicate": 712,
+    "worst_benefit": 0.026891146111997166,
+    "unshifted_cost": 0.007360114145504859,
+    "spread": 0.034251260257502025
+  },
+  {
+    "replicate": 713,
+    "worst_benefit": 0.04070712367570306,
+    "unshifted_cost": 0.01324536779834895,
+    "spread": 0.05395249147405201
+  },
+  {
+    "replicate": 714,
+    "worst_benefit": 0.025139367656723532,
+    "unshifted_cost": 0.011017953432520322,
+    "spread": 0.036157321089243855
+  },
+  {
+    "replicate": 715,
+    "worst_benefit": 0.029716702263385852,
+    "unshifted_cost": 0.00932486437741975,
+    "spread": 0.0390415666408056
+  },
+  {
+    "replicate": 716,
+    "worst_benefit": 0.032360679126534064,
+    "unshifted_cost": 0.009983447240655363,
+    "spread": 0.04234412636718943
+  },
+  {
+    "replicate": 717,
+    "worst_benefit": 0.038125358548842136,
+    "unshifted_cost": 0.013747605313144784,
+    "spread": 0.05187296386198692
+  },
+  {
+    "replicate": 718,
+    "worst_benefit": 0.017175203520783944,
+    "unshifted_cost": 0.008374881797764022,
+    "spread": 0.025550085318547966
+  },
+  {
+    "replicate": 719,
+    "worst_benefit": 0.01903095886502648,
+    "unshifted_cost": 0.015546713689055913,
+    "spread": 0.034577672554082395
+  },
+  {
+    "replicate": 720,
+    "worst_benefit": 0.026678860297663642,
+    "unshifted_cost": 0.009269507191971504,
+    "spread": 0.03594836748963515
+  },
+  {
+    "replicate": 721,
+    "worst_benefit": 0.030614219171490653,
+    "unshifted_cost": 0.01587530932496939,
+    "spread": 0.04648952849646004
+  },
+  {
+    "replicate": 722,
+    "worst_benefit": 0.024995957908035216,
+    "unshifted_cost": 0.014332453123450661,
+    "spread": 0.03932841103148588
+  },
+  {
+    "replicate": 723,
+    "worst_benefit": 0.020816296240581122,
+    "unshifted_cost": 0.004700769831096241,
+    "spread": 0.025517066071677363
+  },
+  {
+    "replicate": 724,
+    "worst_benefit": 0.047234522399201895,
+    "unshifted_cost": 0.014586185356740833,
+    "spread": 0.06182070775594273
+  },
+  {
+    "replicate": 725,
+    "worst_benefit": 0.033751378466673976,
+    "unshifted_cost": 0.011832587072801215,
+    "spread": 0.04558396553947519
+  },
+  {
+    "replicate": 726,
+    "worst_benefit": 0.027261581727937134,
+    "unshifted_cost": 0.01244610609566943,
+    "spread": 0.03970768782360656
+  },
+  {
+    "replicate": 727,
+    "worst_benefit": 0.029731398474201032,
+    "unshifted_cost": 0.010037270302602708,
+    "spread": 0.03976866877680374
+  },
+  {
+    "replicate": 728,
+    "worst_benefit": 0.03241674384852311,
+    "unshifted_cost": 0.010065220643488582,
+    "spread": 0.04248196449201169
+  },
+  {
+    "replicate": 729,
+    "worst_benefit": 0.030673627315670027,
+    "unshifted_cost": 0.010236532396195153,
+    "spread": 0.04091015971186518
+  },
+  {
+    "replicate": 730,
+    "worst_benefit": 0.02933938108571099,
+    "unshifted_cost": 0.010818171801629806,
+    "spread": 0.04052858297009343
+  },
+  {
+    "replicate": 731,
+    "worst_benefit": 0.02783840093943224,
+    "unshifted_cost": 0.005276979042691088,
+    "spread": 0.03311537998212333
+  },
+  {
+    "replicate": 732,
+    "worst_benefit": 0.025732064593062876,
+    "unshifted_cost": 0.00558421323262126,
+    "spread": 0.03627333485647666
+  },
+  {
+    "replicate": 733,
+    "worst_benefit": 0.02792852890889097,
+    "unshifted_cost": 0.010910275319818252,
+    "spread": 0.03883880422870922
+  },
+  {
+    "replicate": 734,
+    "worst_benefit": 0.013071923621783998,
+    "unshifted_cost": 0.005334113173342092,
+    "spread": 0.01840603679512609
+  },
+  {
+    "replicate": 735,
+    "worst_benefit": 0.03662100716502126,
+    "unshifted_cost": 0.016498041407527864,
+    "spread": 0.05311904857254912
+  },
+  {
+    "replicate": 736,
+    "worst_benefit": 0.01394339369733999,
+    "unshifted_cost": 0.011816121532491453,
+    "spread": 0.025759515229831442
+  },
+  {
+    "replicate": 737,
+    "worst_benefit": 0.02632297052226773,
+    "unshifted_cost": 0.003787478253919452,
+    "spread": 0.030110448776187182
+  },
+  {
+    "replicate": 738,
+    "worst_benefit": 0.03462717748811528,
+    "unshifted_cost": 0.009854764115172943,
+    "spread": 0.04448194160328822
+  },
+  {
+    "replicate": 739,
+    "worst_benefit": 0.03583969332843251,
+    "unshifted_cost": 0.01699272898659676,
+    "spread": 0.05283242231502927
+  },
+  {
+    "replicate": 740,
+    "worst_benefit": 0.0248440443487441,
+    "unshifted_cost": 0.006630118778172767,
+    "spread": 0.031474163126916865
+  },
+  {
+    "replicate": 741,
+    "worst_benefit": 0.016435692525765933,
+    "unshifted_cost": 0.011311603792759084,
+    "spread": 0.027747296318525017
+  },
+  {
+    "replicate": 742,
+    "worst_benefit": 0.04105722413129331,
+    "unshifted_cost": 0.018841160501515963,
+    "spread": 0.059898384632809276
+  },
+  {
+    "replicate": 743,
+    "worst_benefit": 0.019384244788628657,
+    "unshifted_cost": 0.01631330976613743,
+    "spread": 0.03569755455476609
+  },
+  {
+    "replicate": 744,
+    "worst_benefit": 0.023166280954329488,
+    "unshifted_cost": 0.00813039235139179,
+    "spread": 0.03242937978792548
+  },
+  {
+    "replicate": 745,
+    "worst_benefit": 0.03994451446096525,
+    "unshifted_cost": 0.018094351313005852,
+    "spread": 0.058038865773971104
+  },
+  {
+    "replicate": 746,
+    "worst_benefit": 0.028722176245199127,
+    "unshifted_cost": 0.007459791548693917,
+    "spread": 0.036181967793893044
+  },
+  {
+    "replicate": 747,
+    "worst_benefit": 0.02306636738902801,
+    "unshifted_cost": 0.009831202596493505,
+    "spread": 0.03289756998552151
+  },
+  {
+    "replicate": 748,
+    "worst_benefit": 0.023310788589337106,
+    "unshifted_cost": 0.006629341733548899,
+    "spread": 0.029940130322886005
+  },
+  {
+    "replicate": 749,
+    "worst_benefit": 0.02263254006179849,
+    "unshifted_cost": 0.009516323255889692,
+    "spread": 0.03214886331768818
+  },
+  {
+    "replicate": 750,
+    "worst_benefit": 0.02136239956297803,
+    "unshifted_cost": 0.0045411926894334265,
+    "spread": 0.025903592252411456
+  },
+  {
+    "replicate": 751,
+    "worst_benefit": 0.028816115497401817,
+    "unshifted_cost": 0.0065751083034047975,
+    "spread": 0.035391223800806615
+  },
+  {
+    "replicate": 752,
+    "worst_benefit": 0.02293258947325194,
+    "unshifted_cost": 0.009702446404314502,
+    "spread": 0.03263503587756644
+  },
+  {
+    "replicate": 753,
+    "worst_benefit": 0.031135182745379963,
+    "unshifted_cost": 0.01470291184626904,
+    "spread": 0.045838094591649
+  },
+  {
+    "replicate": 754,
+    "worst_benefit": 0.017780508740960044,
+    "unshifted_cost": 0.008015419573918714,
+    "spread": 0.025795928314878758
+  },
+  {
+    "replicate": 755,
+    "worst_benefit": 0.029583052968500057,
+    "unshifted_cost": 0.014727995154999896,
+    "spread": 0.04431104812349995
+  },
+  {
+    "replicate": 756,
+    "worst_benefit": 0.03178262320232872,
+    "unshifted_cost": 0.006755494173747878,
+    "spread": 0.0385381173760766
+  },
+  {
+    "replicate": 757,
+    "worst_benefit": 0.02686894475044066,
+    "unshifted_cost": 0.00889783624937368,
+    "spread": 0.04038786484564616
+  },
+  {
+    "replicate": 758,
+    "worst_benefit": 0.028101141491318038,
+    "unshifted_cost": 0.007311448086131933,
+    "spread": 0.03541258957744997
+  },
+  {
+    "replicate": 759,
+    "worst_benefit": 0.014455648357988848,
+    "unshifted_cost": 0.014487045611993543,
+    "spread": 0.02894269396998239
+  },
+  {
+    "replicate": 760,
+    "worst_benefit": 0.026261915291205473,
+    "unshifted_cost": 0.009397031601290684,
+    "spread": 0.03565894689249616
+  },
+  {
+    "replicate": 761,
+    "worst_benefit": 0.02922740891813269,
+    "unshifted_cost": 0.009858351695872125,
+    "spread": 0.039085760614004816
+  },
+  {
+    "replicate": 762,
+    "worst_benefit": 0.01856635892875147,
+    "unshifted_cost": 0.003629299822163423,
+    "spread": 0.022195658750914893
+  },
+  {
+    "replicate": 763,
+    "worst_benefit": 0.0324151562227919,
+    "unshifted_cost": 0.017775089855922244,
+    "spread": 0.05019024607871414
+  },
+  {
+    "replicate": 764,
+    "worst_benefit": 0.02824230144233819,
+    "unshifted_cost": 0.01141378663766146,
+    "spread": 0.03965608807999965
+  },
+  {
+    "replicate": 765,
+    "worst_benefit": 0.017772525303340503,
+    "unshifted_cost": 0.009389826617744457,
+    "spread": 0.02716235192108496
+  },
+  {
+    "replicate": 766,
+    "worst_benefit": 0.020142136180234527,
+    "unshifted_cost": 0.007662976478916894,
+    "spread": 0.02780511265915142
+  },
+  {
+    "replicate": 767,
+    "worst_benefit": 0.013453703992082233,
+    "unshifted_cost": 0.0049641320198549055,
+    "spread": 0.01841783601193714
+  },
+  {
+    "replicate": 768,
+    "worst_benefit": 0.026879708773431488,
+    "unshifted_cost": 0.009299164324952591,
+    "spread": 0.03888444793658863
+  },
+  {
+    "replicate": 769,
+    "worst_benefit": 0.010915780136203757,
+    "unshifted_cost": 3.8222637522844494e-05,
+    "spread": 0.010954002773726601
+  },
+  {
+    "replicate": 770,
+    "worst_benefit": 0.019116528736267457,
+    "unshifted_cost": 0.008604741540646388,
+    "spread": 0.027721270276913845
+  },
+  {
+    "replicate": 771,
+    "worst_benefit": 0.025689071143692677,
+    "unshifted_cost": 0.00587617539973595,
+    "spread": 0.03156524654342863
+  },
+  {
+    "replicate": 772,
+    "worst_benefit": 0.02825893117143241,
+    "unshifted_cost": 0.012484648959331324,
+    "spread": 0.040743580130763735
+  },
+  {
+    "replicate": 773,
+    "worst_benefit": 0.034142215495466366,
+    "unshifted_cost": 0.017279307473365924,
+    "spread": 0.05142152296883229
+  },
+  {
+    "replicate": 774,
+    "worst_benefit": 0.023504110348171237,
+    "unshifted_cost": 0.003909421005854341,
+    "spread": 0.02798862907585875
+  },
+  {
+    "replicate": 775,
+    "worst_benefit": 0.03021585400045479,
+    "unshifted_cost": 0.011928873994623168,
+    "spread": 0.04214472799507796
+  },
+  {
+    "replicate": 776,
+    "worst_benefit": 0.033645684745266746,
+    "unshifted_cost": 0.007443246901319589,
+    "spread": 0.041088931646586335
+  },
+  {
+    "replicate": 777,
+    "worst_benefit": 0.018295645127956783,
+    "unshifted_cost": 0.009773553445820427,
+    "spread": 0.02806919857377721
+  },
+  {
+    "replicate": 778,
+    "worst_benefit": 0.03342018843957162,
+    "unshifted_cost": 0.009897742488947703,
+    "spread": 0.04331793092851932
+  },
+  {
+    "replicate": 779,
+    "worst_benefit": 0.023728772826681177,
+    "unshifted_cost": 0.008710571281025259,
+    "spread": 0.032439344107706436
+  },
+  {
+    "replicate": 780,
+    "worst_benefit": 0.018531765564018587,
+    "unshifted_cost": 0.007692520216048382,
+    "spread": 0.02622428578006697
+  },
+  {
+    "replicate": 781,
+    "worst_benefit": 0.018708269701177782,
+    "unshifted_cost": 0.006331758676788035,
+    "spread": 0.025040028377965817
+  },
+  {
+    "replicate": 782,
+    "worst_benefit": 0.026944841928149277,
+    "unshifted_cost": 0.007306888420521074,
+    "spread": 0.03425173034867035
+  },
+  {
+    "replicate": 783,
+    "worst_benefit": 0.045195855672222174,
+    "unshifted_cost": 0.017370648628076912,
+    "spread": 0.06256650430029909
+  },
+  {
+    "replicate": 784,
+    "worst_benefit": 0.020494286959129804,
+    "unshifted_cost": 0.00987949919134612,
+    "spread": 0.030373786150475923
+  },
+  {
+    "replicate": 785,
+    "worst_benefit": 0.02345887678032821,
+    "unshifted_cost": 0.009630800041063536,
+    "spread": 0.033089676821391745
+  },
+  {
+    "replicate": 786,
+    "worst_benefit": 0.029797051740378167,
+    "unshifted_cost": 0.010863014536339421,
+    "spread": 0.04066006627671759
+  },
+  {
+    "replicate": 787,
+    "worst_benefit": 0.009623391159378936,
+    "unshifted_cost": 0.010037519736760925,
+    "spread": 0.01966091089613986
+  },
+  {
+    "replicate": 788,
+    "worst_benefit": 0.03284413938535713,
+    "unshifted_cost": 0.013185282384875041,
+    "spread": 0.04602942177023217
+  },
+  {
+    "replicate": 789,
+    "worst_benefit": 0.024572797612836483,
+    "unshifted_cost": 0.006427372017467681,
+    "spread": 0.03286506609203821
+  },
+  {
+    "replicate": 790,
+    "worst_benefit": 0.02020782334945359,
+    "unshifted_cost": 0.00751527566467447,
+    "spread": 0.02772309901412806
+  },
+  {
+    "replicate": 791,
+    "worst_benefit": 0.026520305713006453,
+    "unshifted_cost": 0.0037426465855660007,
+    "spread": 0.030262952298572454
+  },
+  {
+    "replicate": 792,
+    "worst_benefit": 0.02459399551083119,
+    "unshifted_cost": 0.0023311904275473694,
+    "spread": 0.02692518593837856
+  },
+  {
+    "replicate": 793,
+    "worst_benefit": 0.018351103106259425,
+    "unshifted_cost": 0.008336371982663793,
+    "spread": 0.026687475088923218
+  },
+  {
+    "replicate": 794,
+    "worst_benefit": 0.025346385342883693,
+    "unshifted_cost": 0.021712527576464025,
+    "spread": 0.04705891291934772
+  },
+  {
+    "replicate": 795,
+    "worst_benefit": 0.0265028746814997,
+    "unshifted_cost": 0.010288188748402649,
+    "spread": 0.03679106342990235
+  },
+  {
+    "replicate": 796,
+    "worst_benefit": 0.012630089390667787,
+    "unshifted_cost": 0.003585993158221834,
+    "spread": 0.01621608254888962
+  },
+  {
+    "replicate": 797,
+    "worst_benefit": 0.017861408300469894,
+    "unshifted_cost": 0.008648102663184942,
+    "spread": 0.026509510963654837
+  },
+  {
+    "replicate": 798,
+    "worst_benefit": 0.04361067243559569,
+    "unshifted_cost": 0.014515277401566662,
+    "spread": 0.05812594983716235
+  },
+  {
+    "replicate": 799,
+    "worst_benefit": 0.04795810870537165,
+    "unshifted_cost": 0.01399858469369386,
+    "spread": 0.06195669339906551
+  },
+  {
+    "replicate": 800,
+    "worst_benefit": 0.02230966984505267,
+    "unshifted_cost": 0.0077060580061275585,
+    "spread": 0.03001572785118023
+  },
+  {
+    "replicate": 801,
+    "worst_benefit": 0.02290438780554349,
+    "unshifted_cost": 0.005342070781242603,
+    "spread": 0.028246458586786094
+  },
+  {
+    "replicate": 802,
+    "worst_benefit": 0.029407082626462966,
+    "unshifted_cost": 0.004866912257586842,
+    "spread": 0.03616483701258144
+  },
+  {
+    "replicate": 803,
+    "worst_benefit": 0.030038688304739214,
+    "unshifted_cost": 0.012713721624851626,
+    "spread": 0.04275240992959084
+  },
+  {
+    "replicate": 804,
+    "worst_benefit": 0.017449260555181367,
+    "unshifted_cost": 0.0056618556018182,
+    "spread": 0.023111116156999567
+  },
+  {
+    "replicate": 805,
+    "worst_benefit": 0.0425044733042953,
+    "unshifted_cost": 0.01927671411820775,
+    "spread": 0.06178118742250305
+  },
+  {
+    "replicate": 806,
+    "worst_benefit": 0.014649558867989132,
+    "unshifted_cost": 0.005497951377627985,
+    "spread": 0.020147510245617117
+  },
+  {
+    "replicate": 807,
+    "worst_benefit": 0.034900390232831424,
+    "unshifted_cost": 0.014523366861246223,
+    "spread": 0.04942375709407765
+  },
+  {
+    "replicate": 808,
+    "worst_benefit": 0.04090721523992735,
+    "unshifted_cost": 0.01398336604854189,
+    "spread": 0.05489058128846924
+  },
+  {
+    "replicate": 809,
+    "worst_benefit": 0.024395468838496304,
+    "unshifted_cost": 0.011344642316729603,
+    "spread": 0.03574011115522591
+  },
+  {
+    "replicate": 810,
+    "worst_benefit": 0.02527169011187458,
+    "unshifted_cost": 0.007788587321361007,
+    "spread": 0.035383640205676414
+  },
+  {
+    "replicate": 811,
+    "worst_benefit": 0.03091112239292959,
+    "unshifted_cost": 0.013847530182219514,
+    "spread": 0.044758652575149105
+  },
+  {
+    "replicate": 812,
+    "worst_benefit": 0.020189098334167932,
+    "unshifted_cost": 0.01022095650777921,
+    "spread": 0.030410054841947143
+  },
+  {
+    "replicate": 813,
+    "worst_benefit": 0.0242206440788878,
+    "unshifted_cost": 0.0069325756862116394,
+    "spread": 0.031153219765099438
+  },
+  {
+    "replicate": 814,
+    "worst_benefit": 0.04086551459534815,
+    "unshifted_cost": 0.010996854360472819,
+    "spread": 0.05186236895582097
+  },
+  {
+    "replicate": 815,
+    "worst_benefit": 0.019393256926312996,
+    "unshifted_cost": 0.008303935117972117,
+    "spread": 0.027697192044285113
+  },
+  {
+    "replicate": 816,
+    "worst_benefit": 0.025899154988940354,
+    "unshifted_cost": 0.005444256223065547,
+    "spread": 0.0313434112120059
+  },
+  {
+    "replicate": 817,
+    "worst_benefit": 0.0353186921320211,
+    "unshifted_cost": 0.021063293720747778,
+    "spread": 0.05638198585276888
+  },
+  {
+    "replicate": 818,
+    "worst_benefit": 0.027542630737409923,
+    "unshifted_cost": 0.007672776087008892,
+    "spread": 0.035215406824418816
+  },
+  {
+    "replicate": 819,
+    "worst_benefit": 0.03878410763806617,
+    "unshifted_cost": 0.014621331164501483,
+    "spread": 0.05340543880256765
+  },
+  {
+    "replicate": 820,
+    "worst_benefit": 0.030119428846847485,
+    "unshifted_cost": 0.014123761098727261,
+    "spread": 0.044243189945574746
+  },
+  {
+    "replicate": 821,
+    "worst_benefit": 0.028126635734482597,
+    "unshifted_cost": 0.00729616718563042,
+    "spread": 0.03542280292011302
+  },
+  {
+    "replicate": 822,
+    "worst_benefit": 0.031275032688997007,
+    "unshifted_cost": 0.008622526278087905,
+    "spread": 0.03989755896708491
+  },
+  {
+    "replicate": 823,
+    "worst_benefit": 0.03564340546519107,
+    "unshifted_cost": 0.008940533327821187,
+    "spread": 0.04458393879301226
+  },
+  {
+    "replicate": 824,
+    "worst_benefit": 0.02255992865611789,
+    "unshifted_cost": 0.011186996215759248,
+    "spread": 0.034183577814142385
+  },
+  {
+    "replicate": 825,
+    "worst_benefit": 0.02677065943261614,
+    "unshifted_cost": 0.015088465184299626,
+    "spread": 0.041859124616915766
+  },
+  {
+    "replicate": 826,
+    "worst_benefit": 0.030653012129064794,
+    "unshifted_cost": 0.009155886200573504,
+    "spread": 0.0398088983296383
+  },
+  {
+    "replicate": 827,
+    "worst_benefit": 0.02800845953489084,
+    "unshifted_cost": 0.008892411630762487,
+    "spread": 0.036900871165653326
+  },
+  {
+    "replicate": 828,
+    "worst_benefit": 0.02406666951941705,
+    "unshifted_cost": 0.011618431066177548,
+    "spread": 0.0356851005855946
+  },
+  {
+    "replicate": 829,
+    "worst_benefit": 0.02911989867279885,
+    "unshifted_cost": 0.01135749215325843,
+    "spread": 0.04047739082605728
+  },
+  {
+    "replicate": 830,
+    "worst_benefit": 0.02936713193539997,
+    "unshifted_cost": 0.01161676200452566,
+    "spread": 0.04098389393992563
+  },
+  {
+    "replicate": 831,
+    "worst_benefit": 0.03030025546048465,
+    "unshifted_cost": 0.010831506832586602,
+    "spread": 0.04113176229307125
+  },
+  {
+    "replicate": 832,
+    "worst_benefit": 0.02079209193861553,
+    "unshifted_cost": 0.010055769330541753,
+    "spread": 0.030847861269157284
+  },
+  {
+    "replicate": 833,
+    "worst_benefit": 0.024242825745051544,
+    "unshifted_cost": 0.011800986669043723,
+    "spread": 0.036043812414095266
+  },
+  {
+    "replicate": 834,
+    "worst_benefit": 0.024549340426589183,
+    "unshifted_cost": 0.009679714856604349,
+    "spread": 0.03422905528319353
+  },
+  {
+    "replicate": 835,
+    "worst_benefit": 0.02405268595811949,
+    "unshifted_cost": 0.0053916263526078145,
+    "spread": 0.0298399074175697
+  },
+  {
+    "replicate": 836,
+    "worst_benefit": 0.040970060586335344,
+    "unshifted_cost": 0.01198462731522787,
+    "spread": 0.05295468790156321
+  },
+  {
+    "replicate": 837,
+    "worst_benefit": 0.022183907735143893,
+    "unshifted_cost": 0.007250321603791243,
+    "spread": 0.029434229338935136
+  },
+  {
+    "replicate": 838,
+    "worst_benefit": 0.02877002352362501,
+    "unshifted_cost": 0.009137782887385981,
+    "spread": 0.03790780641101099
+  },
+  {
+    "replicate": 839,
+    "worst_benefit": 0.03574470662685625,
+    "unshifted_cost": 0.019719061477110778,
+    "spread": 0.055463768103967026
+  },
+  {
+    "replicate": 840,
+    "worst_benefit": 0.04214915281591047,
+    "unshifted_cost": 0.010607145556266073,
+    "spread": 0.05275629837217655
+  },
+  {
+    "replicate": 841,
+    "worst_benefit": 0.02506937038990431,
+    "unshifted_cost": 0.008294905622663218,
+    "spread": 0.03336427601256753
+  },
+  {
+    "replicate": 842,
+    "worst_benefit": 0.026192529443453405,
+    "unshifted_cost": 0.008976306285662816,
+    "spread": 0.03516883572911622
+  },
+  {
+    "replicate": 843,
+    "worst_benefit": 0.013590115735131914,
+    "unshifted_cost": 0.007299880820118343,
+    "spread": 0.020889996555250256
+  },
+  {
+    "replicate": 844,
+    "worst_benefit": 0.017837124971621376,
+    "unshifted_cost": 0.007139187705595407,
+    "spread": 0.024976312677216783
+  },
+  {
+    "replicate": 845,
+    "worst_benefit": 0.030609412711052997,
+    "unshifted_cost": 0.009065581430581227,
+    "spread": 0.03967499414163422
+  },
+  {
+    "replicate": 846,
+    "worst_benefit": 0.03168040667258387,
+    "unshifted_cost": 0.00941070649582143,
+    "spread": 0.0410911131684053
+  },
+  {
+    "replicate": 847,
+    "worst_benefit": 0.022567516987960667,
+    "unshifted_cost": 0.008511764140851308,
+    "spread": 0.031079281128811975
+  },
+  {
+    "replicate": 848,
+    "worst_benefit": 0.018048421786067803,
+    "unshifted_cost": 0.007864957171607623,
+    "spread": 0.025913378957675426
+  },
+  {
+    "replicate": 849,
+    "worst_benefit": 0.020279692854925813,
+    "unshifted_cost": 0.00716686534299682,
+    "spread": 0.027446558197922633
+  },
+  {
+    "replicate": 850,
+    "worst_benefit": 0.025653565694577773,
+    "unshifted_cost": 0.010524637657911562,
+    "spread": 0.036178203352489335
+  },
+  {
+    "replicate": 851,
+    "worst_benefit": 0.03525348990763055,
+    "unshifted_cost": 0.008402970034373625,
+    "spread": 0.04365645994200418
+  },
+  {
+    "replicate": 852,
+    "worst_benefit": 0.037138560410599264,
+    "unshifted_cost": 0.020554100872788528,
+    "spread": 0.05769266128338779
+  },
+  {
+    "replicate": 853,
+    "worst_benefit": 0.03994650003598155,
+    "unshifted_cost": 0.009410572739326772,
+    "spread": 0.04935707277530832
+  },
+  {
+    "replicate": 854,
+    "worst_benefit": 0.01975978590177263,
+    "unshifted_cost": 0.014885855645593082,
+    "spread": 0.03464564154736571
+  },
+  {
+    "replicate": 855,
+    "worst_benefit": 0.028784329207364845,
+    "unshifted_cost": 0.004411567025433438,
+    "spread": 0.03845603149721322
+  },
+  {
+    "replicate": 856,
+    "worst_benefit": 0.020437584465345493,
+    "unshifted_cost": 0.013898990922582066,
+    "spread": 0.03433657538792756
+  },
+  {
+    "replicate": 857,
+    "worst_benefit": 0.030106275389105375,
+    "unshifted_cost": 0.007364998153636337,
+    "spread": 0.03747127354274171
+  },
+  {
+    "replicate": 858,
+    "worst_benefit": 0.024573965125143094,
+    "unshifted_cost": 0.008685436747525088,
+    "spread": 0.03325940187266818
+  },
+  {
+    "replicate": 859,
+    "worst_benefit": 0.024949889252726565,
+    "unshifted_cost": 0.00638265235609059,
+    "spread": 0.03216424027604603
+  },
+  {
+    "replicate": 860,
+    "worst_benefit": 0.039125378477930406,
+    "unshifted_cost": 0.008603199631170289,
+    "spread": 0.047728578109100694
+  },
+  {
+    "replicate": 861,
+    "worst_benefit": 0.01908663236752417,
+    "unshifted_cost": 0.013472691540211579,
+    "spread": 0.03255932390773575
+  },
+  {
+    "replicate": 862,
+    "worst_benefit": 0.019313996616274864,
+    "unshifted_cost": 0.006087029732878224,
+    "spread": 0.02540102634915309
+  },
+  {
+    "replicate": 863,
+    "worst_benefit": 0.03889420892159845,
+    "unshifted_cost": 0.01295631322217139,
+    "spread": 0.05185052214376984
+  },
+  {
+    "replicate": 864,
+    "worst_benefit": 0.029435730592328402,
+    "unshifted_cost": 0.006109887320394414,
+    "spread": 0.035545617912722816
+  },
+  {
+    "replicate": 865,
+    "worst_benefit": 0.03227928910214162,
+    "unshifted_cost": 0.008886451171695398,
+    "spread": 0.041165740273837015
+  },
+  {
+    "replicate": 866,
+    "worst_benefit": 0.01907723527058769,
+    "unshifted_cost": 0.007633348294073472,
+    "spread": 0.02671058356466116
+  },
+  {
+    "replicate": 867,
+    "worst_benefit": 0.03563400365182867,
+    "unshifted_cost": 0.014971326689971365,
+    "spread": 0.053615722604385296
+  },
+  {
+    "replicate": 868,
+    "worst_benefit": 0.026144219176505556,
+    "unshifted_cost": 0.013945494115659485,
+    "spread": 0.04008971329216504
+  },
+  {
+    "replicate": 869,
+    "worst_benefit": 0.045729244004135916,
+    "unshifted_cost": 0.014875452826915159,
+    "spread": 0.060604696831051075
+  },
+  {
+    "replicate": 870,
+    "worst_benefit": 0.03960015119072846,
+    "unshifted_cost": 0.020204534876057112,
+    "spread": 0.05980468606678557
+  },
+  {
+    "replicate": 871,
+    "worst_benefit": 0.019771818238545236,
+    "unshifted_cost": 0.00541196522747478,
+    "spread": 0.029063029601637314
+  },
+  {
+    "replicate": 872,
+    "worst_benefit": 0.026377922618842198,
+    "unshifted_cost": 0.0070023375301545565,
+    "spread": 0.033380260148996754
+  },
+  {
+    "replicate": 873,
+    "worst_benefit": 0.002610478801139182,
+    "unshifted_cost": 0.005370249889176781,
+    "spread": 0.00842870864896661
+  },
+  {
+    "replicate": 874,
+    "worst_benefit": 0.03712474994947901,
+    "unshifted_cost": 0.0181328809856226,
+    "spread": 0.05525763093510161
+  },
+  {
+    "replicate": 875,
+    "worst_benefit": 0.025553391855402396,
+    "unshifted_cost": 0.008417914711182028,
+    "spread": 0.033971306566584425
+  },
+  {
+    "replicate": 876,
+    "worst_benefit": 0.034804576143984134,
+    "unshifted_cost": 0.017072153951956492,
+    "spread": 0.051876730095940626
+  },
+  {
+    "replicate": 877,
+    "worst_benefit": 0.02427049194172004,
+    "unshifted_cost": 0.009087724878537151,
+    "spread": 0.03335821682025719
+  },
+  {
+    "replicate": 878,
+    "worst_benefit": 0.022693322011517303,
+    "unshifted_cost": 0.0029780848019487216,
+    "spread": 0.025918813940817964
+  },
+  {
+    "replicate": 879,
+    "worst_benefit": 0.01817833037758343,
+    "unshifted_cost": 0.010107429731844975,
+    "spread": 0.028285760109428404
+  },
+  {
+    "replicate": 880,
+    "worst_benefit": 0.021837180990183724,
+    "unshifted_cost": 0.01281615369700062,
+    "spread": 0.034653334687184345
+  },
+  {
+    "replicate": 881,
+    "worst_benefit": 0.01467738123969864,
+    "unshifted_cost": 0.006693985312286377,
+    "spread": 0.021371366551985016
+  },
+  {
+    "replicate": 882,
+    "worst_benefit": 0.025307938323688495,
+    "unshifted_cost": 0.01354228678695224,
+    "spread": 0.038850225110640735
+  },
+  {
+    "replicate": 883,
+    "worst_benefit": 0.023562789667279205,
+    "unshifted_cost": 0.01495154124143494,
+    "spread": 0.038514330908714145
+  },
+  {
+    "replicate": 884,
+    "worst_benefit": 0.02408331236372685,
+    "unshifted_cost": 0.012819972897671894,
+    "spread": 0.036903285261398744
+  },
+  {
+    "replicate": 885,
+    "worst_benefit": 0.01388070231767402,
+    "unshifted_cost": 0.010180036522706493,
+    "spread": 0.024060738840380513
+  },
+  {
+    "replicate": 886,
+    "worst_benefit": 0.028326976849014307,
+    "unshifted_cost": 0.006588198904783127,
+    "spread": 0.034915175753797434
+  },
+  {
+    "replicate": 887,
+    "worst_benefit": 0.01857180707360173,
+    "unshifted_cost": 0.0012759244040940754,
+    "spread": 0.019847731477695807
+  },
+  {
+    "replicate": 888,
+    "worst_benefit": 0.03784619913306975,
+    "unshifted_cost": 0.012216736726519128,
+    "spread": 0.050062935859588875
+  },
+  {
+    "replicate": 889,
+    "worst_benefit": 0.024222700336312464,
+    "unshifted_cost": 0.0018636831190314007,
+    "spread": 0.028850110995749745
+  },
+  {
+    "replicate": 890,
+    "worst_benefit": 0.02755941699309017,
+    "unshifted_cost": 0.01104263998972943,
+    "spread": 0.0386020569828196
+  },
+  {
+    "replicate": 891,
+    "worst_benefit": 0.027956854755016525,
+    "unshifted_cost": 0.010489088162159765,
+    "spread": 0.03844594291717629
+  },
+  {
+    "replicate": 892,
+    "worst_benefit": 0.016703600756544534,
+    "unshifted_cost": 0.0080033083276978,
+    "spread": 0.024706909084242334
+  },
+  {
+    "replicate": 893,
+    "worst_benefit": 0.03581468054280734,
+    "unshifted_cost": 0.015597344986188033,
+    "spread": 0.051412025528995375
+  },
+  {
+    "replicate": 894,
+    "worst_benefit": 0.034971983899790504,
+    "unshifted_cost": 0.011303364765697266,
+    "spread": 0.04627534866548777
+  },
+  {
+    "replicate": 895,
+    "worst_benefit": 0.03617336647040115,
+    "unshifted_cost": 0.009889644658777508,
+    "spread": 0.046063011129178655
+  },
+  {
+    "replicate": 896,
+    "worst_benefit": 0.019689096675554407,
+    "unshifted_cost": 0.00836075986621676,
+    "spread": 0.028049856541771168
+  },
+  {
+    "replicate": 897,
+    "worst_benefit": 0.016766734639730885,
+    "unshifted_cost": 0.003495374480689706,
+    "spread": 0.02026210912042059
+  },
+  {
+    "replicate": 898,
+    "worst_benefit": 0.016588818362049507,
+    "unshifted_cost": 0.01049816555541827,
+    "spread": 0.027086983917467777
+  },
+  {
+    "replicate": 899,
+    "worst_benefit": 0.027198592786963238,
+    "unshifted_cost": 0.010792200453564882,
+    "spread": 0.03799079324052812
+  },
+  {
+    "replicate": 900,
+    "worst_benefit": 0.01500654629533582,
+    "unshifted_cost": 0.00677277882700511,
+    "spread": 0.02177932512234093
+  },
+  {
+    "replicate": 901,
+    "worst_benefit": 0.027486515914518228,
+    "unshifted_cost": 0.01726906395761485,
+    "spread": 0.04475557987213308
+  },
+  {
+    "replicate": 902,
+    "worst_benefit": 0.01851558486632343,
+    "unshifted_cost": 0.009783550835265498,
+    "spread": 0.02829913570158893
+  },
+  {
+    "replicate": 903,
+    "worst_benefit": 0.029304090179680498,
+    "unshifted_cost": 0.008989207213290773,
+    "spread": 0.03829329739297127
+  },
+  {
+    "replicate": 904,
+    "worst_benefit": 0.01407296354705101,
+    "unshifted_cost": 0.006792456330754426,
+    "spread": 0.020865419877805436
+  },
+  {
+    "replicate": 905,
+    "worst_benefit": 0.02355329564509978,
+    "unshifted_cost": 0.01219148916027113,
+    "spread": 0.03574478480537091
+  },
+  {
+    "replicate": 906,
+    "worst_benefit": 0.03261546661776804,
+    "unshifted_cost": 0.009332619069603143,
+    "spread": 0.041948085687371184
+  },
+  {
+    "replicate": 907,
+    "worst_benefit": 0.03300077429238335,
+    "unshifted_cost": 0.01077456469354321,
+    "spread": 0.04377533898592656
+  },
+  {
+    "replicate": 908,
+    "worst_benefit": 0.03689404008822872,
+    "unshifted_cost": 0.015836355018113535,
+    "spread": 0.052730395106342254
+  },
+  {
+    "replicate": 909,
+    "worst_benefit": 0.029122298393102652,
+    "unshifted_cost": 0.005150847155168337,
+    "spread": 0.03848134141559245
+  },
+  {
+    "replicate": 910,
+    "worst_benefit": 0.018301587901136562,
+    "unshifted_cost": 0.00026704941020283535,
+    "spread": 0.021853229828834198
+  },
+  {
+    "replicate": 911,
+    "worst_benefit": 0.02941237665885643,
+    "unshifted_cost": 0.013242927308726116,
+    "spread": 0.04265530396758255
+  },
+  {
+    "replicate": 912,
+    "worst_benefit": 0.01712443490960769,
+    "unshifted_cost": 0.007995055783636351,
+    "spread": 0.02511949069324404
+  },
+  {
+    "replicate": 913,
+    "worst_benefit": 0.028514430505400368,
+    "unshifted_cost": 0.013052190837593125,
+    "spread": 0.04156662134299349
+  },
+  {
+    "replicate": 914,
+    "worst_benefit": 0.028865550540558726,
+    "unshifted_cost": 0.012953226755642366,
+    "spread": 0.04181877729620109
+  },
+  {
+    "replicate": 915,
+    "worst_benefit": 0.026951514063719317,
+    "unshifted_cost": 0.01429985207435358,
+    "spread": 0.0412513661380729
+  },
+  {
+    "replicate": 916,
+    "worst_benefit": 0.020361377799448688,
+    "unshifted_cost": 0.007486809456691557,
+    "spread": 0.027848187256140244
+  },
+  {
+    "replicate": 917,
+    "worst_benefit": 0.027797529136490917,
+    "unshifted_cost": 0.008362288611968083,
+    "spread": 0.036159817748459
+  },
+  {
+    "replicate": 918,
+    "worst_benefit": 0.046948780285852254,
+    "unshifted_cost": 0.013472253697235037,
+    "spread": 0.06042103398308729
+  },
+  {
+    "replicate": 919,
+    "worst_benefit": 0.025601489553419676,
+    "unshifted_cost": 0.009370123178309653,
+    "spread": 0.03497161273172933
+  },
+  {
+    "replicate": 920,
+    "worst_benefit": 0.031530289419816504,
+    "unshifted_cost": 0.013980277393875418,
+    "spread": 0.04551056681369192
+  },
+  {
+    "replicate": 921,
+    "worst_benefit": 0.03234646329772117,
+    "unshifted_cost": 0.010190108433750011,
+    "spread": 0.042536571731471184
+  },
+  {
+    "replicate": 922,
+    "worst_benefit": 0.03030294521668353,
+    "unshifted_cost": 0.017813641166509298,
+    "spread": 0.04811658638319283
+  },
+  {
+    "replicate": 923,
+    "worst_benefit": 0.02503499940574727,
+    "unshifted_cost": 0.006791123791523357,
+    "spread": 0.03438237107384534
+  },
+  {
+    "replicate": 924,
+    "worst_benefit": 0.020280576983107923,
+    "unshifted_cost": 0.00948120243550521,
+    "spread": 0.029761779418613132
+  },
+  {
+    "replicate": 925,
+    "worst_benefit": 0.014588604790182425,
+    "unshifted_cost": 0.005931804527519069,
+    "spread": 0.020520409317701493
+  },
+  {
+    "replicate": 926,
+    "worst_benefit": 0.030595774218798666,
+    "unshifted_cost": 0.01312166371693535,
+    "spread": 0.043717437935734016
+  },
+  {
+    "replicate": 927,
+    "worst_benefit": 0.02713946760500474,
+    "unshifted_cost": 0.004078366364042241,
+    "spread": 0.03230483809557838
+  },
+  {
+    "replicate": 928,
+    "worst_benefit": 0.0321778194460699,
+    "unshifted_cost": 0.007630335101122321,
+    "spread": 0.03980815454719222
+  },
+  {
+    "replicate": 929,
+    "worst_benefit": 0.02914257952185606,
+    "unshifted_cost": 0.008288474266475832,
+    "spread": 0.03743105378833189
+  },
+  {
+    "replicate": 930,
+    "worst_benefit": 0.04171403356575809,
+    "unshifted_cost": 0.01598806934830599,
+    "spread": 0.05770210291406408
+  },
+  {
+    "replicate": 931,
+    "worst_benefit": 0.031533520605560805,
+    "unshifted_cost": 0.014863509859187274,
+    "spread": 0.04639703046474808
+  },
+  {
+    "replicate": 932,
+    "worst_benefit": 0.02674799115556392,
+    "unshifted_cost": 0.014044173266927085,
+    "spread": 0.040792164422491006
+  },
+  {
+    "replicate": 933,
+    "worst_benefit": 0.018707287095490188,
+    "unshifted_cost": 0.002541670172820809,
+    "spread": 0.021248957268310997
+  },
+  {
+    "replicate": 934,
+    "worst_benefit": 0.020016637746009258,
+    "unshifted_cost": 0.006707242921324186,
+    "spread": 0.026723880667333444
+  },
+  {
+    "replicate": 935,
+    "worst_benefit": 0.025607278289448088,
+    "unshifted_cost": 0.014595651929122377,
+    "spread": 0.040202930218570465
+  },
+  {
+    "replicate": 936,
+    "worst_benefit": 0.014085571129209384,
+    "unshifted_cost": 0.007395577994465108,
+    "spread": 0.021481149123674492
+  },
+  {
+    "replicate": 937,
+    "worst_benefit": 0.049157095826528274,
+    "unshifted_cost": 0.016984148379601494,
+    "spread": 0.06614124420612977
+  },
+  {
+    "replicate": 938,
+    "worst_benefit": 0.03278135323242637,
+    "unshifted_cost": 0.01831902774879035,
+    "spread": 0.05110038098121672
+  },
+  {
+    "replicate": 939,
+    "worst_benefit": 0.026397976215670305,
+    "unshifted_cost": 0.009785313119979433,
+    "spread": 0.03618328933564974
+  },
+  {
+    "replicate": 940,
+    "worst_benefit": 0.024642498188515494,
+    "unshifted_cost": 0.004197833415917396,
+    "spread": 0.02884033160443289
+  },
+  {
+    "replicate": 941,
+    "worst_benefit": 0.033070681115124345,
+    "unshifted_cost": 0.0038552514625834755,
+    "spread": 0.03935454462379839
+  },
+  {
+    "replicate": 942,
+    "worst_benefit": 0.026535967848692832,
+    "unshifted_cost": 0.006951757251071666,
+    "spread": 0.0334877250997645
+  },
+  {
+    "replicate": 943,
+    "worst_benefit": 0.02174351059145474,
+    "unshifted_cost": 0.005634585898849354,
+    "spread": 0.027378096490304094
+  },
+  {
+    "replicate": 944,
+    "worst_benefit": 0.015226080940814679,
+    "unshifted_cost": 0.0034474248484397396,
+    "spread": 0.01867350578925442
+  },
+  {
+    "replicate": 945,
+    "worst_benefit": 0.034903883325977936,
+    "unshifted_cost": 0.005725653248312312,
+    "spread": 0.04062953657429025
+  },
+  {
+    "replicate": 946,
+    "worst_benefit": 0.020371916647215826,
+    "unshifted_cost": 0.0063785275605471314,
+    "spread": 0.026750444207762958
+  },
+  {
+    "replicate": 947,
+    "worst_benefit": 0.034715284995344486,
+    "unshifted_cost": 0.0124180110866432,
+    "spread": 0.047133296081987686
+  },
+  {
+    "replicate": 948,
+    "worst_benefit": 0.012639987493849869,
+    "unshifted_cost": 0.006008366017792088,
+    "spread": 0.018648353511641957
+  },
+  {
+    "replicate": 949,
+    "worst_benefit": 0.03581069086068822,
+    "unshifted_cost": 0.011770166075305233,
+    "spread": 0.047580856935993454
+  },
+  {
+    "replicate": 950,
+    "worst_benefit": 0.028747922774834733,
+    "unshifted_cost": 0.007528493227440647,
+    "spread": 0.03627641600227538
+  },
+  {
+    "replicate": 951,
+    "worst_benefit": 0.03507988548859242,
+    "unshifted_cost": 0.01917514185247582,
+    "spread": 0.05425502734106824
+  },
+  {
+    "replicate": 952,
+    "worst_benefit": 0.03151025828078613,
+    "unshifted_cost": 0.00393924204406193,
+    "spread": 0.03601060556467561
+  },
+  {
+    "replicate": 953,
+    "worst_benefit": 0.03197371768553503,
+    "unshifted_cost": 0.008198555690435705,
+    "spread": 0.040172273375970735
+  },
+  {
+    "replicate": 954,
+    "worst_benefit": 0.0195852552241349,
+    "unshifted_cost": 0.00987435476888976,
+    "spread": 0.02945960999302466
+  },
+  {
+    "replicate": 955,
+    "worst_benefit": 0.013394420040535482,
+    "unshifted_cost": 0.007509404507138107,
+    "spread": 0.02090382454767359
+  },
+  {
+    "replicate": 956,
+    "worst_benefit": 0.021741475547381928,
+    "unshifted_cost": 0.014084051528714836,
+    "spread": 0.035825527076096764
+  },
+  {
+    "replicate": 957,
+    "worst_benefit": 0.032747527863138726,
+    "unshifted_cost": 0.023208992583932164,
+    "spread": 0.05595652044707089
+  },
+  {
+    "replicate": 958,
+    "worst_benefit": 0.01695706614058312,
+    "unshifted_cost": 0.008911445721012212,
+    "spread": 0.025868511861595334
+  },
+  {
+    "replicate": 959,
+    "worst_benefit": 0.03294594593050404,
+    "unshifted_cost": 0.009729309933997565,
+    "spread": 0.042675255864501604
+  },
+  {
+    "replicate": 960,
+    "worst_benefit": 0.02030402043312396,
+    "unshifted_cost": 0.010885045760077539,
+    "spread": 0.03622486813994874
+  },
+  {
+    "replicate": 961,
+    "worst_benefit": 0.02838446184305643,
+    "unshifted_cost": 0.007299883877328717,
+    "spread": 0.03568434572038515
+  },
+  {
+    "replicate": 962,
+    "worst_benefit": 0.035180875522470956,
+    "unshifted_cost": 0.006986964214445446,
+    "spread": 0.04436860566683942
+  },
+  {
+    "replicate": 963,
+    "worst_benefit": 0.022955024636200028,
+    "unshifted_cost": 0.010418280007784997,
+    "spread": 0.033373304643985024
+  },
+  {
+    "replicate": 964,
+    "worst_benefit": 0.01692419264317424,
+    "unshifted_cost": 0.0014462543465618705,
+    "spread": 0.01837044698973611
+  },
+  {
+    "replicate": 965,
+    "worst_benefit": 0.02491010174987751,
+    "unshifted_cost": 0.008888600583076278,
+    "spread": 0.03379870233295379
+  },
+  {
+    "replicate": 966,
+    "worst_benefit": 0.03138652453470514,
+    "unshifted_cost": 0.007174170716851114,
+    "spread": 0.045552396702369435
+  },
+  {
+    "replicate": 967,
+    "worst_benefit": 0.02842059239375261,
+    "unshifted_cost": 0.017279041826464114,
+    "spread": 0.04569963422021672
+  },
+  {
+    "replicate": 968,
+    "worst_benefit": 0.020119341172083915,
+    "unshifted_cost": 0.013654840242366406,
+    "spread": 0.03377418141445032
+  },
+  {
+    "replicate": 969,
+    "worst_benefit": 0.0241160549581525,
+    "unshifted_cost": 0.010870162446772635,
+    "spread": 0.034986217404925135
+  },
+  {
+    "replicate": 970,
+    "worst_benefit": 0.017449834749102,
+    "unshifted_cost": 0.009190566214962503,
+    "spread": 0.026640400964064503
+  },
+  {
+    "replicate": 971,
+    "worst_benefit": 0.025963773071897567,
+    "unshifted_cost": 0.011101839665913271,
+    "spread": 0.03784462576618752
+  },
+  {
+    "replicate": 972,
+    "worst_benefit": 0.02623442814684518,
+    "unshifted_cost": 0.010004526775781786,
+    "spread": 0.036238954922626965
+  },
+  {
+    "replicate": 973,
+    "worst_benefit": 0.023845437990264284,
+    "unshifted_cost": 0.0077126845823410894,
+    "spread": 0.031558122572605374
+  },
+  {
+    "replicate": 974,
+    "worst_benefit": 0.02597504367850445,
+    "unshifted_cost": 0.0063682537663039,
+    "spread": 0.03234329744480835
+  },
+  {
+    "replicate": 975,
+    "worst_benefit": 0.02053728536860222,
+    "unshifted_cost": 0.009769760327368981,
+    "spread": 0.030307045695971202
+  },
+  {
+    "replicate": 976,
+    "worst_benefit": 0.017957526435595783,
+    "unshifted_cost": 0.008568960622697297,
+    "spread": 0.02652648705829308
+  },
+  {
+    "replicate": 977,
+    "worst_benefit": 0.008661659175655312,
+    "unshifted_cost": 0.01108805056295592,
+    "spread": 0.019749709738611232
+  },
+  {
+    "replicate": 978,
+    "worst_benefit": 0.02685837162145399,
+    "unshifted_cost": 0.008833426233755937,
+    "spread": 0.03569179785520993
+  },
+  {
+    "replicate": 979,
+    "worst_benefit": 0.025935682570617846,
+    "unshifted_cost": 0.007295716452854428,
+    "spread": 0.033231399023472274
+  },
+  {
+    "replicate": 980,
+    "worst_benefit": 0.039341832215167516,
+    "unshifted_cost": 0.018393806542517543,
+    "spread": 0.05773563875768506
+  },
+  {
+    "replicate": 981,
+    "worst_benefit": 0.023312153976288275,
+    "unshifted_cost": 0.00847148326622238,
+    "spread": 0.031783637242510654
+  },
+  {
+    "replicate": 982,
+    "worst_benefit": 0.022467402507803436,
+    "unshifted_cost": 0.012650565344216935,
+    "spread": 0.03511796785202037
+  },
+  {
+    "replicate": 983,
+    "worst_benefit": 0.013325268142334923,
+    "unshifted_cost": 0.0008394629446867308,
+    "spread": 0.014164731087021654
+  },
+  {
+    "replicate": 984,
+    "worst_benefit": 0.029582590314596646,
+    "unshifted_cost": 0.015040402507973893,
+    "spread": 0.04462299282257054
+  },
+  {
+    "replicate": 985,
+    "worst_benefit": 0.03065313552785942,
+    "unshifted_cost": 0.011330315274782343,
+    "spread": 0.041983450802641764
+  },
+  {
+    "replicate": 986,
+    "worst_benefit": 0.028217575178385856,
+    "unshifted_cost": 0.005922723639555261,
+    "spread": 0.03414029881794112
+  },
+  {
+    "replicate": 987,
+    "worst_benefit": 0.02494940594091688,
+    "unshifted_cost": 0.003747889072618471,
+    "spread": 0.02869729501353535
+  },
+  {
+    "replicate": 988,
+    "worst_benefit": 0.02295328282335518,
+    "unshifted_cost": 0.00575869321932998,
+    "spread": 0.02871197604268516
+  },
+  {
+    "replicate": 989,
+    "worst_benefit": 0.034458291801078955,
+    "unshifted_cost": 0.011076771258121898,
+    "spread": 0.04783569982482305
+  },
+  {
+    "replicate": 990,
+    "worst_benefit": 0.03494709092299286,
+    "unshifted_cost": 0.01116971144858081,
+    "spread": 0.04611680237157367
+  },
+  {
+    "replicate": 991,
+    "worst_benefit": 0.03745251048168219,
+    "unshifted_cost": 0.010447544025033006,
+    "spread": 0.047900054506715195
+  },
+  {
+    "replicate": 992,
+    "worst_benefit": 0.028148785622121864,
+    "unshifted_cost": 0.014289946355538041,
+    "spread": 0.042438731977659905
+  },
+  {
+    "replicate": 993,
+    "worst_benefit": 0.021908225500480993,
+    "unshifted_cost": 0.008006744537014221,
+    "spread": 0.029914970037495214
+  },
+  {
+    "replicate": 994,
+    "worst_benefit": 0.016729681876534452,
+    "unshifted_cost": 0.011356262023336061,
+    "spread": 0.028085943899870514
+  },
+  {
+    "replicate": 995,
+    "worst_benefit": 0.025960118814046917,
+    "unshifted_cost": 0.009161975899555141,
+    "spread": 0.03512209471360206
+  },
+  {
+    "replicate": 996,
+    "worst_benefit": 0.028780908376430436,
+    "unshifted_cost": 0.012875719651597839,
+    "spread": 0.041656628028028275
+  },
+  {
+    "replicate": 997,
+    "worst_benefit": 0.019107517116912387,
+    "unshifted_cost": 0.007729101756011825,
+    "spread": 0.02683661887292421
+  },
+  {
+    "replicate": 998,
+    "worst_benefit": 0.026725201082509975,
+    "unshifted_cost": 0.007946013872894842,
+    "spread": 0.03467121495540482
+  },
+  {
+    "replicate": 999,
+    "worst_benefit": 0.028403733057440594,
+    "unshifted_cost": 0.007313712974402975,
+    "spread": 0.03689927040888907
+  }
+]

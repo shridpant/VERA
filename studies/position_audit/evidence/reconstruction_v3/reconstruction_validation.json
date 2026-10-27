@@ -1,0 +1,14 @@
+{
+  "unmodified_reference_auc": 0.8660712271901675,
+  "frames": 1111808,
+  "label_match": true,
+  "max_abs_score_difference": 0.0,
+  "score_match_1e10": true,
+  "cuda_or_torch_imported": false,
+  "wall_seconds": 22.256851791171357,
+  "gpu_calls": 0,
+  "ratios": [
+    0.15,
+    0.1
+  ]
+}

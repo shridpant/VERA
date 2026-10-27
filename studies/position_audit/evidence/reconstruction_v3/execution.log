@@ -1,0 +1,22 @@
+{"stage": "unmodified_reference_complete", "frames": 1111808, "auc": 0.8660712271901675}
+{"stage": "replay", "ratio": 0.15, "completed": 1, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 31, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 61, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 91, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 121, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 151, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 181, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 211, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 241, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 271, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 1, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 31, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 61, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 91, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 121, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 151, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 181, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 211, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 241, "total": 290}
+{"stage": "replay", "ratio": 0.1, "completed": 271, "total": 290}
+{"unmodified_reference_auc": 0.8660712271901675, "frames": 1111808, "label_match": true, "max_abs_score_difference": 0.0, "score_match_1e10": true, "cuda_or_torch_imported": false, "wall_seconds": 22.256851791171357, "gpu_calls": 0, "ratios": [0.15, 0.1]}
