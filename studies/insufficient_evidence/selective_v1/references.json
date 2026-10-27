@@ -1,0 +1,207 @@
+{
+  "source_sha256": {
+    "UCFCrime_Train.json": "0df6a6e5e1e1b17b87e229edb865c9dea3e23505fd29256a894660687ff4eba2",
+    "UCFCrime_Val.json": "f93720c911d0bfb3e8da168c7da43538227f0edcf90258a407856913fcacf559",
+    "UCFCrime_Test.json": "8912bc02c1871e177ffc7f45ed54395c0e34e1a8007a474b91309ce8a816f981"
+  },
+  "references": {
+    "Explosion013_x264": {
+      "interval": [
+        37.2,
+        52.1
+      ],
+      "reference_sha256": "1475db41b31743a003080f1a0701a508711e890673f1c456c8ffefd87f015cbd",
+      "word_set": [
+        "distance",
+        "drove",
+        "forward",
+        "oil",
+        "reversed",
+        "stopped",
+        "tanker"
+      ],
+      "caption_count": 1
+    },
+    "Arson041_x264": {
+      "interval": [
+        115.0,
+        124.3
+      ],
+      "reference_sha256": "bb5203bdd3589b843ea382497bb3d6593ce8df3eca188089d6a16fa3c5bba447",
+      "word_set": [
+        "corridor",
+        "entire",
+        "exploded",
+        "fire",
+        "flames",
+        "flooded",
+        "gasoline",
+        "left",
+        "lit"
+      ],
+      "caption_count": 1
+    },
+    "Burglary079_x264": {
+      "interval": [
+        163.2,
+        181.1
+      ],
+      "reference_sha256": "3d63d795c43a2c2daa6b58f438830c911bfd689fe93a7687d2ee2420dea2bbc8",
+      "word_set": [
+        "back",
+        "returned",
+        "trunk"
+      ],
+      "caption_count": 1
+    },
+    "RoadAccidents022_x264": {
+      "interval": [
+        0.0,
+        8.3
+      ],
+      "reference_sha256": "89a425e94929f6fea5b7b89a7e4e134b429753d612b996ec6dfffd58916aca60",
+      "word_set": [
+        "accident",
+        "crossing",
+        "hearing",
+        "pedestrians",
+        "road",
+        "sidewalk",
+        "stopped",
+        "walking",
+        "watch"
+      ],
+      "caption_count": 1
+    },
+    "Shooting008_x264": {
+      "interval": [
+        3.4,
+        9.4
+      ],
+      "reference_sha256": "5fd5c90ba3126104e6be0775f684b1f4e276c18fd2e63be64bdbd7310b51726f",
+      "word_set": [
+        "black",
+        "crossed",
+        "down",
+        "fat",
+        "fell",
+        "fence"
+      ],
+      "caption_count": 3
+    },
+    "Vandalism007_x264": {
+      "interval": [
+        2.9,
+        8.4
+      ],
+      "reference_sha256": "34344e862ccb7c32c100d953bfdb28a7445461a726eec53a27e7ade093a9a8ad",
+      "word_set": [
+        "away",
+        "backed",
+        "bag",
+        "black",
+        "car",
+        "carrying",
+        "hat",
+        "mirror",
+        "rearview",
+        "touched"
+      ],
+      "caption_count": 1
+    },
+    "Shoplifting037_x264": {
+      "interval": [
+        26.0,
+        33.7
+      ],
+      "reference_sha256": "595fddd66982d641fa93e2450d826d3821e6a16dc4a9e64b6a4acda668c9f3b0",
+      "word_set": [
+        "boxes",
+        "gave",
+        "hand",
+        "jewelry",
+        "next",
+        "put",
+        "table"
+      ],
+      "caption_count": 1
+    },
+    "Robbery102_x264": {
+      "interval": [
+        44.2,
+        50.8
+      ],
+      "reference_sha256": "6f455ff3cd8f1c812f598c658dbcf584c309d2dcd66b154eaab551507298a5db",
+      "word_set": [
+        "beat",
+        "fell",
+        "grass",
+        "ground",
+        "jumped"
+      ],
+      "caption_count": 1
+    },
+    "Normal_Videos_932_x264": {
+      "interval": [
+        9.8,
+        22.5
+      ],
+      "reference_sha256": "81b687127fae551be4565a749f1005bac4207d4aac99bb7462628a0ad37828b7",
+      "word_set": [
+        "black",
+        "car",
+        "drove",
+        "over",
+        "refuel"
+      ],
+      "caption_count": 1
+    },
+    "Normal_Videos_704_x264": {
+      "interval": [
+        48.8,
+        54.9
+      ],
+      "reference_sha256": "acb36ff114003455a8cd23e973142fea44721b524f15e05d24cfad912815d4d3",
+      "word_set": [
+        "black",
+        "forward",
+        "walks"
+      ],
+      "caption_count": 1
+    },
+    "Normal_Videos_894_x264": {
+      "interval": [
+        8.3,
+        14.3
+      ],
+      "reference_sha256": "e732c164e554feb04e89fd092f18e2975da2fcf7b1ec132b246f99081d9c993e",
+      "word_set": [
+        "another",
+        "come",
+        "entering",
+        "here",
+        "ladies",
+        "store"
+      ],
+      "caption_count": 1
+    },
+    "Normal_Videos_886_x264": {
+      "interval": [
+        69.9,
+        77.4
+      ],
+      "reference_sha256": "5fce7fb8706a687897a7807a6d8d0a01d24f82162507c4ea2dd981f5727bc3e9",
+      "word_set": [
+        "distance",
+        "goods",
+        "high",
+        "low",
+        "move",
+        "places",
+        "workers"
+      ],
+      "caption_count": 1
+    }
+  },
+  "definition": "exact lowercase ASCII content-word set; no entailment"
+}

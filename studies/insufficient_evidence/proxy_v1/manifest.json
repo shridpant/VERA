@@ -1,0 +1,612 @@
+{
+  "scope": "previously consulted UCF test; exploratory prompt comparison only; no learning",
+  "selection": "hash-ranked one per first eight anomaly categories and four normal sources; five-second views; no response selection",
+  "source_hashes": {
+    "UCFCrime_Train.json": "0df6a6e5e1e1b17b87e229edb865c9dea3e23505fd29256a894660687ff4eba2",
+    "UCFCrime_Val.json": "f93720c911d0bfb3e8da168c7da43538227f0edcf90258a407856913fcacf559",
+    "UCFCrime_Test.json": "8912bc02c1871e177ffc7f45ed54395c0e34e1a8007a474b91309ce8a816f981"
+  },
+  "prior_inputs_sha256": "70bb5630d69cc40f630d129f8b2e4fab688a8580694253b054e44b455a8bb6fe",
+  "videos": [
+    {
+      "video_id": "Explosion013_x264",
+      "category": "Explosion",
+      "annotation_duration_seconds": 110.57,
+      "expected_video_sha256": "605ebd415c98fcc480e1eb98ae7a0635672ce0153c3082818fb1feb808dece83",
+      "manifest_entry": "frames/Explosion/Explosion013_x264.mp4",
+      "manifest_length": 3317,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            37.2,
+            52.1
+          ],
+          "interval_seconds": [
+            42.150000000000006,
+            47.150000000000006
+          ],
+          "sample_seconds": [
+            42.462500000000006,
+            43.087500000000006,
+            43.712500000000006,
+            44.337500000000006,
+            44.962500000000006,
+            45.587500000000006,
+            46.212500000000006,
+            46.837500000000006
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            74.8,
+            84.7
+          ],
+          "interval_seconds": [
+            77.25,
+            82.25
+          ],
+          "sample_seconds": [
+            77.5625,
+            78.1875,
+            78.8125,
+            79.4375,
+            80.0625,
+            80.6875,
+            81.3125,
+            81.9375
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Arson041_x264",
+      "category": "Arson",
+      "annotation_duration_seconds": 125.23,
+      "expected_video_sha256": "65bfe9536f8afda887d22f92657c4b2c78e4d9f5c375527c78cf54552ba38875",
+      "manifest_entry": "frames/Arson/Arson041_x264.mp4",
+      "manifest_length": 3754,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            115.0,
+            124.3
+          ],
+          "interval_seconds": [
+            117.15,
+            122.15
+          ],
+          "sample_seconds": [
+            117.4625,
+            118.0875,
+            118.7125,
+            119.3375,
+            119.9625,
+            120.5875,
+            121.2125,
+            121.8375
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            100.4,
+            115.0
+          ],
+          "interval_seconds": [
+            105.2,
+            110.2
+          ],
+          "sample_seconds": [
+            105.5125,
+            106.1375,
+            106.7625,
+            107.3875,
+            108.0125,
+            108.6375,
+            109.2625,
+            109.8875
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Burglary079_x264",
+      "category": "Burglary",
+      "annotation_duration_seconds": 495.13,
+      "expected_video_sha256": "553940a4711fdf08ef089e3792fcb289628e7ea83f6f43f612e3867c234fe38b",
+      "manifest_entry": "frames/Burglary/Burglary079_x264.mp4",
+      "manifest_length": 14853,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            163.2,
+            181.1
+          ],
+          "interval_seconds": [
+            169.64999999999998,
+            174.64999999999998
+          ],
+          "sample_seconds": [
+            169.96249999999998,
+            170.58749999999998,
+            171.21249999999998,
+            171.83749999999998,
+            172.46249999999998,
+            173.08749999999998,
+            173.71249999999998,
+            174.33749999999998
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            458.6,
+            495.13
+          ],
+          "interval_seconds": [
+            474.365,
+            479.365
+          ],
+          "sample_seconds": [
+            474.6775,
+            475.3025,
+            475.9275,
+            476.5525,
+            477.1775,
+            477.8025,
+            478.4275,
+            479.0525
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "RoadAccidents022_x264",
+      "category": "RoadAccidents",
+      "annotation_duration_seconds": 23.87,
+      "expected_video_sha256": "8a74de206c37c080a17bffbb449226bcd2184836350a685909d13c6dbb3611b2",
+      "manifest_entry": "frames/RoadAccidents/RoadAccidents022_x264.mp4",
+      "manifest_length": 716,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            0.0,
+            8.3
+          ],
+          "interval_seconds": [
+            1.6500000000000004,
+            6.65
+          ],
+          "sample_seconds": [
+            1.9625000000000004,
+            2.5875000000000004,
+            3.2125000000000004,
+            3.8375000000000004,
+            4.4625,
+            5.0875,
+            5.7125,
+            6.3375
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            12.3,
+            23.87
+          ],
+          "interval_seconds": [
+            15.585,
+            20.585
+          ],
+          "sample_seconds": [
+            15.8975,
+            16.5225,
+            17.1475,
+            17.7725,
+            18.3975,
+            19.0225,
+            19.6475,
+            20.2725
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Shooting008_x264",
+      "category": "Shooting",
+      "annotation_duration_seconds": 54.17,
+      "expected_video_sha256": "2bdd669a23b042e6657a268e12418d30a1327da582dcdb770256ba789e89fee6",
+      "manifest_entry": "frames/Shooting/Shooting008_x264.mp4",
+      "manifest_length": 1625,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            3.4,
+            9.4
+          ],
+          "interval_seconds": [
+            3.9000000000000004,
+            8.9
+          ],
+          "sample_seconds": [
+            4.2125,
+            4.8375,
+            5.4625,
+            6.0875,
+            6.7125,
+            7.3375,
+            7.9625,
+            8.5875
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            29.2,
+            54.17
+          ],
+          "interval_seconds": [
+            39.185,
+            44.185
+          ],
+          "sample_seconds": [
+            39.4975,
+            40.1225,
+            40.7475,
+            41.3725,
+            41.9975,
+            42.6225,
+            43.2475,
+            43.8725
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Vandalism007_x264",
+      "category": "Vandalism",
+      "annotation_duration_seconds": 38.24,
+      "expected_video_sha256": "940dda770f987fdd41c6c96f22abd5db8034a0bcdf578c3a772bdbcb129d0c4f",
+      "manifest_entry": "frames/Vandalism/Vandalism007_x264.mp4",
+      "manifest_length": 1146,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            2.9,
+            8.4
+          ],
+          "interval_seconds": [
+            3.1500000000000004,
+            8.15
+          ],
+          "sample_seconds": [
+            3.4625000000000004,
+            4.0875,
+            4.7125,
+            5.3375,
+            5.9625,
+            6.5875,
+            7.2125,
+            7.8375
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            30.6,
+            38.24
+          ],
+          "interval_seconds": [
+            31.92,
+            36.92
+          ],
+          "sample_seconds": [
+            32.2325,
+            32.8575,
+            33.4825,
+            34.1075,
+            34.7325,
+            35.3575,
+            35.9825,
+            36.6075
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Shoplifting037_x264",
+      "category": "Shoplifting",
+      "annotation_duration_seconds": 46.22,
+      "expected_video_sha256": "0a5611581cb60f684287443c283606381bc7e997dc3a865ed786664efc17bd9a",
+      "manifest_entry": "frames/Shoplifting/Shoplifting037_x264.mp4",
+      "manifest_length": 1386,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            26.0,
+            33.7
+          ],
+          "interval_seconds": [
+            27.35,
+            32.35
+          ],
+          "sample_seconds": [
+            27.6625,
+            28.2875,
+            28.9125,
+            29.5375,
+            30.1625,
+            30.7875,
+            31.4125,
+            32.0375
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            14.6,
+            21.0
+          ],
+          "interval_seconds": [
+            15.3,
+            20.3
+          ],
+          "sample_seconds": [
+            15.6125,
+            16.2375,
+            16.8625,
+            17.4875,
+            18.1125,
+            18.7375,
+            19.3625,
+            19.9875
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Robbery102_x264",
+      "category": "Robbery",
+      "annotation_duration_seconds": 60.98,
+      "expected_video_sha256": "9d10d2155478859668f9aec008e9c107e566011202c247da889b4b423e6713a7",
+      "manifest_entry": "frames/Robbery/Robbery102_x264.mp4",
+      "manifest_length": 1827,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            44.2,
+            50.8
+          ],
+          "interval_seconds": [
+            45.0,
+            50.0
+          ],
+          "sample_seconds": [
+            45.3125,
+            45.9375,
+            46.5625,
+            47.1875,
+            47.8125,
+            48.4375,
+            49.0625,
+            49.6875
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            0,
+            9.4
+          ],
+          "interval_seconds": [
+            2.2,
+            7.2
+          ],
+          "sample_seconds": [
+            2.5125,
+            3.1375,
+            3.7625,
+            4.3875,
+            5.0125,
+            5.6375,
+            6.2625,
+            6.8875
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Normal_Videos_932_x264",
+      "category": "Normal",
+      "annotation_duration_seconds": 59.51,
+      "expected_video_sha256": "fc35aae9e98248a2512c6290adf89e9093f43cab5804dc1cd2c89e1ee0671876",
+      "manifest_entry": "frames/Normal/Normal_Videos_932_x264.mp4",
+      "manifest_length": 1784,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            9.8,
+            22.5
+          ],
+          "interval_seconds": [
+            13.649999999999999,
+            18.65
+          ],
+          "sample_seconds": [
+            13.962499999999999,
+            14.587499999999999,
+            15.212499999999999,
+            15.837499999999999,
+            16.4625,
+            17.0875,
+            17.7125,
+            18.3375
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            22.5,
+            40.5
+          ],
+          "interval_seconds": [
+            29.0,
+            34.0
+          ],
+          "sample_seconds": [
+            29.3125,
+            29.9375,
+            30.5625,
+            31.1875,
+            31.8125,
+            32.4375,
+            33.0625,
+            33.6875
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Normal_Videos_704_x264",
+      "category": "Normal",
+      "annotation_duration_seconds": 56.48,
+      "expected_video_sha256": "38198d5854e7a60119721250ede87d3ef5ee47ac20ec3325494602c4b201022f",
+      "manifest_entry": "frames/Normal/Normal_Videos_704_x264.mp4",
+      "manifest_length": 1694,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            48.8,
+            54.9
+          ],
+          "interval_seconds": [
+            49.349999999999994,
+            54.349999999999994
+          ],
+          "sample_seconds": [
+            49.662499999999994,
+            50.287499999999994,
+            50.912499999999994,
+            51.537499999999994,
+            52.162499999999994,
+            52.787499999999994,
+            53.412499999999994,
+            54.037499999999994
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            8.3,
+            28.0
+          ],
+          "interval_seconds": [
+            15.649999999999999,
+            20.65
+          ],
+          "sample_seconds": [
+            15.962499999999999,
+            16.5875,
+            17.2125,
+            17.8375,
+            18.4625,
+            19.0875,
+            19.7125,
+            20.3375
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Normal_Videos_894_x264",
+      "category": "Normal",
+      "annotation_duration_seconds": 85.87,
+      "expected_video_sha256": "3a2c91e7a775f25e4e408c9dc9a418b21dff79ea0213f224559895912531380b",
+      "manifest_entry": "frames/Normal/Normal_Videos_894_x264.mp4",
+      "manifest_length": 2575,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            8.3,
+            14.3
+          ],
+          "interval_seconds": [
+            8.8,
+            13.8
+          ],
+          "sample_seconds": [
+            9.1125,
+            9.7375,
+            10.3625,
+            10.9875,
+            11.6125,
+            12.2375,
+            12.8625,
+            13.4875
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            24.5,
+            33.3
+          ],
+          "interval_seconds": [
+            26.4,
+            31.4
+          ],
+          "sample_seconds": [
+            26.7125,
+            27.3375,
+            27.9625,
+            28.5875,
+            29.2125,
+            29.8375,
+            30.4625,
+            31.0875
+          ]
+        }
+      }
+    },
+    {
+      "video_id": "Normal_Videos_886_x264",
+      "category": "Normal",
+      "annotation_duration_seconds": 91.6,
+      "expected_video_sha256": "36643dbaeb3ede74b1ca1451ed97d362fd4e4f8cddb568d3a5fd87b731c654a8",
+      "manifest_entry": "frames/Normal/Normal_Videos_886_x264.mp4",
+      "manifest_length": 2747,
+      "views": {
+        "annotated": {
+          "container_seconds": [
+            69.9,
+            77.4
+          ],
+          "interval_seconds": [
+            71.15,
+            76.15
+          ],
+          "sample_seconds": [
+            71.4625,
+            72.0875,
+            72.7125,
+            73.3375,
+            73.9625,
+            74.5875,
+            75.2125,
+            75.8375
+          ]
+        },
+        "gap": {
+          "container_seconds": [
+            77.4,
+            91.6
+          ],
+          "interval_seconds": [
+            82.0,
+            87.0
+          ],
+          "sample_seconds": [
+            82.3125,
+            82.9375,
+            83.5625,
+            84.1875,
+            84.8125,
+            85.4375,
+            86.0625,
+            86.6875
+          ]
+        }
+      }
+    }
+  ]
+}

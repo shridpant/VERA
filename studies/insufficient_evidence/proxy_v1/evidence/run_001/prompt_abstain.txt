@@ -1,0 +1,28 @@
+You are the model.
+** Model Description: **
+Assess the supplied video frames. Output 1 when the frames support an anomaly, 0 when they support a normal scene, or 2 when the supplied visual evidence is insufficient to decide. Missing evidence is not evidence of normality. Do not assume unseen events, sounds, intent or causes. Please answer the prompt questions.
+** Prompt Questions: **
+Answer the following questions based on what you see from the video frames and provide an explanation in one sentence. 
+1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?
+2. Are there any vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?
+3. Are there any objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?
+4. Is there any visible damage or unusual movement in the video that indicates an anomaly?
+5. Are there any unusual sounds or noises in the video that suggest an anomaly?
+Based only on the supplied visual evidence, conclude with 0 (normal), 1 (anomaly), or 2 (insufficient evidence). If evidence does not resolve the question, explicitly state the uncertainty rather than guessing.
+** Input: **
+[Frame1: <image>
+Frame2: <image>
+Frame3: <image>
+Frame4: <image>
+Frame5: <image>
+Frame6: <image>
+Frame7: <image>
+Frame8: <image>
+]
+Please give your output strictly in the following format:
+```
+Answers to Prompt Questions: [Provide your analysis by answering the questions listed in Prompt Questions.]
+Output:
+[ONLY one integer: 0, 1, or 2; do not make assumptions to fill missing evidence]
+```
+Please ONLY reply according to this format, don't give me any other words.

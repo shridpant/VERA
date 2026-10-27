@@ -1,0 +1,28 @@
+{
+  "start_unix": 1793117933.4307947,
+  "runner_sha256": "1c3c4755d7216f7ca40f01fc40a38b4de4bb7e3c96af548b97cea66537a61031",
+  "inputs_sha256": "73fcb3ed8bc850a8c1b3595885ec7de27a4e42a702f5af7a5fcb78c0766e23c9",
+  "gpu_uuid": "GPU-b6901777-c94c-e9ac-b295-041178270888",
+  "dependency_sha256": {
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/full_v1/frozen/config.json": "5a3e6eec3d42af76ca6685c2b8856b288b10a3c9cf62fabaa42c43b3f8acfe29",
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment02/code/engine.py": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment02/code/attr_lib.py": "7acf4acfc7f11b10bd8483efd97a5a981c4a33574f3af3d0fdbc1a7bffe371fb",
+    "/home/stu11/s5/sp2117/vera_research/setup/source/VERA/generate_initial_score.py": "8447432b69909f3b1c7788c23679c42e7299ca423c29bd21bca27c8b85859224",
+    "/home/stu11/s5/sp2117/vera_research/setup/source/VERA/VERA_learner_instruct.txt": "b03933522e8f4468b50a190012ca28443fb73257b7842bca7f98cf9a7339527c"
+  },
+  "model": {
+    "repo": "OpenGVLab/InternVL2-8B",
+    "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "local_dir": "shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+    "dtype": "bfloat16",
+    "use_flash_attn": true
+  },
+  "generation": {
+    "num_beams": 1,
+    "max_new_tokens": 1024,
+    "do_sample": false
+  },
+  "call_limit": 48,
+  "seconds_limit": 3600,
+  "scope": "previously consulted UCFtest exploratory proxy; no optimization"
+}

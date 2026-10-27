@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,tabularx,longtable,hyperref,graphicx}
+\title{Original VERA: Training-Free Evidence Experiments}
+\author{Research update for Shrid Pant}\date{October 27, 2026}
+\begin{document}\maketitle
+\textbf{Current status:} The 48-call abstention pilot and 72-call selective-explanation comparison are complete. One documented repair stopped after six calls. Neither study demonstrates better accuracy or a novel method. No model weights or question wording were trained. Further GPU compute in this prompt direction is stopped.
+
+\input{selective_v1/results.tex}
+\input{selective_v1/methods.tex}
+
+\section{Amendment: no new human annotation for proxy feasibility}
+This amendment supersedes the reviewer prerequisite below for a limited proxy study; the calibration packet remains preserved. Existing UCA captions and timestamps may define annotation-included versus annotation-excluded inputs, but excluding an interval does not prove visual evidence is absent.
+
+Our reproducible metadata audit found UCA references for 1,412 VERA training and 156 validation videos. Of these, 992 training and 105 validation videos contain both an annotated interval and an unannotated gap at least two seconds long. These are construction-feasibility counts, not sufficient/insufficient truth labels. No new images or predictions were used by the audit.
+
+Before inference, freeze matched-duration/frame-count construction and a measurable proxy endpoint. Report response changes and abstention by annotation condition, not hallucination rates. The 192-call/one-GPU-hour cap remains; no learned-question run is yet justified. The historical human-review design below is optional for stronger later validation.
+
+
+\section{Completed bounded proxy pilot: original versus manual abstention}
+Protocol and source selection were frozen and pushed at commit \texttt{122d6c3} before inference. Twelve previously consulted UCF test videos cover eight anomaly categories plus four normal sources; this is exploratory response-behavior analysis, not untouched evaluation or question learning. Each source supplies two five-second, eight-frame inputs, centered inside a UCA annotation and an unannotated gap. No timestamps or captions are given to the model. Gaps are not verified absent-event or insufficient-evidence labels.
+
+Original VERA uses its unchanged binary instruction and guiding questions. The manual variant retains its frozen model and guiding questions but replaces forced binary decisions/assumptions with a three-way 0/1/2 contract, where 2 denotes insufficient evidence. This changes the output task; original VERA's zero abstention is structural. Both variants receive the same processed tensors. The custom strict parser prevents original VERA's upstream binary parser from misreading 2 as 1; raw upstream readings remain preserved.
+
+\begin{center}\input{proxy_v1/figures/proxy_table.tex}\end{center}
+\begin{figure}[ht]\centering\includegraphics[width=\linewidth]{proxy_v1/figures/proxy_responses.pdf}
+\caption{Observed output categories, not correctness. Every bar represents the same twelve sources.}
+\end{figure}
+
+The manual prompt abstains on five gap views and one annotated view, a paired count difference of four. It retains six of seven original alerts on annotated views; Arson041 becomes insufficient in both views. All four normal-source annotated views remain normal, as do their gap views under the manual prompt. Original gap alerts decrease from five to one, but this is not a false-positive reduction claim. An unannotated gap may still contain an anomaly.
+
+All 48 calls completed in 130.88 seconds (0.0364 allocated GPU-hours); generation consumed 116.39 seconds. There were zero invalid or capped responses. All 24 paired tensor checks and source-hash/duration checks passed. The 192 sampled frame slots have no near-black means below 2/255 and no repeated JPEG hashes within an input. Nine transferred artifacts matched remote SHA256. Dependencies were unchanged; no A16s or Adas6/7 were used.
+
+\textbf{Decision: no learned-question extension.} A simple instruction already produces a nontrivial response shift. The proxy cannot tell whether changed decisions are justified, so optimizing its abstention difference would risk learning annotation conventions or blanket reluctance. Neither a failure demanding learned questions nor a novel mechanism has been established. Preserve the remaining budget rather than spending it automatically. A subsequent learning study needs an independently defensible target, separate original-VERA training sources, and an explicit amendment. This completed pilot answers an engineering question; it does not establish a publishable method.
+
+\begin{center}\small\input{proxy_v1/figures/per_source.tex}\end{center}
+Codes: 0 normal, 1 alert, 2 insufficient. Ann. denotes annotation-included input.
+
+\section{Closest prior work}
+\begin{tabularx}{\linewidth}{lX}\toprule Work&Overlap\\\midrule
+VirtueBench&Sampled frames can omit decisive evidence; answerability and refusal are evaluated.\\
+Have I Seen Enough?&Frozen-model readiness readouts and answer gating, distinguished from confidence.\\
+MM-AQA&Multimodal evidence sufficiency and accuracy--abstention tradeoffs.\\
+VERA / LRPO&Learned questions and linguistic feedback already exist.\\\bottomrule\end{tabularx}
+The broad recommendation of insufficient-evidence detection was too broad. The narrower candidate is selective explanation: retain a supported coarse anomaly alert while withholding unsupported specific event or causal claims. This remains a hypothesis, requiring comparison against manual abstention and readiness/confidence controls.
+\section{Human annotation pilot}
+Eight already-consulted UCF sources yield sixteen input views: original eight frames and one frame repeated eight times. Four fixed questions per view concern collision, fire, physical aggression and falling. Neither condition is automatically labelled sufficient or insufficient. All 64 source JPEG hashes were checked. Sheets follow the pinned RGB 448-pixel preprocessing and are blinded to source category and model output. Repetition is visible, so condition blinding is incomplete.
+
+\begin{tabularx}{\linewidth}{lX}\toprule Label&Required judgment\\\midrule
+Supported&Direct visual evidence; cite frame slots.\\
+Contradicted&Direct evidence rules out the proposition; absence alone is insufficient.\\
+Insufficient&Available evidence cannot establish or rule out the proposition.\\
+Ambiguous question&Scope or definition prevents a reliable judgment.\\\bottomrule\end{tabularx}
+
+Two reviewers independently complete 64 judgments each. Estimated effort is 43--96 person-minutes plus 20--40 minutes adjudication; these are planning estimates, not measured time. Preserve both initial labels, report confusion and raw agreement, then adjudicate. A provisional 80\% agreement gate is a design choice, not a statistical guarantee. One reviewer supports sanity calibration only. No human labels have been received.
+\section{Bounded model pilot, conditional}
+After annotation feasibility and narrower novelty review, use separate original-VERA training/development sources, never these consulted calibration videos. Proposed bound: 12 learning and 12 development sources, two views, three prompt conditions; at most 144 evaluation plus 48 optimizer/selection calls, one GPU-hour, one available Ada. All retries count. Keep a separate evaluation set sealed until selection ends. Source/scene checks and actual frame acquisition remain pending.
+
+Compare unchanged VERA, manual selective-explanation prompting and learned questions; include all-abstain and matched-budget controls. Measure unsupported assertions jointly with useful explanation coverage, supported alert retention and over-abstention. Extra human supervision must be disclosed. Stop if manual controls explain gains or labels are unreliable.
+\section{Deliverables and status}
+Local blinded packet: outputs/insufficient-evidence-annotation/index.html; separate blank reviewer CSVs and rubric. Images stay local. Code and protocol are versioned on research/vera-insufficient-evidence. The completed 48-call proxy study is reported above. No training or human-validation results are claimed. Human review remains optional for a stronger future study.
+\section{Sources}
+\url{https://arxiv.org/html/2603.07071v1} (method inspected); \url{https://danbenami.github.io/have-i-seen-enough/} (author method page inspected); \url{https://arxiv.org/abs/2604.14799} (abstract inspected). Review is targeted, not exhaustive.
+\end{document}

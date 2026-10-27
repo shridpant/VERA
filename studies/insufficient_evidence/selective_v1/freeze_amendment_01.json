@@ -1,0 +1,8 @@
+{
+  "amendment": "9e20e280cfd913275fc64d681dedfe3267c0438409afa03d480a9ffa204b0e46",
+  "runner": "3736305c22a11dc87e24d30dbbfe5f26bd3f61ef472599147836db897f34b55d",
+  "prior_frozen_analysis": "76154de9b0c298e753dcef2d9fe537cbd9a3b0a20f204d57f5aefe228f609dfb",
+  "inputs_sha256": "73fcb3ed8bc850a8c1b3595885ec7de27a4e42a702f5af7a5fcb78c0766e23c9",
+  "total_call_limit": 192,
+  "new_calls": 72
+}

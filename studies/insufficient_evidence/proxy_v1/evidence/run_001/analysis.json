@@ -1,0 +1,138 @@
+{
+  "complete": true,
+  "counts": {
+    "original_annotated": {
+      "n": 12,
+      "normal": 5,
+      "alert": 7,
+      "insufficient": 0,
+      "invalid": 0,
+      "at_cap": 0
+    },
+    "original_gap": {
+      "n": 12,
+      "normal": 7,
+      "alert": 5,
+      "insufficient": 0,
+      "invalid": 0,
+      "at_cap": 0
+    },
+    "abstain_annotated": {
+      "n": 12,
+      "normal": 5,
+      "alert": 6,
+      "insufficient": 1,
+      "invalid": 0,
+      "at_cap": 0
+    },
+    "abstain_gap": {
+      "n": 12,
+      "normal": 6,
+      "alert": 1,
+      "insufficient": 5,
+      "invalid": 0,
+      "at_cap": 0
+    }
+  },
+  "per_video": {
+    "Explosion013_x264": {
+      "original_annotated": 1,
+      "abstain_annotated": 1,
+      "original_gap": 0,
+      "abstain_gap": 0
+    },
+    "Arson041_x264": {
+      "abstain_gap": 2,
+      "original_gap": 1,
+      "abstain_annotated": 2,
+      "original_annotated": 1
+    },
+    "Burglary079_x264": {
+      "original_annotated": 0,
+      "abstain_annotated": 0,
+      "original_gap": 0,
+      "abstain_gap": 2
+    },
+    "RoadAccidents022_x264": {
+      "abstain_gap": 2,
+      "original_gap": 1,
+      "abstain_annotated": 1,
+      "original_annotated": 1
+    },
+    "Shooting008_x264": {
+      "original_annotated": 1,
+      "abstain_annotated": 1,
+      "original_gap": 0,
+      "abstain_gap": 2
+    },
+    "Vandalism007_x264": {
+      "abstain_gap": 0,
+      "original_gap": 1,
+      "abstain_annotated": 1,
+      "original_annotated": 1
+    },
+    "Shoplifting037_x264": {
+      "original_annotated": 1,
+      "abstain_annotated": 1,
+      "original_gap": 1,
+      "abstain_gap": 1
+    },
+    "Robbery102_x264": {
+      "abstain_gap": 2,
+      "original_gap": 0,
+      "abstain_annotated": 1,
+      "original_annotated": 1
+    },
+    "Normal_Videos_932_x264": {
+      "original_annotated": 0,
+      "abstain_annotated": 0,
+      "original_gap": 0,
+      "abstain_gap": 0
+    },
+    "Normal_Videos_704_x264": {
+      "abstain_gap": 0,
+      "original_gap": 0,
+      "abstain_annotated": 0,
+      "original_annotated": 0
+    },
+    "Normal_Videos_894_x264": {
+      "original_annotated": 0,
+      "abstain_annotated": 0,
+      "original_gap": 1,
+      "abstain_gap": 0
+    },
+    "Normal_Videos_886_x264": {
+      "abstain_gap": 0,
+      "original_gap": 0,
+      "abstain_annotated": 0,
+      "original_annotated": 0
+    }
+  },
+  "call_count": 48,
+  "generation_seconds": 116.391,
+  "warning": "Annotation coverage proxy only. Insufficient outputs are not verified correct; binary original cannot abstain.",
+  "gap_minus_annotated_abstentions": 4,
+  "completion": {
+    "calls": 48,
+    "wall_seconds": 130.87612318992615,
+    "generation_seconds": 116.39100000000002,
+    "engine": {
+      "model_load_s": 4.7,
+      "attention": {
+        "vision_use_flash_attn": true,
+        "llm_attn_implementation": "flash_attention_2",
+        "llm_attention_class": "InternLM2FlashAttention2"
+      },
+      "counts": {
+        "generation_calls": 48,
+        "score_calls": 0,
+        "alignment_score_forwards": 0,
+        "alignment_generate_calls": 0,
+        "gradient_calls": 0
+      },
+      "candidates": null
+    },
+    "dependencies_unchanged": true,
+    "paired_tensor_checks": 24
+  }
+}

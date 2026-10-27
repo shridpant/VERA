@@ -1,0 +1,49 @@
+{
+  "matched": 8,
+  "files": [
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/completion.json",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/completion.json",
+      "sha256": "9c7837c049fd450139a3f58d71bba41895f5fda452206b5e50e0bb02db442744"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/eval_manifest.json",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/eval_manifest.json",
+      "sha256": "60b474efdddf1355f8f821fd0bc5ebfa93af9716a62c72daeabf74ca522ea734"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/prompt_cited.txt",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/prompt_cited.txt",
+      "sha256": "b4c97926e499a1591ff8654e8712bf9f6ac05c7da2afd882aaa432921714e794"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/prompt_manual.txt",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/prompt_manual.txt",
+      "sha256": "db70521b3b4dcef989f5e0348fb10eb72d77d9aa1a1d9d35675ecd17de8484bd"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/prompt_original.txt",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/prompt_original.txt",
+      "sha256": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/provenance.json",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/provenance.json",
+      "sha256": "d6adfbd625093ea0e852c7b966c523c908f495641c9810e9964d96217148ed5d"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001/results.jsonl",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001/results.jsonl",
+      "sha256": "f0af8f9330d318ea1614860d3aed61f3d065b039d08c251f6377f9019962c8b9"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_001.log",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_001.log",
+      "sha256": "8f6cb001423670826d07c07d940ed5074d9c6cdc963c603dd3fae0ef3123d35a"
+    }
+  ],
+  "gpu_release_snapshot": [
+    "memory.used [MiB], utilization.gpu [%]",
+    "2 MiB, 0 %"
+  ]
+}

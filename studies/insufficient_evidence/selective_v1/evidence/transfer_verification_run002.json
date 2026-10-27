@@ -1,0 +1,48 @@
+{
+  "matched": 7,
+  "files": [
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002/eval_manifest.json",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002/eval_manifest.json",
+      "sha256": "60b474efdddf1355f8f821fd0bc5ebfa93af9716a62c72daeabf74ca522ea734"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002/prompt_cited.txt",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002/prompt_cited.txt",
+      "sha256": "416191e14e0ce9295f0cc7d5bd73b77c6d114123928d312a7d86cb8f24a34f54"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002/prompt_manual.txt",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002/prompt_manual.txt",
+      "sha256": "634691f91825077a04781e3576e4f32f07281fdccfadc3e1fb8612d6d1049ee6"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002/prompt_original.txt",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002/prompt_original.txt",
+      "sha256": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002/provenance.json",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002/provenance.json",
+      "sha256": "2963f257dfdd3c46fcce35d8c1934c4304eab44227c68a84ff4bb3e15c0496a5"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002/results.jsonl",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002/results.jsonl",
+      "sha256": "8be07c2ec95d0283b46bae653da52a8e299d7d2f7d5a60e6fd27d8002e7fc86a"
+    },
+    {
+      "remote": "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_002.log",
+      "local": "VERA-insufficient-evidence/studies/insufficient_evidence/selective_v1/evidence/run_002.log",
+      "sha256": "ccb39ae80e14abfb0b457ef31e0e68e03bb7a0a2a6cc8b35464351c3afe065c6"
+    }
+  ],
+  "log_end_unix_seconds": 1793122337,
+  "timestamp_resolution_seconds": 1,
+  "gpu_release": [
+    "memory.used [MiB], utilization.gpu [%]",
+    "2 MiB, 0 %"
+  ],
+  "warning": "No completion record exists. File mtime difference is smaller than recorded generation time and cannot estimate allocated elapsed time reliably.",
+  "log_mtime_minus_start_seconds": 6.284270524978638
+}

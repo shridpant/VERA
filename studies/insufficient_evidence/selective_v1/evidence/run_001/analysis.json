@@ -1,0 +1,444 @@
+{
+  "conditions": {
+    "original": {
+      "n": 24,
+      "alerts": 12,
+      "alerts_by_view": {
+        "annotated": 7,
+        "gap": 5
+      },
+      "binary_agreement_with_original": 24,
+      "retained_original_alerts": 12,
+      "original_alert_count": 12,
+      "invalid_binary": 0,
+      "at_token_cap": 0,
+      "valid_explanation_schema": null,
+      "nonempty_unresolved": null,
+      "alert_and_unresolved": null,
+      "observation_count": null,
+      "observations_with_legal_nonempty_citations": null,
+      "positive_reference_word_recall_mean": 0.021164021164021163,
+      "lexical_details": [
+        {
+          "case_id": "Explosion013_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Arson041_x264|annotated",
+          "matched_words": [
+            "fire"
+          ],
+          "target_word_count": 9,
+          "recall": 0.1111111111111111
+        },
+        {
+          "case_id": "Burglary079_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 3,
+          "recall": 0.0
+        },
+        {
+          "case_id": "RoadAccidents022_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 9,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Shooting008_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 6,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Vandalism007_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 10,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Shoplifting037_x264|annotated",
+          "matched_words": [
+            "table"
+          ],
+          "target_word_count": 7,
+          "recall": 0.14285714285714285
+        },
+        {
+          "case_id": "Robbery102_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 5,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_932_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 5,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_704_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 3,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_894_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 6,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_886_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        }
+      ],
+      "generation_seconds": 49.321
+    },
+    "manual": {
+      "n": 24,
+      "alerts": 5,
+      "alerts_by_view": {
+        "annotated": 4,
+        "gap": 1
+      },
+      "binary_agreement_with_original": 17,
+      "retained_original_alerts": 5,
+      "original_alert_count": 12,
+      "invalid_binary": 0,
+      "at_token_cap": 0,
+      "valid_explanation_schema": 18,
+      "nonempty_unresolved": 0,
+      "alert_and_unresolved": 0,
+      "observation_count": 0,
+      "observations_with_legal_nonempty_citations": 0,
+      "positive_reference_word_recall_mean": 0.0,
+      "lexical_details": [
+        {
+          "case_id": "Explosion013_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Arson041_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 9,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Burglary079_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 3,
+          "recall": 0.0
+        },
+        {
+          "case_id": "RoadAccidents022_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 9,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Shooting008_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 6,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Vandalism007_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 10,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Shoplifting037_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Robbery102_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 5,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_932_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 5,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_704_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 3,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_894_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 6,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_886_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        }
+      ],
+      "generation_seconds": 65.031
+    },
+    "cited": {
+      "n": 24,
+      "alerts": 5,
+      "alerts_by_view": {
+        "annotated": 4,
+        "gap": 1
+      },
+      "binary_agreement_with_original": 17,
+      "retained_original_alerts": 5,
+      "original_alert_count": 12,
+      "invalid_binary": 0,
+      "at_token_cap": 0,
+      "valid_explanation_schema": 22,
+      "nonempty_unresolved": 1,
+      "alert_and_unresolved": 1,
+      "observation_count": 5,
+      "observations_with_legal_nonempty_citations": 5,
+      "positive_reference_word_recall_mean": 0.0,
+      "lexical_details": [
+        {
+          "case_id": "Explosion013_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Arson041_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 9,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Burglary079_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 3,
+          "recall": 0.0
+        },
+        {
+          "case_id": "RoadAccidents022_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 9,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Shooting008_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 6,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Vandalism007_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 10,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Shoplifting037_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Robbery102_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 5,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_932_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 5,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_704_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 3,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_894_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 6,
+          "recall": 0.0
+        },
+        {
+          "case_id": "Normal_Videos_886_x264|annotated",
+          "matched_words": [],
+          "target_word_count": 7,
+          "recall": 0.0
+        }
+      ],
+      "generation_seconds": 59.27
+    }
+  },
+  "all_cases": {
+    "Explosion013_x264|annotated": {
+      "original": 1,
+      "manual": 0,
+      "cited": 0
+    },
+    "Explosion013_x264|gap": {
+      "original": 0,
+      "manual": 0,
+      "cited": 0
+    },
+    "Arson041_x264|gap": {
+      "manual": 1,
+      "cited": 1,
+      "original": 1
+    },
+    "Arson041_x264|annotated": {
+      "manual": 1,
+      "cited": 1,
+      "original": 1
+    },
+    "Burglary079_x264|annotated": {
+      "cited": 0,
+      "original": 0,
+      "manual": 0
+    },
+    "Burglary079_x264|gap": {
+      "cited": 0,
+      "original": 0,
+      "manual": 0
+    },
+    "RoadAccidents022_x264|gap": {
+      "original": 1,
+      "manual": 0,
+      "cited": 0
+    },
+    "RoadAccidents022_x264|annotated": {
+      "original": 1,
+      "manual": 1,
+      "cited": 1
+    },
+    "Shooting008_x264|annotated": {
+      "manual": 0,
+      "cited": 0,
+      "original": 1
+    },
+    "Shooting008_x264|gap": {
+      "manual": 0,
+      "cited": 0,
+      "original": 0
+    },
+    "Vandalism007_x264|gap": {
+      "cited": 0,
+      "original": 1,
+      "manual": 0
+    },
+    "Vandalism007_x264|annotated": {
+      "cited": 1,
+      "original": 1,
+      "manual": 1
+    },
+    "Shoplifting037_x264|annotated": {
+      "original": 1,
+      "manual": 0,
+      "cited": 0
+    },
+    "Shoplifting037_x264|gap": {
+      "original": 1,
+      "manual": 0,
+      "cited": 0
+    },
+    "Robbery102_x264|gap": {
+      "manual": 0,
+      "cited": 0,
+      "original": 0
+    },
+    "Robbery102_x264|annotated": {
+      "manual": 1,
+      "cited": 1,
+      "original": 1
+    },
+    "Normal_Videos_932_x264|annotated": {
+      "cited": 0,
+      "original": 0,
+      "manual": 0
+    },
+    "Normal_Videos_932_x264|gap": {
+      "cited": 0,
+      "original": 0,
+      "manual": 0
+    },
+    "Normal_Videos_704_x264|gap": {
+      "original": 0,
+      "manual": 0,
+      "cited": 0
+    },
+    "Normal_Videos_704_x264|annotated": {
+      "original": 0,
+      "manual": 0,
+      "cited": 0
+    },
+    "Normal_Videos_894_x264|annotated": {
+      "manual": 0,
+      "cited": 0,
+      "original": 0
+    },
+    "Normal_Videos_894_x264|gap": {
+      "manual": 0,
+      "cited": 0,
+      "original": 1
+    },
+    "Normal_Videos_886_x264|gap": {
+      "cited": 0,
+      "original": 0,
+      "manual": 0
+    },
+    "Normal_Videos_886_x264|annotated": {
+      "cited": 0,
+      "original": 0,
+      "manual": 0
+    }
+  },
+  "original_repeat_label_matches": 24,
+  "original_repeat_text_matches": 24,
+  "completion": {
+    "calls": 72,
+    "wall_seconds": 190.53781723976135,
+    "generation_seconds": 173.622,
+    "engine": {
+      "model_load_s": 4.3,
+      "attention": {
+        "vision_use_flash_attn": true,
+        "llm_attn_implementation": "flash_attention_2",
+        "llm_attention_class": "InternLM2FlashAttention2"
+      },
+      "counts": {
+        "generation_calls": 72,
+        "score_calls": 0,
+        "alignment_score_forwards": 0,
+        "alignment_generate_calls": 0,
+        "gradient_calls": 0
+      },
+      "candidates": null
+    },
+    "paired_tensor_checks": 24,
+    "dependencies_unchanged": true
+  },
+  "limitations": [
+    "No correctness, hallucination or novelty claim.",
+    "Existing captions are partial references, not exhaustive visual truth.",
+    "Content-word overlap is confounded by negation, wording, length and unequal explanation formats.",
+    "Legal citations are syntax, not evidence verification.",
+    "Consulted UCFtest sources; no training or untouched evaluation."
+  ]
+}
