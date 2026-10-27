@@ -1,0 +1,13 @@
+{
+  "status": "cpu_proposal_preview_passed_not_training_authorization",
+  "development_videos": 240,
+  "known_boxes_checked": 799,
+  "maximum_old_completion_tokens": 311,
+  "maximum_proposed_completion_tokens": 284,
+  "maximum_unit_roundtrip_error_relative_to_old_rounded_targets": 1.1102230246251565e-16,
+  "unknown_payload_tokens_masked": 553,
+  "proposed_grounded_target_inventory_sha256": "06e50e2b32105e7651d0992b3f1cb00785733b9cc03e7abb4d5838249e8f4bea",
+  "no_gpu_inference_or_training": true,
+  "no_reporting_split_access": true,
+  "limitation": "Read-only preview only; does not verify future implementation or demonstrate scientific feasibility."
+}

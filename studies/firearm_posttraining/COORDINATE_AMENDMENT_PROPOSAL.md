@@ -33,3 +33,15 @@ Keep the existing six-hour aggregate pilot allowance and finite per-job limits. 
 ## Decision required
 
 Approve this specific output-representation amendment within the existing pilot allowance, or retain the current contract and preserve the calibration stop. The fixed candidate's format stop remains in force while this decision is pending. No further GPU jobs are authorized by this proposal alone. The study and PR remain incomplete; no held-out benefit or scientific RL feasibility is established.
+
+## Read-only CPU preview
+
+The unaccepted transformation was previewed with the actual pinned tokenizer
+on all 240 development targets, without GPU inference/training or reporting
+split access. All 799 known boxes retain valid geometry; maximum unit round-trip
+error relative to the old five-decimal targets is1.11e-16. Maximum completion
+length changes from311 to284 tokens, within the unchanged512-token cap;553
+unknown-payload tokens remain masked. Reproducible script and output are in
+`evidence/proposed_coordinate_audit.py` and
+`evidence/proposed-coordinate-preview.json`. This is preliminary representation
+feasibility, not validation of a future implementation or a passing model gate.
