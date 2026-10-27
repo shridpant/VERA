@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Lift by layer group and sink exclusion}\label{tab:R2s}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llr}
+\toprule
+measure & seed questions, all splits & seed questions, test \\
+\midrule
+videos & 276 & 66 \\
+median\_lift & 1.947 & 2.208 \\
+mean\_lift & 2.168 & 2.296 \\
+share\_above\_chance & 0.971 & 0.970 \\
+median\_lift\_shuffled & 0.537 & 0.557 \\
+median\_sink\_excluded & 2.116 & 2.426 \\
+median\_early & 1.533 & 1.758 \\
+median\_middle & 2.539 & 2.729 \\
+median\_late & 1.624 & 1.833 \\
+mean\_reliance & 1.857 & 2.035 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\parbox{\textwidth}{\footnotesize Medians over grounding-evaluable videos; 1.0 = chance. early = layers 0-10, middle 11-21, late 22-31. Arms pool their seeds. Sink excluded: each frame's most-attended token removed before renormalising.}
+\end{table}

@@ -1,0 +1,30 @@
+\subsection{Measurement checks}
+Our generation reproduced the runner's \texttt{batch\_chat} answers exactly and the token grid was oriented as assumed (Table~\ref{tab:R1}); b2 and b3 led to D1. In Phase~1 the three category names held at least \val{phase1_min_candidate_mass} of the next-token probability at every decision. \val{phase1_decision_excluded} of the \val{phase1_videos} answers had no decision: both ran into the 1,024-token cap in a repetition loop before writing a category.
+
+\input{tables/R1.tex}
+
+\subsection{RQ1: does the frozen model look at and rely on the firearm?}
+\paragraph{Behaviour.} With the seed questions the model names the correct category for \val{R5_seed_allsplits_category_acc_pct}\,\% of the videos (Table~\ref{tab:R5}): every No\_Gun video, \val{R5_seed_Machine_Gun_category_acc_pct}\,\% of the Machine\_Gun videos and only \val{R5_seed_Handgun_category_acc_pct}\,\% of the Handgun videos. Of the grounding-evaluable videos it gets wrong, \val{phase1_wrong_said_no_gun_pct}\,\% are called No\_Gun: the dominant error is a missed firearm.
+
+\paragraph{Attention (M1).} At the decision, the model attends to the annotated firearm. Over \val{phase1_evaluable} grounding-evaluable videos the median lift is \val{R5_seed_allsplits_median_lift} (1 = chance), and \val{R5_seed_allsplits_mean_lift} on average. Measured against another video's boxes on the same frames, the same attention has a median lift of \val{phase1_median_lift_shuffled}; V1's paired difference is \val{gate_V1_estimate} [\val{gate_V1_low}, \val{gate_V1_high}] (Table~\ref{tab:R2}, Figure~\ref{fig:F1}, left). The lift is highest in the middle layers and barely changes when each frame's most-attended token is removed, so it is not an attention-sink artefact (Table~\ref{tab:R2s}). The model also looks at the firearm when it misses it: \val{phase1_wrong_lift_above_chance_pct}\,\% of the wrong answers have a lift above 1.
+
+\paragraph{Reliance (M2).} When the answer is right, it depends on the firearm. All \val{phase1_correct_with_occlusion} correct answers on grounding-evaluable videos change to another category when the firearm boxes are greyed out, against \val{phase1_correct_flip_control_pct}\,\% when equal patches elsewhere are greyed out. Mean reliance is \val{V3_correct_mean_reliance} nats for correct and \val{V3_incorrect_mean_reliance} for wrong answers (V3 in Table~\ref{tab:R2}), and only \val{R5_seed_allsplits_right_for_wrong_reasons_pct}\,\% of the videos are right for the wrong reasons. Reliance is higher for Machine\_Gun (\val{R5_seed_Machine_Gun_mean_reliance} nats) than for Handgun (\val{R5_seed_Handgun_mean_reliance}) because handguns are mostly missed, and it grows with box size (Table~\ref{tab:R6}).
+
+\paragraph{Agreement and the gate.} V2 fails: across videos, the Spearman correlation between lift and reliance is \val{gate_V2_estimate} [\val{gate_V2_low}, \val{gate_V2_high}], with a lower bound below 0. V1 passes. The gate needs both, so attention lift is not a valid training signal by the pre-registered rule, and Phase~2 did not run. Two descriptive analyses that were not pre-registered (Table~\ref{tab:R2}) show why the two measures disagree.
+\begin{itemize}
+\item \textbf{Box size pulls them apart.} Lift has a ceiling of $256/\text{covered tokens}$, so a large firearm cannot reach a high lift, while large firearms are the ones the model uses (Table~\ref{tab:R6}). Within each size tertile the correlation is \val{rho_within_small_boxes}, \val{rho_within_medium_boxes} and \val{rho_within_large_boxes}.
+\item \textbf{Within correctness the relation is absent or negative.} Among correct answers, more lift goes with \emph{less} reliance ($\rho=$ \val{rho_within_correct_category}); among wrong answers there is no relation (\val{rho_within_incorrect_category}). The positive within-size correlations come from correct answers having somewhat higher lift and much higher reliance.
+\end{itemize}
+Neither reading makes lift useful as feedback. Lift hardly separates answers that use the firearm (mean \val{V3_correct_mean_lift}) from answers that miss it (\val{V3_incorrect_mean_lift}), and among the answers that do use it, higher lift does not mean more use.
+
+\fig{F1_phase1_lift_and_reliance}{Seed questions, all splits. Left: attention lift with the true and with shuffled boxes (log scale, 1 = chance). Right: lift against occlusion reliance per grounding-evaluable video, coloured by whether the category is correct.}{fig:F1}
+\input{tables/R2.tex}
+\input{tables/R2s.tex}
+\input{tables/R5.tex}
+\input{tables/R6.tex}
+
+\subsection{RQ2: grounding feedback in training}
+Phase~2 did not run: the pre-registration stops the study when the gate fails, because feedback from a measure that does not track reliance could not be expected to raise reliance, and a null result would not be interpretable. No training run, test evaluation or test-box read of Phase~2 took place.
+
+\subsection{What the result means}
+The frozen model's failure on this task is recognition, not where it looks: it attends to the handgun and still says No\_Gun. When it does recognise a firearm, its answer depends on it entirely. Telling VERA's optimizer where the model looked therefore targets a failure the model does not have. Reliance itself is close to binary with the seed questions (a correct firearm answer is a firearm-dependent answer), so feedback built on reliance would largely repeat the accuracy feedback that VERA already gives.

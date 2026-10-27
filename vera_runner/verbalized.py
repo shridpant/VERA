@@ -252,14 +252,15 @@ class Run:
                         t1 = time.monotonic()
                         preds = [as_feedback(parse_answer(t, self.book)) for t in texts]
                         targets = [target_of(r) for r in rows]
-                        opt_prompt = optimizer_prompt(self.optimizer_template, questions, preds, targets, self.k)
+                        template, extra = self.optimizer_template_for(rows, videos, texts, prompt, step)
+                        opt_prompt = optimizer_prompt(template, questions, preds, targets, self.k)
                         opt_text, opt_tokens = self.model.optimize(videos, opt_prompt)
                         t2 = time.monotonic()
                     except Exception:
                         step_log.write({**record, 'status': 'failed', 'error': traceback.format_exc(), 'finished_at': now()})
                         raise
                     updated, how = new_questions(opt_text, questions)
-                    step_log.write({**record, 'status': 'complete', 'learner_prompt_sha256': digest(prompt), 'learner_responses': texts,
+                    step_log.write({**record, **extra, 'status': 'complete', 'learner_prompt_sha256': digest(prompt), 'learner_responses': texts,
                                     'learner_tokens': tokens, 'predictions': preds, 'targets': targets,
                                     'optimizer_prompt': opt_prompt, 'optimizer_response': opt_text, 'optimizer_tokens': opt_tokens,
                                     'questions_after': updated, 'update': how, 'learner_seconds': t1 - t0,
@@ -273,6 +274,10 @@ class Run:
         finally:
             step_log.close()
             val_log.close()
+
+    def optimizer_template_for(self, rows, videos, texts, prompt, step):
+        """The optimizer prompt template for this step and extra fields for its log; VERA's own by default."""
+        return self.optimizer_template, {}
 
     def select(self):
         vals = [v for v in read_jsonl(self.dir / 'validations.jsonl')[0] if not v['reference_only']]

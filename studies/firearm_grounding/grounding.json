@@ -1,0 +1,22 @@
+{
+  "experiment_id": "firearm_grounding_v1",
+  "runner": {
+    "dataset": "firearm_visilab",
+    "registry": "/local/datasets/sp2117/firearm_visilab/registry.json",
+    "model": {
+      "backend": "internvl2",
+      "path": "/home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+      "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+      "device": "cuda", "dtype": "bfloat16", "flash_attention": true, "local_files_only": true
+    },
+    "generation": {"num_beams": 1, "max_new_tokens": 1024, "do_sample": false}
+  },
+  "learner_instruct_file": "studies/firearm_training/prompts/learner_instruct.txt",
+  "seed_questions_file": "studies/firearm_training/prompts/seed_questions.txt",
+  "codebook": "studies/firearm_training/codebook.json",
+  "data": {
+    "dir": "/local/datasets/sp2117/firearm_visilab/training1/data",
+    "frames": "/local/datasets/sp2117/firearm_visilab/training1/frames"
+  },
+  "root": "/local/datasets/sp2117/firearm_visilab/grounding1"
+}

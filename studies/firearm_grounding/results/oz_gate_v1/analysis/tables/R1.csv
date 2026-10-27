@@ -1,0 +1,5 @@
+check,passed,detail
+b1_generate_equals_batch_chat,True,equal 4; videos 4
+b2_eager_replay_predicts_greedy_tokens,False,agreement 0.9904; tokens 209
+b3_eager_matches_flash,False,max_abs_logp_diff 0.1202
+c_token_grid_orientation,True,within_one_cell 9; trials 10

@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Phase 1 validity gate (seed questions, all splits)}\label{tab:R2}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llrrrrr}
+\toprule
+measure & estimate & ci\_\allowbreak{}low & ci\_\allowbreak{}high & mean\_\allowbreak{}reliance & videos & passed \\
+\midrule
+V1 lift true - shuffled, same frames (mean) & 1.536 & 1.400 & 1.678 & -- & 275 & yes \\
+V2 Spearman rho(lift, reliance) & 0.113 & -0.013 & 0.229 & -- & 274 & no \\
+V3 correct category (mean lift) & 2.435 & -- & -- & 4.694 & 112 & -- \\
+V3 incorrect category (mean lift) & 1.985 & -- & -- & -0.075 & 164 & -- \\
+Spearman rho within correct category (not pre-registered) & -0.245 & -0.460 & -0.024 & -- & 111 & -- \\
+Spearman rho within incorrect category (not pre-registered) & -0.009 & -0.165 & 0.140 & -- & 163 & -- \\
+Spearman rho within small boxes (not pre-registered) & 0.178 & -0.040 & 0.380 & -- & 79 & -- \\
+Spearman rho within medium boxes (not pre-registered) & 0.308 & 0.098 & 0.517 & -- & 83 & -- \\
+Spearman rho within large boxes (not pre-registered) & 0.215 & 0.038 & 0.378 & -- & 112 & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\parbox{\textwidth}{\footnotesize Gate not passed: V1 and V2 lower bounds above 0 (pre-registered). V3 (descriptive): mean lift and mean reliance for answers with the correct and an incorrect category. Rows marked not pre-registered are descriptive: the correctness rows were added after a look at 72 Phase 1 videos and the size rows after the independent review, both before the full gate was read; their intervals (same bootstrap) were added after it.}
+\end{table}

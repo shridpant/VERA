@@ -1,0 +1,285 @@
+{
+ "checks": {
+  "b1_generate_equals_batch_chat": {
+   "passed": true,
+   "equal": 4,
+   "videos": 4
+  },
+  "b2_eager_replay_predicts_greedy_tokens": {
+   "passed": false,
+   "agreement": 0.9904306220095693,
+   "tokens": 209
+  },
+  "b3_eager_matches_flash": {
+   "passed": false,
+   "max_abs_logp_diff": 0.12019611615687609
+  },
+  "c_token_grid_orientation": {
+   "passed": true,
+   "within_one_cell": 9,
+   "trials": 10
+  }
+ },
+ "videos": [
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_3",
+   "same_text": true,
+   "answer": "Answers to Prompt Questions: The person in the video is holding a phone in their hand and appears to be walking. They are not carrying any firearms, and their body language suggests they are moving casually.\nCategory: No_Gun\nAction group: move\nAction code: N1",
+   "batch_chat": "Answers to Prompt Questions: The person in the video is holding a phone in their hand and appears to be walking. They are not carrying any firearms, and their body language suggests they are moving casually.\nCategory: No_Gun\nAction group: move\nAction code: N1",
+   "replay_agreement": 0.9655172413793104,
+   "max_logp_diff_eager_flash": 0.12019611615687609,
+   "eager_p": {
+    "Handgun": 0.0032549451947127593,
+    "Machine_Gun": 0.0017797335606105284,
+    "No_Gun": 0.9949653212446768
+   },
+   "flash_p": {
+    "Handgun": 0.0032674481808317108,
+    "Machine_Gun": 0.002007236819647692,
+    "No_Gun": 0.9947253149995207
+   }
+  },
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_4",
+   "same_text": true,
+   "answer": "Answers to Prompt Questions: The person in the video is holding a phone in their right hand and looking at it. They are walking with their left hand in their pocket.\nCategory: No_Gun\nAction group: phone\nAction code: N5",
+   "batch_chat": "Answers to Prompt Questions: The person in the video is holding a phone in their right hand and looking at it. They are walking with their left hand in their pocket.\nCategory: No_Gun\nAction group: phone\nAction code: N5",
+   "replay_agreement": 1.0,
+   "max_logp_diff_eager_flash": 0.050062159076333046,
+   "eager_p": {
+    "Handgun": 0.008636486900849045,
+    "Machine_Gun": 0.00425469435095663,
+    "No_Gun": 0.9871088187481943
+   },
+   "flash_p": {
+    "Handgun": 0.008857897165497121,
+    "Machine_Gun": 0.004474171720546279,
+    "No_Gun": 0.9866679311139567
+   }
+  },
+  {
+   "video": "Handgun__PAH2_C1_P2_V1_HB_3",
+   "same_text": true,
+   "answer": "Answers to Prompt Questions: The person in the video is holding a phone in their right hand and looking at it. They are walking down a hallway.\nCategory: No_Gun\nAction group: phone\nAction code: N5",
+   "batch_chat": "Answers to Prompt Questions: The person in the video is holding a phone in their right hand and looking at it. They are walking down a hallway.\nCategory: No_Gun\nAction group: phone\nAction code: N5",
+   "replay_agreement": 1.0,
+   "max_logp_diff_eager_flash": 0.07443815295118839,
+   "eager_p": {
+    "Handgun": 0.011905226086630487,
+    "Machine_Gun": 0.005642520533131631,
+    "No_Gun": 0.982452253380238
+   },
+   "flash_p": {
+    "Handgun": 0.01132101259855334,
+    "Machine_Gun": 0.00607926214104646,
+    "No_Gun": 0.9825997252604003
+   }
+  },
+  {
+   "video": "Handgun__PAH2_C1_P2_V1_HB_4",
+   "same_text": true,
+   "answer": "Answers to Prompt Questions: The person in the video is holding a phone with one hand and looking at it. They are walking down the hallway with their other hand in their pocket.\nCategory: No_Gun\nAction group: phone\nAction code: N5",
+   "batch_chat": "Answers to Prompt Questions: The person in the video is holding a phone with one hand and looking at it. They are walking down the hallway with their other hand in their pocket.\nCategory: No_Gun\nAction group: phone\nAction code: N5",
+   "replay_agreement": 1.0,
+   "max_logp_diff_eager_flash": 0.04754746562684886,
+   "eager_p": {
+    "Handgun": 0.014311233873073037,
+    "Machine_Gun": 0.005654424006247462,
+    "No_Gun": 0.9800343421206795
+   },
+   "flash_p": {
+    "Handgun": 0.013648191400437179,
+    "Machine_Gun": 0.005696432372290244,
+    "No_Gun": 0.9806553762272727
+   }
+  }
+ ],
+ "grid_trials": [
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_3",
+   "slot": 1,
+   "cell": [
+    7,
+    4
+   ],
+   "top_token": [
+    7,
+    4
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_4",
+   "slot": 7,
+   "cell": [
+    12,
+    2
+   ],
+   "top_token": [
+    12,
+    2
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH2_C1_P2_V1_HB_3",
+   "slot": 0,
+   "cell": [
+    12,
+    11
+   ],
+   "top_token": [
+    13,
+    10
+   ],
+   "rank_of_cell": 1,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH2_C1_P2_V1_HB_4",
+   "slot": 5,
+   "cell": [
+    10,
+    6
+   ],
+   "top_token": [
+    10,
+    6
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_3",
+   "slot": 4,
+   "cell": [
+    15,
+    10
+   ],
+   "top_token": [
+    7,
+    9
+   ],
+   "rank_of_cell": 1,
+   "within_one_cell": false
+  },
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_4",
+   "slot": 5,
+   "cell": [
+    1,
+    6
+   ],
+   "top_token": [
+    1,
+    6
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH2_C1_P2_V1_HB_3",
+   "slot": 5,
+   "cell": [
+    15,
+    6
+   ],
+   "top_token": [
+    15,
+    6
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH2_C1_P2_V1_HB_4",
+   "slot": 7,
+   "cell": [
+    4,
+    12
+   ],
+   "top_token": [
+    4,
+    12
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_3",
+   "slot": 6,
+   "cell": [
+    9,
+    6
+   ],
+   "top_token": [
+    9,
+    6
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  },
+  {
+   "video": "Handgun__PAH1_C1_P1_V1_HB_4",
+   "slot": 6,
+   "cell": [
+    13,
+    10
+   ],
+   "top_token": [
+    13,
+    10
+   ],
+   "rank_of_cell": 0,
+   "within_one_cell": true
+  }
+ ],
+ "session": {
+  "model_identity": {
+   "repo_or_path": "/home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+   "resolved_source": "/home/stu11/s5/sp2117/vera_research/shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+   "revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+   "device": "cuda",
+   "dtype": "bfloat16",
+   "flash_attention": true,
+   "files": {
+    "MODEL_PROVENANCE.json": "b43ff8d98cefbd5f958b0ce4c31386fed375c434c33273a26b09c7c05df2d650",
+    "added_tokens.json": "df59e170102f8d19d3e186cc91c81006c9822ea9fe8ce2b68e7be77195c01db3",
+    "config.json": "6691657d87c9e0ddf294d21505223a999e67ca96f12e286c5f849cccc3176516",
+    "configuration_intern_vit.py": "22dd687a5f142985407675fc6b1dc688c2ded93e54192543ecf28ef495a6efa8",
+    "configuration_internlm2.py": "9f9e14d64be7b81068e8421fd27e1c466b3fb6aeb67725ca328e56083c3f7a60",
+    "configuration_internvl_chat.py": "20bd8ddcf5c51f9fded0e3191db2bc00a7012fd3f7912dea4277fa24f17b6e32",
+    "conversation.py": "b1b9f280e9cb9211e519e2b8071002b57cc742aadb2f49b05fa674ee3c7d83ee",
+    "generation_config.json": "eac5a6b0dff266d8ce2fcf6c05880d7ff71087ca273d1fafd6fd2f53b2565d2e",
+    "model-00001-of-00004.safetensors": "3a18c6c843dd1c046a7052129ac7ff5d3fa38e95149ea6ee763066dc1cc6579c",
+    "model-00002-of-00004.safetensors": "e1967d2442fe5a38aba96e7ad7a18459962171591e5b7438aa0efa15db93b375",
+    "model-00003-of-00004.safetensors": "9d31a1bd34e26858251c02741d450f64937b59bf3e45a2efede61a10c2086768",
+    "model-00004-of-00004.safetensors": "5f20c98a99d6fcf5c01b70194b80984ad0b49220f365f7c415af7629743a5397",
+    "model.safetensors.index.json": "9110700a238c972daba84e094fa2c79c1a7ab7595df7912f30bd5f08120e226b",
+    "modeling_intern_vit.py": "1978e330ea5533dda4d1379096aded271fc741347fc48cb4924846b56a2a6a4b",
+    "modeling_internlm2.py": "c014d933c6afdf7414791c1859c692ca4b49c925688bcc00fbd1658ef75fb0ba",
+    "modeling_internvl_chat.py": "1915c32d984aed6750e911884ad59f92504f73b799c7443121c67b9cb21fe347",
+    "preprocessor_config.json": "0658115064c561026539aeeead9ed3b1a8e0cc90967df8c142849199f955d2b4",
+    "special_tokens_map.json": "8cb729e6fd4c29e8c5be65cb51128735cea0ab56606a186cf8cbb30123c72eae",
+    "tokenization_internlm2.py": "e548dc777a1def2f5339cfe12de8da2d12500d664e3dafa5c585c407e4b806fa",
+    "tokenization_internlm2_fast.py": "b6dc75cb1a276a897190a003b97a65b13b68b948d64646df67e7f18392dfbb34",
+    "tokenizer.model": "f868398fc4e05ee1e8aeba95ddf18ddcc45b8bce55d5093bead5bbf80429b48b",
+    "tokenizer_config.json": "2a0e30fb556e25b8255729fcb67db4e0e1a265e3fb177d9b09316f7c665f31f7"
+   },
+   "resolved_commit": null
+  },
+  "library_versions": {
+   "torch": "2.1.2+cu121",
+   "transformers": "4.37.2",
+   "flash-attn": "2.5.8",
+   "numpy": "1.26.4",
+   "pillow": "10.2.0"
+  },
+  "model_load_seconds": 18.49982554797316,
+  "code_commit": "824aac0d89c8fcbbcf00e18c33501a7f268f9462",
+  "git_status": "",
+  "cuda_visible_devices": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03"
+ }
+}

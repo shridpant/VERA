@@ -1,0 +1,3 @@
+
+# Preserve historical CSV bytes, including their original CRLF endings.
+studies/firearm_grounding/results/oz_gate_v1/**/*.csv -text whitespace=-blank-at-eol

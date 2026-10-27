@@ -1,0 +1,186 @@
+{
+  "host": "oz.gccis.rit.edu",
+  "collected_utc": "2026-10-27T21:52:07.196869+00:00",
+  "files": [
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/analysis_manifest.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/analysis_manifest.json",
+      "sha256": "e3ba23252135fe4421eef62c993c3c99161938ade1eec0770a288dd9a5ea3f9a",
+      "bytes": 147
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/numbers.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/numbers.json",
+      "sha256": "b9e2f5f20361cbf481464cc05818c35dd96c55e7fd835319a80de0c8f5ac1cbc",
+      "bytes": 5023
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/numbers.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/numbers.tex",
+      "sha256": "f61c7f15badc0b004c4f7312ab4fe01fe0c498bbd75686a5c378fbc9b33d617d",
+      "bytes": 8036
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/questions.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/questions.tex",
+      "sha256": "86874c6c35146398edd1d60756570ba67b2935e9382e96856adef752dc1cb73e",
+      "bytes": 173
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R1.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R1.csv",
+      "sha256": "7b5e142a54da6428328a5256ed6b3a33c114f7902ab08783a8d2166c5f0bf7ad",
+      "bytes": 265
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R1.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R1.tex",
+      "sha256": "8e1631faaae22eb5c846348fb24fbac873d10cdd0aeaa58f3f3374af9c3fd99a",
+      "bytes": 810
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2.csv",
+      "sha256": "36bb488f57d0b739226c0507be74ed07ea4ba03c1d67a1e85454eeb0d568500a",
+      "bytes": 1055
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2.tex",
+      "sha256": "e025235454d90732ff21ef98cb3aef07b3dd2b0ae1b12cd4fabb8aa51c287517",
+      "bytes": 1649
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2s.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2s.csv",
+      "sha256": "c194c25e5ab827c63153353f49655029a669f5309f08dbc1a08d57299c378579",
+      "bytes": 544
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2s.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R2s.tex",
+      "sha256": "f600a9e1dbe40fea854cb3235e383f696692d927267346a9ba10878df9733094",
+      "bytes": 895
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R3.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R3.csv",
+      "sha256": "3ec5ab25038da92bd7846f536b04fac7258032ed1565374b2b41be7fe046d422",
+      "bytes": 93
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R3.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R3.tex",
+      "sha256": "6c80167fa52bd1aec177f47220b64e21a7da8b0b373041030fef4c5f1d785264",
+      "bytes": 685
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R4.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R4.csv",
+      "sha256": "53a498b92c40c4572b23b6e8863d4cb16a9224a7d36c0a64ea0bab06596753c0",
+      "bytes": 190
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R4.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R4.tex",
+      "sha256": "0bbe7825aba5175a531f6cf4938f23262838fd88ba19bc690411b47e942db0e2",
+      "bytes": 889
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R5.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R5.csv",
+      "sha256": "7bfa3a48269674b309a80c4889c946de04311aa36904ecbab14ecdf11baddff9",
+      "bytes": 1092
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R5.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R5.tex",
+      "sha256": "afd5803ee8c7cc0d0be685f664eb818e509f1144e45e6cb2a21a6a6393513220",
+      "bytes": 1838
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R6.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R6.csv",
+      "sha256": "1136b9a4870147d69c47df3de1dcfab963f07aec9cf4beeda1996a6ddd8c6a74",
+      "bytes": 430
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R6.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R6.tex",
+      "sha256": "937a935d85330997ffce2cd400da565e67a9e33795e8b35a27d52b2ec59224c5",
+      "bytes": 836
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R7.csv",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R7.csv",
+      "sha256": "c1aaf9440210fb8af419f55734f26d855c969ed798449d27e3c9606308407995",
+      "bytes": 276
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R7.tex",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/analysis/tables/R7.tex",
+      "sha256": "75d9044aad9a691d41ee93a6d95bf2b5f933fabd68985249ec9c89ed7b75042d",
+      "bytes": 1099
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/gate.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/gate.json",
+      "sha256": "5e9f75d40b6d606eab6d0cc2671936cc6c0419039be749127cd9fbc88e2ff180",
+      "bytes": 872
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase0/phase0.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase0/phase0.json",
+      "sha256": "c2599cffef429a76787707e5c097e6ee015706ba97883ad51dba427435d97187",
+      "bytes": 9052
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase0/phase0_diagnostic.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase0/phase0_diagnostic.json",
+      "sha256": "26f5d4d35948af52da20dd555d2803f9202215cf401f089d4b382c82daaff126",
+      "bytes": 2814
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase0/runner_config.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase0/runner_config.json",
+      "sha256": "afbd42e0922bfb7d58cdd63027f820ec52e42f9c2851380b209e70de0fd784df",
+      "bytes": 539
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase1_pool.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase1_pool.json",
+      "sha256": "bf106cb3e37e18f9c0e170d2375cdf0a402d171e09c8fbad2c4782b015d9d9b3",
+      "bytes": 31590
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase1_seed_measurements.jsonl",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase1_seed_measurements.jsonl",
+      "sha256": "50815e1a0d2e661fbcec3822e66b2ce3aded0da19c30854f6fbe83c71e8d675b",
+      "bytes": 1112733
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase1_seed_measurements.session.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase1_seed_measurements.session.json",
+      "sha256": "e5158f79bc80c9ba12b4b47d8d96b7e254a672212df68e8e554178066c2024e5",
+      "bytes": 3149
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase1_v0_partial.session.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase1_v0_partial.session.json",
+      "sha256": "52d1f39e7a0e2c11db2656bb7ba8504eafcc1ecbab59d398dc5634131c81d599",
+      "bytes": 3149
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/phase1_v0_partial_measurements.jsonl",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/phase1_v0_partial_measurements.jsonl",
+      "sha256": "9473687b7faf7a6845e42dbbc071548f2e4de32681570f4bb6391ff851dc50e3",
+      "bytes": 335899
+    },
+    {
+      "source": "/local/datasets/sp2117/firearm_visilab/grounding1/runner_config.json",
+      "relative": "local/datasets/sp2117/firearm_visilab/grounding1/runner_config.json",
+      "sha256": "afbd42e0922bfb7d58cdd63027f820ec52e42f9c2851380b209e70de0fd784df",
+      "bytes": 539
+    }
+  ]
+}
