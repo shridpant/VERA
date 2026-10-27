@@ -125,3 +125,12 @@ from the resulting references. No STOP-based warm-start selection is allowed.
 This revises a provisional numerical default, not supervision, split, backbone,
 LoRA capacity, rewards, or the scientific comparison. Freeze the final value only
 after both real-reward panels pass; do not scale a failed grounded arm.
+
+The finite calibration grid is 1.0, 1.5, then 2.0 FIT passes. Choose the first
+shared exposure for which both label and grounded sampled-format checks pass;
+each check uses four samples on the same balanced 24-video FIT panel, no STOP,
+and stops early if >4 invalid responses makes <=5% of 96 impossible. Then run
+both actual reward panels at that same fixed exposure. A reward-panel failure
+stops the controller for diagnosis, not a blind grid retry. Only two passing
+real-reward panels permit protocol freeze and the downstream scientific pipeline.
+All calibration time remains inside six aggregate pilot GPU-hours.

@@ -340,6 +340,53 @@ class StatisticsTests(unittest.TestCase):
 
 
 class OrchestrationTests(unittest.TestCase):
+    def test_calibration_uses_fit_only_candidates_and_never_scales_failed_reward_gate(self):
+        from unittest.mock import patch
+        from studies.firearm_posttraining.calibrate import run
+        for reject_first_format, reject_reward in ((True, False), (False, True)):
+            with self.subTest(format_retry=reject_first_format, reward_failure=reject_reward), tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
+                data.write_json(root / 'data/fit.json', [{}] * 192)
+                data.write_json(root / 'pilot-sl-001/result.json', {'status': 'stopped'})
+                commands = []
+                def fake_run(command, **kwargs):
+                    commands.append(command)
+                    name = command[command.index('--name') + 1]
+                    directory = Path(command[command.index('--output') + 1])
+                    directory.mkdir(parents=True)
+                    data.write_json(root / 'jobs' / name / 'status.json', {'exit_code': 0})
+                    grounded = '--grounded' in command
+                    if '--warmup-only' in command:
+                        passes = float(command[command.index('--warmup-passes') + 1])
+                        adapter = directory / 'checkpoints/fixed'
+                        data.write_json(adapter / 'state.json', {'cursor': int(192 * passes), 'selection': {'checks': 0}})
+                        data.write_json(directory / 'spec.json', {'model': 'pinned', 'warmup_passes': passes, 'grounded': grounded})
+                        result = {'status': 'stopped', 'stop_reason': 'fixed_warmup_complete', 'fit_passes': passes, 'best_checkpoint': str(adapter)}
+                    elif 'studies.firearm_posttraining.fit_format' in command:
+                        fail = reject_first_format and grounded and name.endswith('002')
+                        result = {'status': 'failed_gate' if fail else 'passed'}
+                    else:
+                        result = {'status': 'failed_gate' if reject_reward and grounded else 'passed'}
+                    data.write_json(directory / 'result.json', result)
+                def fake_pipeline(*args):
+                    data.write_json(root / 'pipeline/status.json', {'stage': 'complete'})
+                with patch('studies.firearm_posttraining.calibrate.subprocess.run', side_effect=fake_run), \
+                     patch('studies.firearm_posttraining.calibrate.freeze', return_value={'protocol_hash': 'frozen'}) as freeze, \
+                     patch('studies.firearm_posttraining.calibrate.pipeline', side_effect=fake_pipeline) as pipeline:
+                    run(root, 'original', 'frames')
+                final = json.loads((root / 'calibration/status.json').read_text())
+                if reject_reward:
+                    self.assertEqual(final['stage'], 'failed_real_reward_gate')
+                    freeze.assert_not_called()
+                    pipeline.assert_not_called()
+                else:
+                    self.assertEqual(final['stage'], 'complete')
+                    self.assertEqual(freeze.call_args.kwargs['warmup_passes'], 1.5)
+                    self.assertEqual(freeze.call_args.kwargs['max_passes'], 5.)
+                    self.assertFalse(any('pilot-rg-002' in command for command in commands))
+                self.assertTrue(all(int(c[c.index('--seconds') + 1]) > 0 for c in commands))
+
     def test_sweep_clones_identical_fixed_warm_starts_and_preserves_scientific_stops(self):
         from unittest.mock import patch
         from studies.firearm_posttraining.sweep import run
