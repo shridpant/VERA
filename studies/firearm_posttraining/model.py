@@ -3,7 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from .data import letterbox
+from .data import letterbox, digest
 
 DEFAULT_QUESTIONS = ('What is the person in the video holding?',
                      'How is the person moving or positioning their arms and body?')
@@ -129,12 +129,14 @@ class NativeModel:
             if len(rows) > 1:
                 content.append({'type': 'text', 'text': f'Video {number}: '})
             for k, v in enumerate(row['views']):
+                if digest(v['path']) != v['sha256']:
+                    raise ValueError('frame changed after immutable data audit')
                 with Image.open(v['path']) as im:
                     images.append(letterbox(im, row['geometry']))
                 content.extend([{'type': 'text', 'text': f'Frame {k}: '}, {'type': 'image'}])
         content.append({'type': 'text', 'text': text_instruction})
         messages = [{'role': 'user', 'content': content}]
-        text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True, enable_thinking=False)
+        text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         # Never place IDs, paths, labels, or audited annotations in user content.
         inputs = self.processor(text=[text], images=images, do_resize=False, return_tensors='pt')
         if inputs['input_ids'].shape[1] + 512 > 8192:

@@ -92,3 +92,18 @@ JSON/truncation still receives no label credit. Strict RL rewards and box metric
 retain their full-schema checks. Tests prove a bad box payload cannot change
 otherwise identical classification scores. The label-only supervised pilot is
 unchanged; no comparative or holdout runs preceded this correction.
+
+## Processor and VQ engineering before protocol freeze
+
+The installed Instruct template ignores `enable_thinking=False` and warns on
+every call. A CPU comparison verified byte-identical rendered templates with and
+without it (SHA-256 371220223b59051bc1f36bdcf229b23f4fec18b245cddb935337180c908e937d
+for the comparison fixture); remove only that unused argument. Frames are now
+hash-checked against the immutable audit at every load.
+
+VQ asks for an explicit zero-based slot and one replacement question instead of
+a regenerated list. The runner applies exactly that single edit and retains all
+other questions verbatim, enforcing the same maximum of five and ten candidate
+revisions. No STOP examples enter this optimizer prompt. A two-FIT-video real
+compatibility check exercises the optimizer context and proposal handling before
+the frozen comparative VQ runs.
