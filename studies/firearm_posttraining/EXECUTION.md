@@ -8,21 +8,37 @@ confirmed. HANDOFF.md is a historical proposal; current amendments govern.
 
 ## Current execution owner
 
-Controller289543 was stopped before protocol freeze for a confirmed GRPO
-probability mismatch: sampling temperature0.8 versus raw logits in likelihoods,
-with inherited checkpoint top-k20. Three-pass SFT completed without STOP queries;
-old format gates passed95/96labels and94/96grounded. Old panels008 had just
-started when the pause reached the scheduler; only owned children were signaled
-for graceful settlement. Their feasibility is invalidated by the correction.
+Current CPU controller PID 293624 runs from immutable release 2118b52. Status:
+ROOT/calibration-probability-v3/status.json; log
+ROOT/calibration-probability-v3-controller-001.log; launch
+ROOT/calibration-probability-v3-launch-001.json. Both new format jobs 009 run on
+Ada 6/7, reusing audited three-pass SFT warm-ups 008 without retraining. Never
+restart old controllers or duplicate jobs; inspect live artifacts before acting.
 
-The new implementation uses one full-support temperature0.8 policy for sampling,
-old/current/reference probabilities and entropy, with fresh explicit generation
-configs. All77local tests passed;29focused Oz tests, exact SFT source-reuse
-audit and new GPU engineering gates are pending before new format/reward jobs.
-Candidate stays fixed at3FITpasses inside five total; no new exposure search.
-Completed SFT warm-ups008 can be reused only after source/identity audit; new
-full-support format/reward attempts009 must pass before freeze. See AMENDMENTS.md.
-Old controllers must not restart. No scientific sweep/reporting outcomes yet.
+A pre-freeze audit corrected sampling temperature 0.8 versus raw-logit scoring,
+plus inherited checkpoint top-k 20. New rollouts use one full-support temperature
+0.8 policy (top-p 1 / top-k 0), matched by old/current/reference probabilities and
+entropy. Greedy reporting stays single-response argmax. All 77 local firearm tests
+and 29 focused Oz tests passed; fresh GPU engineering smokes 005 passed exact
+prediction reload/resume. Fixture reward spread remains zero: synthetic strings
+are engineering evidence only. VQ compatibility 002 also passed 16 images with a
+valid single-slot proposal and unchanged weights under the new generation config.
+
+The 240-video v3 tokenizer audit passed unchanged targets, maximum 311 tokens,
+6,658 known tokens retained and 553 unknown tokens masked. SFT functions and
+trainer.py are exactly unchanged versus a122820. Reused warm-ups 008 have matched
+source commit, zero STOP queries, 576 exposures and verified checkpoint hashes.
+Settled pilot use before the new controller was 3.86585 of six GPU-hours; the same
+fixed 3-pass candidate counts inside max 5 total passes. New format/reward attempts 009
+must pass the corrected sampler's gates before freeze. No further candidate or
+failed-panel retry follows automatically; scientific/resource stops stay fixed.
+
+Old three-pass formats passed 95/96 labels and 94/96 grounded, but those checks used
+the old sampler. Old panels 008 began before the CPU pause and were signaled to
+checkpoint/settle (label 8 groups / 32 responses, grounded 4 groups / 16 responses). Their
+feasibility is invalidated by the probability correction, not a scientific result
+under the new policy. Traces/operator actions remain preserved. No protocol,
+scientific sweep or reporting outcomes have been produced.
 
 ## Isolation and reproducibility
 
@@ -125,3 +141,7 @@ The three-pass amendment and actual launch are preserved in AMENDMENTS.md and
 evidence/three-pass-calibration-launch.json. The original failed grid remains
 in calibration-mask-v2/ and its evidence files. No reporting outcomes informed
 this pre-freeze numerical amendment.
+
+Current corrected-policy verification and actual launch provenance are saved in
+evidence/probability-verification.json. The source/target audit is retained as
+ROOT/data/target-mask-audit-v3.json; earlier v2 is not overwritten.
