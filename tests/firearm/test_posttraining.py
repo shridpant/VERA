@@ -149,7 +149,7 @@ class RewardTests(unittest.TestCase):
         self.assertIsNone(result['quality'])
         self.assertAlmostEqual(result['reward'], 1.)
 
-    def test_unknown_target_spans_and_cross_boundary_tokens_are_masked(self):
+    def test_only_unknown_payload_tokens_are_masked_and_known_schema_boundaries_survive(self):
         row = fixture()
         target, spans = target_parts(row, True)
         kinds = token_kinds([(i, i+1) for i in range(len(target))], spans)
@@ -157,7 +157,13 @@ class RewardTests(unittest.TestCase):
         self.assertEqual(kinds[null:null+4], [0] * 4)
         known = target.index('0.2')
         self.assertEqual(kinds[known:known+3], [2] * 3)
-        self.assertEqual(token_kinds([(spans[0][1]-1, spans[1][1])], spans), [0])
+        self.assertEqual(token_kinds([(spans[0][1]-1, spans[1][1])], spans), [1])
+        self.assertEqual(token_kinds([(null-1, null+2)], spans), [0])
+        for i, view in enumerate(row['views']):
+            frame = target.index('{"frame_id":' + str(view['frame_id']))
+            self.assertEqual(kinds[frame], 1)
+        self.assertEqual(token_kinds([(0, 2)], [(0, 1, 1), (1, 2, 2)]), [2])
+        self.assertEqual(token_kinds([(0, 3)], [(0, 1, 1), (2, 3, 1)]), [0])
         self.assertNotIn(row['id'], instruction(BOOK, True))
         self.assertNotIn('null', instruction(BOOK, True))
 
@@ -360,9 +366,12 @@ class OrchestrationTests(unittest.TestCase):
     def test_calibration_uses_fit_only_candidates_and_never_scales_failed_reward_gate(self):
         from unittest.mock import patch
         from studies.firearm_posttraining.calibrate import run
-        for reject_first_format, reject_reward, prelaunch_failure in ((True, False, False), (False, True, False), (False, False, True)):
+        for reject_first_format, reject_reward, prelaunch_failure in ((True, False, False), (False, True, False), (False, False, True), (False, False, False)):
             with self.subTest(format_retry=reject_first_format, reward_failure=reject_reward), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
+                namespaced = not any((reject_first_format, reject_reward, prelaunch_failure))
+                options = {'control_name': 'calibration-v2', 'attempt_offset': 3,
+                           'grounded_smoke': root / 'smoke-grounded-new/result.json'} if namespaced else {}
                 data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
                 data.write_json(root / 'data/fit.json', [{}] * 192)
                 data.write_json(root / 'data/stop.json', [{}] * 48)
@@ -408,12 +417,16 @@ class OrchestrationTests(unittest.TestCase):
                         self.assertEqual(len(list((root / 'calibration').glob('pilot-c0l-002.prelaunch-*.log'))), 1)
                         self.assertEqual(sum(c[c.index('--name') + 1] == 'pilot-c0g-002' for c in commands), 1)
                     else:
-                        run(root, 'original', 'frames')
+                        run(root, 'original', 'frames', **options)
                     if reject_reward:
                         prior_commands = len(commands)
                         run(root, 'original', 'frames', resume=True)
                         self.assertEqual(len(commands), prior_commands)
-                final = json.loads((root / 'calibration/status.json').read_text())
+                final = json.loads((root / ('calibration-v2' if namespaced else 'calibration') / 'status.json').read_text())
+                if namespaced:
+                    self.assertFalse((root / 'calibration').exists())
+                    self.assertTrue(any(c[c.index('--name') + 1] == 'pilot-c0g-005' for c in commands))
+                    self.assertEqual(freeze.call_args.args[3], root / 'smoke-grounded-new/result.json')
                 if reject_reward:
                     self.assertEqual(final['stage'], 'failed_real_reward_gate')
                     freeze.assert_not_called()

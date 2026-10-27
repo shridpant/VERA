@@ -29,14 +29,15 @@ def instruction(book, grounded=False, questions=None):
 
 
 def target_parts(row, grounded=False):
-    """Character spans carry label=1, known-box=2, unknown=0 supervision."""
+    """Labels/known schema=1, known box payload=2, unknown payload=0."""
     pieces = [(json.dumps({k: row[k] for k in ('category', 'action_group', 'action_code')}, separators=(',', ':'))[:-1], 1)]
     if grounded:
         pieces.append((',"grounding":[', 1))
         for i, v in enumerate(row['views']):
             boxes = None if v['boxes'] is None else [[round(x, 5) for x in b] for b in v['boxes']]
-            field = json.dumps({'frame_id': v['frame_id'], 'boxes': boxes}, separators=(',', ':'))
-            pieces.append(((',' if i else '') + field, 0 if boxes is None else 2))
+            pieces.append(((',' if i else '') + '{"frame_id":' + str(v['frame_id']) + ',"boxes":', 1))
+            pieces.append((json.dumps(boxes, separators=(',', ':')), 0 if boxes is None else 2))
+            pieces.append(('}', 1))
         pieces.append((']', 1))
     pieces.append(('}', 1))
     text, spans = '', []
@@ -49,7 +50,12 @@ def target_parts(row, grounded=False):
 def token_kinds(offsets, spans):
     kinds = []
     for start, end in offsets:
-        kinds.append(next((kind for a, b, kind in spans if start >= a and end <= b), 0))
+        overlap = [(max(start, a), min(end, b), kind) for a, b, kind in spans if start < b and end > a]
+        covered = sum(b - a for a, b, _ in overlap)
+        # BPE often merges JSON punctuation across adjacent spans. Retain known
+        # transitions; a token touching any unknown payload stays fully masked.
+        kinds.append(0 if end <= start or covered != end - start or any(kind == 0 for _, _, kind in overlap)
+                     else max(kind for _, _, kind in overlap))
     return kinds
 
 

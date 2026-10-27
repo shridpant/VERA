@@ -168,3 +168,29 @@ only if no compute process and <500 MiB are present. Occupied devices still fail
 immediately. This changes orchestration, not scientific exposure or gates.
 Regression checks cover cooldown, occupied-device rejection, prelaunch failure
 recovery and reusing the completed paired warm-up without repeat GPU work.
+
+## Pre-freeze target-mask correction (v2)
+
+FIT format sampling at 1.5 passes failed 5/5 grounded responses, including
+label-only JSON and duplicate frame keys. Actual pinned-tokenizer inspection
+confirmed the original span-containment mask discarded known punctuation
+across adjacent known spans: the label-to-grounding delimiter, frame-object
+separators and closing JSON. Entire unknown frame objects were also masked,
+although frame IDs and schema are known. Preserve these failures and the
+tokenizer diagnosis. Pause only the CPU controller before further calibration.
+
+Retain every token fully covered by known spans, including BPE tokens crossing
+known boundaries. A token touching any unknown box payload stays fully masked.
+Supervise known labels/frame schema with unit weight, known box payload with
+0.5 weight, and no unknown payload. Keep the exact same target text, labels,
+prompts, views, parser and rewards. This also corrects label-only closing-JSON
+boundary supervision. The prior supervised curve remains exploratory legacy
+evidence; do not imply its masking implementation equals the corrected one.
+
+Run a CPU audit over all FIT/STOP targets using the actual pinned tokenizer,
+proving unchanged target bytes, <=512 tokens and no masked known/unmasked
+unknown tokens. Repeat label and grounded GPU engineering gates. Start a new
+calibration namespace with unique attempts 005/006/007 at the same declared
+1/1.5/2-pass FIT-only grid. Reuse no adapters trained under the old mask. Both
+true reward panels must pass at the corrected common warm-up before protocol
+freeze. All extra GPU work remains inside the existing six-hour pilot budget.

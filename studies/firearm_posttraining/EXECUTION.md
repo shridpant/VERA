@@ -121,3 +121,12 @@ tests passed locally. CPU controller PID 278319 resumed calibration. Label
 evidence/calibration-through-grounded-1p5.json. Both final real reward panels
 must still pass before protocol freeze. Active 15-minute in-chat continuation
 reads the canonical control record in this chat's outputs directory.
+
+## Target-mask diagnosis supersedes the prior controller
+
+Controller 278319 was stopped (CPU only) before two-pass warm-ups after the
+1.5-pass grounded format check failed 5/5. Actual tokenizer evidence found
+masked known JSON boundary tokens. The new v2 mask preserves known schema and
+only masks unknown box payloads. New CPU audit, both GPU engineering checks,
+and independent fixed warm-ups are required; old adapters cannot be reused.
+See AMENDMENTS.md. No protocol or scientific sweep has started.

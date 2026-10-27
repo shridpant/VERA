@@ -18,11 +18,18 @@ from .protocol import freeze
 from .pipeline import run as pipeline
 
 
-def run(root, original_data, frames_root, resume=False):
+def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None):
     root = Path(root).resolve()
     original_data, frames_root = str(original_data), str(frames_root)
-    control = root / 'calibration'
+    if Path(control_name).name != control_name or control_name in ('.', '..') or attempt_offset < 0:
+        raise ValueError('simple control directory and nonnegative attempt offset required')
+    control = root / control_name
     control.mkdir(parents=True, exist_ok=resume)
+    grounded_smoke = Path(grounded_smoke) if grounded_smoke else root / 'smoke-grounded-003/result.json'
+    label_smoke = Path(label_smoke) if label_smoke else root / 'smoke-labels-003/result.json'
+    write_json(control / 'config.json', {'control_name': control_name, 'attempt_offset': attempt_offset,
+               'grounded_smoke': str(grounded_smoke), 'label_smoke': str(label_smoke),
+               'target_mask': 'known-schema-unknown-payload-v2'}, immutable=True)
     if resume and (control / 'status.json').exists() and json.loads((control / 'status.json').read_text()).get('stage') == 'complete':
         return
     model = json.loads((root / 'data/preflight.json').read_text())['model']
@@ -81,7 +88,8 @@ def run(root, original_data, frames_root, resume=False):
             return {key: future.result() for key, future in futures.items()}
     try:
         chosen = None
-        for attempt, passes in ((2, 1.), (3, 1.5), (4, 2.)):
+        for initial_attempt, passes in ((2, 1.), (3, 1.5), (4, 2.)):
+            attempt = initial_attempt + attempt_offset
             status('fixed_warmups', attempt=attempt, warmup_passes=passes)
             warm = {}
             tasks = []
@@ -169,8 +177,8 @@ def run(root, original_data, frames_root, resume=False):
                     'time_ceilings': 'scientific-run ceilings removed by user; no exposure reduction to fit old limits'}
         write_json(root / 'throughput-forecast.json', forecast, immutable=True)
         status('freezing_protocol', warmup_passes=passes)
-        protocol = freeze(root, root / 'protocol.json', root / 'smoke-labels-003/result.json',
-                          root / 'smoke-grounded-003/result.json', root / 'pilot-sl-001/result.json',
+        protocol = freeze(root, root / 'protocol.json', label_smoke,
+                          grounded_smoke, root / 'pilot-sl-001/result.json',
                           panels['l'], panels['g'], max_passes=5., warmup_passes=passes)
         status('scientific_pipeline_running', warmup_passes=passes, protocol_hash=protocol['protocol_hash'])
         pipeline(root, root / 'protocol.json', original_data, frames_root)
@@ -187,5 +195,9 @@ if __name__ == '__main__':
     p.add_argument('--original-data', required=True)
     p.add_argument('--frames-root', required=True)
     p.add_argument('--resume', action='store_true', help='reuse matching calibration jobs without repeating them')
+    p.add_argument('--control-name', default='calibration')
+    p.add_argument('--attempt-offset', type=int, default=0)
+    p.add_argument('--grounded-smoke', help='passing engineering evidence for the current grounded target mask')
+    p.add_argument('--label-smoke', help='passing engineering evidence for the current label target mask')
     args = p.parse_args()
-    run(args.root, args.original_data, args.frames_root, args.resume)
+    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke)
