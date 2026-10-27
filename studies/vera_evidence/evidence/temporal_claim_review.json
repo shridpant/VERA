@@ -1,0 +1,167 @@
+{
+  "raw_results_sha256": "a368c8ac589efcb824758151b84164c9f40a70b7b5bf1d70fb36aec824b2238e",
+  "scope": "All 16 reverse/shuffle versus ordered pairs; no source frames reviewed; descriptive categories assigned after viewing outputs. No inter-rater validation.",
+  "finding": "Changed descriptions exist, but no pair is established as a mutually exclusive temporal claim from text alone. Do not count text change as contradiction, hallucination, or failed grounding.",
+  "pairs": [
+    {
+      "window_uid": "Shooting033_x264@1840",
+      "condition": "reverse",
+      "classification": "changed_event_description",
+      "note": "Carrying a large object becomes running away from a house; both could occur, so incompatibility is unproven.",
+      "ordered_response_sha256": "c3f02217328394a1e738ed2bf376cd4b02ae8af9d74e9d9faa42f4275983d2d0",
+      "comparison_response_sha256": "d092f7f5c3394158b4f452fda74358016f8a54e9b963b67693e7d731fa35b411",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Shooting033_x264@1840",
+      "condition": "shuffle",
+      "classification": "identical",
+      "note": "Exact response match.",
+      "ordered_response_sha256": "c3f02217328394a1e738ed2bf376cd4b02ae8af9d74e9d9faa42f4275983d2d0",
+      "comparison_response_sha256": "c3f02217328394a1e738ed2bf376cd4b02ae8af9d74e9d9faa42f4275983d2d0",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "RoadAccidents133_x264@352",
+      "condition": "reverse",
+      "classification": "changed_event_description",
+      "note": "Motorcycle fire becomes damage/explosion following collision; not necessarily contradictory.",
+      "ordered_response_sha256": "a2f2e877103364f618fbee455de76981a03c0e95df0e867e6c22038d238a6ec1",
+      "comparison_response_sha256": "adbcdabf9a489b82322b674db98e4a0dcaa90406846a1d8a477e9a6e7b79069d",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "RoadAccidents133_x264@352",
+      "condition": "shuffle",
+      "classification": "changed_event_description",
+      "note": "Car/motorcycle collision becomes erratic white-van action causing motorcycle crash. Causal attribution requires frame-level verification.",
+      "ordered_response_sha256": "a2f2e877103364f618fbee455de76981a03c0e95df0e867e6c22038d238a6ec1",
+      "comparison_response_sha256": "6d697f29d9aa89a885f73d7cd379a45de5119f59cab5ecc65622dbb7dc9e5644",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Explosion036_x264@2016",
+      "condition": "reverse",
+      "classification": "changed_event_description",
+      "note": "Person lying on ground becomes group distress/confrontation; omitted versus added details need not contradict.",
+      "ordered_response_sha256": "450c1cf5a931e942b88688eec9da70d69e10632faf120d06bc9c21157aaa11cb",
+      "comparison_response_sha256": "8b8931bf05150e43c9764aa14a93beed7613fb488ab53ece73043e199e8da3cf",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Explosion036_x264@2016",
+      "condition": "shuffle",
+      "classification": "less_specific",
+      "note": "Specific lying-person rationale replaced by generic unusual activities and negative findings.",
+      "ordered_response_sha256": "450c1cf5a931e942b88688eec9da70d69e10632faf120d06bc9c21157aaa11cb",
+      "comparison_response_sha256": "c76e605993c6e0759fc65b3cba25fbb8e22d7f5c1de568f9944fcdf896526e15",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Explosion033_x264@2352",
+      "condition": "reverse",
+      "classification": "identical",
+      "note": "Exact response match.",
+      "ordered_response_sha256": "a5e4bce2c9f688031aaafcc629a21ed7f6d412e0c0a30f8cc6722074e18076ac",
+      "comparison_response_sha256": "a5e4bce2c9f688031aaafcc629a21ed7f6d412e0c0a30f8cc6722074e18076ac",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Explosion033_x264@2352",
+      "condition": "shuffle",
+      "classification": "identical",
+      "note": "Exact response match.",
+      "ordered_response_sha256": "a5e4bce2c9f688031aaafcc629a21ed7f6d412e0c0a30f8cc6722074e18076ac",
+      "comparison_response_sha256": "a5e4bce2c9f688031aaafcc629a21ed7f6d412e0c0a30f8cc6722074e18076ac",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Fighting042_x264@2080",
+      "condition": "reverse",
+      "classification": "changed_event_description",
+      "note": "Bending/touching ground becomes holding head/distress; potentially compatible poses.",
+      "ordered_response_sha256": "548b99190b6f790520ed975a505b64d728033fd0eaec8e3a855c680277630b6d",
+      "comparison_response_sha256": "926afb5b528a429bba344ab84744fc7e9e5e3c2da1e60ec7662988622f8e5050",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Fighting042_x264@2080",
+      "condition": "shuffle",
+      "classification": "added_context",
+      "note": "Adds entering-a-building context to the same bending/touching-ground description.",
+      "ordered_response_sha256": "548b99190b6f790520ed975a505b64d728033fd0eaec8e3a855c680277630b6d",
+      "comparison_response_sha256": "aeff51e1d540f1a9cb578d3e8b43517731656ad981965022dab46df8c96ff7ed",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Explosion020_x264@1136",
+      "condition": "reverse",
+      "classification": "rephrased_with_additions",
+      "note": "Restraint and ground damage retained; adds negative vehicle/object/sound statements.",
+      "ordered_response_sha256": "1cec74ba0cf34dc3941e174ed885fe4b43368b4f537da222fd931068c993e775",
+      "comparison_response_sha256": "0ab6b0e3d038dabd68baa7bbb011dda4091e8594f9aa4c80937f280995564a05",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Explosion020_x264@1136",
+      "condition": "shuffle",
+      "classification": "added_action",
+      "note": "Retains restraint/ground damage and adds a third person running away.",
+      "ordered_response_sha256": "1cec74ba0cf34dc3941e174ed885fe4b43368b4f537da222fd931068c993e775",
+      "comparison_response_sha256": "2d6ba5c7c7b436a5dab8489fa1d09f8df2c86b5b6d8dae8c0e980c8059f0684e",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Burglary032_x264@15632",
+      "condition": "reverse",
+      "classification": "identical",
+      "note": "Exact response match.",
+      "ordered_response_sha256": "0683ec176d143a740656d1faf5889201a0f7648aee6fc0cc90e0b410e7c3ceb6",
+      "comparison_response_sha256": "0683ec176d143a740656d1faf5889201a0f7648aee6fc0cc90e0b410e7c3ceb6",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "Burglary032_x264@15632",
+      "condition": "shuffle",
+      "classification": "identical",
+      "note": "Exact response match.",
+      "ordered_response_sha256": "0683ec176d143a740656d1faf5889201a0f7648aee6fc0cc90e0b410e7c3ceb6",
+      "comparison_response_sha256": "0683ec176d143a740656d1faf5889201a0f7648aee6fc0cc90e0b410e7c3ceb6",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "RoadAccidents011_x264@2000",
+      "condition": "reverse",
+      "classification": "less_specific",
+      "note": "Normal scene retained; explicit damage/movement/sound negatives replaced by generic no visible anomalies.",
+      "ordered_response_sha256": "948dc3a3df12843d7acce2895567fe577365f514d9b8570cf35b5552b671288f",
+      "comparison_response_sha256": "c966052fa71a806cb01afaeb6b1c166e433ae0b05e22bddd2e20558b56b38271",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    },
+    {
+      "window_uid": "RoadAccidents011_x264@2000",
+      "condition": "shuffle",
+      "classification": "rephrased_with_omission",
+      "note": "Normal scene/damage/movement retained; sound assertion omitted.",
+      "ordered_response_sha256": "948dc3a3df12843d7acce2895567fe577365f514d9b8570cf35b5552b671288f",
+      "comparison_response_sha256": "12deb5658617374c9fbbfcd7d8b0d39d351a4a04b6b5493bce04063b29299a2e",
+      "semantic_truth": "unresolved without source evidence",
+      "reviewer": "Codex text-only qualitative review; not independent human annotation"
+    }
+  ]
+}

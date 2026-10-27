@@ -1,0 +1,93 @@
+{
+  "complete": true,
+  "calls_recorded": 40,
+  "windows_started": 8,
+  "parse_failures": 0,
+  "at_generation_cap": 0,
+  "generation_seconds": 77.479,
+  "comparisons": {
+    "repeat": {
+      "available_pairs": 8,
+      "valid_label_pairs": 8,
+      "label_changes": 0,
+      "exact_text_matches": 8
+    },
+    "reverse": {
+      "available_pairs": 8,
+      "valid_label_pairs": 8,
+      "label_changes": 0,
+      "exact_text_matches": 2
+    },
+    "shuffle": {
+      "available_pairs": 8,
+      "valid_label_pairs": 8,
+      "label_changes": 0,
+      "exact_text_matches": 3
+    },
+    "single_frame": {
+      "available_pairs": 8,
+      "valid_label_pairs": 8,
+      "label_changes": 2,
+      "exact_text_matches": 1
+    }
+  },
+  "per_window": {
+    "Shooting033_x264@1840": {
+      "ordered": 1,
+      "repeat": 1,
+      "reverse": 1,
+      "shuffle": 1,
+      "single_frame": 1
+    },
+    "RoadAccidents133_x264@352": {
+      "ordered": 1,
+      "repeat": 1,
+      "reverse": 1,
+      "shuffle": 1,
+      "single_frame": 0
+    },
+    "Explosion036_x264@2016": {
+      "ordered": 1,
+      "repeat": 1,
+      "reverse": 1,
+      "shuffle": 1,
+      "single_frame": 1
+    },
+    "Explosion033_x264@2352": {
+      "ordered": 1,
+      "repeat": 1,
+      "reverse": 1,
+      "shuffle": 1,
+      "single_frame": 1
+    },
+    "Fighting042_x264@2080": {
+      "ordered": 1,
+      "repeat": 1,
+      "reverse": 1,
+      "shuffle": 1,
+      "single_frame": 1
+    },
+    "Explosion020_x264@1136": {
+      "ordered": 1,
+      "repeat": 1,
+      "reverse": 1,
+      "shuffle": 1,
+      "single_frame": 1
+    },
+    "Burglary032_x264@15632": {
+      "ordered": 0,
+      "repeat": 0,
+      "reverse": 0,
+      "shuffle": 0,
+      "single_frame": 1
+    },
+    "RoadAccidents011_x264@2000": {
+      "ordered": 0,
+      "repeat": 0,
+      "reverse": 0,
+      "shuffle": 0,
+      "single_frame": 0
+    }
+  },
+  "limitations": "Eight exploratory UCF windows; no model optimization, no detection-accuracy or temporal-faithfulness claim."
+}

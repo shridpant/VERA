@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage{booktabs,tabularx,hyperref,graphicx,amsmath}
+\title{VERA Evidence Feedback: Novelty and Feasibility Gate}\author{Research update for Shrid Pant}\date{October 27, 2026}
+\begin{document}\maketitle
+\textbf{Final decision:} No-go for the investigated evidence-verified question-learning proposal under current evidence. Stop further compute; reopening conditions are specified below. A subsequent eight-window diagnostic is reported below; no learning was performed.
+\section{Closest existing work}
+\begin{tabularx}{\linewidth}{lXX}\toprule Work & Established overlap & Consequence\\\midrule
+PrismVAU & Weakly supervised optimization of textual anchors and MLLM prompts. & Another frozen-model prompt optimizer is insufficient novelty.\\
+ASK-HINT & Fine-grained action and interaction questions on UCF and XD. & Include structured/manual prompting controls.\\
+LRPO & Textual anomaly priors with group-relative and temporally grounded feedback. & Check whether the reward distinguishes order effects from nulls.\\
+GEPA & Reflective prompt evolution using trajectories and feedback. & Rich feedback alone is not new.\\
+CCT & Counterfactual explanation evaluation beyond binary flips. & Deletion consistency does not automatically establish a new faithfulness metric.\\
+Instance-Aligned Captions & Claims associated with entities across anomaly benchmarks. & Investigate external support labels and release accessibility.\\\bottomrule\end{tabularx}
+\section{Data readiness}
+The split metadata has 1,449/161/290 UCF train/validation/test IDs and 3,559/395/800 XD IDs. Exact IDs are disjoint across each dataset's splits. This does not establish source-byte or scene independence. The script hashes all six JSON files and preserves extensionless dotted XD IDs.
+
+UCF test videos, sparse frames, reference outputs and ImageBind features are staged on Oz. No UCF training videos or XD videos were found in the inspected directories. Loader scripts and metadata are not videos. UCF training QA can contain temporal intervals; these must not silently strengthen supervision in a weak-label comparison.
+\section{Implications from prior work}
+Experiment03B already demonstrates ranked perturbation utility. Fragile false alerts can also lose their label under deletion. Optimizing that response may reward brittleness. Unsupported sound statements in image-only input supply a narrow engineering check, but removing the sound question may explain the entire benefit. Model self-verification alone cannot establish semantic support.
+\section{Next gates}
+Inspect LRPO implementation equivalence; verify external support-annotation availability; acquire only a deterministic pilot subset from official training sources after split checks. Compare unchanged VERA, no-sound, citation-only, and evidence-feedback conditions at accounted query cost. Separate detection, unsupported claims, robustness and invalid outputs. Do not optimize on the previously examined UCF test collection. If reliable verification or a distinct research question cannot be established, pivot or report a negative feasibility result.
+
+\section{Analytical null diagnostic and pivot}
+The published LRPO temporal reward uses $\Delta=a-\mu b$ and
+$R=\operatorname{clip}((|\Delta|-0.05)/0.15,0,1)\max(0,\Delta)$,
+with $\mu=0.8$. Assignment is restricted to correct ordered outputs.
+Our synthetic calculation gives the following values:
+\begin{center}\begin{tabular}{rrr}\toprule
+Ordered $a$ & Shuffled $b$ & Equation reward\\\midrule
+0.5&0.5&0.033333\\
+0.8&0.8&0.117333\\
+1.0&1.0&0.200000\\
+0.7&0.8&0.004000\\\bottomrule
+\end{tabular}\end{center}
+At equality, $\Delta=0.2a$; positive reward begins at $a>0.25$.
+These are analytical inputs, not measured model outputs. The prose describes strict ordered outperformance. An additional implementation gate would eliminate these counterexamples; author code has not been inspected. This does not invalidate the reported benchmark results.
+\begin{figure}[ht]\centering
+\includegraphics[width=\linewidth]{figures/temporal_reward_audit.pdf}
+\caption{Synthetic reward diagnostic. Correct-output assignment assumed. The dashed diagonal marks equal ordered/shuffled accuracy rewards. No GPU inference.}
+\end{figure}
+
+\textbf{Next decision:} investigate order-invariant nulls before evidence-question learning. Compare identical-input repeats, fixed permutations, and a separately identified repeated-frame control on original VERA. Previously consulted UCF test data can support exploratory diagnostics, not untouched confirmation or prompt selection. A shuffle response may reflect distribution shift rather than semantic evidence. Check prior diagnostics and implementation code before selecting a GPU pilot.
+
+Instance-Aligned Captions uses manual roles/boxes, SAM2 tracking and VLM-generated captions; these are not wholly human-verified claim labels. Its table includes UCF but not XD. A direct annotation release has not been established from the inspected sources.
+
+
+\section{Measured original-VERA pilot}
+The protocol and manifest were committed before inference (36c097d; repeat-stop enforcement 1eb2179). Four event-stratum and four negative-stratum windows were selected by fixed hash order from previously consulted UCF metadata, with unique source hashes and no response-based selection. Strata are not complete labels for sampled frames.
+
+Frozen InternVL2-8B used the original explanation-first prompt and greedy decoding. All 40 calls completed; all processed-tensor permutation checks passed. Identical repeats matched exactly. There were zero parse failures or outputs reaching the 1024-token cap.
+\begin{center}\begin{tabular}{lrr}\toprule
+Condition & Decision changes /8 & Exact text matches /8\\\midrule
+Identical repeat&0&8\\
+Reversed&0&2\\
+Fixed shuffle&0&3\\
+Single frame repeated&2&1\\\bottomrule\end{tabular}\end{center}
+\begin{figure}[ht]\centering\includegraphics[width=.95\linewidth]{figures/temporal_pilot.pdf}
+\caption{Measured outcomes, not synthetic reward inputs. Text differences are not necessarily semantic differences. Single-frame repetition removes information as well as motion.}
+\end{figure}
+
+The two repeated-frame decision changes were RoadAccidents133 (1 to 0) and Burglary032 (0 to 1). No correctness conclusion follows without inspecting event support. Total process time was 89.54 seconds (about 0.025 allocated GPU-hours on one Ada); generation time was 77.48 seconds. Ada5 was released. Dependencies remained unchanged, and all five transferred raw artifacts matched remote SHA256 hashes.
+
+\textbf{Decision after pilot:} do not scale temporal-reward learning. This sample shows decision invariance to the tested orders, despite explanation-text variation. It does not establish model-wide invariance or semantic faithfulness. Next assess whether these differing explanations make incompatible event-order claims, using source-frame review and explicit claim labels; if reliable labels cannot be established, retain the negative feasibility outcome and stop this direction. Do not optimize prompts on these test windows.
+
+
+\section{Qualitative explanation review and stopping decision}
+All 16 reversed/shuffled versus ordered response pairs were reviewed as text. Five were exact matches; the remaining descriptions range from rephrasing and omission to changed event accounts. For example, RoadAccidents133 changes from a car--motorcycle collision to a white van causing a motorcycle crash. Shooting033 changes from carrying an object to running away from a house. These accounts may describe different compatible aspects of a scene; text alone does not establish a contradiction.
+
+The review is a post-hoc Codex assessment, not independent human annotation. No source frames were inspected for this review, and no inter-rater reliability was measured. Each judgment is linked to hashes of both raw responses in temporal\_claim\_review.json. We do not report a hallucination or semantic-error rate.
+
+\textbf{Stop this pilot branch here.} Neither the general shuffle diagnostic nor the observed text variation establishes a distinct learning contribution. No more temporal perturbation calls or prompt optimization are justified by this pilot. The original evidence-question direction remains conditional on accessible, independently verified support labels and a mechanism distinct from existing work. Annotation acquisition and source-grounded evaluation design are the next prerequisites; no additional GPU computation is scheduled from these findings. All frozen results remain preserved.
+
+
+\section{Accessible UCA annotations and split contamination risk}
+The authors' UCA repository is accessible at
+\url{https://github.com/Xuange923/Surveillance-Video-Understanding},
+commit \texttt{e478cb5b2277c6b7cf6a1dc4691021592003e216}.
+The initially located fork and fetched upstream main resolve to the same commit.
+Our metadata audit counted 1,854 videos and 23,542 timed descriptions; timestamp counts match sentence counts, and all intervals have positive duration within their video duration. UCA splits are internally ID-disjoint.
+
+\begin{center}\begin{tabular}{lrrr}\toprule
+ & VERA train & VERA validation & VERA test\\\midrule
+UCA train &863&88&214\\
+UCA validation &321&36&22\\
+UCA test &228&32&50\\\bottomrule\end{tabular}\end{center}
+
+\textbf{Leakage hazard:} UCA's training split contains 214 VERA test videos. These are differing split conventions, not evidence that UCA's own splits leak. Any VERA learning experiment must exclude all VERA test IDs regardless of UCA labels; the 863-video joint training intersection is a candidate starting pool, subject to source/scene checks. Do not treat default UCA training as safe for VERA evaluation.
+
+Timed captions provide external event references but are not exhaustive claim-support labels. Caption omission cannot establish a hallucination. Using them for training would introduce stronger supervision than original weak-label VERA and must be declared. No images or new model outputs were used in this metadata audit. Next assess annotation methodology and design a split-safe, explicitly caption-supervised question-learning comparison before fetching training videos or using GPUs. This reopens a conditional data route, not a novelty claim.
+
+
+\section{Caption-supervision gate: annotation quality and rejected split}
+UCA Section 3 and Appendix A describe ten trained annotators, a three-researcher review team, checks every 100 instances, and a final review. These establish a documented human-reference process, not exhaustive truth labels for arbitrary generated claims. Source: \url{https://arxiv.org/abs/2309.13925}.
+
+VANGUARD already aligns UCA sentences to subclips, generates object-level reasoning and detector boxes, and trains LoRA adapters. It differs from frozen VERA question learning, but prevents claiming caption-informed reasoning or grounding alone as new. Source: \url{https://arxiv.org/html/2605.02912v1}. We have not established the novelty of the narrower proposed feedback mechanism.
+
+An ID-only candidate manifest was generated before images or predictions were examined: 16 joint-training videos and 12 joint-validation videos, selected by fixed SHA256 order. The latter contains ten normal videos and two burglaries; this cannot support a broad anomaly-category comparison. The manifest is retained as a rejected design artifact, not used for inference. Exact split-ID exclusion passed, but source-byte/scene independence has not been verified.
+
+\textbf{Next design constraint:} preserve original VERA train/validation boundaries while considering UCA annotations across its alternative splits, rather than requiring both split names to agree. Define category coverage and positive-reference evaluation before selection. Caption absence remains unknown, not false. Compare classification-only feedback, no-sound/manual controls and caption-positive feedback at matched model-call budgets. A pilot can test feasibility; it cannot by itself establish novelty. No training videos fetched and no new GPU work performed.
+
+
+\section{Final feasibility decision: no-go under current evidence}
+The assessed candidate would learn frozen-VERA questions from UCA-aligned caption feedback, compared against classification-only and simple manual/no-sound controls. It remains unsuitable for the requested evidence-verification claim: caption agreement is not exhaustive claim support, and no independently validated verifier or clearly differentiated mechanism has been established. Existing prompt, linguistic-feedback and caption-grounding methods substantially overlap.
+
+Data access is not the fundamental blocker. Using UCA annotations across its alternative splits covers 156 original VERA validation videos across all 13 anomaly classes plus normal; the rejected joint-split sample was overly restrictive. Proper split filtering can resolve that issue, but cannot turn caption omission into negative evidence.
+
+\textbf{Stop further compute for this proposal.} Preserve the complete negative result and all raw records. This is a bounded research decision, not proof that novelty is impossible. Reopening requires independently reviewed supported/contradicted/unknown claim labels with source evidence, separate development/evaluation sources, and a precise mechanism evaluated against matched-supervision and matched-call controls. No further data download or model run is justified merely by an available GPU.
+
+Total new inference in this feasibility study remains 40 calls, 89.54 seconds on one Ada (approximately 0.025 allocated GPU-hours); no A16 use. PR5 retains the completed experiment03B repair, and PR10 contains this feasibility study. Neither was merged.
+
+\section{Primary sources and review limits}
+PrismVAU method sections, LRPO reward/appendix, and the instance-caption annotation pipeline were inspected; several other comparisons currently rely on primary abstracts/introduction and need full-method follow-up. This is not an exhaustive novelty proof.
+\begin{itemize}
+\item PrismVAU: \url{https://arxiv.org/html/2601.02927v1}
+\item ASK-HINT: \url{https://arxiv.org/abs/2510.02155}
+\item LRPO: \url{https://proceedings.mlr.press/v306/leng26c.html}
+\item GEPA: \url{https://arxiv.org/abs/2507.19457}
+\item CCT: \url{https://deepmind.google/research/publications/78755/}
+\item Instance-Aligned Captions: \url{https://arxiv.org/html/2601.08155v1}
+\end{itemize}
+Full decision record, inventory scope and metadata hashes are in studies/vera\_evidence on branch research/vera-evidence-feasibility. No new scientific result or novelty claim is made.
+\end{document}

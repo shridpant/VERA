@@ -1,0 +1,90 @@
+{
+  "scope": "metadata only; no images/predictions read",
+  "splits": {
+    "UCF_Instruct_train.json": {
+      "entries": 1449,
+      "parsed_video_ids": 1449,
+      "unique_video_ids": 1449,
+      "sha256": "28eaf3ff4a167ffc8f40f86a28204d484c1853561fb37f3d9b75ac116778f264",
+      "sample_keys": [
+        "video",
+        "video_label",
+        "length",
+        "QA"
+      ]
+    },
+    "UCF_Instruct_val.json": {
+      "entries": 161,
+      "parsed_video_ids": 161,
+      "unique_video_ids": 161,
+      "sha256": "c8a903315e2b47f03b7aeb0d313aedea66800c1598dba2272254493ae4bd1da5",
+      "sample_keys": [
+        "video",
+        "video_label",
+        "length",
+        "QA"
+      ]
+    },
+    "UCF_Eval.json": {
+      "entries": 290,
+      "parsed_video_ids": 290,
+      "unique_video_ids": 290,
+      "sha256": "f3857cddd623f767e7b86bd50a4aeb122445fc6e241ddd7130b7e3ec0c4d8b9f",
+      "sample_keys": [
+        "video",
+        "temporal_label",
+        "length",
+        "QA"
+      ]
+    },
+    "xd_train.json": {
+      "entries": 3559,
+      "parsed_video_ids": 3559,
+      "unique_video_ids": 3559,
+      "sha256": "007493cfd2978c5fa8b554b085c9e8c7c59ad5b116d90a20d79b13dc247fc8bc",
+      "sample_keys": [
+        "video_name",
+        "path",
+        "video_label",
+        "length"
+      ]
+    },
+    "xd_val.json": {
+      "entries": 395,
+      "parsed_video_ids": 395,
+      "unique_video_ids": 395,
+      "sha256": "e7fc29913a3d89a20b1c7181066352a2ea5091c363ae468cc054fa7714e01f6e",
+      "sample_keys": [
+        "video_name",
+        "path",
+        "video_label",
+        "length"
+      ]
+    },
+    "xd_test_800.json": {
+      "entries": 800,
+      "parsed_video_ids": 800,
+      "unique_video_ids": 800,
+      "sha256": "1e9e9cc520c8f4a976ab4502fb3444c9af5b194c935b0ab16aae7adbf93fd3c9",
+      "sample_keys": [
+        "video",
+        "temporal_label",
+        "length",
+        "label"
+      ]
+    }
+  },
+  "intersections": {
+    "UCF_Instruct_train.json vs UCF_Instruct_val.json": [],
+    "UCF_Instruct_train.json vs UCF_Eval.json": [],
+    "UCF_Instruct_val.json vs UCF_Eval.json": [],
+    "xd_train.json vs xd_val.json": [],
+    "xd_train.json vs xd_test_800.json": [],
+    "xd_val.json vs xd_test_800.json": []
+  },
+  "limitations": [
+    "Filename disjointness is not source-byte or scene disjointness.",
+    "Dataset paths embedded in original XD JSON refer to the original authors host.",
+    "Training QA can contain time intervals; do not silently introduce stronger temporal supervision into a weak-label comparison."
+  ]
+}
