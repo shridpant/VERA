@@ -1,6 +1,10 @@
-# Current override: coordinate amendment accepted October 27
+# Current execution: accepted native-coordinate candidate010
 
-Human approval recorded in AMENDMENTS.md. Chat01a17dce owns implementation/deployment of fresh attempt010 / calibration-native-coordinates-v1. No duplicate launches. Prior pending-decision statements below are historical and superseded; all unchanged scientific stops and budgets remain binding. No scoring-rule change authorized.
+October27 human approved the coordinate fix, rerun and conditional continuation, then explicitly approved updating public PR9. Source8d9232c deployed clean at /local/datasets/sp2117/firearm_visilab/code/posttraining-releases/8d9232c and pushed to draft PR9. Local78/Oz30tests pass. Actual-tokenizer/source audit ROOT/data/coordinate-audit-v1.json passes240videos/799knownboxes, maximum284completiontokens,553unknownpayloadtokens masked, unitroundtriperror1.11e-16. Scoring/reward/IoU/trainingupdate sources unchanged; grounded targets/prompt intentionally differ. No old adapters reused.
+
+Both smoke006 engineering checks passed exact reload/resume; synthetic fixture gradients are engineering only. Detached driver300975 launches controller301220, calibration-native-coordinates-v1 attempt010, fresh paired three-pass warmups on Ada6/7. Driver/status/launch and operator ledger are under ROOT; preserve all old runs. Formats010 then actual-reward panels010 (sequential reservations) must pass before freeze/pipeline. Scoring rules, thresholds, FIT/STOP, totalfivepasses and sixpilotGPUhours unchanged. Current operator chat01a17dce; no duplicate launch. No reportingholdouts accessed or benefit established.
+
+Earlier execution text below is historical through failed format009; any pending-coordinate-decision language is superseded by the accepted amendment above.
 
 # Actual execution status
 

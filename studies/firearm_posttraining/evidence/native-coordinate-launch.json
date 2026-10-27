@@ -1,0 +1,706 @@
+{
+  "captured_unix": 1793113582.7019038,
+  "files": {
+    "budget.json": {
+      "format-g-002": {
+        "elapsed_seconds": 56.53191577299731,
+        "exit_code": 0,
+        "finished_unix": 1793071869.785811,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793071813.252663,
+        "status": "finished"
+      },
+      "format-g-003": {
+        "elapsed_seconds": 20.145158374041785,
+        "exit_code": 0,
+        "finished_unix": 1793073641.733416,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793073621.5863519,
+        "status": "finished"
+      },
+      "format-g-005": {
+        "elapsed_seconds": 121.71641792199807,
+        "exit_code": 0,
+        "finished_unix": 1793074663.9909046,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793074542.2720947,
+        "status": "finished"
+      },
+      "format-g-006": {
+        "elapsed_seconds": 133.24297914700583,
+        "exit_code": 0,
+        "finished_unix": 1793075403.8420498,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793075270.5965202,
+        "status": "finished"
+      },
+      "format-g-007": {
+        "elapsed_seconds": 335.8297133909655,
+        "exit_code": 0,
+        "finished_unix": 1793076537.6928914,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793076201.8605168,
+        "status": "finished"
+      },
+      "format-g-008": {
+        "elapsed_seconds": 560.0810287480126,
+        "exit_code": 0,
+        "finished_unix": 1793078993.2438166,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793078433.159986,
+        "status": "finished"
+      },
+      "format-g-009": {
+        "elapsed_seconds": 362.3458366100094,
+        "exit_code": 0,
+        "finished_unix": 1793080186.244029,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793079823.8952653,
+        "status": "finished"
+      },
+      "format-l-002": {
+        "elapsed_seconds": 128.62754834099906,
+        "exit_code": 0,
+        "finished_unix": 1793071941.8947577,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793071813.265606,
+        "status": "finished"
+      },
+      "format-l-003": {
+        "elapsed_seconds": 134.29797243297799,
+        "exit_code": 0,
+        "finished_unix": 1793073758.0997953,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793073623.7996929,
+        "status": "finished"
+      },
+      "format-l-005": {
+        "elapsed_seconds": 129.42785172100412,
+        "exit_code": 0,
+        "finished_unix": 1793074669.5004084,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793074540.0703342,
+        "status": "finished"
+      },
+      "format-l-006": {
+        "elapsed_seconds": 129.6458138320013,
+        "exit_code": 0,
+        "finished_unix": 1793075398.0161529,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793075268.3679192,
+        "status": "finished"
+      },
+      "format-l-007": {
+        "elapsed_seconds": 130.72311804094352,
+        "exit_code": 0,
+        "finished_unix": 1793076330.360547,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793076199.6349032,
+        "status": "finished"
+      },
+      "format-l-008": {
+        "elapsed_seconds": 129.68386331899092,
+        "exit_code": 0,
+        "finished_unix": 1793078560.600232,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793078430.9135437,
+        "status": "finished"
+      },
+      "format-l-009": {
+        "elapsed_seconds": 126.45165405399166,
+        "exit_code": 0,
+        "finished_unix": 1793079950.3294423,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793079823.874942,
+        "status": "finished"
+      },
+      "pilot-c0g-001": {
+        "elapsed_seconds": 204.1204902540194,
+        "exit_code": 0,
+        "finished_unix": 1793067840.030244,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793067635.9083254,
+        "status": "finished"
+      },
+      "pilot-c0g-002": {
+        "elapsed_seconds": 397.21308277599746,
+        "exit_code": 0,
+        "finished_unix": 1793071369.184777,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793070971.9701169,
+        "status": "finished"
+      },
+      "pilot-c0g-003": {
+        "elapsed_seconds": 592.3582596619963,
+        "exit_code": 0,
+        "finished_unix": 1793072534.6097248,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793071942.2497876,
+        "status": "finished"
+      },
+      "pilot-c0g-005": {
+        "elapsed_seconds": 401.50503199500963,
+        "exit_code": 0,
+        "finished_unix": 1793074539.7292314,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793074138.2219148,
+        "status": "finished"
+      },
+      "pilot-c0g-006": {
+        "elapsed_seconds": 598.0958441460389,
+        "exit_code": 0,
+        "finished_unix": 1793075267.9806445,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793074669.8824987,
+        "status": "finished"
+      },
+      "pilot-c0g-007": {
+        "elapsed_seconds": 792.782966113009,
+        "exit_code": 0,
+        "finished_unix": 1793076199.256144,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793075406.4703953,
+        "status": "finished"
+      },
+      "pilot-c0g-008": {
+        "elapsed_seconds": 1180.6491130010108,
+        "exit_code": 0,
+        "finished_unix": 1793078430.5565698,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793077249.904832,
+        "status": "finished"
+      },
+      "pilot-c0g-010": {
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793113458.3397386,
+        "status": "reserved"
+      },
+      "pilot-c0l-002": {
+        "elapsed_seconds": 356.730613866006,
+        "exit_code": 0,
+        "finished_unix": 1793071328.6865103,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793070971.954351,
+        "status": "finished"
+      },
+      "pilot-c0l-003": {
+        "elapsed_seconds": 530.5074078949983,
+        "exit_code": 0,
+        "finished_unix": 1793073621.2137234,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793073090.7044418,
+        "status": "finished"
+      },
+      "pilot-c0l-005": {
+        "elapsed_seconds": 367.30283560801763,
+        "exit_code": 0,
+        "finished_unix": 1793074505.5162742,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793074138.211149,
+        "status": "finished"
+      },
+      "pilot-c0l-006": {
+        "elapsed_seconds": 550.4510334120132,
+        "exit_code": 0,
+        "finished_unix": 1793075222.5654624,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793074672.1118608,
+        "status": "finished"
+      },
+      "pilot-c0l-007": {
+        "elapsed_seconds": 730.0564461349859,
+        "exit_code": 0,
+        "finished_unix": 1793076134.296554,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793075404.2375844,
+        "status": "finished"
+      },
+      "pilot-c0l-008": {
+        "elapsed_seconds": 1082.7968648739625,
+        "exit_code": 0,
+        "finished_unix": 1793078332.7271314,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793077249.9275775,
+        "status": "finished"
+      },
+      "pilot-c0l-010": {
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793113456.0905228,
+        "status": "reserved"
+      },
+      "pilot-rg-001": {
+        "elapsed_seconds": 441.7732764869579,
+        "exit_code": 0,
+        "finished_unix": 1793070708.317228,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 7200,
+        "stage": "pilot",
+        "started_unix": 1793070266.5424511,
+        "status": "finished"
+      },
+      "pilot-rg-008": {
+        "elapsed_seconds": 165.94385475898162,
+        "exit_code": 0,
+        "finished_unix": 1793079161.7695503,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 3600,
+        "stage": "pilot",
+        "started_unix": 1793078995.8228476,
+        "status": "finished"
+      },
+      "pilot-rl-001": {
+        "elapsed_seconds": 406.41347713198047,
+        "exit_code": 0,
+        "finished_unix": 1793070672.9489408,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 7200,
+        "stage": "pilot",
+        "started_unix": 1793070266.5340173,
+        "status": "finished"
+      },
+      "pilot-rl-008": {
+        "elapsed_seconds": 143.1612955290475,
+        "exit_code": 0,
+        "finished_unix": 1793079136.7713914,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 1800,
+        "stage": "pilot",
+        "started_unix": 1793078993.6074014,
+        "status": "finished"
+      },
+      "pilot-sl-001": {
+        "elapsed_seconds": 2470.9881498080213,
+        "exit_code": 0,
+        "finished_unix": 1793070106.9143643,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 5400,
+        "stage": "pilot",
+        "started_unix": 1793067635.9246488,
+        "status": "finished"
+      },
+      "smoke-grounded-003": {
+        "elapsed_seconds": 80.97224005596945,
+        "exit_code": 0,
+        "finished_unix": 1793067480.5408273,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793067399.5673404,
+        "status": "finished"
+      },
+      "smoke-grounded-004": {
+        "elapsed_seconds": 79.90793663798831,
+        "exit_code": 0,
+        "finished_unix": 1793074078.8784475,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793073998.9689634,
+        "status": "finished"
+      },
+      "smoke-grounded-005": {
+        "elapsed_seconds": 80.91562719800277,
+        "exit_code": 0,
+        "finished_unix": 1793079697.9194407,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793079617.0009687,
+        "status": "finished"
+      },
+      "smoke-grounded-006": {
+        "elapsed_seconds": 79.70323395199375,
+        "exit_code": 0,
+        "finished_unix": 1793113455.580507,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793113375.874917,
+        "status": "finished"
+      },
+      "smoke-labels-001": {
+        "elapsed_seconds": 25.71389843901852,
+        "exit_code": 1,
+        "finished_unix": 1793067004.857161,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "child_failure",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793066979.1423767,
+        "status": "finished"
+      },
+      "smoke-labels-002": {
+        "elapsed_seconds": 44.26075675198808,
+        "exit_code": 0,
+        "finished_unix": 1793067223.7401953,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793067179.478276,
+        "status": "finished"
+      },
+      "smoke-labels-003": {
+        "elapsed_seconds": 49.71005992899882,
+        "exit_code": 0,
+        "finished_unix": 1793067449.2938344,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793067399.5825195,
+        "status": "finished"
+      },
+      "smoke-labels-004": {
+        "elapsed_seconds": 49.47092811297625,
+        "exit_code": 0,
+        "finished_unix": 1793074048.4459987,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793073998.972914,
+        "status": "finished"
+      },
+      "smoke-labels-005": {
+        "elapsed_seconds": 48.64868760498939,
+        "exit_code": 0,
+        "finished_unix": 1793079665.6320748,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 900,
+        "stage": "pilot",
+        "started_unix": 1793079616.9804678,
+        "status": "finished"
+      },
+      "smoke-labels-006": {
+        "elapsed_seconds": 48.65972602495458,
+        "exit_code": 0,
+        "finished_unix": 1793113424.5560513,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 600,
+        "stage": "pilot",
+        "started_unix": 1793113375.8937416,
+        "status": "finished"
+      },
+      "smoke-vq-001": {
+        "elapsed_seconds": 16.93945041799452,
+        "exit_code": 0,
+        "finished_unix": 1793069795.1500423,
+        "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+        "reason": "completed",
+        "reserved_seconds": 300,
+        "stage": "pilot",
+        "started_unix": 1793069778.2091005,
+        "status": "finished"
+      },
+      "smoke-vq-002": {
+        "elapsed_seconds": 17.733596416015644,
+        "exit_code": 0,
+        "finished_unix": 1793079728.2608855,
+        "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+        "reason": "completed",
+        "reserved_seconds": 300,
+        "stage": "pilot",
+        "started_unix": 1793079710.5244212,
+        "status": "finished"
+      }
+    },
+    "calibration-native-coordinates-v1/config.json": {
+      "attempt_offset": 8,
+      "control_name": "calibration-native-coordinates-v1",
+      "grounded_smoke": "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-grounded-006/result.json",
+      "label_smoke": "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-labels-006/result.json",
+      "sequential_panels": true,
+      "target_mask": "known-schema-unknown-payload-v2",
+      "warmup_attempt": null,
+      "warmup_grid": [
+        3.0
+      ]
+    },
+    "calibration-native-coordinates-v1/status.json": {
+      "attempt": 10,
+      "controller_pid": 301220,
+      "stage": "fixed_warmups",
+      "started_unix": 1793113455.7771173,
+      "updated_unix": 1793113455.7771227,
+      "warmup_passes": 3.0
+    },
+    "data/coordinate-audit-v1.json": {
+      "code_commit": "8d9232c85e2406a25bde1e0f8c1e8f67f132eafb",
+      "code_hashes": {
+        "coordinate_audit.py": "887f1e36e77ddc685b54420109bfc80c2b96d519c284d01345481b961738939a",
+        "model.py": "77432b7c34de0f25fbf5c84ac9e9350cde47bc6175d20affb02b8570f9776b0a",
+        "rewards.py": "7d3c7b1219a6ebd87f72127785e0757b19769c078d4d1fac73b6ccd17acabf16"
+      },
+      "coordinate_version": "native-1000-to-unit-v1",
+      "data_hashes": {
+        "fit.json": "c5c52187571a2a241296146a73a3926e0426b21f7858cd6bd97423a1366b39d2",
+        "stop.json": "cdb445708f88bf97d8b887e3689bf824db863c306a79ee5b22d97a85e042bf2a"
+      },
+      "fresh_warmups_required": true,
+      "known_boxes_checked": 799,
+      "label_targets_and_prompt_unchanged": true,
+      "maximum_completion_tokens": 284,
+      "maximum_unit_roundtrip_error": 1.1102230246251565e-16,
+      "no_reporting_split_access": true,
+      "previous_release": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/2118b52",
+      "scoring_source_unchanged": true,
+      "status": "passed",
+      "target_bytes_unchanged": false,
+      "target_inventory_sha256": "2a13fe036b60f25274c993a32aa144180066ffa8fade27e023e54b97e6b00c4d",
+      "target_mask": "known-schema-unknown-payload-v2",
+      "training_update_source_unchanged": true,
+      "unknown_payload_tokens_masked": 553,
+      "videos": 240
+    },
+    "jobs/smoke-grounded-006/status.json": {
+      "elapsed_seconds": 79.70323395199375,
+      "exit_code": 0,
+      "reason": "completed"
+    },
+    "jobs/smoke-labels-006/status.json": {
+      "elapsed_seconds": 48.65972602495458,
+      "exit_code": 0,
+      "reason": "completed"
+    },
+    "native-coordinate-driver-v1-launch.json": {
+      "authorization_chat": "01a17dce-3275-78b0-b005-0f3a408d5cbe",
+      "code_commit": "8d9232c85e2406a25bde1e0f8c1e8f67f132eafb",
+      "pid": 300975,
+      "pilot_budget_hours": 6,
+      "scoring_rules_changed": false,
+      "script": "/local/datasets/sp2117/firearm_visilab/posttraining1/native-coordinate-driver-v1.py",
+      "script_sha256": "666fcec09778aa74e0dd80b328a939dc1a8e07966404ec40c7cd2abdec23851d",
+      "started_unix": 1793113375.4009848,
+      "total_fit_passes": 5,
+      "warmup_passes": 3
+    },
+    "native-coordinate-driver-v1-status.json": {
+      "code_commit": "8d9232c85e2406a25bde1e0f8c1e8f67f132eafb",
+      "pid": 300975,
+      "smoke_statuses": [
+        "engineering_passed",
+        "engineering_passed"
+      ],
+      "stage": "calibration_and_conditional_pipeline",
+      "started_unix": 1793113375.4879582,
+      "updated_unix": 1793113455.6028132
+    },
+    "pilot-c0g-010/last-steps.jsonl": {
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 108.18748605798464,
+      "exposures": 48,
+      "fit_passes": 0.25,
+      "grad_norm": 1.522447109222412,
+      "learning_rate": 4.8529411764705885e-05,
+      "peak_allocated_bytes": 19716013056,
+      "peak_reserved_bytes": 20663238656,
+      "time_unix": 1793113566.6175363,
+      "update": 6
+    },
+    "pilot-c0l-010/last-steps.jsonl": {
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 126.32891135802492,
+      "exposures": 64,
+      "fit_passes": 0.3333333333333333,
+      "grad_norm": 5.90324592590332,
+      "learning_rate": 4.705882352941177e-05,
+      "peak_allocated_bytes": 19518665216,
+      "peak_reserved_bytes": 20115881984,
+      "time_unix": 1793113582.523541,
+      "update": 8
+    },
+    "smoke-grounded-006/result.json": {
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 78.6726549390005,
+      "grpo": [
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.8339256048202515,
+          "kl_per_token": 0.0,
+          "loss": 1.0
+        },
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.8277133703231812,
+          "kl_per_token": 0.0,
+          "loss": 0.5
+        },
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.8498349785804749,
+          "kl_per_token": 0.0,
+          "loss": -0.5
+        },
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.8387393355369568,
+          "kl_per_token": 0.0,
+          "loss": -1.0
+        }
+      ],
+      "grpo_grad_norm": 0.21343746781349182,
+      "note": "RL diagnostic-panel reward variance / validity gate still required after supervised pilot",
+      "peak_allocated_bytes": 20091592192,
+      "peak_reserved_bytes": 21573402624,
+      "policy_hash_after": "328e7c8e3fcbd39ed63bbf915b5356f4134c626d433ce87e5f818fc332fe73de",
+      "policy_hash_before": "1de7238ea0e86a22453a289bb99995924196c9f082acc932e0f0e9272a3c8888",
+      "prediction_reload_exact": true,
+      "reference_hash": "1de7238ea0e86a22453a289bb99995924196c9f082acc932e0f0e9272a3c8888",
+      "resume_exact": true,
+      "reward_std": 0.0,
+      "scientific_rl_gate_passed": false,
+      "sft_losses": [
+        1.2950043678283691,
+        1.2686185836791992,
+        1.218688726425171
+      ],
+      "status": "engineering_passed",
+      "synthetic_advantages_for_engineering_only": true
+    },
+    "smoke-labels-006/result.json": {
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 47.69349820399657,
+      "grpo": [
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.0871937945485115,
+          "kl_per_token": 0.0,
+          "loss": 1.0
+        },
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.06255724281072617,
+          "kl_per_token": 0.0,
+          "loss": 0.5
+        },
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.0744003877043724,
+          "kl_per_token": 0.0,
+          "loss": -0.5
+        },
+        {
+          "clip_fraction": 0.0,
+          "entropy": 0.023558484390378,
+          "kl_per_token": 0.0,
+          "loss": -1.0
+        }
+      ],
+      "grpo_grad_norm": 2.2485973834991455,
+      "note": "RL diagnostic-panel reward variance / validity gate still required after supervised pilot",
+      "peak_allocated_bytes": 19604307968,
+      "peak_reserved_bytes": 20300431360,
+      "policy_hash_after": "288e82c84945242f6e3d043bd5855c0b119b10d7d923761fab2804e7a5dfc832",
+      "policy_hash_before": "8bc56a78091b23e5a94943f69458a82025a67d56901cf411c3c2821b7c09f878",
+      "prediction_reload_exact": true,
+      "reference_hash": "8bc56a78091b23e5a94943f69458a82025a67d56901cf411c3c2821b7c09f878",
+      "resume_exact": true,
+      "reward_std": 0.0,
+      "scientific_rl_gate_passed": false,
+      "sft_losses": [
+        2.8177454471588135,
+        2.764535665512085,
+        2.463707447052002
+      ],
+      "status": "engineering_passed",
+      "synthetic_advantages_for_engineering_only": true
+    }
+  }
+}
