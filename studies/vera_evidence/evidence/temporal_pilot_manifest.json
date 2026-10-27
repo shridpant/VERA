@@ -1,0 +1,362 @@
+{
+  "selection": "sha256(temporal-pilot-v1|window_uid), 4 event then 4 negative, unique source hashes, exclude development, no model-score selection",
+  "source_inputs_sha256": "70bb5630d69cc40f630d129f8b2e4fab688a8580694253b054e44b455a8bb6fe",
+  "inputs": [
+    {
+      "window_uid": "Shooting033_x264@1840",
+      "video_id": "Shooting033_x264",
+      "category": "Shooting",
+      "anchor": 1840,
+      "frame_indices": [
+        1690,
+        1727,
+        1765,
+        1802,
+        1840,
+        1877,
+        1915,
+        1952
+      ],
+      "frame_sha256": [
+        "7d1c88bfdd3736b61b3c9ec51ab765d0fc9d24ff7aa776c08314e329cbe3a80e",
+        "c104487efdb656614e9023935232bac94691dd064be958f0202c1e3a7a911046",
+        "81104122ae3ab81f0a852c184e62ab35a2e77726af68bb9210008453b2516e2d",
+        "2aba4d1d7f560c1c847302dae02b5b19f77830496061b69b1e0da72a1f2372c2",
+        "25781194193b3d74e7cb5a92b2f6f79a594b9ddebc790780d0a814733e131bfe",
+        "322973e94271e0965cc2409f9960c93c104ea8fe518de89dfc095a35c49d0c34",
+        "1349f892af664ef4f6a370168228b5f5c3bd85b44249afac763fd5e51bebd9c9",
+        "1c2e4d3eb4ba5e82227a6b04ebd38d523978421a741c8e68e020c8f9a6d982a6"
+      ],
+      "video_sha256": "6a944fc08d36d1b45726a120f31293f298d9b7f3a7cd22b2cf4199ba50a27f15",
+      "strata": [
+        "event"
+      ],
+      "window_record_ids": [
+        "event:Shooting033_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/Shooting033_x264",
+      "manifest_entry": "frames/Shooting/Shooting033_x264.mp4",
+      "manifest_length": 3630
+    },
+    {
+      "window_uid": "RoadAccidents133_x264@352",
+      "video_id": "RoadAccidents133_x264",
+      "category": "RoadAccidents",
+      "anchor": 352,
+      "frame_indices": [
+        202,
+        239,
+        277,
+        314,
+        352,
+        389,
+        427,
+        464
+      ],
+      "frame_sha256": [
+        "6ec59f423039ec30e3b363f753aa0e7aedd48348dd7874430ddbb59726eaab20",
+        "33c74eb93a075b66b7b4f1b6c22e70a5f8d97af1dc54431a5e913074f44466e6",
+        "ea3232db880e4e5d6273a7d68ce905df264c2754c651fbc8b1223bd1d5abfec2",
+        "8cab9472f4f15f363c79cf8080f7c400cbdc44d11d6eae21bb7acb6911e9048d",
+        "4d6219cece98123e42f1babf4d8bd27bcfc56650a96a5db2c4029981e1b62d1d",
+        "b8501f9f58939c501b8a2a15d5f9188978181efc2ca0b57de9d0b42715453692",
+        "cc4640ca39da69d0a22a99854b200e5774a9113f2ec9e7840b98008801355334",
+        "1ed1954412de805c9e25525696516eb941363fd1691e2e80dc57a7bf673e3fb8"
+      ],
+      "video_sha256": "c05d78562f4554a81b0a4063d38f908e8e67edbe51d02a2e518905d9c709fb04",
+      "strata": [
+        "event"
+      ],
+      "window_record_ids": [
+        "event:RoadAccidents133_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/RoadAccidents133_x264",
+      "manifest_entry": "frames/RoadAccidents/RoadAccidents133_x264.mp4",
+      "manifest_length": 673
+    },
+    {
+      "window_uid": "Explosion036_x264@2016",
+      "video_id": "Explosion036_x264",
+      "category": "Explosion",
+      "anchor": 2016,
+      "frame_indices": [
+        1866,
+        1903,
+        1941,
+        1978,
+        2016,
+        2053,
+        2091,
+        2128
+      ],
+      "frame_sha256": [
+        "f227b3f9c9c454246426a0b76b42f677a88605dc68746f815f01c2aec78fff56",
+        "a72338f1f17b651d0f5534df6594abbd029ee5945b35ce2633a98e87d518f666",
+        "4c9030e365c964164ee0fb8c95b85f9ce15ebd242a6b831d22ecef403dc937ea",
+        "983d364686098a9604184ac584e09da6681ba5f2ba5c6b38a6864db96e8a07f3",
+        "09abd5127792b1f543981af4989a03a64d06a84c9ce0aab8bff26c31b8bdd380",
+        "16e5ceff12bc51d746fd241be9d400ff593be5e9a642154dbc4115a6aecdacd5",
+        "e061c1f9b58f08fb8f73a5b89beb2c98177d3ce7ace3feb7236a6fa91713e45a",
+        "48a7cf80238a5c7110cc5de64beab3a754a604f47abf57e94937a994cc7c6349"
+      ],
+      "video_sha256": "5b01c1c8cc4fc68dc0941b4f19466d1b02341d80711ccaee7204f607a40d022b",
+      "strata": [
+        "event"
+      ],
+      "window_record_ids": [
+        "event:Explosion036_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [
+        3,
+        4,
+        5
+      ],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/Explosion036_x264",
+      "manifest_entry": "frames/Explosion/Explosion036_x264.mp4",
+      "manifest_length": 5327
+    },
+    {
+      "window_uid": "Explosion033_x264@2352",
+      "video_id": "Explosion033_x264",
+      "category": "Explosion",
+      "anchor": 2352,
+      "frame_indices": [
+        2202,
+        2239,
+        2277,
+        2314,
+        2352,
+        2389,
+        2427,
+        2464
+      ],
+      "frame_sha256": [
+        "7bf8b2b4a4fb84ecf3fee4813b26d53a4563cce7c47f046c5552deedce1fb9c0",
+        "76db473ffba47f94c56cad773eabae8656bbebed5662c77f79aa9aff77f34703",
+        "95bedee7eaadec9bdc1880ff1e1f444cb4c4226b2cf4b076dffc4829f1552c22",
+        "d1016b6af0a2198ed45fcf135c7a4c312155196e39168f665d9c616f630125d4",
+        "5bb6a9622ffff6ab23114ee9ddafd05b71de4f0390c395444e205004b60dab76",
+        "3c0147771f8225b63dbb9b576b646cebe49865460ed3040298a9f4f9af92cdd6",
+        "78c7388d36f3817c71ffe7c1bcd7244883d33c7bf7a2a220d13d6bedea9455eb",
+        "baeb7da8709fceb8ddbcca2226b7b3211e7a482e0137323df3f6ad3a79658e36"
+      ],
+      "video_sha256": "ad404f7c335b53c6d4651a893d119fd01a1cf56dd9e4af11c2ca3b22a90a5235",
+      "strata": [
+        "event"
+      ],
+      "window_record_ids": [
+        "event:Explosion033_x264:1"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/Explosion033_x264",
+      "manifest_entry": "frames/Explosion/Explosion033_x264.mp4",
+      "manifest_length": 3154
+    },
+    {
+      "window_uid": "Fighting042_x264@2080",
+      "video_id": "Fighting042_x264",
+      "category": "Fighting",
+      "anchor": 2080,
+      "frame_indices": [
+        1930,
+        1967,
+        2005,
+        2042,
+        2080,
+        2117,
+        2155,
+        2192
+      ],
+      "frame_sha256": [
+        "6d40bc6186449b1dec062bc0ce1bee0db6883540881dfeac8e0680d5d6735577",
+        "971af123fc0bf8183d94db9e4ffb520cebe4a281e3868d5ba47b784b7dfe2803",
+        "6dfd2ea0130307d1b6916b3e54a5f7c25253d1be6836c38002c7919f2ec0eba0",
+        "cbf75541ad03679f6aa9bbb1f0695d7ba48c4876676a7815cb9ef818950fb288",
+        "10097a8aafcfe23cd518ba950cda480e45302f3229a9c096b2050188b7a2c42a",
+        "0f895614cc34437d6e5bea9ff27847829781449978df7ad4e9fa9ca1b83ac7c5",
+        "9e87a2793d7c2a70910e7562e23cdd240f0cd3ab6e89ef1965f027d6fe7a7e57",
+        "17a256835d962216a23d061749c35c98830035a343a301c9e57566acc56c949d"
+      ],
+      "video_sha256": "b9bb7d2063b499c45901e671a241e8dd618537bd40c03a9991f698e9fcc45080",
+      "strata": [
+        "negative"
+      ],
+      "window_record_ids": [
+        "negative:Fighting042_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/Fighting042_x264",
+      "manifest_entry": "frames/Fighting/Fighting042_x264.mp4",
+      "manifest_length": 2237
+    },
+    {
+      "window_uid": "Explosion020_x264@1136",
+      "video_id": "Explosion020_x264",
+      "category": "Explosion",
+      "anchor": 1136,
+      "frame_indices": [
+        986,
+        1023,
+        1061,
+        1098,
+        1136,
+        1173,
+        1211,
+        1248
+      ],
+      "frame_sha256": [
+        "6e8d49a8632caf99844025c4411ebf77e2d63d16618f1197e58a1242b6925ba8",
+        "37b3c9fc9bb29ad81f357dad0d09c62ab48dba72c52714484e20e0d346251282",
+        "f43ba7f159c9aa024d0904b3ba7e243d72c9e9a9bc501284f92a834c5e7ac474",
+        "fef66a360cc263f2a707913251d507e15f5fd73dbde0f65f04a25950bef80436",
+        "0e357a82b08f5ce566b875e1edcf0ada320e0324da7f384e5510a69e75a9f552",
+        "3cf5fe5c639250c56cd00d220e82e7fec97d6d597cd001f9315a1d51a2fb6c57",
+        "9b88cc303264e9b6d3ce3787b22a13df5d372d23bf0e9de8c977b0536b9e47db",
+        "6580221913be90e0cfa3f7bdaa9b80a06be98819e6942b3ae298d4fc2e3118ad"
+      ],
+      "video_sha256": "f1dde472d687b5621bdaaaa9b5e1888b9bbee1bff3d134c9e7e2e36baf9b2ef7",
+      "strata": [
+        "negative"
+      ],
+      "window_record_ids": [
+        "negative:Explosion020_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/Explosion020_x264",
+      "manifest_entry": "frames/Explosion/Explosion020_x264.mp4",
+      "manifest_length": 1291
+    },
+    {
+      "window_uid": "Burglary032_x264@15632",
+      "video_id": "Burglary032_x264",
+      "category": "Burglary",
+      "anchor": 15632,
+      "frame_indices": [
+        15482,
+        15519,
+        15557,
+        15594,
+        15632,
+        15669,
+        15707,
+        15744
+      ],
+      "frame_sha256": [
+        "802748b808cb09e9ce422adf15cf33ee88112d1c913fda8f434fc47e0f461c80",
+        "377ba87c8a9d6da547ae93a45381e0910585605a1210b8ec94eb422eb928e571",
+        "c07fca38c40bf4971361209fd1454ab502740ee47a53133e92374ae038d42630",
+        "b87a5a6a105dbe6fa4c18538c7b8efe446d84f6d3634009ad7a9378a66f7a528",
+        "35ee74d6e07bf2d2d8b4d000ca4af12dd597fb32db30b26a73a8c657e1a960ab",
+        "4192c939645b15d85d0a26a9dba1468c12b320f4faae56f02c8ad6846e814522",
+        "6d0a335651f7e9cc4ca52fb0f88b8b011bb1e5fd89f045b53871784790515d06",
+        "5c1891e47b152750699d96e28d531375269553682ce75e1100f0a3b694cd1915"
+      ],
+      "video_sha256": "df8e99aebca7e6f0d3d0c91ebed8af68a26f2c3dc1e983dddc8e1f9aada6e23d",
+      "strata": [
+        "negative"
+      ],
+      "window_record_ids": [
+        "negative:Burglary032_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/Burglary032_x264",
+      "manifest_entry": "frames/Burglary/Burglary032_x264.mp4",
+      "manifest_length": 15795
+    },
+    {
+      "window_uid": "RoadAccidents011_x264@2000",
+      "video_id": "RoadAccidents011_x264",
+      "category": "RoadAccidents",
+      "anchor": 2000,
+      "frame_indices": [
+        1850,
+        1887,
+        1925,
+        1962,
+        2000,
+        2037,
+        2075,
+        2112
+      ],
+      "frame_sha256": [
+        "9d25709b4c6198bbf299b0b59ab4d64eb9c08f1c257284c3a7bd52bbd55534a2",
+        "9949fd660cd8dd27cfaf2ebf5593586fb2a76425a76fd8231326904aa342f1ab",
+        "62be648cce20119a71958d32dcf4e0b0b7b704a86ec7fb850af17e782f3cadd3",
+        "23742bb77cb92401d68db4b14a48e229bfa271842747e5fb791b67edc69fb5c1",
+        "c34248d8724a0d452f9cce131facc10b79ff3009632ff5da3539a57c12725593",
+        "41e5a75d280c2344690d3c678de97e0d5fdf8a268d6fd1db9a63730e75da3d6c",
+        "28310a1d00e51796100faff9a8c8cb92343aed5c23dee148ae572e3829c0c6d4",
+        "3cdc67ae21c660d42b346e20dce2aa73ced2a56c4e4939e273e7b87a7299f36c"
+      ],
+      "video_sha256": "9f95aea5e8d31b26d10b370efed66fafe8c28d9a476897cbf6169a283f262d15",
+      "strata": [
+        "negative"
+      ],
+      "window_record_ids": [
+        "negative:RoadAccidents011_x264:0"
+      ],
+      "development": false,
+      "metadata_flags": [],
+      "annotated_slots": [],
+      "clipped": false,
+      "status": "ok",
+      "frames_dir": "shared/frames/ucf_crime_sparse/RoadAccidents011_x264",
+      "manifest_entry": "frames/RoadAccidents/RoadAccidents011_x264.mp4",
+      "manifest_length": 2159
+    }
+  ]
+}
