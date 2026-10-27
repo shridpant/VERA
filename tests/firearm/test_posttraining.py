@@ -349,6 +349,7 @@ class OrchestrationTests(unittest.TestCase):
                 data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
                 data.write_json(root / 'data/fit.json', [{}] * 192)
                 data.write_json(root / 'data/stop.json', [{}] * 48)
+                data.write_json(root / 'data/audit.json', {'source_counts': {'val': 62, 'test_metadata': 96}})
                 data.write_json(root / 'pilot-sl-001/result.json', {'status': 'stopped'})
                 data.write_json(root / 'pilot-sl-001/stop-initial/metrics.json', {'latency_seconds_per_video': 1.3})
                 commands = []

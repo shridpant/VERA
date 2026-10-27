@@ -137,12 +137,15 @@ def run(root, original_data, frames_root):
             estimates[method] = 1.2 * (warm_seconds + remaining * seconds_per_video + checks * stop_count * latency)
         estimates['VQ'] = 1.2 * (120 * label_latency + 11 * stop_count * label_latency + 10 * 10)
         physical_per_seed = sum(estimates.values()) - sum(warmed[k]['elapsed_seconds'] for k in ('l', 'g'))
+        source_counts = json.loads((root / 'data/audit.json').read_text())['source_counts']
+        eval_videos = source_counts['val'] + source_counts['test_metadata']
         forecast = {'status': 'measured_forecast', 'warmup_passes': passes, 'shared_max_fit_passes': 5.,
                     'assumption': 'maximum exposure/query schedule with 20% overhead; scientific stops can shorten runs; not a runtime promise',
                     'estimated_seconds_per_method_seed': estimates,
                     'estimated_training_physical_gpu_hours': 3 * physical_per_seed / 3600,
                     'estimated_training_wall_hours_two_workers': 3 * max(physical_per_seed / 2, max(estimates.values())) / 3600,
-                    'estimated_final_evaluation_gpu_hours': (6 * 158 * ground_latency + 10 * 158 * label_latency) * 1.2 / 3600,
+                    'estimated_final_evaluation_gpu_hours': (6 * eval_videos * ground_latency + 10 * eval_videos * label_latency) * 1.2 / 3600,
+                    'evaluation_videos_per_model': eval_videos, 'VQ_optimizer_seconds_assumption': 10.,
                     'measurement_sources': {'warmups': warm, 'panels': {k: str(v) for k, v in panels.items()}},
                     'time_ceilings': 'scientific-run ceilings removed by user; no exposure reduction to fit old limits'}
         write_json(root / 'throughput-forecast.json', forecast, immutable=True)
