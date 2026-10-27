@@ -1,3 +1,15 @@
+# Grounding inference supplement frozen and watching — October 27, 2026
+
+Human requested a grounding statistical test before final-result inspection. Analysis amendment grounding-v1 froze at 12:20:08 ET after training began, before any selection/evaluation/report. Hash802646be83f279a9beb23fff4e3a36563f0a275ea1f20af1ed4350a68f74da2b binds base protocol3f1f1e8... unchanged and analysis sourceb8e9cb0. All29 frozen training/scoring/report module hashes remain identical. See GROUNDING_STATISTICS_AMENDMENT.md and evidence/grounding-statistical-amendment-v1.json.
+
+CPU-only watcher PID310383 runs from /local/datasets/sp2117/firearm_visilab/code/posttraining-analysis-releases/b8e9cb0 and is verified alive at waiting_for_complete_base_report. ROOT/analysis_amendments/grounding-v1.json is immutable. Status ROOT/analysis_amendments/grounding-v1-watcher-status.json; log and launch record alongside it. Do not alter this release or silently change the plan/code. No GPU/training restart.89local/11focusedOz tests passed, including synthetic exact/Monte Carlo/group-pairing, tamper guards and end-to-end score reproduction.
+
+The endpoint is RG-SG mean-seed pooled box F1 at existing IoU50, using unchanged report.localization counts. Two-sided recording-group paired permutation (exact <=16groups, otherwise100000 plus-one draws),5000 group-bootstrap95% interval; all frames/videos/three seed pairs remain together. Positive effect+p<=.05+positive lower95% bound required. Test recognition's existing gain/No_Gun noninferiority rule gates confirmatory test-grounding claims; validation/supporting metrics remain exploratory. Inconclusive support stays inconclusive. No final results inspected to select the analysis. Historical dataset exposure remains disclosed.
+
+Study completion now requires BOTH the original base report/status.json complete AND report/grounding-statistics-v1/status.json complete. The watcher waits for full frozen selections/base evaluation/report, verifies data/prediction/scorer hashes and reproduces original counts, then writes the separate supplement. A base report alone is insufficient. Preserve original outputs; do not overwrite/repair/re-score to improve findings. On watcher failure diagnose actual evidence, never bypass hashes or change v1 after outcomes. Include the supplement and amendment timing in the eventual delivered report.
+
+Latest metadata check at12:22ET: one of15 method/seed runs complete; SL-20261026 and SG-20261026 active; no selection/evaluation/report. No final scores read. Detailed training instructions and prior gate results follow.
+
 # Post-training execution: scientific sweep running
 
 The coordinate amendment is implemented and all prerequisite gates passed. This is an ongoing study, not a completed comparison. No held-out improvement or RL benefit is established yet.
