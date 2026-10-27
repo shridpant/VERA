@@ -1,0 +1,53 @@
+{
+  "uca_upstream": "https://github.com/Xuange923/Surveillance-Video-Understanding",
+  "uca_commit": "e478cb5b2277c6b7cf6a1dc4691021592003e216",
+  "file_sha256": {
+    "UCFCrime_Train.json": "0df6a6e5e1e1b17b87e229edb865c9dea3e23505fd29256a894660687ff4eba2",
+    "UCFCrime_Val.json": "f93720c911d0bfb3e8da168c7da43538227f0edcf90258a407856913fcacf559",
+    "UCFCrime_Test.json": "8912bc02c1871e177ffc7f45ed54395c0e34e1a8007a474b91309ce8a816f981",
+    "UCF_Instruct_train.json": "28eaf3ff4a167ffc8f40f86a28204d484c1853561fb37f3d9b75ac116778f264",
+    "UCF_Instruct_val.json": "c8a903315e2b47f03b7aeb0d313aedea66800c1598dba2272254493ae4bd1da5",
+    "UCF_Eval.json": "f3857cddd623f767e7b86bd50a4aeb122445fc6e241ddd7130b7e3ec0c4d8b9f"
+  },
+  "uca_statistics": {
+    "Train": {
+      "videos": 1165,
+      "sentences": 15677,
+      "interval_problems": []
+    },
+    "Val": {
+      "videos": 379,
+      "sentences": 3534,
+      "interval_problems": []
+    },
+    "Test": {
+      "videos": 310,
+      "sentences": 4331,
+      "interval_problems": []
+    }
+  },
+  "uca_rows_vera_columns": {
+    "Train": {
+      "Train": 863,
+      "Val": 88,
+      "Test": 214
+    },
+    "Val": {
+      "Train": 321,
+      "Val": 36,
+      "Test": 22
+    },
+    "Test": {
+      "Train": 228,
+      "Val": 32,
+      "Test": 50
+    }
+  },
+  "uca_internal_split_overlap": {
+    "Train_Val": 0,
+    "Train_Test": 0,
+    "Val_Test": 0
+  },
+  "normalization": "basename; remove only known video extension; no fuzzy name mapping",
+  "warning": "Different split conventions. Exclude every VERA test ID from any learning regardless of UCA split. Caption absence is not negative evidence. ID checks do not establish scene independence."
+}

@@ -70,6 +70,24 @@ The review is a post-hoc Codex assessment, not independent human annotation. No 
 
 \textbf{Stop this pilot branch here.} Neither the general shuffle diagnostic nor the observed text variation establishes a distinct learning contribution. No more temporal perturbation calls or prompt optimization are justified by this pilot. The original evidence-question direction remains conditional on accessible, independently verified support labels and a mechanism distinct from existing work. Annotation acquisition and source-grounded evaluation design are the next prerequisites; no additional GPU computation is scheduled from these findings. All frozen results remain preserved.
 
+
+\section{Accessible UCA annotations and split contamination risk}
+The authors' UCA repository is accessible at
+\url{https://github.com/Xuange923/Surveillance-Video-Understanding},
+commit \texttt{e478cb5b2277c6b7cf6a1dc4691021592003e216}.
+The initially located fork and fetched upstream main resolve to the same commit.
+Our metadata audit counted 1,854 videos and 23,542 timed descriptions; timestamp counts match sentence counts, and all intervals have positive duration within their video duration. UCA splits are internally ID-disjoint.
+
+\begin{center}\begin{tabular}{lrrr}\toprule
+ & VERA train & VERA validation & VERA test\\\midrule
+UCA train &863&88&214\\
+UCA validation &321&36&22\\
+UCA test &228&32&50\\\bottomrule\end{tabular}\end{center}
+
+\textbf{Leakage hazard:} UCA's training split contains 214 VERA test videos. These are differing split conventions, not evidence that UCA's own splits leak. Any VERA learning experiment must exclude all VERA test IDs regardless of UCA labels; the 863-video joint training intersection is a candidate starting pool, subject to source/scene checks. Do not treat default UCA training as safe for VERA evaluation.
+
+Timed captions provide external event references but are not exhaustive claim-support labels. Caption omission cannot establish a hallucination. Using them for training would introduce stronger supervision than original weak-label VERA and must be declared. No images or new model outputs were used in this metadata audit. Next assess annotation methodology and design a split-safe, explicitly caption-supervised question-learning comparison before fetching training videos or using GPUs. This reopens a conditional data route, not a novelty claim.
+
 \section{Primary sources and review limits}
 PrismVAU method sections, LRPO reward/appendix, and the instance-caption annotation pipeline were inspected; several other comparisons currently rely on primary abstracts/introduction and need full-method follow-up. This is not an exhaustive novelty proof.
 \begin{itemize}
