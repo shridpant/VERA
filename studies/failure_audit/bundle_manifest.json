@@ -6,8 +6,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 11388,
-    "sha256": "1a04d3d0ac2255e44dcb2c578dc3c5354a857034ac8ff61cd405a6d2d7e9cc18"
+    "bytes": 11671,
+    "sha256": "d8cc67a0bc8bd0eed35a9b7e5aa653f81432287c963990df9db2338fd23939db"
   },
   {
     "path": "annotations.tar.gz",
@@ -103,6 +103,16 @@
     "path": "reproduce.py",
     "bytes": 13110,
     "sha256": "c8f5508bb2f5c33778021e4764a5d39444cbcdbe116e36006fec564494b5e123"
+  },
+  {
+    "path": "search_command.json",
+    "bytes": 499,
+    "sha256": "ec1f0b5ace5f0c252da0e88e2354dcf4158bdf93882eb60d383558d7f374c693"
+  },
+  {
+    "path": "search_observations.txt",
+    "bytes": 2703,
+    "sha256": "d1cc321e3b3915ba5b5c22045f5b5275ac740f8ac5f795a1552c5564198359f9"
   },
   {
     "path": "search_scope.json",

@@ -1,0 +1,6 @@
+{
+  "host": "oz.gccis.rit.edu",
+  "command": "ls -d /local/datasets/sp2117/rwf2000/*; find /local/datasets/sp2117/cater_max2action_pilot/smoke_train -maxdepth 1 -type f -printf \"%f %s bytes\\n\"; find /home/stu11/s5/sp2117/old -maxdepth 5 -type f -iname \"*rwf*\" -not -path \"*/.git/*\" | head -40; git -C /local/datasets/sp2117/firearm_visilab/code/VERA-grounding-analysis rev-parse HEAD",
+  "exit_code": 0,
+  "stdout_sha256": "d1cc321e3b3915ba5b5c22045f5b5275ac740f8ac5f795a1552c5564198359f9"
+}

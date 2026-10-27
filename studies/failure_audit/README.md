@@ -86,3 +86,5 @@ Original VISILAB annotations: Jesus Ruiz-Santaquiteria, Juan Daniel Munoz, Franc
 - [Report zero firearm box recall and prompt-induced anomaly judgment shifts](https://github.com/shridpant/VERA/pull/8) (#8; existing PR retitled).
 - [Record selective-explanation prompt failures and abstention limits in frozen VERA](https://github.com/shridpant/VERA/pull/11) (#11; existing PR retitled).
 - [Report VERA temporal-position effects and failure of the declared gate](https://github.com/shridpant/VERA/pull/12) (#12; existing PR retitled).
+
+`search_observations.txt` preserves actual Oz directory/file observations for the RWF/CATER candidate exclusions; `search_command.json` records the exact command, exit status, and stdout hash. The output proves those observations only, not the global absence of another experiment.
