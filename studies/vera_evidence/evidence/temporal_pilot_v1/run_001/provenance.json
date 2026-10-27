@@ -1,0 +1,20 @@
+{
+  "start_unix": 1793075551.0782173,
+  "python": "3.10.22",
+  "gpu_uuid": "GPU-b6901777-c94c-e9ac-b295-041178270888",
+  "runner_sha256": "af68bf9d8bd7d5bb720bd934818f5c77150d5777e966c383819973adf1335793",
+  "manifest_sha256": "f0a32eccd2c5b8c2ee49681f2c204d4beea479a4347e40aa11fc8f39c1b18303",
+  "dependency_sha256": {
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/full_v1/frozen/config.json": "5a3e6eec3d42af76ca6685c2b8856b288b10a3c9cf62fabaa42c43b3f8acfe29",
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment02/code/engine.py": "7bb6ae95b2715b89eacd465ff7927ed3faf87e682eba9508b08f9beff3ddeec4",
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment02/code/attr_lib.py": "7acf4acfc7f11b10bd8483efd97a5a981c4a33574f3af3d0fdbc1a7bffe371fb",
+    "/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/code/config3b.py": "80d2c9c1770947afe4b07a8c0642664e07d28aa164b265c310f9a321b0b34714",
+    "/home/stu11/s5/sp2117/vera_research/setup/source/VERA/generate_initial_score.py": "8447432b69909f3b1c7788c23679c42e7299ca423c29bd21bca27c8b85859224"
+  },
+  "generation": {
+    "num_beams": 1,
+    "max_new_tokens": 1024,
+    "do_sample": false
+  },
+  "kind": "exploratory original VERA; not LRPO reproduction; no learning"
+}

@@ -2,7 +2,7 @@
 \usepackage[margin=1in]{geometry}\usepackage{booktabs,tabularx,hyperref,graphicx,amsmath}
 \title{VERA Evidence Feedback: Novelty and Feasibility Gate}\author{Research update for Shrid Pant}\date{October 27, 2026}
 \begin{document}\maketitle
-\textbf{Decision:} Do not launch a broad prompt-optimization sweep. Existing work substantially overlaps with that claim. Continue a narrower feasibility investigation of unsupported-claim reduction beyond simpler controls. No new GPU inference was performed.
+\textbf{Decision:} Do not launch a broad prompt-optimization sweep. Existing work substantially overlaps with that claim. Continue a narrower feasibility investigation of unsupported-claim reduction beyond simpler controls. A subsequent eight-window diagnostic is reported below; no learning was performed.
 \section{Closest existing work}
 \begin{tabularx}{\linewidth}{lXX}\toprule Work & Established overlap & Consequence\\\midrule
 PrismVAU & Weakly supervised optimization of textual anchors and MLLM prompts. & Another frozen-model prompt optimizer is insufficient novelty.\\
@@ -42,6 +42,25 @@ These are analytical inputs, not measured model outputs. The prose describes str
 \textbf{Next decision:} investigate order-invariant nulls before evidence-question learning. Compare identical-input repeats, fixed permutations, and a separately identified repeated-frame control on original VERA. Previously consulted UCF test data can support exploratory diagnostics, not untouched confirmation or prompt selection. A shuffle response may reflect distribution shift rather than semantic evidence. Check prior diagnostics and implementation code before selecting a GPU pilot.
 
 Instance-Aligned Captions uses manual roles/boxes, SAM2 tracking and VLM-generated captions; these are not wholly human-verified claim labels. Its table includes UCF but not XD. A direct annotation release has not been established from the inspected sources.
+
+
+\section{Measured original-VERA pilot}
+The protocol and manifest were committed before inference (36c097d; repeat-stop enforcement 1eb2179). Four event-stratum and four negative-stratum windows were selected by fixed hash order from previously consulted UCF metadata, with unique source hashes and no response-based selection. Strata are not complete labels for sampled frames.
+
+Frozen InternVL2-8B used the original explanation-first prompt and greedy decoding. All 40 calls completed; all processed-tensor permutation checks passed. Identical repeats matched exactly. There were zero parse failures or outputs reaching the 1024-token cap.
+\begin{center}\begin{tabular}{lrr}\toprule
+Condition & Decision changes /8 & Exact text matches /8\\\midrule
+Identical repeat&0&8\\
+Reversed&0&2\\
+Fixed shuffle&0&3\\
+Single frame repeated&2&1\\\bottomrule\end{tabular}\end{center}
+\begin{figure}[ht]\centering\includegraphics[width=.95\linewidth]{figures/temporal_pilot.pdf}
+\caption{Measured outcomes, not synthetic reward inputs. Text differences are not necessarily semantic differences. Single-frame repetition removes information as well as motion.}
+\end{figure}
+
+The two repeated-frame decision changes were RoadAccidents133 (1 to 0) and Burglary032 (0 to 1). No correctness conclusion follows without inspecting event support. Total process time was 89.54 seconds (about 0.025 allocated GPU-hours on one Ada); generation time was 77.48 seconds. Ada5 was released. Dependencies remained unchanged, and all five transferred raw artifacts matched remote SHA256 hashes.
+
+\textbf{Decision after pilot:} do not scale temporal-reward learning. This sample shows decision invariance to the tested orders, despite explanation-text variation. It does not establish model-wide invariance or semantic faithfulness. Next assess whether these differing explanations make incompatible event-order claims, using source-frame review and explicit claim labels; if reliable labels cannot be established, retain the negative feasibility outcome and stop this direction. Do not optimize prompts on these test windows.
 
 \section{Primary sources and review limits}
 PrismVAU method sections, LRPO reward/appendix, and the instance-caption annotation pipeline were inspected; several other comparisons currently rely on primary abstracts/introduction and need full-method follow-up. This is not an exhaustive novelty proof.
