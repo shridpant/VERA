@@ -111,3 +111,13 @@ VQ single-slot and immutable-frame changes. Real VQ compatibility passed with
 sweep and final holdout paths remain unexercised until their gates pass.
 Subsequent sparse-negative support and prelaunch-recovery checks bring the
 current full firearm suite to 74 passing tests (26 focused). No protocol has yet been frozen.
+
+## Current controller
+
+Immutable release 153f9eb passed 26 focused tests on Oz after all 74 firearm
+tests passed locally. CPU controller PID 278319 resumed calibration. Label
+1.5-pass warm-up child PID 278396 runs on Ada 6; the completed grounded
+1.5-pass warm-up is reused. Prelaunch and restart failures are retained in
+evidence/calibration-through-grounded-1p5.json. Both final real reward panels
+must still pass before protocol freeze. Active 15-minute in-chat continuation
+reads the canonical control record in this chat's outputs directory.
