@@ -9,10 +9,12 @@ METHODS = ('VQ', 'SL', 'RL', 'SG', 'RG')
 SEEDS = (20261026, 20261027, 20261028)
 
 
-def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_panel, grounded_panel, max_passes):
+def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_panel, grounded_panel, max_passes, warmup_passes=.5):
     root = Path(root)
     if not .5 < max_passes <= 5 or max_passes * 2 != int(max_passes * 2):
         raise ValueError('common FIT-pass cap must be a half-pass multiple in (0.5,5]')
+    if not .5 <= warmup_passes < max_passes or warmup_passes * 2 != int(warmup_passes * 2):
+        raise ValueError('shared warm-up must be a half-pass multiple below the total pass cap')
     evidence = {}
     for name, path, expected in (
         ('label_smoke', label_smoke, 'engineering_passed'), ('grounded_smoke', grounded_smoke, 'engineering_passed'),
@@ -34,7 +36,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
               'primary_contrast': 'RG-SG', 'secondary_contrast': 'RL-SL',
               'no_gun_false_positive_noninferiority_margin': .05,
               'primary_interval': 'paired recording-group percentile bootstrap, 95%, seed-averaged',
-              'shared_max_fit_passes': max_passes, 'paired_warmup_fit_passes': .5,
+              'shared_max_fit_passes': max_passes, 'paired_warmup_fit_passes': warmup_passes,
               'resource_policy': {'full_run_gpu_hour_ceiling': None, 'evaluation_gpu_hour_ceiling': None,
                                   'aggregate_gpu_hour_ceiling': None, 'pilot_aggregate_gpu_hours': 6,
                                   'sft_pilot_hours': 4, 'rl_pilot_hours': 2,

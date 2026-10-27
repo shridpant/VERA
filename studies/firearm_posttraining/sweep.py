@@ -17,6 +17,7 @@ def run(root, protocol_path):
     root = Path(root)
     protocol_path = str(Path(protocol_path).resolve())
     protocol = validate(protocol_path, root / 'data')
+    warmup_passes = protocol.get('paired_warmup_fit_passes', .5)
     output = root / 'sweep'
     output.mkdir(parents=True, exist_ok=False)
     available = queue.Queue()
@@ -45,7 +46,8 @@ def run(root, protocol_path):
         finally:
             available.put(gpu)
     common = ['--model', protocol['model'], '--data', str(root / 'data'),
-              '--frozen-protocol', protocol_path, '--max-passes', str(protocol['shared_max_fit_passes'])]
+              '--frozen-protocol', protocol_path, '--max-passes', str(protocol['shared_max_fit_passes']),
+              '--warmup-passes', str(warmup_passes)]
     with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
         for seed in SEEDS:
             warm = {}
@@ -60,8 +62,8 @@ def run(root, protocol_path):
             for future in concurrent.futures.as_completed(futures):
                 kind = futures[future]
                 directory, result = future.result()
-                if result['stop_reason'] != 'fixed_warmup_complete' or result['fit_passes'] != .5:
-                    raise RuntimeError('warm start did not complete exactly half a FIT pass')
+                if result['stop_reason'] != 'fixed_warmup_complete' or result['fit_passes'] != warmup_passes:
+                    raise RuntimeError('warm start did not complete the exact frozen exposure')
                 adapter = result['best_checkpoint']
                 warm[kind] = {'adapter': adapter, 'elapsed_seconds': result['elapsed_seconds'],
                               'adapter_sha256': digest(Path(adapter) / 'adapter_model.safetensors')}

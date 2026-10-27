@@ -107,3 +107,21 @@ other questions verbatim, enforcing the same maximum of five and ten candidate
 revisions. No STOP examples enter this optimizer prompt. A two-FIT-video real
 compatibility check exercises the optimizer context and proposal handling before
 the frozen comparative VQ runs.
+
+## FIT-only grounded format failure and warm-up calibration
+
+`pilot-rg-001` at a fixed 0.5-pass grounded warm start produced 15 invalid answers
+in its first 23 FIT responses (no truncation), including flat zero-box arrays
+instead of frame objects and action descriptions instead of action codes. More
+than four invalid answers makes the <=5% / 96-response gate impossible, so only
+that owned pilot was signaled for a graceful checkpoint. Its traces and final
+failed-gate result remain preserved; the parser and reward are not loosened.
+
+Before protocol freeze, calibrate a stronger **shared fixed warm-up exposure**
+using FIT-only output-format measurements, beginning at one pass. Apply the same
+chosen exposure to label and grounded pairs and all seeds, count it inside the
+unchanged five-total-pass limit, and recheck actual sampled-reward feasibility
+from the resulting references. No STOP-based warm-start selection is allowed.
+This revises a provisional numerical default, not supervision, split, backbone,
+LoRA capacity, rewards, or the scientific comparison. Freeze the final value only
+after both real-reward panels pass; do not scale a failed grounded arm.

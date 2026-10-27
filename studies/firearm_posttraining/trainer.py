@@ -39,17 +39,20 @@ def run(args):
     if args.adapter:
         warm_state = json.loads((Path(args.adapter) / 'state.json').read_text())
         if warm_state.get('selection', {}).get('checks') != 0:
-            raise ValueError('paired initialization must be a fixed 0.5-pass warm start without STOP selection')
+            raise ValueError('paired initialization must be a fixed warm start without STOP selection')
+    if not .5 <= args.warmup_passes < args.max_passes or args.warmup_passes * 2 != int(args.warmup_passes * 2):
+        raise ValueError('warm-up must be a fixed half-pass multiple below the total exposure cap')
     if args.frozen_protocol:
         from .protocol import validate
         protocol = validate(args.frozen_protocol, args.data, args.model, args.codebook)
-        if args.max_passes != protocol['shared_max_fit_passes']:
-            raise ValueError('frozen protocol/pass budget mismatch')
+        if (args.max_passes != protocol['shared_max_fit_passes'] or
+            args.warmup_passes != protocol['paired_warmup_fit_passes']):
+            raise ValueError('frozen protocol/pass or warm-up budget mismatch')
     if not args.resume:
         provenance(out, {**vars(args), 'effective_max_seconds': limit})
     book = json.loads(Path(args.codebook).read_text())
     fit, stop = load_split(args.data, 'fit'), load_split(args.data, 'stop')
-    start_cursor = len(fit) // 2 if args.adapter else 0
+    start_cursor = math.floor(len(fit) * args.warmup_passes) if args.adapter else 0
     if args.adapter and warm_state['cursor'] != start_cursor:
         raise ValueError('warm-start exposure mismatch')
     if args.adapter and (warm_state.get('seed') != args.seed or
@@ -64,7 +67,7 @@ def run(args):
         native.add_reference()
     optimizer = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=5e-6 if is_rl else 5e-5)
     accumulation = 4 if is_rl else args.accumulation
-    total_exposures = math.floor(len(fit) * (.5 if args.warmup_only else args.max_passes))
+    total_exposures = math.floor(len(fit) * (args.warmup_passes if args.warmup_only else args.max_passes))
     total_updates = math.ceil((total_exposures - start_cursor) / accumulation)
     warm_steps = max(1, math.ceil(total_updates * .05))
     def multiplier(step):
@@ -94,6 +97,7 @@ def run(args):
                 'bad_kl': bad_kl, 'bad_format': bad_format, 'bad_stop': bad_stop, 'initial_stop': initial_stop,
                 'reference_hash': native.reference_hash if is_rl else None,
                 'initial_exposures': start_cursor,
+                'warmup_passes': args.warmup_passes,
                 'grounded': grounded, 'method': args.method,
                 'reward_version': VERSION if is_rl else None}
     def snapshot(name):

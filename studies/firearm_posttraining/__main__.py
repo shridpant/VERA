@@ -27,6 +27,7 @@ def main():
             a.add_argument('--max-passes', type=float, default=5.)
             a.add_argument('--accumulation', type=int, default=8)
             a.add_argument('--warmup-only', action='store_true')
+            a.add_argument('--warmup-passes', type=float, default=.5)
             a.add_argument('--frozen-protocol')
         if command == 'rl-panel':
             a.add_argument('--adapter', required=True)
