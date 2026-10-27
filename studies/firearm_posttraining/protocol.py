@@ -47,6 +47,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
     record = {'status': 'frozen', 'methods': METHODS, 'seeds': SEEDS, 'baseline': 'B0',
               'primary_contrast': 'RG-SG', 'secondary_contrast': 'RL-SL',
               'no_gun_false_positive_noninferiority_margin': .05,
+              'no_gun_support_screen': 'paired bootstrap upper AND conservative independent-group harm/benefit Clopper-Pearson support upper must be <=.05; observed min/max size weighting; sparse evidence is inconclusive',
               'primary_interval': 'paired recording-group percentile bootstrap, 95%, seed-averaged',
               'shared_max_fit_passes': max_passes, 'paired_warmup_fit_passes': warmup_passes,
               'resource_policy': {'full_run_gpu_hour_ceiling': None, 'evaluation_gpu_hour_ceiling': None,

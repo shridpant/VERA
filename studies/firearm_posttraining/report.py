@@ -131,7 +131,7 @@ def run(root, frozen_manifest, original_data, frames_root, output):
             paired = lambda method, field: [answers[method, SEEDS[0] if method == 'B0' else s][field] for s in SEEDS]
             interval = paired_interval(rows, paired(a, 'correct'), paired(b, 'correct'), paired(a, 'fp'), paired(b, 'fp'))
             interval['positive_and_noninferior'] = (interval['balanced_category_accuracy_interval'][0] > 0 and
-                                                   interval['no_gun_false_positive_interval'][1] <= .05)
+                                                   interval['no_gun_noninferiority_upper_screen'] <= .05)
             interval['role'] = 'primary' if (a, b) == ('RG', 'SG') else 'secondary_exploratory_no_multiplicity_adjustment'
             contrasts[f'{split}:{a}-{b}'] = interval
     write_csv(output / 'main-seed.csv', main)
@@ -182,12 +182,16 @@ def run(root, frozen_manifest, original_data, frames_root, output):
                      f'{r["no_gun_category_false_positive_rate_mean"]:.3f} | {r["invalid_fraction_mean"]:.3f} |')
     lines.extend(['', 'Paired intervals resample recording groups, keeping methods and seeds paired. '
                   'Seed SD describes training variability; frames and seeds are not independent video observations. '
+                  'No_Gun noninferiority additionally requires a conservative recording-group support screen; '
+                  'a degenerate zero-event bootstrap interval alone cannot establish the +0.05 margin. '
                   'RG–SG is primary. RL–SL is secondary and exploratory; no multiplicity-corrected secondary claim is made.', ''])
     for name, r in contrasts.items():
         lines.append(f'- {name}: balanced category accuracy difference {r["balanced_category_accuracy_difference"]:.3f}, '
                      f'95% paired interval {r["balanced_category_accuracy_interval"]}; No_Gun false-positive difference interval '
                      f'{r["no_gun_false_positive_interval"]}. Positive-gain plus +0.05 noninferiority rule: '
-                     f'{"met on this dataset" if r["positive_and_noninferior"] else "not met / inconclusive"}.')
+                     f'{"met on this dataset" if r["positive_and_noninferior"] else "not met / inconclusive"}. '
+                     f'Conservative No_Gun upper screen: {r["no_gun_noninferiority_upper_screen"]:.3f}; '
+                     f'negative recording groups: {r["no_gun_group_support"]["groups"]}.')
     if censored:
         lines.extend(['', 'Time-censored runs exist. Do not claim equal achieved exposure. '
                       'A frozen last-common-exposure sensitivity evaluation is still required before scientific completion.'])

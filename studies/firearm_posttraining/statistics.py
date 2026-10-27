@@ -38,10 +38,32 @@ def paired_interval(rows, a_correct, b_correct, a_false_positive, b_false_positi
         false_positive.append(np.average(afp[negative] - bfp[negative], weights=weights[negative]))
     if len(category) < repeats * .95:
         raise ValueError('insufficient class coverage in bootstrap samples')
+    # Zero-event bootstrap [0,0] cannot establish a 5pp noninferiority margin.
+    from scipy.stats import binomtest
+    delta = arrays[2] - arrays[3]
+    negative_groups = sorted(set(groups[negative]))
+    sizes, harmful, uniformly_beneficial = [], [], []
+    for group in negative_groups:
+        mask = negative & (groups == group)
+        sizes.append(int(mask.sum()))
+        harmful.append(bool((delta[:, mask] > 0).any()))
+        uniformly_beneficial.append(bool((delta[:, mask] < 0).all()))
+    g = len(negative_groups)
+    harm_upper = binomtest(sum(harmful), g).proportion_ci(.95, method='exact').high
+    benefit_lower = binomtest(sum(uniformly_beneficial), g).proportion_ci(.95, method='exact').low
+    # Each endpoint has 2.5% error. The observed size bounds conservatively
+    # weight group harm and uniformly beneficial events for this support screen.
+    mean_size = float(np.mean(sizes))
+    support_upper = min(1., max(-1., max(sizes) / mean_size * harm_upper - min(sizes) / mean_size * benefit_lower))
+    raw_fp_interval = np.quantile(false_positive, [.025, .975]).tolist()
     return {'balanced_category_accuracy_difference': _bacc(a, cats, np.ones(n)) - _bacc(b, cats, np.ones(n)),
             'balanced_category_accuracy_interval': np.quantile(category, [.025, .975]).tolist(),
             'no_gun_false_positive_difference': float((afp[negative] - bfp[negative]).mean()),
-            'no_gun_false_positive_interval': np.quantile(false_positive, [.025, .975]).tolist(),
+            'no_gun_false_positive_interval': raw_fp_interval,
+            'no_gun_noninferiority_upper_screen': max(raw_fp_interval[1], support_upper),
+            'no_gun_group_support': {'groups': g, 'harmful_groups': sum(harmful),
+                 'uniformly_beneficial_groups': sum(uniformly_beneficial), 'support_upper': support_upper,
+                 'assumptions': 'independent recording groups; observed group-size bounds; conservative support screen, not the bootstrap interval'},
             'recording_groups': len(unique), 'bootstrap_replicates': len(category),
             'interval_unit': 'recording groups, paired across methods and fixed seeds'}
 

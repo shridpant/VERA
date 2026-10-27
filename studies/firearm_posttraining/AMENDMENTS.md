@@ -134,3 +134,24 @@ both actual reward panels at that same fixed exposure. A reward-panel failure
 stops the controller for diagnosis, not a blind grid retry. Only two passing
 real-reward panels permit protocol freeze and the downstream scientific pipeline.
 All calibration time remains inside six aggregate pilot GPU-hours.
+
+## Pre-freeze negative-sample support guard
+
+No reporting outcomes have been opened. Code review found that a percentile
+bootstrap returns [0,0] when both methods make zero observed No_Gun errors; that
+cannot establish a +0.05 noninferiority margin with sparse negative groups.
+Retain the paired bootstrap unchanged and additionally require a conservative
+group-support upper screen <=0.05. A harmful group has any new false positive
+across its clips/seeds; a uniformly beneficial group improves every paired clip
+and seed. Use 97.5% exact binomial upper/lower endpoints for their probabilities,
+combine them conservatively with observed maximum/minimum group-size weights,
+and take the maximum of this screen and the raw bootstrap upper endpoint. Report
+the raw interval, support screen and independent-group/observed-size assumptions
+separately. Sparse evidence remains inconclusive; strong improvements can still
+satisfy the screen. This screen is deliberately conservative, not a replacement
+claim of an exact video-level interval. SciPy's exact endpoints use Clopper–Pearson:
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats._result_classes.BinomTestResult.proportion_ci.html
+
+The pre-freeze CPU controller was stopped to integrate this guard. Its GPU
+warm-ups continue unchanged. Resume reuses matching settled/running artifacts,
+does not repeat their queries, and preserves the earlier controller/action logs.

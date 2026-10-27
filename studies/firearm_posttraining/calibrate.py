@@ -18,11 +18,13 @@ from .protocol import freeze
 from .pipeline import run as pipeline
 
 
-def run(root, original_data, frames_root):
+def run(root, original_data, frames_root, resume=False):
     root = Path(root).resolve()
     original_data, frames_root = str(original_data), str(frames_root)
     control = root / 'calibration'
-    control.mkdir(parents=True, exist_ok=False)
+    control.mkdir(parents=True, exist_ok=resume)
+    if resume and (control / 'status.json').exists() and json.loads((control / 'status.json').read_text()).get('stage') == 'complete':
+        return
     model = json.loads((root / 'data/preflight.json').read_text())['model']
     fit_count = len(json.loads((root / 'data/fit.json').read_text()))
     stop_count = len(json.loads((root / 'data/stop.json').read_text()))
@@ -50,6 +52,15 @@ def run(root, original_data, frames_root):
             raise RuntimeError(f'job failed: {name}')
         return result
     def launch(name, gpu, seconds, child):
+        if resume and ((root / name).exists() or (root / 'jobs' / name).exists()):
+            result = completed(name, wait=True)
+            spec = json.loads((root / name / 'spec.json').read_text())
+            for flag in ('--model', '--data', '--adapter'):
+                if flag in child and spec[flag[2:].replace('-', '_')] != child[child.index(flag) + 1]:
+                    raise RuntimeError(f'resumed job input mismatch: {name}:{flag}')
+            if spec['grounded'] != ('--grounded' in child):
+                raise RuntimeError('resumed job supervision mismatch')
+            return result
         command = [sys.executable, '-m', 'studies.firearm_posttraining.execute', '--root', str(root),
                    '--gpu', gpu, '--name', name, '--stage', 'pilot', '--seconds', str(seconds), '--',
                    sys.executable, *child]
@@ -167,5 +178,6 @@ if __name__ == '__main__':
     p.add_argument('--root', required=True)
     p.add_argument('--original-data', required=True)
     p.add_argument('--frames-root', required=True)
+    p.add_argument('--resume', action='store_true', help='reuse matching calibration jobs without repeating them')
     args = p.parse_args()
-    run(args.root, args.original_data, args.frames_root)
+    run(args.root, args.original_data, args.frames_root, args.resume)

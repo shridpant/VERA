@@ -317,6 +317,9 @@ class StatisticsTests(unittest.TestCase):
         self.assertEqual(result['balanced_category_accuracy_difference'], 1.)
         self.assertEqual(result['balanced_category_accuracy_interval'], [1., 1.])
         self.assertEqual(result['no_gun_false_positive_interval'], [0., 0.])
+        self.assertGreater(result['no_gun_noninferiority_upper_screen'], .05)
+        strong = paired_interval(rows, one, zero, zero, one, repeats=100)
+        self.assertLess(strong['no_gun_noninferiority_upper_screen'], 0.)
         changed = transitions(rows, [False] * len(rows), [True] * len(rows))
         self.assertEqual(changed['all'], {'recovered': 90, 'broken': 0, 'net': 90})
         with self.assertRaises(ValueError):
@@ -360,6 +363,11 @@ class OrchestrationTests(unittest.TestCase):
                     directory.mkdir(parents=True)
                     data.write_json(root / 'jobs' / name / 'status.json', {'exit_code': 0})
                     grounded = '--grounded' in command
+                    spec = {'grounded': grounded}
+                    for flag in ('--model', '--data', '--adapter'):
+                        if flag in command:
+                            spec[flag[2:]] = command[command.index(flag) + 1]
+                    data.write_json(directory / 'spec.json', spec)
                     if '--warmup-only' in command:
                         passes = float(command[command.index('--warmup-passes') + 1])
                         adapter = directory / 'checkpoints/fixed'
@@ -378,6 +386,10 @@ class OrchestrationTests(unittest.TestCase):
                      patch('studies.firearm_posttraining.calibrate.freeze', return_value={'protocol_hash': 'frozen'}) as freeze, \
                      patch('studies.firearm_posttraining.calibrate.pipeline', side_effect=fake_pipeline) as pipeline:
                     run(root, 'original', 'frames')
+                    if reject_reward:
+                        prior_commands = len(commands)
+                        run(root, 'original', 'frames', resume=True)
+                        self.assertEqual(len(commands), prior_commands)
                 final = json.loads((root / 'calibration/status.json').read_text())
                 if reject_reward:
                     self.assertEqual(final['stage'], 'failed_real_reward_gate')
