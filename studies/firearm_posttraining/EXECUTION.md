@@ -1,157 +1,49 @@
-# Live update: both native-coordinate format checks passed
+# Post-training execution: scientific sweep running
 
-Attempt 010 completed fresh paired three-pass warm-ups, 72 updates each. Label format passed 95/96 valid; grounded format passed 92/96 valid with no truncations. The grounded failures are three missing closing braces and one trailing code fence, all retained as invalid. Read-only verdict reproduction and 213 valid normalized boxes are recorded in evidence/native-format-audit.json with source artifact hashes and raw failures. The fresh label adapter exactly reproduces the old label adapter hash.
+The coordinate amendment is implemented and all prerequisite gates passed. This is an ongoing study, not a completed comparison. No held-out improvement or RL benefit is established yet.
 
-Controller 301220 is in real_reward_panels, label first, grounded second. Both actual-reward panels must pass before protocol freeze/sweep. No scoring, validity threshold, reward coefficient, exposure or stopping rule has changed. Native coordinates are converted at the model boundary only. No further candidate is authorized if this one fails. Preserve all running releases; current operator chat 01a17dce.
+## Authorization and immutable source
 
-# Current execution: accepted native-coordinate candidate010
+On October 27, 2026, the human instructed chat 01a17dce-3275-78b0-b005-0f3a408d5cbe to fix the coordinate issue, rerun format checks, and continue post-training if they pass, retaining scoring rules and an audit trail. The human separately approved updating public PR9. The accepted amendment is recorded in AMENDMENTS.md. There is no pending coordinate decision.
 
-October27 human approved the coordinate fix, rerun and conditional continuation, then explicitly approved updating public PR9. Source8d9232c deployed clean at /local/datasets/sp2117/firearm_visilab/code/posttraining-releases/8d9232c and pushed to draft PR9. Local78/Oz30tests pass. Actual-tokenizer/source audit ROOT/data/coordinate-audit-v1.json passes240videos/799knownboxes, maximum284completiontokens,553unknownpayloadtokens masked, unitroundtriperror1.11e-16. Scoring/reward/IoU/trainingupdate sources unchanged; grounded targets/prompt intentionally differ. No old adapters reused.
-
-Both smoke006 engineering checks passed exact reload/resume; synthetic fixture gradients are engineering only. Detached driver300975 launches controller301220, calibration-native-coordinates-v1 attempt010, fresh paired three-pass warmups on Ada6/7. Driver/status/launch and operator ledger are under ROOT; preserve all old runs. Formats010 then actual-reward panels010 (sequential reservations) must pass before freeze/pipeline. Scoring rules, thresholds, FIT/STOP, totalfivepasses and sixpilotGPUhours unchanged. Current operator chat01a17dce; no duplicate launch. No reportingholdouts accessed or benefit established.
-
-Earlier execution text below is historical through failed format009; any pending-coordinate-decision language is superseded by the accepted amendment above.
-
-# Actual execution status
-
-The study is ongoing. Draft PR: https://github.com/shridpant/VERA/pull/9. No merge.
-The current user authorizes both remaining Adas, commits and a review PR, no
-scientific-run time ceilings, six aggregate bounded pilot GPU-hours, and all
-other scientific stops. These resource changes from a side chat were directly
-confirmed. HANDOFF.md is a historical proposal; current amendments govern.
-
-## Current execution state: scientific format stop
-
-Controller PID 293624 from immutable release 2118b52 is DEAD. Its status is
-failed_format_calibration. Corrected-policy format 009 passed label-only 95/96;
-grounded stopped after five invalid responses in 65, making the <=5%/96 gate
-irreversibly impossible. Both actual reward panels 009 never launched. Both
-authorized Adas were idle; no active budget reservations remain. Settled pilot
-usage is 4.0016317 of six aggregate GPU-hours, leaving 1.9983683. No protocol,
-selection freeze, scientific sweep or reporting outcomes exist.
-
-Read-only diagnosis found four unit-range violations consistent with Qwen's
-native 0–1000 convention and one degenerate-geometry response. All five are valid,
-untruncated JSON with valid labels. This supports a representation hypothesis,
-not a rescued gate or proven fix. Evidence and reproducible triage are committed
-in evidence/format-009-diagnosis.json and evidence/audit_format_009.py.
-
-COORDINATE_AMENDMENT_PROPOSAL.md describes a specific fresh fixed-three-pass
-candidate using native model-facing coordinates, normalized at the parser
-boundary, unchanged internal rewards/annotations, strict geometry and all
-existing gates. It is a proposal awaiting the user's decision, not an accepted
-amendment or launch instruction. Do not retry, reuse old failures as passes,
-change exposure, or start a new candidate while that decision is pending.
-
-The probability correction passed 77 local and 29 focused Oz tests. Both GPU
-smokes 005 passed exact reload/resume; VQ compatibility 002 passed. Synthetic
-fixture gradients remain engineering evidence only. The v3 target/source audit
-justified warm-up reuse for 009 only; it cannot authorize reuse after a target
-representation change. Old-sampler panels 008 remain invalidated and preserved.
-
-## Isolation and reproducibility
-
-- Local isolated checkout/branch experiment/firearm-posttraining is based on
-  85e7aba. The original research checkout is untouched.
-- Remote central checkout: /local/datasets/sp2117/firearm_visilab/code/VERA-firearm-posttraining.
-- Immutable releases: /local/datasets/sp2117/firearm_visilab/code/posttraining-releases/.
+- Local branch: experiment/firearm-posttraining; draft PR https://github.com/shridpant/VERA/pull/9. Never merge.
+- Running source: clean immutable release /local/datasets/sp2117/firearm_visilab/code/posttraining-releases/8d9232c, full commit 8d9232c85e2406a25bde1e0f8c1e8f67f132eafb. Later local documentation/evidence commits must never be synced over this running release.
+- SSH: sp2117@oz.gccis.rit.edu.
 - ROOT: /local/datasets/sp2117/firearm_visilab/posttraining1.
-- Only Ada 6 GPU-2931eba2-9a4d-61da-6bd1-e75692edad03 and Ada 7
-  GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, one process/card. Preserve other jobs.
-- Fresh environment: /local/datasets/sp2117/envs/firearm-posttrain/bin/python;
-  78 exact distributions with wheel hashes; offline wheels/provenance ROOT/setup/.
-  setup.sh refuses an existing environment; never overwrite this one.
-- All runs require clean committed source and immutable specs, command, code,
-  model/data/adapter hashes, seed, environment, logs, process IDs and resources.
-- Checkpoints save adapter, optimizer/scheduler, Python/NumPy/Torch/CUDA RNG,
-  cursor/order, selection and hashes. Base weights are referenced, not copied.
-- execute.py locks authorized idle devices and reserves/settles shared pilot
-  GPU-seconds. Occupied GPUs fail; stale utilization can settle for 30 seconds
-  only with no process and <500 MiB. Prelaunch failures retain their logs.
-- Scientific and evaluation jobs use --seconds 0 / --max-seconds 0 to remove time ceilings. Pilots remain finite;
-  budget exhaustion requires an explicit human amendment, never silent extension.
+- Python: /local/datasets/sp2117/envs/firearm-posttrain/bin/python.
+- Driver PID300975; calibration/pipeline controller PID301220. Read ROOT/native-coordinate-driver-v1-status.json, ROOT/calibration-native-coordinates-v1/status.json and ROOT/pipeline/status.json before acting. Do not duplicate launch or resume the dead controller293624.
+- Authorized independent single-GPU workers: Ada6 GPU-2931eba2-9a4d-61da-6bd1-e75692edad03 and Ada7 GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7. Preserve all other experiments/environments.
 
-## Verified data, model and engineering
+## Verified attempt010
 
-FIT 192 / STOP 48 from TRAIN 240; original validation 62 / test 96 metadata. No source/
-recording-group overlap among original splits or exact-frame FIT/STOP overlap.
-All 1,920 development frames verified and hash-checked on every read. Eight full
-chronological 448 letterbox views; no GT crops. Unknown listed_no_box is unknown,
-not absence. Native Qwen3-VL-8B BF16 with rank 16 language-attention LoRA freezes
-vision/projector/embeddings/head/base tensors. Same backbone/capacity across arms.
+| Stage | Result |
+|---|---|
+| Tests |78 local firearm tests and30 focused Oz tests passed|
+| Actual tokenizer/source audit |240 FIT/STOP videos,799 known boxes; unit round-trip error1.11e-16, maximum284 completion tokens,553 unknown payload tokens masked|
+| Fresh engineering smokes006 |Both passed exact prediction reload, exact next-update resume, finite decreasing SFT loss, frozen-base and warm-reference checks|
+| Fresh paired warm-ups010 |Both completed exactly3 passes,576 exposures,72 updates, no STOP selection; label adapter hash exactly reproduced prior label run|
+| Label format010 |95/96 valid, no truncations; passed|
+| Grounded format010 |92/96 valid, no truncations; passed. Three missing closing braces and one trailing code fence remain invalid|
+| Label actual-reward panel010 |24 groups,96 responses,6 updates;16/24 groups with reward spread,1/96 invalid, changed policy and unchanged reference; passed|
+| Grounded actual-reward panel010 |24 groups,96 responses,6 updates;20/24 groups with reward spread,2/96 invalid, changed policy and unchanged reference; passed|
+| Pilot ledger |5.190671679 of6 aggregate GPU-hours settled; no pilot reservation remains|
 
-All 75 firearm tests pass locally after the finite-grid amendment; 27 focused
-tests passed on Oz before the new controller launch. Real
-VQ compatibility passed 16 images / 4,451 prompt tokens with a valid single-slot
-revision and unchanged adapter. Both fresh engineering gates smoke-labels-004
-and smoke-grounded-004 passed exact prediction reload/next-update resume,
-finite/decreasing SFT loss, adapter-only updates and explicit nonzero frozen
-warm-reference scoring. Fixture rewards had zero spread: distinct synthetic
-strings only verified gradient plumbing, never scientific RL feasibility.
+Engineering synthetic fixtures are mechanics only. Only the true sampled-reward panels count as scientific feasibility. Read-only format reproduction validates213 accepted unit boxes and preserves all raw failures and artifact hashes in evidence/native-format-audit.json. Scoring-source and update-source equivalence are proved by coordinate_audit.py. The immutable actual audit is ROOT/data/coordinate-audit-v1.json. New target bytes are explicitly different; label prompt/targets are unchanged.
 
-The actual pinned-tokenizer audit passed all 240 FIT/STOP videos. Target bytes
-unchanged; maximum 311 completion tokens; 6,658 formerly masked known tokens
-restored; 553 unknown-payload tokens masked. Known schema tokens crossing span
-boundaries remain supervised; tokens touching unknown payload stay masked.
-This corrected a genuine JSON-boundary masking bug. Fresh adapters replace old
-ones; thresholds, target text, views, prompts and rewards are unchanged. See
-AMENDMENTS.md and evidence/target-mask-diagnosis.json.
+## Frozen protocol and live work
 
-## Preserved pilot history
+Protocol hash: 3f1f1e8a9aa78a0c5124f765df6712d2c33c0a1db770947edd3318cbec4abe80. Actual protocol.validate passed on Oz. Pipeline stage sweep_running. The first scientific paired warm-ups C0L-20261026 / C0G-20261026 are alive on GPUs6/7 (initial child PIDs306456/306476; recheck because future stages replace them). All five methods VQ/SL/RL/SG/RG and all three seeds20261026/20261027/20261028 are scheduled by the frozen pipeline. Selection manifest does not yet exist.
 
-| Evidence | Result | Interpretation |
-|---|---|---|
-| Legacy pilot-sl-001 | Normal patience stop, 5 FIT passes / 120 updates / 2,470 seconds; best 3.5 passes | Exploratory selection evidence under old mask |
-| Legacy STOP curve | Best category balanced accuracy 86.3%, group 70.8%, code 29.2%, invalid 0%, No_Gun 0/14 | Baseline invalidity 50%; transient 4/14 false positives at 1 pass retained; no held-out claim |
-| Legacy pilot-rl-001 | 96 responses / 6 updates, 29.17% spread groups, 1.04% invalid, unchanged reference | Passed legacy feasibility, not a substitute for corrected gates |
-| Legacy pilot-rg-001 | 28/48 invalid, no truncation; gracefully stopped/checkpointed | Failed; logs/operator action preserved |
-| Legacy 1/1.5-pass grounded formats | 5/7 and 5/5 invalid | Led to actual-tokenizer mask diagnosis |
-| Corrected 1-pass 005 | Both warm-ups 192 clips / 24 updates; label 94/96 valid, grounded 5/20 invalid | Grounded gate failed; raw FIT traces preserved |
-| Corrected 1.5-pass 006 | Both warm-ups 288 clips / 36 updates; label 96/96 valid, grounded 5/18 invalid | Grounded gate failed; final declared 2-pass candidate follows |
+Model-facing coordinates are strictly0–1000, normalized to unit geometry before the same hierarchical-iou-v1 scoring functions. No unit guessing, clamping, geometry repair or rescue of previous failed outputs. Reward coefficients, IoU/matching, parsing structure, <=5% validity threshold, FIT-only96-response/24-group panels, >=20% spread requirement and all stopping rules are unchanged.
 
-Corrected FIT failures include non-unit coordinates, malformed/unterminated
-JSON, duplicate responses/trailing prose and truncation. Do not relax parsing,
-truncate answers post hoc or treat partial-panel rates as full-panel estimates.
-Failed runs, traces and operator actions remain available under ROOT and evidence/.
+Three warm-up FIT passes count inside the five-total-pass cap. Scientific/evaluation time ceilings remain removed by prior human authorization; pilots retain their six-hour aggregate budget. FIT192/STOP48 from TRAIN240, original VAL62/test96. Eight448-square chronological full-frame letterbox views; native BF16 language-attention rank16 LoRA. Paired warm starts, exact checkpoints, common label scoring independent of box validity and all source/data/model/environment bindings remain enforced.
 
-## Remaining gates and inference policy
+Measured maximum-schedule forecast:28.38 training GPU-hours, approximately15.51 wall-hours with two workers, plus2.65 evaluation GPU-hours. This includes overhead and is not an ETA; scientific stops may shorten runs. The training forecast is an estimate, not a newly introduced cap.
 
-The original finite 1/1.5/2-pass grid and subsequent fixed three-pass candidate
-are exhausted; preserve their failures. Any new representation candidate requires
-the pending protocol decision. For an accepted candidate, use no STOP selection. Both format gates must pass at one exposure, then both true reward
-panels: 24 groups / 96 responses / 6 updates, >=20% spread groups, <=5% invalid/truncated,
-finite material gradients/policy change, unchanged actual warm reference. A real
-reward failure stops for diagnosis; no blind retry or fabricated feasibility.
+All15 method/seed selections must freeze before guarded val/test evaluation and report generation. RG–SG remains primary and RL–SL secondary. Paired recording-group bootstrap and conservative sparse-negative support screen remain. Prior Training1 test exposure is documented; do not call the historical test newly pristine. No held-out outcomes guided this amendment.
 
-Only verified gates permit throughput forecast and immutable protocol freeze,
-then five methods (VQ/SL/RL/SG/RG) × three seeds, max 5 total FIT passes including warm-up.
-Paired starts are cloned/hash-proven; max 10 STOP checks, patience and numerical/KL/
-invalidity/accuracy-divergence stops remain. Best and last checkpoints are distinct.
-All 15 outcomes must freeze in selection.json before guarded deterministic reporting.
+## Continuing work
 
-Primary contrast RG–SG, secondary/exploratory RL–SL. Identical label scoring is
-independent of grounded payload validity; localization is separate. Paired
-recording-group bootstrap and seed spread are reported. A conservative exact-
-binomial group-support upper screen additionally guards sparse No_Gun +.05
-noninferiority; report raw interval and assumptions separately. Zero observed
-errors alone cannot establish safety.
+The detached driver automatically chains successful sweep→selection freeze→guarded evaluation/report. Existing15-minute continuation may inspect and advance meaningful work after this chat yields; no new automation was created. Do not start a duplicate controller, modify an active release, or change frozen scientific rules. If the pipeline fails, diagnose the actual failure, preserve evidence and apply an explicit auditable amendment where needed; never silently broaden a finite pilot budget or retry a failed scientific candidate.
 
-Original validation informed Phase 1. Metadata-only inspection found 13 nonempty
-prior Training 1 test outputs; historical test is not a pristine new holdout.
-No test images/boxes/predictions have been used in this execution. No held-out
-recognition improvement or RL benefit is established.
-
-The detached controller chains sweep→selection freeze→evaluation/report only
-after passing gates. An active 15-minute in-chat continuation reads the canonical
-outputs/CONTINUE_EXPERIMENTS.md and actual artifacts. Local follow-ups need Mac/
-app running; remote jobs are independent. Deliver verified report/tables/plots,
-update audit evidence/PR from Mac, and never merge. Running jobs are not completion.
-
-The three-pass amendment and actual launch are preserved in AMENDMENTS.md and
-evidence/three-pass-calibration-launch.json. The original failed grid remains
-in calibration-mask-v2/ and its evidence files. No reporting outcomes informed
-this pre-freeze numerical amendment.
-
-Current corrected-policy verification and actual launch provenance are saved in
-evidence/probability-verification.json. The source/target audit is retained as
-ROOT/data/target-mask-audit-v3.json; earlier v2 is not overwritten.
+Canonical human-facing continuation record: /Users/shrid/Documents/Codex/2026-10-26/u-h/outputs/CONTINUE_EXPERIMENTS.md. This chat's delivered snapshots are /Users/shrid/Documents/Codex/2026-10-27/wha/outputs/coordinate-rerun-evidence.json and native-format-audit.json. Keep PR9 current with verified results. Deliver the eventual report, tables and figures; running workers do not mean the overall study is complete. Prior failures, old masks/samplers and the old proposed-decision state remain in AMENDMENTS.md, evidence/ and Git history.
