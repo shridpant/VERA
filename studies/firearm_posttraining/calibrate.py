@@ -1,6 +1,6 @@
 """Bounded FIT-only warm-up calibration, then true RL gates and the full pipeline.
 
-The first passing common format exposure among 1, 1.5 and 2 FIT passes is proposed.
+The first passing common format exposure in an immutable declared grid is proposed.
 Both actual reward panels must then pass; no failed panel triggers a blind retry.
 """
 import argparse
@@ -18,9 +18,18 @@ from .protocol import freeze
 from .pipeline import run as pipeline
 
 
-def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None):
+def validate_grid(values):
+    grid = tuple(values)
+    if (not grid or any(not math.isfinite(v) or not .5 <= v < 5 or v * 2 != int(v * 2) for v in grid)
+        or tuple(sorted(set(grid))) != grid):
+        raise ValueError('warm-up grid must be finite, strictly increasing half-pass multiples below five')
+    return grid
+
+
+def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None, warmup_grid=None):
     root = Path(root).resolve()
     original_data, frames_root = str(original_data), str(frames_root)
+    grid = validate_grid((1., 1.5, 2.) if warmup_grid is None else warmup_grid)
     if Path(control_name).name != control_name or control_name in ('.', '..') or attempt_offset < 0:
         raise ValueError('simple control directory and nonnegative attempt offset required')
     control = root / control_name
@@ -29,7 +38,7 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
     label_smoke = Path(label_smoke) if label_smoke else root / 'smoke-labels-003/result.json'
     write_json(control / 'config.json', {'control_name': control_name, 'attempt_offset': attempt_offset,
                'grounded_smoke': str(grounded_smoke), 'label_smoke': str(label_smoke),
-               'target_mask': 'known-schema-unknown-payload-v2'}, immutable=True)
+               'target_mask': 'known-schema-unknown-payload-v2', 'warmup_grid': grid}, immutable=True)
     if resume and (control / 'status.json').exists() and json.loads((control / 'status.json').read_text()).get('stage') == 'complete':
         return
     model = json.loads((root / 'data/preflight.json').read_text())['model']
@@ -88,7 +97,7 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
             return {key: future.result() for key, future in futures.items()}
     try:
         chosen = None
-        for initial_attempt, passes in ((2, 1.), (3, 1.5), (4, 2.)):
+        for initial_attempt, passes in enumerate(grid, start=2):
             attempt = initial_attempt + attempt_offset
             status('fixed_warmups', attempt=attempt, warmup_passes=passes)
             warm = {}
@@ -199,5 +208,6 @@ if __name__ == '__main__':
     p.add_argument('--attempt-offset', type=int, default=0)
     p.add_argument('--grounded-smoke', help='passing engineering evidence for the current grounded target mask')
     p.add_argument('--label-smoke', help='passing engineering evidence for the current label target mask')
+    p.add_argument('--warmup-grid', type=float, nargs='+', help='explicit finite pre-freeze grid; defaults to 1 1.5 2')
     args = p.parse_args()
-    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke)
+    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke, args.warmup_grid)

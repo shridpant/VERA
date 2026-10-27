@@ -194,3 +194,34 @@ calibration namespace with unique attempts 005/006/007 at the same declared
 1/1.5/2-pass FIT-only grid. Reuse no adapters trained under the old mask. Both
 true reward panels must pass at the corrected common warm-up before protocol
 freeze. All extra GPU work remains inside the existing six-hour pilot budget.
+
+## Additional finite FIT-only warm-up candidate: three passes
+
+The corrected 1/1.5/2-pass grid exhausted normally with no passing common format
+exposure. Label validity was94/96,96/96,95/96; grounded checks stopped at5/20,
+5/18,5/64 invalid respectively. These partial-panel fractions are not complete
+96-response estimates. The two-pass FIT failures contain missing JSON closure,
+repeated answers/truncation and non-unit coordinates. No further target-mask
+defect was found in those traces. Preserve the failed grid/controller status.
+
+Before any scientific freeze, declare exactly one additional candidate: shared
+3.0 FIT-pass warm-up, independent fresh label/grounded runs, no STOP queries.
+Use the same fixed FIT panel, sampling, strict parser, rewards, thresholds,
+backbone, LoRA and optimizer defaults. This is a numerical warm-up amendment
+using FIT feedback, not reporting-set outcomes. Count three warm-up passes inside
+the unchanged five-total-pass ceiling, leaving at most two continuation passes
+for each supervised/RL pair and applying the same exposure to all three seeds.
+
+Use new calibration namespace calibration-3pass-v2 and attempt008. The immutable
+controller config records grid[3.0]; resume rejects any grid change. No automatic
+further candidate follows failure. Both format gates and both actual reward
+panels must pass before freeze; failed actual reward gates still stop for
+diagnosis. Existing mask-v2 adapters at shorter exposures are not reused.
+
+Settled pilot use before this candidate is2.91874GPU-hours out of the authorized
+six. Measured two-pass warm-up latencies forecast approximately38 combined
+GPU-minutes for fresh three-pass warm-ups; reserve finite1800seconds each.
+Format caps remain600/900seconds and actual panel caps1800/3600seconds, with
+the existing aggregate reservation guard enforcing the unchanged six-hour
+allowance. Do not extend that allowance silently. Full scientific-run time caps
+remain removed; all non-time scientific stopping rules remain.

@@ -349,6 +349,13 @@ class StatisticsTests(unittest.TestCase):
 
 
 class OrchestrationTests(unittest.TestCase):
+    def test_calibration_grid_is_finite_and_leaves_scientific_continuation(self):
+        from studies.firearm_posttraining.calibrate import validate_grid
+        self.assertEqual(validate_grid([3.]), (3.,))
+        for values in ([], [float('nan')], [float('inf')], [5.], [.25], [1.25], [2., 1.], [1., 1.]):
+            with self.subTest(values=values), self.assertRaises(ValueError):
+                validate_grid(values)
+
     def test_idle_cooldown_never_waits_on_an_occupied_gpu(self):
         from unittest.mock import patch
         from studies.firearm_posttraining.execute import idle_state
@@ -370,7 +377,7 @@ class OrchestrationTests(unittest.TestCase):
             with self.subTest(format_retry=reject_first_format, reward_failure=reject_reward), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
                 namespaced = not any((reject_first_format, reject_reward, prelaunch_failure))
-                options = {'control_name': 'calibration-v2', 'attempt_offset': 3,
+                options = {'control_name': 'calibration-v2', 'attempt_offset': 6, 'warmup_grid': [3.],
                            'grounded_smoke': root / 'smoke-grounded-new/result.json'} if namespaced else {}
                 data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
                 data.write_json(root / 'data/fit.json', [{}] * 192)
@@ -425,15 +432,17 @@ class OrchestrationTests(unittest.TestCase):
                 final = json.loads((root / ('calibration-v2' if namespaced else 'calibration') / 'status.json').read_text())
                 if namespaced:
                     self.assertFalse((root / 'calibration').exists())
-                    self.assertTrue(any(c[c.index('--name') + 1] == 'pilot-c0g-005' for c in commands))
+                    self.assertTrue(any(c[c.index('--name') + 1] == 'pilot-c0g-008' for c in commands))
                     self.assertEqual(freeze.call_args.args[3], root / 'smoke-grounded-new/result.json')
+                    with self.assertRaisesRegex(ValueError, 'immutable artifact differs'):
+                        run(root, 'original', 'frames', resume=True, **{**options, 'warmup_grid': [3.5]})
                 if reject_reward:
                     self.assertEqual(final['stage'], 'failed_real_reward_gate')
                     freeze.assert_not_called()
                     pipeline.assert_not_called()
                 else:
                     self.assertEqual(final['stage'], 'complete')
-                    self.assertEqual(freeze.call_args.kwargs['warmup_passes'], 1.5 if reject_first_format else 1.)
+                    self.assertEqual(freeze.call_args.kwargs['warmup_passes'], 3. if namespaced else (1.5 if reject_first_format else 1.))
                     self.assertEqual(freeze.call_args.kwargs['max_passes'], 5.)
                     if reject_first_format:
                         self.assertFalse(any('pilot-rg-002' in command for command in commands))
