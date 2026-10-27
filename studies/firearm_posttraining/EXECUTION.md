@@ -130,3 +130,21 @@ masked known JSON boundary tokens. The new v2 mask preserves known schema and
 only masks unknown box payloads. New CPU audit, both GPU engineering checks,
 and independent fixed warm-ups are required; old adapters cannot be reused.
 See AMENDMENTS.md. No protocol or scientific sweep has started.
+
+## Corrected mask verified and calibration active
+
+Release 1b109ed passed all 74 firearm tests locally and 26 focused tests on Oz.
+The actual pinned tokenizer audit passed all 240 FIT/STOP videos: target bytes
+unchanged, maximum 311 completion tokens, 6,658 formerly masked known tokens
+retained and 553 unknown-payload tokens masked. Both fresh engineering gates
+smoke-labels-004 / smoke-grounded-004 passed exact prediction reload/resume,
+finite/decreasing SFT loss and frozen-base/reference checks. Their fixture
+reward spread remains zero; synthetic gradients are engineering evidence only.
+
+CPU controller PID 283507 runs from 1b109ed, status under
+ROOT/calibration-mask-v2/status.json. New one-pass warm-ups pilot-c0l-005 and
+pilot-c0g-005 use corrected supervision and no STOP queries. Old adapters are
+not reused. The finite FIT-only calibration grid and actual reward gates still
+precede any freeze or scientific sweep. New launch metadata and passing gates
+are in evidence/corrected-mask-verification.json. No held-out or RL recognition
+improvement is established.
