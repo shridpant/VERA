@@ -31,6 +31,10 @@ def run(args):
         raise ValueError('GRPO requires an explicit fixed warm-start adapter')
     if is_rl and not args.frozen_protocol:
         raise ValueError('scientific GRPO requires frozen protocol; use rl-panel for feasibility')
+    if args.adapter:
+        warm_state = json.loads((Path(args.adapter) / 'state.json').read_text())
+        if warm_state.get('selection', {}).get('checks') != 0:
+            raise ValueError('paired initialization must be a fixed 0.5-pass warm start without STOP selection')
     if args.frozen_protocol:
         protocol = json.loads(Path(args.frozen_protocol).read_text())
         if protocol.get('status') != 'frozen' or args.max_passes != protocol['shared_max_fit_passes']:
@@ -39,6 +43,9 @@ def run(args):
         provenance(out, vars(args))
     book = json.loads(Path(args.codebook).read_text())
     fit, stop = load_split(args.data, 'fit'), load_split(args.data, 'stop')
+    start_cursor = len(fit) // 2 if args.adapter else 0
+    if args.adapter and warm_state['cursor'] != start_cursor:
+        raise ValueError('warm-start exposure mismatch')
     lookup = {r['id']: r for r in fit}
     native = NativeModel(args.model, book, adapter=args.adapter, seed=args.seed)
     torch, model = native.torch, native.model
@@ -48,7 +55,7 @@ def run(args):
     optimizer = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=5e-6 if is_rl else 5e-5)
     accumulation = 4 if is_rl else args.accumulation
     total_exposures = math.floor(len(fit) * (.5 if args.warmup_only else args.max_passes))
-    total_updates = math.ceil(total_exposures / accumulation)
+    total_updates = math.ceil((total_exposures - start_cursor) / accumulation)
     warm_steps = max(1, math.ceil(total_updates * .05))
     def multiplier(step):
         if step < warm_steps:
@@ -56,7 +63,7 @@ def run(args):
         return max(0., (total_updates - step) / max(1, total_updates - warm_steps))
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, multiplier)
     selected = StopState()
-    cursor, updates, next_check = 0, 0, len(fit) // 2
+    cursor, updates, next_check = start_cursor, 0, start_cursor + len(fit) // 2
     elapsed_before = 0.
     bad_kl = bad_format = bad_stop = 0
     initial_stop = None
@@ -68,18 +75,37 @@ def run(args):
         deadline -= elapsed_before
         bad_kl, bad_format, bad_stop = state.get('bad_kl', 0), state.get('bad_format', 0), state.get('bad_stop', 0)
         initial_stop = state.get('initial_stop')
+        if is_rl and state['reference_hash'] != native.reference_hash:
+            raise ValueError('resumed reference does not match original fixed warm start')
     def state():
         return {'cursor': cursor, 'updates': updates, 'next_check': next_check,
                 'selection': selected.snapshot(), 'elapsed_seconds': elapsed_before + time.monotonic() - started,
                 'seed': args.seed, 'fit_manifest_hash': digest(Path(args.data) / 'fit.json'),
                 'bad_kl': bad_kl, 'bad_format': bad_format, 'bad_stop': bad_stop, 'initial_stop': initial_stop,
                 'reference_hash': native.reference_hash if is_rl else None,
+                'initial_exposures': start_cursor,
                 'reward_version': VERSION if is_rl else None}
     def snapshot(name):
         path = out / 'checkpoints' / name
         save_checkpoint(native, optimizer, scheduler, path, state())
         return str(path)
     try:
+        if args.resume and not args.warmup_only and cursor >= next_check:
+            # Boundary checkpoints are saved before their STOP query. A resumed
+            # run reuses a completed query, never silently adds a new query.
+            eval_path = out / f'stop-{cursor:06d}'
+            if (eval_path / 'metrics.json').exists():
+                measured = json.loads((eval_path / 'metrics.json').read_text())
+            elif eval_path.exists():
+                raise RuntimeError('partial STOP query requires explicit recovery; do not silently requery')
+            else:
+                measured = evaluate(native, stop, eval_path, grounded, deadline=deadline,
+                                    stop_requested=lambda: bool(stopping))
+            if measured is None:
+                selected.reason = 'time_cap_during_validation'
+            else:
+                selected.observe(measured, args.resume, cursor / len(fit))
+                next_check += len(fit) // 2
         if not args.resume:
             baseline = snapshot('initial')
             if not args.warmup_only:

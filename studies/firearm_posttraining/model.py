@@ -5,8 +5,12 @@ from pathlib import Path
 
 from .data import letterbox
 
+DEFAULT_QUESTIONS = ('What is the person in the video holding?',
+                     'How is the person moving or positioning their arms and body?')
 
 def instruction(book, grounded=False, questions=None):
+    if questions is None:
+        questions = DEFAULT_QUESTIONS
     labels = '\n'.join(f'{code}: {v["category"]}, {v["group"]}, {v["meaning"]}' for code, v in sorted(book['codes'].items()))
     text = ('Classify the person and action in these eight chronological video frames. '
             'Return only one JSON object with string fields category, action_group, action_code. '

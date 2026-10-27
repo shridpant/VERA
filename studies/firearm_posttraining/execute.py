@@ -8,6 +8,7 @@ import contextlib
 import fcntl
 import json
 import os
+import re
 import signal
 import subprocess
 import sys
@@ -66,6 +67,8 @@ def gpu_state(uuid):
 
 
 def run(args):
+    if not re.fullmatch(r'[A-Za-z0-9_.-]+', args.name):
+        raise ValueError('run name must be a simple filename')
     if args.gpu not in ALLOWED or args.seconds <= 30 or args.seconds > CAPS[args.stage]:
         raise ValueError('invalid authorized device or duration')
     root = Path(args.root)
