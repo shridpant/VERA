@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,tabularx,array,hyperref,xcolor,enumitem,microtype}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist[itemize]{leftmargin=*,nosep}
+\newcommand{\src}[1]{\textsf{[#1]}}
+\title{VERA on Oz: Transfer, Categorization, and Grounding\\\large An evidence audit of completed results and failed gates}
+\author{Prepared for Shrid Pant}\date{October 27, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The records support a severe box-generation failure in the tested packed-frame setting, unstable gains from faithful question retraining on firearm categories, and a failed gate for using attention as grounding feedback. They do not establish that VERA cannot detect anomalies outside UCF-Crime after retraining. The firearm categories are not binary anomaly labels; the original VERA paper also evaluates XD-Violence. This report separates measured task failures, measurement failures, implementation defects, and experiments that were not run. A separate verification README, raw evidence archives, hashes, and CPU reproduction script accompany the report.
+\end{abstract}
+
+\section{What can be concluded}
+\begin{tabularx}{\linewidth}{@{}p{0.23\linewidth}X@{}}\toprule
+Question & Supported conclusion \\\midrule
+Binary anomaly transfer after target retraining & No completed, correctly labeled non-UCF experiment establishing this failure was located in the inspected Oz records. The claim remains unverified. \\
+Firearm categorization after VERA learning & Gains depend strongly on training order. Some runs improve; others worsen. Reliable improvement across replications is not established. \\
+Explicit firearm boxes & Zero recall at the reported thresholds for both grounding-only and anomaly-plus-grounding prompts under the evaluated input packing. \\
+Attention-based grounding feedback & Spatial specificity passes, but attention--reliance agreement fails the declared gate. Feedback training does not run. \\
+Other limitations & Selective-explanation prompts produce unusable content; a temporal-position modification misses its gate despite a positive effect. Some earlier failures are measurement or validation defects. \\\bottomrule
+\end{tabularx}
+
+\section{Scope and verification}
+The primary retained model is frozen InternVL2-8B, revision \texttt{6fb9ad69}, using eight sampled frames. ``Retraining'' in faithful VERA means learning text questions through the learner/optimizer loop, not updating model weights. The firearm adaptation changes the output task to category, action group, and action code. Its faithful loop retains the original batch size, frame sampling, question update, validation schedule, and greedy generation; the strict parser, neutral initialization, seeded order, and selection rule are disclosed task adaptations. \src{T1}
+
+The audit verifies stored responses, annotations, counts, and reported uncertainty; it does not rerun GPU inference. Each primary archived input is checked against its remote SHA-256. The supplied script also reparses the original responses, checks split separation by recording group, reconstructs validation selection, recomputes categorization intervals and the grounding gate, and matches boxes against the original annotation JSON. The numerical ledger retains full precision. \src{V}
+
+\section{Transfer and categorization}
+\subsection{The binary transfer claim is not established}
+The completed A/G/AG study uses VISILAB's Handgun, Machine\_Gun, and No\_Gun categories. These are not ground-truth anomaly/normal labels. An anomaly answer on a No\_Gun clip therefore cannot automatically be counted as a false positive. The study reports judgment frequencies, not binary classification accuracy. It also uses the upstream questions rather than target-domain binary question retraining. \src{AG}
+
+The inspected RWF-2000 location contains staged data; older RWF-related results belong to DANCE and other model pipelines. The retained CATER smoke logs train SRK/MLP heads on a file named \texttt{fake.npz}; they are not evidence for VERA's verbalized-learning transfer. No completed target-retrained binary VERA evaluation with appropriate labels was identified in these inspected locations. This is a bounded search result, not proof that no such run exists anywhere. \src{S}
+
+The authors' VERA paper reports evaluations on both UCF-Crime and XD-Violence and explicitly studies cross-dataset question transfer (Table 9). Consequently, ``VERA only works on UCF-Crime'' is too broad even before considering the Oz results. Those published experiments are external context, not independently reproduced Oz results. \src{P}
+
+\subsection{Faithful question retraining on firearm categories}
+The split has 240 training, 62 validation, and 96 test videos, with no recording group spanning splits. The neutral seed questions classify 57/96 test videos correctly (59.375\%). The table reports selected learned questions on the same test videos; invalid outputs count as wrong. Intervals are paired recording-group bootstrap intervals, stratified by category, using 2,000 draws. A/B/C denote run seeds 20261026/20261027/20261028. \src{T1,V}
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrr@{}}\toprule
+Run & Correct & Accuracy (\%) & Change (pp) & 95\% paired CI (pp)\\\midrule
+Faithful VERA A & 59/96 & 61.46 & 2.08 & [-4.30, 8.60] \\
+Faithful VERA B & 52/96 & 54.17 & -5.21 & [-12.63, 2.08] \\
+Faithful VERA C & 67/96 & 69.79 & 10.42 & [1.04, 20.41] \\
+Fixed VERA A & 62/96 & 64.58 & 5.21 & [-5.26, 16.16] \\
+Fixed VERA B & 54/96 & 56.25 & -3.12 & [-12.37, 6.12] \\
+Fixed VERA C & 67/96 & 69.79 & 10.42 & [4.12, 18.09] \\
+Question bank & 53/96 & 55.21 & -4.17 & [-12.63, 3.88] \\
+Random-pair bank & 36/96 & 37.50 & -21.88 & [-30.53, -13.54] \\
+Unscored bank & 55/96 & 57.29 & -2.08 & [-8.25, 4.17] \\
+\bottomrule\end{tabular}
+\end{center}
+
+The three faithful runs span 52/96 to 67/96 correct answers. The third faithful run's positive interval is evidence against describing every retraining attempt as a failure. The result that does replicate is instability: the same split, frozen backbone, and seed-question outputs yield substantially different learned-question performance when training order changes. The fixed variant and question-bank variants do not establish reliable superiority. Their extra mechanisms are not the original VERA algorithm. \src{T1,V}
+
+\begin{center}\small\begin{tabular}{@{}lrrr@{}}\toprule
+Faithful run & Action group correct & Exact code correct & Invalid category\\\midrule
+Faithful VERA A & 35/96 & 6/96 & 5 \\
+Faithful VERA B & 40/96 & 6/96 & 0 \\
+Faithful VERA C & 31/96 & 5/96 & 1 \\
+\bottomrule\end{tabular}\end{center}
+For the first faithful run, category gains do not imply successful action categorization. Its exact codes are correct for 6/96 videos, versus 5/96 for seed questions. Several answer fields can fail together when generation loops before producing its final category. Exact-code performance remains exploratory under this video sample and codebook. \src{T1,V}
+
+\section{Two different grounding failures}
+\subsection{Generating boxes: A/G/AG}
+The full study evaluates 398 videos and 6,375 windows in each of three conditions: A, original VERA; G, box generation only; AG, anomaly judgment plus box generation. The three conditions receive matching sampled frames. The box task uses VERA's packing of eight frames into a single image block. It is an extension of VERA's output task, not an original box-localization benchmark. \src{AG}
+
+\begin{center}\small\begin{tabular}{@{}lrr@{}}\toprule
+Quantity & G & AG\\\midrule
+Scheduled frame slots & 51,000 & 51,000\\
+Empty slots & 50,804 & 50,960\\
+Boxes emitted & 195 & 39\\
+Whole-image boxes & 195 & 39\\
+Ground-truth object occurrences & 23,841 & 23,841\\
+True positives at IoU 0.50 & 0 & 0\\
+True positives at IoU 0.75 & 0 & 0\\
+Recall at either threshold & 0 & 0\\\bottomrule
+\end{tabular}\end{center}
+
+These are window-slot occurrences, not unique objects or independent frames: overlapping windows repeat source frames. Whole-image predictions remain in the scorer; they are not filtered out to create the zero result. Missing, malformed, or truncated slot answers miss their annotated objects. Annotation origin and native-to-input scaling follow the recorded policy; original COCO JSON and prediction text were used for reproduction. \src{AG,V}
+
+Adding the grounding request changes judgments: AG minus A is -3.7834 pp, with video-cluster 95\% CI [-5.2175, -2.2804], on 6,370 valid paired windows. Since useful localization almost never occurs, this measures the bundled prompt change. It does not demonstrate that correctly grounded boxes improve or harm anomaly detection. \src{AG,V}
+
+The earlier single-window grounding pilot emitted boxes but had no annotated box-accuracy evaluation. Its whole-image outputs are a warning sign, not a comparable recall estimate. The full A/G/AG test supplies the quantitative localization failure. \src{S}
+
+\subsection{Attention as feedback: failed measurement gate}
+The separate \texttt{grounding1} study measures attention lift inside annotated boxes and reliance under occlusion, using seed questions across all splits. It is not a second box-generation test. Phase 1 covers 398 videos; 276 have evaluable attention lift. Two answers lack a usable category decision. \src{G1}
+
+\begin{center}\small\begin{tabular}{@{}lrrll@{}}\toprule
+Gate component & Videos & Estimate & 95\% CI & Result\\\midrule
+V1: true--shuffled lift & 275 & 1.5365 & [1.4004, 1.6775] & Pass\\
+V2: lift--reliance Spearman $\rho$ & 274 & 0.1128 & [$-0.0131$, 0.2292] & Fail\\\bottomrule
+\end{tabular}\end{center}
+
+The rule requires both lower bounds above zero. V2 fails, so the combined gate fails and Phase 2 grounding-feedback training is not run. No failed Phase 2 training result or held-out Phase 2 benefit can be claimed. The gate is an all-split feasibility decision with test-box access, not an untouched test comparison. \src{G1,V}
+
+Among 112 correctly classified firearm videos with evaluable grounding, masking the true boxes changes all 112 category decisions, compared with 5 under the control mask. Thus the model can depend on the firearm when it recognizes it. Attention specificity alone does not distinguish reliable recognition or quantify causal dependence well enough for the declared feedback rule. This occlusion result is descriptive and depends on the mask and control construction. \src{G1,V}
+
+The initial measurement checks exposed eager/FlashAttention replay differences; probability readouts were moved to FlashAttention while attention weights remained eager. A partial Phase 1 was preserved and restarted after corrections, including pairing true and shuffled lift on shared frames. The failed final gate uses the corrected complete run. These disclosures constrain any claim of an entirely unchanged preregistration. \src{G1}
+
+\section{Other failures and results that should not be called failures}
+\begin{itemize}
+\item \textbf{Selective explanations.} The completed comparison has 72 calls. All 18 schema-valid manual explanations contain empty observation lists; cited explanations also include copied placeholders. The repair stops after six calls when its last response omits the required final label. These are failures of the tested prompting/output contracts, not verified hallucination rates or a universal impossibility result. \src{SE,V}
+\item \textbf{Temporal-position robustness.} In the primary cohort, removing the position prior improves worst-position AUC by 2.721 pp, but misses the required 3 pp benefit. Its unshifted AUC cost is 1.007 pp. The recorded benefit interval [1.307, 4.371] is positive, so a failed gate does not mean no measurable effect. The point effects were reproduced from saved aggregate scores; this audit source-checks that interval rather than repeating the frame-level bootstrap. \src{POS,V}
+\item \textbf{Temporal and spatial attribution feasibility.} Experiment02 finds a fragile alert and letterbox-sensitive heatmaps; the auxiliary label-only scorer is a different decision condition from explanation-first VERA. The precision erratum warns that changes below one quantization step can still cross a rounding boundary. These measurement limitations should not be recast as dataset-transfer results. \src{E2}
+\item \textbf{Experiment03B integrity.} Its original independent validator fails checks; a disclosed post-data R1 reconciliation passes amended checks while preserving the original files. The measured frame-ranking result is positive under its perturbation endpoint. A validation failure is not evidence that the scientific task failed, and a repaired check is not a fresh blinded validation. \src{E3}
+\item \textbf{Weight post-training.} PR 9 records earlier format failures followed by corrected-coordinate format and reward gates that pass. Its scientific sweep was still running in the inspected PR snapshot. It must not be reported as a completed held-out failure or as faithful question-only VERA retraining. \src{PT}
+\end{itemize}
+
+\section{Evidence index}
+\small
+The accompanying \texttt{README.md} gives exact Oz paths, Git revisions, archive hashes, reproduction commands, and the verification limits for every source below. \texttt{verification.json} stores full-precision values and the check ledger.
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+ID & Source\\\midrule
+T1 & \href{https://github.com/shridpant/VERA/pull/7}{PR 7}; \texttt{training1/runs}, \texttt{training1/compare}; source revision \texttt{c239dc06}.\\
+AG & \href{https://github.com/shridpant/VERA/pull/8}{PR 8}; \texttt{runs/firearm\_a\_g\_ag\_v1}, \texttt{analysis}; source \texttt{534483b3}.\\
+G1 & \texttt{grounding1/gate.json}, complete raw measurements; source \texttt{af94dea7}.\\
+SE & \href{https://github.com/shridpant/VERA/pull/11}{PR 11}; raw selective records and content audit.\\
+POS & \href{https://github.com/shridpant/VERA/pull/12}{PR 12}; archived position summary and gate table.\\
+E2/E3 & \href{https://github.com/shridpant/VERA/pull/2}{PR 2}, \href{https://github.com/shridpant/VERA/pull/3}{PR 3}, \href{https://github.com/shridpant/VERA/pull/5}{PR 5}; report, erratum, R1 amendment.\\
+PT & \href{https://github.com/shridpant/VERA/pull/9}{PR 9}; saved PR metadata snapshot, not final outcomes.\\
+S & Bounded Oz search and candidate logs; \texttt{search\_scope.json}.\\
+P & Ye et al., \emph{VERA}, \href{https://arxiv.org/html/2412.01095v2}{arXiv v2 / CVPR 2025}, especially Table 9.\\
+V & Supplied reproduction script, input manifests, and numerical check ledger.\\\bottomrule
+\end{tabularx}\normalsize
+
+\section{Discussion and analysis}
+\textbf{The central limitation is task-specific reliability.} The strongest negative finding is explicit localization under one frozen backbone, prompt design, and frame-packing method. A recognizer with different image packing, a dedicated detector, higher-resolution inputs, or weight adaptation is a different system. The current zero recall therefore motivates checking the representation and interface before spending effort on wording alone.
+
+\textbf{Question learning is not consistently effective, but it is not uniformly ineffective.} The faithful replications include both a loss and a supported gain over the seed questions. The same neutral baseline across runs rules out changing baseline predictions as the explanation for that spread. Training order, question trajectories, small validation support, and occasional generation loops remain plausible contributors. This audit establishes the variability; it does not isolate their causal contributions or provide a cross-seed significance test. Multiple methods share the same evaluation set, which limits claims based on the best single run.
+
+\textbf{Looking, naming, and locating are distinct capabilities.} A model may attend inside a firearm box while answering No\_Gun, and may rely on firearm pixels in correct decisions while failing to emit usable box coordinates. The attention gate correctly blocks the proposed training signal because spatial overlap alone does not establish the required agreement with reliance. It would be misleading to combine these findings into one generic ``grounding failure.''
+
+\textbf{A defensible transfer claim needs a different evidentiary chain.} To establish failed binary adaptation beyond UCF, the record must identify the target anomaly definition, appropriate labels, group-disjoint development and test data, the faithful target-domain question-learning run, checkpoint selection, and comparison with unchanged/manual questions on identical inputs. Anomaly-answer frequencies on firearm categories cannot supply that chain. RWF/CATER staging also cannot replace a completed evaluation. No new inference was launched for this audit.
+
+\textbf{Recommended wording.} ``On VISILAB, faithful VERA question learning produces unstable category and action results; explicit box generation fails in the evaluated packed-frame setting; and attention lift fails the declared validity gate for grounding feedback. The available Oz records do not establish general binary anomaly-transfer failure after retraining.'' This wording preserves the negative evidence, the successful controls, and the unresolved question.
+\end{document}

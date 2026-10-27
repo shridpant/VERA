@@ -1,0 +1,105 @@
+{
+  "run_001": {
+    "calls": 72,
+    "complete": true,
+    "conditions": {
+      "original": {
+        "calls": 24,
+        "invalid_binary": 0,
+        "at_token_cap": 0,
+        "valid_schema": null,
+        "empty_observation_lists": null,
+        "placeholder_observations": 0,
+        "placeholder_unresolved": 0,
+        "nonplaceholder_observation_count": 0,
+        "responses_with_nonplaceholder_observations": 0,
+        "manual_nonempty_frame_arrays": null,
+        "generation_seconds": 49.321
+      },
+      "manual": {
+        "calls": 24,
+        "invalid_binary": 0,
+        "at_token_cap": 0,
+        "valid_schema": 18,
+        "empty_observation_lists": 18,
+        "placeholder_observations": 0,
+        "placeholder_unresolved": 0,
+        "nonplaceholder_observation_count": 0,
+        "responses_with_nonplaceholder_observations": 0,
+        "manual_nonempty_frame_arrays": 0,
+        "generation_seconds": 65.031
+      },
+      "cited": {
+        "calls": 24,
+        "invalid_binary": 0,
+        "at_token_cap": 0,
+        "valid_schema": 22,
+        "empty_observation_lists": 17,
+        "placeholder_observations": 4,
+        "placeholder_unresolved": 1,
+        "nonplaceholder_observation_count": 1,
+        "responses_with_nonplaceholder_observations": 1,
+        "manual_nonempty_frame_arrays": null,
+        "generation_seconds": 59.27
+      }
+    },
+    "last_case": "Normal_Videos_886_x264|annotated",
+    "last_variant": "manual",
+    "status": "completed; template placeholders contaminate explanations"
+  },
+  "run_002": {
+    "calls": 6,
+    "complete": false,
+    "conditions": {
+      "original": {
+        "calls": 2,
+        "invalid_binary": 0,
+        "at_token_cap": 0,
+        "valid_schema": null,
+        "empty_observation_lists": null,
+        "placeholder_observations": 0,
+        "placeholder_unresolved": 0,
+        "nonplaceholder_observation_count": 0,
+        "responses_with_nonplaceholder_observations": 0,
+        "manual_nonempty_frame_arrays": null,
+        "generation_seconds": 3.532
+      },
+      "manual": {
+        "calls": 2,
+        "invalid_binary": 0,
+        "at_token_cap": 0,
+        "valid_schema": 1,
+        "empty_observation_lists": 0,
+        "placeholder_observations": 0,
+        "placeholder_unresolved": 0,
+        "nonplaceholder_observation_count": 1,
+        "responses_with_nonplaceholder_observations": 1,
+        "manual_nonempty_frame_arrays": 1,
+        "generation_seconds": 11.094000000000001
+      },
+      "cited": {
+        "calls": 2,
+        "invalid_binary": 1,
+        "at_token_cap": 0,
+        "valid_schema": 1,
+        "empty_observation_lists": 0,
+        "placeholder_observations": 0,
+        "placeholder_unresolved": 0,
+        "nonplaceholder_observation_count": 1,
+        "responses_with_nonplaceholder_observations": 1,
+        "manual_nonempty_frame_arrays": null,
+        "generation_seconds": 8.493
+      }
+    },
+    "last_case": "Explosion013_x264|gap",
+    "last_variant": "cited",
+    "status": "stopped after six calls: missing Output field; no retry"
+  },
+  "accounting": {
+    "previous_proxy_calls": 48,
+    "selective_calls": 78,
+    "call_cap": 192,
+    "actual_total_calls": 126
+  },
+  "warning": "Post-run implementation audit only. Nonplaceholder or syntactically valid claims are not verified true."
+}

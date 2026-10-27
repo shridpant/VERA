@@ -1,0 +1,40 @@
+{
+  "created_or_reused": [
+    {
+      "number": 13,
+      "title": "Report failed attention-reliance gate for VERA grounding feedback",
+      "url": "https://github.com/shridpant/VERA/pull/13",
+      "head": "experiment/firearm-grounding",
+      "base": "experiment/firearm-vera-training1"
+    },
+    {
+      "number": 14,
+      "title": "Audit VERA transfer claims, firearm categorization, and grounding failures",
+      "url": "https://github.com/shridpant/VERA/pull/14",
+      "head": "report/vera-failure-audit",
+      "base": "experiment/firearm-vera-training1"
+    }
+  ],
+  "retitled": [
+    {
+      "number": 7,
+      "title": "Report unstable VERA firearm categorization gains across retraining seeds",
+      "url": "https://github.com/shridpant/VERA/pull/7"
+    },
+    {
+      "number": 8,
+      "title": "Report zero firearm box recall and prompt-induced anomaly judgment shifts",
+      "url": "https://github.com/shridpant/VERA/pull/8"
+    },
+    {
+      "number": 11,
+      "title": "Record selective-explanation prompt failures and abstention limits in frozen VERA",
+      "url": "https://github.com/shridpant/VERA/pull/11"
+    },
+    {
+      "number": 12,
+      "title": "Report VERA temporal-position effects and failure of the declared gate",
+      "url": "https://github.com/shridpant/VERA/pull/12"
+    }
+  ]
+}
