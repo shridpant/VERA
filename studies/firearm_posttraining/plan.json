@@ -1,5 +1,5 @@
 {
-  "status": "compatibility_passed_supervised_pilot_running",
+  "status": "FIT_only_warmup_calibration_after_grounded_format_gate_failure",
   "prepared_date": "2026-10-26",
   "timezone": "America/New_York",
   "user_scope": [
@@ -60,8 +60,10 @@
       "SG",
       "RG"
     ],
-    "warmup_fit_passes": 0.5,
-    "warmup_selection": "fixed_no_STOP_selection"
+    "warmup_fit_passes": 1.0,
+    "warmup_selection": "fixed_no_STOP_selection",
+    "warmup_exposure_status": "candidate_not_frozen_FIT_only_calibration",
+    "previous_candidate_fit_passes": 0.5
   },
   "supervised": {
     "learning_rate": 5e-05,

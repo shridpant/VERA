@@ -1,0 +1,19 @@
+{
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "elapsed_seconds": 440.1865090399515,
+  "grounded": true,
+  "groups": 12,
+  "invalid_or_truncated_fraction": 0.5833333333333334,
+  "nonzero_reward_spread_fraction": 0.4166666666666667,
+  "peak_allocated_bytes": 20170615296,
+  "peak_reserved_bytes": 22840082432,
+  "policy_hash_after": "cef6064738da03f0a1136fed863d7f50696036e19a02dd8bad906ba6ddad2400",
+  "policy_hash_before": "a1082068ecc0c5598bc33d64ecf0b831cf6ac32e038c4ca0c6ecc150e6a26ba6",
+  "reference_hash": "a1082068ecc0c5598bc33d64ecf0b831cf6ac32e038c4ca0c6ecc150e6a26ba6",
+  "reference_unchanged": true,
+  "responses": 48,
+  "reward_version": "hierarchical-iou-v1",
+  "status": "failed_gate",
+  "stop_reason": "external_signal",
+  "updates": 3
+}

@@ -48,9 +48,16 @@ not proof of implementation or permission to override the current request.
   higher overall accuracy does not establish a safer or better final model.
 - By 3.5 FIT passes, STOP balanced category accuracy reached 86.3%, with no
   invalid answers and 0/14 No_Gun false positives. This is still exploratory.
-- `pilot-rl-001` and `pilot-rg-001`: real-reward FIT-only GRPO panels running
-  concurrently on Ada 6/7 from immutable release 8fc6c8c. Each uses its fixed
-  half-pass adapter, not the STOP-selected best.
+- `pilot-rl-001`: passed real-reward feasibility in 405 seconds: 24 groups,
+  96 responses, six updates, 29.2% reward-spread groups, 1.04% invalid, immutable
+  reference. This does not prove recognition gains.
+- `pilot-rg-001`: failed the format gate, 28/48 invalid (58.3%), no truncation.
+  Gracefully stopped/checkpointed after 12 groups/three updates in 440 seconds
+  when the <=5% panel gate became impossible; see operator-actions.jsonl.
+- The 0.5-pass warm-up default is being calibrated using FIT-only format feedback.
+  `pilot-c0l-002` / `pilot-c0g-002` run one fixed FIT pass with no STOP queries,
+  finite caps, unchanged parser/reward and five-total-pass scientific ceiling.
+  The final shared exposure and both real-reward panels must pass before freeze.
 - Real-reward panel gates, shared-pass throughput forecast, protocol freeze,
   comparative methods/seeds, final selection freeze, holdouts and report are
   **not complete**. No recognition improvement or RL benefit is claimed.
