@@ -55,11 +55,16 @@ Use `setup.sh` with the committed hash lock on matching Linux/Python 3.12;
 existing environment. Do not run it over the current environment.
 
 `execute.py` checks an authorized UUID is idle, locks the device, reserves shared
-aggregate GPU-seconds, enforces a hard subprocess deadline, and preserves command,
+aggregate pilot GPU-seconds, enforces finite pilot deadlines, and preserves command,
 commit, process IDs, stdout/stderr, GPU samples, exit reason and budget settlement.
-The aggregate ceiling is 48 GPU-hours, with three for all pilots combined;
-concurrent occupancy sums across cards. A crash leaves its full reservation
-charged until explicitly reconciled. There is no automatic failure resubmission.
+The latest user authorization removes all aggregate, per-run and evaluation
+GPU-hour ceilings for scientific runs. Pilot time limits remain finite and are
+extended to six combined hours (supervised up to four, RL up to two per pilot).
+Concurrent occupancy still sums across cards for reporting. Scientific jobs use
+`--seconds 0` and `--max-seconds 0`; all non-time scientific stops remain. A pilot
+crash leaves its full reservation charged until explicitly reconciled. There is
+no automatic failure resubmission. See the latest AMENDMENTS.md entry; running
+remote releases have not been changed by this local side-conversation edit.
 
 Every run writes its spec before loading weights, and requires a clean committed
 checkout. Checkpoints contain adapters, optimizer/scheduler state, Python/NumPy/

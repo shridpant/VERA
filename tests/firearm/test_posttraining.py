@@ -215,7 +215,28 @@ class EvaluationAndBudgetTests(unittest.TestCase):
             records = json.loads((root / 'budget.json').read_text())
             self.assertEqual(budget_used(records), 12100)
             with self.assertRaises(RuntimeError):
-                reserve(root, 'a', 'pilot', 1, 'gpu6')
+                reserve(root, 'a', 'pilot', 60, 'gpu6')
+
+
+    def test_real_runs_have_no_time_cap_but_pilots_remain_bounded(self):
+        for stage in ('sweep', 'evaluation'):
+            validate_duration(stage, 0)
+            with self.assertRaises(ValueError):
+                validate_duration(stage, 9000)
+        for bad in (0, 30, 6 * 3600 + 1):
+            with self.assertRaises(ValueError):
+                validate_duration('pilot', bad)
+        validate_duration('pilot', 4 * 3600)
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            reserve(root, 'real', 'sweep', 0, 'gpu6')
+            records = json.loads((root / 'budget.json').read_text())
+            self.assertIsNone(records['real']['reserved_seconds'])
+            self.assertGreaterEqual(budget_used(records), 0)
+            finish(root, 'real', 1000 * 3600, 0, 'completed')
+            reserve(root, 'next', 'evaluation', 0, 'gpu7')
+            # Recorded scientific GPU use cannot exhaust a removed aggregate cap.
+            reserve(root, 'pilot', 'pilot', 4 * 3600, 'gpu6')
 
 
 class GRPOTests(unittest.TestCase):

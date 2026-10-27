@@ -23,7 +23,7 @@ def run(args):
     limit = args.max_seconds if args.max_seconds is not None else (0 if args.frozen_protocol else 4 * 3600)
     if args.frozen_protocol and limit != 0:
         raise ValueError('full comparison GPU-hour ceilings removed; use --max-seconds 0')
-    if not args.frozen_protocol and limit <= 35:
+    if not args.frozen_protocol and (not math.isfinite(limit) or not 35 < limit <= 4 * 3600):
         raise ValueError('exploratory supervised pilots still require a finite time limit')
     deadline = float('inf') if limit == 0 else started + limit - 35
     stopping = []
@@ -46,7 +46,7 @@ def run(args):
         if args.max_passes != protocol['shared_max_fit_passes']:
             raise ValueError('frozen protocol/pass budget mismatch')
     if not args.resume:
-        provenance(out, vars(args))
+        provenance(out, {**vars(args), 'effective_max_seconds': limit})
     book = json.loads(Path(args.codebook).read_text())
     fit, stop = load_split(args.data, 'fit'), load_split(args.data, 'stop')
     start_cursor = len(fit) // 2 if args.adapter else 0

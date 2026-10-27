@@ -30,7 +30,7 @@ def run(root, frozen_manifest, original_data, frames_root):
             name = f'eval-{split}-{method}-{seed}'
             directory = output / split / f'{method}-{seed}'
             command = [sys.executable, '-m', 'studies.firearm_posttraining.execute', '--root', str(root),
-                       '--gpu', gpu, '--name', name, '--stage', 'evaluation', '--seconds', '2400', '--',
+                       '--gpu', gpu, '--name', name, '--stage', 'evaluation', '--seconds', '0', '--',
                        sys.executable, '-m', 'studies.firearm_posttraining', 'holdout',
                        '--frozen-manifest', frozen_manifest, '--data', str(root / 'data'),
                        '--original-data', str(original_data), '--frames-root', str(frames_root),
