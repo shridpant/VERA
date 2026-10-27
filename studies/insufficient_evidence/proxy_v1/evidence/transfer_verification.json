@@ -1,0 +1,47 @@
+[
+  {
+    "remote_relative_path": "run_001/completion.json",
+    "sha256": "8686d8e775bd1cafb1b51f2c6da7f04647abf4c1055ea81f76554d7a316a7bf6",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "run_001/eval_manifest.json",
+    "sha256": "60b474efdddf1355f8f821fd0bc5ebfa93af9716a62c72daeabf74ca522ea734",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "run_001/prompt_abstain.txt",
+    "sha256": "05d64b00b4b9785f874f1e28caf2bb78d3d1d2b201a781f7d4c563177d900e07",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "run_001/prompt_original.txt",
+    "sha256": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "run_001/provenance.json",
+    "sha256": "afaf46282bdf076dde37ca6a3403666b074733e48ccbbad9c5bb5c2e15ab6bf9",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "run_001/results.jsonl",
+    "sha256": "e74fc5b52c6247f4fd75f340510c90d08b519667f97b09ddbd4d1081a21e2668",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "run_001.log",
+    "sha256": "dc3781fcb196c8d399119f879aafe1a774190a0862c94e5133bb524f43ed0c2d",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "preparation_v1.log",
+    "sha256": "6bc16d0c96b51427984e58eb15445472e0e0cece81f97204a6e078f8f55dafad",
+    "matched": true
+  },
+  {
+    "remote_relative_path": "frames_v1/inputs.json",
+    "sha256": "73fcb3ed8bc850a8c1b3595885ec7de27a4e42a702f5af7a5fcb78c0766e23c9",
+    "matched": true
+  }
+]

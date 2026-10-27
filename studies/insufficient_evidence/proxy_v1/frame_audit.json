@@ -1,0 +1,8 @@
+{
+  "cases": 24,
+  "source_videos": 12,
+  "total_frame_slots": 192,
+  "low_mean_intensity_slots_lt2": 0,
+  "cases_with_repeated_jpeg_hashes": 0,
+  "unique_indices_every_case": true
+}

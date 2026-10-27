@@ -1,0 +1,50 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00, 18.28it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 19.80it/s]
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+{"video": "Explosion013_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 1.637}
+{"video": "Explosion013_x264", "view": "annotated", "variant": "abstain", "decision": 1, "runtime": 1.584}
+{"video": "Explosion013_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 1.861}
+{"video": "Explosion013_x264", "view": "gap", "variant": "abstain", "decision": 0, "runtime": 1.486}
+{"video": "Arson041_x264", "view": "gap", "variant": "abstain", "decision": 2, "runtime": 2.034}
+{"video": "Arson041_x264", "view": "gap", "variant": "original", "decision": 1, "runtime": 2.1}
+{"video": "Arson041_x264", "view": "annotated", "variant": "abstain", "decision": 2, "runtime": 2.275}
+{"video": "Arson041_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 1.419}
+{"video": "Burglary079_x264", "view": "annotated", "variant": "original", "decision": 0, "runtime": 1.466}
+{"video": "Burglary079_x264", "view": "annotated", "variant": "abstain", "decision": 0, "runtime": 2.109}
+{"video": "Burglary079_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 1.756}
+{"video": "Burglary079_x264", "view": "gap", "variant": "abstain", "decision": 2, "runtime": 1.689}
+{"video": "RoadAccidents022_x264", "view": "gap", "variant": "abstain", "decision": 2, "runtime": 3.711}
+{"video": "RoadAccidents022_x264", "view": "gap", "variant": "original", "decision": 1, "runtime": 3.305}
+{"video": "RoadAccidents022_x264", "view": "annotated", "variant": "abstain", "decision": 1, "runtime": 3.619}
+{"video": "RoadAccidents022_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 1.331}
+{"video": "Shooting008_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 1.838}
+{"video": "Shooting008_x264", "view": "annotated", "variant": "abstain", "decision": 1, "runtime": 1.722}
+{"video": "Shooting008_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 1.376}
+{"video": "Shooting008_x264", "view": "gap", "variant": "abstain", "decision": 2, "runtime": 1.984}
+{"video": "Vandalism007_x264", "view": "gap", "variant": "abstain", "decision": 0, "runtime": 1.822}
+{"video": "Vandalism007_x264", "view": "gap", "variant": "original", "decision": 1, "runtime": 1.489}
+{"video": "Vandalism007_x264", "view": "annotated", "variant": "abstain", "decision": 1, "runtime": 4.704}
+{"video": "Vandalism007_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 1.605}
+{"video": "Shoplifting037_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 3.015}
+{"video": "Shoplifting037_x264", "view": "annotated", "variant": "abstain", "decision": 1, "runtime": 3.61}
+{"video": "Shoplifting037_x264", "view": "gap", "variant": "original", "decision": 1, "runtime": 1.518}
+{"video": "Shoplifting037_x264", "view": "gap", "variant": "abstain", "decision": 1, "runtime": 1.972}
+{"video": "Robbery102_x264", "view": "gap", "variant": "abstain", "decision": 2, "runtime": 1.684}
+{"video": "Robbery102_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 1.873}
+{"video": "Robbery102_x264", "view": "annotated", "variant": "abstain", "decision": 1, "runtime": 4.062}
+{"video": "Robbery102_x264", "view": "annotated", "variant": "original", "decision": 1, "runtime": 2.256}
+{"video": "Normal_Videos_932_x264", "view": "annotated", "variant": "original", "decision": 0, "runtime": 3.399}
+{"video": "Normal_Videos_932_x264", "view": "annotated", "variant": "abstain", "decision": 0, "runtime": 3.759}
+{"video": "Normal_Videos_932_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 2.124}
+{"video": "Normal_Videos_932_x264", "view": "gap", "variant": "abstain", "decision": 0, "runtime": 3.742}
+{"video": "Normal_Videos_704_x264", "view": "gap", "variant": "abstain", "decision": 0, "runtime": 3.762}
+{"video": "Normal_Videos_704_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 3.405}
+{"video": "Normal_Videos_704_x264", "view": "annotated", "variant": "abstain", "decision": 0, "runtime": 3.811}
+{"video": "Normal_Videos_704_x264", "view": "annotated", "variant": "original", "decision": 0, "runtime": 2.416}
+{"video": "Normal_Videos_894_x264", "view": "annotated", "variant": "original", "decision": 0, "runtime": 1.576}
+{"video": "Normal_Videos_894_x264", "view": "annotated", "variant": "abstain", "decision": 0, "runtime": 3.748}
+{"video": "Normal_Videos_894_x264", "view": "gap", "variant": "original", "decision": 1, "runtime": 1.654}
+{"video": "Normal_Videos_894_x264", "view": "gap", "variant": "abstain", "decision": 0, "runtime": 2.506}
+{"video": "Normal_Videos_886_x264", "view": "gap", "variant": "abstain", "decision": 0, "runtime": 3.418}
+{"video": "Normal_Videos_886_x264", "view": "gap", "variant": "original", "decision": 0, "runtime": 2.432}
+{"video": "Normal_Videos_886_x264", "view": "annotated", "variant": "abstain", "decision": 0, "runtime": 2.315}
+{"video": "Normal_Videos_886_x264", "view": "annotated", "variant": "original", "decision": 0, "runtime": 2.412}
