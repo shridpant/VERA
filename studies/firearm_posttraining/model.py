@@ -57,6 +57,11 @@ class NativeModel:
         if torch.cuda.device_count() != 1:
             raise RuntimeError('exactly one visible CUDA device required per experiment')
         set_seed(seed)
+        torch.use_deterministic_algorithms(True)
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
         self.torch, self.book, self.path = torch, book, model_path
         self.processor = AutoProcessor.from_pretrained(model_path, local_files_only=True)
         self.tokenizer = self.processor.tokenizer

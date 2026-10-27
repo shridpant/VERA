@@ -24,3 +24,12 @@ results, implicit test access, or automatic full sweep before gate approval.
 proof of audited firearm absence. Only `positive` and `negative_category` (or a
 future explicitly audited `confirmed_absent`) enter box loss/reward. All other
 statuses are masked. This applies the handoff's unknown-not-negative rule.
+
+## Engineering attempt ledger
+
+- `smoke-labels-001`, commit 09a1ed9: stopped after 25.71 GPU-seconds.
+  Three fixture SFT losses fell 2.9651 → 2.8763 → 2.5573; deterministic generated
+  answer reloaded exactly. Next-step resumed loss matched at 2.1716952, but
+  next-step adapter hashes differed. This is an engineering failure, not a
+  completed compatibility gate or a generalization result. Enable deterministic
+  kernels and capture tensor-level differences before another bounded attempt.

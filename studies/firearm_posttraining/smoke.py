@@ -79,6 +79,8 @@ def run(args):
                     'sampler_order': panel_ids, 'seed': args.seed})
     expected_loss, _ = update()
     expected_hash = native.adapter_hash()
+    from peft import get_peft_model_state_dict
+    expected_tensors = {k: v.detach().cpu().clone() for k, v in get_peft_model_state_dict(model).items()}
     state = restore_checkpoint(native, optimizer, scheduler, out / 'checkpoint')
     if state['sampler_cursor'] != 3 or native.generate(prompt)['ids'] != prediction['ids']:
         raise RuntimeError('save/reload prediction or cursor mismatch')
@@ -88,6 +90,10 @@ def run(args):
     resumed_loss, _ = update()
     resumed_hash = native.adapter_hash()
     if resumed_hash != expected_hash or resumed_loss != expected_loss:
+        differences = {k: {'max_abs': float((v.detach().cpu() - expected_tensors[k]).abs().max()),
+                           'different_elements': int((v.detach().cpu() != expected_tensors[k]).sum())}
+                       for k, v in get_peft_model_state_dict(model).items() if not torch.equal(v.detach().cpu(), expected_tensors[k])}
+        write_json(out / 'resume-differences.json', differences)
         raise RuntimeError(f'exact resume failed: {resumed_loss} vs {expected_loss}; hash equal={resumed_hash == expected_hash}')
     # This nonzero SFT warm start is the actual immutable RL reference.
     native.add_reference()

@@ -29,3 +29,8 @@ The referring probe answers sometimes omit the required thinking trace; the exis
 ### Both 38B thinking settings are probed before ablation
 
 The 38B off-probe completed successfully with SDPA: all four firearm detection-prompt calls returned parseable boxes, so that arm keeps the detection prompt. Paused its launcher immediately after the saved probe, before ablation collection, to add the missing thinking-on format probe and enforce the same declared prompt decision for both settings. The A16 pipeline reuses the completed SDPA off-probe, runs the on-probe, records both prompt decisions here and in `package/probe_decisions_38b.json` before either detector arm starts, and checks record completeness between retries. No new model output parser or decision threshold was introduced.
+
+### Automated 38B probe decisions (before ablation)
+
+- `internvl35_38b_off`: 4 firearm probe calls with a parseable detection-prompt box; use the detection prompt under the declared rule. Raw probes and `package/probe_decisions_38b.json` preserve the evidence.
+- `internvl35_38b_on`: 4 firearm probe calls with a parseable detection-prompt box; use the detection prompt under the declared rule. Raw probes and `package/probe_decisions_38b.json` preserve the evidence.
