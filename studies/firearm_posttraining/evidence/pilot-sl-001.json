@@ -1,0 +1,37 @@
+{
+  "bad_format": 0,
+  "bad_kl": 0,
+  "bad_stop": 0,
+  "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-sl-001/checkpoints/exposure-000672",
+  "censored": false,
+  "cursor": 960,
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "elapsed_seconds": 2469.9955413959688,
+  "fit_manifest_hash": "c5c52187571a2a241296146a73a3926e0426b21f7858cd6bd97423a1366b39d2",
+  "fit_passes": 5.0,
+  "initial_exposures": 0,
+  "initial_stop": 0.31512605042016806,
+  "last_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-sl-001/checkpoints/final-000960",
+  "next_check": 1056,
+  "peak_allocated_bytes": 19516801536,
+  "peak_reserved_bytes": 20143144960,
+  "reference_hash": null,
+  "reward_version": null,
+  "scientific_role": "exploratory_pilot",
+  "seed": 20261026,
+  "selection": {
+    "anchor": 0.8627450980392156,
+    "best": [
+      0.8627450980392156,
+      0.7083333333333334,
+      0.2916666666666667
+    ],
+    "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-sl-001/checkpoints/exposure-000672",
+    "checks": 10,
+    "reason": "patience",
+    "stale": 3
+  },
+  "status": "stopped",
+  "stop_reason": "patience",
+  "updates": 120
+}

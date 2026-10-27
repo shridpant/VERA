@@ -32,9 +32,12 @@ not proof of implementation or permission to override the current request.
 
 ## In progress / pending
 
-- `pilot-sl-001`: bounded exploratory supervised pilot on Ada 6, code 635e418,
-  baseline STOP then checks each 0.5 FIT pass, best checkpoint and fixed stopping.
-  Hard allocation 5,400 seconds, below the proposed two-hour ceiling.
+- `pilot-sl-001`: completed exploratory supervised pilot on Ada 6, code 635e418.
+  Stopped normally for patience at five FIT passes / 120 updates / 2,470 seconds.
+  Best checkpoint: exposure-000672 (3.5 passes), STOP balanced accuracy 86.3%,
+  action-group accuracy 70.8%, action-code accuracy 29.2%, invalid 0%, No_Gun
+  false positives 0/14. Last checkpoint and every earlier check are preserved.
+  This ran below its original 5,400-second cap; no time extension was needed.
 - `pilot-c0g-001`: completed fixed 0.5-pass exploratory grounded warm-up on Ada 7,
   96 distinct clips, 12 updates, 203 seconds; no STOP selection.
 - The pilot baseline has 50% strict-format invalid outputs on STOP. Keep this
@@ -45,7 +48,10 @@ not proof of implementation or permission to override the current request.
   higher overall accuracy does not establish a safer or better final model.
 - By 3.5 FIT passes, STOP balanced category accuracy reached 86.3%, with no
   invalid answers and 0/14 No_Gun false positives. This is still exploratory.
-- Real-reward RL panels, shared-pass throughput forecast, protocol freeze,
+- `pilot-rl-001` and `pilot-rg-001`: real-reward FIT-only GRPO panels running
+  concurrently on Ada 6/7 from immutable release 8fc6c8c. Each uses its fixed
+  half-pass adapter, not the STOP-selected best.
+- Real-reward panel gates, shared-pass throughput forecast, protocol freeze,
   comparative methods/seeds, final selection freeze, holdouts and report are
   **not complete**. No recognition improvement or RL benefit is claimed.
 
