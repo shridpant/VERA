@@ -1,0 +1,10 @@
+measure,estimate,ci_low,ci_high,mean_reliance,videos,passed
+"V1 lift true - shuffled, same frames (mean)",1.536476701591593,1.4003637935857363,1.6775087914025346,,275,True
+"V2 Spearman rho(lift, reliance)",0.1128229434798778,-0.013136515835146016,0.22919711414228594,,274,False
+V3 correct category (mean lift),2.4350053286940363,,,4.694497469550554,112,
+V3 incorrect category (mean lift),1.9853816423881503,,,-0.07470276867751674,164,
+Spearman rho within correct category (not pre-registered),-0.24536679536679537,-0.46039462057568387,-0.024150514101948378,,111,
+Spearman rho within incorrect category (not pre-registered),-0.009194141021164814,-0.16464751782714557,0.140010992474766,,163,
+Spearman rho within small boxes (not pre-registered),0.1777750730282376,-0.040345448281018256,0.37959805530916013,,79,
+Spearman rho within medium boxes (not pre-registered),0.3084253389866084,0.09780401833700182,0.5167211505071079,,83,
+Spearman rho within large boxes (not pre-registered),0.21549014248129292,0.03758741347783819,0.37825923635230935,,112,

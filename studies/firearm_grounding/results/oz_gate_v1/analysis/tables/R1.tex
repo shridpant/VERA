@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Phase 0 measurement checks}\label{tab:R1}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llr}
+\toprule
+check & passed & detail \\
+\midrule
+b1\_generate\_equals\_batch\_chat & yes & equal 4; videos 4 \\
+b2\_eager\_replay\_predicts\_greedy\_tokens & no & agreement 0.9904; tokens 209 \\
+b3\_eager\_matches\_flash & no & max\_abs\_logp\_diff 0.1202 \\
+c\_token\_grid\_orientation & yes & within\_one\_cell 9; trials 10 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\parbox{\textwidth}{\footnotesize b2/b3 failed their strict thresholds; the diagnostic (DEVIATIONS.md, D1) found the same two near-tie mismatches with a FlashAttention replay, so attention is read with eager attention and every probability with FlashAttention.}
+\end{table}

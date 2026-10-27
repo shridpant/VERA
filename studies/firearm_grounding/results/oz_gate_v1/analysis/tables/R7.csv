@@ -1,0 +1,11 @@
+contrast,measure,videos,estimate,ci_low,ci_high
+G - P (controls >= 1 cell away),reliance,0,,,
+G - T1,lift,0,,,
+G - T1,reliance,0,,,
+G - T1,correct,0,,,
+P - T1,lift,0,,,
+P - T1,reliance,0,,,
+P - T1,correct,0,,,
+G - P,lift,0,,,
+G - P,reliance,0,,,
+G - P,correct,0,,,

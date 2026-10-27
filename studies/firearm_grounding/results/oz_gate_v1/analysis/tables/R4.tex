@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Primary and co-primary outcomes on the test split}\label{tab:R4}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llrrrrrr}
+\toprule
+hypothesis & contrast & measure & videos & estimate & ci\_\allowbreak{}low & ci\_\allowbreak{}high & supported \\
+\midrule
+H1 primary: reliance G > P & G - P & reliance & 0 & -- & -- & -- & no \\
+H2 co-primary: accuracy G >= T1 - 5 pp & G - T1 & correct & 0 & -- & -- & -- & no \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\parbox{\textwidth}{\footnotesize Per test video, the mean over seeds of the arm difference; reliance in nats (log p\_true with the control patch masked minus with the firearm masked), correct as 0/1. 95 \% CI: 2,000 bootstrap draws over test recording groups within category (seed 20261026). Per-seed rows show the spread across training orders.}
+\end{table}

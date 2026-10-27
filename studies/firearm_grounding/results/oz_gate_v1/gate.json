@@ -1,0 +1,43 @@
+{
+ "records": 398,
+ "grounding_evaluable": 276,
+ "no_decision": 2,
+ "V1": {
+  "videos": 275,
+  "mean_lift_true": 2.1731426280641446,
+  "mean_lift_true_shared_frames": 2.246610643915151,
+  "mean_lift_shuffled": 0.7101339423235574,
+  "median_lift_true": 1.9511398254451944,
+  "mean_difference": 1.536476701591593,
+  "ci": [
+   1.4003637935857363,
+   1.6775087914025346
+  ],
+  "draws": 2000,
+  "passed": true
+ },
+ "V2": {
+  "videos": 274,
+  "rho": 0.1128229434798778,
+  "ci": [
+   -0.013136515835146016,
+   0.22919711414228594
+  ],
+  "draws": 2000,
+  "passed": false,
+  "mean_reliance": 1.8573455030134167
+ },
+ "V3": {
+  "correct": {
+   "videos": 112,
+   "mean_lift": 2.4350053286940363,
+   "mean_reliance": 4.694497469550554
+  },
+  "incorrect": {
+   "videos": 164,
+   "mean_lift": 1.9853816423881503,
+   "mean_reliance": -0.07470276867751674
+  }
+ },
+ "gate_passed": false
+}

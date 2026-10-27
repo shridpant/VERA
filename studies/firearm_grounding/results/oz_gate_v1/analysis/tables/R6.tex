@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\scriptsize
+\caption{Lift and reliance by firearm size (Phase 1 on all splits; question sets on the test split)}\label{tab:R6}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llrrr}
+\toprule
+arm & size & videos & mean\_\allowbreak{}lift & mean\_\allowbreak{}reliance \\
+\midrule
+seed, all splits & small & 79 & 2.204 & 0.099 \\
+seed, all splits & medium & 83 & 2.544 & 1.378 \\
+seed, all splits & large & 114 & 1.869 & 3.453 \\
+seed questions & small & 16 & 2.193 & -0.327 \\
+seed questions & medium & 28 & 2.542 & 1.599 \\
+seed questions & large & 22 & 2.057 & 4.417 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\parbox{\textwidth}{\footnotesize Size: mean annotated box area of the video's boxed sampled frames, binned at the GT-area tertiles of the annotation audit.}
+\end{table}

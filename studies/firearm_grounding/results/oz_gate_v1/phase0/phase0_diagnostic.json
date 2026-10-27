@@ -1,0 +1,134 @@
+[
+ {
+  "video": "Handgun__PAH1_C1_P1_V1_HB_3",
+  "tokens": 58,
+  "mismatch_eager": [
+   [
+    14,
+    " in",
+    -0.187,
+    -0.197
+   ],
+   [
+    29,
+    ",",
+    -0.4,
+    -0.419
+   ]
+  ],
+  "mismatch_flash": [
+   [
+    14,
+    " in",
+    -0.197
+   ],
+   [
+    29,
+    ",",
+    -0.419
+   ]
+  ],
+  "min_margin_flash": -0.419,
+  "eager_logp": {
+   "Handgun": -5.735929694201332,
+   "Machine_Gun": -6.339641464408487,
+   "No_Gun": -0.013397248927503824
+  },
+  "flash_logp": {
+   "Handgun": -5.732195100514218,
+   "Machine_Gun": -6.219445348251611,
+   "No_Gun": -0.013737774221226573
+  },
+  "eager_p": {
+   "Handgun": 0.0032549451947127593,
+   "Machine_Gun": 0.0017797335606105284,
+   "No_Gun": 0.9949653212446768
+  },
+  "flash_p": {
+   "Handgun": 0.0032674481808317108,
+   "Machine_Gun": 0.002007236819647692,
+   "No_Gun": 0.9947253149995207
+  }
+ },
+ {
+  "video": "Handgun__PAH1_C1_P1_V1_HB_4",
+  "tokens": 51,
+  "mismatch_eager": [],
+  "mismatch_flash": [],
+  "min_margin_flash": 0.081,
+  "eager_logp": {
+   "Handgun": -4.756377924306435,
+   "Machine_Gun": -5.46435088920407,
+   "No_Gun": -0.01759353035595268
+  },
+  "flash_logp": {
+   "Handgun": -4.731300578132505,
+   "Machine_Gun": -5.414288730127737,
+   "No_Gun": -0.01827643415890634
+  },
+  "eager_p": {
+   "Handgun": 0.008636486900849045,
+   "Machine_Gun": 0.00425469435095663,
+   "No_Gun": 0.9871088187481943
+  },
+  "flash_p": {
+   "Handgun": 0.008857897165497121,
+   "Machine_Gun": 0.004474171720546279,
+   "No_Gun": 0.9866679311139567
+  }
+ },
+ {
+  "video": "Handgun__PAH2_C1_P2_V1_HB_3",
+  "tokens": 47,
+  "mismatch_eager": [],
+  "mismatch_flash": [],
+  "min_margin_flash": 0.07,
+  "eager_logp": {
+   "Handgun": -4.437301337486133,
+   "Machine_Gun": -5.183947939425707,
+   "No_Gun": -0.024227062647696584
+  },
+  "flash_logp": {
+   "Handgun": -4.4877325957641006,
+   "Machine_Gun": -5.1095097864745185,
+   "No_Gun": -0.024191276577766985
+  },
+  "eager_p": {
+   "Handgun": 0.011905226086630487,
+   "Machine_Gun": 0.005642520533131631,
+   "No_Gun": 0.982452253380238
+  },
+  "flash_p": {
+   "Handgun": 0.01132101259855334,
+   "Machine_Gun": 0.00607926214104646,
+   "No_Gun": 0.9825997252604003
+  }
+ },
+ {
+  "video": "Handgun__PAH2_C1_P2_V1_HB_4",
+  "tokens": 53,
+  "mismatch_eager": [],
+  "mismatch_flash": [],
+  "min_margin_flash": 0.011,
+  "eager_logp": {
+   "Handgun": -4.252305466477992,
+   "Machine_Gun": -5.18091203214135,
+   "No_Gun": -0.025762666831724346
+  },
+  "flash_logp": {
+   "Handgun": -4.299852932104841,
+   "Machine_Gun": -5.173619867535308,
+   "No_Gun": -0.025238847418222576
+  },
+  "eager_p": {
+   "Handgun": 0.014311233873073037,
+   "Machine_Gun": 0.005654424006247462,
+   "No_Gun": 0.9800343421206795
+  },
+  "flash_p": {
+   "Handgun": 0.013648191400437179,
+   "Machine_Gun": 0.005696432372290244,
+   "No_Gun": 0.9806553762272727
+  }
+ }
+]
