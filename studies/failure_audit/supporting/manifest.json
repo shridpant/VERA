@@ -1,0 +1,56 @@
+[
+  {
+    "relative": "position_summary.json",
+    "source": "studies/position_audit/evidence/results_v1/summary.json",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "e78816544b937013ac046d166f2e52619d9f1332bd9ac7375a7c64bfc68ff347"
+  },
+  {
+    "relative": "position_gate.tex",
+    "source": "studies/position_audit/figures/gate_table.tex",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "35a7b7b52fc956bf431ff5423f3f33565d06967a21fcdc188012f661ab556c55"
+  },
+  {
+    "relative": "selective_output_audit.json",
+    "source": "studies/insufficient_evidence/selective_v1/evidence/output_audit.json",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "4e3ccdd2f28324322f219dfbb5bce182214b1c9c62f14c43aa52ba349c2adb18"
+  },
+  {
+    "relative": "selective_complete.jsonl",
+    "source": "studies/insufficient_evidence/selective_v1/evidence/run_001/results.jsonl",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "f0af8f9330d318ea1614860d3aed61f3d065b039d08c251f6377f9019962c8b9"
+  },
+  {
+    "relative": "selective_partial.jsonl",
+    "source": "studies/insufficient_evidence/selective_v1/evidence/run_002/results.jsonl",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "8be07c2ec95d0283b46bae653da52a8e299d7d2f7d5a60e6fd27d8002e7fc86a"
+  },
+  {
+    "relative": "selective_results.tex",
+    "source": "studies/insufficient_evidence/selective_v1/results.tex",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "117780b794b48495757c9b03a0ea104291bdd21e8aff1a583611f614bb2d9ed1"
+  },
+  {
+    "relative": "exp03B_R1.md",
+    "source": "experiments/experiment03B/R1_AMENDMENT.md",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "a5393cad29861023b4a564c8ac2b6bb6dd9781cfd31e6fea198a4d1481826827"
+  },
+  {
+    "relative": "exp02_REPORT.md",
+    "source": "experiments/experiment02/runs/run_002/REPORT.md",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "41b876d51fe2aefd4edd36d37063495b1481653305fd9c2da9c6fec4328c8e46"
+  },
+  {
+    "relative": "exp02_ERRATA.md",
+    "source": "experiments/experiment02/ERRATA.md",
+    "git_commit": "5dde005928d42f05625ceab948b8fa2afab772f3",
+    "sha256": "6df5e9c72be2070e6ea55a1b72a2f52550439c3c95ab9589f034c53024a2942b"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "origin": 1,
+  "sensitivity_origin": 0,
+  "frame_status": {
+    "positive": {"recall": true, "precision": true},
+    "listed_no_box": {"recall": false, "precision": false},
+    "negative_category": {"recall": false, "precision": true},
+    "unknown": {"recall": false, "precision": false}
+  },
+  "label_files": {"Handgun__PCH5_C1_P1_V1_HB_1": "label_antiguo.json"},
+  "size_bins_area_fraction": [0.003359375, 0.0109716796875],
+  "size_bins_basis": "tertiles of the native-image area fraction of all 42,930 annotated boxes (GT only, fixed before any model output); equal to the fraction of the 448x448 input",
+  "audit": "studies/firearm/AUDIT.md"
+}

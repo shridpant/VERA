@@ -1,0 +1,11 @@
+{
+  "desktop_latex": "success",
+  "oz_pdflatex": "success",
+  "pdf_pages": 5,
+  "latex_warnings": 0,
+  "visual_pages_inspected": 5,
+  "grounding_gate_tests_local": 4,
+  "grounding_analysis_tests_local": 1,
+  "grounding_arm_tests_oz": 6,
+  "new_model_calls": 0
+}

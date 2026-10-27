@@ -1,0 +1,24 @@
+{
+  "host": "oz.gccis.rit.edu",
+  "date": "2026-10-27",
+  "roots_inspected": [
+    "/home/stu11/s5/sp2117/vera_research",
+    "/home/stu11/s5/sp2117/vera_research_gitwork",
+    "/local/datasets/sp2117",
+    "/home/stu11/s5/sp2117/old"
+  ],
+  "methods": [
+    "Directory and report/summary inventory; focused run and source inspection",
+    "RWF/CATER directory and retained training log inspection",
+    "All GitHub VERA PR titles, bodies, heads, and states retrieved (PRs 1-12)",
+    "No global absence claim; model caches, unrelated projects, and datasets were not exhaustively content-searched"
+  ],
+  "binary_target_retrained_failure": "not located; unverified",
+  "candidate_exclusions": {
+    "rwf2000": "staged dataset; located older RWF artifacts are DANCE/other pipelines, not a completed faithful VERA binary transfer evaluation",
+    "cater_max2action_pilot": "SRK/MLP smoke logs and fake.npz do not establish VERA verbalized-learning transfer",
+    "firearm_a_g_ag_v1": "anomaly frequencies without binary anomaly labels; no target binary retraining",
+    "training1": "completed category/action question learning, not binary anomaly adaptation"
+  },
+  "grounding_source_found": "/local/datasets/sp2117/firearm_visilab/code/VERA-grounding-analysis; experiment/firearm-grounding at af94dea7dd37dd7033f37149ee95bf64a596b01c"
+}
