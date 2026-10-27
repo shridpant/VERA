@@ -32,6 +32,9 @@ def main():
                 if hashes != [baseline[i] for i in order]: raise RuntimeError('Input permutation tensor mismatch')
                 rec={'window_uid':x['window_uid'],'video_sha256':x['video_sha256'],'strata':x['strata'],'condition':condition,'order':order,'result':result}
                 records.append(rec);f.write(json.dumps(rec)+'\n');f.flush();os.fsync(f.fileno())
+                if condition == 'ordered': ordered_result = result
+                if condition == 'repeat' and (result['label'] != ordered_result['label'] or result['raw_response'] != ordered_result['raw_response']):
+                    raise RuntimeError('Identical-input repeat differs; stopping pilot for review')
                 print(json.dumps({'window':x['window_uid'],'condition':condition,'label':result['label'],'runtime_s':result['runtime_s']}),flush=True)
     summary={'n_calls':len(records),'wall_seconds':time.time()-provenance['start_unix'],'engine':eng.summary(),'all_dependency_hashes_unchanged':all(sha(x)==provenance['dependency_sha256'][str(x)] for x in dependencies)}
     assert summary['all_dependency_hashes_unchanged']
