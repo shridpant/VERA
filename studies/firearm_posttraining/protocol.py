@@ -42,6 +42,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
               'warmup_selection': 'fixed_no_STOP_queries', 'evidence': evidence,
               'data_hashes': {name: digest(root / 'data' / name) for name in ('fit.json', 'stop.json', 'audit.json', 'preflight.json')},
               'requirements_lock_sha256': digest(setup / 'requirements.lock'),
+              'codebook_sha256': preflight['codebook_sha256'],
               'model': preflight['model'], 'model_manifest_hash': preflight['model_manifest_hash'],
               'prompt_hashes': preflight['prompt_hashes'], 'frames': 8, 'view': '448_letterbox',
               'completion_cap': 512, 'context_cap': 8192, 'precision': 'bf16',
@@ -55,7 +56,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
     return record
 
 
-def validate(path, data_root, model_path=None):
+def validate(path, data_root, model_path=None, codebook_path='studies/firearm_training/codebook.json'):
     protocol = json.loads(Path(path).read_text())
     copy = dict(protocol)
     saved_hash = copy.pop('protocol_hash', None)
@@ -69,6 +70,16 @@ def validate(path, data_root, model_path=None):
             raise ValueError(f'code changed after freeze: {name}; explicit protocol amendment needed')
     if model_path is not None and model_path != protocol['model']:
         raise ValueError('backbone differs from frozen protocol')
+    if digest(codebook_path) != protocol['codebook_sha256']:
+        raise ValueError('codebook differs from frozen protocol')
+    lock_path = Path(data_root).parent / 'setup' / 'requirements.lock'
+    if digest(lock_path) != protocol['requirements_lock_sha256']:
+        raise ValueError('environment lock changed after freeze')
+    from importlib.metadata import version
+    for line in lock_path.read_text().splitlines():
+        name, expected = line.split()[0].split('==')
+        if version(name) != expected:
+            raise ValueError(f'installed environment differs from tested lock: {name}')
     return protocol
 
 

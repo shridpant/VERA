@@ -14,6 +14,21 @@ def _unique(pairs):
     return d
 
 
+def parse_labels(text, book, truncated=False):
+    """Same label schema for every arm; box validity cannot change classification."""
+    if truncated:
+        return None
+    try:
+        value = json.loads(text, object_pairs_hook=_unique,
+                           parse_constant=lambda _: (_ for _ in ()).throw(ValueError('nonfinite')))
+        if not isinstance(value, dict) or value.keys() - {'category', 'action_group', 'action_code', 'grounding', 'explanation'}:
+            return None
+        labels = {k: value[k] for k in ('category', 'action_group', 'action_code')}
+        return parse(json.dumps(labels), book)
+    except (ValueError, TypeError, KeyError):
+        return None
+
+
 def parse(text, book, grounded=False, truncated=False):
     if truncated:
         return None

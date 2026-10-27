@@ -22,7 +22,7 @@ def valid_revision(old, new):
 
 
 def run(args):
-    validate(args.frozen_protocol, args.data, args.model)
+    validate(args.frozen_protocol, args.data, args.model, args.codebook)
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=False)
     provenance(out, vars(args))

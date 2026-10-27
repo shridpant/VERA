@@ -8,7 +8,7 @@ import numpy as np
 from .data import CATEGORIES, enrich, box_from_view, write_json, digest
 from .evaluation import metrics
 from .protocol import verify_selection, METHODS, SEEDS
-from .rewards import parse, iou
+from .rewards import parse, parse_labels, iou
 from .statistics import paired_interval, transitions
 
 
@@ -93,7 +93,7 @@ def run(root, frozen_manifest, original_data, frames_root, output):
                     raise ValueError('evaluation uses another selection manifest')
                 predictions = read_jsonl(directory / 'evaluation/predictions.jsonl')
                 measured = metrics(rich, predictions, book, method in ('SG', 'RG'))
-                parsed = {p['video']: parse(p['text'], book, method in ('SG', 'RG'), p['truncated']) for p in predictions}
+                parsed = {p['video']: parse_labels(p['text'], book, p['truncated']) for p in predictions}
                 correct = [bool(parsed[r['id']] and parsed[r['id']]['category'] == r['category']) for r in rows]
                 fp = [bool(r['category'] == 'No_Gun' and parsed[r['id']] and parsed[r['id']]['category'] != 'No_Gun') for r in rows]
                 answers[method, seed] = {'correct': correct, 'fp': fp}
@@ -127,13 +127,12 @@ def run(root, frozen_manifest, original_data, frames_root, output):
                     changed = transitions(rows, base, correct)
                     for category, counts in [('all', changed['all']), *changed['by_category'].items()]:
                         transition_rows.append({'split': split, 'method': method, 'seed': seed, 'category': category, **counts})
-        for a, b in (('RG', 'SG'), ('RL', 'SL')):
-            interval = paired_interval(rows, [answers[a, s]['correct'] for s in SEEDS],
-                                       [answers[b, s]['correct'] for s in SEEDS],
-                                       [answers[a, s]['fp'] for s in SEEDS], [answers[b, s]['fp'] for s in SEEDS])
+        for a, b in (('RG', 'SG'), ('RL', 'SL'), ('VQ', 'B0'), ('SL', 'B0'), ('SG', 'SL'), ('RG', 'RL'), ('RG', 'VQ')):
+            paired = lambda method, field: [answers[method, SEEDS[0] if method == 'B0' else s][field] for s in SEEDS]
+            interval = paired_interval(rows, paired(a, 'correct'), paired(b, 'correct'), paired(a, 'fp'), paired(b, 'fp'))
             interval['positive_and_noninferior'] = (interval['balanced_category_accuracy_interval'][0] > 0 and
                                                    interval['no_gun_false_positive_interval'][1] <= .05)
-            interval['role'] = 'primary' if a == 'RG' else 'secondary_exploratory_no_multiplicity_adjustment'
+            interval['role'] = 'primary' if (a, b) == ('RG', 'SG') else 'secondary_exploratory_no_multiplicity_adjustment'
             contrasts[f'{split}:{a}-{b}'] = interval
     write_csv(output / 'main-seed.csv', main)
     write_csv(output / 'grounding.csv', ground)

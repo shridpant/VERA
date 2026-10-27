@@ -217,6 +217,18 @@ class EvaluationAndBudgetTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 reserve(root, 'a', 'pilot', 60, 'gpu6')
 
+    def test_classification_is_independent_of_grounding_schema(self):
+        rows = [{**fixture(), 'id': str(i), 'category': c} for i, c in enumerate(data.CATEGORIES)]
+        predictions = []
+        for row in rows:
+            value = response(row)
+            value['grounding'] = 'invalid box schema'
+            predictions.append({'video': row['id'], 'text': json.dumps(value), 'truncated': False})
+            self.assertEqual(rewards.score(json.dumps(value), row, BOOK, True)['reward'], 0.)
+        result = metrics(rows, predictions, BOOK, grounded=True)
+        self.assertEqual(result['balanced_category_accuracy'], 1.)
+        self.assertEqual(result['invalid_fraction'], 1.)
+
 
     def test_real_runs_have_no_time_cap_but_pilots_remain_bounded(self):
         for stage in ('sweep', 'evaluation'):
@@ -322,6 +334,96 @@ class StatisticsTests(unittest.TestCase):
         result = localization([row], pred, BOOK)
         self.assertEqual(result['precision_IoU50'], .5)
         self.assertEqual(result['whole_image_box_rate'], .5)
+
+
+class OrchestrationTests(unittest.TestCase):
+    def test_sweep_clones_identical_fixed_warm_starts_and_preserves_scientific_stops(self):
+        from unittest.mock import patch
+        from studies.firearm_posttraining.sweep import run
+        commands = []
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            protocol = root / 'protocol.json'
+            protocol.write_text('{}')
+            def fake_run(command, **kwargs):
+                commands.append(command)
+                directory = Path(command[command.index('--output') + 1])
+                directory.mkdir(parents=True)
+                warm = '--warmup-only' in command
+                seed = int(command[command.index('--seed') + 1])
+                method = command[command.index('--method') + 1] if '--method' in command else 'VQ'
+                checkpoint = directory / 'checkpoints' / 'final-000096'
+                checkpoint.mkdir(parents=True)
+                (checkpoint / 'adapter_model.safetensors').write_bytes(f'{seed}:{method}'.encode())
+                data.write_json(directory / 'result.json', {'status': 'stopped',
+                    'stop_reason': 'fixed_warmup_complete' if warm else 'patience',
+                    'fit_passes': .5 if warm else 2., 'best_checkpoint': str(checkpoint), 'elapsed_seconds': 20.})
+            with patch('studies.firearm_posttraining.sweep.validate', return_value={'model': 'pinned', 'shared_max_fit_passes': 5}), \
+                 patch('studies.firearm_posttraining.sweep.subprocess.run', side_effect=fake_run), \
+                 patch('studies.firearm_posttraining.sweep.freeze_selection', return_value={'selection_hash': 'frozen'}) as freeze:
+                run(root, protocol)
+            self.assertEqual(len(commands), 21)
+            self.assertEqual(len(freeze.call_args.args[2]), 15)
+            for command in commands:
+                self.assertEqual(command[command.index('--seconds') + 1], '0')
+                self.assertEqual(command[command.index('--max-seconds') + 1], '0')
+                if '--adapter' in command:
+                    method = command[command.index('--method') + 1]
+                    seed = int(command[command.index('--seed') + 1])
+                    kind = 'G' if method in ('SG', 'RG') else 'L'
+                    init = json.loads((root / 'sweep' / f'paired-initializations-{seed}.json').read_text())[kind]
+                    self.assertEqual(command[command.index('--adapter') + 1], init['adapter'])
+                    self.assertEqual(command[command.index('--max-passes') + 1], '5')
+
+    def test_vq_optimizer_never_receives_stop_rows_or_targets(self):
+        from unittest.mock import patch
+        from types import SimpleNamespace
+        from studies.firearm_posttraining.verbalized import run
+        from studies.firearm_posttraining.model import DEFAULT_QUESTIONS
+        fit = [{**fixture(), 'id': f'fit-{i}', 'category': data.CATEGORIES[i % 3]} for i in range(12)]
+        stop = [{**fixture(), 'id': 'STOP_SECRET', 'action_code': 'N12'}]
+        optimizer_ids = []
+        class FakeNative:
+            def __init__(self, *args, **kwargs):
+                self.book = BOOK
+                self.model = SimpleNamespace(parameters=lambda: [])
+            def adapter_hash(self):
+                return 'unchanged'
+            def prompt(self, row, **kwargs):
+                self.assert_fit(row)
+                return row, ''
+            def assert_fit(self, row):
+                assert row['id'].startswith('fit-')
+            def generate(self, prompt, **kwargs):
+                if prompt == 'optimizer':
+                    text = json.dumps({'questions': ['Describe the held object precisely?', DEFAULT_QUESTIONS[1]]})
+                else:
+                    text = json.dumps(response(prompt, False))
+                return {'text': text, 'ids': [1], 'truncated': False, 'generated_tokens': 1}
+            def encode(self, rows, text):
+                assert 'STOP_SECRET' not in text
+                for row in rows:
+                    self.assert_fit(row)
+                optimizer_ids.extend(r['id'] for r in rows)
+                return 'optimizer', text
+        measured = dict(balanced_category_accuracy=.5, action_group_accuracy=.4, action_code_accuracy=.3)
+        def fake_evaluate(native, rows, *args, **kwargs):
+            self.assertEqual(rows, stop)
+            return dict(measured)
+        with tempfile.TemporaryDirectory() as td:
+            args = SimpleNamespace(frozen_protocol='frozen', data=td, model='pinned', output=str(Path(td, 'run')),
+                codebook='studies/firearm_training/codebook.json', seed=20261026, max_seconds=0)
+            with patch('studies.firearm_posttraining.verbalized.validate'), \
+                 patch('studies.firearm_posttraining.verbalized.provenance'), \
+                 patch('studies.firearm_posttraining.verbalized.NativeModel', FakeNative), \
+                 patch('studies.firearm_posttraining.verbalized.load_split', side_effect=lambda _, s: fit if s == 'fit' else stop), \
+                 patch('studies.firearm_posttraining.verbalized.evaluate', side_effect=fake_evaluate), \
+                 patch('studies.firearm_posttraining.verbalized.resource_metrics', return_value={}):
+                result = run(args)
+            self.assertEqual(result['stop_reason'], 'three_nonimproving_candidates')
+            self.assertEqual(result['STOP_checks'], 3)
+            self.assertEqual(result['FIT_prediction_queries'], 36)
+            self.assertEqual(len(optimizer_ids), 6)
 
 
 if __name__ == '__main__':

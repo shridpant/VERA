@@ -3,7 +3,7 @@ import json
 import time
 from pathlib import Path
 from .data import CATEGORIES, write_json
-from .rewards import parse, score
+from .rewards import parse, parse_labels, score
 from .runtime import append
 
 
@@ -19,8 +19,8 @@ def metrics(rows, predictions, book, grounded=False):
         hits = 0
         for r in subset:
             p = by_id[r['id']]
-            parsed = parse(p['text'], book, grounded, p['truncated'])
-            invalid += parsed is None
+            parsed = parse_labels(p['text'], book, p['truncated'])
+            invalid += parse(p['text'], book, grounded, p['truncated']) is None
             truncated += p['truncated']
             if parsed is None:
                 continue

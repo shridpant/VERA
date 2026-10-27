@@ -80,3 +80,15 @@ pilots” and confirmed “yes a side chat was doing that.” Authorization is n
 confirmed in the main chat. Subsequent releases integrate this policy, including
 unlimited-time final evaluation; existing pilot processes retain their original
 shorter caps and need no restart unless their normal stopping fails to finish.
+
+## Classification versus grounding scoring correction before comparison
+
+Code review found the initial evaluator used full grounded-schema validity to
+score category labels in SG/RG. This would conflate box-format errors with the
+primary recognition metric, contrary to the handoff. Classification now uses
+the identical three-label JSON parser for every arm, independently of the box
+payload; full-schema invalidity is still reported separately. Malformed outer
+JSON/truncation still receives no label credit. Strict RL rewards and box metrics
+retain their full-schema checks. Tests prove a bad box payload cannot change
+otherwise identical classification scores. The label-only supervised pilot is
+unchanged; no comparative or holdout runs preceded this correction.

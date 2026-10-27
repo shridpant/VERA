@@ -42,7 +42,7 @@ def run(args):
             raise ValueError('paired initialization must be a fixed 0.5-pass warm start without STOP selection')
     if args.frozen_protocol:
         from .protocol import validate
-        protocol = validate(args.frozen_protocol, args.data, args.model)
+        protocol = validate(args.frozen_protocol, args.data, args.model, args.codebook)
         if args.max_passes != protocol['shared_max_fit_passes']:
             raise ValueError('frozen protocol/pass budget mismatch')
     if not args.resume:
