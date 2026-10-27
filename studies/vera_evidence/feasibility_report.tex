@@ -88,6 +88,16 @@ UCA test &228&32&50\\\bottomrule\end{tabular}\end{center}
 
 Timed captions provide external event references but are not exhaustive claim-support labels. Caption omission cannot establish a hallucination. Using them for training would introduce stronger supervision than original weak-label VERA and must be declared. No images or new model outputs were used in this metadata audit. Next assess annotation methodology and design a split-safe, explicitly caption-supervised question-learning comparison before fetching training videos or using GPUs. This reopens a conditional data route, not a novelty claim.
 
+
+\section{Caption-supervision gate: annotation quality and rejected split}
+UCA Section 3 and Appendix A describe ten trained annotators, a three-researcher review team, checks every 100 instances, and a final review. These establish a documented human-reference process, not exhaustive truth labels for arbitrary generated claims. Source: \url{https://arxiv.org/abs/2309.13925}.
+
+VANGUARD already aligns UCA sentences to subclips, generates object-level reasoning and detector boxes, and trains LoRA adapters. It differs from frozen VERA question learning, but prevents claiming caption-informed reasoning or grounding alone as new. Source: \url{https://arxiv.org/html/2605.02912v1}. We have not established the novelty of the narrower proposed feedback mechanism.
+
+An ID-only candidate manifest was generated before images or predictions were examined: 16 joint-training videos and 12 joint-validation videos, selected by fixed SHA256 order. The latter contains ten normal videos and two burglaries; this cannot support a broad anomaly-category comparison. The manifest is retained as a rejected design artifact, not used for inference. Exact split-ID exclusion passed, but source-byte/scene independence has not been verified.
+
+\textbf{Next design constraint:} preserve original VERA train/validation boundaries while considering UCA annotations across its alternative splits, rather than requiring both split names to agree. Define category coverage and positive-reference evaluation before selection. Caption absence remains unknown, not false. Compare classification-only feedback, no-sound/manual controls and caption-positive feedback at matched model-call budgets. A pilot can test feasibility; it cannot by itself establish novelty. No training videos fetched and no new GPU work performed.
+
 \section{Primary sources and review limits}
 PrismVAU method sections, LRPO reward/appendix, and the instance-caption annotation pipeline were inspected; several other comparisons currently rely on primary abstracts/introduction and need full-method follow-up. This is not an exhaustive novelty proof.
 \begin{itemize}

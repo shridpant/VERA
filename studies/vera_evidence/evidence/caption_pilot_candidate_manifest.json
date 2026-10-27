@@ -1,0 +1,50 @@
+{
+  "status": "candidate metadata manifest; not authorization to infer or evidence of source independence",
+  "selection": "sort sha256(caption-positive-v1|split|video_id) within joint splits",
+  "splits": {
+    "train": {
+      "eligible_count": 863,
+      "selected_ids": [
+        "Normal_Videos092_x264",
+        "Vandalism016_x264",
+        "Abuse024_x264",
+        "Shooting020_x264",
+        "Normal_Videos380_x264",
+        "Normal_Videos346_x264",
+        "Normal_Videos284_x264",
+        "Normal_Videos112_x264",
+        "Normal_Videos209_x264",
+        "Normal_Videos376_x264",
+        "Normal_Videos443_x264",
+        "RoadAccidents055_x264",
+        "Robbery014_x264",
+        "Normal_Videos532_x264",
+        "Normal_Videos375_x264",
+        "Stealing055_x264"
+      ]
+    },
+    "val": {
+      "eligible_count": 36,
+      "selected_ids": [
+        "Burglary096_x264",
+        "Normal_Videos723_x264",
+        "Normal_Videos948_x264",
+        "Normal_Videos824_x264",
+        "Burglary094_x264",
+        "Normal_Videos706_x264",
+        "Normal_Videos810_x264",
+        "Normal_Videos859_x264",
+        "Normal_Videos945_x264",
+        "Normal_Videos916_x264",
+        "Normal_Videos762_x264",
+        "Normal_Videos687_x264"
+      ]
+    }
+  },
+  "source_sha256": {
+    "UCFCrime_Train.json": "0df6a6e5e1e1b17b87e229edb865c9dea3e23505fd29256a894660687ff4eba2",
+    "UCF_Instruct_train.json": "28eaf3ff4a167ffc8f40f86a28204d484c1853561fb37f3d9b75ac116778f264",
+    "UCFCrime_Val.json": "f93720c911d0bfb3e8da168c7da43538227f0edcf90258a407856913fcacf559",
+    "UCF_Instruct_val.json": "c8a903315e2b47f03b7aeb0d313aedea66800c1598dba2272254493ae4bd1da5"
+  }
+}
