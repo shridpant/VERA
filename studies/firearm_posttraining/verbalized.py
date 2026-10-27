@@ -78,7 +78,9 @@ def run(args):
                 'Return only JSON with one key questions (a list of at most five concise questions). '
                 'Change exactly one existing question, keeping all others verbatim, or append exactly one question. '
                 'Retain useful questions. Do not include filenames or labels for a particular example in a question.\n'
-                + '\nTask codebook: ' + json.dumps(book['codes']) + '\nCurrent questions: ' + json.dumps(questions)
+                + '\nTask codebook: ' + '\n'.join(f'{code}: {v["category"]}, {v["group"]}, {v["meaning"]}'
+                                                       for code, v in sorted(book['codes'].items()))
+                + '\nCurrent questions: ' + json.dumps(questions)
                 + '\nPaired examples: ' + json.dumps(paired))
             prompt, actual_text = native.encode([e['row'] for e in chosen], optimizer_text)
             proposal = native.generate(prompt, sample=True)

@@ -271,5 +271,21 @@ class FreezeAndQuestionTests(unittest.TestCase):
                 run(SimpleNamespace(frozen_manifest=str(p), data=td, original_data='/must/not/be/read'))
 
 
+class StatisticsTests(unittest.TestCase):
+    def test_recording_group_bootstrap_and_error_transitions(self):
+        import numpy as np
+        from studies.firearm_posttraining.statistics import paired_interval, transitions
+        rows = [{'category': c, 'recording_group': f'{c}-{g}'} for c in data.CATEGORIES for g in range(30)]
+        one, zero = np.ones((3, len(rows))), np.zeros((3, len(rows)))
+        result = paired_interval(rows, one, zero, zero, zero, repeats=100)
+        self.assertEqual(result['balanced_category_accuracy_difference'], 1.)
+        self.assertEqual(result['balanced_category_accuracy_interval'], [1., 1.])
+        self.assertEqual(result['no_gun_false_positive_interval'], [0., 0.])
+        changed = transitions(rows, [False] * len(rows), [True] * len(rows))
+        self.assertEqual(changed['all'], {'recovered': 90, 'broken': 0, 'net': 90})
+        with self.assertRaises(ValueError):
+            paired_interval(rows, one[:, :-1], zero, zero, zero, repeats=10)
+
+
 if __name__ == '__main__':
     unittest.main()

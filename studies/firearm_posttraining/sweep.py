@@ -5,6 +5,7 @@ import json
 import queue
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 from .data import digest, write_json
@@ -22,9 +23,12 @@ def run(root, protocol_path):
     for gpu in ALLOWED:
         available.put(gpu)
     records = []
+    failure = threading.Event()
     def launch(name, command, seconds):
         gpu = available.get()
         try:
+            if failure.is_set():
+                raise RuntimeError('sweep halted after another job failure')
             full = [sys.executable, '-m', 'studies.firearm_posttraining.execute', '--root', str(root),
                     '--gpu', gpu, '--name', name, '--stage', 'sweep', '--seconds', str(seconds), '--',
                     sys.executable, '-m', 'studies.firearm_posttraining', *command]
@@ -35,6 +39,9 @@ def run(root, protocol_path):
             if result.get('status') != 'stopped':
                 raise RuntimeError(f'incomplete scientific run: {name}')
             return directory, result
+        except Exception:
+            failure.set()
+            raise
         finally:
             available.put(gpu)
     common = ['--model', protocol['model'], '--data', str(root / 'data'),
