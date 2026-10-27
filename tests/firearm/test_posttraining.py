@@ -360,8 +360,8 @@ class OrchestrationTests(unittest.TestCase):
                 (checkpoint / 'adapter_model.safetensors').write_bytes(f'{seed}:{method}'.encode())
                 data.write_json(directory / 'result.json', {'status': 'stopped',
                     'stop_reason': 'fixed_warmup_complete' if warm else 'patience',
-                    'fit_passes': .5 if warm else 2., 'best_checkpoint': str(checkpoint), 'elapsed_seconds': 20.})
-            with patch('studies.firearm_posttraining.sweep.validate', return_value={'model': 'pinned', 'shared_max_fit_passes': 5}), \
+                    'fit_passes': 1. if warm else 2., 'best_checkpoint': str(checkpoint), 'elapsed_seconds': 20.})
+            with patch('studies.firearm_posttraining.sweep.validate', return_value={'model': 'pinned', 'shared_max_fit_passes': 5, 'paired_warmup_fit_passes': 1.}), \
                  patch('studies.firearm_posttraining.sweep.subprocess.run', side_effect=fake_run), \
                  patch('studies.firearm_posttraining.sweep.freeze_selection', return_value={'selection_hash': 'frozen'}) as freeze:
                 run(root, protocol)
@@ -370,6 +370,8 @@ class OrchestrationTests(unittest.TestCase):
             for command in commands:
                 self.assertEqual(command[command.index('--seconds') + 1], '0')
                 self.assertEqual(command[command.index('--max-seconds') + 1], '0')
+                if '--warmup-passes' in command:
+                    self.assertEqual(command[command.index('--warmup-passes') + 1], '1.0')
                 if '--adapter' in command:
                     method = command[command.index('--method') + 1]
                     seed = int(command[command.index('--seed') + 1])

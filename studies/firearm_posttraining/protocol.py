@@ -16,6 +16,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
     if not .5 <= warmup_passes < max_passes or warmup_passes * 2 != int(warmup_passes * 2):
         raise ValueError('shared warm-up must be a half-pass multiple below the total pass cap')
     evidence = {}
+    fit_count = len(json.loads((root / 'data' / 'fit.json').read_text()))
     for name, path, expected in (
         ('label_smoke', label_smoke, 'engineering_passed'), ('grounded_smoke', grounded_smoke, 'engineering_passed'),
         ('supervised_pilot', supervised_pilot, 'stopped'), ('label_panel', label_panel, 'passed'),
@@ -26,6 +27,13 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
             raise ValueError(f'gate failed: {name}')
         if 'smoke' in name and not (result.get('resume_exact') and result.get('prediction_reload_exact')):
             raise ValueError('resume gate missing')
+        if name.endswith('_panel'):
+            spec = json.loads((path.parent / 'spec.json').read_text())
+            warm_state = json.loads((Path(spec['adapter']) / 'state.json').read_text())
+            if warm_state['cursor'] != math.floor(fit_count * warmup_passes) or warm_state['selection']['checks'] != 0:
+                raise ValueError('real-reward panel reference differs from proposed fixed warm-up exposure')
+            if spec['grounded'] != (name == 'grounded_panel'):
+                raise ValueError('panel supervision mismatch')
         evidence[name] = {'path': str(path), 'sha256': digest(path)}
     setup = root / 'setup'
     if not (setup / 'requirements.lock').is_file() or not (setup / 'wheelhouse.json').is_file():
