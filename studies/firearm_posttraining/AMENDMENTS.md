@@ -155,3 +155,16 @@ https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats._result_classes
 The pre-freeze CPU controller was stopped to integrate this guard. Its GPU
 warm-ups continue unchanged. Resume reuses matching settled/running artifacts,
 does not repeat their queries, and preserves the earlier controller/action logs.
+
+## Calibration prelaunch recovery
+
+The first 1.5-pass label warm-up never created a job or budget reservation: a
+stale 100% utilization sample remained after its preceding job released all GPU
+memory. Its paired grounded warm-up completed 288 clips / 36 updates normally.
+The first resumed CPU controller then stopped on the existing prelaunch log.
+Preserve that log and only retry if no job, output or budget reservation exists.
+Allow up to 30 seconds for utilization to settle while the device lock is held,
+only if no compute process and <500 MiB are present. Occupied devices still fail
+immediately. This changes orchestration, not scientific exposure or gates.
+Regression checks cover cooldown, occupied-device rejection, prelaunch failure
+recovery and reusing the completed paired warm-up without repeat GPU work.

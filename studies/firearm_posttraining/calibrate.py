@@ -64,7 +64,15 @@ def run(root, original_data, frames_root, resume=False):
         command = [sys.executable, '-m', 'studies.firearm_posttraining.execute', '--root', str(root),
                    '--gpu', gpu, '--name', name, '--stage', 'pilot', '--seconds', str(seconds), '--',
                    sys.executable, *child]
-        with (control / f'{name}.supervisor.log').open('x') as f:
+        log = control / f'{name}.supervisor.log'
+        if resume and log.exists():
+            # No job/output exists: this was a prelaunch failure, never GPU work.
+            # Retain its evidence and fail closed if a ledger reservation exists.
+            ledger = root / 'budget.json'
+            if ledger.exists() and name in json.loads(ledger.read_text()):
+                raise RuntimeError(f'unsettled prior reservation requires operator review: {name}')
+            log.rename(control / f'{name}.prelaunch-{time.time_ns()}.log')
+        with log.open('x') as f:
             subprocess.run(command, stdout=f, stderr=subprocess.STDOUT, check=True)
         return completed(name)
     def pair(tasks):

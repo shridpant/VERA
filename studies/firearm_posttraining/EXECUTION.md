@@ -57,6 +57,11 @@ not proof of implementation or permission to override the current request.
 - The 0.5-pass warm-up default is being calibrated using FIT-only format feedback.
   `pilot-c0l-002` / `pilot-c0g-002` run one fixed FIT pass with no STOP queries,
   finite caps, unchanged parser/reward and five-total-pass scientific ceiling.
+  Both completed; label format passed 94/96 valid, grounded failed 5/7 invalid.
+  Calibration advanced to 1.5 passes. Grounded warm-up completed 288 clips /
+  36 updates / 591 seconds, no STOP queries. The label job was rejected before
+  launch due to stale GPU utilization; its preserved log exposed a controller
+  restart bug, now regression-tested and corrected before protocol freeze.
   The final shared exposure and both real-reward panels must pass before freeze.
 - Real-reward panel gates, shared-pass throughput forecast, protocol freeze,
   comparative methods/seeds, final selection freeze, holdouts and report are
@@ -79,7 +84,8 @@ Concurrent occupancy still sums across cards for reporting. Scientific jobs use
 `--seconds 0` and `--max-seconds 0`; all non-time scientific stops remain. A pilot
 crash leaves its full reservation charged until explicitly reconciled. There is
 no automatic failure resubmission. See the latest AMENDMENTS.md entry; running
-remote releases have not been changed by this local side-conversation edit.
+the human directly confirmed these resource edits from a side chat.
+Running immutable releases are never edited.
 
 Every run writes its spec before loading weights, and requires a clean committed
 checkout. Checkpoints contain adapters, optimizer/scheduler state, Python/NumPy/
@@ -103,3 +109,5 @@ passed on oz at 6bd7809; the full 72-test firearm suite passes after the later
 VQ single-slot and immutable-frame changes. Real VQ compatibility passed with
 16 images, 4,451 prompt tokens and a valid proposal in 17 GPU-seconds. The full
 sweep and final holdout paths remain unexercised until their gates pass.
+Subsequent sparse-negative support and prelaunch-recovery checks bring the
+current full firearm suite to 74 passing tests (26 focused). No protocol has yet been frozen.

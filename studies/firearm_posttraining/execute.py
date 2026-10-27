@@ -81,6 +81,20 @@ def gpu_state(uuid):
             'utilization_pct': int(parts[4]), 'processes': [s for s in processes.splitlines() if uuid in s]}
 
 
+def idle_state(uuid, cooldown_seconds=30):
+    """Allow stale utilization samples to settle only on an unoccupied device."""
+    deadline = time.monotonic() + cooldown_seconds
+    while True:
+        state = gpu_state(uuid)
+        if state['processes'] or state['memory_used_mib'] >= 500:
+            raise RuntimeError(f'GPU is not idle: {state}')
+        if state['utilization_pct'] < 5:
+            return state
+        if time.monotonic() >= deadline:
+            raise RuntimeError(f'GPU utilization did not settle: {state}')
+        time.sleep(2)
+
+
 def run(args):
     if not re.fullmatch(r'[A-Za-z0-9_.-]+', args.name):
         raise ValueError('run name must be a simple filename')
@@ -90,9 +104,7 @@ def run(args):
     root = Path(args.root)
     root.mkdir(parents=True, exist_ok=True)
     with lock(root / f'{args.gpu}.lock', nonblock=True):
-        state = gpu_state(args.gpu)
-        if state['processes'] or state['memory_used_mib'] >= 500 or state['utilization_pct'] >= 5:
-            raise RuntimeError(f'GPU is not idle: {state}')
+        state = idle_state(args.gpu)
         job = root / 'jobs' / args.name
         job.mkdir(parents=True, exist_ok=False)
         reserve(root, args.name, args.stage, args.seconds, args.gpu)

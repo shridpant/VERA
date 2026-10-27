@@ -343,10 +343,24 @@ class StatisticsTests(unittest.TestCase):
 
 
 class OrchestrationTests(unittest.TestCase):
+    def test_idle_cooldown_never_waits_on_an_occupied_gpu(self):
+        from unittest.mock import patch
+        from studies.firearm_posttraining.execute import idle_state
+        idle = {'processes': [], 'memory_used_mib': 4, 'utilization_pct': 0}
+        with patch('studies.firearm_posttraining.execute.gpu_state', side_effect=[{**idle, 'utilization_pct': 100}, idle]), \
+             patch('studies.firearm_posttraining.execute.time.sleep') as sleep:
+            self.assertEqual(idle_state('device'), idle)
+            sleep.assert_called_once_with(2)
+        with patch('studies.firearm_posttraining.execute.gpu_state', return_value={**idle, 'processes': ['other']}), \
+             patch('studies.firearm_posttraining.execute.time.sleep') as sleep:
+            with self.assertRaises(RuntimeError):
+                idle_state('device')
+            sleep.assert_not_called()
+
     def test_calibration_uses_fit_only_candidates_and_never_scales_failed_reward_gate(self):
         from unittest.mock import patch
         from studies.firearm_posttraining.calibrate import run
-        for reject_first_format, reject_reward in ((True, False), (False, True)):
+        for reject_first_format, reject_reward, prelaunch_failure in ((True, False, False), (False, True, False), (False, False, True)):
             with self.subTest(format_retry=reject_first_format, reward_failure=reject_reward), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
                 data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
@@ -359,6 +373,8 @@ class OrchestrationTests(unittest.TestCase):
                 def fake_run(command, **kwargs):
                     commands.append(command)
                     name = command[command.index('--name') + 1]
+                    if prelaunch_failure and name == 'pilot-c0l-002' and sum('--name' in c and c[c.index('--name') + 1] == name for c in commands) == 1:
+                        raise RuntimeError('simulated idle check before job creation')
                     directory = Path(command[command.index('--output') + 1])
                     directory.mkdir(parents=True)
                     data.write_json(root / 'jobs' / name / 'status.json', {'exit_code': 0})
@@ -385,7 +401,14 @@ class OrchestrationTests(unittest.TestCase):
                 with patch('studies.firearm_posttraining.calibrate.subprocess.run', side_effect=fake_run), \
                      patch('studies.firearm_posttraining.calibrate.freeze', return_value={'protocol_hash': 'frozen'}) as freeze, \
                      patch('studies.firearm_posttraining.calibrate.pipeline', side_effect=fake_pipeline) as pipeline:
-                    run(root, 'original', 'frames')
+                    if prelaunch_failure:
+                        with self.assertRaisesRegex(RuntimeError, 'simulated idle'):
+                            run(root, 'original', 'frames')
+                        run(root, 'original', 'frames', resume=True)
+                        self.assertEqual(len(list((root / 'calibration').glob('pilot-c0l-002.prelaunch-*.log'))), 1)
+                        self.assertEqual(sum(c[c.index('--name') + 1] == 'pilot-c0g-002' for c in commands), 1)
+                    else:
+                        run(root, 'original', 'frames')
                     if reject_reward:
                         prior_commands = len(commands)
                         run(root, 'original', 'frames', resume=True)
@@ -397,9 +420,10 @@ class OrchestrationTests(unittest.TestCase):
                     pipeline.assert_not_called()
                 else:
                     self.assertEqual(final['stage'], 'complete')
-                    self.assertEqual(freeze.call_args.kwargs['warmup_passes'], 1.5)
+                    self.assertEqual(freeze.call_args.kwargs['warmup_passes'], 1.5 if reject_first_format else 1.)
                     self.assertEqual(freeze.call_args.kwargs['max_passes'], 5.)
-                    self.assertFalse(any('pilot-rg-002' in command for command in commands))
+                    if reject_first_format:
+                        self.assertFalse(any('pilot-rg-002' in command for command in commands))
                 self.assertTrue(all(int(c[c.index('--seconds') + 1]) > 0 for c in commands))
 
     def test_sweep_clones_identical_fixed_warm_starts_and_preserves_scientific_stops(self):
