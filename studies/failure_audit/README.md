@@ -77,3 +77,12 @@ Final PDF: five pages, compiled both by the desktop editor and Oz pdflatex; no u
 ## Annotation attribution
 
 Original VISILAB annotations: Jesus Ruiz-Santaquiteria, Juan Daniel Munoz, Francisco Jose Maigler, Oscar Deniz, and Gloria Bueno, *Action recognition and object detection dataset for firearm-related actions*, version 2. [Mendeley Data, DOI 10.17632/bbzpxhd22j.2](https://doi.org/10.17632/bbzpxhd22j.2); [Zenodo record 15387426](https://zenodo.org/records/15387426). Data paper: *Firearm-related action recognition and object detection dataset for video surveillance systems*, Data in Brief 52 (2024), 110030, [DOI 10.1016/j.dib.2024.110030](https://doi.org/10.1016/j.dib.2024.110030). Annotation JSON is preserved unmodified; no new annotations or source images are distributed in this audit.
+
+## Pull requests
+
+- [Report failed attention-reliance gate for VERA grounding feedback](https://github.com/shridpant/VERA/pull/13) (#13; opened as draft).
+- [Audit VERA transfer claims, firearm categorization, and grounding failures](https://github.com/shridpant/VERA/pull/14) (#14; opened as draft).
+- [Report unstable VERA firearm categorization gains across retraining seeds](https://github.com/shridpant/VERA/pull/7) (#7; existing PR retitled).
+- [Report zero firearm box recall and prompt-induced anomaly judgment shifts](https://github.com/shridpant/VERA/pull/8) (#8; existing PR retitled).
+- [Record selective-explanation prompt failures and abstention limits in frozen VERA](https://github.com/shridpant/VERA/pull/11) (#11; existing PR retitled).
+- [Report VERA temporal-position effects and failure of the declared gate](https://github.com/shridpant/VERA/pull/12) (#12; existing PR retitled).

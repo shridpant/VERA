@@ -1,0 +1,42 @@
+{
+  "ag-config.yaml": {
+    "git_commit": "534483b35b03717ab1a82bfda73bacd975994edb",
+    "source_path": "studies/firearm/experiment_A_G_AG.annotated.yaml",
+    "copied_sha256": "a7ce703afa2f12c3ab829f45e703c92dbdb46283e20f070ab6099bbe3f4194dc"
+  },
+  "ag_stats.py": {
+    "git_commit": "534483b35b03717ab1a82bfda73bacd975994edb",
+    "source_path": "studies/firearm/analysis/stats.py",
+    "copied_sha256": "6b5b53743d9043457e24df9459d0601d09e5f5c4b1a5969e076cec05f97c6011"
+  },
+  "localization.py": {
+    "git_commit": "534483b35b03717ab1a82bfda73bacd975994edb",
+    "source_path": "vera_runner/localization.py",
+    "copied_sha256": "2c39d1638fd7640ee9ed04c53e270fd8e3c7d2bf27acf543ec7ff9f58772ccdf"
+  },
+  "slots.py": {
+    "git_commit": "534483b35b03717ab1a82bfda73bacd975994edb",
+    "source_path": "vera_runner/slots.py",
+    "copied_sha256": "681c9937ef09b23d7a64df9ca95803ef0585f9e3e935ec6cb1ca3fff843c8556"
+  },
+  "training_stats.py": {
+    "git_commit": "c239dc06017756eac4a048d8bdfb4a6b11c35221",
+    "source_path": "studies/firearm_training/analysis/stats.py",
+    "copied_sha256": "b6e8089032caa0b4a261854bb7fe01fbdeb0c3abb3a9a9c5b8cab944f9e3b2fd"
+  },
+  "training_parser.py": {
+    "git_commit": "c239dc06017756eac4a048d8bdfb4a6b11c35221",
+    "source_path": "vera_runner/verbalized.py; normalize and parse_answer functions extracted unchanged with constants",
+    "copied_sha256": "ba1be25476f1727184ea84bc23ec1a14bae2053754f7e47d6e16e8ec88a41752"
+  },
+  "annotation_policy.json": {
+    "git_commit": "c239dc06017756eac4a048d8bdfb4a6b11c35221",
+    "source_path": "studies/firearm/annotation_policy.json",
+    "copied_sha256": "897b2649d6159eb6b682501f76d61160e105e78fea3277ae5d124d12367546b1"
+  },
+  "firearm_annotations.py": {
+    "git_commit": "c239dc06017756eac4a048d8bdfb4a6b11c35221",
+    "source_path": "vera_runner/firearm_annotations.py",
+    "copied_sha256": "abe1689e9fae2c3f36589e8beec78350c1a5e05cd3b403b798e864a15a04f66b"
+  }
+}
