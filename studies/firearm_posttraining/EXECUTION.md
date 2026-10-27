@@ -1,3 +1,9 @@
+# Live update: both native-coordinate format checks passed
+
+Attempt 010 completed fresh paired three-pass warm-ups, 72 updates each. Label format passed 95/96 valid; grounded format passed 92/96 valid with no truncations. The grounded failures are three missing closing braces and one trailing code fence, all retained as invalid. Read-only verdict reproduction and 213 valid normalized boxes are recorded in evidence/native-format-audit.json with source artifact hashes and raw failures. The fresh label adapter exactly reproduces the old label adapter hash.
+
+Controller 301220 is in real_reward_panels, label first, grounded second. Both actual-reward panels must pass before protocol freeze/sweep. No scoring, validity threshold, reward coefficient, exposure or stopping rule has changed. Native coordinates are converted at the model boundary only. No further candidate is authorized if this one fails. Preserve all running releases; current operator chat 01a17dce.
+
 # Current execution: accepted native-coordinate candidate010
 
 October27 human approved the coordinate fix, rerun and conditional continuation, then explicitly approved updating public PR9. Source8d9232c deployed clean at /local/datasets/sp2117/firearm_visilab/code/posttraining-releases/8d9232c and pushed to draft PR9. Local78/Oz30tests pass. Actual-tokenizer/source audit ROOT/data/coordinate-audit-v1.json passes240videos/799knownboxes, maximum284completiontokens,553unknownpayloadtokens masked, unitroundtriperror1.11e-16. Scoring/reward/IoU/trainingupdate sources unchanged; grounded targets/prompt intentionally differ. No old adapters reused.
