@@ -1,0 +1,279 @@
+{
+  "status": "failed_format_gate_preserved",
+  "release_commit": "2118b5287045baabfff25b1dc53701e95ffcecca",
+  "source_artifacts": {
+    "/local/datasets/sp2117/firearm_visilab/posttraining1/format-l-009/result.json": "8cfa855c82b2ee8d92c4698599e14a18fd9c3ac9b2727da42d697fe90c24d6fd",
+    "/local/datasets/sp2117/firearm_visilab/posttraining1/format-g-009/result.json": "6ce232c928f885660ef6eb2a4fe65ddfdfeed9ea4eeb5a0541e43e8408d868dc",
+    "/local/datasets/sp2117/firearm_visilab/posttraining1/format-g-009/responses.jsonl": "808d36df94584d5065aa779351469d363bc422377c6ab8c31acf71ed6d167207",
+    "/local/datasets/sp2117/firearm_visilab/posttraining1/budget.json": "3cac21df9ab8c0e13423c38b63918204870e575dfb7b24c530a9f99a8cdcc463",
+    "/local/datasets/sp2117/firearm_visilab/posttraining1/calibration-probability-v3/status.json": "467e579f779520433ce6680dbfacb0f6701812f24078ae8daddffb6de0032b40"
+  },
+  "gate_results": {
+    "l": {
+      "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-008/checkpoints/final-000576",
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 125.20918820798397,
+      "grounded": false,
+      "invalid": 1,
+      "invalid_fraction_observed": 0.010416666666666666,
+      "peak_allocated_bytes": 18475440640,
+      "peak_reserved_bytes": 18782093312,
+      "planned_responses": 96,
+      "responses": 96,
+      "status": "passed",
+      "stopped_early_for_irreversible_gate_failure": false,
+      "weights_unchanged": true
+    },
+    "g": {
+      "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-008/checkpoints/final-000576",
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 361.28202918195166,
+      "grounded": true,
+      "invalid": 5,
+      "invalid_fraction_observed": 0.07692307692307693,
+      "peak_allocated_bytes": 18501008384,
+      "peak_reserved_bytes": 18865979392,
+      "planned_responses": 96,
+      "responses": 65,
+      "status": "failed_gate",
+      "stopped_early_for_irreversible_gate_failure": true,
+      "weights_unchanged": true
+    }
+  },
+  "controller_status": {
+    "controller_pid": 293624,
+    "reason": "none of the declared FIT-only warm-up candidates met the format gate",
+    "stage": "failed_format_calibration",
+    "started_unix": 1793079823.5533004,
+    "updated_unix": 1793080186.266185
+  },
+  "controller_alive": false,
+  "pilot_settled_gpu_seconds": 14405.874096721935,
+  "pilot_limit_gpu_seconds": 21600,
+  "pilot_remaining_gpu_seconds": 7194.125903278065,
+  "active_budget_reservations": {},
+  "protocol_exists": false,
+  "selection_exists": false,
+  "failed_grounded_responses": [
+    {
+      "response_index_zero_based": 29,
+      "video": "Machine_Gun__PAW8_C1_P2_V1_HB_2",
+      "sample": 1,
+      "text": "{\"category\":\"Handgun\",\"action_group\":\"aim\",\"action_code\":\"PAH2\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0.453125,0.4921875,0.53125,0.53125]]},{\"frame_id\":3,\"boxes\":[[0.390625,0.53125,0.46875,0.53125]]},{\"frame_id\":4,\"boxes\":[[0.3125,0.53125,0.390625,0.546875]]},{\"frame_id\":5,\"boxes\":[[0.21875,0.5625,0.3125,0.5625]]},{\"frame_id\":6,\"boxes\":[[0.078125,0.65625,0.15625,0.6875]]},{\"frame_id\":7,\"boxes\":[]}]}",
+      "truncated": false,
+      "labels_valid": true,
+      "unit_range_violations": [],
+      "degenerate_boxes": [
+        {
+          "frame_id": 3,
+          "box": [
+            0.390625,
+            0.53125,
+            0.46875,
+            0.53125
+          ]
+        },
+        {
+          "frame_id": 5,
+          "box": [
+            0.21875,
+            0.5625,
+            0.3125,
+            0.5625
+          ]
+        }
+      ],
+      "all_coordinates_in_native_range": true
+    },
+    {
+      "response_index_zero_based": 48,
+      "video": "Handgun__PAH8_C1_P4_V1_HB_2",
+      "sample": 0,
+      "text": "{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW6\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[]},{\"frame_id\":3,\"boxes\":[[140,392,275,475]]},{\"frame_id\":4,\"boxes\":[[260,384,534,475]]},{\"frame_id\":5,\"boxes\":[[491,374,758,466]]},{\"frame_id\":6,\"boxes\":[[770,365,940,453]]},{\"frame_id\":7,\"boxes\":[]}]}",
+      "truncated": false,
+      "labels_valid": true,
+      "unit_range_violations": [
+        {
+          "frame_id": 3,
+          "box": [
+            140,
+            392,
+            275,
+            475
+          ]
+        },
+        {
+          "frame_id": 4,
+          "box": [
+            260,
+            384,
+            534,
+            475
+          ]
+        },
+        {
+          "frame_id": 5,
+          "box": [
+            491,
+            374,
+            758,
+            466
+          ]
+        },
+        {
+          "frame_id": 6,
+          "box": [
+            770,
+            365,
+            940,
+            453
+          ]
+        }
+      ],
+      "degenerate_boxes": [],
+      "all_coordinates_in_native_range": true
+    },
+    {
+      "response_index_zero_based": 55,
+      "video": "Machine_Gun__PCW2_C1_P1_V1_HB_1",
+      "sample": 3,
+      "text": "{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW5\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[197,306,267,511]]},{\"frame_id\":3,\"boxes\":[[288,314,371,540]]},{\"frame_id\":4,\"boxes\":[[471,365,586,621]]},{\"frame_id\":5,\"boxes\":[[667,441,775,707]]},{\"frame_id\":6,\"boxes\":[[942,539,1000,808]]},{\"frame_id\":7,\"boxes\":[]}]}",
+      "truncated": false,
+      "labels_valid": true,
+      "unit_range_violations": [
+        {
+          "frame_id": 2,
+          "box": [
+            197,
+            306,
+            267,
+            511
+          ]
+        },
+        {
+          "frame_id": 3,
+          "box": [
+            288,
+            314,
+            371,
+            540
+          ]
+        },
+        {
+          "frame_id": 4,
+          "box": [
+            471,
+            365,
+            586,
+            621
+          ]
+        },
+        {
+          "frame_id": 5,
+          "box": [
+            667,
+            441,
+            775,
+            707
+          ]
+        },
+        {
+          "frame_id": 6,
+          "box": [
+            942,
+            539,
+            1000,
+            808
+          ]
+        }
+      ],
+      "degenerate_boxes": [],
+      "all_coordinates_in_native_range": true
+    },
+    {
+      "response_index_zero_based": 63,
+      "video": "Handgun__PAH3_C2_P5_V2_HB_4",
+      "sample": 3,
+      "text": "{\"category\":\"Handgun\",\"action_group\":\"carry\",\"action_code\":\"PCH3\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[157,610,204,659]]},{\"frame_id\":3,\"boxes\":[[416,506,463,556]]},{\"frame_id\":4,\"boxes\":[]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}] }",
+      "truncated": false,
+      "labels_valid": true,
+      "unit_range_violations": [
+        {
+          "frame_id": 2,
+          "box": [
+            157,
+            610,
+            204,
+            659
+          ]
+        },
+        {
+          "frame_id": 3,
+          "box": [
+            416,
+            506,
+            463,
+            556
+          ]
+        }
+      ],
+      "degenerate_boxes": [],
+      "all_coordinates_in_native_range": true
+    },
+    {
+      "response_index_zero_based": 64,
+      "video": "Machine_Gun__PAW5_C1_P4_V1_HB_2",
+      "sample": 0,
+      "text": "{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW5\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0,333,228,457]]},{\"frame_id\":3,\"boxes\":[[267,350,505,485]]},{\"frame_id\":4,\"boxes\":[[471,347,782,505]]},{\"frame_id\":5,\"boxes\":[[672,350,924,491]]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}",
+      "truncated": false,
+      "labels_valid": true,
+      "unit_range_violations": [
+        {
+          "frame_id": 2,
+          "box": [
+            0,
+            333,
+            228,
+            457
+          ]
+        },
+        {
+          "frame_id": 3,
+          "box": [
+            267,
+            350,
+            505,
+            485
+          ]
+        },
+        {
+          "frame_id": 4,
+          "box": [
+            471,
+            347,
+            782,
+            505
+          ]
+        },
+        {
+          "frame_id": 5,
+          "box": [
+            672,
+            350,
+            924,
+            491
+          ]
+        }
+      ],
+      "degenerate_boxes": [],
+      "all_coordinates_in_native_range": true
+    }
+  ],
+  "triage_summary": {
+    "invalid": 5,
+    "valid_json_untruncated": 5,
+    "unit_range_violations": 4,
+    "degenerate_geometry": 1
+  },
+  "interpretation": "FIT-only diagnostic, not a rescued gate or evidence that changing representation will pass. Partial 5/65 is not a full-panel error estimate."
+}

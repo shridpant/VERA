@@ -1,0 +1,48 @@
+{
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "elapsed_seconds": 48.69515696098097,
+  "grpo": [
+    {
+      "clip_fraction": 0.0,
+      "entropy": 0.12619680166244507,
+      "kl_per_token": 0.0,
+      "loss": 1.0
+    },
+    {
+      "clip_fraction": 0.0,
+      "entropy": 0.10578062385320663,
+      "kl_per_token": 0.0,
+      "loss": 0.5
+    },
+    {
+      "clip_fraction": 0.0,
+      "entropy": 0.10276390612125397,
+      "kl_per_token": 0.0,
+      "loss": -0.5
+    },
+    {
+      "clip_fraction": 0.0,
+      "entropy": 0.03542124107480049,
+      "kl_per_token": 0.0,
+      "loss": -1.0
+    }
+  ],
+  "grpo_grad_norm": 1.8290921449661255,
+  "note": "RL diagnostic-panel reward variance / validity gate still required after supervised pilot",
+  "peak_allocated_bytes": 19580338688,
+  "peak_reserved_bytes": 20302528512,
+  "policy_hash_after": "c155e60aabf97de14cbd0868663000f635ea86578d52574b7283effa2e7aa7eb",
+  "policy_hash_before": "6a8ec86c6178a6a4be3645b0ba34ff576ebd55d5cd73593f5a29476cd43587c1",
+  "prediction_reload_exact": true,
+  "reference_hash": "6a8ec86c6178a6a4be3645b0ba34ff576ebd55d5cd73593f5a29476cd43587c1",
+  "resume_exact": true,
+  "reward_std": 0.0,
+  "scientific_rl_gate_passed": false,
+  "sft_losses": [
+    2.9650747776031494,
+    2.8197267055511475,
+    2.619840621948242
+  ],
+  "status": "engineering_passed",
+  "synthetic_advantages_for_engineering_only": true
+}

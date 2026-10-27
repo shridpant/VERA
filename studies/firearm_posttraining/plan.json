@@ -1,22 +1,23 @@
 {
-  "status": "planned_not_implemented",
+  "status": "FIT_only_warmup_calibration_after_grounded_format_gate_failure",
   "prepared_date": "2026-10-26",
   "timezone": "America/New_York",
   "user_scope": [
     "five_method_controlled_comparison",
     "LoRA",
-    "one_GPU_for_new_study",
     "supervised_pilot_then_RL",
     "explicit_stopping",
-    "end_to_end_handoff"
+    "end_to_end_handoff",
+    "two_independent_single_GPU_workers",
+    "commits_and_review_PR"
   ],
   "repo": "/Users/shrid/Documents/research/VERA-package",
   "base_branch": "experiment/firearm-package",
   "base_commit_at_plan_start": "55b1df6",
   "host": "sp2117@oz.gccis.rit.edu",
   "preferred_gpu_uuid": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
-  "gpu_count": 1,
-  "keep_ada7_free": true,
+  "gpu_count": 2,
+  "keep_ada7_free": false,
   "candidate_backbone": "qwen3vl_8b_instruct",
   "backbone_status": "requires_SFT_and_GRPO_compatibility_gate",
   "frames_per_video": 8,
@@ -59,8 +60,10 @@
       "SG",
       "RG"
     ],
-    "warmup_fit_passes": 0.5,
-    "warmup_selection": "fixed_no_STOP_selection"
+    "warmup_fit_passes": 1.0,
+    "warmup_selection": "fixed_no_STOP_selection",
+    "warmup_exposure_status": "candidate_not_frozen_FIT_only_calibration",
+    "previous_candidate_fit_passes": 0.5
   },
   "supervised": {
     "learning_rate": 5e-05,
@@ -101,18 +104,36 @@
     "temporal_order_reward": false
   },
   "budget_gpu_hours": {
-    "total_ceiling": 48,
-    "pilot_allocation": 3,
-    "sft_pilot_ceiling": 2,
-    "rl_pilot_ceiling": 1,
-    "per_method_seed_ceiling": 2.5,
-    "full_runs_ceiling": 37.5,
-    "evaluation_reserve": 7.5
+    "total_ceiling": null,
+    "pilot_allocation": 6,
+    "sft_pilot_ceiling": 4,
+    "rl_pilot_ceiling": 2,
+    "per_method_seed_ceiling": null,
+    "full_runs_ceiling": null,
+    "evaluation_reserve": null
   },
-  "no_training_started_for_this_plan": true,
+  "no_training_started_for_this_plan": false,
   "numbers": "proposed_defaults_freeze_before_comparative_runs",
   "protocol_sources": {
     "delivered_folder": "POSTTRAINING_HANDOFF.md",
     "repository_folder": "HANDOFF.md"
+  },
+  "gpus_per_process": 1,
+  "gpu_uuids": [
+    "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+    "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7"
+  ],
+  "budget_accounting": "aggregate device occupancy; concurrent wall time sums across GPUs",
+  "initial_questions": "two existing seed questions, shared across B0 and weight arms",
+  "resource_policy_authorization": "2026-10-26 side conversation: remove real-run GPU-hour ceilings; extend finite pilot limits; retain other stopping criteria",
+  "progress_updates": {
+    "active_work_max_silence_seconds": 60,
+    "experiment_status_target_minutes": 15,
+    "notify_immediately": [
+      "failure",
+      "stopping_gate",
+      "material_result",
+      "required_user_action"
+    ]
   }
 }

@@ -1,0 +1,58 @@
+{
+  "policy": "filesystem metadata only; contents not read",
+  "nonempty_prior_test_output_files": 13,
+  "files": [
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_bank_random_v1/test.jsonl",
+      "bytes": 115577
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_training1_seed3/test.jsonl",
+      "bytes": 128875
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/smoke_training1c_bank/test.jsonl",
+      "bytes": 5424
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_bank_v1/test.jsonl",
+      "bytes": 126313
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_training1_seed2/test.jsonl",
+      "bytes": 121350
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_fixed_seed2/test.jsonl",
+      "bytes": 165390
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/training1_smoke1/test.jsonl",
+      "bytes": 11250
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_bank_noscore_v1/test.jsonl",
+      "bytes": 137960
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_training1_v1/test.jsonl",
+      "bytes": 143531
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/smoke_training1b_fixed/test.jsonl",
+      "bytes": 5756
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_fixed_seed3/test.jsonl",
+      "bytes": 128965
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/smoke_training1b_fixed_before_history_fit/test.jsonl",
+      "bytes": 5756
+    },
+    {
+      "path": "/local/datasets/sp2117/firearm_visilab/training1/runs/firearm_vera_fixed_v1/test.jsonl",
+      "bytes": 118135
+    }
+  ]
+}

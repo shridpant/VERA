@@ -1,0 +1,147 @@
+[
+  {
+    "path": "pilot-c0l-003/result.json",
+    "value": {
+      "bad_format": 0,
+      "bad_kl": 0,
+      "bad_stop": 0,
+      "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-003/checkpoints/final-000288",
+      "censored": false,
+      "cursor": 288,
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 529.5115539580001,
+      "fit_manifest_hash": "c5c52187571a2a241296146a73a3926e0426b21f7858cd6bd97423a1366b39d2",
+      "fit_passes": 1.5,
+      "grounded": false,
+      "initial_exposures": 0,
+      "initial_stop": null,
+      "last_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-003/checkpoints/final-000288",
+      "method": "SL",
+      "next_check": 96,
+      "peak_allocated_bytes": 19518665216,
+      "peak_reserved_bytes": 20115881984,
+      "reference_hash": null,
+      "reward_version": null,
+      "scientific_role": "exploratory_pilot",
+      "seed": 20261026,
+      "selection": {
+        "anchor": -1.0,
+        "best": [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-003/checkpoints/final-000288",
+        "checks": 0,
+        "reason": "fixed_warmup_complete",
+        "stale": 0
+      },
+      "status": "stopped",
+      "stop_reason": "fixed_warmup_complete",
+      "updates": 36,
+      "warmup_passes": 1.5
+    }
+  },
+  {
+    "path": "format-l-003/result.json",
+    "value": {
+      "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-003/checkpoints/final-000288",
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 133.27774879796198,
+      "grounded": false,
+      "invalid": 1,
+      "invalid_fraction_observed": 0.010416666666666666,
+      "peak_allocated_bytes": 18475440640,
+      "peak_reserved_bytes": 18782093312,
+      "planned_responses": 96,
+      "responses": 96,
+      "status": "passed",
+      "stopped_early_for_irreversible_gate_failure": false,
+      "weights_unchanged": true
+    }
+  },
+  {
+    "path": "format-g-003/result.json",
+    "value": {
+      "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-003/checkpoints/final-000288",
+      "device": "NVIDIA RTX 6000 Ada Generation",
+      "elapsed_seconds": 19.061392094998155,
+      "grounded": true,
+      "invalid": 5,
+      "invalid_fraction_observed": 1.0,
+      "peak_allocated_bytes": 18501008384,
+      "peak_reserved_bytes": 18865979392,
+      "planned_responses": 96,
+      "responses": 5,
+      "status": "failed_gate",
+      "stopped_early_for_irreversible_gate_failure": true,
+      "weights_unchanged": true
+    }
+  },
+  {
+    "path": "calibration/target-mask-diagnosis.json",
+    "value": {
+      "completion_tokens": 220,
+      "masked_known_boundary_tokens": [
+        {
+          "offset": [
+            62,
+            65
+          ],
+          "overlapping_kinds": [
+            1,
+            1
+          ],
+          "text": "\",\""
+        },
+        {
+          "offset": [
+            162,
+            166
+          ],
+          "overlapping_kinds": [
+            2,
+            2
+          ],
+          "text": "},{\""
+        },
+        {
+          "offset": [
+            221,
+            225
+          ],
+          "overlapping_kinds": [
+            2,
+            2
+          ],
+          "text": "},{\""
+        },
+        {
+          "offset": [
+            278,
+            282
+          ],
+          "overlapping_kinds": [
+            2,
+            2
+          ],
+          "text": "},{\""
+        },
+        {
+          "offset": [
+            422,
+            424
+          ],
+          "overlapping_kinds": [
+            1,
+            1
+          ],
+          "text": "]}"
+        }
+      ],
+      "masked_tokens": 43,
+      "target": "{\"category\":\"Handgun\",\"action_group\":\"aim\",\"action_code\":\"PAH1\",\"grounding\":[{\"frame_id\":0,\"boxes\":null},{\"frame_id\":1,\"boxes\":[[0.09062,0.67891,0.15898,0.76094]]},{\"frame_id\":2,\"boxes\":[[0.27865,0.59167,0.33385,0.65104]]},{\"frame_id\":3,\"boxes\":[[0.39375,0.525,0.43906,0.57031]]},{\"frame_id\":4,\"boxes\":[[0.47422,0.49844,0.51836,0.53281]]},{\"frame_id\":5,\"boxes\":null},{\"frame_id\":6,\"boxes\":null},{\"frame_id\":7,\"boxes\":null}]}",
+      "video": "Handgun__PAH1_C1_P2_V1_HB_1"
+    }
+  }
+]

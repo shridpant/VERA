@@ -1,0 +1,181 @@
+{
+  "calibration-mask-v2/format-decision-007.json": {
+    "results": {
+      "g": {
+        "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-007/checkpoints/final-000384",
+        "device": "NVIDIA RTX 6000 Ada Generation",
+        "elapsed_seconds": 334.79033032798907,
+        "grounded": true,
+        "invalid": 5,
+        "invalid_fraction_observed": 0.078125,
+        "peak_allocated_bytes": 18501008384,
+        "peak_reserved_bytes": 18865979392,
+        "planned_responses": 96,
+        "responses": 64,
+        "status": "failed_gate",
+        "stopped_early_for_irreversible_gate_failure": true,
+        "weights_unchanged": true
+      },
+      "l": {
+        "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-007/checkpoints/final-000384",
+        "device": "NVIDIA RTX 6000 Ada Generation",
+        "elapsed_seconds": 129.67905644199345,
+        "grounded": false,
+        "invalid": 1,
+        "invalid_fraction_observed": 0.010416666666666666,
+        "peak_allocated_bytes": 18475440640,
+        "peak_reserved_bytes": 18782093312,
+        "planned_responses": 96,
+        "responses": 96,
+        "status": "passed",
+        "stopped_early_for_irreversible_gate_failure": false,
+        "weights_unchanged": true
+      }
+    },
+    "warmup_passes": 2.0
+  },
+  "calibration-mask-v2/status.json": {
+    "controller_pid": 283507,
+    "reason": "none of the declared FIT-only warm-up candidates met the format gate",
+    "stage": "failed_format_calibration",
+    "started_unix": 1793074137.8707242,
+    "updated_unix": 1793076537.71536
+  },
+  "failed_FIT_responses": [
+    {
+      "text": "{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW4\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0.5697,0.4593,0.6352,0.6473]]},{\"frame_id\":3,\"boxes\":[[0.4656,0.5174,0.5362,0.6847]]},{\"frame_id\":4,\"boxes\":[[0.4094,0.5441,0.4814,0.7373]]},{\"frame_id\":5,\"boxes\":[[0.3561,0.5579,0.4297,0.7556]]},{\"frame_id\":6,\"boxes\":[[0.2859,0.5976,0.3589,0.8039]]},{\"frame_id\":7,\"boxes\":[]}]",
+      "truncated": false,
+      "video": "Machine_Gun__PCW4_C1_P2_V1_HB_2"
+    },
+    {
+      "text": "{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW4\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0.04,0.28,0.15,0.33]]},{\"frame_id\":3,\"boxes\":[[0.1,0.35,0.23,0.41]]},{\"frame_id\":4,\"boxes\":[[0.21,0.4,0.31,0.45]]},{\"frame_id\":5,\"boxes\":[[0.34,0.43,0.46,0.49]]},{\"frame_id\":6,\"boxes\":[[0.46,0.47,0.62,0.54]]},{\"frame_id\":7,\"boxes\":[]}]}\n\n{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW4\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0.04,0.28,0.15,0.33]]},{\"frame_id\":3,\"boxes\":[[0.1,0.35,0.23,0.41]]},{\"frame_id\":4,\"boxes\":[[0.21,0.4,0.31,0.45]]},{\"frame_id\":5,\"boxes\":[[0.34,0.43,0.46,0.49]]},{\"frame_id\":6,\"boxes\":[[0.46,0.47,0.62,0.54]]},{\"frame_id\":7,\"boxes\":[]}]}\n\n{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW4\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0.04,0.28,0.15,0.33]]},{\"frame_id\":3,\"boxes\":[[0.1,0.35,0.23,0.41]]},{\"frame_id\":4,\"boxes\":[[0.21,0.4,0.31,0.45]]},{\"frame",
+      "truncated": true,
+      "video": "Machine_Gun__PAW4_C2_P3_V1_HB_2"
+    },
+    {
+      "text": "{\"category\":\"Handgun\",\"action_group\":\"aim\",\"action_code\":\"PAH1\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[125,586,201,648]]},{\"frame_id\":3,\"boxes\":[[381,502,442,552]]},{\"frame_id\":4,\"boxes\":[]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}\n\n{\"category\":\"Handgun\",\"action_group\":\"carry\",\"action_code\":\"PCH2\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[125,586,201,648]]},{\"frame_id\":3,\"boxes\":[[381,502,442,552]]},{\"frame_id\":4,\"boxes\":[]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}",
+      "truncated": false,
+      "video": "Handgun__PAH3_C2_P5_V2_HB_4"
+    },
+    {
+      "text": "{\"category\":\"Handgun\",\"action_group\":\"aim\",\"action_code\":\"PAH3\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[169,602,216,651]]},{\"frame_id\":3,\"boxes\":[[408,507,455,556]]},{\"frame_id\":4,\"boxes\":[]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}",
+      "truncated": false,
+      "video": "Handgun__PAH3_C2_P5_V2_HB_4"
+    },
+    {
+      "text": "{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW1\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[157,621,204,663]]},{\"frame_id\":3,\"boxes\":[[370,503,450,567]]},{\"frame_id\":4,\"boxes\":[[559,400,584,436]]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}\n\n{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW1\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[157,621,204,663]]},{\"frame_id\":3,\"boxes\":[[370,503,450,567]]},{\"frame_id\":4,\"boxes\":[[559,400,584,436]]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}\n\n{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW1\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[157,621,204,663]]},{\"frame_id\":3,\"boxes\":[[370,503,450,567]]},{\"frame_id\":4,\"boxes\":[[559,400,584,436]]},{\"frame_id\":5,\"boxes\":[]},{\"frame_id\":6,\"boxes\":[]},{\"frame_id\":7,\"boxes\":[]}]}\n\n{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW1\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[157,621,204,663]]},{\"frame_id\":3,\"boxes\":[[370,503,45",
+      "truncated": true,
+      "video": "Handgun__PAH3_C2_P5_V2_HB_4"
+    }
+  ],
+  "format-g-007/result.json": {
+    "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-007/checkpoints/final-000384",
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 334.79033032798907,
+    "grounded": true,
+    "invalid": 5,
+    "invalid_fraction_observed": 0.078125,
+    "peak_allocated_bytes": 18501008384,
+    "peak_reserved_bytes": 18865979392,
+    "planned_responses": 96,
+    "responses": 64,
+    "status": "failed_gate",
+    "stopped_early_for_irreversible_gate_failure": true,
+    "weights_unchanged": true
+  },
+  "format-l-007/result.json": {
+    "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-007/checkpoints/final-000384",
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 129.67905644199345,
+    "grounded": false,
+    "invalid": 1,
+    "invalid_fraction_observed": 0.010416666666666666,
+    "peak_allocated_bytes": 18475440640,
+    "peak_reserved_bytes": 18782093312,
+    "planned_responses": 96,
+    "responses": 96,
+    "status": "passed",
+    "stopped_early_for_irreversible_gate_failure": false,
+    "weights_unchanged": true
+  },
+  "pilot-c0g-007/result.json": {
+    "bad_format": 0,
+    "bad_kl": 0,
+    "bad_stop": 0,
+    "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-007/checkpoints/final-000384",
+    "censored": false,
+    "cursor": 384,
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 791.8657393489848,
+    "fit_manifest_hash": "c5c52187571a2a241296146a73a3926e0426b21f7858cd6bd97423a1366b39d2",
+    "fit_passes": 2.0,
+    "grounded": true,
+    "initial_exposures": 0,
+    "initial_stop": null,
+    "last_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-007/checkpoints/final-000384",
+    "method": "SG",
+    "next_check": 96,
+    "peak_allocated_bytes": 19734168576,
+    "peak_reserved_bytes": 21732786176,
+    "reference_hash": null,
+    "reward_version": null,
+    "scientific_role": "exploratory_pilot",
+    "seed": 20261026,
+    "selection": {
+      "anchor": -1.0,
+      "best": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-007/checkpoints/final-000384",
+      "checks": 0,
+      "reason": "fixed_warmup_complete",
+      "stale": 0
+    },
+    "status": "stopped",
+    "stop_reason": "fixed_warmup_complete",
+    "updates": 48,
+    "warmup_passes": 2.0
+  },
+  "pilot-c0l-007/result.json": {
+    "bad_format": 0,
+    "bad_kl": 0,
+    "bad_stop": 0,
+    "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-007/checkpoints/final-000384",
+    "censored": false,
+    "cursor": 384,
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 729.0709565370344,
+    "fit_manifest_hash": "c5c52187571a2a241296146a73a3926e0426b21f7858cd6bd97423a1366b39d2",
+    "fit_passes": 2.0,
+    "grounded": false,
+    "initial_exposures": 0,
+    "initial_stop": null,
+    "last_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-007/checkpoints/final-000384",
+    "method": "SL",
+    "next_check": 96,
+    "peak_allocated_bytes": 19518665216,
+    "peak_reserved_bytes": 20115881984,
+    "reference_hash": null,
+    "reward_version": null,
+    "scientific_role": "exploratory_pilot",
+    "seed": 20261026,
+    "selection": {
+      "anchor": -1.0,
+      "best": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "best_checkpoint": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-007/checkpoints/final-000384",
+      "checks": 0,
+      "reason": "fixed_warmup_complete",
+      "stale": 0
+    },
+    "status": "stopped",
+    "stop_reason": "fixed_warmup_complete",
+    "updates": 48,
+    "warmup_passes": 2.0
+  }
+}

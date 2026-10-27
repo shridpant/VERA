@@ -1,0 +1,116 @@
+{
+  "arms": {
+    "g": {
+      "artifacts": {
+        "responses.jsonl": "932c65ada6abbc7d6b687d9ab3e4bd93ae5dbf71439e8b949dfe660174e559bc",
+        "result.json": "bf5faf9b7367ec866dd2942225d52a96185a847ac862bddde6e8cea8f9577523",
+        "spec.json": "f2dfbd5b2fce00466780e276a15f89ee9dec7114f8dcf8e4bb168d93f204dc1d"
+      },
+      "failures": [
+        {
+          "cause": "invalid_json",
+          "ends_with_array": true,
+          "ends_with_code_fence": false,
+          "message": "Expecting ',' delimiter",
+          "offset": 435,
+          "raw_text": "{\"category\":\"Machine_Gun\",\"action_group\":\"carry\",\"action_code\":\"PCW4\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[544.61,590.21,602.23,653.24]]},{\"frame_id\":3,\"boxes\":[[469.45,590.21,489.83,710.06]]},{\"frame_id\":4,\"boxes\":[[415.16,578.42,436.38,778.68]]},{\"frame_id\":5,\"boxes\":[[343.89,580.42,373.55,820.83]]},{\"frame_id\":6,\"boxes\":[[210.98,675.83,255.52,889.9]]},{\"frame_id\":7,\"boxes\":[]}]",
+          "sample": 3,
+          "text_sha256": "f4eb26900d3b6c10dc7905843fc4b57e6574a4e59f368eb6eb334083613c0ce3",
+          "truncated": false,
+          "video": "Machine_Gun__PCW4_C1_P2_V1_HB_2"
+        },
+        {
+          "cause": "invalid_json",
+          "ends_with_array": false,
+          "ends_with_code_fence": true,
+          "message": "Extra data",
+          "offset": 411,
+          "raw_text": "{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW2\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0,359.1,229.1,410.9]]},{\"frame_id\":3,\"boxes\":[[180.4,396.5,371.1,455.3]]},{\"frame_id\":4,\"boxes\":[[252.2,420.5,454.2,483.3]]},{\"frame_id\":5,\"boxes\":[[335.6,451.8,550.2,517.8]]},{\"frame_id\":6,\"boxes\":[[526.8,525.8,779.7,619.9]]},{\"frame_id\":7,\"boxes\":[]}]}```",
+          "sample": 0,
+          "text_sha256": "85cbdc8882c190f930acc4f813ad84f38459d7cae4a720e96042a0c04ab229fb",
+          "truncated": false,
+          "video": "Machine_Gun__PAW4_C2_P3_V1_HB_2"
+        },
+        {
+          "cause": "invalid_json",
+          "ends_with_array": true,
+          "ends_with_code_fence": false,
+          "message": "Expecting ',' delimiter",
+          "offset": 448,
+          "raw_text": "{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW1\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[0,353.241,168.515,389.757]]},{\"frame_id\":3,\"boxes\":[[131.461,385.913,254.462,427.833]]},{\"frame_id\":4,\"boxes\":[[252.122,382.412,375.318,433.678]]},{\"frame_id\":5,\"boxes\":[[377.343,440.107,471.326,490.372]]},{\"frame_id\":6,\"boxes\":[[516.079,513.841,777.755,615.203]]},{\"frame_id\":7,\"boxes\":[]}]",
+          "sample": 1,
+          "text_sha256": "9b5664a9422b000b85820b4b9dec26c079987aef464105a94960d7d02fe12bc7",
+          "truncated": false,
+          "video": "Machine_Gun__PAW4_C2_P3_V1_HB_2"
+        },
+        {
+          "cause": "invalid_json",
+          "ends_with_array": true,
+          "ends_with_code_fence": false,
+          "message": "Expecting ',' delimiter",
+          "offset": 429,
+          "raw_text": "{\"category\":\"Machine_Gun\",\"action_group\":\"aim\",\"action_code\":\"PAW8\",\"grounding\":[{\"frame_id\":0,\"boxes\":[]},{\"frame_id\":1,\"boxes\":[]},{\"frame_id\":2,\"boxes\":[[39.24,364.47,148.5,406.25]]},{\"frame_id\":3,\"boxes\":[[110.94,414.06,200.0,456.25]]},{\"frame_id\":4,\"boxes\":[[221.87,460.94,312.5,503.12]]},{\"frame_id\":5,\"boxes\":[[333.75,496.87,453.12,546.87]]},{\"frame_id\":6,\"boxes\":[[523.44,523.44,781.25,625.0]]},{\"frame_id\":7,\"boxes\":[]}]",
+          "sample": 2,
+          "text_sha256": "2ed0d8d4d691bb34970df173006278cc4fae7d6066ddd6f77bc48a18baa5918c",
+          "truncated": false,
+          "video": "Machine_Gun__PAW4_C2_P3_V1_HB_2"
+        }
+      ],
+      "result": {
+        "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-010/checkpoints/final-000576",
+        "device": "NVIDIA RTX 6000 Ada Generation",
+        "elapsed_seconds": 535.3090599310235,
+        "grounded": true,
+        "invalid": 4,
+        "invalid_fraction_observed": 0.041666666666666664,
+        "peak_allocated_bytes": 18501218304,
+        "peak_reserved_bytes": 18865979392,
+        "planned_responses": 96,
+        "responses": 96,
+        "status": "passed",
+        "stopped_early_for_irreversible_gate_failure": false,
+        "weights_unchanged": true
+      },
+      "validated_unit_boxes_in_valid_responses": 213
+    },
+    "l": {
+      "artifacts": {
+        "responses.jsonl": "b334c78b1b2ea10bf0ab5f0dec8ffaa7d72228afa1fa9e76f442190995753983",
+        "result.json": "346104f4e464bf9b1c6b1e3cc553701d237c130bdb53e484faa3eedcff397a7c",
+        "spec.json": "07ff0128a3bd4767b208c1a9e41f051bffa57ef314d8ab95062c7aa6342eae06"
+      },
+      "failures": [
+        {
+          "cause": "strict_schema_or_geometry",
+          "raw_text": "{\"category\":\"Phone\",\"action_group\":\"phone\",\"action_code\":\"N8\"}",
+          "sample": 1,
+          "text_sha256": "23f20801e9c2ef3a75fceb8ed69138f412867062179fa385283e119f93d6762f",
+          "truncated": false,
+          "video": "No_Gun__N8_C2_P5_V2_HB_3"
+        }
+      ],
+      "result": {
+        "adapter": "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-010/checkpoints/final-000576",
+        "device": "NVIDIA RTX 6000 Ada Generation",
+        "elapsed_seconds": 126.5569071630016,
+        "grounded": false,
+        "invalid": 1,
+        "invalid_fraction_observed": 0.010416666666666666,
+        "peak_allocated_bytes": 18475440640,
+        "peak_reserved_bytes": 18782093312,
+        "planned_responses": 96,
+        "responses": 96,
+        "status": "passed",
+        "stopped_early_for_irreversible_gate_failure": false,
+        "weights_unchanged": true
+      },
+      "validated_unit_boxes_in_valid_responses": 0
+    }
+  },
+  "attempt": 10,
+  "fresh_label_adapter_hash": "b520a7965268cc6cafb303646a5277c073e81610b2f870b18221256e4d5589c0",
+  "fresh_label_exact_reproduction": true,
+  "old_label_adapter_hash": "b520a7965268cc6cafb303646a5277c073e81610b2f870b18221256e4d5589c0",
+  "release": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/8d9232c",
+  "scoring_rules_changed": false
+}

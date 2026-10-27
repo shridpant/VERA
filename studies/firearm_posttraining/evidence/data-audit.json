@@ -1,0 +1,121 @@
+{
+  "historical_test_access": "not established; do not claim newly pristine",
+  "overlaps": 0,
+  "seed": 20261026,
+  "source_counts": {
+    "test_metadata": 96,
+    "train": 240,
+    "val": 62
+  },
+  "source_hashes": {
+    "boxes_train.json": "a5230a8b83bbbc412fdcafa2e4273146f7013b3d12bdc44d8a1f27427882218f",
+    "splits.json": "7222849be8f6bf1cff68de7008a0e94de9d5fa1b9a8b414686698462f6f28542",
+    "test.json": "a21f748a75d03aef2bac400c0af1a83331068913ab6a75c9817896d0197e65c4",
+    "train.json": "ed9107ad1a7cb470eb8519e091dc8996d85eaf9ffbba161bfa519610101e38c8",
+    "val.json": "125a2566115fa6d8c87548ce842984811bab64b965acbb8fb1d4f1425ecf0bc3"
+  },
+  "splits": {
+    "fit": {
+      "action_codes": {
+        "N1": 4,
+        "N10": 4,
+        "N11": 5,
+        "N12": 3,
+        "N2": 5,
+        "N3": 3,
+        "N4": 4,
+        "N5": 4,
+        "N6": 8,
+        "N7": 4,
+        "N8": 7,
+        "N9": 6,
+        "PAH1": 6,
+        "PAH2": 6,
+        "PAH3": 8,
+        "PAH4": 5,
+        "PAH5": 4,
+        "PAH6": 1,
+        "PAH7": 3,
+        "PAH8": 3,
+        "PAH9": 4,
+        "PAW1": 5,
+        "PAW2": 3,
+        "PAW4": 6,
+        "PAW5": 4,
+        "PAW6": 5,
+        "PAW8": 12,
+        "PCH1": 6,
+        "PCH2": 4,
+        "PCH3": 3,
+        "PCH4": 3,
+        "PCH5": 4,
+        "PCH6": 2,
+        "PCH7": 4,
+        "PCW1": 8,
+        "PCW2": 5,
+        "PCW4": 6,
+        "PCW5": 4,
+        "PCW7": 1,
+        "PCW8": 7,
+        "PCW9": 3
+      },
+      "annotations": {
+        "listed_no_box": 444,
+        "negative_category": 456,
+        "positive": 636
+      },
+      "categories": {
+        "Handgun": 66,
+        "Machine_Gun": 69,
+        "No_Gun": 57
+      },
+      "count": 192,
+      "groups": 144,
+      "manifest_sha256": "c5c52187571a2a241296146a73a3926e0426b21f7858cd6bd97423a1366b39d2"
+    },
+    "stop": {
+      "action_codes": {
+        "N1": 2,
+        "N10": 2,
+        "N11": 1,
+        "N12": 2,
+        "N2": 1,
+        "N3": 2,
+        "N5": 2,
+        "N6": 1,
+        "N8": 1,
+        "PAH1": 2,
+        "PAH2": 2,
+        "PAH4": 2,
+        "PAH6": 3,
+        "PAH7": 1,
+        "PAH8": 1,
+        "PAW2": 3,
+        "PAW5": 2,
+        "PCH1": 2,
+        "PCH3": 1,
+        "PCH4": 1,
+        "PCH6": 2,
+        "PCW5": 2,
+        "PCW7": 4,
+        "PCW8": 2,
+        "PCW9": 4
+      },
+      "annotations": {
+        "listed_no_box": 109,
+        "negative_category": 112,
+        "positive": 163
+      },
+      "categories": {
+        "Handgun": 17,
+        "Machine_Gun": 17,
+        "No_Gun": 14
+      },
+      "count": 48,
+      "groups": 37,
+      "manifest_sha256": "cdb445708f88bf97d8b887e3689bf824db863c306a79ee5b22d97a85e042bf2a"
+    }
+  },
+  "test_policy": "identity overlap audit only; no images/boxes/predictions",
+  "validation_policy": "historically used Phase 1; post-freeze reporting only"
+}

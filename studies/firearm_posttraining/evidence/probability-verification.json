@@ -1,0 +1,264 @@
+{
+  "calibration-probability-v3-launch-001.json": {
+    "code_commit": "2118b52",
+    "command": [
+      "/local/datasets/sp2117/envs/firearm-posttrain/bin/python",
+      "-m",
+      "studies.firearm_posttraining.calibrate",
+      "--root",
+      "/local/datasets/sp2117/firearm_visilab/posttraining1",
+      "--original-data",
+      "/local/datasets/sp2117/firearm_visilab/training1/data",
+      "--frames-root",
+      "/local/datasets/sp2117/firearm_visilab/training1/frames",
+      "--control-name",
+      "calibration-probability-v3",
+      "--attempt-offset",
+      "7",
+      "--warmup-grid",
+      "3",
+      "--warmup-attempt",
+      "8",
+      "--label-smoke",
+      "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-labels-005/result.json",
+      "--grounded-smoke",
+      "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-grounded-005/result.json"
+    ],
+    "cwd": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/2118b52",
+    "new_gate_attempt": 9,
+    "pid": 293624,
+    "pilot_GPU_hours_before_launch": 3.8658546127938704,
+    "pilot_limit_hours": 6,
+    "policy": "full-support-temperature-0.8-v1",
+    "reuse_verified": "exact SFT source, trainer hash, warm source commit, zero STOP queries,576exposures, all checkpoint hashes",
+    "started_unix": 1793079823.3794076,
+    "warmup_reused_attempt": 8
+  },
+  "calibration-probability-v3/config.json": {
+    "attempt_offset": 7,
+    "control_name": "calibration-probability-v3",
+    "grounded_smoke": "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-grounded-005/result.json",
+    "label_smoke": "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-labels-005/result.json",
+    "target_mask": "known-schema-unknown-payload-v2",
+    "warmup_attempt": 8,
+    "warmup_grid": [
+      3.0
+    ]
+  },
+  "calibration-probability-v3/status.json": {
+    "attempt": 9,
+    "controller_pid": 293624,
+    "stage": "FIT_format_sampling",
+    "started_unix": 1793079823.5533004,
+    "updated_unix": 1793079823.5561695,
+    "warmup_passes": 3.0
+  },
+  "controller_alive": true,
+  "data/target-mask-audit-v3.json": {
+    "current_model_sha256": "8f6c762e45ca43f1d75a50c3cffd4abede148696a41586df2c28257e6ede9316",
+    "formerly_masked_known_tokens_retained": 6658,
+    "maximum_completion_tokens": 311,
+    "previous_model_sha256": "b12084ff204c68c81c8c58db5613846aea9fb0929e25253721130de6f1f4c5b1",
+    "sft_reference_commit": "a12282013e7dfbfc91e354405dc099b744291168",
+    "sft_reference_model_sha256": "978b0556bdd469ee14dcbcf941cbfa8a9a325d36a6a5ccb29f55b53a38e3504d",
+    "sft_trainer_sha256": "7cc8a355a381e44ce17caaeaceeaefa7396b45c9273265e69fca6f419111de08",
+    "sft_training_source_unchanged": true,
+    "sft_unchanged_functions": [
+      "NativeModel.__init__",
+      "NativeModel.adapter_hash",
+      "NativeModel.assert_trainable",
+      "NativeModel.completion",
+      "NativeModel.encode",
+      "NativeModel.joined",
+      "NativeModel.logits",
+      "NativeModel.prompt",
+      "NativeModel.save_adapter",
+      "NativeModel.sft_loss",
+      "instruction",
+      "target_parts",
+      "token_kinds"
+    ],
+    "status": "passed",
+    "target_bytes_unchanged": true,
+    "target_inventory_sha256": "951db9750b66f9381f462594e83fadc10a8c5880e273aeb03283b331877dcf40",
+    "target_mask": "known-schema-unknown-payload-v2",
+    "unknown_payload_tokens_masked": 553,
+    "videos": 240
+  },
+  "format-g-009": {
+    "job.json": {
+      "before": {
+        "memory_total_mib": 46068,
+        "memory_used_mib": 4,
+        "processes": [],
+        "raw": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, NVIDIA RTX 6000 Ada Generation, 4, 46068, 0, 615.71.10",
+        "utilization_pct": 0
+      },
+      "code_commit": "2118b5287045baabfff25b1dc53701e95ffcecca",
+      "command": [
+        "/local/datasets/sp2117/envs/firearm-posttrain/bin/python",
+        "-m",
+        "studies.firearm_posttraining.fit_format",
+        "--model",
+        "/local/datasets/sp2117/models/Qwen/Qwen3-VL-8B-Instruct/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "--data",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/data",
+        "--output",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/format-g-009",
+        "--adapter",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-008/checkpoints/final-000576",
+        "--grounded"
+      ],
+      "cwd": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/2118b52",
+      "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+      "seconds": 900,
+      "supervisor_pid": 293693
+    },
+    "process.json": {
+      "pid": 293708,
+      "started_unix": 1793079823.9028628
+    }
+  },
+  "format-l-009": {
+    "job.json": {
+      "before": {
+        "memory_total_mib": 46068,
+        "memory_used_mib": 4,
+        "processes": [],
+        "raw": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03, NVIDIA RTX 6000 Ada Generation, 4, 46068, 0, 615.71.10",
+        "utilization_pct": 0
+      },
+      "code_commit": "2118b5287045baabfff25b1dc53701e95ffcecca",
+      "command": [
+        "/local/datasets/sp2117/envs/firearm-posttrain/bin/python",
+        "-m",
+        "studies.firearm_posttraining.fit_format",
+        "--model",
+        "/local/datasets/sp2117/models/Qwen/Qwen3-VL-8B-Instruct/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "--data",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/data",
+        "--output",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/format-l-009",
+        "--adapter",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-008/checkpoints/final-000576"
+      ],
+      "cwd": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/2118b52",
+      "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+      "seconds": 600,
+      "supervisor_pid": 293694
+    },
+    "process.json": {
+      "pid": 293704,
+      "started_unix": 1793079823.882787
+    }
+  },
+  "smoke-grounded-005/result.json": {
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 79.98046410200186,
+    "grpo": [
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.7246342897415161,
+        "kl_per_token": 0.0,
+        "loss": 0.9999999403953552
+      },
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.7179033756256104,
+        "kl_per_token": 0.0,
+        "loss": 0.4999999701976776
+      },
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.7347283959388733,
+        "kl_per_token": 0.0,
+        "loss": -0.5
+      },
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.7201910614967346,
+        "kl_per_token": 0.0,
+        "loss": -0.9999999403953552
+      }
+    ],
+    "grpo_grad_norm": 0.25226038694381714,
+    "note": "RL diagnostic-panel reward variance / validity gate still required after supervised pilot",
+    "peak_allocated_bytes": 20126979584,
+    "peak_reserved_bytes": 21690843136,
+    "policy_hash_after": "049f33de9fd179bc8b9b56202382c221a1b640dbe7e3f1b1c888fe9cd19621e8",
+    "policy_hash_before": "14e4a9c52a8c737b65cb0fe1201e1b08ecc431c371294f8572f72d101cb8a2d7",
+    "prediction_reload_exact": true,
+    "reference_hash": "14e4a9c52a8c737b65cb0fe1201e1b08ecc431c371294f8572f72d101cb8a2d7",
+    "resume_exact": true,
+    "reward_std": 0.0,
+    "scientific_rl_gate_passed": false,
+    "sft_losses": [
+      1.2007490396499634,
+      1.1732953786849976,
+      1.1170213222503662
+    ],
+    "status": "engineering_passed",
+    "synthetic_advantages_for_engineering_only": true
+  },
+  "smoke-labels-005/result.json": {
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 47.60074127296684,
+    "grpo": [
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.0871937945485115,
+        "kl_per_token": 0.0,
+        "loss": 1.0
+      },
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.06255724281072617,
+        "kl_per_token": 0.0,
+        "loss": 0.5
+      },
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.0744003877043724,
+        "kl_per_token": 0.0,
+        "loss": -0.5
+      },
+      {
+        "clip_fraction": 0.0,
+        "entropy": 0.023558484390378,
+        "kl_per_token": 0.0,
+        "loss": -1.0
+      }
+    ],
+    "grpo_grad_norm": 2.2485973834991455,
+    "note": "RL diagnostic-panel reward variance / validity gate still required after supervised pilot",
+    "peak_allocated_bytes": 19604307968,
+    "peak_reserved_bytes": 20300431360,
+    "policy_hash_after": "288e82c84945242f6e3d043bd5855c0b119b10d7d923761fab2804e7a5dfc832",
+    "policy_hash_before": "8bc56a78091b23e5a94943f69458a82025a67d56901cf411c3c2821b7c09f878",
+    "prediction_reload_exact": true,
+    "reference_hash": "8bc56a78091b23e5a94943f69458a82025a67d56901cf411c3c2821b7c09f878",
+    "resume_exact": true,
+    "reward_std": 0.0,
+    "scientific_rl_gate_passed": false,
+    "sft_losses": [
+      2.8177454471588135,
+      2.764535665512085,
+      2.463707447052002
+    ],
+    "status": "engineering_passed",
+    "synthetic_advantages_for_engineering_only": true
+  },
+  "smoke-vq-002/result.json": {
+    "device": "NVIDIA RTX 6000 Ada Generation",
+    "elapsed_seconds": 16.79168425500393,
+    "images": 16,
+    "peak_allocated_bytes": 19074778112,
+    "peak_reserved_bytes": 19402850304,
+    "prompt_tokens": 4451,
+    "proposal_truncated": false,
+    "proposal_valid": true,
+    "scientific_role": "FIT_only_engineering",
+    "status": "engineering_passed",
+    "weights_unchanged": true
+  }
+}

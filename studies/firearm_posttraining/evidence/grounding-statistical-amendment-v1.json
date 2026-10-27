@@ -1,0 +1,92 @@
+{
+  "amendment_hash": "802646be83f279a9beb23fff4e3a36563f0a275ea1f20af1ed4350a68f74da2b",
+  "analysis_code_hashes": {
+    "__init__.py": "0fa4230ce77fc2b45333dc8c58634c11c4ebffded722c37351f62c221acd5e07",
+    "run.py": "39fa801b348199b811056530b7029c3bd4243919db2472085b9fdb439c03ec54",
+    "statistics.py": "f9a5432a5882f84b1558e1bb169aa401eed8de3ea42cec2a19ccf91e362c54db"
+  },
+  "analysis_commit": "b8e9cb078b842f9324d2768884058c89af643d46",
+  "authorization": "Human in chat01a17dce: add a proper statistical test for grounding before looking at final results; keep scoring rules unchanged; document a protocol amendment.",
+  "base_protocol_file_sha256": "2b09e1a4ccaf5fb55748babd85de625782889765822c5b0603eb0c01d4ee2a42",
+  "base_protocol_hash": "3f1f1e8a9aa78a0c5124f765df6712d2c33c0a1db770947edd3318cbec4abe80",
+  "base_protocol_path": "/local/datasets/sp2117/firearm_visilab/posttraining1/protocol.json",
+  "frozen_at_utc": "2026-10-27T16:20:08.291155+00:00",
+  "frozen_training_release_modified": false,
+  "frozen_unix": 1793118008.291173,
+  "metadata_after": {
+    "active_training_jobs": [
+      "RL-20261026",
+      "SL-20261026"
+    ],
+    "evaluation_directory_exists": false,
+    "evaluation_jobs": [],
+    "pipeline_status": {
+      "controller_pid": 301220,
+      "stage": "sweep_running",
+      "started_unix": 1793116402.458961,
+      "updated_unix": 1793116402.4589682
+    },
+    "report_directory_exists": false,
+    "selection_exists": false
+  },
+  "metadata_before": {
+    "active_training_jobs": [
+      "RL-20261026",
+      "SL-20261026"
+    ],
+    "evaluation_directory_exists": false,
+    "evaluation_jobs": [],
+    "pipeline_status": {
+      "controller_pid": 301220,
+      "stage": "sweep_running",
+      "started_unix": 1793116402.458961,
+      "updated_unix": 1793116402.4589682
+    },
+    "report_directory_exists": false,
+    "selection_exists": false
+  },
+  "no_final_results_inspected": true,
+  "plan": {
+    "alpha": 0.05,
+    "amendment_timing": "after training started, before final selection/evaluation/results; not original pre-training preregistration",
+    "assumptions": "independent representative recording groups and paired method exchangeability under the permutation null; training seeds fixed, not independent sample units",
+    "bootstrap_replicates": 5000,
+    "claim_family": "fixed sequence on test: unchanged RG-SG recognition gain+No_Gun noninferiority rule first; grounding F1 second",
+    "claim_gate": "confirmatory grounding claim only if existing test:RG-SG positive_and_noninferior AND grounding positive_evidence",
+    "claim_limit": "F1 improvement is not a guarantee that every precision/recall/false-box component improved; report all components and harms",
+    "contrast": "RG-SG",
+    "endpoint": "arithmetic mean over three fixed seeds of pooled box F1 at IoU>=0.50",
+    "exact_max_groups": 16,
+    "formula": "F1_seed = 2*TP_seed/(predicted_boxes_seed+GT_boxes_seed)",
+    "history": "historically used reporting dataset, not newly pristine external validation",
+    "insufficient_support": "inconclusive if fewer than two positive-GT groups or fewer than95% bootstrap samples retain positive GT; low permutation resolution/wide intervals are not evidence of no effect",
+    "interval": "95% paired recording-group percentile interval for F1 difference",
+    "minimum_positive_gt_groups": 2,
+    "minimum_valid_bootstrap_fraction": 0.95,
+    "monte_carlo_p": "(number as-or-more extreme + 1)/(draws + 1)",
+    "monte_carlo_permutations": 100000,
+    "multiplicity": "nominal alpha0.05 fixed-sequence gatekeeping for these two claims; other splits/endpoints/contrasts exploratory, no additional confirmatory claims",
+    "null": "joint groupwise exchangeability of RG and SG count vectors, conditional on fixed seeds",
+    "positive_evidence": "positive RG-SG difference AND two-sided p<=0.05 AND lower95% paired bootstrap interval>0",
+    "primary_reporting_split": "test",
+    "reference": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.permutation_test.html",
+    "resampling_unit": "recording_group; all associated videos, frames, annotations and three seed pairs stay together",
+    "rng_seed": 20261027,
+    "scorer": "unchanged report.localization; one-to-one matching; unknown frames excluded; whole-image boxes cannot match; invalid grounding is scored by existing parser",
+    "scoring_rules_changed": false,
+    "supporting_metrics": [
+      "existing IoU50 precision",
+      "existing IoU50 recall",
+      "No_Gun frame false-box rate",
+      "whole-image box rate",
+      "invalid/truncated fraction",
+      "annotation coverage",
+      "seed-specific F1 and seed spread"
+    ],
+    "test": "two-sided paired recording-group method-label permutation test",
+    "training_or_selection_changed": false,
+    "validation_role": "exploratory_only",
+    "version": "grounding-inference-v1"
+  },
+  "status": "frozen_analysis_amendment"
+}
