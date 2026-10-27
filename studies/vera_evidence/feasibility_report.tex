@@ -62,6 +62,14 @@ The two repeated-frame decision changes were RoadAccidents133 (1 to 0) and Burgl
 
 \textbf{Decision after pilot:} do not scale temporal-reward learning. This sample shows decision invariance to the tested orders, despite explanation-text variation. It does not establish model-wide invariance or semantic faithfulness. Next assess whether these differing explanations make incompatible event-order claims, using source-frame review and explicit claim labels; if reliable labels cannot be established, retain the negative feasibility outcome and stop this direction. Do not optimize prompts on these test windows.
 
+
+\section{Qualitative explanation review and stopping decision}
+All 16 reversed/shuffled versus ordered response pairs were reviewed as text. Five were exact matches; the remaining descriptions range from rephrasing and omission to changed event accounts. For example, RoadAccidents133 changes from a car--motorcycle collision to a white van causing a motorcycle crash. Shooting033 changes from carrying an object to running away from a house. These accounts may describe different compatible aspects of a scene; text alone does not establish a contradiction.
+
+The review is a post-hoc Codex assessment, not independent human annotation. No source frames were inspected for this review, and no inter-rater reliability was measured. Each judgment is linked to hashes of both raw responses in temporal\_claim\_review.json. We do not report a hallucination or semantic-error rate.
+
+\textbf{Stop this pilot branch here.} Neither the general shuffle diagnostic nor the observed text variation establishes a distinct learning contribution. No more temporal perturbation calls or prompt optimization are justified by this pilot. The original evidence-question direction remains conditional on accessible, independently verified support labels and a mechanism distinct from existing work. Annotation acquisition and source-grounded evaluation design are the next prerequisites; no additional GPU computation is scheduled from these findings. All frozen results remain preserved.
+
 \section{Primary sources and review limits}
 PrismVAU method sections, LRPO reward/appendix, and the instance-caption annotation pipeline were inspected; several other comparisons currently rely on primary abstracts/introduction and need full-method follow-up. This is not an exhaustive novelty proof.
 \begin{itemize}
