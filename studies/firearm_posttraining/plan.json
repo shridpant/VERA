@@ -1,0 +1,118 @@
+{
+  "status": "planned_not_implemented",
+  "prepared_date": "2026-10-26",
+  "timezone": "America/New_York",
+  "user_scope": [
+    "five_method_controlled_comparison",
+    "LoRA",
+    "one_GPU_for_new_study",
+    "supervised_pilot_then_RL",
+    "explicit_stopping",
+    "end_to_end_handoff"
+  ],
+  "repo": "/Users/shrid/Documents/research/VERA-package",
+  "base_branch": "experiment/firearm-package",
+  "base_commit_at_plan_start": "55b1df6",
+  "host": "sp2117@oz.gccis.rit.edu",
+  "preferred_gpu_uuid": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+  "gpu_count": 1,
+  "keep_ada7_free": true,
+  "candidate_backbone": "qwen3vl_8b_instruct",
+  "backbone_status": "requires_SFT_and_GRPO_compatibility_gate",
+  "frames_per_video": 8,
+  "image_transform": "448x448_letterbox_with_verified_box_transform",
+  "context_limit_candidate": 8192,
+  "completion_limit_candidate": 512,
+  "methods": [
+    "VQ",
+    "SL",
+    "RL",
+    "SG",
+    "RG"
+  ],
+  "baseline": "B0",
+  "seeds": [
+    20261026,
+    20261027,
+    20261028
+  ],
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0,
+    "targets": "fully_qualified_language_attention_q_k_v_o_only",
+    "freeze_vision_projector_embeddings_head": true
+  },
+  "data": {
+    "fit_stop_source": "original_train_only",
+    "fit_fraction_target": 0.8,
+    "split_unit": "recording_group",
+    "stop_fraction_target": 0.2,
+    "final_test_sealed": true
+  },
+  "initialization": {
+    "label_pair": [
+      "SL",
+      "RL"
+    ],
+    "grounded_pair": [
+      "SG",
+      "RG"
+    ],
+    "warmup_fit_passes": 0.5,
+    "warmup_selection": "fixed_no_STOP_selection"
+  },
+  "supervised": {
+    "learning_rate": 5e-05,
+    "microbatch": 1,
+    "effective_distinct_clips_per_update_candidate": 8,
+    "optimizer": "AdamW",
+    "max_grad_norm": 1
+  },
+  "stopping": {
+    "primary_metric": "balanced_category_accuracy",
+    "eval_every_fit_passes": 0.5,
+    "min_delta": 0.005,
+    "patience_checks": 3,
+    "patience_after_fit_passes": 1,
+    "maximum_fit_passes": 5,
+    "max_validation_checks": 10,
+    "use_best_checkpoint": true,
+    "shared_pass_cap_frozen_after_throughput_pilot": true
+  },
+  "rl": {
+    "algorithm": "GRPO",
+    "learning_rate_candidate": 5e-06,
+    "num_generations": 4,
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "policy_clip": 0.2,
+    "kl_coefficient": 0.02,
+    "reference": "immutable_actual_warm_start",
+    "outcome_weights": [
+      0.7,
+      0.2,
+      0.1
+    ],
+    "grounded_outcome_weight": 0.75,
+    "grounded_box_weight": 0.25,
+    "box_reward_gated_by_correct_category": true,
+    "format_or_length_reward": false,
+    "temporal_order_reward": false
+  },
+  "budget_gpu_hours": {
+    "total_ceiling": 48,
+    "pilot_allocation": 3,
+    "sft_pilot_ceiling": 2,
+    "rl_pilot_ceiling": 1,
+    "per_method_seed_ceiling": 2.5,
+    "full_runs_ceiling": 37.5,
+    "evaluation_reserve": 7.5
+  },
+  "no_training_started_for_this_plan": true,
+  "numbers": "proposed_defaults_freeze_before_comparative_runs",
+  "protocol_sources": {
+    "delivered_folder": "POSTTRAINING_HANDOFF.md",
+    "repository_folder": "HANDOFF.md"
+  }
+}
