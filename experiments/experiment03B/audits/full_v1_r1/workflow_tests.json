@@ -1,0 +1,111 @@
+{
+ "passed": true,
+ "tests": [
+  {
+   "test": "t_additive",
+   "maps_to": "1 known additive scorer",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_interaction",
+   "maps_to": "2 interacting scorer: fixed vs adaptive differ, analytically",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_adaptive_audit",
+   "maps_to": "4 adaptive audit: never reselects, masked set grows by one, q locked",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_ties_missing",
+   "maps_to": "7 ties, missing values and NaN",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_bf16",
+   "maps_to": "8 numerical interpretation: sub-step FP32 change crosses a BF16 boundary; E1 counts",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_aggregation",
+   "maps_to": "aggregation: hand-worked video-cluster fixture and reproducible bootstrap",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_adjacency",
+   "maps_to": "5 time adjacency uses original slot positions",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_keys",
+   "maps_to": "9 cache keys: identity-based, mask/family/repeat-sensitive, prompt-independent sequence keys",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_config",
+   "maps_to": "10 config/DAG validation fails clearly",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_dry_run",
+   "maps_to": "10 dry-run has no side effects",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_end_to_end",
+   "maps_to": "3/6/10/11 end-to-end synthetic run: fixed masks, cross-family isolation, resume, independent validation",
+   "passed": true,
+   "detail": {
+    "run_dir": "/var/folders/mt/9rythgv95kd8_3mg45756_5c0000gn/T/exp03b_e2e_wg6bjafs/runs/e2e"
+   }
+  },
+  {
+   "test": "t_immutable",
+   "maps_to": "10 immutability: config or code change refuses to resume; manifest hash enforced",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_pixels",
+   "maps_to": "3 masks are rebuilt from original pixels (real pixel path, CPU)",
+   "passed": true,
+   "detail": {
+    "skipped": "frame cache not present on this machine"
+   }
+  },
+  {
+   "test": "t_budget_stop",
+   "maps_to": "10 a reached limit stops the run (failed stage, no analysis), never a silent truncation",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_retry",
+   "maps_to": "6/7 transient errors are retried inside the request and logged",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_torn",
+   "maps_to": "10 torn JSONL tails are repaired and kept for audit",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_partial_gate",
+   "maps_to": "10 analysis refuses an incomplete run unless --allow-partial",
+   "passed": true,
+   "detail": null
+  }
+ ]
+}

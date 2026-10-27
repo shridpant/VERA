@@ -1,0 +1,9 @@
+{
+  "method": "sha256sum of both archived MP4 files on Oz; read-only SSH",
+  "date": "2026-10-26",
+  "files": [
+    "/local/datasets/sp2117/ucf_crime_test_videos/Normal_Videos_936_x264.mp4",
+    "/local/datasets/sp2117/ucf_crime_test_videos/Normal_Videos_937_x264.mp4"
+  ],
+  "sha256": "9655db1270be2e0add48e627caeb2cc1767b7ca13c2ef84baf9e7898a9f7e8a9"
+}

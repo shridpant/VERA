@@ -1,3 +1,9 @@
+# Current status — October 26, 2026
+
+Experiment03B full_v1 completed: 290 videos / 433 inputs. Original primary +15.166 pp [9.860, 20.600]. Original validation 16/20 remains preserved; the explicit post-data R1 integrity audit passes 20/20 without model reruns or changed results. See [R1 amendment](experiments/experiment03B/R1_AMENDMENT.md). The earlier not-launched/planned sections below are historical.
+
+---
+
 # VERA research: ongoing notes
 
 Updated 2026-10-23. Each section marks what has been **executed** and what is **planned**. The registry is
