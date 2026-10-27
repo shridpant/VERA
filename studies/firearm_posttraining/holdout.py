@@ -10,6 +10,8 @@ from .runtime import provenance
 
 def run(args):
     selection, protocol = verify_selection(args.frozen_manifest, args.data)
+    if digest(args.codebook) != protocol['codebook_sha256']:
+        raise ValueError('reporting codebook differs from frozen protocol')
     # The first access to original reporting targets occurs only below this guard.
     source = Path(args.original_data)
     audit = json.loads((Path(args.data) / 'audit.json').read_text())
