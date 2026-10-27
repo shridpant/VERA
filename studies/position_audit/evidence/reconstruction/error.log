@@ -1,0 +1,18 @@
+{"stage": "unmodified_reference_complete", "frames": 1111808, "auc": 0.8660712271901675}
+{"stage": "replay", "ratio": 0.15, "completed": 1, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 31, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 61, "total": 290}
+{"stage": "replay", "ratio": 0.15, "completed": 91, "total": 290}
+Traceback (most recent call last):
+  File "/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-position-audit/studies/position_audit/reconstruct.py", line 117, in <module>
+    main()
+    ~~~~^^
+  File "/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-position-audit/studies/position_audit/reconstruct.py", line 92, in main
+    r = replay(a.assets/'features'/f'{key}.npy', a.assets/'scores'/f'{key}.json', ratio)
+  File "/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-position-audit/studies/position_audit/reconstruct.py", line 50, in replay
+    r = np.repeat(np.asarray([round(x, 1) for x in smooth]), lengths)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/_core/fromnumeric.py", line 481, in repeat
+    return _wrapfunc(a, 'repeat', repeats, axis=axis)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/_core/fromnumeric.py", line 54, in _wrapfunc
+    return bound(*args, **kwds)
+ValueError: operands could not be broadcast together with shape (15,) (14,)

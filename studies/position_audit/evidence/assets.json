@@ -1,0 +1,6398 @@
+{
+  "complete": true,
+  "gpu_calls": 0,
+  "feature_archive_sha256": "6b3e0a17091524c1635b68f18f8b1c5daaf067192d194e27d39de758db5f29e4",
+  "feature_archive_bytes": 309807835,
+  "score_archive_sha256": "b7457cee812510ec2331c24cb5da451327c9500152e2437839d31af29166a3b0",
+  "metadata_sha256": "f3857cddd623f767e7b86bd50a4aeb122445fc6e241ddd7130b7e3ec0c4d8b9f",
+  "feature_members": [
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_939_x264.npy",
+      "file": "Normal_Videos_939_x264.npy",
+      "bytes": 417920,
+      "crc32": "2958293a",
+      "sha256": "c825632c59a5f570da8072b2e4d5ba82843d8b46adf8001ea7ea158b5b2afcc0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_938_x264.npy",
+      "file": "Normal_Videos_938_x264.npy",
+      "bytes": 2474112,
+      "crc32": "36c65e4f",
+      "sha256": "a5d120eee9d7f2ce8b234f82ffe309a2a54d35d57a802a55281308aedd7a0538"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting004_x264.npy",
+      "file": "Shooting004_x264.npy",
+      "bytes": 925824,
+      "crc32": "a8c801d3",
+      "sha256": "3d7ae3efbd0254cf57defc0e0a6a2ab75ef5b43cc6d768bfa662eef2fbc92111"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_831_x264.npy",
+      "file": "Normal_Videos_831_x264.npy",
+      "bytes": 229504,
+      "crc32": "cf2cb436",
+      "sha256": "03d87b08cce7279bea1f7c005601a4b77a5fc43d44d2bc28d7159538b5f79dc4"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents016_x264.npy",
+      "file": "RoadAccidents016_x264.npy",
+      "bytes": 1122432,
+      "crc32": "9ae25f89",
+      "sha256": "e71583f64c01df102aeb7ef2c58fab9897721a696f6192e2a06cc82002d5fdc6"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents017_x264.npy",
+      "file": "RoadAccidents017_x264.npy",
+      "bytes": 131200,
+      "crc32": "4c0586cb",
+      "sha256": "698e65aa91c442fb140e5e6fb3e5ab9fb13202a4f139c2010808e4c39035dc63"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_878_x264.npy",
+      "file": "Normal_Videos_878_x264.npy",
+      "bytes": 139392,
+      "crc32": "03fcd697",
+      "sha256": "7b14b14362ecbbb0b46b8d89e6328f127e462fe897f1a798c1b747bc86b6dbe3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary076_x264.npy",
+      "file": "Burglary076_x264.npy",
+      "bytes": 6619264,
+      "crc32": "78607505",
+      "sha256": "e9a5859f5164571293dca549f8351a8bb3cf69bfc15be1c6148e8047335fb4ba"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_879_x264.npy",
+      "file": "Normal_Videos_879_x264.npy",
+      "bytes": 589952,
+      "crc32": "ab5c4eb9",
+      "sha256": "4e9db8b44fd51b047de29627271ead68072de969cd07feb42540f46d82389fb4"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_027_x264.npy",
+      "file": "Normal_Videos_027_x264.npy",
+      "bytes": 2523264,
+      "crc32": "5b424d57",
+      "sha256": "17f50ddcd3052fd9b8b08b239c6d0a8b66f65c62cbcefcc2be7c556ec80f3c16"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary092_x264.npy",
+      "file": "Burglary092_x264.npy",
+      "bytes": 327808,
+      "crc32": "4c7d779b",
+      "sha256": "40324b8b4baa82b7d1702b8eb998120cb84562b9e4f8de9253cf361fe543152a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_907_x264.npy",
+      "file": "Normal_Videos_907_x264.npy",
+      "bytes": 311424,
+      "crc32": "709f09b3",
+      "sha256": "096efb65f47f1318f7139b6956ddab7fd11d41c951fa39e9d97e1fd4f63ce3bc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_597_x264.npy",
+      "file": "Normal_Videos_597_x264.npy",
+      "bytes": 1147008,
+      "crc32": "3a1600d4",
+      "sha256": "3d787073e6106f83946421971f76191e127e5f1b7e489fd7cfbc1bc0542f7b31"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_906_x264.npy",
+      "file": "Normal_Videos_906_x264.npy",
+      "bytes": 352384,
+      "crc32": "f733743d",
+      "sha256": "07197e0e93d31b38e3e10e8076c5a157f8a1240e051257f8b10eb7c127e7a68f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion013_x264.npy",
+      "file": "Explosion013_x264.npy",
+      "bytes": 1704064,
+      "crc32": "27cc896d",
+      "sha256": "13fa2a5fbb6633e00d4c8b81d3810097d8c7da24917a05a995c9e7c03698dce8"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting049_x264.npy",
+      "file": "Shoplifting049_x264.npy",
+      "bytes": 1106048,
+      "crc32": "5c0c7bee",
+      "sha256": "e2cada0581041afb5b63657b9c1e619ac7fc4e291da4bb20b6b2827d8db333e5"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_051_x264.npy",
+      "file": "Normal_Videos_051_x264.npy",
+      "bytes": 1212544,
+      "crc32": "6509da9f",
+      "sha256": "5113e06cdfabc1e3fddc10e365a596a7c8550f7ddd486725b1511c530d3134cc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_050_x264.npy",
+      "file": "Normal_Videos_050_x264.npy",
+      "bytes": 2154624,
+      "crc32": "325e1bf7",
+      "sha256": "36686aebdb2638c7116ec82222de636ae9b907870701427d8f0b7d86895ea854"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents121_x264.npy",
+      "file": "RoadAccidents121_x264.npy",
+      "bytes": 942208,
+      "crc32": "f29a0847",
+      "sha256": "b73a2202874a630734af7f63c340a4a33650b545635b8d578297f9efc0e4fbdc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_018_x264.npy",
+      "file": "Normal_Videos_018_x264.npy",
+      "bytes": 606336,
+      "crc32": "2f2deb81",
+      "sha256": "9b27dc5494db8acfd5cfa4bab875b61050f2aa8deef8bd1d15190dcda4d8170c"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_019_x264.npy",
+      "file": "Normal_Videos_019_x264.npy",
+      "bytes": 1458304,
+      "crc32": "e3acfae8",
+      "sha256": "853c91f8121a0a974885ffa2a813f432a5b944f254e02f4b3977053ccecc0150"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting001_x264.npy",
+      "file": "Shoplifting001_x264.npy",
+      "bytes": 2228352,
+      "crc32": "0b0f8d3f",
+      "sha256": "cd9e2d326323de787967e311a9412fa81885db72e15bd63246cf267927e26521"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_182_x264.npy",
+      "file": "Normal_Videos_182_x264.npy",
+      "bytes": 2097280,
+      "crc32": "92e43de8",
+      "sha256": "524afbb4aef55e15ab2e704e629d95264445e9102c9d32d31cea15e4bda0dbf9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_872_x264.npy",
+      "file": "Normal_Videos_872_x264.npy",
+      "bytes": 278656,
+      "crc32": "14f9d87f",
+      "sha256": "f9a1c4b4afb428bda572b6fa5587c670f2eff029ff87033895bad301328e18c8"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting034_x264.npy",
+      "file": "Shoplifting034_x264.npy",
+      "bytes": 6119552,
+      "crc32": "f66879ca",
+      "sha256": "c0ac193a2f9ff5c3968e9f3a0782a21e78c81e1196fa9a06676040b2daf24eb9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_873_x264.npy",
+      "file": "Normal_Videos_873_x264.npy",
+      "bytes": 925824,
+      "crc32": "cdbafdf7",
+      "sha256": "fb2f15559bc689bbc8ec567d9d159ca6587532bb082615ee3611fa8a6f2522e0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting046_x264.npy",
+      "file": "Shooting046_x264.npy",
+      "bytes": 2605184,
+      "crc32": "8710c9a8",
+      "sha256": "4828abd630cd568b9295a95ff501a33732ad8dea25a43125a7185f65bf44a61a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting047_x264.npy",
+      "file": "Shooting047_x264.npy",
+      "bytes": 4243584,
+      "crc32": "7f14978c",
+      "sha256": "0c654972a198bedef3a5852e994dfccc5c3db895f3661b09c1554e7c16bb4629"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_203_x264.npy",
+      "file": "Normal_Videos_203_x264.npy",
+      "bytes": 1319040,
+      "crc32": "27fc1ad1",
+      "sha256": "c5dc6aa988eb5af082f8967dade8c369beb44374e62be8cdf661ac9cb6ae785d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary035_x264.npy",
+      "file": "Burglary035_x264.npy",
+      "bytes": 2080896,
+      "crc32": "831b5eca",
+      "sha256": "e54ec2e3a615b06b90fdf55f924d51b0a9dd1a353a333789504b6db63006fee1"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_439_x264.npy",
+      "file": "Normal_Videos_439_x264.npy",
+      "bytes": 2171008,
+      "crc32": "3dd365ce",
+      "sha256": "ff275479551cb6f1d4f1e44cdf92f67f4b8f29b9623d923517562dbec94e7ce9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion027_x264.npy",
+      "file": "Explosion027_x264.npy",
+      "bytes": 401536,
+      "crc32": "32699909",
+      "sha256": "8f43c25f7d3404a01bb3d2ab0fee0d182d6e5fd00af3140cdaf2c1c32f483bcc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_933_x264.npy",
+      "file": "Normal_Videos_933_x264.npy",
+      "bytes": 909440,
+      "crc32": "efc80adc",
+      "sha256": "04962c4f180d1fe3baf0c76d96ddb3d68a2cd71dcdb4b4053572343f1450087e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_932_x264.npy",
+      "file": "Normal_Videos_932_x264.npy",
+      "bytes": 917632,
+      "crc32": "2dde5773",
+      "sha256": "a5a3a73c0cdea42d80bfdfae280d79a468fac373d5acf6ce97c2013946104b8f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_189_x264.npy",
+      "file": "Normal_Videos_189_x264.npy",
+      "bytes": 385152,
+      "crc32": "e3511b69",
+      "sha256": "06da8c60e089dc2edda101f7a597666789d8029d224813924019efa406baa17f"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents022_x264.npy",
+      "file": "RoadAccidents022_x264.npy",
+      "bytes": 368768,
+      "crc32": "b91ffbec",
+      "sha256": "e4f4d633dd63424f895bf64a98b25521436dfb75384c1d59bcf223b1fa930224"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_944_x264.npy",
+      "file": "Normal_Videos_944_x264.npy",
+      "bytes": 3678336,
+      "crc32": "9a0f4375",
+      "sha256": "a636ea2c1c4fa0078da3e541299b5cf593084653e5abdaf10605343686639cff"
+    },
+    {
+      "member": "ucf_crime_vision_features/Vandalism007_x264.npy",
+      "file": "Vandalism007_x264.npy",
+      "bytes": 589952,
+      "crc32": "17830305",
+      "sha256": "fda781e6a2ec8acd88654d7b041e0d1b5467c54aff89a9071365b5647044706a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_897_x264.npy",
+      "file": "Normal_Videos_897_x264.npy",
+      "bytes": 450688,
+      "crc32": "1d1937b4",
+      "sha256": "eadd57930f8d7f23917bd64dd8d132075eb27d4e84826995f54e564ddaf74e52"
+    },
+    {
+      "member": "ucf_crime_vision_features/Fighting047_x264.npy",
+      "file": "Fighting047_x264.npy",
+      "bytes": 2285696,
+      "crc32": "3c062c60",
+      "sha256": "46279698bb3c0cfc3389151df1a02f54e3a1be61280da121a199a5aff17adde6"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_896_x264.npy",
+      "file": "Normal_Videos_896_x264.npy",
+      "bytes": 1179776,
+      "crc32": "d377e179",
+      "sha256": "a4c3f05b2e547a70473abf2da850d7386374de151667729043ff9a30ee570a21"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents001_x264.npy",
+      "file": "RoadAccidents001_x264.npy",
+      "bytes": 704640,
+      "crc32": "e3f8961d",
+      "sha256": "e05847428de3aaad3301f11c5c79b1d0b57e67dd4f2c7cdb7a8af3dee14ab5f4"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_702_x264.npy",
+      "file": "Normal_Videos_702_x264.npy",
+      "bytes": 1294464,
+      "crc32": "3e3536a9",
+      "sha256": "2e3a33c90a2320ea5870ad35c3a8514f80f3ef9987b92c09c480abd363235fd0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary061_x264.npy",
+      "file": "Burglary061_x264.npy",
+      "bytes": 4604032,
+      "crc32": "610cbfe6",
+      "sha256": "251e545a11df5955d6a92349f0ee0045b47375262836372c1a7bdb1c6cb1c63c"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting029_x264.npy",
+      "file": "Shoplifting029_x264.npy",
+      "bytes": 1114240,
+      "crc32": "b3ec2706",
+      "sha256": "1c38b1fb416b47fa550239fe2c2dd8a548d4501c2819511148e51ea1de20c5c1"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting028_x264.npy",
+      "file": "Shoplifting028_x264.npy",
+      "bytes": 696448,
+      "crc32": "896dc688",
+      "sha256": "898eed5c6c6a545434a76d63bf3d8a6753fb43258b7b5c9ac1a9ac7e233c4dba"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson018_x264.npy",
+      "file": "Arson018_x264.npy",
+      "bytes": 434304,
+      "crc32": "a01c0b4c",
+      "sha256": "2a4e5e242ab3c1a20f5850b098dca9724cd4a74592e064b97a7f94b9df2ad81e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_317_x264.npy",
+      "file": "Normal_Videos_317_x264.npy",
+      "bytes": 483456,
+      "crc32": "e99edf33",
+      "sha256": "c77dcce631a91dd3268c97ead75239b61bd688b5a0b0e1661b354cdf6187f458"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting013_x264.npy",
+      "file": "Shooting013_x264.npy",
+      "bytes": 557184,
+      "crc32": "14413dae",
+      "sha256": "beff96996db949e1eeeeacab841d6223da67239efe3ccff5aad9587846912225"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting017_x264.npy",
+      "file": "Shoplifting017_x264.npy",
+      "bytes": 237696,
+      "crc32": "36162f19",
+      "sha256": "c4456cc2f39f571b25ce2b7ded1134e9a99dfd0c23a90126fd40c47cdd849eba"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting016_x264.npy",
+      "file": "Shoplifting016_x264.npy",
+      "bytes": 761984,
+      "crc32": "a4b78a1c",
+      "sha256": "96a0453c7ebc6ce42f777c3b0a287eb27c376b80e3ef155d62ac2c9520cac116"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_360_x264.npy",
+      "file": "Normal_Videos_360_x264.npy",
+      "bytes": 508032,
+      "crc32": "8e27636f",
+      "sha256": "682913c18f03ffd0cba24804274ccf0c42b3417d2600c87bfda12937d7ba99c7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_453_x264.npy",
+      "file": "Normal_Videos_453_x264.npy",
+      "bytes": 2728064,
+      "crc32": "ce43e7fe",
+      "sha256": "9467265414d04e0e736f269185693e56905fd80ea328a66d6d2e978b51c1263a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_634_x264.npy",
+      "file": "Normal_Videos_634_x264.npy",
+      "bytes": 6897792,
+      "crc32": "8b78da57",
+      "sha256": "05a8c0c07fbb9d70d114bebd5ede480c9e41c89545908015699a3bd3197aa3c2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_452_x264.npy",
+      "file": "Normal_Videos_452_x264.npy",
+      "bytes": 229504,
+      "crc32": "8a02492d",
+      "sha256": "82f6c28931d7596e5d1a90244de3d1f4819d733c790f894fc449641ed1c1c574"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary017_x264.npy",
+      "file": "Burglary017_x264.npy",
+      "bytes": 1089664,
+      "crc32": "7c38cbc0",
+      "sha256": "6f6e10443674e9735bc0b24e5ed78f8b104d1ce2ba7cfb24235093ab6d5f45db"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion004_x264.npy",
+      "file": "Explosion004_x264.npy",
+      "bytes": 974976,
+      "crc32": "fd7c3c35",
+      "sha256": "8a108e92239aaf56d77dd400df337ad8ca99d6417595468dcd5a52f3968a1323"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_910_x264.npy",
+      "file": "Normal_Videos_910_x264.npy",
+      "bytes": 295040,
+      "crc32": "d4aec9f8",
+      "sha256": "52583a833a307471a41b9cae2a9da8f4d86823be65fb4c4d1c770d7fa5325167"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_911_x264.npy",
+      "file": "Normal_Videos_911_x264.npy",
+      "bytes": 401536,
+      "crc32": "1a71e8ff",
+      "sha256": "5e8ce6e8d5a23f4146ae3ce224d222ad57fc93de4cc730628fc0e080a732d100"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting018_x264.npy",
+      "file": "Shooting018_x264.npy",
+      "bytes": 925824,
+      "crc32": "1efc20f2",
+      "sha256": "7dd326f20769204e84072f281904f4efe68ab47e343dbd23e0f0a0e4d8a815a0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting019_x264.npy",
+      "file": "Shooting019_x264.npy",
+      "bytes": 1417344,
+      "crc32": "f7d03742",
+      "sha256": "70d54580de20b47487431cebd6ce4307fd732223b24b2a904218882a5d3bc9a5"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_924_x264.npy",
+      "file": "Normal_Videos_924_x264.npy",
+      "bytes": 55296128,
+      "crc32": "a2d7a001",
+      "sha256": "9e565de1512f941261a9466d018179936c46839168312d87437598aaa8642a74"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_925_x264.npy",
+      "file": "Normal_Videos_925_x264.npy",
+      "bytes": 3956864,
+      "crc32": "ee484077",
+      "sha256": "d21535ffaf866502bcd55eb6760631309e45acf848ea2a59a2268b49128dda5d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arrest030_x264.npy",
+      "file": "Arrest030_x264.npy",
+      "bytes": 4432000,
+      "crc32": "8c684481",
+      "sha256": "73150fa0e8bfc17a3bd25979ed68d7ce4c928e7e282e18154ea8c00f2067e455"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting022_x264.npy",
+      "file": "Shoplifting022_x264.npy",
+      "bytes": 1122432,
+      "crc32": "99a9c230",
+      "sha256": "3eed1b7ffc5bf9b3d17216c1481421743577224fa6d12c0f440ebf8d4e899c62"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_880_x264.npy",
+      "file": "Normal_Videos_880_x264.npy",
+      "bytes": 9248896,
+      "crc32": "c799f6aa",
+      "sha256": "e2bf89ea9661f8987c8550b4a79f3e6a248c608b909cd5d4265912ca4599ed3f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting026_x264.npy",
+      "file": "Shooting026_x264.npy",
+      "bytes": 721024,
+      "crc32": "f89ae1e0",
+      "sha256": "06856b83f3b4a5a6b098feb36cc6be364083022a42fedb4240d5a67f6ffeedb7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_881_x264.npy",
+      "file": "Normal_Videos_881_x264.npy",
+      "bytes": 114816,
+      "crc32": "0ffcd34e",
+      "sha256": "e14c3b8e8f3bda000337575304fe1f26d5dd85ea6347b170e95a8ffc0214cf50"
+    },
+    {
+      "member": "ucf_crime_vision_features/Fighting018_x264.npy",
+      "file": "Fighting018_x264.npy",
+      "bytes": 712832,
+      "crc32": "b5a756ee",
+      "sha256": "41b3f7f17e1dd5277dcabac90133b3a2cff3a49be6c466575c328fb9ca4dea3b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_704_x264.npy",
+      "file": "Normal_Videos_704_x264.npy",
+      "bytes": 868480,
+      "crc32": "8affddc4",
+      "sha256": "e2197f9504946ed9271be73854626ddf3a59e7ad9dc0c88659b873bd9e299056"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_251_x264.npy",
+      "file": "Normal_Videos_251_x264.npy",
+      "bytes": 213120,
+      "crc32": "0acc29e0",
+      "sha256": "43c199140b0be0776ec9e745784b67c21ac04ae6ebf742cc8744ac2cd06945ff"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_868_x264.npy",
+      "file": "Normal_Videos_868_x264.npy",
+      "bytes": 1237120,
+      "crc32": "8f0f96fc",
+      "sha256": "4d5102cdfe7d20284ecc369a31e04984c3cce38db4e5e093f0776a4023af4009"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_869_x264.npy",
+      "file": "Normal_Videos_869_x264.npy",
+      "bytes": 1237120,
+      "crc32": "ad2c8982",
+      "sha256": "9f54a7321b5b7f43ce479b7af15356f715a7511c46605673cd5e857764ded072"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_929_x264.npy",
+      "file": "Normal_Videos_929_x264.npy",
+      "bytes": 475264,
+      "crc32": "586e099d",
+      "sha256": "6aca09793a40d50f31afb4232ddf07f1e6fc1d017b2cb9dc8727e890af90b50e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_928_x264.npy",
+      "file": "Normal_Videos_928_x264.npy",
+      "bytes": 475264,
+      "crc32": "213a0afd",
+      "sha256": "44af0fc1d03cc1a5948db38e28d6dff9b503883677fca23ad6beee5c9e8f485e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_310_x264.npy",
+      "file": "Normal_Videos_310_x264.npy",
+      "bytes": 1294464,
+      "crc32": "bf3534a8",
+      "sha256": "9a7359ed91afb8f20731e646f4812b287e9513c4d9e84d1222250ac91b4debb4"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting015_x264.npy",
+      "file": "Shooting015_x264.npy",
+      "bytes": 884864,
+      "crc32": "a441dc83",
+      "sha256": "c1e6ea7fbdd2110e679067124e10800d5efaa77ce6c04d167d18b4a79d188970"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_100_x264.npy",
+      "file": "Normal_Videos_100_x264.npy",
+      "bytes": 327808,
+      "crc32": "b43d27a3",
+      "sha256": "42a02d8ef1bccd035f88fe45fe33a7144442eba00489b61776aa960d4ac8f0fc"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents131_x264.npy",
+      "file": "RoadAccidents131_x264.npy",
+      "bytes": 786560,
+      "crc32": "12d75c71",
+      "sha256": "7d452a772d0467bc4a223f4ff39ade1951f1f0f67a5c0bf4fdb7c2a6852a193c"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting010_x264.npy",
+      "file": "Shoplifting010_x264.npy",
+      "bytes": 1400960,
+      "crc32": "5acc245e",
+      "sha256": "2a5f7555a54c19bfa9de1bf60b0a3206dc1f722fc3cd9e36dd4205a709e09e9e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion002_x264.npy",
+      "file": "Explosion002_x264.npy",
+      "bytes": 2056320,
+      "crc32": "b53fda2f",
+      "sha256": "0fbc96e9132578112ec332d3a9900cb0de03a92de45dd31d412e3ba57c3727cc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Robbery102_x264.npy",
+      "file": "Robbery102_x264.npy",
+      "bytes": 942208,
+      "crc32": "2787e1fd",
+      "sha256": "0f5f7bb949d64b390916b5c3b1e9446c83debd1b1b1cb2d6b880f31077019f27"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_041_x264.npy",
+      "file": "Normal_Videos_041_x264.npy",
+      "bytes": 655488,
+      "crc32": "d2a4f15e",
+      "sha256": "1e864d168b4ae1f66dbebfded7da6f1b675244c9076b39f55733d451049fc46a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Robbery137_x264.npy",
+      "file": "Robbery137_x264.npy",
+      "bytes": 1130624,
+      "crc32": "0fd375e0",
+      "sha256": "46501c984dfcf8bfd1ad7f87cab5ccb6e2c4c9b9f442a6e9f94de2c564009519"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary024_x264.npy",
+      "file": "Burglary024_x264.npy",
+      "bytes": 1851520,
+      "crc32": "28f2b913",
+      "sha256": "c7e5a48d792d193ac133df5183198c99c684145c7d854fa673f614b230d82c42"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_923_x264.npy",
+      "file": "Normal_Videos_923_x264.npy",
+      "bytes": 9330816,
+      "crc32": "834c74da",
+      "sha256": "255bacc49980220a522640a4f866ae71f104a824754d9b70cdffb18c83affedf"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion036_x264.npy",
+      "file": "Explosion036_x264.npy",
+      "bytes": 2728064,
+      "crc32": "cee3cb1e",
+      "sha256": "c3b8b45dfba022f356df4e034069ba475e6f371d16cbb85061a4f91d391cd432"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_352_x264.npy",
+      "file": "Normal_Videos_352_x264.npy",
+      "bytes": 2769024,
+      "crc32": "b74d6bbf",
+      "sha256": "e053755b4afe1054ac36d299f0ca4e878ab9fdd490c4fe0f3ce331e3aaa62b24"
+    },
+    {
+      "member": "ucf_crime_vision_features/Vandalism028_x264.npy",
+      "file": "Vandalism028_x264.npy",
+      "bytes": 2302080,
+      "crc32": "5ffa2a59",
+      "sha256": "00544f74f3aa27b6476f7db17cc19a8446529edce4e2807feb585e0269a0cb13"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_606_x264.npy",
+      "file": "Normal_Videos_606_x264.npy",
+      "bytes": 639104,
+      "crc32": "27f8b894",
+      "sha256": "0d8d07ca0152f45fb0a7ab756e5ebcf9f88a80a8d2851f9c35d9b707f9f866e0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_778_x264.npy",
+      "file": "Normal_Videos_778_x264.npy",
+      "bytes": 647296,
+      "crc32": "c38ee84c",
+      "sha256": "a37a0bd97eb30d2433d407bd486c6d86a31c110c6033fc813f9847870d8c4fdb"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion008_x264.npy",
+      "file": "Explosion008_x264.npy",
+      "bytes": 901248,
+      "crc32": "cf11e2c4",
+      "sha256": "aafc15d6125c571c370e346c9ba6735276601e791026a5c6dea3ed31b2004d16"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_417_x264.npy",
+      "file": "Normal_Videos_417_x264.npy",
+      "bytes": 557184,
+      "crc32": "a8f94b49",
+      "sha256": "285850fdd1a4432fd887b8b9fa78199e80393f84bb897f71187e590b2ebad8f9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_887_x264.npy",
+      "file": "Normal_Videos_887_x264.npy",
+      "bytes": 3907712,
+      "crc32": "2e95e665",
+      "sha256": "9b0527b9fbf9527d84c12c74b36d6b35827e93d0f97c55d38b460a3ba67158f9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting021_x264.npy",
+      "file": "Shooting021_x264.npy",
+      "bytes": 655488,
+      "crc32": "e215b6ba",
+      "sha256": "ea11eb6c90ab0cbb4aed1183aeb446b31797d662c4ed0680ecb62a3227c23606"
+    },
+    {
+      "member": "ucf_crime_vision_features/Stealing058_x264.npy",
+      "file": "Stealing058_x264.npy",
+      "bytes": 2556032,
+      "crc32": "c958ed1a",
+      "sha256": "565f09a3c36e34e47b336962be66d8b9e61df373f9cc3259882eb53dad17ca13"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_886_x264.npy",
+      "file": "Normal_Videos_886_x264.npy",
+      "bytes": 1409152,
+      "crc32": "f82c240d",
+      "sha256": "a364d89f8b63baeddf32defc10430793850866d8cf55c9ec0eb22ac8f3030587"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_003_x264.npy",
+      "file": "Normal_Videos_003_x264.npy",
+      "bytes": 1450112,
+      "crc32": "af18fa0a",
+      "sha256": "b843f057799808d7fd92c43a5d2fec43b409e2efe2aead1a01487b3a0036c414"
+    },
+    {
+      "member": "ucf_crime_vision_features/Robbery048_x264.npy",
+      "file": "Robbery048_x264.npy",
+      "bytes": 729216,
+      "crc32": "5d99d17d",
+      "sha256": "1e286f6352321af4e7f9e60b79fc5067cc46ab5787fd22dbc7fc17f0276a6465"
+    },
+    {
+      "member": "ucf_crime_vision_features/Vandalism017_x264.npy",
+      "file": "Vandalism017_x264.npy",
+      "bytes": 524416,
+      "crc32": "20d8b93f",
+      "sha256": "6164d1a6e29b577c73f03212b01b4433f959a255c44c159cfe9d1474fef43e63"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson009_x264.npy",
+      "file": "Arson009_x264.npy",
+      "bytes": 385152,
+      "crc32": "c3917193",
+      "sha256": "720b9ac589f3641d37f0bf6d08fa56284851bf3292903dd1acffd2103e019dd7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting002_x264.npy",
+      "file": "Shooting002_x264.npy",
+      "bytes": 622720,
+      "crc32": "dd45f372",
+      "sha256": "aed98c68068037722994e06cdb471ceec2a9c4cbbaed4a23444bff2639adca7c"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents011_x264.npy",
+      "file": "RoadAccidents011_x264.npy",
+      "bytes": 1106048,
+      "crc32": "5b9892fa",
+      "sha256": "755c7437c0a7902e3450df65f3fc0a9c21d28f1015088346a71b62e2d051c94d"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents010_x264.npy",
+      "file": "RoadAccidents010_x264.npy",
+      "bytes": 270464,
+      "crc32": "2e217678",
+      "sha256": "a6d3427855dcea1123f1d0a99b0e3b1ff0cebb7913c319a3b67582d81ef6b128"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting039_x264.npy",
+      "file": "Shoplifting039_x264.npy",
+      "bytes": 1441920,
+      "crc32": "0f4fcb5d",
+      "sha256": "5e86ee58a40168fcce4f906e73c051fbef559ffe3b7db5f18af6d5e2b8521a60"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_247_x264.npy",
+      "file": "Normal_Videos_247_x264.npy",
+      "bytes": 4210816,
+      "crc32": "899f11b2",
+      "sha256": "10277f0f527cce4b0e06c8faa43cb60e530f5081f16a5fcfcd4c81b6ee0815cb"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_246_x264.npy",
+      "file": "Normal_Videos_246_x264.npy",
+      "bytes": 2564224,
+      "crc32": "e09df4b2",
+      "sha256": "98ae0b64298d153bdd227629a1060d2845d8402ac853a47801a976ae0011500d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_781_x264.npy",
+      "file": "Normal_Videos_781_x264.npy",
+      "bytes": 2039936,
+      "crc32": "187b3026",
+      "sha256": "c48950b63f6c77106a95bc94cbbd7802235154ad45c59e72312d0becd5f5830f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson041_x264.npy",
+      "file": "Arson041_x264.npy",
+      "bytes": 1925248,
+      "crc32": "e2a100fa",
+      "sha256": "654c0996b8cb1c10e1edd2ec39482935ca8aaf45e4601220907c6753be6e2f4a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_780_x264.npy",
+      "file": "Normal_Videos_780_x264.npy",
+      "bytes": 1040512,
+      "crc32": "28ab5390",
+      "sha256": "83dbffa459d425568f11aa50ca369f508c594c0b1a0737f2cc185ba7c4b9b408"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_129_x264.npy",
+      "file": "Normal_Videos_129_x264.npy",
+      "bytes": 245888,
+      "crc32": "ce8f3299",
+      "sha256": "6c11c6d1e89b7041866c79282e40d8b63ec9a728270188f85dfe808d79f2a298"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_056_x264.npy",
+      "file": "Normal_Videos_056_x264.npy",
+      "bytes": 811136,
+      "crc32": "8040a2d1",
+      "sha256": "71968d5ae072d073fbd77a96dd8a3ce852b35f770be8e88f851f1053374f2b66"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_900_x264.npy",
+      "file": "Normal_Videos_900_x264.npy",
+      "bytes": 745600,
+      "crc32": "1ccf3013",
+      "sha256": "7ae0f9fb83688121771a94d7d6ea792c384374dfb79796a0d2a166f4c5534046"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_901_x264.npy",
+      "file": "Normal_Videos_901_x264.npy",
+      "bytes": 606336,
+      "crc32": "ab538add",
+      "sha256": "19270b1edcd504860dd8601eac2a52a017db08323bf857ec6a5f1344a68a1e5f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting007_x264.npy",
+      "file": "Shoplifting007_x264.npy",
+      "bytes": 2629760,
+      "crc32": "ee91db2d",
+      "sha256": "9ad0245952b8d32f4b78c8b5a5d78d7ed10086589f1bb4822f94c12252c2a059"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents127_x264.npy",
+      "file": "RoadAccidents127_x264.npy",
+      "bytes": 1327232,
+      "crc32": "babda0b4",
+      "sha256": "f0c2470ccdae5e6d8091dd3e41fe281f02243f37b80bfbf71fd0e0ed668eb657"
+    },
+    {
+      "member": "ucf_crime_vision_features/Fighting003_x264.npy",
+      "file": "Fighting003_x264.npy",
+      "bytes": 1589376,
+      "crc32": "a8b3c4e9",
+      "sha256": "c846b90ae88ce0ef94b2c0b97f42ed354a0a13f475290c589fd55fab7e044d2b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_345_x264.npy",
+      "file": "Normal_Videos_345_x264.npy",
+      "bytes": 114816,
+      "crc32": "dd06df13",
+      "sha256": "62ad02edc52e3b720aef300d97b4d7a5094ff2d9921e893f4ca8d6a201a34336"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting033_x264.npy",
+      "file": "Shoplifting033_x264.npy",
+      "bytes": 467072,
+      "crc32": "11bbf931",
+      "sha256": "8db51634739b6d6c2be4c6da6f2e7f4163f978c32678aaf18b406d285cf38d88"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_875_x264.npy",
+      "file": "Normal_Videos_875_x264.npy",
+      "bytes": 1319040,
+      "crc32": "d074ee36",
+      "sha256": "c164a089d696cc68e49f542ba558f5b3aaf0d6efbe41740c3bd17f40f9a6278d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_874_x264.npy",
+      "file": "Normal_Videos_874_x264.npy",
+      "bytes": 2171008,
+      "crc32": "c66914b8",
+      "sha256": "0b575221cb6f40073e32a750e1ad25afb195750719799c01622efb721026e3c3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting008_x264.npy",
+      "file": "Shooting008_x264.npy",
+      "bytes": 835712,
+      "crc32": "5c3cc72b",
+      "sha256": "9c6b5dadcaea1bd159550acc4a43ace7b4f9b058623ad0bd919b76943091e1ab"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion020_x264.npy",
+      "file": "Explosion020_x264.npy",
+      "bytes": 663680,
+      "crc32": "952be297",
+      "sha256": "571f1dbdf4bf14312d396b2cd081ffdcec908fce796acc92fe3c6b42dc95737e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion021_x264.npy",
+      "file": "Explosion021_x264.npy",
+      "bytes": 401536,
+      "crc32": "f864fa8f",
+      "sha256": "37c5760c42145f746e15d6236f7062b5917c68fb6ca1152fba9eff7b1a830c01"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_934_x264.npy",
+      "file": "Normal_Videos_934_x264.npy",
+      "bytes": 909440,
+      "crc32": "790aee18",
+      "sha256": "d5d63f2599825998527263c05385d15a58d14b630b4bfdd9ffc92d7846c0e135"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_935_x264.npy",
+      "file": "Normal_Videos_935_x264.npy",
+      "bytes": 55296128,
+      "crc32": "afe0ad0a",
+      "sha256": "e96b748baeee36b8ce88a4761a5d91cf461c596141c9166401ca36ef78ba83e0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_063_x264.npy",
+      "file": "Normal_Videos_063_x264.npy",
+      "bytes": 188544,
+      "crc32": "a81e6efa",
+      "sha256": "a90a8fc1178f37af60b856ea2b31d6c926a12bf68b3371afa56f2cf39b97993f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary032_x264.npy",
+      "file": "Burglary032_x264.npy",
+      "bytes": 8093824,
+      "crc32": "71f29711",
+      "sha256": "8ac97e580a0db66417735ac0517fa5172b9560d041debc62577d2a66fa8ea1d9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary033_x264.npy",
+      "file": "Burglary033_x264.npy",
+      "bytes": 647296,
+      "crc32": "51115143",
+      "sha256": "ec99461653d0d54b1968bce34d9091238e7303bd6048cd34c30ffcc9f3b92d44"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_943_x264.npy",
+      "file": "Normal_Videos_943_x264.npy",
+      "bytes": 524416,
+      "crc32": "6d66ddbb",
+      "sha256": "70affa024230c9e4209e67e2d9e700c14d15f826249e745e23d98c32797f6c3d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_015_x264.npy",
+      "file": "Normal_Videos_015_x264.npy",
+      "bytes": 245888,
+      "crc32": "72de4420",
+      "sha256": "4282227def0078d430e8534a49a89d588c3fa8a1c88171bfa2cb87c3c6b160b2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_014_x264.npy",
+      "file": "Normal_Videos_014_x264.npy",
+      "bytes": 770176,
+      "crc32": "e6d12e23",
+      "sha256": "671a8a3777158bc75799f17d713abbafbfbc9343dcbacdc6c76f8fd18f4472dd"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_890_x264.npy",
+      "file": "Normal_Videos_890_x264.npy",
+      "bytes": 1835136,
+      "crc32": "f6f26be9",
+      "sha256": "168bae193c39f86d99416c3dc0404a7cf8add13af6da0b1e3222c1f5adacc2be"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_891_x264.npy",
+      "file": "Normal_Videos_891_x264.npy",
+      "bytes": 925824,
+      "crc32": "80664483",
+      "sha256": "d4c4b6fa70aa40d30839fd1a574576facb5e0d2eb1b69ce31feb3b85fd498b05"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_401_x264.npy",
+      "file": "Normal_Videos_401_x264.npy",
+      "bytes": 835712,
+      "crc32": "0d84523a",
+      "sha256": "40568ee0cb4dcb821a1b60ad265c6a1fd3e09f1d4778239b61fdbd46058f5465"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting037_x264.npy",
+      "file": "Shooting037_x264.npy",
+      "bytes": 163968,
+      "crc32": "c8c76922",
+      "sha256": "2d9a9a7b6cf74879ac435050a970ed70555fa334724334b85d7ff27ce760804d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting044_x264.npy",
+      "file": "Shoplifting044_x264.npy",
+      "bytes": 7454848,
+      "crc32": "805fe0f0",
+      "sha256": "8524722cfa8600998f229d9a8c0fdf3cfc5769f63c2a992b1b3a14dd9fb7b187"
+    },
+    {
+      "member": "ucf_crime_vision_features/Abuse030_x264.npy",
+      "file": "Abuse030_x264.npy",
+      "bytes": 794752,
+      "crc32": "66508200",
+      "sha256": "d723de463c57d808156563e6785ba6947e6d834e7e8415bd77ee73362f0ac45f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_927_x264.npy",
+      "file": "Normal_Videos_927_x264.npy",
+      "bytes": 843904,
+      "crc32": "b3ffa967",
+      "sha256": "42afb817a400d73b6124a51cb45bdb5bc4d3f38c28a62cd3dda1027dcae507ba"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson011_x264.npy",
+      "file": "Arson011_x264.npy",
+      "bytes": 655488,
+      "crc32": "cd94ad66",
+      "sha256": "f2cb83676863ab622307c82fe05a2acb40458e7b999b8804673423bd5e31ea05"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_926_x264.npy",
+      "file": "Normal_Videos_926_x264.npy",
+      "bytes": 925824,
+      "crc32": "d1bbca4e",
+      "sha256": "14e86913136c266885973ca70a7fdc9324d1087602ace4d2eecf5a543c1d916f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson010_x264.npy",
+      "file": "Arson010_x264.npy",
+      "bytes": 1622144,
+      "crc32": "c7cb6cea",
+      "sha256": "95c9adbf1b927b7725af044d116c59b71deef1b5a2f50cefa83fe7849f045273"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion033_x264.npy",
+      "file": "Explosion033_x264.npy",
+      "bytes": 1622144,
+      "crc32": "04a42de6",
+      "sha256": "0b7bc9f0fd89923cf4a87131a12dcf7d2fd84b24f6a88aa7a07c1bb8473f163a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Stealing062_x264.npy",
+      "file": "Stealing062_x264.npy",
+      "bytes": 802944,
+      "crc32": "12d9b7bc",
+      "sha256": "fcdb39a93ef97441864f57f47dfa2345dcf51f742adfedd5902311096dbdba96"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary021_x264.npy",
+      "file": "Burglary021_x264.npy",
+      "bytes": 794752,
+      "crc32": "40fa00ec",
+      "sha256": "cadb89a67f376b5f929553f0b9fa97a63a66481d66b1b7756f386c14441d9266"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_217_x264.npy",
+      "file": "Normal_Videos_217_x264.npy",
+      "bytes": 934016,
+      "crc32": "fe24c7da",
+      "sha256": "48c3b41e12c1e6246ae0f26d1a7a3b81f22517c07d7d58aa90e74f54f0e398e2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_070_x264.npy",
+      "file": "Normal_Videos_070_x264.npy",
+      "bytes": 516224,
+      "crc32": "b5c88435",
+      "sha256": "21831bf919522bfec6d6f8442ace8233d13ec8f36abec46170163ec0edcd9e69"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_603_x264.npy",
+      "file": "Normal_Videos_603_x264.npy",
+      "bytes": 1679488,
+      "crc32": "cfeae800",
+      "sha256": "acdefcb5fe0357820f35b5fb235fe840fa079e2e33317d6ccfe8eac814d10c8f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_798_x264.npy",
+      "file": "Normal_Videos_798_x264.npy",
+      "bytes": 3080320,
+      "crc32": "7e181018",
+      "sha256": "7ac541a6da5e527d4fa8d20bd77dfba34a43f1c935b3f90b25b6b07e9d5aaaa2"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents009_x264.npy",
+      "file": "RoadAccidents009_x264.npy",
+      "bytes": 475264,
+      "crc32": "d52e7fae",
+      "sha256": "1eb3cd51aae8fae97f5aeedfb06c46798c753a6e4bac7d813c7ef6f7ee7cd6d1"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_866_x264.npy",
+      "file": "Normal_Videos_866_x264.npy",
+      "bytes": 614528,
+      "crc32": "47852ac8",
+      "sha256": "4c5a16cc8864ee81fa10a68f34e0d0da1bdf36a7cff93b96aa834aa9917e9f76"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting020_x264.npy",
+      "file": "Shoplifting020_x264.npy",
+      "bytes": 2957440,
+      "crc32": "8d71a27a",
+      "sha256": "d103814879360d861db8f6bd880982d42c8a1ddfa0c21d42cf0681af6a28af56"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting021_x264.npy",
+      "file": "Shoplifting021_x264.npy",
+      "bytes": 1818752,
+      "crc32": "7b7bd217",
+      "sha256": "61c1b64b2ec0f62372978a6feff1478c23aeb8ad840ece35bbf14a1b8f2c9431"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_867_x264.npy",
+      "file": "Normal_Videos_867_x264.npy",
+      "bytes": 319616,
+      "crc32": "f62f1f6f",
+      "sha256": "d9e33af5631798f51d021223242f181cf939df9ba7e1f0548c233e1894255037"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_883_x264.npy",
+      "file": "Normal_Videos_883_x264.npy",
+      "bytes": 172160,
+      "crc32": "1fc69ea4",
+      "sha256": "d39425cf9f2503a63dc7e6e10c7f8fbef29fba080902ead87c51e9c83f104901"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting024_x264.npy",
+      "file": "Shooting024_x264.npy",
+      "bytes": 1032320,
+      "crc32": "ef2305a7",
+      "sha256": "f2d548954495169f3a0ce19fd36966c24416f2dcbd4b76ff7dd8e67cf8774e50"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_882_x264.npy",
+      "file": "Normal_Videos_882_x264.npy",
+      "bytes": 852096,
+      "crc32": "ad80188f",
+      "sha256": "4dddcb5c4b05a5ee69135f6a9c4772327da2c8776dd7b490e593a32061d22ef2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_006_x264.npy",
+      "file": "Normal_Videos_006_x264.npy",
+      "bytes": 237696,
+      "crc32": "a1a45136",
+      "sha256": "12a50a81cf4c92af567baecaa646d53d14ecc8fbe60563d6c1b6ea817f4039b3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_033_x264.npy",
+      "file": "Normal_Videos_033_x264.npy",
+      "bytes": 860288,
+      "crc32": "1382b483",
+      "sha256": "cb1ca65bae4d02f89d14414ed144c385867af44f3fcb285efbcf5faac175eba9"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents002_x264.npy",
+      "file": "RoadAccidents002_x264.npy",
+      "bytes": 180352,
+      "crc32": "475e003e",
+      "sha256": "0873de6e293fcf3dca5b5ddcb758a3cfbb76cfa53280e2b1d3d7ccf7294ff089"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arrest039_x264.npy",
+      "file": "Arrest039_x264.npy",
+      "bytes": 8110208,
+      "crc32": "1d59feb7",
+      "sha256": "781a4f82a6d2b011d2a5b43588b67d20d3a4959c58cdab043ea6ec17d84b8bdf"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting011_x264.npy",
+      "file": "Shooting011_x264.npy",
+      "bytes": 2056320,
+      "crc32": "2a373bc7",
+      "sha256": "57aa3044682abb42119402adb252d4003f0e8d52b02ddcc907a10f8347dfc630"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_641_x264.npy",
+      "file": "Normal_Videos_641_x264.npy",
+      "bytes": 1843328,
+      "crc32": "82ab1c8e",
+      "sha256": "31ef8c3d506604243b8261d0435f5f3803e2f68aef679db93c3b5ecddbaa576a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting010_x264.npy",
+      "file": "Shooting010_x264.npy",
+      "bytes": 1360000,
+      "crc32": "bf183406",
+      "sha256": "2b7f6da870632866d0254765889d2523004538bfa8b26cba49a411bbb493ad28"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion039_x264.npy",
+      "file": "Explosion039_x264.npy",
+      "bytes": 516224,
+      "crc32": "1aef3449",
+      "sha256": "d7a15ae17538f00402de70ab24405796d1808ab2f05a4d51f924328cbd46a1cb"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_196_x264.npy",
+      "file": "Normal_Videos_196_x264.npy",
+      "bytes": 1032320,
+      "crc32": "c2c4536a",
+      "sha256": "a7a0dc2a5842b7fe81d7fdc5f545f94319da13d5790af7d5ca60eba9dedc0da2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting015_x264.npy",
+      "file": "Shoplifting015_x264.npy",
+      "bytes": 1155200,
+      "crc32": "e50362a0",
+      "sha256": "3f9d6f0a13a0687eb2f4ba75f72a0a7007d1d88626272387cc7372429f9e2c97"
+    },
+    {
+      "member": "ucf_crime_vision_features/Assault010_x264.npy",
+      "file": "Assault010_x264.npy",
+      "bytes": 8290432,
+      "crc32": "e8ac8bc5",
+      "sha256": "7b380f651d01c373a230f9d8e7caaab5629cba12d2eb76f1b36e2a22aed0c041"
+    },
+    {
+      "member": "ucf_crime_vision_features/Assault011_x264.npy",
+      "file": "Assault011_x264.npy",
+      "bytes": 1171584,
+      "crc32": "3204613a",
+      "sha256": "e8eafebaaca9e920cd66577cfde8a9302ef6d8a5da9cf073b0603447ae3318fe"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arrest007_x264.npy",
+      "file": "Arrest007_x264.npy",
+      "bytes": 1613952,
+      "crc32": "9f083744",
+      "sha256": "6e0141a3b5399aaf2b0343640170466d17ab966f103c0f6e02b50140c966f4c3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Abuse028_x264.npy",
+      "file": "Abuse028_x264.npy",
+      "bytes": 729216,
+      "crc32": "96dddebe",
+      "sha256": "ad2542ec738dc9e6fb0aebdf9b591bfdb16bc9c41f1f81bf27a13b2a9428c3c3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Robbery106_x264.npy",
+      "file": "Robbery106_x264.npy",
+      "bytes": 614528,
+      "crc32": "06cd75e7",
+      "sha256": "84bf2203e3c15edfbc71a915f50219fe6d6093a44e6dc9cf76f728691aace9b6"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion007_x264.npy",
+      "file": "Explosion007_x264.npy",
+      "bytes": 8347776,
+      "crc32": "50b786c0",
+      "sha256": "1278b6ef480f5c681256c03e01a855e04ae09536617fa52e79d122e4936f4b45"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_913_x264.npy",
+      "file": "Normal_Videos_913_x264.npy",
+      "bytes": 319616,
+      "crc32": "4d0a59cb",
+      "sha256": "8733df02a9fce9e834e3bc8793cc509bcbcd4f02a06251f33030d8a44283284b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_912_x264.npy",
+      "file": "Normal_Videos_912_x264.npy",
+      "bytes": 385152,
+      "crc32": "7e1eff36",
+      "sha256": "1e3aeb35dd480a13188be2f3e9234b539a7d3b973d9e85641d828c58c6028c45"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_889_x264.npy",
+      "file": "Normal_Videos_889_x264.npy",
+      "bytes": 163968,
+      "crc32": "fe989c15",
+      "sha256": "928d41e68f05671c83788cede955dafd2269d09da1d61ce5270e8f33943d7d62"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_888_x264.npy",
+      "file": "Normal_Videos_888_x264.npy",
+      "bytes": 295040,
+      "crc32": "2e367ff4",
+      "sha256": "48151226e2b8731eb30d889f887a502d37ebb37947655ad75ae1e98bd0081857"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_871_x264.npy",
+      "file": "Normal_Videos_871_x264.npy",
+      "bytes": 2236544,
+      "crc32": "b7668e30",
+      "sha256": "384e6ea4b9e2b3c876c9ad91f9fef8712be545edc14f275651308fc5e86839b7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting037_x264.npy",
+      "file": "Shoplifting037_x264.npy",
+      "bytes": 712832,
+      "crc32": "870b0e35",
+      "sha256": "80ea2b05d437313003ae9b155310b2e75ddaafee08fa2475b6cfdaa8ae209de3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_686_x264.npy",
+      "file": "Normal_Videos_686_x264.npy",
+      "bytes": 1237120,
+      "crc32": "79e8d888",
+      "sha256": "21fe7a3526d2011b81db2ad8868a3d7b34df763ece0df302190f53b6351bf68c"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_870_x264.npy",
+      "file": "Normal_Videos_870_x264.npy",
+      "bytes": 311424,
+      "crc32": "feedbdbd",
+      "sha256": "7b8d4af9faed89fa1faa4e6ca22dcbbdece91d9ee68dc3289503ec450b203da3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_248_x264.npy",
+      "file": "Normal_Videos_248_x264.npy",
+      "bytes": 589952,
+      "crc32": "573bdac8",
+      "sha256": "a184ce96da1867cd52d39250bed2ebe84d2e2ab7d43d3f17269b7ff66427e76f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Fighting033_x264.npy",
+      "file": "Fighting033_x264.npy",
+      "bytes": 573568,
+      "crc32": "2e6e0fb1",
+      "sha256": "541ff5267a83b5974b9222e4b91ddd484f2e6df0ed53db2a816ee31d98ab97b0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arrest024_x264.npy",
+      "file": "Arrest024_x264.npy",
+      "bytes": 1859712,
+      "crc32": "91c58822",
+      "sha256": "c3c0d3cf0d4bbb1e07affdad322b0b947fcbfb2af534a17d3ad5329caf358738"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_067_x264.npy",
+      "file": "Normal_Videos_067_x264.npy",
+      "bytes": 548992,
+      "crc32": "8622fd42",
+      "sha256": "2211692d74c7e7c09e16cc393927b6c31c64386591e9dbfc159699063be79b98"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary037_x264.npy",
+      "file": "Burglary037_x264.npy",
+      "bytes": 983168,
+      "crc32": "b860d9ff",
+      "sha256": "f00ac99e8663b5565490d9501611c12a26963db175376bb4a655444e2f8a1826"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion025_x264.npy",
+      "file": "Explosion025_x264.npy",
+      "bytes": 262272,
+      "crc32": "8d70d8b2",
+      "sha256": "c660eecf2b5c654766d3575f279a18ac1ebad01f0fcfed785b12d02be50ae9ef"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_930_x264.npy",
+      "file": "Normal_Videos_930_x264.npy",
+      "bytes": 1638528,
+      "crc32": "649e5ece",
+      "sha256": "29fca753e5befd97e6fb1199b6efe56d29b146f83560d1f8b98866e43cfda55b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson007_x264.npy",
+      "file": "Arson007_x264.npy",
+      "bytes": 3203200,
+      "crc32": "ec52b847",
+      "sha256": "689d1a1090117b39f256378def7f0f1069a531c2e0fa2e0273b1317cc7e9711f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_931_x264.npy",
+      "file": "Normal_Videos_931_x264.npy",
+      "bytes": 909440,
+      "crc32": "5ac8ef1c",
+      "sha256": "28a78125da882610edcb28801291e4aeb4ad00c943ce3852f42686b8e53ef746"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_010_x264.npy",
+      "file": "Normal_Videos_010_x264.npy",
+      "bytes": 540800,
+      "crc32": "d424cabd",
+      "sha256": "9045fea7b3dcbead380e68a242f5dd633304f9cefb38a8d8baa3897788a5e632"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents021_x264.npy",
+      "file": "RoadAccidents021_x264.npy",
+      "bytes": 82048,
+      "crc32": "b401d077",
+      "sha256": "b02cf66c9100fe1eb7c040dd8836ee85da1e6b0c48d7543ecd101cb83eaee46e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_722_x264.npy",
+      "file": "Normal_Videos_722_x264.npy",
+      "bytes": 4472960,
+      "crc32": "ab85851d",
+      "sha256": "272a538f5a70a0766a763d2cbe7574e6543590d35fd444f78796aa52845afc9a"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents020_x264.npy",
+      "file": "RoadAccidents020_x264.npy",
+      "bytes": 909440,
+      "crc32": "3e8addfc",
+      "sha256": "b96f4f250392ad77da5c10555a5e35269818f07f9dd361e150e90e2f0685e0a6"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents128_x264.npy",
+      "file": "RoadAccidents128_x264.npy",
+      "bytes": 295040,
+      "crc32": "f5690e4b",
+      "sha256": "d02dd606e4315009fe1e0f180dca9b130d67b765857d9cd7e28db0b6aa21c556"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_059_x264.npy",
+      "file": "Normal_Videos_059_x264.npy",
+      "bytes": 942208,
+      "crc32": "731b5242",
+      "sha256": "d863df708e62107240b248a6f645764c9eec1605e5d4c193aa21c6c641a954b4"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting032_x264.npy",
+      "file": "Shooting032_x264.npy",
+      "bytes": 11108480,
+      "crc32": "edaba169",
+      "sha256": "c341f34799c77eb1cea14923450599bbe8c96b07660690303c192ae2054cb6ea"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_894_x264.npy",
+      "file": "Normal_Videos_894_x264.npy",
+      "bytes": 1319040,
+      "crc32": "b44174af",
+      "sha256": "e07737758f0d3142447c03c912ed5a7c47af5781956782759c7bb8efdec2450c"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting033_x264.npy",
+      "file": "Shooting033_x264.npy",
+      "bytes": 1859712,
+      "crc32": "d365079a",
+      "sha256": "0143513a2e8327305d3b926be502ce33e760585413dbb68a7638150f3b62f775"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_895_x264.npy",
+      "file": "Normal_Videos_895_x264.npy",
+      "bytes": 1556608,
+      "crc32": "273b6206",
+      "sha256": "d05c018c43c19b15f5d0a440725d24c1339e2c38054933b344bd163c1ad8d0c3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_150_x264.npy",
+      "file": "Normal_Videos_150_x264.npy",
+      "bytes": 442496,
+      "crc32": "055e214c",
+      "sha256": "dd405762925f6c14e514cc809ac4337d1910b2afd98ee309b9bc171c5a0987df"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_656_x264.npy",
+      "file": "Normal_Videos_656_x264.npy",
+      "bytes": 934016,
+      "crc32": "d5566b7f",
+      "sha256": "f0e559d48a27b761ff5d959c86959fa17c747575838135c09e713e9e59ff87be"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting007_x264.npy",
+      "file": "Shooting007_x264.npy",
+      "bytes": 737408,
+      "crc32": "ba3a2b8c",
+      "sha256": "7d6fa32b3dd09d1ca5dec050c626e7d830295963087c8609dfedb8fb24302fa8"
+    },
+    {
+      "member": "ucf_crime_vision_features/Stealing036_x264.npy",
+      "file": "Stealing036_x264.npy",
+      "bytes": 1286272,
+      "crc32": "bcaf16b5",
+      "sha256": "94a553de9f86fe92012384682f2f1a14f6fc390fec4a1030b0218cdb7c2c0b5e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_478_x264.npy",
+      "file": "Normal_Videos_478_x264.npy",
+      "bytes": 2310272,
+      "crc32": "5f5d2209",
+      "sha256": "6a234f8938ba92f9e93c63818b60f373518367489cffd7870287c25ace87bcb1"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_025_x264.npy",
+      "file": "Normal_Videos_025_x264.npy",
+      "bytes": 311424,
+      "crc32": "c701b98f",
+      "sha256": "7225f56c408c8a246038eda01d42d30093e27ee108862dab9d41c5d5c7350d70"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_024_x264.npy",
+      "file": "Normal_Videos_024_x264.npy",
+      "bytes": 557184,
+      "crc32": "e478a4da",
+      "sha256": "02143f027cadc612795f1455ff2cca946390d30a647c308e5b20d4a101a43579"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_717_x264.npy",
+      "file": "Normal_Videos_717_x264.npy",
+      "bytes": 647296,
+      "crc32": "8c0e7e2b",
+      "sha256": "976a0981eb09aa1e239e58085b3d017d38b946b4fdaf6f4a4e7f7fdddbf8b286"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_904_x264.npy",
+      "file": "Normal_Videos_904_x264.npy",
+      "bytes": 467072,
+      "crc32": "5644aef2",
+      "sha256": "894063ab4bfa285a2d711f2704d97b5c46b810dded11d37fbd607c81c22bbd94"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_905_x264.npy",
+      "file": "Normal_Videos_905_x264.npy",
+      "bytes": 614528,
+      "crc32": "7257965c",
+      "sha256": "ee60067060a9d118faad1709bbe3130cad1413397ecee59e2a28c4c6f07dc0c7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion010_x264.npy",
+      "file": "Explosion010_x264.npy",
+      "bytes": 1286272,
+      "crc32": "1ea44736",
+      "sha256": "30fe41b9355f573f53debae17e3d1e4163e1b384047e4532ec87124097806ede"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion011_x264.npy",
+      "file": "Explosion011_x264.npy",
+      "bytes": 811136,
+      "crc32": "3b28c2d2",
+      "sha256": "015d4c06516d7a829f46651c0b2c182a4274ef41f557de1b0a75fab7b6cacf64"
+    },
+    {
+      "member": "ucf_crime_vision_features/Robbery050_x264.npy",
+      "file": "Robbery050_x264.npy",
+      "bytes": 876672,
+      "crc32": "6e46f0ef",
+      "sha256": "5613449abb7f40042652b2f5f42b1ebae6594970256317a1b72ac9c537cdda50"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_621_x264.npy",
+      "file": "Normal_Videos_621_x264.npy",
+      "bytes": 2465920,
+      "crc32": "d1734c87",
+      "sha256": "f52b96f8642fb783e0e7dc75248c55bd4c1900cadec0b2a01157b28ffe8b01a5"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents123_x264.npy",
+      "file": "RoadAccidents123_x264.npy",
+      "bytes": 516224,
+      "crc32": "f14596ba",
+      "sha256": "712f83cf45894cc1fc3088d4f8377404c46a3e82469fdf15b5e5bd13e6d1813c"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents122_x264.npy",
+      "file": "RoadAccidents122_x264.npy",
+      "bytes": 336000,
+      "crc32": "285e52ca",
+      "sha256": "8d584d3fa166119a02baa1aba172b76c6938f0e3730bfa4a262bdb52e106a338"
+    },
+    {
+      "member": "ucf_crime_vision_features/Assault006_x264.npy",
+      "file": "Assault006_x264.npy",
+      "bytes": 4145280,
+      "crc32": "375303c0",
+      "sha256": "05b29c1a5e6e734b368cb9e66af83faf0273d1f0f90c25d23668c5c3a3da2d78"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting043_x264.npy",
+      "file": "Shooting043_x264.npy",
+      "bytes": 966784,
+      "crc32": "a809ce08",
+      "sha256": "fd0725a49d895e21894116209e3e518f3c45b55504337ee5737d1e4919d3f89b"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents019_x264.npy",
+      "file": "RoadAccidents019_x264.npy",
+      "bytes": 680064,
+      "crc32": "f5f4fc8a",
+      "sha256": "1b7a867b24a2f692207694aa3daf23bb0b026a9f656aa180d9877183706d93fe"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_876_x264.npy",
+      "file": "Normal_Videos_876_x264.npy",
+      "bytes": 180352,
+      "crc32": "b48fe82c",
+      "sha256": "c534832f8a2774f053c576eec0f5afa0867ce025a20ae9f7182025033d042ffd"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_877_x264.npy",
+      "file": "Normal_Videos_877_x264.npy",
+      "bytes": 5136512,
+      "crc32": "95d857a4",
+      "sha256": "4e7cf6799e8403423dbcd1ad967b72d159da42ff73cdc80f9f2fe504b5b94ed3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting031_x264.npy",
+      "file": "Shoplifting031_x264.npy",
+      "bytes": 229504,
+      "crc32": "abf74112",
+      "sha256": "ca60f3bf008bfd8a130387a2906d420f68ca5a48ccd7073437d6aa1d14d4a936"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary079_x264.npy",
+      "file": "Burglary079_x264.npy",
+      "bytes": 7610496,
+      "crc32": "3ee92261",
+      "sha256": "e363fd4f52a29ee8e62ef0fdca80876dab9dc5dc96fba9ab7be2efc735fffd1f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion022_x264.npy",
+      "file": "Explosion022_x264.npy",
+      "bytes": 1843328,
+      "crc32": "76e0327c",
+      "sha256": "3243abc10b7ddcf0826fcb4033e28bcda4b7e41e0089ad9e7880178b05b6af7b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_168_x264.npy",
+      "file": "Normal_Videos_168_x264.npy",
+      "bytes": 893056,
+      "crc32": "c8195140",
+      "sha256": "b569603f2c72534cf9abb8d36101fa763b5fa54122be337c4cf88d70186325fd"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_937_x264.npy",
+      "file": "Normal_Videos_937_x264.npy",
+      "bytes": 589952,
+      "crc32": "fbc440a3",
+      "sha256": "014d64eaa2e65f01ae9851bef31dc7980bdae4a03b2f5f3f079f1f6a96d5b14a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_936_x264.npy",
+      "file": "Normal_Videos_936_x264.npy",
+      "bytes": 589952,
+      "crc32": "fbc440a3",
+      "sha256": "014d64eaa2e65f01ae9851bef31dc7980bdae4a03b2f5f3f079f1f6a96d5b14a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_940_x264.npy",
+      "file": "Normal_Videos_940_x264.npy",
+      "bytes": 18448512,
+      "crc32": "578e3eb2",
+      "sha256": "2820f55a65c202f07fc9f10bd07a99e9920d2e216ebe086343ee5a0971255b80"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_941_x264.npy",
+      "file": "Normal_Videos_941_x264.npy",
+      "bytes": 1040512,
+      "crc32": "9f51f155",
+      "sha256": "bdbe6a00d317cc9ea2d7ef95e290a41a3eadc800c4d06275588bb22372743713"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_725_x264.npy",
+      "file": "Normal_Videos_725_x264.npy",
+      "bytes": 475264,
+      "crc32": "f5ca9379",
+      "sha256": "aad4c4baf260f7c7b65ecf5118c5972d5fe780b2521cb95914b849e1889d09ee"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_893_x264.npy",
+      "file": "Normal_Videos_893_x264.npy",
+      "bytes": 3268736,
+      "crc32": "f6b92578",
+      "sha256": "bce0e29f2d4442847db04d4e668e0ffb446017f4129e09d2cc1480be916a6b6b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Fighting042_x264.npy",
+      "file": "Fighting042_x264.npy",
+      "bytes": 1147008,
+      "crc32": "a12042d3",
+      "sha256": "7dc7ffd426a3bda1df325ee6a8a3ac0c1aa42f840d63c980d4dcb696078e4e31"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting034_x264.npy",
+      "file": "Shooting034_x264.npy",
+      "bytes": 729216,
+      "crc32": "b0062cc5",
+      "sha256": "5e2172b82e44a290b49606ac5e041d6a4de5abc927302121e26d3406399d254a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_892_x264.npy",
+      "file": "Normal_Videos_892_x264.npy",
+      "bytes": 909440,
+      "crc32": "fb6ac4af",
+      "sha256": "b68b3cc5f3c2da69c5391c04b2dae4978a13f3ed69ca51faab35568eb0e2d088"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_909_x264.npy",
+      "file": "Normal_Videos_909_x264.npy",
+      "bytes": 450688,
+      "crc32": "2b144b8a",
+      "sha256": "1ffca3fafa6b9801b5de548e78e53e7cd4c76882c5726cb38b581df4ba4cb691"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_908_x264.npy",
+      "file": "Normal_Videos_908_x264.npy",
+      "bytes": 458880,
+      "crc32": "e431e205",
+      "sha256": "2655d35d42edc165ceee87e19504ff2df25efe337e34b29801644156b7d737ff"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_801_x264.npy",
+      "file": "Normal_Videos_801_x264.npy",
+      "bytes": 1409152,
+      "crc32": "17883f54",
+      "sha256": "a41caac14f97715980e3b49a5972dc9b328d2518d5d943895b9d50c660318279"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_758_x264.npy",
+      "file": "Normal_Videos_758_x264.npy",
+      "bytes": 819328,
+      "crc32": "ce542c14",
+      "sha256": "1db32e4688c61c0ccefdcd84668ffc2377f434ce71c72cafcd7f29d179805cea"
+    },
+    {
+      "member": "ucf_crime_vision_features/Stealing079_x264.npy",
+      "file": "Stealing079_x264.npy",
+      "bytes": 2998400,
+      "crc32": "58fbaca2",
+      "sha256": "ffe8294e39961c4ddda485a723450dd9ec9561bd6150d874117d5d1c09c51742"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion029_x264.npy",
+      "file": "Explosion029_x264.npy",
+      "bytes": 1237120,
+      "crc32": "617c32ba",
+      "sha256": "71cbd05e9a2053afb002e85db8ee35960cae48dced1e1671b7fd1fe3b665d102"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion028_x264.npy",
+      "file": "Explosion028_x264.npy",
+      "bytes": 876672,
+      "crc32": "9c7556f6",
+      "sha256": "9122a25d9538bb0e1bcc2240d62c0e923eb21964c371091e4eddb5415ab3a659"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_710_x264.npy",
+      "file": "Normal_Videos_710_x264.npy",
+      "bytes": 925824,
+      "crc32": "c43d5945",
+      "sha256": "79d480191c10a7e6e4d891f3b51c12623f6a4106b9158acd192e4ccb3a4cc24b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_576_x264.npy",
+      "file": "Normal_Videos_576_x264.npy",
+      "bytes": 5775488,
+      "crc32": "7e1c7773",
+      "sha256": "6b065af1e2de93fbb3d84c563f64cd8c3ad95da6eb3865623c3187d11bc45f1b"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents012_x264.npy",
+      "file": "RoadAccidents012_x264.npy",
+      "bytes": 245888,
+      "crc32": "b3f61aba",
+      "sha256": "033503cd3adcc58deb3e97a41d39292ec5a30373b654d69bf7f3fdcf441255c7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_782_x264.npy",
+      "file": "Normal_Videos_782_x264.npy",
+      "bytes": 2842752,
+      "crc32": "67c77a49",
+      "sha256": "538cd55e9d3eb1d714c4770cb21688880da3c08fe71bc66d86dbfe7d3f047aa9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_783_x264.npy",
+      "file": "Normal_Videos_783_x264.npy",
+      "bytes": 4915328,
+      "crc32": "75cacd11",
+      "sha256": "5a48f889acd84f152abc1b13f65c82876cc70c4d20862e75002b530af616db54"
+    },
+    {
+      "member": "ucf_crime_vision_features/Vandalism036_x264.npy",
+      "file": "Vandalism036_x264.npy",
+      "bytes": 745600,
+      "crc32": "6fb383c3",
+      "sha256": "9697d0dcc193877f152c5d20931216172b5b503399a101d028f509851bab5449"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting048_x264.npy",
+      "file": "Shooting048_x264.npy",
+      "bytes": 1409152,
+      "crc32": "0ef0ac11",
+      "sha256": "9d5b68e0ba16083ae67acacc0914972a6b9527940fe2d7016b02fbd515ca016b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary005_x264.npy",
+      "file": "Burglary005_x264.npy",
+      "bytes": 3965056,
+      "crc32": "b86bff3a",
+      "sha256": "b22c8b7ddff2dea16b578a11691eab0519a1b63532a0c36ff755a32236627e1f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson035_x264.npy",
+      "file": "Arson035_x264.npy",
+      "bytes": 737408,
+      "crc32": "31efa7ae",
+      "sha256": "6b17e99d938e8b0f0ac6ea963693a650ea5cdf2b3ddc82348928fbf51e073365"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_903_x264.npy",
+      "file": "Normal_Videos_903_x264.npy",
+      "bytes": 409728,
+      "crc32": "2ea2f689",
+      "sha256": "eb0ed3bda63f340972e1744a6cf5b648dac70772399ffe5f8712de83abdcda82"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_902_x264.npy",
+      "file": "Normal_Videos_902_x264.npy",
+      "bytes": 712832,
+      "crc32": "3b95ab03",
+      "sha256": "8040a6db175bc0d95e888cc110d796219a97da51e931178035f65d6c309c5d63"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion017_x264.npy",
+      "file": "Explosion017_x264.npy",
+      "bytes": 843904,
+      "crc32": "d6c55243",
+      "sha256": "af5917f59b2b16ca8e3a5396cc5e0a074ac2e4553163c804883ef3666c3a68e2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion016_x264.npy",
+      "file": "Explosion016_x264.npy",
+      "bytes": 499840,
+      "crc32": "01be3401",
+      "sha256": "1f046ab9b2eb02994a1f5bd7412ff225e9abeb730365f3aa390c23e178e9c223"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_899_x264.npy",
+      "file": "Normal_Videos_899_x264.npy",
+      "bytes": 712832,
+      "crc32": "39d335ef",
+      "sha256": "db22643b3668a872ecbee13910e1ffa24858eaf052417c31ec8d426218aa2246"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_898_x264.npy",
+      "file": "Normal_Videos_898_x264.npy",
+      "bytes": 516224,
+      "crc32": "cbc7aee6",
+      "sha256": "cd5f933b5c0e66d4c6a097415176ff888be52cadd50a08e02bcc5d1a3f939e1f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting004_x264.npy",
+      "file": "Shoplifting004_x264.npy",
+      "bytes": 3424384,
+      "crc32": "0b7e9c33",
+      "sha256": "072133887288e488c043d3bec571caffc3075ca7c77902622a3575b05b394b2a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting005_x264.npy",
+      "file": "Shoplifting005_x264.npy",
+      "bytes": 1007744,
+      "crc32": "86fec918",
+      "sha256": "125c9a4392d82c6a862cf55a50b5922ed09b7c2ad9d7500a90a84c2b42ddcfb1"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents124_x264.npy",
+      "file": "RoadAccidents124_x264.npy",
+      "bytes": 770176,
+      "crc32": "c0740aa5",
+      "sha256": "3492af2efb885e0f9c48431af96a39e47f198f1221b340dc4eca8b134e9f0d26"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents125_x264.npy",
+      "file": "RoadAccidents125_x264.npy",
+      "bytes": 909440,
+      "crc32": "adca8c9d",
+      "sha256": "4008fed631ded75a530f49ac847e4d655401989d11c4bd200d266f4dd795e7dc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_828_x264.npy",
+      "file": "Normal_Videos_828_x264.npy",
+      "bytes": 483456,
+      "crc32": "668d0a89",
+      "sha256": "1ba03e287e4b276efca7e3e4b88132bc89d6aa29a6b21212f5ed771fd29fc7d2"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_210_x264.npy",
+      "file": "Normal_Videos_210_x264.npy",
+      "bytes": 2769024,
+      "crc32": "a53b4bf1",
+      "sha256": "26dc918055f5686ae75285560bd99744c3858ac4858c7656faaa2f0c1c5795fe"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_745_x264.npy",
+      "file": "Normal_Videos_745_x264.npy",
+      "bytes": 163968,
+      "crc32": "7cfabe20",
+      "sha256": "79d6e164379b999491e8f19a052df5ec059981fe1595b578e24ddf74ef0a26b4"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson016_x264.npy",
+      "file": "Arson016_x264.npy",
+      "bytes": 925824,
+      "crc32": "aa39e82b",
+      "sha256": "c8e6e6c45440588b1bdefd431f2d64c718d03d4b70639995901ab09677784e9a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion035_x264.npy",
+      "file": "Explosion035_x264.npy",
+      "bytes": 1474688,
+      "crc32": "1338a9d3",
+      "sha256": "9be8b9b22f5127e943b787fa04ef6760f6d09fd274174a38ce5ed4e8e9a9ec2f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shoplifting027_x264.npy",
+      "file": "Shoplifting027_x264.npy",
+      "bytes": 966784,
+      "crc32": "4826a0fa",
+      "sha256": "ef2c95383399a188979861df044d401907ddc0e257ccfb9dc6d192d1eb018fa5"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_696_x264.npy",
+      "file": "Normal_Videos_696_x264.npy",
+      "bytes": 1859712,
+      "crc32": "e3f78af8",
+      "sha256": "cef09b862e7ba28ad06755bcdf20e9c6676658a2d6ab3ff918ab4459ac5fa3e9"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_048_x264.npy",
+      "file": "Normal_Videos_048_x264.npy",
+      "bytes": 852096,
+      "crc32": "82cd89f9",
+      "sha256": "c80e65fc64c0f55f9b219e3656c5fd9b32ca3989a94ef9c6632769313517b2c3"
+    },
+    {
+      "member": "ucf_crime_vision_features/Burglary018_x264.npy",
+      "file": "Burglary018_x264.npy",
+      "bytes": 581760,
+      "crc32": "8e9c0946",
+      "sha256": "84bcde45caf466bc3e049a658eb4c898a1878ee9bcd4ec54469940067eba4a1e"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting022_x264.npy",
+      "file": "Shooting022_x264.npy",
+      "bytes": 2334848,
+      "crc32": "908b9134",
+      "sha256": "4bd37634c55d6c221900467a78b4beee872eee48416ff6ededaf9a1d58618e96"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_884_x264.npy",
+      "file": "Normal_Videos_884_x264.npy",
+      "bytes": 4628608,
+      "crc32": "6f8ff588",
+      "sha256": "697c97745458ad6359c3a48ba9d4c7fe650ea3e84627e4f0c5f8866fd2ee4174"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_885_x264.npy",
+      "file": "Normal_Videos_885_x264.npy",
+      "bytes": 245888,
+      "crc32": "4a4ecbf3",
+      "sha256": "89968e9090eb025bc116a12c4d6d3f2e667b284375b6142df9764d14944f0f2a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Vandalism015_x264.npy",
+      "file": "Vandalism015_x264.npy",
+      "bytes": 1532032,
+      "crc32": "2bd3f43e",
+      "sha256": "aad4933c916fc7801a437228ed443e3c84ff7e492edad95318a389f0cdc810bc"
+    },
+    {
+      "member": "ucf_crime_vision_features/Explosion043_x264.npy",
+      "file": "Explosion043_x264.npy",
+      "bytes": 3915904,
+      "crc32": "8ed51103",
+      "sha256": "c39c20686a04071d825ff1245fce9626e88e9622592cb6e8fe4d6fc06afadc1d"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_034_x264.npy",
+      "file": "Normal_Videos_034_x264.npy",
+      "bytes": 680064,
+      "crc32": "63110a22",
+      "sha256": "836ccfd93954cc84b11664342bed2180c467ee0582e862cb4dd92942e5ce5d94"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents004_x264.npy",
+      "file": "RoadAccidents004_x264.npy",
+      "bytes": 204928,
+      "crc32": "2a90f715",
+      "sha256": "ddf04f833e9de61ec5ea05584d83f1058883cb541076cba41d3e4e3d92e2aa34"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_289_x264.npy",
+      "file": "Normal_Videos_289_x264.npy",
+      "bytes": 442496,
+      "crc32": "f59e5807",
+      "sha256": "b7967de6f4c8ab49c6a310010550568da8d26346e1d67e711de2aa9253dae09b"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_312_x264.npy",
+      "file": "Normal_Videos_312_x264.npy",
+      "bytes": 647296,
+      "crc32": "7e437c6e",
+      "sha256": "8c9904a5b7333c6c9f094396197d04b93c2ad40d9a5be9ca84c5332e9fff1ef7"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_175_x264.npy",
+      "file": "Normal_Videos_175_x264.npy",
+      "bytes": 4530304,
+      "crc32": "e4b50679",
+      "sha256": "75114b83c020e909c0bbb89b67deae9f8c6d8ee6667e8fe98ff6f8067d8b349f"
+    },
+    {
+      "member": "ucf_crime_vision_features/Stealing019_x264.npy",
+      "file": "Stealing019_x264.npy",
+      "bytes": 2515072,
+      "crc32": "3e54fd4d",
+      "sha256": "dc40fa0764e1dacee11aa413d99b57eddc50ca61afc305b4c9c8cb3f8267cb60"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents133_x264.npy",
+      "file": "RoadAccidents133_x264.npy",
+      "bytes": 352384,
+      "crc32": "47079f76",
+      "sha256": "2da06e146c4fe23b3ec860d038d9de00c7109027e76069d34309a3c22f04eb28"
+    },
+    {
+      "member": "ucf_crime_vision_features/RoadAccidents132_x264.npy",
+      "file": "RoadAccidents132_x264.npy",
+      "bytes": 958592,
+      "crc32": "a9876094",
+      "sha256": "e6d2747bead5cf57b352746e92a00d9089af52987f0a6bfaab4245d35a5cc939"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_365_x264.npy",
+      "file": "Normal_Videos_365_x264.npy",
+      "bytes": 3399808,
+      "crc32": "a56fc4bd",
+      "sha256": "b9addfb55588d4e1f65e2ecbf80149c2c43814b11d93c3f7a47b5b8bf1ba8434"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arrest001_x264.npy",
+      "file": "Arrest001_x264.npy",
+      "bytes": 1220736,
+      "crc32": "199d9e3e",
+      "sha256": "11ad0d993e48154586b59b0e473eaa04d09d1df8c3b69ee9511ec0dc48806809"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_914_x264.npy",
+      "file": "Normal_Videos_914_x264.npy",
+      "bytes": 450688,
+      "crc32": "4ac123f4",
+      "sha256": "e5df4e1756d11500df18f95bedd69d6f8b212e5d05b890fabb2e2c819be93d83"
+    },
+    {
+      "member": "ucf_crime_vision_features/Arson022_x264.npy",
+      "file": "Arson022_x264.npy",
+      "bytes": 4423808,
+      "crc32": "544f137e",
+      "sha256": "b8a4290ce2bd0f22c9994025865e462ea9f77c9aba06c443bb58327ea79cf3b0"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_915_x264.npy",
+      "file": "Normal_Videos_915_x264.npy",
+      "bytes": 639104,
+      "crc32": "24545b3e",
+      "sha256": "faab9a6e0ab2fcc8436936e88dc7edd1ddda66ea7ee6020b8d42a468c37a828a"
+    },
+    {
+      "member": "ucf_crime_vision_features/Shooting028_x264.npy",
+      "file": "Shooting028_x264.npy",
+      "bytes": 974976,
+      "crc32": "0aeea76c",
+      "sha256": "e6f22f4228ec4aa95c07027cc516ab7a6e181f6cca8bba5a59093efa8ac00bc4"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_224_x264.npy",
+      "file": "Normal_Videos_224_x264.npy",
+      "bytes": 3563648,
+      "crc32": "451ab4cf",
+      "sha256": "29b9e86fa7e18980c84e9ffdde226053c4169f3a8ea2053f264cbc8e8ed97111"
+    },
+    {
+      "member": "ucf_crime_vision_features/Normal_Videos_042_x264.npy",
+      "file": "Normal_Videos_042_x264.npy",
+      "bytes": 1622144,
+      "crc32": "ffad7bb3",
+      "sha256": "be713385003d34abd9ff9fe93a7e9d4390b15124e9f61fb194be9daa67a0bf80"
+    }
+  ],
+  "score_members": [
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_908_x264.json",
+      "file": "Normal_Videos_908_x264.json",
+      "bytes": 2784,
+      "crc32": "a92e4b60",
+      "sha256": "945bf0b43cbe9de225bbac55b94aa7265263ab76aed6496b2272bd15fd289d76"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_887_x264.json",
+      "file": "Normal_Videos_887_x264.json",
+      "bytes": 25497,
+      "crc32": "1ec5e975",
+      "sha256": "2b80648f788235c278fdadbdb6484e9fcba3e02baf028ede13f0f0d3755954a8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents012_x264.json",
+      "file": "RoadAccidents012_x264.json",
+      "bytes": 1456,
+      "crc32": "46ce838c",
+      "sha256": "a751d5294858fda4b808d4a269e0383ce9c520898eac3fa3088eaca4b433145f"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_696_x264.json",
+      "file": "Normal_Videos_696_x264.json",
+      "bytes": 11997,
+      "crc32": "6c4ae50c",
+      "sha256": "c4d1e40d7987097a8a00857d50d380298bb825d42d988a08e5ada0bb7e289f0f"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion016_x264.json",
+      "file": "Explosion016_x264.json",
+      "bytes": 3037,
+      "crc32": "4c0a6001",
+      "sha256": "9b3dd8fd366c7ace224500df513e58706f32f5174e7434d7aba68995357a92bd"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion002_x264.json",
+      "file": "Explosion002_x264.json",
+      "bytes": 13293,
+      "crc32": "bc3fbd86",
+      "sha256": "e8ffd38a571855849c4e1bb212f1645a2e1be546c2b9c55c6936a4c1f30eec7e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting044_x264.json",
+      "file": "Shoplifting044_x264.json",
+      "bytes": 49733,
+      "crc32": "b58fefee",
+      "sha256": "dbba75f75da0f983c4801b280d5f078bffdb0fb12fe1d735e84374ee15b84802"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson010_x264.json",
+      "file": "Arson010_x264.json",
+      "bytes": 10431,
+      "crc32": "ab1fbd60",
+      "sha256": "c2ab0c542d28d42388a40e70c8963f08a6bac30a0a8f71a6aa028191930788d4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_893_x264.json",
+      "file": "Normal_Videos_893_x264.json",
+      "bytes": 21285,
+      "crc32": "dd4b753d",
+      "sha256": "e692129dc3ccaf721556294db5cf4ea5bc38eb085e65101ed7f72025389abe97"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_801_x264.json",
+      "file": "Normal_Videos_801_x264.json",
+      "bytes": 9027,
+      "crc32": "2ed4b0bf",
+      "sha256": "0f23409f1a61e976295e040a89b95414c76bf66f5c9e1b974d52e73cfce16849"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_929_x264.json",
+      "file": "Normal_Videos_929_x264.json",
+      "bytes": 2886,
+      "crc32": "7297ed0d",
+      "sha256": "42ce8ccaeb3de40f0998980b5e61f9414075ad19b3ee945e19aff6faaa82c46a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_024_x264.json",
+      "file": "Normal_Videos_024_x264.json",
+      "bytes": 3413,
+      "crc32": "2cb8e49f",
+      "sha256": "df460f1997be5beab70dc4faeece4a233a26b7c60941c7b284c84b5f4152475e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson009_x264.json",
+      "file": "Arson009_x264.json",
+      "bytes": 2325,
+      "crc32": "f3276d3c",
+      "sha256": "f2e5c608079561b3f78819e791a18d125464c6980776f688b055414b9b170110"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting026_x264.json",
+      "file": "Shooting026_x264.json",
+      "bytes": 4491,
+      "crc32": "54bf4aab",
+      "sha256": "931f5a94f78d4dc5bf3657f9d57fd176b674a4724ec6686375ede01419c90b46"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_905_x264.json",
+      "file": "Normal_Videos_905_x264.json",
+      "bytes": 3789,
+      "crc32": "6657aed8",
+      "sha256": "eb5dccf78d5f695e287d090041a1b7b338516e46239574cd03bc252ca0178813"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting027_x264.json",
+      "file": "Shoplifting027_x264.json",
+      "bytes": 6109,
+      "crc32": "c8a37e07",
+      "sha256": "3726820ec264965e44a4183b2eff160d64a22bbb3e214cfc1aca6f7699aa0fa2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents123_x264.json",
+      "file": "RoadAccidents123_x264.json",
+      "bytes": 3150,
+      "crc32": "138b3a03",
+      "sha256": "8b1fe5d3793115b4584af78cb876ba7d1807d54c98a7a4b54cd298cdcb645eb1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting048_x264.json",
+      "file": "Shooting048_x264.json",
+      "bytes": 9025,
+      "crc32": "fc7be8aa",
+      "sha256": "4a3abe35928420dee64908e9bb01abe9e0007bd7fb9b21b4e2115da35f8026d3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting033_x264.json",
+      "file": "Shoplifting033_x264.json",
+      "bytes": 2833,
+      "crc32": "b6c3f52a",
+      "sha256": "e84759485e7f93878de510dcf6840263f0806df4efa4517f7ad8e379f5bec20b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary005_x264.json",
+      "file": "Burglary005_x264.json",
+      "bytes": 25873,
+      "crc32": "d6efd1cf",
+      "sha256": "9a2c0a20317a07d64b343e97d6cd491d0fbeb89755e89cbcccd21143c54c7dd7"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_911_x264.json",
+      "file": "Normal_Videos_911_x264.json",
+      "bytes": 2427,
+      "crc32": "19d0bb35",
+      "sha256": "54ef493353ef9ce314090b3306c5513e29cb23929869c10a2b9e027ce43a03df"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting032_x264.json",
+      "file": "Shooting032_x264.json",
+      "bytes": 75153,
+      "crc32": "3f783ca8",
+      "sha256": "fb92f52b11ed6153e73bd37c7721b398bfdbc33a8c60c135651fda106257b922"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting049_x264.json",
+      "file": "Shoplifting049_x264.json",
+      "bytes": 7027,
+      "crc32": "2fc01454",
+      "sha256": "45484bb01c1c13b40568ba50973929783c3ebc5ec33f8bc5b04ebec511ec2987"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary024_x264.json",
+      "file": "Burglary024_x264.json",
+      "bytes": 11941,
+      "crc32": "3dd43ac0",
+      "sha256": "69797937a50b21f6964c5b1fe0233cf66a263124b0df1ee7a30e5e97bbc7c0b6"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_930_x264.json",
+      "file": "Normal_Videos_930_x264.json",
+      "bytes": 10537,
+      "crc32": "00e98114",
+      "sha256": "9ad3cbd08038b743f90b4da351776e6ff86a3ad37f0f1cc826d4f827a034de79"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_876_x264.json",
+      "file": "Normal_Videos_876_x264.json",
+      "bytes": 1050,
+      "crc32": "2a7356f0",
+      "sha256": "fc60a1971ccee09fe3ed19650dd9c6b7e5b4810f17deba7d1b2d3a45f4e4f5b5"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting013_x264.json",
+      "file": "Shooting013_x264.json",
+      "bytes": 3413,
+      "crc32": "f3ae80de",
+      "sha256": "27f49ea9a478bfcaee2c24369c9ee00a2a055891d104da4b069c53c96cb21815"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting007_x264.json",
+      "file": "Shooting007_x264.json",
+      "bytes": 4599,
+      "crc32": "66f46dbf",
+      "sha256": "4ab5b5c03f056733e739f90749822b21ef6607eb14e7b6bb6773a1add37abc10"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_924_x264.json",
+      "file": "Normal_Videos_924_x264.json",
+      "bytes": 384112,
+      "crc32": "943e782f",
+      "sha256": "2b997a4597993b403930c31dbae8dbf30983e771a319c238477413d681cfc1aa"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents021_x264.json",
+      "file": "RoadAccidents021_x264.json",
+      "bytes": 444,
+      "crc32": "feff5d1b",
+      "sha256": "260c433c2e81609ee74d5142567d3f515ed93478171520fb07b5592197d5bce0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting018_x264.json",
+      "file": "Shooting018_x264.json",
+      "bytes": 5841,
+      "crc32": "717ad7ce",
+      "sha256": "0acb968477e14bafd9e464c2dc248f8e7791591e60f5a059fad6619f7e0a4f76"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion025_x264.json",
+      "file": "Explosion025_x264.json",
+      "bytes": 1560,
+      "crc32": "5c8a18a4",
+      "sha256": "0453bcd5615ad1caccba55100eb3365a59f052d2cb811253c5b370be925a089a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_941_x264.json",
+      "file": "Normal_Videos_941_x264.json",
+      "bytes": 6595,
+      "crc32": "43e12082",
+      "sha256": "19d52c4ef5a5b9d00fcb7a2c13c13ec7336d3c1a26518e648b9c48b39654371c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_352_x264.json",
+      "file": "Normal_Videos_352_x264.json",
+      "bytes": 17991,
+      "crc32": "bf3f93be",
+      "sha256": "226c5d7dd72fb332df8c51d7794685c432a21fc03b366918b06fce2d2bc258a7"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_869_x264.json",
+      "file": "Normal_Videos_869_x264.json",
+      "bytes": 7891,
+      "crc32": "307c4861",
+      "sha256": "07d7c1ada0d62205200476ec6c0bc7fedad1ab8e2715877238eea1f9857769a9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_003_x264.json",
+      "file": "Normal_Videos_003_x264.json",
+      "bytes": 9297,
+      "crc32": "c45a3b3c",
+      "sha256": "461d15bf1ed755422b109249e2b23001f54aaa2abea9b6f41802959af137ce81"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents128_x264.json",
+      "file": "RoadAccidents128_x264.json",
+      "bytes": 1762,
+      "crc32": "0f9fd1b4",
+      "sha256": "023895249dd44aa0a78dfbf2bc871071ec3002bd9b2b440de1b7a3b0c23f0bb8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion010_x264.json",
+      "file": "Explosion010_x264.json",
+      "bytes": 8215,
+      "crc32": "a91fd64e",
+      "sha256": "d89a565f8ee9e6472d67a79d675fb416abd59c4bd5b5957bc1023781566e8e1f"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Robbery106_x264.json",
+      "file": "Robbery106_x264.json",
+      "bytes": 3789,
+      "crc32": "8b1840fc",
+      "sha256": "fd2593d62f4e22977fe89a699795e1820db3fb5d3539eee342cb53ace7c680e6"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_881_x264.json",
+      "file": "Normal_Videos_881_x264.json",
+      "bytes": 644,
+      "crc32": "1703edb5",
+      "sha256": "5c49f77e4087d6e9b2cbbf5da5af7d1a8483a0f0c496a2726ef0dbcf5d7ca890"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_401_x264.json",
+      "file": "Normal_Videos_401_x264.json",
+      "bytes": 5247,
+      "crc32": "8dfed566",
+      "sha256": "81cd5306d5ea5dd01e7beca2d4bf78889d9f4368814468cea3157359d5a10033"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_895_x264.json",
+      "file": "Normal_Videos_895_x264.json",
+      "bytes": 9999,
+      "crc32": "a425591f",
+      "sha256": "1d286142de2907dc941bb87032973b2fd0f78cab29bac6dc7a738453f651c928"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson016_x264.json",
+      "file": "Arson016_x264.json",
+      "bytes": 5839,
+      "crc32": "f4a6c5ca",
+      "sha256": "23046165008283ec4cc837922cfc98544f776d951444a2294f811ac12d4b0035"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion004_x264.json",
+      "file": "Explosion004_x264.json",
+      "bytes": 6165,
+      "crc32": "7dd8be01",
+      "sha256": "06a1b1079b94b951554960c6afa80de2691b92afebb66885da919b9150be19fe"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting043_x264.json",
+      "file": "Shooting043_x264.json",
+      "bytes": 6109,
+      "crc32": "2b3d61e2",
+      "sha256": "41c4f90c6cc69d11f74179de7e770063ad13459135928c45afb9352412017f98"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_870_x264.json",
+      "file": "Normal_Videos_870_x264.json",
+      "bytes": 1866,
+      "crc32": "4c972624",
+      "sha256": "66170f0060300e5734e9decc61b8e91aef35b2e2e3260b46cf6dc97739c8aac6"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_041_x264.json",
+      "file": "Normal_Videos_041_x264.json",
+      "bytes": 4057,
+      "crc32": "a628b689",
+      "sha256": "6993f495ade1ea75b52abc87e011fa5b47ce443a7030d8f71044873a2664e9e3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting015_x264.json",
+      "file": "Shooting015_x264.json",
+      "bytes": 5569,
+      "crc32": "9019e7f4",
+      "sha256": "1058bf6cf5b460a5588834de15af8853079a0171789210615bfaaf39bda3a92d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_936_x264.json",
+      "file": "Normal_Videos_936_x264.json",
+      "bytes": 3627,
+      "crc32": "06ca1a87",
+      "sha256": "5816461fa410f46a9ca9955f531a4d98b7bde49faf1cb1b84b2727588880b657"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Assault011_x264.json",
+      "file": "Assault011_x264.json",
+      "bytes": 7461,
+      "crc32": "efe457eb",
+      "sha256": "07f73e02d7ebbdd05b38e87a20cace2cca8167d4d207c053dc8669a227afb289"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion028_x264.json",
+      "file": "Explosion028_x264.json",
+      "bytes": 5517,
+      "crc32": "dbab067c",
+      "sha256": "54ae86dbe7e2ad1fae5449512d265869bb6946f88abb37ec8e89f1ab676c7eb2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_439_x264.json",
+      "file": "Normal_Videos_439_x264.json",
+      "bytes": 14047,
+      "crc32": "98f1cc5a",
+      "sha256": "762ad05acd9d401aa505defb555b3dfa79eddc348f456342700308d6b71be413"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_780_x264.json",
+      "file": "Normal_Videos_780_x264.json",
+      "bytes": 6595,
+      "crc32": "5f2f75e4",
+      "sha256": "ba7cd7688f20c6ed769f817f1fb01ae1d5b2b15f4429c2e7af96e6d7e577b6ce"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting021_x264.json",
+      "file": "Shoplifting021_x264.json",
+      "bytes": 11727,
+      "crc32": "43bca723",
+      "sha256": "5902f476d6ee87aa3e0b538befe854b08af485e0459d77221bba930d0ddf0bb3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents125_x264.json",
+      "file": "RoadAccidents125_x264.json",
+      "bytes": 5733,
+      "crc32": "fe58c853",
+      "sha256": "4c15a73f6dd0347b2c821921628083b8ca9ba388edb377bb1122a8bea91c00f4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary017_x264.json",
+      "file": "Burglary017_x264.json",
+      "bytes": 6919,
+      "crc32": "5a419e44",
+      "sha256": "2df0dbb04c35e846869c00896c0d5001eedff113c8a96b05e2838083754d22b1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents019_x264.json",
+      "file": "RoadAccidents019_x264.json",
+      "bytes": 4219,
+      "crc32": "c690905a",
+      "sha256": "41ee5dc23f04d7359f681da3b49aeaabb56a1e2da4d221a72ba34bb61997837d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_903_x264.json",
+      "file": "Normal_Videos_903_x264.json",
+      "bytes": 2478,
+      "crc32": "ba32e9b4",
+      "sha256": "6ca54524888172781909cb1dacc8d31c7b3def38b8733a1caed36342c0f6e0d8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_597_x264.json",
+      "file": "Normal_Videos_597_x264.json",
+      "bytes": 7297,
+      "crc32": "befe6e8f",
+      "sha256": "e3e7ba86ec5caa85c519648570ed7f0c750f002a4dce255c57eab55de4f33f86"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting034_x264.json",
+      "file": "Shooting034_x264.json",
+      "bytes": 4543,
+      "crc32": "eeafdfbb",
+      "sha256": "083415ae3cfa47c74cde3d89a6f058ac652c901e35f4fa0688ce7f753232c899"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_898_x264.json",
+      "file": "Normal_Videos_898_x264.json",
+      "bytes": 3150,
+      "crc32": "495a2599",
+      "sha256": "e7db37b6af4281e121717bc24fb979aa10ab778773fbcea269f1338f1d07b3f3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Stealing019_x264.json",
+      "file": "Stealing019_x264.json",
+      "bytes": 16317,
+      "crc32": "fb59c73e",
+      "sha256": "1ed19e0385a9a739bed4696ec6612c0e2a06682f3c6b8e422799ffab8fec3af4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_310_x264.json",
+      "file": "Normal_Videos_310_x264.json",
+      "bytes": 8271,
+      "crc32": "9de29dd8",
+      "sha256": "4cc40fa06a194cf17e63981de401514b62e14b1d028a437fe3b0e51d1660a8f0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary079_x264.json",
+      "file": "Burglary079_x264.json",
+      "bytes": 50814,
+      "crc32": "71d81354",
+      "sha256": "9ed20b7a3eef45a9292de83c5f7d01515a8fbf2cbe2f903e0bd98bb8230a73a3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents131_x264.json",
+      "file": "RoadAccidents131_x264.json",
+      "bytes": 4921,
+      "crc32": "682a9638",
+      "sha256": "9a6fee311adc4cff6b3682112655a2a4190fe496c95102a5301298b8cdcb0510"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_010_x264.json",
+      "file": "Normal_Videos_010_x264.json",
+      "bytes": 3309,
+      "crc32": "6f40e394",
+      "sha256": "18a2a69dcb8a9a230abd81ee41d0276803c2c7f7a6ae0ba5b43700e323c0318d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_360_x264.json",
+      "file": "Normal_Videos_360_x264.json",
+      "bytes": 3090,
+      "crc32": "fe2ab872",
+      "sha256": "8b4a2284766d570f9bf9057b8b32ffe415f4ba0f8dbb0e7bbbdb17eac1ad4351"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson011_x264.json",
+      "file": "Arson011_x264.json",
+      "bytes": 4057,
+      "crc32": "c5124767",
+      "sha256": "9a13c921eb423cbb6793a56674106f13c6eba588be72062a354159f2eb18322c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_892_x264.json",
+      "file": "Normal_Videos_892_x264.json",
+      "bytes": 5733,
+      "crc32": "d39e5128",
+      "sha256": "1e9b2643554bfd21464b12e98bdb65011147285cef03fae8f2224251be158c84"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_248_x264.json",
+      "file": "Normal_Videos_248_x264.json",
+      "bytes": 3625,
+      "crc32": "556b8df9",
+      "sha256": "a09f9a9f10ad0d837eb1d473f2bfd3071ede48000cfe2a77b83356762bbaf3e1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_886_x264.json",
+      "file": "Normal_Videos_886_x264.json",
+      "bytes": 9027,
+      "crc32": "3ae976f8",
+      "sha256": "b1b9180ba214e40eaea67ed414c11f6ebe19b8f3729aed0d4c3399e18d17ee98"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_909_x264.json",
+      "file": "Normal_Videos_909_x264.json",
+      "bytes": 2733,
+      "crc32": "af71f9f2",
+      "sha256": "dbfb5afa2f58704d2a8a186f4c81685dcbdb147ea93d49bdb09292d8c316f96a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion017_x264.json",
+      "file": "Explosion017_x264.json",
+      "bytes": 5301,
+      "crc32": "aa8ccd96",
+      "sha256": "0f990c3c7c5e63943b3fedb8966dd157128ace0f508386e469d390ca6f5cf4c3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_928_x264.json",
+      "file": "Normal_Videos_928_x264.json",
+      "bytes": 2886,
+      "crc32": "122426e9",
+      "sha256": "1379e7c06c4d48de916f2e003e4f0dcabd06924d11f0721c1b4d481523e579dd"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_025_x264.json",
+      "file": "Normal_Videos_025_x264.json",
+      "bytes": 1866,
+      "crc32": "eba13086",
+      "sha256": "5d553bd8ecb52487a4e6d8269c17a75ebecf50dea761f37449460c2e82644180"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Fighting003_x264.json",
+      "file": "Fighting003_x264.json",
+      "bytes": 10215,
+      "crc32": "e81fa658",
+      "sha256": "d5aa8bc2c32641f0d09914924a3b034d915e4ed94ffa475aed2d212d8320bde6"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion036_x264.json",
+      "file": "Explosion036_x264.json",
+      "bytes": 17721,
+      "crc32": "4795fc0f",
+      "sha256": "3f126c326cc5ca29208ecc3bae8790b214b6b3276f25f412c42f53b9b4f07952"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion022_x264.json",
+      "file": "Explosion022_x264.json",
+      "bytes": 11889,
+      "crc32": "d4b4f932",
+      "sha256": "68f768b5cc8a1732c01e3aae2ce701f66e15bb404178a42fbd62423e8f8d606c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_251_x264.json",
+      "file": "Normal_Videos_251_x264.json",
+      "bytes": 1252,
+      "crc32": "b901c821",
+      "sha256": "a7c61d99778f164eea2e28f26da04ef9d97722b0a41b461228c85d79545d7ba8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting033_x264.json",
+      "file": "Shooting033_x264.json",
+      "bytes": 11997,
+      "crc32": "4ac25298",
+      "sha256": "321759261fd36e642fdee6032d6c988f91fadf37d8239dfbac9e1f988aae9069"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_067_x264.json",
+      "file": "Normal_Videos_067_x264.json",
+      "bytes": 3362,
+      "crc32": "f10e0d08",
+      "sha256": "2c0c3fd497f7fa9a4b8114fb4b15d78e694798788f95dea1efd0e984fd64435b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_317_x264.json",
+      "file": "Normal_Videos_317_x264.json",
+      "bytes": 2935,
+      "crc32": "8d6d55c8",
+      "sha256": "28f42a0f37c5c41815a1ad0c8e917456a0e7f991bb69e205a901421d13c72db4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_910_x264.json",
+      "file": "Normal_Videos_910_x264.json",
+      "bytes": 1764,
+      "crc32": "7f681b53",
+      "sha256": "afaf29c449040c4a9b0a9471b6d6b7241eed5e9937e213dfd6f85e57a65602cf"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_904_x264.json",
+      "file": "Normal_Videos_904_x264.json",
+      "bytes": 2835,
+      "crc32": "82d8914c",
+      "sha256": "6f1811fa935d57e8f7c832abd661da5b8014bffb1bd1bde5133a651fbf8b2fd1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents122_x264.json",
+      "file": "RoadAccidents122_x264.json",
+      "bytes": 2019,
+      "crc32": "e262ce5b",
+      "sha256": "93f927195473deeeb41c4b8ca75e4b867dd74266b799c751410a646b541e1f62"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Vandalism007_x264.json",
+      "file": "Vandalism007_x264.json",
+      "bytes": 3627,
+      "crc32": "b1b5e8f9",
+      "sha256": "c3f0f614fe4ad49ed2dcaa10fde4a71cbaed6ff6e144e6427e3596faedf19061"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_925_x264.json",
+      "file": "Normal_Videos_925_x264.json",
+      "bytes": 25821,
+      "crc32": "5e42de3f",
+      "sha256": "84dfc42908d30c2c014ef5843bfe63a246d7f27ea866c953aa9e3c9140e92c8b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting007_x264.json",
+      "file": "Shoplifting007_x264.json",
+      "bytes": 17071,
+      "crc32": "98bbf6df",
+      "sha256": "cc700abad84f886152eb6d644d77f1ed6ff64dec03002fe93ea463503efb174a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_877_x264.json",
+      "file": "Normal_Videos_877_x264.json",
+      "bytes": 33610,
+      "crc32": "cd48b21f",
+      "sha256": "28482be021bc2081c964522d175691a922741efec7dfcd516ebead686ead1140"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_931_x264.json",
+      "file": "Normal_Videos_931_x264.json",
+      "bytes": 5731,
+      "crc32": "d6003cf1",
+      "sha256": "cf445665ab4f8f4d33e9ef418ea13b6acb0612a7bdc0868718b15ce2892237d2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_100_x264.json",
+      "file": "Normal_Videos_100_x264.json",
+      "bytes": 1966,
+      "crc32": "3232fd3c",
+      "sha256": "2cc39b33a5615383a71677a38308395ee6228786c559985ccfcd47250a5e5f78"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_603_x264.json",
+      "file": "Normal_Videos_603_x264.json",
+      "bytes": 10809,
+      "crc32": "233b1a00",
+      "sha256": "4992a63d878096cb538de0a3cd827d0d2cf56b14e94273a6975b8ac17b2f7222"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_868_x264.json",
+      "file": "Normal_Videos_868_x264.json",
+      "bytes": 7891,
+      "crc32": "17f5a2ec",
+      "sha256": "8e7e14a6261a44a31c97c8ce49ea5ab3c35b65a5ce5160b7c10ef66f65d80784"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson022_x264.json",
+      "file": "Arson022_x264.json",
+      "bytes": 28899,
+      "crc32": "b68798df",
+      "sha256": "e7afcee89f55b6e89061af7fa3db3073affe88fea46451b94bbf0cc08b7c7efd"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_059_x264.json",
+      "file": "Normal_Videos_059_x264.json",
+      "bytes": 5949,
+      "crc32": "e39b4466",
+      "sha256": "5bdadf46a772507d3e0193628c6b56761be530a858f06c855d20a7dd2ad7d430"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_745_x264.json",
+      "file": "Normal_Videos_745_x264.json",
+      "bytes": 946,
+      "crc32": "a959708b",
+      "sha256": "c08f5bf3a442d90991389c83aa0a3333b548b2f47c4d1c3ec1e62a7abfe15519"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents020_x264.json",
+      "file": "RoadAccidents020_x264.json",
+      "bytes": 5733,
+      "crc32": "cd730990",
+      "sha256": "8d27017194aead705863f3e0f4f03430f6518c8df0249172ef3479d1884dd498"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_798_x264.json",
+      "file": "Normal_Videos_798_x264.json",
+      "bytes": 20041,
+      "crc32": "16c794b2",
+      "sha256": "f9b4e700f0e93e12e20ffafc0e6282ab98354035d1817d3bb75e233666658078"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting019_x264.json",
+      "file": "Shooting019_x264.json",
+      "bytes": 9079,
+      "crc32": "d922f8ad",
+      "sha256": "79dfff56192f63c1fd1ec98195d1896589dd2ec20fc64292e9795f53c1cb20a5"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_940_x264.json",
+      "file": "Normal_Videos_940_x264.json",
+      "bytes": 126225,
+      "crc32": "3860559f",
+      "sha256": "a5f19494a97f785bea3f963fe3abd443a686f1e5f55446f2b7026bbc43d98707"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents001_x264.json",
+      "file": "RoadAccidents001_x264.json",
+      "bytes": 4383,
+      "crc32": "eaa8760d",
+      "sha256": "b25ce101518e0c9a8ed8ee50580abb888aa54ca77999acbe4bcdf309de694b35"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_894_x264.json",
+      "file": "Normal_Videos_894_x264.json",
+      "bytes": 8433,
+      "crc32": "33e4b53a",
+      "sha256": "6840608cecb442fe712b0bb30e72fbb5ccf6d674a89689a86c534c9e703f25ff"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arrest024_x264.json",
+      "file": "Arrest024_x264.json",
+      "bytes": 11997,
+      "crc32": "9c0b4f99",
+      "sha256": "f170bf8747d2a6db8fc2b1302549ef367ef11b68bd2da08c8c117634a6215b2d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting039_x264.json",
+      "file": "Shoplifting039_x264.json",
+      "bytes": 9241,
+      "crc32": "ae828594",
+      "sha256": "f6eb09a8f390f018a4a9e81c9cea04d662fbb3d20754f8140cc83d16222da2a0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_150_x264.json",
+      "file": "Normal_Videos_150_x264.json",
+      "bytes": 2682,
+      "crc32": "52273d9e",
+      "sha256": "f51e323e1d34c984ac51ae4b2f3497ef57fde19d5a23075718d1f33087476754"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion011_x264.json",
+      "file": "Explosion011_x264.json",
+      "bytes": 5083,
+      "crc32": "cfdea611",
+      "sha256": "9c47b013e995089271a8e6b5833b0a2e3d4ddde0497c8c51cd7f454f7e710d80"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arrest030_x264.json",
+      "file": "Arrest030_x264.json",
+      "bytes": 28951,
+      "crc32": "178d3027",
+      "sha256": "0dcfef5ee25300b4d728afa35c3c6a7246f75e7589bca981cee4a92cc480bc58"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_880_x264.json",
+      "file": "Normal_Videos_880_x264.json",
+      "bytes": 62216,
+      "crc32": "ab9aa84a",
+      "sha256": "437c51902e3f7b62815288555924a92a5ecaff3613b0aa6e3b14dd2698a1aeba"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary061_x264.json",
+      "file": "Burglary061_x264.json",
+      "bytes": 30087,
+      "crc32": "f74a06f6",
+      "sha256": "c160faa3d7d12e47004f4e6dbb94e2bc2040757abb2f16c7c4d2aa70ec844778"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary037_x264.json",
+      "file": "Burglary037_x264.json",
+      "bytes": 6219,
+      "crc32": "b122cab8",
+      "sha256": "ed82bcac6e80576499d2b6e0567dfaacfb10c86cb14de6745489707f1a088683"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting001_x264.json",
+      "file": "Shoplifting001_x264.json",
+      "bytes": 14427,
+      "crc32": "1baf2d1c",
+      "sha256": "94cd5690c413ec1bef1e39f228d8b799630729f14a6f4aec37bacb0c924b838b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_168_x264.json",
+      "file": "Normal_Videos_168_x264.json",
+      "bytes": 5625,
+      "crc32": "96d9503a",
+      "sha256": "fdfe7a38a6dbd3a2ef61520cba2d1fe5f2b650c4fc403f717577b96fd2e5899a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_781_x264.json",
+      "file": "Normal_Videos_781_x264.json",
+      "bytes": 13185,
+      "crc32": "22d56632",
+      "sha256": "9bc78b3657206ec2723bbaa02121a3daef143cb6c5477577050bfd4e3037c666"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_923_x264.json",
+      "file": "Normal_Videos_923_x264.json",
+      "bytes": 62786,
+      "crc32": "f3f53211",
+      "sha256": "27c2dc4a0eddc10b7cb64fcb8f4b0b612f2ea0adeea12e288d9d55d317ad7daf"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_937_x264.json",
+      "file": "Normal_Videos_937_x264.json",
+      "bytes": 3627,
+      "crc32": "06ca1a87",
+      "sha256": "5816461fa410f46a9ca9955f531a4d98b7bde49faf1cb1b84b2727588880b657"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_871_x264.json",
+      "file": "Normal_Videos_871_x264.json",
+      "bytes": 14481,
+      "crc32": "a2a57e13",
+      "sha256": "9fadd5ac54db0f25292a97968d170939bc9407efc602405a2fd950a2f7805fb7"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson041_x264.json",
+      "file": "Arson041_x264.json",
+      "bytes": 12429,
+      "crc32": "82d187f5",
+      "sha256": "a5524995fab6dab0313522b5470659bd538b1e17a41a7040ff49594f9993bfa9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting015_x264.json",
+      "file": "Shoplifting015_x264.json",
+      "bytes": 7353,
+      "crc32": "d8d34926",
+      "sha256": "b4daba8b3f3fe5be4e3cc184b381062650165c692564b754f2720069784690e8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion029_x264.json",
+      "file": "Explosion029_x264.json",
+      "bytes": 7893,
+      "crc32": "207475c7",
+      "sha256": "29392d58190a9ce612fedf31a50f3b8a106d029bf7aaa52da1024a044122f1e9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Assault010_x264.json",
+      "file": "Assault010_x264.json",
+      "bytes": 55545,
+      "crc32": "ef74c57a",
+      "sha256": "ae56462ef98c8de0dd509276db3d0339932446789245234a06d0651f44274616"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_899_x264.json",
+      "file": "Normal_Videos_899_x264.json",
+      "bytes": 4435,
+      "crc32": "07f9b93d",
+      "sha256": "cbaa980af91b0d916399a233eea23e2296731fae4df27bc8c7ae435c9586e951"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Fighting047_x264.json",
+      "file": "Fighting047_x264.json",
+      "bytes": 14805,
+      "crc32": "512ce624",
+      "sha256": "50cf659b70445f75f0e27fabc24b26562a0f15ac628f326b92c5a9b2022264e0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_641_x264.json",
+      "file": "Normal_Videos_641_x264.json",
+      "bytes": 11889,
+      "crc32": "6e78bab4",
+      "sha256": "7bbaeb52e46642281e7b0ef2bff3c5eb6ffe3a6853cb505bf4ef72d0e2523e39"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Stealing062_x264.json",
+      "file": "Stealing062_x264.json",
+      "bytes": 5031,
+      "crc32": "430cb760",
+      "sha256": "cf5c90ba1288cd89b40ac2cc6a3e0649dbc019632a995e6744afab020cb6cec3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Vandalism015_x264.json",
+      "file": "Vandalism015_x264.json",
+      "bytes": 9837,
+      "crc32": "79f5afab",
+      "sha256": "b5f36c77fb5a15e41f61d83f1d8e35cf4b9d61190be2d6ddc4d7eb7250fd1c1c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion008_x264.json",
+      "file": "Explosion008_x264.json",
+      "bytes": 5677,
+      "crc32": "bf676fdf",
+      "sha256": "af70f5a0a42e2f046518496932e68d44deaf28c68455c91569477a37187f9631"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting034_x264.json",
+      "file": "Shoplifting034_x264.json",
+      "bytes": 40440,
+      "crc32": "8eb45fea",
+      "sha256": "af7efed7c32ee63c7a2fee7f14a962ebba414ed19dfdfca7b77f4232f9f12c15"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting020_x264.json",
+      "file": "Shoplifting020_x264.json",
+      "bytes": 19233,
+      "crc32": "79c25644",
+      "sha256": "74376cfe06b48bef6cb824d215f5a0ab8a0cfd0258fa73327bcc8bc1af01e2c0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents124_x264.json",
+      "file": "RoadAccidents124_x264.json",
+      "bytes": 4815,
+      "crc32": "9e774ba6",
+      "sha256": "2faceee450ece838e130207594d2af46c12f412fd3a2aa2a0a8037b4aeea8eef"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting021_x264.json",
+      "file": "Shooting021_x264.json",
+      "bytes": 4059,
+      "crc32": "57e7fee6",
+      "sha256": "2b93cafecd969bb1684c29982207dd71fc234000e5ce42b73a05bfb16a76f4a2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_902_x264.json",
+      "file": "Normal_Videos_902_x264.json",
+      "bytes": 4437,
+      "crc32": "993fb2b6",
+      "sha256": "b5f698e5bc70981aad07ed2f3f9844b38899311cb95374a9cb0de29580841f0e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion021_x264.json",
+      "file": "Explosion021_x264.json",
+      "bytes": 2427,
+      "crc32": "83d5acc0",
+      "sha256": "07d93b77a16ef96e1f67f167ddde1ca4d085a6001c146f27495930748c679f29"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Robbery137_x264.json",
+      "file": "Robbery137_x264.json",
+      "bytes": 7189,
+      "crc32": "cb3c9ab7",
+      "sha256": "4e03416c5ca4540f38370946b39846810d1b3ac17398d795b78f8b124160bb95"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_048_x264.json",
+      "file": "Normal_Videos_048_x264.json",
+      "bytes": 5353,
+      "crc32": "da3ab200",
+      "sha256": "49dab05677a0ec03f497bdb666085b882f0905aeb778286957e81045badb2b3e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_879_x264.json",
+      "file": "Normal_Videos_879_x264.json",
+      "bytes": 3627,
+      "crc32": "eeb1033b",
+      "sha256": "32d49f9f10c57df7583dbaf9103d2f1ac77bbee0e450c2c3d9d3fcaf11ffd359"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_606_x264.json",
+      "file": "Normal_Videos_606_x264.json",
+      "bytes": 3949,
+      "crc32": "efe4d80e",
+      "sha256": "8c42c04674d61294bc93d23b4236796472b0f70236afea3720344e4dce8e1a85"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_576_x264.json",
+      "file": "Normal_Videos_576_x264.json",
+      "bytes": 38048,
+      "crc32": "6ceec57c",
+      "sha256": "74a6c32ccf2fe3b534dc640e17c8eedf7ca6afd076e8d0c1d482d8d3dc870260"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting008_x264.json",
+      "file": "Shooting008_x264.json",
+      "bytes": 5247,
+      "crc32": "ec4beaa0",
+      "sha256": "05e5931ca0927ead2194a8720a3dbabe5c37d95bffc398de0b40d3bff946acc4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion035_x264.json",
+      "file": "Explosion035_x264.json",
+      "bytes": 9457,
+      "crc32": "aac1a090",
+      "sha256": "a114c91cfe0c71f5a501b166fb7f4955eb548ce9ea944b63dc921293fbb0faa2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_210_x264.json",
+      "file": "Normal_Videos_210_x264.json",
+      "bytes": 17991,
+      "crc32": "f2cfd5e2",
+      "sha256": "c61082063f83c9b82a0218cc859b06d5aca0184c95310be2695f49fb236aa63b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Vandalism028_x264.json",
+      "file": "Vandalism028_x264.json",
+      "bytes": 14913,
+      "crc32": "5f0aff40",
+      "sha256": "38ad3e1cce7f2f6879b555843cd75c843f39faee1946526c37b41b81758d1e15"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents010_x264.json",
+      "file": "RoadAccidents010_x264.json",
+      "bytes": 1611,
+      "crc32": "038d7e63",
+      "sha256": "e858ae56111c8a0805b896040df3062c1d4a652ab12096d46dded6b19d2fe158"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_885_x264.json",
+      "file": "Normal_Videos_885_x264.json",
+      "bytes": 1458,
+      "crc32": "e6238484",
+      "sha256": "e66cd07219fe39eb942a275e62f20557bf27df7193beb7c3b420ee0c7a74f6ac"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Robbery102_x264.json",
+      "file": "Robbery102_x264.json",
+      "bytes": 5947,
+      "crc32": "4ce8d79a",
+      "sha256": "5327f4e63c0247e72e9cdff826f1b4e310ae0196958631f1c2100d6e767d4b8c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting028_x264.json",
+      "file": "Shoplifting028_x264.json",
+      "bytes": 4329,
+      "crc32": "f5a2de1a",
+      "sha256": "0fcd25fff59620efc67130bf259f65bb5fd4061976e4a1e2fdef55cb04918672"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting047_x264.json",
+      "file": "Shooting047_x264.json",
+      "bytes": 27711,
+      "crc32": "138ed88c",
+      "sha256": "e5a8043243c18dbc215a9e2fc10e22abfda3d55a4ec462295a4826566df16c05"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Robbery050_x264.json",
+      "file": "Robbery050_x264.json",
+      "bytes": 5515,
+      "crc32": "991ffe36",
+      "sha256": "9e324ff3349ce2bf91a4635400a9d7144642527c001af180daeb28fbc30f0ee0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_891_x264.json",
+      "file": "Normal_Videos_891_x264.json",
+      "bytes": 5841,
+      "crc32": "4fe70460",
+      "sha256": "8a7109411adc24f3de18fb80fbaf1ab33245f7cb2833fc4c5abf04f47fb87148"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents004_x264.json",
+      "file": "RoadAccidents004_x264.json",
+      "bytes": 1201,
+      "crc32": "c952d4f4",
+      "sha256": "5a8bd88c22732204bdcf2c2c6e25c6c89b1c9263769a424bb1a0c1f74e7ad020"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting010_x264.json",
+      "file": "Shoplifting010_x264.json",
+      "bytes": 8973,
+      "crc32": "53f68afc",
+      "sha256": "274d60720a32e2f22ae85964ef500f61ca2f30132e5891b8191450f72977cbbd"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_453_x264.json",
+      "file": "Normal_Videos_453_x264.json",
+      "bytes": 17721,
+      "crc32": "d552d276",
+      "sha256": "7a54e4c1db18216c34d8f60fa827d2d66ad06b472e2ab2e2a98a447e90566379"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_932_x264.json",
+      "file": "Normal_Videos_932_x264.json",
+      "bytes": 5787,
+      "crc32": "e45ef892",
+      "sha256": "eee94a5662c66db1cf17903a80193be9f3bdf14aab8bfa3eef664527a1b18d26"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_874_x264.json",
+      "file": "Normal_Videos_874_x264.json",
+      "bytes": 14047,
+      "crc32": "98f1cc5a",
+      "sha256": "762ad05acd9d401aa505defb555b3dfa79eddc348f456342700308d6b71be413"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting011_x264.json",
+      "file": "Shooting011_x264.json",
+      "bytes": 13291,
+      "crc32": "610eb549",
+      "sha256": "a6ebdcee79b03d6bbefbfcd862a01802004ff123d6be852831147c8c32047acc"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_051_x264.json",
+      "file": "Normal_Videos_051_x264.json",
+      "bytes": 7731,
+      "crc32": "20fa0d09",
+      "sha256": "da38e71e9087abb6916d3464ce0ad9df1b04acc1fab5de73e8b090652cc79e97"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_926_x264.json",
+      "file": "Normal_Videos_926_x264.json",
+      "bytes": 5839,
+      "crc32": "c0b2195e",
+      "sha256": "753040e400ea0be20b97f62795caface656a8bde9865ec10605354ef621aed25"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary032_x264.json",
+      "file": "Burglary032_x264.json",
+      "bytes": 54177,
+      "crc32": "85952780",
+      "sha256": "19e1a8a441113ee0f25d45f29a3673e126a3e1e348c3138dc3d271ebaf3dfa98"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting004_x264.json",
+      "file": "Shoplifting004_x264.json",
+      "bytes": 22309,
+      "crc32": "27846809",
+      "sha256": "8f80589b6ce60e9446a59402f69f019ec731634cc28aac4a212c89f82e61439b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_888_x264.json",
+      "file": "Normal_Videos_888_x264.json",
+      "bytes": 1764,
+      "crc32": "ca0ae483",
+      "sha256": "1196702d34cbb130a2b66e142be2309c5115d3a49cd148485d8ed2eaa79c6649"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_070_x264.json",
+      "file": "Normal_Videos_070_x264.json",
+      "bytes": 3139,
+      "crc32": "b17cf1d0",
+      "sha256": "12bc50f9519f1cf154fe76ee1866c27ee2e3574764020fc759ca95fcc506a94d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting024_x264.json",
+      "file": "Shooting024_x264.json",
+      "bytes": 6541,
+      "crc32": "d836e43f",
+      "sha256": "3da24d95394bd7220e767ad96d84623b6e8db01ab95f1edb119242276cc48d7f"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_246_x264.json",
+      "file": "Normal_Videos_246_x264.json",
+      "bytes": 16639,
+      "crc32": "8aace79d",
+      "sha256": "516fd98e2c096846e3c84ed9e099832ebddc31f1bc1b6948f7187a179a2043ed"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_907_x264.json",
+      "file": "Normal_Videos_907_x264.json",
+      "bytes": 1866,
+      "crc32": "f6a8b2d8",
+      "sha256": "9fbf71f27bb283b3717233d680df0bac9b51d20fa82a670a731ee306fc763911"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents121_x264.json",
+      "file": "RoadAccidents121_x264.json",
+      "bytes": 5949,
+      "crc32": "c8217cab",
+      "sha256": "838b0576c796b27799454bb09cb59ffddd4529b40ecbcc600b409984e19f4aec"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting031_x264.json",
+      "file": "Shoplifting031_x264.json",
+      "bytes": 1356,
+      "crc32": "3f9bbc11",
+      "sha256": "fc3ddaf71c7b125b0eb67cc69e1127b1deb678970e6209022280ff12e1d0c471"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_702_x264.json",
+      "file": "Normal_Videos_702_x264.json",
+      "bytes": 8271,
+      "crc32": "fb13fbc5",
+      "sha256": "f3587fcbd6818557bd5db4d6eb884273f2055c4d7efd3f96550d81fdac99664b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Fighting042_x264.json",
+      "file": "Fighting042_x264.json",
+      "bytes": 7299,
+      "crc32": "97dc9741",
+      "sha256": "5609998ed7395580acb371b59fe762fa8de63e0afaea366e4cdb36f5595ea997"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents009_x264.json",
+      "file": "RoadAccidents009_x264.json",
+      "bytes": 2886,
+      "crc32": "1cd8b141",
+      "sha256": "c5c549014aa0dd334ab0e6a4798f1a8243f1292cc69d136bd7b59eed6ea9a495"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Abuse030_x264.json",
+      "file": "Abuse030_x264.json",
+      "bytes": 4977,
+      "crc32": "8559d26c",
+      "sha256": "f68f92e750b87191faf8e0921ee1d9934d73600ea84b7eec0c9f983668c38d55"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_913_x264.json",
+      "file": "Normal_Videos_913_x264.json",
+      "bytes": 1915,
+      "crc32": "39455582",
+      "sha256": "6a98541a05e7e36bfdc89beaebbc3394c1d274ac99e1927cb95a741bed71c9af"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_778_x264.json",
+      "file": "Normal_Videos_778_x264.json",
+      "bytes": 4005,
+      "crc32": "01c11217",
+      "sha256": "bc3bbcef40887597f4f521fceafa0a32e8e25d1859e8244549b30b731127efc4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary018_x264.json",
+      "file": "Burglary018_x264.json",
+      "bytes": 3572,
+      "crc32": "741ac3ff",
+      "sha256": "fde6c4fb1f08121f38bee5b8a910ea715746072e982385325625e31ab0935a9a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents016_x264.json",
+      "file": "RoadAccidents016_x264.json",
+      "bytes": 7137,
+      "crc32": "756faf71",
+      "sha256": "406884f38784c9a420819257806c2911215b24947ae2e997fd5b457868eae070"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_883_x264.json",
+      "file": "Normal_Videos_883_x264.json",
+      "bytes": 999,
+      "crc32": "d6ae130a",
+      "sha256": "a5aab79827c2f0a120376ea2441b05ead8b5c305326fdc8b28b249f79b7e665c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_621_x264.json",
+      "file": "Normal_Videos_621_x264.json",
+      "bytes": 15991,
+      "crc32": "4eb1911a",
+      "sha256": "9ddeea1eedeb5c1ddec83d55bcb53fd49b67275ae773d7c7f305e3dd7da7e9ca"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_417_x264.json",
+      "file": "Normal_Videos_417_x264.json",
+      "bytes": 3413,
+      "crc32": "baffe8ce",
+      "sha256": "756a3f467a15310855ecbe6623bdca5a77e1f42464d403ec97434641b637137d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_129_x264.json",
+      "file": "Normal_Videos_129_x264.json",
+      "bytes": 1456,
+      "crc32": "b74f9b98",
+      "sha256": "4fece386d412b0dea4c36ae2ba0b334398dc953efc2e092346e9a3ad863e83fd"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_897_x264.json",
+      "file": "Normal_Videos_897_x264.json",
+      "bytes": 2733,
+      "crc32": "f28de14b",
+      "sha256": "f6e18dd41a62d03804b46d1f3ff37d34e96d0d0833ae11607a7d5f8d4758b43e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary076_x264.json",
+      "file": "Burglary076_x264.json",
+      "bytes": 43919,
+      "crc32": "630085b2",
+      "sha256": "01057abeb17ce8113fa2ceb01993e5ed21e10aa1d100abf44db48375b60d7192"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents002_x264.json",
+      "file": "RoadAccidents002_x264.json",
+      "bytes": 1050,
+      "crc32": "3cb055cd",
+      "sha256": "ab4427cd2404307cf0998d6751b80d6accd831560d4b60849d9f2ecb3f522288"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_015_x264.json",
+      "file": "Normal_Videos_015_x264.json",
+      "bytes": 1458,
+      "crc32": "b0d2d4a6",
+      "sha256": "4c8a1d724c6fc447854a9f151b6bb5763ba67fafc989b4b1654a7914a6fb10fc"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_365_x264.json",
+      "file": "Normal_Videos_365_x264.json",
+      "bytes": 22147,
+      "crc32": "d849384c",
+      "sha256": "1ace67d930fb5d6c0d60cc8f4b26b90262408f91a02e152fe5cc67e89eb2dcfa"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_686_x264.json",
+      "file": "Normal_Videos_686_x264.json",
+      "bytes": 7893,
+      "crc32": "b746749a",
+      "sha256": "5a19ecd1951958909c358d3fb929e102a8ef3302c1b9323f0cb29b78c38a6d72"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Fighting033_x264.json",
+      "file": "Fighting033_x264.json",
+      "bytes": 3519,
+      "crc32": "88ce43a3",
+      "sha256": "bc600994bc032dafcee7df00a0841223334c8b36a1b495f6cbd53747ffe17388"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_939_x264.json",
+      "file": "Normal_Videos_939_x264.json",
+      "bytes": 2527,
+      "crc32": "b5dfa273",
+      "sha256": "818fc46f722e8da8ef051424451f2b81cf38a9be0973abf38454037bc503c8f2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson035_x264.json",
+      "file": "Arson035_x264.json",
+      "bytes": 4599,
+      "crc32": "e3946a33",
+      "sha256": "89b1051cff5e47e83fed1fcbd68000780b1f18501e2844db85f56d99ee815b24"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_034_x264.json",
+      "file": "Normal_Videos_034_x264.json",
+      "bytes": 4221,
+      "crc32": "1dd5d0c0",
+      "sha256": "891247481e1e0695c1c0c8cdd2c855d6ceeea7814a4daf5ad0721bf5e71aa55d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_943_x264.json",
+      "file": "Normal_Videos_943_x264.json",
+      "bytes": 3203,
+      "crc32": "3002535e",
+      "sha256": "9987a2e899fcb4b10d006934792a635eacc78d212465117349a773ca3f4a4f76"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion027_x264.json",
+      "file": "Explosion027_x264.json",
+      "bytes": 2427,
+      "crc32": "06fed8fc",
+      "sha256": "02e65661136d0a1a2029722d18dacdb4b1db1ebdce65374f2e29d9927c473990"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion033_x264.json",
+      "file": "Explosion033_x264.json",
+      "bytes": 10429,
+      "crc32": "5c1d9ad6",
+      "sha256": "8dec2c3994a734161752a12057b99e0e3b52be0779a63390f4af960d41043159"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_710_x264.json",
+      "file": "Normal_Videos_710_x264.json",
+      "bytes": 5839,
+      "crc32": "f7d5696e",
+      "sha256": "ef008d5a5f53f70dce9e637f32047a404a2cf80946ee0fe6ae40035daa9002be"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_656_x264.json",
+      "file": "Normal_Videos_656_x264.json",
+      "bytes": 5895,
+      "crc32": "662abfa1",
+      "sha256": "97f2a67ff55e5e4da4c386005ee9c1af80ba9127627d402821e247195d4455cf"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents127_x264.json",
+      "file": "RoadAccidents127_x264.json",
+      "bytes": 8485,
+      "crc32": "969f64bc",
+      "sha256": "2c565bf7cbe663dccc78c7fd4b8ca065954296205e3fee6d620854b8792dbcb1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_901_x264.json",
+      "file": "Normal_Videos_901_x264.json",
+      "bytes": 3733,
+      "crc32": "37b71d49",
+      "sha256": "968249a24df6b2f1cfb94aa2b1f533550074463a8130ffa140040c347cb9f3d8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_289_x264.json",
+      "file": "Normal_Videos_289_x264.json",
+      "bytes": 2682,
+      "crc32": "f29f7896",
+      "sha256": "e5afbfbe10a111c9e25d796a93fc8cdad24a4b431351b476e3165e1daf20215d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting022_x264.json",
+      "file": "Shooting022_x264.json",
+      "bytes": 15129,
+      "crc32": "db56aad7",
+      "sha256": "725f950efba090fc3b14fffe5869a2e3e041e71e3b1c7bf5b612205be65b6da1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_312_x264.json",
+      "file": "Normal_Videos_312_x264.json",
+      "bytes": 4005,
+      "crc32": "4710054f",
+      "sha256": "c4358e3c7ccbccd6be7fb078a336af3ebbbed3ce2a3ffb767b7a7656be6411d8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_915_x264.json",
+      "file": "Normal_Videos_915_x264.json",
+      "bytes": 3951,
+      "crc32": "2e9edc24",
+      "sha256": "78b6e3334d831195266109f2a611b8997a058247dafbaca66075aa97f0cbfc32"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents133_x264.json",
+      "file": "RoadAccidents133_x264.json",
+      "bytes": 2119,
+      "crc32": "039a7832",
+      "sha256": "b5b14caf70821b941c1380cff5b43dee598e3b9bdf32eafece3b5603d3d345d8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting037_x264.json",
+      "file": "Shoplifting037_x264.json",
+      "bytes": 4437,
+      "crc32": "f05f8982",
+      "sha256": "bb6daef59a05cae0ca892f51c39cfeccf36ecfa766332802b11b73220589ed7d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_704_x264.json",
+      "file": "Normal_Videos_704_x264.json",
+      "bytes": 5463,
+      "crc32": "4830f027",
+      "sha256": "e3b656049e294fe9fa192cb07ea2a826439ac92b5d765e334e9b44067e21fc5e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_018_x264.json",
+      "file": "Normal_Videos_018_x264.json",
+      "bytes": 3735,
+      "crc32": "2c542512",
+      "sha256": "0e7e1c86f4575d777969131678d1760eecbbf67a2d9f270d76478ec46b6ff366"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_872_x264.json",
+      "file": "Normal_Videos_872_x264.json",
+      "bytes": 1660,
+      "crc32": "ccef2dda",
+      "sha256": "b732ba7dbaeb5f8664660e612a231892138a90ba444d8ed35c6a1cc7a1b7ddd8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_934_x264.json",
+      "file": "Normal_Videos_934_x264.json",
+      "bytes": 5731,
+      "crc32": "6bb7dc0b",
+      "sha256": "d20ba4a18ec3067608e394d2a9ed52b07cd83b72ce2c81a7c70b233e0239356a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting016_x264.json",
+      "file": "Shoplifting016_x264.json",
+      "bytes": 4761,
+      "crc32": "65ff9287",
+      "sha256": "4caf467c0f31e98ba8f74056913ba688579c92d10ee72faf50b141276750f7a8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_725_x264.json",
+      "file": "Normal_Videos_725_x264.json",
+      "bytes": 2886,
+      "crc32": "50ea8440",
+      "sha256": "52676160bebc8f616a78229bbda00b13da64fd27365d13f27caee34ad8fe344a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_782_x264.json",
+      "file": "Normal_Videos_782_x264.json",
+      "bytes": 18477,
+      "crc32": "1e438c52",
+      "sha256": "7abdfab6832eb2af54b91989d9abe6a9a674ff5aea69d32b0c289f8147e1fe64"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_866_x264.json",
+      "file": "Normal_Videos_866_x264.json",
+      "bytes": 3789,
+      "crc32": "4b604a80",
+      "sha256": "610c7b8fbb87b610f913641be41469384d7a8353af022dd12fb12b0424adfdce"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_027_x264.json",
+      "file": "Normal_Videos_027_x264.json",
+      "bytes": 16371,
+      "crc32": "77f28316",
+      "sha256": "e11013f5d62ab6984d9820b7f1d6532c89b7005affbb10a2734297e240cec08e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_033_x264.json",
+      "file": "Normal_Videos_033_x264.json",
+      "bytes": 5409,
+      "crc32": "7e1dd95f",
+      "sha256": "4ebc3ac1576cf848265fd6af172be9edcd99dd75eda284cae67bd95412d2b1fc"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_944_x264.json",
+      "file": "Normal_Videos_944_x264.json",
+      "bytes": 23983,
+      "crc32": "50eeda3c",
+      "sha256": "06cd4f233b0b646ad4ce1ccde765fa069be45dd74da63b9e2a8252e278ca3b8f"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_175_x264.json",
+      "file": "Normal_Videos_175_x264.json",
+      "bytes": 29601,
+      "crc32": "92ed3cc9",
+      "sha256": "5f67f91c3df0c966a3029530ab815d3467a3d64bdfd82be71fa94c81f8ca46bc"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion020_x264.json",
+      "file": "Explosion020_x264.json",
+      "bytes": 4113,
+      "crc32": "bae950b7",
+      "sha256": "7b9b03b1464a3a5044ad532053005831d71b2f2a8187eae2d51b103d402ab6e9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arrest001_x264.json",
+      "file": "Arrest001_x264.json",
+      "bytes": 7785,
+      "crc32": "66281ffe",
+      "sha256": "fbe821a5a604fbce7296a4502b2a8459f564bfc504acde60c6f0db46a807c16d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_878_x264.json",
+      "file": "Normal_Videos_878_x264.json",
+      "bytes": 795,
+      "crc32": "9b9b9ea9",
+      "sha256": "e9eaf3c42bbd271bdc580a132010953ce229e672d3c051a4eec24058beb45d4b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_224_x264.json",
+      "file": "Normal_Videos_224_x264.json",
+      "bytes": 23229,
+      "crc32": "b3b46aae",
+      "sha256": "dba2607699056ff2bc4d30c4c47dbd0098295c66f8faa12a58410c1a742de222"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting046_x264.json",
+      "file": "Shooting046_x264.json",
+      "bytes": 16911,
+      "crc32": "511882d2",
+      "sha256": "f8ff4a6ec9bb06489d896efac19a978019e07b0c35683303e91ceb5988e53be2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_890_x264.json",
+      "file": "Normal_Videos_890_x264.json",
+      "bytes": 11835,
+      "crc32": "909ed3fa",
+      "sha256": "01d63f4cf89b2183cf1112a3257132e7ef19b64fbffccbe9e90f4a8499ff2e61"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Abuse028_x264.json",
+      "file": "Abuse028_x264.json",
+      "bytes": 4543,
+      "crc32": "af666c90",
+      "sha256": "71d33e210ef3806fab53def0a6b607af49d7d7c5622071cfbd39ee673cd4bf76"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents011_x264.json",
+      "file": "RoadAccidents011_x264.json",
+      "bytes": 7029,
+      "crc32": "dfb0cd15",
+      "sha256": "d0532505258967b0c27405514513914ad8bd075aa7884fe2bdb255034e32f279"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting028_x264.json",
+      "file": "Shooting028_x264.json",
+      "bytes": 6165,
+      "crc32": "745bb7fc",
+      "sha256": "62393d1e60d6cb44f834f4e292f5d4f39787451b85cdcfcd1d907bc3da4b064b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson007_x264.json",
+      "file": "Arson007_x264.json",
+      "bytes": 20853,
+      "crc32": "151e6168",
+      "sha256": "97ccc688ff3946bba21b2ae7e13f49c1ec665e00d43bab103cc7bb0a1cd336d9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_884_x264.json",
+      "file": "Normal_Videos_884_x264.json",
+      "bytes": 30247,
+      "crc32": "cd90c2ee",
+      "sha256": "e9ac9aa0e3b4fdea18abcaa2658e48d430a8c88739c3a9c9a56298c65a7b55d9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting029_x264.json",
+      "file": "Shoplifting029_x264.json",
+      "bytes": 7083,
+      "crc32": "5ef6ee46",
+      "sha256": "9e83e6caf7e5a5e41b5abfbd4eb9ad51e11f10eebb05d589b4f5975d99068355"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_189_x264.json",
+      "file": "Normal_Videos_189_x264.json",
+      "bytes": 2323,
+      "crc32": "e5fcedd3",
+      "sha256": "bd03a34011d7f0cdfa9452a61ddb49e70d96ca36a4aaac98c3dc23d0fee3c070"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_006_x264.json",
+      "file": "Normal_Videos_006_x264.json",
+      "bytes": 1405,
+      "crc32": "19719fc4",
+      "sha256": "bdad355ff9fcbeb03cc3c8ee6364eb66393b23b6a1afbe2732ad3f556b191c72"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_927_x264.json",
+      "file": "Normal_Videos_927_x264.json",
+      "bytes": 5299,
+      "crc32": "e13a7126",
+      "sha256": "bee9c6aa7d1033116aff7a33d3c0f40a9cf7172d6778f7f316a900523ce03507"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting004_x264.json",
+      "file": "Shooting004_x264.json",
+      "bytes": 5839,
+      "crc32": "29533f35",
+      "sha256": "abb8e30ba7de990cf11017a0ced525893a198e0fa680fc2a944833779c57fa87"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_050_x264.json",
+      "file": "Normal_Videos_050_x264.json",
+      "bytes": 13941,
+      "crc32": "e381bda5",
+      "sha256": "66fdc7e8a9986b5f5ffb155039045c79e866e00d575174d0e80ff857045c1bdb"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion043_x264.json",
+      "file": "Explosion043_x264.json",
+      "bytes": 25551,
+      "crc32": "c0b905ab",
+      "sha256": "037accd22b7fa8fd3856a98bd5627f20b22a4cdae47f3a29d3d8bc5042149c2b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion039_x264.json",
+      "file": "Explosion039_x264.json",
+      "bytes": 3141,
+      "crc32": "8ff37d54",
+      "sha256": "5f5d73fe75c5dd47427e41f3480ca4bf5320852218f68ee566a585a324759d63"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting005_x264.json",
+      "file": "Shoplifting005_x264.json",
+      "bytes": 6381,
+      "crc32": "32cb05c1",
+      "sha256": "c31f81d697c6f732c6bc2ad4253804b9a6fc0d7e2f72b6f6640c1fd351b5989b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary033_x264.json",
+      "file": "Burglary033_x264.json",
+      "bytes": 4005,
+      "crc32": "64ee26b4",
+      "sha256": "920f6e2e0d8c81cb8f944e70f592216424cf97bbc6e34192c7811d62bc2c6fc2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Fighting018_x264.json",
+      "file": "Fighting018_x264.json",
+      "bytes": 4437,
+      "crc32": "d917b7fd",
+      "sha256": "ed1628f8635a3dfc5c579d22b862be3d77f5f1b532c6adb41d9c897d3b624aff"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_452_x264.json",
+      "file": "Normal_Videos_452_x264.json",
+      "bytes": 1356,
+      "crc32": "800c772f",
+      "sha256": "6baa42cdb7780dcfae1aaa2470fd521cc454ea9f6a7a7e31c41bbfc7ce94a033"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_722_x264.json",
+      "file": "Normal_Videos_722_x264.json",
+      "bytes": 29223,
+      "crc32": "1c06f6ca",
+      "sha256": "4d3efd6036e0b1d44700f3e6679ca830489cbabaa772fe582933b6839c76adc9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_875_x264.json",
+      "file": "Normal_Videos_875_x264.json",
+      "bytes": 8431,
+      "crc32": "fc1041b4",
+      "sha256": "e86fb09c820cbb4433803c7ebf7d227ca6e53c394b31af4b74ba9b563c4b54e0"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting010_x264.json",
+      "file": "Shooting010_x264.json",
+      "bytes": 8701,
+      "crc32": "b24fc3df",
+      "sha256": "5df0a1e32b17b6355314535750abcd82ab0324b64baee77b62e8b2872a14b4b2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_758_x264.json",
+      "file": "Normal_Videos_758_x264.json",
+      "bytes": 5137,
+      "crc32": "cba62997",
+      "sha256": "93730a3b3093903fae25ad5b02cce7c5967625b359b769dd92381a14b1fe9581"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_933_x264.json",
+      "file": "Normal_Videos_933_x264.json",
+      "bytes": 5733,
+      "crc32": "00fbc9aa",
+      "sha256": "30ce98b8da028d0132dcb6f6650a6382cebea0b129833299f9627220ecdce13a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_912_x264.json",
+      "file": "Normal_Videos_912_x264.json",
+      "bytes": 2325,
+      "crc32": "99b499cc",
+      "sha256": "1c5d4c11b142da1c398cdf6bcca41741045dc2650e3308f8d1e57efd5dd8c156"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_906_x264.json",
+      "file": "Normal_Videos_906_x264.json",
+      "bytes": 2119,
+      "crc32": "2974f87d",
+      "sha256": "c28f13a7586b11a92b93ee4797075438c994a5a3c2da2aaec0d8a87e11d37417"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_889_x264.json",
+      "file": "Normal_Videos_889_x264.json",
+      "bytes": 948,
+      "crc32": "720c50c4",
+      "sha256": "20d86c935e1c59cdb889e76bca2aa476d6fd60f420b37a6d60ac1719cfc344bc"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_247_x264.json",
+      "file": "Normal_Videos_247_x264.json",
+      "bytes": 27493,
+      "crc32": "b17fd395",
+      "sha256": "b674f63a19661ebe70454275bbb7a1afa52936aac2aff319754904de7672f0bc"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_717_x264.json",
+      "file": "Normal_Videos_717_x264.json",
+      "bytes": 4005,
+      "crc32": "d425c6be",
+      "sha256": "4d775aa02a7d04b23f13cd9663f65c2b2341b2a4f31174df0cc247371d78d87b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arrest039_x264.json",
+      "file": "Arrest039_x264.json",
+      "bytes": 54293,
+      "crc32": "8a49586d",
+      "sha256": "f36dfec65ac34d622e23e456b30b26131b886257f9736c66f9a74746f92a9fc1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Robbery048_x264.json",
+      "file": "Robbery048_x264.json",
+      "bytes": 4543,
+      "crc32": "7d9adb91",
+      "sha256": "bc0b6dbc9bbe507b9d583903c98d4f0660c4a7ba1270d02674df5235e569d6ee"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_896_x264.json",
+      "file": "Normal_Videos_896_x264.json",
+      "bytes": 7515,
+      "crc32": "a92e3ecd",
+      "sha256": "90fb53f5ea797c745e519b45c0d060e31757190b318f9a52dbec926323a90ed2"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_634_x264.json",
+      "file": "Normal_Videos_634_x264.json",
+      "bytes": 45855,
+      "crc32": "6c192cc1",
+      "sha256": "b85cf8b8372d1dad30bd17049187fd77dc946181f6641fe2a4bcdd4ac363bb31"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_478_x264.json",
+      "file": "Normal_Videos_478_x264.json",
+      "bytes": 14967,
+      "crc32": "af59ea63",
+      "sha256": "be45988a904daf3ea6e10e42619dd179052bb7c71efd66c215cf04cdc5bf0990"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_014_x264.json",
+      "file": "Normal_Videos_014_x264.json",
+      "bytes": 4815,
+      "crc32": "b93b990c",
+      "sha256": "542a6df123ce95c7b6d6f03013c9fe97cef2906134728c1cc7aca9327c8ffa5d"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion007_x264.json",
+      "file": "Explosion007_x264.json",
+      "bytes": 55944,
+      "crc32": "f2b09153",
+      "sha256": "f9058b1be1ecbb9b9f8a181d4baa4b4fe88756e91c46e643f2f0b63a7b6e9296"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Explosion013_x264.json",
+      "file": "Explosion013_x264.json",
+      "bytes": 10969,
+      "crc32": "901d0f63",
+      "sha256": "7a8a2a01cad444fea8136b5146e293ab6edb9978d9fd1dfd7019458c47e6210b"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_831_x264.json",
+      "file": "Normal_Videos_831_x264.json",
+      "bytes": 1356,
+      "crc32": "b20e60d3",
+      "sha256": "f80049bd880f8d7b59a04645702b2ea4864b93325a46a470dd029950d6d0ae3e"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Stealing079_x264.json",
+      "file": "Stealing079_x264.json",
+      "bytes": 19503,
+      "crc32": "10e804d0",
+      "sha256": "02da3c692e4928fd4dff05339c03d58034be121ee1c24aedfc3a547b1bdf65e7"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents017_x264.json",
+      "file": "RoadAccidents017_x264.json",
+      "bytes": 742,
+      "crc32": "89603d2b",
+      "sha256": "7dbd8ca6947caa1cbc051c6fe649168e3ca7fa8e3aac43f8d7a53aec15777c9a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_882_x264.json",
+      "file": "Normal_Videos_882_x264.json",
+      "bytes": 5355,
+      "crc32": "9d79cbf7",
+      "sha256": "0c16a53c88dbf9c15ae3e051950e5b6f6be4862514a9c4f60504896858d0d4cf"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_217_x264.json",
+      "file": "Normal_Videos_217_x264.json",
+      "bytes": 5895,
+      "crc32": "b3e86d0d",
+      "sha256": "db4b9ffd8fbfcf88b0d324eed208105c57ed0787ecc3b8ac5ff94bb055049f44"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Stealing058_x264.json",
+      "file": "Stealing058_x264.json",
+      "bytes": 16587,
+      "crc32": "1c264780",
+      "sha256": "1595c85be2caed7ca20860e6a9b045303b96573002011c0244b2330154c2b930"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Stealing036_x264.json",
+      "file": "Stealing036_x264.json",
+      "bytes": 8217,
+      "crc32": "8e77a217",
+      "sha256": "c105f81222cf041e0a8e63a7f9d30ee677cc5165ab251aa5e6b15731d33c16b3"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_938_x264.json",
+      "file": "Normal_Videos_938_x264.json",
+      "bytes": 16047,
+      "crc32": "d41a7c62",
+      "sha256": "447f7df05746500202d940c6e8ac151844ff6a2175e161eec03d06d09b36b0c5"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents022_x264.json",
+      "file": "RoadAccidents022_x264.json",
+      "bytes": 2223,
+      "crc32": "efad4687",
+      "sha256": "35d33d39f7c1b36cd7e5345f187ffaf067a8b57f21a921974fc13ad650387636"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_345_x264.json",
+      "file": "Normal_Videos_345_x264.json",
+      "bytes": 642,
+      "crc32": "b7988417",
+      "sha256": "f17e136e713f54b18b6b99bd8d8ab40100b12b3603d6f3f6953688b83d517ec8"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_203_x264.json",
+      "file": "Normal_Videos_203_x264.json",
+      "bytes": 8433,
+      "crc32": "3edebe6d",
+      "sha256": "772b1345669eb382bcca355c27fb5e39faa679f453546257e0d24d1ad1c58a92"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arrest007_x264.json",
+      "file": "Arrest007_x264.json",
+      "bytes": 10377,
+      "crc32": "472e7b14",
+      "sha256": "d94affcd6c4c9271755b04031245b9d01f415eaa41d9e20fa338e7d0aad3c4ab"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_914_x264.json",
+      "file": "Normal_Videos_914_x264.json",
+      "bytes": 2733,
+      "crc32": "b056233a",
+      "sha256": "52758ed51d63619db2cae31105fd0e447a1d135d38774fd1f974054588d47fe9"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting037_x264.json",
+      "file": "Shooting037_x264.json",
+      "bytes": 946,
+      "crc32": "68264596",
+      "sha256": "79480a410edb2de5a7a2e9697d5675dcd6c9ffe281f49b504a4a765fec6d70b4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Arson018_x264.json",
+      "file": "Arson018_x264.json",
+      "bytes": 2631,
+      "crc32": "9748444a",
+      "sha256": "fc1c80d49710fe28dc9381011cf7d5b84297802e1589ff162bec85ae8372f55a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_063_x264.json",
+      "file": "Normal_Videos_063_x264.json",
+      "bytes": 1099,
+      "crc32": "501c8e0c",
+      "sha256": "84dc94aec89069b6c72b956a391f2536f3413f5b618e599648151f004fa5a1b6"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/RoadAccidents132_x264.json",
+      "file": "RoadAccidents132_x264.json",
+      "bytes": 6057,
+      "crc32": "949bf17c",
+      "sha256": "7ac04e0c802a81b2e3d417a6f585f4c324c386460b0cef6f309df0d811a6b92c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_828_x264.json",
+      "file": "Normal_Videos_828_x264.json",
+      "bytes": 2935,
+      "crc32": "ed07c6a8",
+      "sha256": "cd6842b1275acf05cda710129f4e409dc1d6f0d63a098b3e7761d153f169cb15"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_019_x264.json",
+      "file": "Normal_Videos_019_x264.json",
+      "bytes": 9351,
+      "crc32": "54cad6ac",
+      "sha256": "c65901777f1fdfbac85a3597eae2ce9c358ff8021586d1c56c778f7482e9d5c1"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_196_x264.json",
+      "file": "Normal_Videos_196_x264.json",
+      "bytes": 6541,
+      "crc32": "d5564c11",
+      "sha256": "b15804e91d2031bcaecd2d2d65f02fcbe52e788acfaf6ca55fc1d6d8953c8481"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Vandalism017_x264.json",
+      "file": "Vandalism017_x264.json",
+      "bytes": 3201,
+      "crc32": "0d29405e",
+      "sha256": "dc1f05a76209d208873b75d6efb7f67e2270f9a698299acd4e4280e524394217"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_182_x264.json",
+      "file": "Normal_Videos_182_x264.json",
+      "bytes": 13563,
+      "crc32": "2844fc52",
+      "sha256": "5de1568893209dda7829676739a902d0bef3e7b998c70b595f77bb945baf6be6"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting022_x264.json",
+      "file": "Shoplifting022_x264.json",
+      "bytes": 7137,
+      "crc32": "9fa51b3b",
+      "sha256": "b80ac2a10c918ea69c7db380d4a9f32e0b06fa56290af5c996213d7db0375205"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_900_x264.json",
+      "file": "Normal_Videos_900_x264.json",
+      "bytes": 4653,
+      "crc32": "348e1ff1",
+      "sha256": "866081bdc40eb52675c8fca295f774b8c6a83b5811deb699cfdedeb0784b76df"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Assault006_x264.json",
+      "file": "Assault006_x264.json",
+      "bytes": 27063,
+      "crc32": "ca7f8ea0",
+      "sha256": "1616a40bdaafec432bb54afc5f25bb029eb7c780336739a7712d1bbd844ee9ea"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary035_x264.json",
+      "file": "Burglary035_x264.json",
+      "bytes": 13453,
+      "crc32": "6fe23565",
+      "sha256": "dbeee7908a88dc2650e62fc548c14214b317c935499e7bf4f5f7789bbed990fd"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_783_x264.json",
+      "file": "Normal_Videos_783_x264.json",
+      "bytes": 32139,
+      "crc32": "0507ced0",
+      "sha256": "5ffac22c1a6d91180506a1c30fc2601378ef77f6e5faa3ba298c9b503b69ccca"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shooting002_x264.json",
+      "file": "Shooting002_x264.json",
+      "bytes": 3843,
+      "crc32": "21dfda73",
+      "sha256": "7a80a9d3587d36c7aba80eca21d74cdadb0e4be48542160da48d4538222c8b35"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_867_x264.json",
+      "file": "Normal_Videos_867_x264.json",
+      "bytes": 1917,
+      "crc32": "92e45189",
+      "sha256": "7f901b248c69453e71cc3945a5775ad0b5eb1fa79c82d048fa87e64da215742a"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_056_x264.json",
+      "file": "Normal_Videos_056_x264.json",
+      "bytes": 5083,
+      "crc32": "cb6e9fa5",
+      "sha256": "b58209673c759d40922abc8a85a6d3da22522c74c92f4c900df177e5f936bfa5"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary092_x264.json",
+      "file": "Burglary092_x264.json",
+      "bytes": 1966,
+      "crc32": "475c24d4",
+      "sha256": "3f626146a3d7911ce04136d5839829a1d23613e0b81ada294e0d8ee31a5968d4"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_935_x264.json",
+      "file": "Normal_Videos_935_x264.json",
+      "bytes": 384112,
+      "crc32": "4720a26b",
+      "sha256": "d0ba1899c313ef0314405d2151a92a5b1c7ec124a5a1271d3a7a6be3a2f1016f"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_042_x264.json",
+      "file": "Normal_Videos_042_x264.json",
+      "bytes": 10429,
+      "crc32": "3326f805",
+      "sha256": "7fe060bf70f1eebc501fd928ca9d844fd77e92ec70043397cca7aef490f37389"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Normal_Videos_873_x264.json",
+      "file": "Normal_Videos_873_x264.json",
+      "bytes": 5841,
+      "crc32": "6252851d",
+      "sha256": "ac17ed91ae97c7817ffef340ea2fbf6fcb1e1b4a163d5312cf985bfadf714422"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Shoplifting017_x264.json",
+      "file": "Shoplifting017_x264.json",
+      "bytes": 1407,
+      "crc32": "27653bef",
+      "sha256": "bd63b6063711b18172facf1895f60806478f5dec58417cc5366fc723018c1178"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Burglary021_x264.json",
+      "file": "Burglary021_x264.json",
+      "bytes": 4975,
+      "crc32": "9885c35b",
+      "sha256": "2eb2be2e2d5f89a7fa90b6bbac312e42bac373843fbeb0774b1978568d038a2c"
+    },
+    {
+      "member": "VERA_prediction_scores_UCF_Crime/Vandalism036_x264.json",
+      "file": "Vandalism036_x264.json",
+      "bytes": 4651,
+      "crc32": "6e0d30a2",
+      "sha256": "e25a592b89ac44a338a6edb1dd92bec5d20f4841d2fd4b06015b150660fff702"
+    }
+  ],
+  "shapes": {
+    "Abuse028_x264": {
+      "shape": [
+        89,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1412
+    },
+    "Abuse030_x264": {
+      "shape": [
+        97,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1544
+    },
+    "Arrest001_x264": {
+      "shape": [
+        149,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2374
+    },
+    "Arrest007_x264": {
+      "shape": [
+        197,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3144
+    },
+    "Arrest024_x264": {
+      "shape": [
+        227,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3629
+    },
+    "Arrest030_x264": {
+      "shape": [
+        541,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8642
+    },
+    "Arrest039_x264": {
+      "shape": [
+        990,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 15835
+    },
+    "Arson007_x264": {
+      "shape": [
+        391,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 6252
+    },
+    "Arson009_x264": {
+      "shape": [
+        47,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 743
+    },
+    "Arson010_x264": {
+      "shape": [
+        198,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3159
+    },
+    "Arson011_x264": {
+      "shape": [
+        80,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1266
+    },
+    "Arson016_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1795
+    },
+    "Arson018_x264": {
+      "shape": [
+        53,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 842
+    },
+    "Arson022_x264": {
+      "shape": [
+        540,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8640
+    },
+    "Arson035_x264": {
+      "shape": [
+        90,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1437
+    },
+    "Arson041_x264": {
+      "shape": [
+        235,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3754
+    },
+    "Assault006_x264": {
+      "shape": [
+        506,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8096
+    },
+    "Assault010_x264": {
+      "shape": [
+        1012,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 16177
+    },
+    "Assault011_x264": {
+      "shape": [
+        143,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2288
+    },
+    "Burglary005_x264": {
+      "shape": [
+        484,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 7729
+    },
+    "Burglary017_x264": {
+      "shape": [
+        133,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2113
+    },
+    "Burglary018_x264": {
+      "shape": [
+        71,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1125
+    },
+    "Burglary021_x264": {
+      "shape": [
+        97,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1537
+    },
+    "Burglary024_x264": {
+      "shape": [
+        226,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3605
+    },
+    "Burglary032_x264": {
+      "shape": [
+        988,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 15795
+    },
+    "Burglary033_x264": {
+      "shape": [
+        79,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1259
+    },
+    "Burglary035_x264": {
+      "shape": [
+        254,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4050
+    },
+    "Burglary037_x264": {
+      "shape": [
+        120,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1920
+    },
+    "Burglary061_x264": {
+      "shape": [
+        562,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8990
+    },
+    "Burglary076_x264": {
+      "shape": [
+        808,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 12923
+    },
+    "Burglary079_x264": {
+      "shape": [
+        929,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 14853
+    },
+    "Burglary092_x264": {
+      "shape": [
+        40,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 625
+    },
+    "Explosion002_x264": {
+      "shape": [
+        251,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4013
+    },
+    "Explosion004_x264": {
+      "shape": [
+        119,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1902
+    },
+    "Explosion007_x264": {
+      "shape": [
+        1019,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 16289
+    },
+    "Explosion008_x264": {
+      "shape": [
+        110,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1748
+    },
+    "Explosion010_x264": {
+      "shape": [
+        157,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2498
+    },
+    "Explosion011_x264": {
+      "shape": [
+        99,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1571
+    },
+    "Explosion013_x264": {
+      "shape": [
+        208,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3317
+    },
+    "Explosion016_x264": {
+      "shape": [
+        61,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 963
+    },
+    "Explosion017_x264": {
+      "shape": [
+        103,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1643
+    },
+    "Explosion020_x264": {
+      "shape": [
+        81,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1291
+    },
+    "Explosion021_x264": {
+      "shape": [
+        49,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 782
+    },
+    "Explosion022_x264": {
+      "shape": [
+        225,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3594
+    },
+    "Explosion025_x264": {
+      "shape": [
+        32,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 505
+    },
+    "Explosion027_x264": {
+      "shape": [
+        49,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 776
+    },
+    "Explosion028_x264": {
+      "shape": [
+        107,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1705
+    },
+    "Explosion029_x264": {
+      "shape": [
+        151,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2410
+    },
+    "Explosion033_x264": {
+      "shape": [
+        198,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3154
+    },
+    "Explosion035_x264": {
+      "shape": [
+        180,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2865
+    },
+    "Explosion036_x264": {
+      "shape": [
+        333,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5327
+    },
+    "Explosion039_x264": {
+      "shape": [
+        63,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 998
+    },
+    "Explosion043_x264": {
+      "shape": [
+        478,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 7646
+    },
+    "Fighting003_x264": {
+      "shape": [
+        194,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3102
+    },
+    "Fighting018_x264": {
+      "shape": [
+        87,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1389
+    },
+    "Fighting033_x264": {
+      "shape": [
+        70,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1105
+    },
+    "Fighting042_x264": {
+      "shape": [
+        140,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2237
+    },
+    "Fighting047_x264": {
+      "shape": [
+        279,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4459
+    },
+    "Normal_Videos_003_x264": {
+      "shape": [
+        177,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2822
+    },
+    "Normal_Videos_006_x264": {
+      "shape": [
+        29,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 450
+    },
+    "Normal_Videos_010_x264": {
+      "shape": [
+        66,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1053
+    },
+    "Normal_Videos_014_x264": {
+      "shape": [
+        94,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1499
+    },
+    "Normal_Videos_015_x264": {
+      "shape": [
+        30,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 480
+    },
+    "Normal_Videos_018_x264": {
+      "shape": [
+        74,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1181
+    },
+    "Normal_Videos_019_x264": {
+      "shape": [
+        178,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2843
+    },
+    "Normal_Videos_024_x264": {
+      "shape": [
+        68,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1076
+    },
+    "Normal_Videos_025_x264": {
+      "shape": [
+        38,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 602
+    },
+    "Normal_Videos_027_x264": {
+      "shape": [
+        308,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4922
+    },
+    "Normal_Videos_033_x264": {
+      "shape": [
+        105,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1680
+    },
+    "Normal_Videos_034_x264": {
+      "shape": [
+        83,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1318
+    },
+    "Normal_Videos_041_x264": {
+      "shape": [
+        80,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1269
+    },
+    "Normal_Videos_042_x264": {
+      "shape": [
+        198,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3154
+    },
+    "Normal_Videos_048_x264": {
+      "shape": [
+        104,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1650
+    },
+    "Normal_Videos_050_x264": {
+      "shape": [
+        263,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4198
+    },
+    "Normal_Videos_051_x264": {
+      "shape": [
+        148,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2358
+    },
+    "Normal_Videos_056_x264": {
+      "shape": [
+        99,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1572
+    },
+    "Normal_Videos_059_x264": {
+      "shape": [
+        115,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1835
+    },
+    "Normal_Videos_063_x264": {
+      "shape": [
+        23,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 355
+    },
+    "Normal_Videos_067_x264": {
+      "shape": [
+        67,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1068
+    },
+    "Normal_Videos_070_x264": {
+      "shape": [
+        63,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 993
+    },
+    "Normal_Videos_100_x264": {
+      "shape": [
+        40,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 627
+    },
+    "Normal_Videos_129_x264": {
+      "shape": [
+        30,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 467
+    },
+    "Normal_Videos_150_x264": {
+      "shape": [
+        54,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 864
+    },
+    "Normal_Videos_168_x264": {
+      "shape": [
+        109,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1740
+    },
+    "Normal_Videos_175_x264": {
+      "shape": [
+        553,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8847
+    },
+    "Normal_Videos_182_x264": {
+      "shape": [
+        256,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4094
+    },
+    "Normal_Videos_189_x264": {
+      "shape": [
+        47,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 737
+    },
+    "Normal_Videos_196_x264": {
+      "shape": [
+        126,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2004
+    },
+    "Normal_Videos_203_x264": {
+      "shape": [
+        161,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2571
+    },
+    "Normal_Videos_210_x264": {
+      "shape": [
+        338,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5408
+    },
+    "Normal_Videos_217_x264": {
+      "shape": [
+        114,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1817
+    },
+    "Normal_Videos_224_x264": {
+      "shape": [
+        435,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 6958
+    },
+    "Normal_Videos_246_x264": {
+      "shape": [
+        313,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4993
+    },
+    "Normal_Videos_247_x264": {
+      "shape": [
+        514,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8211
+    },
+    "Normal_Videos_248_x264": {
+      "shape": [
+        72,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1140
+    },
+    "Normal_Videos_251_x264": {
+      "shape": [
+        26,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 405
+    },
+    "Normal_Videos_289_x264": {
+      "shape": [
+        54,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 863
+    },
+    "Normal_Videos_310_x264": {
+      "shape": [
+        158,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2518
+    },
+    "Normal_Videos_312_x264": {
+      "shape": [
+        79,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1261
+    },
+    "Normal_Videos_317_x264": {
+      "shape": [
+        59,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 929
+    },
+    "Normal_Videos_345_x264": {
+      "shape": [
+        14,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 209
+    },
+    "Normal_Videos_352_x264": {
+      "shape": [
+        338,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5403
+    },
+    "Normal_Videos_360_x264": {
+      "shape": [
+        62,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 984
+    },
+    "Normal_Videos_365_x264": {
+      "shape": [
+        415,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 6626
+    },
+    "Normal_Videos_401_x264": {
+      "shape": [
+        102,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1626
+    },
+    "Normal_Videos_417_x264": {
+      "shape": [
+        68,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1077
+    },
+    "Normal_Videos_439_x264": {
+      "shape": [
+        265,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4226
+    },
+    "Normal_Videos_452_x264": {
+      "shape": [
+        28,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 443
+    },
+    "Normal_Videos_453_x264": {
+      "shape": [
+        333,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5322
+    },
+    "Normal_Videos_478_x264": {
+      "shape": [
+        282,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4502
+    },
+    "Normal_Videos_576_x264": {
+      "shape": [
+        705,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 11275
+    },
+    "Normal_Videos_597_x264": {
+      "shape": [
+        140,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2229
+    },
+    "Normal_Videos_603_x264": {
+      "shape": [
+        205,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3277
+    },
+    "Normal_Videos_606_x264": {
+      "shape": [
+        78,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1233
+    },
+    "Normal_Videos_621_x264": {
+      "shape": [
+        301,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4802
+    },
+    "Normal_Videos_634_x264": {
+      "shape": [
+        842,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 13459
+    },
+    "Normal_Videos_641_x264": {
+      "shape": [
+        225,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3600
+    },
+    "Normal_Videos_656_x264": {
+      "shape": [
+        114,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1815
+    },
+    "Normal_Videos_686_x264": {
+      "shape": [
+        151,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2410
+    },
+    "Normal_Videos_696_x264": {
+      "shape": [
+        227,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3625
+    },
+    "Normal_Videos_702_x264": {
+      "shape": [
+        158,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2523
+    },
+    "Normal_Videos_704_x264": {
+      "shape": [
+        106,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1694
+    },
+    "Normal_Videos_710_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1797
+    },
+    "Normal_Videos_717_x264": {
+      "shape": [
+        79,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1255
+    },
+    "Normal_Videos_722_x264": {
+      "shape": [
+        546,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8731
+    },
+    "Normal_Videos_725_x264": {
+      "shape": [
+        58,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 920
+    },
+    "Normal_Videos_745_x264": {
+      "shape": [
+        20,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 305
+    },
+    "Normal_Videos_758_x264": {
+      "shape": [
+        100,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1589
+    },
+    "Normal_Videos_778_x264": {
+      "shape": [
+        79,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1262
+    },
+    "Normal_Videos_780_x264": {
+      "shape": [
+        127,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2021
+    },
+    "Normal_Videos_781_x264": {
+      "shape": [
+        249,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3975
+    },
+    "Normal_Videos_782_x264": {
+      "shape": [
+        347,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5543
+    },
+    "Normal_Videos_783_x264": {
+      "shape": [
+        600,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 9590
+    },
+    "Normal_Videos_798_x264": {
+      "shape": [
+        376,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 6001
+    },
+    "Normal_Videos_801_x264": {
+      "shape": [
+        172,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2744
+    },
+    "Normal_Videos_828_x264": {
+      "shape": [
+        59,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 930
+    },
+    "Normal_Videos_831_x264": {
+      "shape": [
+        28,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 448
+    },
+    "Normal_Videos_866_x264": {
+      "shape": [
+        75,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1198
+    },
+    "Normal_Videos_867_x264": {
+      "shape": [
+        39,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 624
+    },
+    "Normal_Videos_868_x264": {
+      "shape": [
+        151,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2401
+    },
+    "Normal_Videos_869_x264": {
+      "shape": [
+        151,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2401
+    },
+    "Normal_Videos_870_x264": {
+      "shape": [
+        38,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 601
+    },
+    "Normal_Videos_871_x264": {
+      "shape": [
+        273,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4358
+    },
+    "Normal_Videos_872_x264": {
+      "shape": [
+        34,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 530
+    },
+    "Normal_Videos_873_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1799
+    },
+    "Normal_Videos_874_x264": {
+      "shape": [
+        265,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4226
+    },
+    "Normal_Videos_875_x264": {
+      "shape": [
+        161,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2565
+    },
+    "Normal_Videos_876_x264": {
+      "shape": [
+        22,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 351
+    },
+    "Normal_Videos_877_x264": {
+      "shape": [
+        627,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 10025
+    },
+    "Normal_Videos_878_x264": {
+      "shape": [
+        17,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 265
+    },
+    "Normal_Videos_879_x264": {
+      "shape": [
+        72,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1143
+    },
+    "Normal_Videos_880_x264": {
+      "shape": [
+        1129,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 18054
+    },
+    "Normal_Videos_881_x264": {
+      "shape": [
+        14,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 224
+    },
+    "Normal_Videos_882_x264": {
+      "shape": [
+        104,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1654
+    },
+    "Normal_Videos_883_x264": {
+      "shape": [
+        21,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 326
+    },
+    "Normal_Videos_884_x264": {
+      "shape": [
+        565,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 9029
+    },
+    "Normal_Videos_885_x264": {
+      "shape": [
+        30,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 474
+    },
+    "Normal_Videos_886_x264": {
+      "shape": [
+        172,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2747
+    },
+    "Normal_Videos_887_x264": {
+      "shape": [
+        477,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 7630
+    },
+    "Normal_Videos_888_x264": {
+      "shape": [
+        36,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 574
+    },
+    "Normal_Videos_889_x264": {
+      "shape": [
+        20,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 314
+    },
+    "Normal_Videos_890_x264": {
+      "shape": [
+        224,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3579
+    },
+    "Normal_Videos_891_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1800
+    },
+    "Normal_Videos_892_x264": {
+      "shape": [
+        111,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1770
+    },
+    "Normal_Videos_893_x264": {
+      "shape": [
+        399,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 6374
+    },
+    "Normal_Videos_894_x264": {
+      "shape": [
+        161,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2575
+    },
+    "Normal_Videos_895_x264": {
+      "shape": [
+        190,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3030
+    },
+    "Normal_Videos_896_x264": {
+      "shape": [
+        144,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2303
+    },
+    "Normal_Videos_897_x264": {
+      "shape": [
+        55,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 875
+    },
+    "Normal_Videos_898_x264": {
+      "shape": [
+        63,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1005
+    },
+    "Normal_Videos_899_x264": {
+      "shape": [
+        87,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1380
+    },
+    "Normal_Videos_900_x264": {
+      "shape": [
+        91,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1455
+    },
+    "Normal_Videos_901_x264": {
+      "shape": [
+        74,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1170
+    },
+    "Normal_Videos_902_x264": {
+      "shape": [
+        87,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1384
+    },
+    "Normal_Videos_903_x264": {
+      "shape": [
+        50,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 790
+    },
+    "Normal_Videos_904_x264": {
+      "shape": [
+        57,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 908
+    },
+    "Normal_Videos_905_x264": {
+      "shape": [
+        75,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1196
+    },
+    "Normal_Videos_906_x264": {
+      "shape": [
+        43,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 676
+    },
+    "Normal_Videos_907_x264": {
+      "shape": [
+        38,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 598
+    },
+    "Normal_Videos_908_x264": {
+      "shape": [
+        56,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 889
+    },
+    "Normal_Videos_909_x264": {
+      "shape": [
+        55,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 870
+    },
+    "Normal_Videos_910_x264": {
+      "shape": [
+        36,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 567
+    },
+    "Normal_Videos_911_x264": {
+      "shape": [
+        49,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 776
+    },
+    "Normal_Videos_912_x264": {
+      "shape": [
+        47,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 746
+    },
+    "Normal_Videos_913_x264": {
+      "shape": [
+        39,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 609
+    },
+    "Normal_Videos_914_x264": {
+      "shape": [
+        55,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 880
+    },
+    "Normal_Videos_915_x264": {
+      "shape": [
+        78,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1245
+    },
+    "Normal_Videos_923_x264": {
+      "shape": [
+        1139,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 18224
+    },
+    "Normal_Videos_924_x264": {
+      "shape": [
+        6750,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 107997
+    },
+    "Normal_Videos_925_x264": {
+      "shape": [
+        483,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 7726
+    },
+    "Normal_Videos_926_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1796
+    },
+    "Normal_Videos_927_x264": {
+      "shape": [
+        103,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1633
+    },
+    "Normal_Videos_928_x264": {
+      "shape": [
+        58,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 918
+    },
+    "Normal_Videos_929_x264": {
+      "shape": [
+        58,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 924
+    },
+    "Normal_Videos_930_x264": {
+      "shape": [
+        200,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3187
+    },
+    "Normal_Videos_931_x264": {
+      "shape": [
+        111,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1765
+    },
+    "Normal_Videos_932_x264": {
+      "shape": [
+        112,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1784
+    },
+    "Normal_Videos_933_x264": {
+      "shape": [
+        111,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1771
+    },
+    "Normal_Videos_934_x264": {
+      "shape": [
+        111,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1765
+    },
+    "Normal_Videos_935_x264": {
+      "shape": [
+        6750,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 107994
+    },
+    "Normal_Videos_936_x264": {
+      "shape": [
+        72,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1150
+    },
+    "Normal_Videos_937_x264": {
+      "shape": [
+        72,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1150
+    },
+    "Normal_Videos_938_x264": {
+      "shape": [
+        302,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4827
+    },
+    "Normal_Videos_939_x264": {
+      "shape": [
+        51,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 801
+    },
+    "Normal_Videos_940_x264": {
+      "shape": [
+        2252,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 36017
+    },
+    "Normal_Videos_941_x264": {
+      "shape": [
+        127,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2020
+    },
+    "Normal_Videos_943_x264": {
+      "shape": [
+        64,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1020
+    },
+    "Normal_Videos_944_x264": {
+      "shape": [
+        449,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 7170
+    },
+    "RoadAccidents001_x264": {
+      "shape": [
+        86,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1366
+    },
+    "RoadAccidents002_x264": {
+      "shape": [
+        22,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 347
+    },
+    "RoadAccidents004_x264": {
+      "shape": [
+        25,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 389
+    },
+    "RoadAccidents009_x264": {
+      "shape": [
+        58,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 918
+    },
+    "RoadAccidents010_x264": {
+      "shape": [
+        33,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 528
+    },
+    "RoadAccidents011_x264": {
+      "shape": [
+        135,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2159
+    },
+    "RoadAccidents012_x264": {
+      "shape": [
+        30,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 468
+    },
+    "RoadAccidents016_x264": {
+      "shape": [
+        137,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2192
+    },
+    "RoadAccidents017_x264": {
+      "shape": [
+        16,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 243
+    },
+    "RoadAccidents019_x264": {
+      "shape": [
+        83,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1314
+    },
+    "RoadAccidents020_x264": {
+      "shape": [
+        111,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1773
+    },
+    "RoadAccidents021_x264": {
+      "shape": [
+        10,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 155
+    },
+    "RoadAccidents022_x264": {
+      "shape": [
+        45,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 716
+    },
+    "RoadAccidents121_x264": {
+      "shape": [
+        115,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1835
+    },
+    "RoadAccidents122_x264": {
+      "shape": [
+        41,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 647
+    },
+    "RoadAccidents123_x264": {
+      "shape": [
+        63,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1005
+    },
+    "RoadAccidents124_x264": {
+      "shape": [
+        94,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1495
+    },
+    "RoadAccidents125_x264": {
+      "shape": [
+        111,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1771
+    },
+    "RoadAccidents127_x264": {
+      "shape": [
+        162,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2580
+    },
+    "RoadAccidents128_x264": {
+      "shape": [
+        36,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 565
+    },
+    "RoadAccidents131_x264": {
+      "shape": [
+        96,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1524
+    },
+    "RoadAccidents132_x264": {
+      "shape": [
+        117,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1862
+    },
+    "RoadAccidents133_x264": {
+      "shape": [
+        43,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 673
+    },
+    "Robbery048_x264": {
+      "shape": [
+        89,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1409
+    },
+    "Robbery050_x264": {
+      "shape": [
+        107,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1701
+    },
+    "Robbery102_x264": {
+      "shape": [
+        115,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1827
+    },
+    "Robbery106_x264": {
+      "shape": [
+        75,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1197
+    },
+    "Robbery137_x264": {
+      "shape": [
+        138,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2193
+    },
+    "Shooting002_x264": {
+      "shape": [
+        76,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1206
+    },
+    "Shooting004_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1793
+    },
+    "Shooting007_x264": {
+      "shape": [
+        90,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1430
+    },
+    "Shooting008_x264": {
+      "shape": [
+        102,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1625
+    },
+    "Shooting010_x264": {
+      "shape": [
+        166,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2641
+    },
+    "Shooting011_x264": {
+      "shape": [
+        251,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4003
+    },
+    "Shooting013_x264": {
+      "shape": [
+        68,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1073
+    },
+    "Shooting015_x264": {
+      "shape": [
+        108,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1713
+    },
+    "Shooting018_x264": {
+      "shape": [
+        113,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1799
+    },
+    "Shooting019_x264": {
+      "shape": [
+        173,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2756
+    },
+    "Shooting021_x264": {
+      "shape": [
+        80,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1275
+    },
+    "Shooting022_x264": {
+      "shape": [
+        285,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4554
+    },
+    "Shooting024_x264": {
+      "shape": [
+        126,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2003
+    },
+    "Shooting026_x264": {
+      "shape": [
+        88,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1403
+    },
+    "Shooting028_x264": {
+      "shape": [
+        119,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1898
+    },
+    "Shooting032_x264": {
+      "shape": [
+        1356,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 21681
+    },
+    "Shooting033_x264": {
+      "shape": [
+        227,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3630
+    },
+    "Shooting034_x264": {
+      "shape": [
+        89,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1409
+    },
+    "Shooting037_x264": {
+      "shape": [
+        20,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 305
+    },
+    "Shooting043_x264": {
+      "shape": [
+        118,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1874
+    },
+    "Shooting046_x264": {
+      "shape": [
+        318,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5088
+    },
+    "Shooting047_x264": {
+      "shape": [
+        518,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 8287
+    },
+    "Shooting048_x264": {
+      "shape": [
+        172,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2741
+    },
+    "Shoplifting001_x264": {
+      "shape": [
+        272,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4344
+    },
+    "Shoplifting004_x264": {
+      "shape": [
+        418,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 6673
+    },
+    "Shoplifting005_x264": {
+      "shape": [
+        123,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1967
+    },
+    "Shoplifting007_x264": {
+      "shape": [
+        321,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5124
+    },
+    "Shoplifting010_x264": {
+      "shape": [
+        171,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2736
+    },
+    "Shoplifting015_x264": {
+      "shape": [
+        141,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2256
+    },
+    "Shoplifting016_x264": {
+      "shape": [
+        93,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1483
+    },
+    "Shoplifting017_x264": {
+      "shape": [
+        29,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 457
+    },
+    "Shoplifting020_x264": {
+      "shape": [
+        361,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5770
+    },
+    "Shoplifting021_x264": {
+      "shape": [
+        222,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 3551
+    },
+    "Shoplifting022_x264": {
+      "shape": [
+        137,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2191
+    },
+    "Shoplifting027_x264": {
+      "shape": [
+        118,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1873
+    },
+    "Shoplifting028_x264": {
+      "shape": [
+        85,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1357
+    },
+    "Shoplifting029_x264": {
+      "shape": [
+        136,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2176
+    },
+    "Shoplifting031_x264": {
+      "shape": [
+        28,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 447
+    },
+    "Shoplifting033_x264": {
+      "shape": [
+        57,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 899
+    },
+    "Shoplifting034_x264": {
+      "shape": [
+        747,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 11937
+    },
+    "Shoplifting037_x264": {
+      "shape": [
+        87,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1386
+    },
+    "Shoplifting039_x264": {
+      "shape": [
+        176,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2803
+    },
+    "Shoplifting044_x264": {
+      "shape": [
+        910,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 14555
+    },
+    "Shoplifting049_x264": {
+      "shape": [
+        135,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2149
+    },
+    "Stealing019_x264": {
+      "shape": [
+        307,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4911
+    },
+    "Stealing036_x264": {
+      "shape": [
+        157,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2503
+    },
+    "Stealing058_x264": {
+      "shape": [
+        312,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4991
+    },
+    "Stealing062_x264": {
+      "shape": [
+        98,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1560
+    },
+    "Stealing079_x264": {
+      "shape": [
+        366,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 5846
+    },
+    "Vandalism007_x264": {
+      "shape": [
+        72,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1146
+    },
+    "Vandalism015_x264": {
+      "shape": [
+        187,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 2982
+    },
+    "Vandalism017_x264": {
+      "shape": [
+        64,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1011
+    },
+    "Vandalism028_x264": {
+      "shape": [
+        281,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 4495
+    },
+    "Vandalism036_x264": {
+      "shape": [
+        91,
+        1024
+      ],
+      "dtype": "float64",
+      "frames": 1443
+    }
+  },
+  "videos": 290,
+  "total_frames": 1111808,
+  "source": "Authors release linked in original VERA README; direct public Google Drive download after connector size-limit rejection",
+  "authenticity_limit": "Archive digest records received bytes; all CRCs and shapes checked; one feature independently matches previously verified artifact."
+}

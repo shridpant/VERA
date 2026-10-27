@@ -1,0 +1,1562 @@
+[
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9722754424575074,
+    "ap": 0.0041728433322282665
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9878944916185439,
+    "ap": 0.31921880010533077
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.7380912324684155,
+    "ap": 0.12079078700987124
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9837283456707937,
+    "ap": 0.5370663148959512
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9551144389028079,
+    "ap": 0.38426137388565695
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9179067612538452,
+    "ap": 0.13704899816920701
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9625232142045874,
+    "ap": 0.1607235680438164
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.8961430968147289,
+    "ap": 0.050654462766841955
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9714957232503503,
+    "ap": 0.22149127714316083
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9330708469335324,
+    "ap": 0.1202763240158652
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9379994125290285,
+    "ap": 0.194075438904145
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9715379193349791,
+    "ap": 0.4396943324186562
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "original",
+    "auc": 0.9846820192771474,
+    "ap": 0.08997847134270007
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.974473339767777,
+    "ap": 0.007270701022525352
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9791560208204688,
+    "ap": 0.23558651709705572
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.7360590229753907,
+    "ap": 0.0971013885708922
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9800077670759519,
+    "ap": 0.48188135673964755
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9537433555669672,
+    "ap": 0.33321211267807627
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9154962556460939,
+    "ap": 0.12774724651171976
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9656553099769929,
+    "ap": 0.11109011479836672
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.8930628734132597,
+    "ap": 0.04147896475300698
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9650691219464985,
+    "ap": 0.12987570226343556
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9206896803954838,
+    "ap": 0.09565777208039278
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9276725892251152,
+    "ap": 0.09506155926125923
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9626652326687952,
+    "ap": 0.2848023280969968
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "no_position",
+    "auc": 0.9744671621942244,
+    "ap": 0.07296080957574318
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.2903531393230945,
+    "ap": 0.0001699258135156394
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.7500498400316498,
+    "ap": 0.026766850733101054
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.6195658264395941,
+    "ap": 0.0175267283312178
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.5702529248956169,
+    "ap": 0.015315727826388301
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.5311337542692957,
+    "ap": 0.025017221106209298
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.5552360699472936,
+    "ap": 0.01304832940791254
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.49410666491987404,
+    "ap": 0.006079299675887684
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.5674063192328227,
+    "ap": 0.003754215642252786
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.6544429407382933,
+    "ap": 0.008737946974681094
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.6309641907905875,
+    "ap": 0.01951168002469071
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.6906510277490143,
+    "ap": 0.018323007664123175
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.707835158775906,
+    "ap": 0.01693652265446897
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.0,
+    "method": "prior_only",
+    "auc": 0.6593795167413841,
+    "ap": 0.004861201549900212
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9448035841973546,
+    "ap": 0.004910123099984558
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9673501200596847,
+    "ap": 0.14690480116553792
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.7242578810730189,
+    "ap": 0.060356691670990587
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9692463242201563,
+    "ap": 0.3433012975173316
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9466398516058883,
+    "ap": 0.2802408392949937
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9128303612311679,
+    "ap": 0.10500843301491258
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9569334926737638,
+    "ap": 0.1435172444451217
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.8943786359821134,
+    "ap": 0.055945999774500765
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9587007597659232,
+    "ap": 0.10157854805127983
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9147375779960687,
+    "ap": 0.09707800455133161
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9201277071583099,
+    "ap": 0.08977614106143554
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9582993065657084,
+    "ap": 0.24897786105185038
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "original",
+    "auc": 0.9618782790385957,
+    "ap": 0.04325632998342655
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.974473339767777,
+    "ap": 0.007270701022525352
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9791560208204688,
+    "ap": 0.23558651709705572
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.7360590229753907,
+    "ap": 0.0971013885708922
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9800077670759519,
+    "ap": 0.48188135673964755
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9537433555669672,
+    "ap": 0.33321211267807627
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9154962556460939,
+    "ap": 0.12774724651171976
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9656553099769929,
+    "ap": 0.11109011479836672
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.8930628734132597,
+    "ap": 0.04147896475300698
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9650691219464985,
+    "ap": 0.12987570226343556
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9206896803954838,
+    "ap": 0.09565777208039278
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9276725892251152,
+    "ap": 0.09506155926125923
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9626652326687952,
+    "ap": 0.2848023280969968
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "no_position",
+    "auc": 0.9744671621942244,
+    "ap": 0.07296080957574318
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.3771303289391914,
+    "ap": 0.0001896292952466806
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.4054138188900667,
+    "ap": 0.008709392088006073
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.4013905485108743,
+    "ap": 0.009976389733802842
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.47495309718250744,
+    "ap": 0.013396635300877535
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.4795131299080442,
+    "ap": 0.021897788020819434
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.5260825994629759,
+    "ap": 0.01272664280811256
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.5907957658519368,
+    "ap": 0.009486070343721
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.6456462157638125,
+    "ap": 0.00604221944481606
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.4914691209631834,
+    "ap": 0.005737288280214704
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.50784221458354,
+    "ap": 0.015143869310171067
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.4849190922491089,
+    "ap": 0.009273681753903022
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.5479653441293103,
+    "ap": 0.00988532056037605
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.2,
+    "method": "prior_only",
+    "auc": 0.4429773168935622,
+    "ap": 0.002828271965502595
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9773946996015045,
+    "ap": 0.0077397220656744625
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9404731347785715,
+    "ap": 0.08213074915545998
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.7241053754404202,
+    "ap": 0.055107520752786694
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9671859201029,
+    "ap": 0.2683886828220925
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9400922505773115,
+    "ap": 0.22330210026749728
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9049167692422553,
+    "ap": 0.08950589366840767
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9609668376868888,
+    "ap": 0.08821598751316037
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.8895000197211917,
+    "ap": 0.031404037742016666
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9466493716492324,
+    "ap": 0.05205850061075748
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9029033509127733,
+    "ap": 0.07926618453535209
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9016010469117356,
+    "ap": 0.053933103413114115
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9419816827016902,
+    "ap": 0.13146943330266192
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "original",
+    "auc": 0.9521700510965065,
+    "ap": 0.030876730351334803
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.974473339767777,
+    "ap": 0.007270701022525352
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9791560208204688,
+    "ap": 0.23558651709705572
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.7360590229753907,
+    "ap": 0.0971013885708922
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9800077670759519,
+    "ap": 0.48188135673964755
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9537433555669672,
+    "ap": 0.33321211267807627
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9154962556460939,
+    "ap": 0.12774724651171976
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9656553099769929,
+    "ap": 0.11109011479836672
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.8930628734132597,
+    "ap": 0.04147896475300698
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9650691219464985,
+    "ap": 0.12987570226343556
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9206896803954838,
+    "ap": 0.09565777208039278
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9276725892251152,
+    "ap": 0.09506155926125923
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9626652326687952,
+    "ap": 0.2848023280969968
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "no_position",
+    "auc": 0.9744671621942244,
+    "ap": 0.07296080957574318
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.6973724721920022,
+    "ap": 0.00048191770761206486
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.19292296574801807,
+    "ap": 0.0065627173576576
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.3246886232633655,
+    "ap": 0.00853321441168964
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.4161966846893932,
+    "ap": 0.010115319384255032
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.45560307854394666,
+    "ap": 0.024912035956801963
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.473746356652885,
+    "ap": 0.0128224065376661
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.5613693662193542,
+    "ap": 0.008031966924284397
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.5200612429036098,
+    "ap": 0.0033813694938878707
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.34899275420527653,
+    "ap": 0.004079486982638518
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.3699724952919709,
+    "ap": 0.010202355276607147
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.2977986430470446,
+    "ap": 0.006620163953385199
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.3192912138583244,
+    "ap": 0.005918118971960888
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.4,
+    "method": "prior_only",
+    "auc": 0.31942287900065985,
+    "ap": 0.0020784428644068428
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9814936076897228,
+    "ap": 0.00680370917326438
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9671150705856478,
+    "ap": 0.20316804336430647
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.7336522484172062,
+    "ap": 0.11995480165195432
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9717576884974451,
+    "ap": 0.42243982205779906
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9507172984531059,
+    "ap": 0.32662115572858985
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9028767574968156,
+    "ap": 0.11657567164386007
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9593360351337554,
+    "ap": 0.06982659426764537
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.8847918894798656,
+    "ap": 0.02686284093480263
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9547031699642952,
+    "ap": 0.09091128756297842
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9106407761778711,
+    "ap": 0.08484927649294392
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9151323276737107,
+    "ap": 0.06284989166593213
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.9508931643921881,
+    "ap": 0.1633130296276939
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "original",
+    "auc": 0.963067778531443,
+    "ap": 0.062001892165891435
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.974473339767777,
+    "ap": 0.007270701022525352
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9791560208204688,
+    "ap": 0.23558651709705572
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.7360590229753907,
+    "ap": 0.0971013885708922
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9800077670759519,
+    "ap": 0.48188135673964755
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9537433555669672,
+    "ap": 0.33321211267807627
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9154962556460939,
+    "ap": 0.12774724651171976
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9656553099769929,
+    "ap": 0.11109011479836672
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.8930628734132597,
+    "ap": 0.04147896475300698
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9650691219464985,
+    "ap": 0.12987570226343556
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9206896803954838,
+    "ap": 0.09565777208039278
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9276725892251152,
+    "ap": 0.09506155926125923
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9626652326687952,
+    "ap": 0.2848023280969968
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "no_position",
+    "auc": 0.9744671621942244,
+    "ap": 0.07296080957574318
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.722114359192329,
+    "ap": 0.0005142878667734193
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.41145357527481546,
+    "ap": 0.00868109761827402
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.48350648843522326,
+    "ap": 0.013342397657624253
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.4722913028193659,
+    "ap": 0.012396281815007697
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.5030857344867282,
+    "ap": 0.02326728619312151
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.44296515477561016,
+    "ap": 0.009871383665123808
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.449208024812627,
+    "ap": 0.005712897669759706
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.3801737077418725,
+    "ap": 0.0024571507705159123
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.4019348936823945,
+    "ap": 0.004367844519196218
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.4049364351580477,
+    "ap": 0.011194106708728863
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.3883792556687976,
+    "ap": 0.00797784158186603
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.3500308074398888,
+    "ap": 0.0061828241070039204
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.6,
+    "method": "prior_only",
+    "auc": 0.43233105547851486,
+    "ap": 0.002759276541454407
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.97629552317704,
+    "ap": 0.004807297597137423
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9892544634029731,
+    "ap": 0.470612455713149
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.7425122828619479,
+    "ap": 0.17317118898291858
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9807851320851877,
+    "ap": 0.5507387519569297
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9506797735402333,
+    "ap": 0.4360886270469457
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9098931696941808,
+    "ap": 0.15535785244965433
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9592930176630716,
+    "ap": 0.10104120835866622
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.8855572505921113,
+    "ap": 0.037611124874243146
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9669290987111818,
+    "ap": 0.23940658411100793
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9298480487917399,
+    "ap": 0.11123528827934633
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9396174574483059,
+    "ap": 0.13100204330318785
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.966926238137201,
+    "ap": 0.3674558400406262
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "original",
+    "auc": 0.9829758023671198,
+    "ap": 0.12350536808312865
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.974473339767777,
+    "ap": 0.007270701022525352
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9791560208204688,
+    "ap": 0.23558651709705572
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.7360590229753907,
+    "ap": 0.0971013885708922
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9800077670759519,
+    "ap": 0.48188135673964755
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9537433555669672,
+    "ap": 0.33321211267807627
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9154962556460939,
+    "ap": 0.12774724651171976
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9656553099769929,
+    "ap": 0.11109011479836672
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.8930628734132597,
+    "ap": 0.04147896475300698
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9650691219464985,
+    "ap": 0.12987570226343556
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9206896803954838,
+    "ap": 0.09565777208039278
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9276725892251152,
+    "ap": 0.09506155926125923
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9626652326687952,
+    "ap": 0.2848023280969968
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "no_position",
+    "auc": 0.9744671621942244,
+    "ap": 0.07296080957574318
+  },
+  {
+    "category": "Abuse",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.42267092194119693,
+    "ap": 0.0002084061484386026
+  },
+  {
+    "category": "Arrest",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.7395396084611218,
+    "ap": 0.022044319650546925
+  },
+  {
+    "category": "Arson",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.6675300819562618,
+    "ap": 0.020153021054938967
+  },
+  {
+    "category": "Assault",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.5626673718230739,
+    "ap": 0.01675936992924559
+  },
+  {
+    "category": "Burglary",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.5354718627728196,
+    "ap": 0.031216972249389303
+  },
+  {
+    "category": "Explosion",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.5015268591364448,
+    "ap": 0.012170133598618241
+  },
+  {
+    "category": "Fighting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.4061425228861485,
+    "ap": 0.005665605069244097
+  },
+  {
+    "category": "RoadAccidents",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.3837275780560484,
+    "ap": 0.002692044439063514
+  },
+  {
+    "category": "Robbery",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.5992449632679209,
+    "ap": 0.008020859745679676
+  },
+  {
+    "category": "Shooting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.5821525153562414,
+    "ap": 0.019170625192137726
+  },
+  {
+    "category": "Shoplifting",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.6329947670207938,
+    "ap": 0.014670842044855206
+  },
+  {
+    "category": "Stealing",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.5820835463456443,
+    "ap": 0.012393451377257248
+  },
+  {
+    "category": "Vandalism",
+    "normal_videos_included": true,
+    "offset_fraction": 0.8,
+    "method": "prior_only",
+    "auc": 0.6433371755281663,
+    "ap": 0.004800759040036966
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "python": "3.14.2 (main, Dec  5 2025, 16:49:16) [Clang 17.0.0 (clang-1700.4.4.1)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "numpy": "2.4.1",
+  "upstream_sha256": "21e9705da3e8b04deb5855665a0c8fbc41e6baa705374f2c362b814d24b5eda8",
+  "metadata_sha256": "f3857cddd623f767e7b86bd50a4aeb122445fc6e241ddd7130b7e3ec0c4d8b9f",
+  "runner_sha256": "5aa27beb6a1c6cad1e642613999e93b6ab06223cf9b8a38a8c519d1b4bf55a9f",
+  "cuda_visible_devices": "",
+  "root": "/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-position-audit",
+  "assets": "/Users/shrid/Documents/Codex/2026-10-26/u-h/work/vera-position-assets",
+  "gpu_calls": 0,
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 4,
+      "prefix": "libopenblas",
+      "filepath": "/opt/homebrew/Cellar/openblas/0.3.30/lib/libopenblasp-r0.3.30.dylib",
+      "version": "0.3.30",
+      "threading_layer": "openmp",
+      "architecture": "neoversen1"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 4,
+      "prefix": "libgomp",
+      "filepath": "/opt/homebrew/Cellar/gcc/15.2.0/lib/gcc/current/libgomp.1.dylib",
+      "version": null
+    }
+  ]
+}

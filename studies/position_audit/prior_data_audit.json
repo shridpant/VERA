@@ -1,0 +1,63 @@
+{
+  "metadata_sha256": "f3857cddd623f767e7b86bd50a4aeb122445fc6e241ddd7130b7e3ec0c4d8b9f",
+  "official_scores_archive_sha256": "b7457cee812510ec2331c24cb5da451327c9500152e2437839d31af29166a3b0",
+  "score_video_ids": 290,
+  "metadata_video_ids": 290,
+  "missing_scores": [],
+  "extra_scores": [],
+  "anchor_count_total": 69634,
+  "anchor_grid_mismatch": [],
+  "labels": {
+    "videos": 290,
+    "normal": 150,
+    "anomalous": 140,
+    "bad_intervals": [
+      {
+        "id": "Arson011_x264",
+        "interval": [
+          680,
+          1267
+        ],
+        "length": 1266
+      },
+      {
+        "id": "Arson016_x264",
+        "interval": [
+          666,
+          1796
+        ],
+        "length": 1795
+      },
+      {
+        "id": "Explosion033_x264",
+        "interval": [
+          1550,
+          3156
+        ],
+        "length": 3154
+      },
+      {
+        "id": "Fighting003_x264",
+        "interval": [
+          1820,
+          3103
+        ],
+        "length": 3102
+      },
+      {
+        "id": "Shooting015_x264",
+        "interval": [
+          855,
+          1715
+        ],
+        "length": 1713
+      }
+    ]
+  },
+  "cached_feature_files": 1,
+  "feature_ids": [
+    "RoadAccidents127_x264"
+  ],
+  "gpu_calls": 0,
+  "scope": "asset/annotation validation only; no score performance or relocation experiment run"
+}

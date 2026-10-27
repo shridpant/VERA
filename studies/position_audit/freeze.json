@@ -1,0 +1,13 @@
+{
+  "files": {
+    "PROTOCOL.md": "48746853269aafbcb317ad383c5b522730c5e7bf0461ec3bb66162b1beedaddb",
+    "verify_assets.py": "2b3c68e4b8367c811a45412545ff4960acd287e52ac00928d97620889f622c17",
+    "reconstruct.py": "8be6120b4a589a8641d34c0216f72a05d217b7afc1b813277a0c28c586d8f70a",
+    "metrics.py": "25c5ac343e53930eb855e235e26a40ab39f41a39509935f18db1345f08a232f5",
+    "check_metrics.py": "ec31641083a76593953faf803270e0af0c788a625737181649e8a513e96213d5",
+    "analyze.py": "b773f3dead7f62dee6764427eefd2d5139acb4ba7e9c7ec8fa1c41155d7aeed8",
+    "evidence/assets.json": "0a29b2c95c751871fc1229463af7ec816b201a47b1827ef751a22a9a8cfbd131"
+  },
+  "protocol_commit": "819ba57",
+  "gpu_calls": 0
+}
