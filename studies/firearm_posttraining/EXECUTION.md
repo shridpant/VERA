@@ -1,162 +1,118 @@
 # Actual execution status
 
-The current user authorized **both idle Adas**, commits and a review PR. See
-AMENDMENTS.md. The original HANDOFF.md is the historical scientific proposal,
-not proof of implementation or permission to override the current request.
+The study is ongoing. Draft PR: https://github.com/shridpant/VERA/pull/9. No merge.
+The current user authorizes both remaining Adas, commits and a review PR, no
+scientific-run time ceilings, six aggregate bounded pilot GPU-hours, and all
+other scientific stops. These resource changes from a side chat were directly
+confirmed. HANDOFF.md is a historical proposal; current amendments govern.
 
-## Verified
+## Current execution owner
 
-- Isolated Mac checkout and branch `experiment/firearm-posttraining`, based on
-  85e7aba. The user's original checkout has not been modified.
-- Separate oz checkout `/local/datasets/sp2117/firearm_visilab/code/VERA-firearm-posttraining`.
-  Runs use immutable detached releases under `code/posttraining-releases/`.
-- Outputs `/local/datasets/sp2117/firearm_visilab/posttraining1`; original Phase 1
-  jobs, environments and output paths are separate. Remote Phase 1 probe decisions
-  have been preserved in the branch's prior-study deviations file.
-- FIT 192 / STOP 48 from original TRAIN 240; no recording/source overlap among
-  original train/validation/test metadata; no exact-frame FIT/STOP overlap.
-  Validation has 62 videos and has historically informed Phase 1.
-- All 1,920 FIT/STOP frame files verified, original base-weight files hashed,
-  longest target 311 tokens (512 cap). Unknown box spans are masked.
-- Native Qwen3-VL-8B BF16, rank-16 language-attention LoRA fits on one Ada.
-  Label and grounded engineering checks passed on Ada 6 and Ada 7, respectively:
-  finite backward, reduced fixture loss, adapter-only updates, exact prediction
-  reload and next-update resume, four sampled responses and generated-token
-  log-probabilities, and explicit frozen nonzero warm-start reference.
-- Four fixture sampled rewards were identical. Distinct **synthetic engineering
-  strings** verified materially nonzero GRPO gradients. This does not establish
-  scientific RL feasibility; the 24-video FIT reward-spread/validity panel remains
-  mandatory after the supervised pilot.
-- Engineering results and data audit are in `evidence/`; resolved dependency lock
-  includes 78 exact distributions and wheel hashes. Offline wheels stay on oz.
+CPU controller PID283507 runs from immutable release1b109ed. Its actual status
+is ROOT/calibration-mask-v2/status.json, with log
+ROOT/calibration-mask-v2-controller-001.log and launch metadata
+ROOT/calibration-mask-v2-launch-001.json. Inspect live artifacts before acting;
+the controller advances automatically. Do not double-submit GPU jobs.
 
-## In progress / pending
+Corrected one-pass and1.5-pass warm-ups completed without STOP queries. Label
+sampled-format gates passed94/96 and96/96 respectively. Grounded format failed
+5/20 and5/18 respectively, with early stopping once <=5% of96 became impossible.
+The declared final two-pass candidate007 is running on both Adas. Strict parser
+and thresholds are unchanged. Actual reward panels must pass at the same common
+warm-up before protocol freeze. No comparative sweep or held-out results yet.
 
-- `pilot-sl-001`: completed exploratory supervised pilot on Ada 6, code 635e418.
-  Stopped normally for patience at five FIT passes / 120 updates / 2,470 seconds.
-  Best checkpoint: exposure-000672 (3.5 passes), STOP balanced accuracy 86.3%,
-  action-group accuracy 70.8%, action-code accuracy 29.2%, invalid 0%, No_Gun
-  false positives 0/14. Last checkpoint and every earlier check are preserved.
-  This ran below its original 5,400-second cap; no time extension was needed.
-- `pilot-c0g-001`: completed fixed 0.5-pass exploratory grounded warm-up on Ada 7,
-  96 distinct clips, 12 updates, 203 seconds; no STOP selection.
-- The pilot baseline has 50% strict-format invalid outputs on STOP. Keep this
-  visible alongside accuracy; do not broaden the parser after seeing STOP.
-- First half-pass STOP balanced category accuracy 70.6%, invalid outputs 0%.
-  At one pass balanced accuracy 74.8% but No_Gun false positives 28.6% (4/14),
-  versus 0% at baseline/half-pass. These are exploratory selection-set results;
-  higher overall accuracy does not establish a safer or better final model.
-- By 3.5 FIT passes, STOP balanced category accuracy reached 86.3%, with no
-  invalid answers and 0/14 No_Gun false positives. This is still exploratory.
-- `pilot-rl-001`: passed real-reward feasibility in 405 seconds: 24 groups,
-  96 responses, six updates, 29.2% reward-spread groups, 1.04% invalid, immutable
-  reference. This does not prove recognition gains.
-- `pilot-rg-001`: failed the format gate, 28/48 invalid (58.3%), no truncation.
-  Gracefully stopped/checkpointed after 12 groups/three updates in 440 seconds
-  when the <=5% panel gate became impossible; see operator-actions.jsonl.
-- The 0.5-pass warm-up default is being calibrated using FIT-only format feedback.
-  `pilot-c0l-002` / `pilot-c0g-002` run one fixed FIT pass with no STOP queries,
-  finite caps, unchanged parser/reward and five-total-pass scientific ceiling.
-  Both completed; label format passed 94/96 valid, grounded failed 5/7 invalid.
-  Calibration advanced to 1.5 passes. Grounded warm-up completed 288 clips /
-  36 updates / 591 seconds, no STOP queries. The label job was rejected before
-  launch due to stale GPU utilization; its preserved log exposed a controller
-  restart bug, now regression-tested and corrected before protocol freeze.
-  The final shared exposure and both real-reward panels must pass before freeze.
-- Real-reward panel gates, shared-pass throughput forecast, protocol freeze,
-  comparative methods/seeds, final selection freeze, holdouts and report are
-  **not complete**. No recognition improvement or RL benefit is claimed.
+## Isolation and reproducibility
 
-## Reproduction and audit
+- Local isolated checkout/branch experiment/firearm-posttraining is based on
+  85e7aba. The original research checkout is untouched.
+- Remote central checkout: /local/datasets/sp2117/firearm_visilab/code/VERA-firearm-posttraining.
+- Immutable releases: /local/datasets/sp2117/firearm_visilab/code/posttraining-releases/.
+- ROOT: /local/datasets/sp2117/firearm_visilab/posttraining1.
+- Only Ada6 GPU-2931eba2-9a4d-61da-6bd1-e75692edad03 and Ada7
+  GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, one process/card. Preserve other jobs.
+- Fresh environment: /local/datasets/sp2117/envs/firearm-posttrain/bin/python;
+  78 exact distributions with wheel hashes; offline wheels/provenance ROOT/setup/.
+  setup.sh refuses an existing environment; never overwrite this one.
+- All runs require clean committed source and immutable specs, command, code,
+  model/data/adapter hashes, seed, environment, logs, process IDs and resources.
+- Checkpoints save adapter, optimizer/scheduler, Python/NumPy/Torch/CUDA RNG,
+  cursor/order, selection and hashes. Base weights are referenced, not copied.
+- execute.py locks authorized idle devices and reserves/settles shared pilot
+  GPU-seconds. Occupied GPUs fail; stale utilization can settle for30seconds
+  only with no process and <500MiB. Prelaunch failures retain their logs.
+- Scientific/evaluation seconds0 removes time ceilings. Pilots remain finite;
+  budget exhaustion requires an explicit human amendment, never silent extension.
 
-`python -m studies.firearm_posttraining --help` lists the implemented entrypoints.
-Use `setup.sh` with the committed hash lock on matching Linux/Python 3.12;
-`setup.sh --offline` uses `posttraining1/setup/wheels`. The script refuses an
-existing environment. Do not run it over the current environment.
+## Verified data, model and engineering
 
-`execute.py` checks an authorized UUID is idle, locks the device, reserves shared
-aggregate pilot GPU-seconds, enforces finite pilot deadlines, and preserves command,
-commit, process IDs, stdout/stderr, GPU samples, exit reason and budget settlement.
-The latest user authorization removes all aggregate, per-run and evaluation
-GPU-hour ceilings for scientific runs. Pilot time limits remain finite and are
-extended to six combined hours (supervised up to four, RL up to two per pilot).
-Concurrent occupancy still sums across cards for reporting. Scientific jobs use
-`--seconds 0` and `--max-seconds 0`; all non-time scientific stops remain. A pilot
-crash leaves its full reservation charged until explicitly reconciled. There is
-no automatic failure resubmission. See the latest AMENDMENTS.md entry;
-the human directly confirmed these resource edits from a side chat.
-Running immutable releases are never edited.
+FIT192 / STOP48 from TRAIN240; original validation62/test96 metadata. No source/
+recording-group overlap among original splits or exact-frame FIT/STOP overlap.
+All1,920development frames verified and hash-checked on every read. Eight full
+chronological448letterbox views; no GT crops. Unknown listed_no_box is unknown,
+not absence. Native Qwen3-VL-8B BF16 with rank16 language-attention LoRA freezes
+vision/projector/embeddings/head/base tensors. Same backbone/capacity across arms.
 
-Every run writes its spec before loading weights, and requires a clean committed
-checkout. Checkpoints contain adapters, optimizer/scheduler state, Python/NumPy/
-Torch/CUDA RNG, sampler cursor and order seed, selection state and hashes. Base
-weights are referenced, not copied. Native training freezes vision/projector,
-embeddings, head and all non-LoRA tensors. The reference copies the actual warm
-adapter and is independently hash-checked.
+All74 firearm tests pass locally;26 focused also passed on Oz at1b109ed. Real
+VQ compatibility passed16images/4451prompt tokens with a valid single-slot
+revision and unchanged adapter. Both fresh engineering gates smoke-labels-004
+and smoke-grounded-004 passed exact prediction reload/next-update resume,
+finite/decreasing SFT loss, adapter-only updates and explicit nonzero frozen
+warm-reference scoring. Fixture rewards had zero spread: distinct synthetic
+strings only verified gradient plumbing, never scientific RL feasibility.
 
-The comparison and holdout entrypoints fail closed on missing protocol/selection
-freezes. STOP remains a selection set. Test identity metadata has been audited;
-test images, boxes and predictions have not been used in this execution. Nonempty prior Training 1 `test.jsonl` outputs establish historical test access
-from file metadata only. This is not a newly pristine test.
+The actual pinned-tokenizer audit passed all240FIT/STOP videos. Target bytes
+unchanged; maximum311completion tokens;6,658 formerly masked known tokens
+restored;553 unknown-payload tokens masked. Known schema tokens crossing span
+boundaries remain supervised; tokens touching unknown payload stay masked.
+This corrected a genuine JSON-boundary masking bug. Fresh adapters replace old
+ones; thresholds, target text, views, prompts and rewards are unchanged. See
+AMENDMENTS.md and evidence/target-mask-diagnosis.json.
 
-## Validation
+## Preserved pilot history
 
-The existing firearm suite passed 60 tests after the initial 12 additions, using
-the source repository's provisioned interpreter outside the sandbox because its
-OpenMP runtime could not open shared memory inside the sandbox. The focused suite passes 24 tests, including paired-initialization, FIT-only VQ
-optimization, independent classification scoring and holdout guards. Those 24
-passed on oz at 6bd7809; the full 72-test firearm suite passes after the later
-VQ single-slot and immutable-frame changes. Real VQ compatibility passed with
-16 images, 4,451 prompt tokens and a valid proposal in 17 GPU-seconds. The full
-sweep and final holdout paths remain unexercised until their gates pass.
-Subsequent sparse-negative support and prelaunch-recovery checks bring the
-current full firearm suite to 74 passing tests (26 focused). No protocol has yet been frozen.
+| Evidence | Result | Interpretation |
+|---|---|---|
+| Legacy pilot-sl-001 | Normal patience stop,5FITpasses/120updates/2470s; best3.5passes | Exploratory selection evidence under old mask |
+| Legacy STOP curve | Best category balanced accuracy86.3%, group70.8%, code29.2%, invalid0%, No_Gun0/14 | Baseline invalidity50%; transient4/14FP at1pass retained; no held-out claim |
+| Legacy pilot-rl-001 |96responses/6updates,29.17% spreadgroups,1.04% invalid, unchanged reference | Passed legacy feasibility, not a substitute for corrected gates |
+| Legacy pilot-rg-001 |28/48invalid, no truncation; gracefully stopped/checkpointed | Failed; logs/operator action preserved |
+| Legacy1/1.5pass grounded formats |5/7 and5/5invalid | Led to actual-tokenizer mask diagnosis |
+| Corrected1pass005 | Both warm-ups192clips/24updates; label94/96valid, grounded5/20invalid | Grounded gate failed; raw FIT traces preserved |
+| Corrected1.5pass006 | Both warm-ups288clips/36updates; label96/96valid, grounded5/18invalid | Grounded gate failed; final declared2pass candidate follows |
 
-## Current controller
+Corrected FIT failures include non-unit coordinates, malformed/unterminated
+JSON, duplicate responses/trailing prose and truncation. Do not relax parsing,
+truncate answers post hoc or treat partial-panel rates as full-panel estimates.
+Failed runs, traces and operator actions remain available under ROOT and evidence/.
 
-Immutable release 153f9eb passed 26 focused tests on Oz after all 74 firearm
-tests passed locally. CPU controller PID 278319 resumed calibration. Label
-1.5-pass warm-up child PID 278396 runs on Ada 6; the completed grounded
-1.5-pass warm-up is reused. Prelaunch and restart failures are retained in
-evidence/calibration-through-grounded-1p5.json. Both final real reward panels
-must still pass before protocol freeze. Active 15-minute in-chat continuation
-reads the canonical control record in this chat's outputs directory.
+## Remaining gates and inference policy
 
-## Target-mask diagnosis supersedes the prior controller
+Finite FIT-only warm-up grid1/1.5/2passes, shared across all pairs/seeds, no STOP
+selection. Both format gates must pass at one exposure, then both true reward
+panels:24groups/96responses/6updates, >=20% spreadgroups, <=5% invalid/truncated,
+finite material gradients/policy change, unchanged actual warm reference. A real
+reward failure stops for diagnosis; no blind retry or fabricated feasibility.
 
-Controller 278319 was stopped (CPU only) before two-pass warm-ups after the
-1.5-pass grounded format check failed 5/5. Actual tokenizer evidence found
-masked known JSON boundary tokens. The new v2 mask preserves known schema and
-only masks unknown box payloads. New CPU audit, both GPU engineering checks,
-and independent fixed warm-ups are required; old adapters cannot be reused.
-See AMENDMENTS.md. No protocol or scientific sweep has started.
+Only verified gates permit throughput forecast and immutable protocol freeze,
+then five methods(VQ/SL/RL/SG/RG) ×three seeds, max5totalFITpasses including warm-up.
+Paired starts are cloned/hash-proven; max10STOPchecks, patience and numerical/KL/
+invalidity/accuracy-divergence stops remain. Best and last checkpoints are distinct.
+All15outcomes must freeze in selection.json before guarded deterministic reporting.
 
-## Corrected mask verified and calibration active
+Primary contrast RG–SG, secondary/exploratory RL–SL. Identical label scoring is
+independent of grounded payload validity; localization is separate. Paired
+recording-group bootstrap and seed spread are reported. A conservative exact-
+binomial group-support upper screen additionally guards sparse No_Gun +.05
+noninferiority; report raw interval and assumptions separately. Zero observed
+errors alone cannot establish safety.
 
-Release 1b109ed passed all 74 firearm tests locally and 26 focused tests on Oz.
-The actual pinned tokenizer audit passed all 240 FIT/STOP videos: target bytes
-unchanged, maximum 311 completion tokens, 6,658 formerly masked known tokens
-retained and 553 unknown-payload tokens masked. Both fresh engineering gates
-smoke-labels-004 / smoke-grounded-004 passed exact prediction reload/resume,
-finite/decreasing SFT loss and frozen-base/reference checks. Their fixture
-reward spread remains zero; synthetic gradients are engineering evidence only.
+Original validation informed Phase1. Metadata-only inspection found13nonempty
+prior Training1 test outputs; historical test is not a pristine new holdout.
+No test images/boxes/predictions have been used in this execution. No held-out
+recognition improvement or RL benefit is established.
 
-CPU controller PID 283507 runs from 1b109ed, status under
-ROOT/calibration-mask-v2/status.json. New one-pass warm-ups pilot-c0l-005 and
-pilot-c0g-005 use corrected supervision and no STOP queries. Old adapters are
-not reused. The finite FIT-only calibration grid and actual reward gates still
-precede any freeze or scientific sweep. New launch metadata and passing gates
-are in evidence/corrected-mask-verification.json. No held-out or RL recognition
-improvement is established.
-
-## Corrected one-pass format decision
-
-Both corrected one-pass fixed warm-ups completed 192 clips /24 updates with no
-STOP queries (label366s, grounded401s). Label sampled format passed94/96valid;
-grounded failed5/20invalid and stopped once the96-response gate was impossible.
-FIT failures include trailing prose/duplicate JSON, one truncated response,
-non-unit coordinates and malformed empty-box payloads. These are retained
-optimization/format failures; parser and thresholds are unchanged.
-Controller283507 advanced to the declared1.5-pass candidate006 on both Adas.
-No protocol freeze or scientific sweep yet. Settled results are preserved in
-evidence/corrected-one-pass-calibration.json; raw responses remain on Oz.
+The detached controller chains sweep→selection freeze→evaluation/report only
+after passing gates. An active15-minute in-chat continuation reads the canonical
+outputs/CONTINUE_EXPERIMENTS.md and actual artifacts. Local follow-ups need Mac/
+app running; remote jobs are independent. Deliver verified report/tables/plots,
+update audit evidence/PR from Mac, and never merge. Running jobs are not completion.
