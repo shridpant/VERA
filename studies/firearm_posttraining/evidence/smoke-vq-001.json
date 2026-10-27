@@ -1,0 +1,13 @@
+{
+  "device": "NVIDIA RTX 6000 Ada Generation",
+  "elapsed_seconds": 16.02081196999643,
+  "images": 16,
+  "peak_allocated_bytes": 19074778112,
+  "peak_reserved_bytes": 19402850304,
+  "prompt_tokens": 4451,
+  "proposal_truncated": false,
+  "proposal_valid": true,
+  "scientific_role": "FIT_only_engineering",
+  "status": "engineering_passed",
+  "weights_unchanged": true
+}

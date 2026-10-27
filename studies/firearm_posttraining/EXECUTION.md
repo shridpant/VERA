@@ -43,6 +43,8 @@ not proof of implementation or permission to override the current request.
   At one pass balanced accuracy 74.8% but No_Gun false positives 28.6% (4/14),
   versus 0% at baseline/half-pass. These are exploratory selection-set results;
   higher overall accuracy does not establish a safer or better final model.
+- By 3.5 FIT passes, STOP balanced category accuracy reached 86.3%, with no
+  invalid answers and 0/14 No_Gun false positives. This is still exploratory.
 - Real-reward RL panels, shared-pass throughput forecast, protocol freeze,
   comparative methods/seeds, final selection freeze, holdouts and report are
   **not complete**. No recognition improvement or RL benefit is claimed.
@@ -82,7 +84,9 @@ from file metadata only. This is not a newly pristine test.
 
 The existing firearm suite passed 60 tests after the initial 12 additions, using
 the source repository's provisioned interpreter outside the sandbox because its
-OpenMP runtime could not open shared memory inside the sandbox. The focused suite subsequently passed 18 tests locally; the earlier 15 passed
-on oz. The full firearm suite then passed 66 tests at the review snapshot.
-VQ, sweep orchestration, and final holdout paths remain unexercised on real data
-until their protocol gates pass.
+OpenMP runtime could not open shared memory inside the sandbox. The focused suite passes 24 tests, including paired-initialization, FIT-only VQ
+optimization, independent classification scoring and holdout guards. Those 24
+passed on oz at 6bd7809; the full 72-test firearm suite passes after the later
+VQ single-slot and immutable-frame changes. Real VQ compatibility passed with
+16 images, 4,451 prompt tokens and a valid proposal in 17 GPU-seconds. The full
+sweep and final holdout paths remain unexercised until their gates pass.
