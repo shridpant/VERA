@@ -198,7 +198,7 @@ freeze. All extra GPU work remains inside the existing six-hour pilot budget.
 ## Additional finite FIT-only warm-up candidate: three passes
 
 The corrected 1/1.5/2-pass grid exhausted normally with no passing common format
-exposure. Label validity was 94/96, 96/96, 95/96; grounded checks stopped at 5/20, 
+exposure. Label validity was 94/96, 96/96, 95/96; grounded checks stopped at 5/20,
 5/18, 5/64 invalid respectively. These partial-panel fractions are not complete
 96-response estimates. The two-pass FIT failures contain missing JSON closure,
 repeated answers/truncation and non-unit coordinates. No further target-mask
