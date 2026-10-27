@@ -1,10 +1,13 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{booktabs,tabularx,hyperref,graphicx}
-\title{Original VERA: Insufficient-Evidence Experiment Gate}
+\usepackage{booktabs,tabularx,longtable,hyperref,graphicx}
+\title{Original VERA: Training-Free Evidence Experiments}
 \author{Research update for Shrid Pant}\date{October 27, 2026}
 \begin{document}\maketitle
-\textbf{Updated decision:} The user prefers avoiding new human annotation. A timestamp-proxy feasibility study may proceed after endpoint and pair-construction gates; no human validation or semantic-faithfulness claim follows. The completed proxy run is reported below.
+\textbf{Current status:} The 48-call abstention pilot and 72-call selective-explanation comparison are complete. One documented repair stopped after six calls. Neither study demonstrates better accuracy or a novel method. No model weights or question wording were trained. Further GPU compute in this prompt direction is stopped.
+
+\input{selective_v1/results.tex}
+\input{selective_v1/methods.tex}
 
 \section{Amendment: no new human annotation for proxy feasibility}
 This amendment supersedes the reviewer prerequisite below for a limited proxy study; the calibration packet remains preserved. Existing UCA captions and timestamps may define annotation-included versus annotation-excluded inputs, but excluding an interval does not prove visual evidence is absent.

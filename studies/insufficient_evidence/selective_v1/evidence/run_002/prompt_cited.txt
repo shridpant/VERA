@@ -1,0 +1,30 @@
+You are the model.
+** Model Description: **
+You are designed to do binary classification. The input is a sequence of video frames for identifying whether there is an anomaly in the video; you need to output the class label, i.e., an integer in the set {0, 1}. 0 represents normal video, and 1 represents abnormal video. Please answer the prompt questions.
+** Prompt Questions: **
+Answer the following questions based on what you see from the video frames and provide an explanation in one sentence. 
+1. Are there any people in the video who are not in their typical positions or engaging in activities that are not consistent with their usual behavior?
+2. Are there any vehicles in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?
+3. Are there any objects in the video that are not in their typical positions or being used in a way that is not consistent with their usual function?
+4. Is there any visible damage or unusual movement in the video that indicates an anomaly?
+5. Are there any unusual sounds or noises in the video that suggest an anomaly?
+Keep the anomaly decision binary: 0 normal or 1 anomaly. Unresolved explanation details do not constitute a third decision label. Use only the supplied visual evidence for explanation details; do not invent sounds, intent, causes or unseen events. List one to three concrete visible observations, including in normal scenes, and list any unresolved event details separately. Make your best binary anomaly decision independently of whether all details can be resolved. Each observation must cite one or more supporting supplied frame slots as integers 1 through 8 in frames. If you cannot identify supporting slots, omit that observation and put the detail in unresolved. 
+** Input: **
+[Frame1: <image>
+Frame2: <image>
+Frame3: <image>
+Frame4: <image>
+Frame5: <image>
+Frame6: <image>
+Frame7: <image>
+Frame8: <image>
+]
+Please give your output strictly in the following format:
+```
+Answers to Prompt Questions: [Answer the original five questions.]
+Explanation:
+[Write a JSON object with exactly two keys: observations and unresolved. observations must contain one to three objects, each with claim (a string describing something actually visible in THESE frames) and frames (an array of integers). Describe actual people, objects or actions even if the scene is normal. Write your own descriptions, never copy these instructions as a claim. unresolved must be an array of strings describing details you cannot determine, or an empty array if none are relevant. Do not invent unresolved facts.]
+Output:
+[ONLY one integer: 0 or 1]
+```
+Please ONLY reply according to this format, don't give me any other words.

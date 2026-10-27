@@ -1,0 +1,14 @@
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00, 17.53it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 19.34it/s]
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+{"case": "Explosion013_x264|annotated", "variant": "original", "label": 1, "schema_valid": null}
+{"case": "Explosion013_x264|annotated", "variant": "manual", "label": 1, "schema_valid": false}
+{"case": "Explosion013_x264|annotated", "variant": "cited", "label": 0, "schema_valid": true}
+{"case": "Explosion013_x264|gap", "variant": "original", "label": 0, "schema_valid": null}
+{"case": "Explosion013_x264|gap", "variant": "manual", "label": 0, "schema_valid": true}
+{"case": "Explosion013_x264|gap", "variant": "cited", "label": null, "schema_valid": false}
+Traceback (most recent call last):
+  File "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_repair.py", line 134, in <module>
+    main()
+  File "/home/stu11/s5/sp2117/vera_insufficient_proxy_v1/selective_v1/run_repair.py", line 126, in main
+    raise RuntimeError('Invalid binary output; partial run preserved')
+RuntimeError: Invalid binary output; partial run preserved
