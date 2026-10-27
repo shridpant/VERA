@@ -1,0 +1,14 @@
+{
+ "original": {
+  "sha256": "f3d5e7c9894c852f761251cb9451786ee0a5464dc600a66c0587c375dd120924",
+  "equals_experiment02_run_002": true
+ },
+ "nosound": {
+  "sha256": "d3d101a142fdc4c8506e2faf39165368d2ebaa17f5c1c1aedba651784309d306",
+  "equals_experiment02_run_002": true
+ },
+ "label_only": {
+  "sha256": "fbda861cbe61805108398d96784bfc77e471aea01eac089deed41a38b927d68c",
+  "equals_experiment02_run_002": true
+ }
+}

@@ -1,0 +1,7 @@
+$ ['/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python', '-B', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/code/validate3b.py', '--run-dir', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/full_v1', '--out', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/full_v1/validation/validation.json', '--exp02-run-dir', '/home/stu11/s5/sp2117/vera_research/experiments/experiment02/runs/run_002']
+validate3b: passed=False  passed:16 failed:4 skipped:0  -> /home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/full_v1/validation/validation.json
+  score_rounding             failed  n_checked=38934 n_discrepancies=45
+  slot_hashes_present        failed  n_checked=54486 n_discrepancies=20
+  slot_identity              failed  n_checked=53187 n_discrepancies=20
+  mask_hash_consistency      failed  n_checked=37872 n_discrepancies=88
+

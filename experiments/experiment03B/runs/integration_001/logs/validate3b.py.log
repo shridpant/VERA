@@ -1,0 +1,4 @@
+$ ['/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python', '-B', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/code/validate3b.py', '--run-dir', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/integration_001', '--out', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/integration_001/validation/validation.json', '--exp02-run-dir', '/home/stu11/s5/sp2117/vera_research/experiments/experiment02/runs/run_002']
+validate3b: passed=False  passed:19 failed:1 skipped:0  -> /home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/integration_001/validation/validation.json
+  rankings_compare           failed  n_checked=342 n_discrepancies=12
+

@@ -1,0 +1,314 @@
+{
+ "seed": 0,
+ "scope": "all",
+ "n_inputs": 2,
+ "n_videos": 1,
+ "scope_note": "confirmation = non-development inputs with a parsed L0 (protocol default); all = development included (integration check only)",
+ "run_flags": {
+  "partial": false,
+  "skipped_budget_lines": 0,
+  "error_lines": 0,
+  "record_conflicts": 0
+ },
+ "1_grey_numeric_margin": {
+  "estimate_nats": 1.2750622885567802,
+  "ci95_nats": [
+   1.2750622885567802,
+   1.2750622885567802
+  ],
+  "n_videos": 1,
+  "n_videos_population": 1,
+  "n_inputs": 2,
+  "n_inputs_missing": 0,
+  "video_means_nats": {
+   "RoadAccidents127_x264": 1.2750622885567802
+  }
+ },
+ "2_fixed_vs_adaptive_grey_prefixes": {
+  "fixed_k1": {
+   "label_change_rate_video_weighted": 0.5,
+   "mean_q_dS_hi_video_weighted": 1.087606430053711,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 2
+  },
+  "fixed_k2": {
+   "label_change_rate_video_weighted": 0.5,
+   "mean_q_dS_hi_video_weighted": 1.7176628112792969,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 0
+  },
+  "fixed_k3": {
+   "label_change_rate_video_weighted": 0.5,
+   "mean_q_dS_hi_video_weighted": 2.3634490966796875,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 4
+  },
+  "fixed_k4": {
+   "label_change_rate_video_weighted": 1.0,
+   "mean_q_dS_hi_video_weighted": 2.300434112548828,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 4
+  },
+  "adaptive_k1": {
+   "label_change_rate_video_weighted": 0.5,
+   "mean_q_dS_hi_video_weighted": 1.087606430053711,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 0
+  },
+  "adaptive_k2": {
+   "label_change_rate_video_weighted": 0.5,
+   "mean_q_dS_hi_video_weighted": 1.7176628112792969,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 0
+  },
+  "adaptive_k3": {
+   "label_change_rate_video_weighted": 0.5,
+   "mean_q_dS_hi_video_weighted": 2.3312606811523438,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 14
+  },
+  "adaptive_k4": {
+   "label_change_rate_video_weighted": 1.0,
+   "mean_q_dS_hi_video_weighted": 2.6301517486572266,
+   "n_inputs": 2,
+   "n_videos": 1,
+   "attributable_new_calls": 14
+  }
+ },
+ "2_adaptive_minus_fixed_within_video": {
+  "k1_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k1_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k2_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k2_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k3_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k3_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": -0.03218841552734375,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k4_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 2,
+   "n_videos": 1
+  },
+  "k4_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.32971763610839844,
+   "n_inputs": 2,
+   "n_videos": 1
+  }
+ },
+ "3_agreement": {
+  "top2_overlap_blur_grey_mean_inputs": 2.0,
+  "tau_b_blur_grey_mean_inputs": 0.75,
+  "top2_overlap_native_hi_mean_inputs": 1.5,
+  "tau_b_native_hi_mean_inputs": 0.6731143855797443,
+  "baseline_scorer_agrees_with_L0": "1/1",
+  "grey_pairs_scorer_agrees_with_label_pooled": "44/47",
+  "grey_pairs_scorer_agreement_video_weighted": 0.9295112781954887,
+  "grey_pairs_agreement_n_videos": 1,
+  "blur_rankings": {
+   "any_tie": 0,
+   "tie_cut2": 0,
+   "all_tied": 0,
+   "all_nonpositive": 0
+  },
+  "native_ranking_any_tie": 2,
+  "candidate_mass0_mean": 0.8527686893939972,
+  "note": "input-level means (unweighted) over label-available inputs; Table A1's overlap column is video-weighted over alert inputs"
+ },
+ "4_pair_nonadditivity": {
+  "blur": {
+   "mean_J": 0.05748585292271206,
+   "mean_abs_J": 0.11769063132149833,
+   "mean_J_adjacent": 0.1356607164655413,
+   "mean_J_nonadjacent": 0.031427565075102304,
+   "n_pairs": 56,
+   "n_inputs": 2,
+   "note": "exploratory; not adjusted for singleton effects or position"
+  },
+  "grey": {
+   "mean_J": 0.03533247538975307,
+   "mean_abs_J": 0.10115085329328265,
+   "mean_J_adjacent": 0.09051104954310826,
+   "mean_J_nonadjacent": 0.016939617338634673,
+   "n_pairs": 56,
+   "n_inputs": 2,
+   "note": "exploratory; not adjusted for singleton effects or position"
+  }
+ },
+ "4_top2_slot_frequency_primary": [
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "5_normal_video_0to1_grey_pair_flips": {
+  "inputs": 0,
+  "flips": 0,
+  "pairs_scheduled": 0,
+  "labels_observed": 0,
+  "labels_missing": 0,
+  "flip_rate_observed": null,
+  "flip_rate_upper_bound": null
+ },
+ "6_by_stratum_and_category": {
+  "event": {
+   "inputs": 1,
+   "videos": 1,
+   "alerts": 1,
+   "nosound_changed": 0
+  },
+  "negative": {
+   "inputs": 1,
+   "videos": 1,
+   "alerts": 1,
+   "nosound_changed": 1
+  },
+  "normal": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Abuse": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Arrest": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Arson": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Assault": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Burglary": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Explosion": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Fighting": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "RoadAccidents": {
+   "inputs": 2,
+   "videos": 1,
+   "alerts": 2,
+   "nosound_changed": 1
+  },
+  "Robbery": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Shooting": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Shoplifting": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Stealing": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Vandalism": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  }
+ },
+ "7_nosound_label_change": "1/2",
+ "8_annotation_coverage_event_inputs": {
+  "0": 0,
+  "1": 0,
+  "2": 0,
+  "3": 0,
+  "4": 1,
+  "5": 0,
+  "6": 0,
+  "7": 0,
+  "8": 0
+ },
+ "9_reciprocal_numeric_check": {
+  "estimate_nats": 1.2445928709847587,
+  "ci95_nats": [
+   1.2445928709847587,
+   1.2445928709847587
+  ],
+  "n_videos": 1,
+  "n_videos_population": 1,
+  "n_inputs": 2,
+  "n_inputs_missing": 0,
+  "video_means_nats": {
+   "RoadAccidents127_x264": 1.2445928709847587
+  }
+ },
+ "baseline_alert_rate": {
+  "all_selected": "2/2",
+  "L0_missing": 0
+ },
+ "record_conflicts": []
+}

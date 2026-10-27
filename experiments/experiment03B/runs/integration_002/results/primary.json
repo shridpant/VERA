@@ -1,0 +1,102 @@
+{
+ "estimate_pp": null,
+ "ci95_pp": null,
+ "n_videos": 0,
+ "n_videos_population": 0,
+ "n_inputs": 0,
+ "n_inputs_missing_dw": 0,
+ "video_means_pp": {},
+ "d_w": {},
+ "bootstrap": {
+  "seed": 0,
+  "B": 10000,
+  "method": "video-cluster percentile; random.Random(seed).randrange",
+  "stability": [
+   {
+    "seed": 1,
+    "ci95_pp": null
+   },
+   {
+    "seed": 2,
+    "ci95_pp": null
+   },
+   {
+    "seed": 3,
+    "ci95_pp": null
+   },
+   {
+    "seed": 4,
+    "ci95_pp": null
+   }
+  ]
+ },
+ "bounds_pp": [
+  null,
+  null
+ ],
+ "bounds_note": "worst-case bounds on the estimate had every missing label been observed (missing selected flips 0/1, missing comparator flips 1/0, then video averaging); the complete-case estimate need not lie inside them",
+ "sensitivity": {
+  "tie_free": {
+   "estimate_pp": null,
+   "ci95_pp": null,
+   "n_videos": 0,
+   "n_videos_population": 0,
+   "n_inputs": 0,
+   "n_inputs_missing_dw": 0,
+   "video_means_pp": {}
+  },
+  "scorer_agreement": {
+   "estimate_pp": null,
+   "ci95_pp": null,
+   "n_videos": 0,
+   "n_videos_population": 0,
+   "n_inputs": 0,
+   "n_inputs_missing_dw": 0,
+   "video_means_pp": {}
+  },
+  "with_development": {
+   "estimate_pp": 3.571428571428569,
+   "ci95_pp": [
+    3.571428571428569,
+    3.571428571428569
+   ],
+   "n_videos": 1,
+   "n_videos_population": 1,
+   "n_inputs": 2,
+   "n_inputs_missing_dw": 0,
+   "video_means_pp": {
+    "RoadAccidents127_x264": 3.571428571428569
+   }
+  },
+  "metadata_clean": {
+   "estimate_pp": null,
+   "ci95_pp": null,
+   "n_videos": 0,
+   "n_videos_population": 0,
+   "n_inputs": 0,
+   "n_inputs_missing_dw": 0,
+   "video_means_pp": {}
+  }
+ },
+ "counts": {
+  "inputs": 2,
+  "L0_parsed": 2,
+  "alerts_confirmation": 0,
+  "all_tied": 0,
+  "all_nonpositive": 0,
+  "tie_cut2": 0,
+  "complete_28": 0
+ },
+ "population": "unique inputs, not development, status ok, fresh original L0 = 1 (PROTOCOL §3.3)",
+ "run_flags": {
+  "partial": false,
+  "skipped_budget_lines": 0,
+  "error_lines": 0,
+  "record_conflicts": 0
+ },
+ "code_sha256": {
+  "analyze3b.py": "0231997bbfa31bb4a1bad5876b8e87332382045b5b9b224ceda23c04cb1f58e5",
+  "xb_core.py": "dd8b18896c49828456c19aaceac141a1381f34908c34897801c6b553255268b1",
+  "io3b.py": "46c35a71e42a8b8227ab5e2da88d3cc7a2158a05e26d99506e1f01f83e3a1d6b"
+ }
+}

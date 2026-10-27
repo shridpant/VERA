@@ -44,3 +44,8 @@ __pycache__/
 /experiments/experiment02/runs/run_002/results/example_inputs/
 /experiments/experiment02/runs/run_002/spatial/preview_gradcam_global_norm.png
 /experiments/experiment02/runs/run_002/spatial/pixel_grad_abs_448.npy
+
+# experiment03B: replacement examples are images of dataset frames (local only); run locks and job process ids
+/experiments/experiment03B/runs/*/results/example_inputs/
+/experiments/experiment03B/runs/*/run.lock
+/experiments/experiment03B/runs/*_jobs/*/pid

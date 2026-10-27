@@ -1,0 +1,51 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "$id": "experiment03B/config.schema.json",
+ "title": "experiment03B workflow configuration (exp03b-config-1)",
+ "description": "Documentation schema. code/config3b.py enforces these rules (the environment has no jsonschema package) plus cross-field rules: construction and evaluation families must differ; budgets are [1,2,3,4]; replacements are fixed by protocol v1.0; retrieval 'none' only with the mock engine; 'fetch' needs archives; adaptive mode needs adaptive_max_budget >= 2.",
+ "type": "object",
+ "required": ["schema_version", "experiment_id", "protocol_version", "run_id", "engine", "seeds", "source", "model", "generation", "prompt", "scoring", "replacements", "ranking", "population", "analysis", "retries", "limits", "retrieval", "prior_caches", "paths", "gpu"],
+ "properties": {
+  "schema_version": {"const": "exp03b-config-1"},
+  "experiment_id": {"type": "string"},
+  "protocol_version": {"type": "string"},
+  "run_id": {"type": "string", "description": "a config change needs a new run id"},
+  "engine": {"enum": ["real", "mock"]},
+  "mock_spec": {"type": "string", "description": "mock engine only: analytic scorer spec"},
+  "seeds": {"type": "object", "required": ["planned", "execute"], "properties": {
+   "planned": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+   "execute": {"type": "array", "items": {"type": "integer", "minimum": 0}, "description": "bootstrap seeds; model requests are deterministic and seed-independent"}}},
+  "source": {"type": "object", "required": ["repo", "base_commit", "checkout", "expected_head"]},
+  "model": {"type": "object", "required": ["repo", "revision", "local_dir", "dtype", "use_flash_attn"]},
+  "generation": {"type": "object", "required": ["num_beams", "max_new_tokens", "do_sample"]},
+  "prompt": {"type": "object", "required": ["learner_instruct_file", "guiding_questions"], "properties": {
+   "guiding_questions": {"type": "array", "minItems": 5, "maxItems": 5}}},
+  "scoring": {"type": "object", "required": ["contract", "ranking_readout"], "properties": {
+   "contract": {"const": "label_only_first_token_v1"},
+   "ranking_readout": {"const": "S_hi"}}},
+  "replacements": {"type": "object", "required": ["preprocessed_resolution", "blur_radius_fraction", "grey_rgb"], "properties": {
+   "preprocessed_resolution": {"const": 448}, "blur_radius_fraction": {"const": 0.04}, "grey_rgb": {"const": [127, 127, 127]}}},
+  "ranking": {"type": "object", "required": ["method", "aggregation", "construction_family", "evaluation_family", "modes", "budgets", "adaptive_max_budget"], "properties": {
+   "method": {"const": "temporal_occlusion"}, "aggregation": {"const": "singleton"},
+   "construction_family": {"const": "blur"}, "evaluation_family": {"const": "grey"},
+   "modes": {"type": "array", "items": {"enum": ["fixed", "adaptive"]}, "contains": {"const": "fixed"}},
+   "budgets": {"const": [1, 2, 3, 4]}, "adaptive_max_budget": {"type": "integer", "minimum": 1, "maximum": 4}}},
+  "population": {"type": "object", "required": ["kind", "development_videos"], "properties": {
+   "kind": {"enum": ["manifest", "cases"]},
+   "manifest": {"type": "string"}, "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+   "cases": {"type": "array", "items": {"type": "object", "required": ["window_uid", "video_id", "category", "anchor", "frame_indices", "frames_dir", "video_sha256", "strata", "development"]}}}},
+  "analysis": {"type": "object", "required": ["bootstrap_B", "alpha", "stability_seed_offsets"], "properties": {
+   "bootstrap_B": {"type": "integer", "minimum": 1000}, "alpha": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+   "secondary_scope": {"enum": ["confirmation", "all"], "default": "confirmation"}}},
+  "retries": {"type": "object", "required": ["error_retries", "parse_failure_repeats"], "properties": {
+   "error_retries": {"type": "integer", "minimum": 0, "maximum": 5}, "parse_failure_repeats": {"type": "integer", "minimum": 0, "maximum": 5}}},
+  "limits": {"type": "object", "required": ["max_new_transformed_inputs", "max_gpu_hours", "max_scratch_mib", "max_model_calls"], "description": "null = unlimited; enforced before every model call or fetch"},
+  "retrieval": {"type": "object", "required": ["mode", "frames_root", "scratch_dir"], "properties": {
+   "mode": {"enum": ["existing_only", "fetch", "none"]}, "archives": {"type": "object"},
+   "fidelity_check": {"type": "object", "required": ["video_id", "frame_indices", "full_cache_dir"]}}},
+  "prior_caches": {"type": "array", "items": {"type": "string"}},
+  "paths": {"type": "object", "required": ["runs_root"]},
+  "gpu": {"type": "object", "required": ["min_free_mib"]},
+  "integration_checks": {"type": "object", "properties": {"fresh_recompute": {"type": "array"}}}
+ }
+}

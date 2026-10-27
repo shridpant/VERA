@@ -1,0 +1,154 @@
+{
+ "at": "2026-10-23T18:10:18+00:00",
+ "dry_run": false,
+ "checks": {
+  "source": {
+   "checkout": "setup/source/VERA",
+   "head": "008ed4019781c39e7cb16244b7500244f3986f92",
+   "clean": true
+  },
+  "model": {
+   "local_dir": "shared/models/OpenGVLab/InternVL2-8B/6fb9ad6924f69424e57fab2ab061d707688f0296",
+   "provenance_revision": "6fb9ad6924f69424e57fab2ab061d707688f0296",
+   "git_blob_sha1_match": {
+    "config.json": true,
+    "generation_config.json": true,
+    "tokenizer_config.json": true,
+    "model.safetensors.index.json": true
+   },
+   "weight_shard_sizes_match": {
+    "model-00001-of-00004.safetensors": true,
+    "model-00002-of-00004.safetensors": true,
+    "model-00003-of-00004.safetensors": true,
+    "model-00004-of-00004.safetensors": true
+   }
+  },
+  "gpus": {
+   "all": [
+    {
+     "index": 0,
+     "uuid": "GPU-01c08ec4-a2c6-1361-6c35-b449b00f831f",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 1,
+     "uuid": "GPU-687f4dc1-2697-7b56-d848-cab1bcdeb8af",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 2,
+     "uuid": "GPU-7e4f6111-7563-e0c1-bd4b-9daf338b03c0",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 3,
+     "uuid": "GPU-7e0a76a1-67fb-9868-76e0-f9d82abf1279",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 4,
+     "uuid": "GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3",
+     "name": "NVIDIA RTX 6000 Ada Generation",
+     "free_mib": 46066,
+     "busy": false
+    },
+    {
+     "index": 5,
+     "uuid": "GPU-b6901777-c94c-e9ac-b295-041178270888",
+     "name": "NVIDIA RTX 6000 Ada Generation",
+     "free_mib": 46066,
+     "busy": false
+    },
+    {
+     "index": 6,
+     "uuid": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+     "name": "NVIDIA RTX 6000 Ada Generation",
+     "free_mib": 46066,
+     "busy": false
+    },
+    {
+     "index": 7,
+     "uuid": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+     "name": "NVIDIA RTX 6000 Ada Generation",
+     "free_mib": 46066,
+     "busy": false
+    },
+    {
+     "index": 8,
+     "uuid": "GPU-022bc4c1-a77f-6752-afbd-136f51258755",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 9,
+     "uuid": "GPU-8590087f-2489-8606-87fc-8b2cd7e5976e",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 10,
+     "uuid": "GPU-bc8880a1-c98f-25e5-8cff-32fde558704d",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    },
+    {
+     "index": 11,
+     "uuid": "GPU-0f39412c-e59f-5a5f-9ea8-a03e1eb28a0f",
+     "name": "NVIDIA A16",
+     "free_mib": 15356,
+     "busy": false
+    }
+   ],
+   "eligible": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "min_free_mib": 40000
+  },
+  "gpu_target": {
+   "cuda_visible_devices": "GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3",
+   "device": {
+    "index": 4,
+    "uuid": "GPU-6a490dc2-d384-9010-bc0b-b0b76076bae3",
+    "name": "NVIDIA RTX 6000 Ada Generation",
+    "free_mib": 46066,
+    "busy": false
+   },
+   "problem": null
+  },
+  "free_bytes_home": 9802736467968,
+  "home_probe_path": "/home/stu11/s5/sp2117",
+  "free_bytes_scratch": 837320224768,
+  "scratch_probe_path": "/local/datasets/sp2117/vera_research_scratch/experiment03B",
+  "home_quota_line": "sp2117 150G 139G",
+  "inputs": {
+   "n": 433,
+   "videos": 290,
+   "development_inputs": 3
+  },
+  "manifest_counts": {
+   "videos": 290,
+   "anomalous": 140,
+   "normal": 150,
+   "anomaly_categories": 13,
+   "intervals": 162
+  },
+  "download_bytes_needed": 7961885307,
+  "largest_video_bytes_needed": 905743231
+ },
+ "failures": [],
+ "warnings": []
+}

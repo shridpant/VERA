@@ -1,0 +1,3 @@
+$ ['/home/stu11/s5/sp2117/vera_research/setup/environment/env/bin/python', '-B', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/code/analyze3b.py', '--run-dir', '/home/stu11/s5/sp2117/vera_research/experiments/experiment03B/runs/synthetic_001', '--seeds', '0']
+{"inputs": 11, "primary_estimate_pp": 42.857142857142854, "ci95_pp": [16.071428571428573, 72.85714285714286], "n_videos": 5, "conflicts": 0, "partial": false}
+

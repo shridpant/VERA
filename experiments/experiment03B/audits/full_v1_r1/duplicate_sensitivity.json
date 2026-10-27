@@ -1,0 +1,115 @@
+{
+  "rule": "mean windows within source SHA256, then equal-weight sources; duplicate copies have identical windows/results",
+  "duplicate_groups": [
+    [
+      "Normal_Videos_936_x264",
+      "Normal_Videos_937_x264"
+    ]
+  ],
+  "metrics": {
+    "d_w": {
+      "original": 0.15165631469979296,
+      "deduplicated": 0.15165631469979296,
+      "n_original": 138,
+      "n_sources": 138,
+      "deduplicated_ci95": [
+        0.09778295376121462,
+        0.2062629399585921
+      ]
+    },
+    "e_w": {
+      "original": 0.3556303729613622,
+      "deduplicated": 0.35591913325802016,
+      "n_original": 288,
+      "n_sources": 287,
+      "deduplicated_ci95": [
+        0.3183241381244871,
+        0.3947459461253064
+      ]
+    },
+    "overlap_blur_grey": {
+      "original": 1.3935185185185186,
+      "deduplicated": 1.3914053426248547,
+      "n_original": 288,
+      "n_sources": 287
+    },
+    "tau_b_blur_grey": {
+      "original": 0.5869295634920635,
+      "deduplicated": 0.5864858138377302,
+      "n_original": 288,
+      "n_sources": 287
+    },
+    "overlap_native_hi": {
+      "original": 1.3425925925925926,
+      "deduplicated": 1.340301974448316,
+      "n_original": 288,
+      "n_sources": 287
+    },
+    "tau_b_native_hi": {
+      "original": 0.6399869925608613,
+      "deduplicated": 0.6402432742557631,
+      "n_original": 286,
+      "n_sources": 285
+    },
+    "nosound_changed": {
+      "original": 0.052662037037037035,
+      "deduplicated": 0.052845528455284556,
+      "n_original": 288,
+      "n_sources": 287
+    },
+    "normal_0to1_grey_pairs": {
+      "original": 0.7651515151515151,
+      "deduplicated": 0.7709923664122137,
+      "n_original": 132,
+      "n_sources": 131
+    },
+    "reciprocal_blur_effect_of_grey_top2": {
+      "original": 0.36441257166326363,
+      "deduplicated": 0.3650034699488264,
+      "n_original": 288,
+      "n_sources": 287
+    }
+  },
+  "prefixes": {
+    "fixed_k1": {
+      "original": 0.1267361111111111,
+      "deduplicated": 0.12717770034843207,
+      "n_sources": 287
+    },
+    "fixed_k2": {
+      "original": 0.15277777777777782,
+      "deduplicated": 0.15331010452961671,
+      "n_sources": 287
+    },
+    "fixed_k3": {
+      "original": 0.17418981481481483,
+      "deduplicated": 0.17479674796747968,
+      "n_sources": 287
+    },
+    "fixed_k4": {
+      "original": 0.20428240740740744,
+      "deduplicated": 0.20499419279907086,
+      "n_sources": 287
+    },
+    "adaptive_k1": {
+      "original": 0.1267361111111111,
+      "deduplicated": 0.12717770034843207,
+      "n_sources": 287
+    },
+    "adaptive_k2": {
+      "original": 0.17013888888888892,
+      "deduplicated": 0.17073170731707318,
+      "n_sources": 287
+    },
+    "adaptive_k3": {
+      "original": 0.21238425925925927,
+      "deduplicated": 0.21312427409988385,
+      "n_sources": 287
+    },
+    "adaptive_k4": {
+      "original": 0.2592592592592592,
+      "deduplicated": 0.26016260162601623,
+      "n_sources": 287
+    }
+  }
+}

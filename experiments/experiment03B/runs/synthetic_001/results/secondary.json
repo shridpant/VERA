@@ -1,0 +1,324 @@
+{
+ "seed": 0,
+ "scope": "confirmation",
+ "n_inputs": 9,
+ "n_videos": 6,
+ "scope_note": "confirmation = non-development inputs with a parsed L0 (protocol default); all = development included (integration check only)",
+ "run_flags": {
+  "partial": false,
+  "skipped_budget_lines": 0,
+  "error_lines": 0,
+  "record_conflicts": 0
+ },
+ "1_grey_numeric_margin": {
+  "estimate_nats": 4.3690476190476195,
+  "ci95_nats": [
+   2.0,
+   6.675595238095238
+  ],
+  "n_videos": 6,
+  "n_videos_population": 6,
+  "n_inputs": 9,
+  "n_inputs_missing": 0,
+  "video_means_nats": {
+   "SynthArson_001": 7.839285714285714,
+   "SynthBurglary_002": 6.375,
+   "SynthNormal_900": 0.0,
+   "SynthNormal_901": 6.0,
+   "SynthShooting_006": 6.0,
+   "SynthStealing_007": 0.0
+  }
+ },
+ "2_fixed_vs_adaptive_grey_prefixes": {
+  "fixed_k1": {
+   "label_change_rate_video_weighted": 0.4166666666666667,
+   "mean_q_dS_hi_video_weighted": 4.0,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 9
+  },
+  "fixed_k2": {
+   "label_change_rate_video_weighted": 0.5833333333333334,
+   "mean_q_dS_hi_video_weighted": 6.333333333333333,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 0
+  },
+  "fixed_k3": {
+   "label_change_rate_video_weighted": 0.6666666666666666,
+   "mean_q_dS_hi_video_weighted": 7.083333333333333,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 18
+  },
+  "fixed_k4": {
+   "label_change_rate_video_weighted": 0.6666666666666666,
+   "mean_q_dS_hi_video_weighted": 7.333333333333333,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 18
+  },
+  "adaptive_k1": {
+   "label_change_rate_video_weighted": 0.4166666666666667,
+   "mean_q_dS_hi_video_weighted": 4.0,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 0
+  },
+  "adaptive_k2": {
+   "label_change_rate_video_weighted": 0.5833333333333334,
+   "mean_q_dS_hi_video_weighted": 6.666666666666667,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 0
+  },
+  "adaptive_k3": {
+   "label_change_rate_video_weighted": 0.6666666666666666,
+   "mean_q_dS_hi_video_weighted": 7.083333333333333,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 54
+  },
+  "adaptive_k4": {
+   "label_change_rate_video_weighted": 0.6666666666666666,
+   "mean_q_dS_hi_video_weighted": 7.333333333333333,
+   "n_inputs": 9,
+   "n_videos": 6,
+   "attributable_new_calls": 45
+  }
+ },
+ "2_adaptive_minus_fixed_within_video": {
+  "k1_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 9,
+   "n_videos": 6
+  },
+  "k1_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 9,
+   "n_videos": 6
+  },
+  "k2_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 8,
+   "n_videos": 6
+  },
+  "k2_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.3333333333333333,
+   "n_inputs": 9,
+   "n_videos": 6
+  },
+  "k3_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 9,
+   "n_videos": 6
+  },
+  "k3_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 9,
+   "n_videos": 6
+  },
+  "k4_flip": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 9,
+   "n_videos": 6
+  },
+  "k4_q_dS_hi": {
+   "adaptive_minus_fixed_video_weighted": 0.0,
+   "n_inputs": 9,
+   "n_videos": 6
+  }
+ },
+ "3_agreement": {
+  "top2_overlap_blur_grey_mean_inputs": 2.0,
+  "tau_b_blur_grey_mean_inputs": 1.0,
+  "top2_overlap_native_hi_mean_inputs": 2.0,
+  "tau_b_native_hi_mean_inputs": 1.0,
+  "baseline_scorer_agrees_with_L0": "9/9",
+  "grey_pairs_scorer_agrees_with_label_pooled": "251/251",
+  "grey_pairs_scorer_agreement_video_weighted": 1.0,
+  "grey_pairs_agreement_n_videos": 6,
+  "blur_rankings": {
+   "any_tie": 8,
+   "tie_cut2": 4,
+   "all_tied": 3,
+   "all_nonpositive": 2
+  },
+  "native_ranking_any_tie": 8,
+  "candidate_mass0_mean": 0.9000000000000001,
+  "note": "input-level means (unweighted) over label-available inputs; Table A1's overlap column is video-weighted over alert inputs"
+ },
+ "4_pair_nonadditivity": {
+  "blur": {
+   "mean_J": -0.01984126984126984,
+   "mean_abs_J": 0.01984126984126984,
+   "mean_J_adjacent": 0.0,
+   "mean_J_nonadjacent": -0.026455026455026454,
+   "n_pairs": 252,
+   "n_inputs": 9,
+   "note": "exploratory; not adjusted for singleton effects or position"
+  },
+  "grey": {
+   "mean_J": -0.01984126984126984,
+   "mean_abs_J": 0.01984126984126984,
+   "mean_J_adjacent": 0.0,
+   "mean_J_nonadjacent": -0.026455026455026454,
+   "n_pairs": 252,
+   "n_inputs": 9,
+   "note": "exploratory; not adjusted for singleton effects or position"
+  }
+ },
+ "4_top2_slot_frequency_primary": [
+  6,
+  4,
+  2,
+  1,
+  0,
+  0,
+  1,
+  2
+ ],
+ "5_normal_video_0to1_grey_pair_flips": {
+  "inputs": 1,
+  "flips": 0,
+  "pairs_scheduled": 28,
+  "labels_observed": 28,
+  "labels_missing": 0,
+  "flip_rate_observed": 0.0,
+  "flip_rate_upper_bound": 0.0
+ },
+ "6_by_stratum_and_category": {
+  "event": {
+   "inputs": 4,
+   "videos": 3,
+   "alerts": 4,
+   "nosound_changed": 0
+  },
+  "negative": {
+   "inputs": 3,
+   "videos": 3,
+   "alerts": 3,
+   "nosound_changed": 0
+  },
+  "normal": {
+   "inputs": 2,
+   "videos": 2,
+   "alerts": 1,
+   "nosound_changed": 0
+  },
+  "Abuse": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Arrest": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Arson": {
+   "inputs": 2,
+   "videos": 1,
+   "alerts": 2,
+   "nosound_changed": 0
+  },
+  "Assault": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Burglary": {
+   "inputs": 2,
+   "videos": 1,
+   "alerts": 2,
+   "nosound_changed": 0
+  },
+  "Explosion": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Fighting": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "RoadAccidents": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Robbery": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Shooting": {
+   "inputs": 2,
+   "videos": 1,
+   "alerts": 2,
+   "nosound_changed": 0
+  },
+  "Shoplifting": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  },
+  "Stealing": {
+   "inputs": 1,
+   "videos": 1,
+   "alerts": 1,
+   "nosound_changed": 0
+  },
+  "Vandalism": {
+   "inputs": 0,
+   "videos": 0,
+   "alerts": 0,
+   "nosound_changed": 0
+  }
+ },
+ "7_nosound_label_change": "0/9",
+ "8_annotation_coverage_event_inputs": {
+  "0": 0,
+  "1": 0,
+  "2": 4,
+  "3": 0,
+  "4": 0,
+  "5": 0,
+  "6": 0,
+  "7": 0,
+  "8": 0
+ },
+ "9_reciprocal_numeric_check": {
+  "estimate_nats": 4.3690476190476195,
+  "ci95_nats": [
+   2.0,
+   6.675595238095238
+  ],
+  "n_videos": 6,
+  "n_videos_population": 6,
+  "n_inputs": 9,
+  "n_inputs_missing": 0,
+  "video_means_nats": {
+   "SynthArson_001": 7.839285714285714,
+   "SynthBurglary_002": 6.375,
+   "SynthNormal_900": 0.0,
+   "SynthNormal_901": 6.0,
+   "SynthShooting_006": 6.0,
+   "SynthStealing_007": 0.0
+  }
+ },
+ "baseline_alert_rate": {
+  "all_selected": "9/11",
+  "L0_missing": 1
+ },
+ "record_conflicts": []
+}

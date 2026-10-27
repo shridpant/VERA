@@ -1,0 +1,38 @@
+{
+ "video_id": "Normal_Videos_018_x264",
+ "source_sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1",
+ "zip": "Testing_Normal_Videos.zip",
+ "zip_member": "Testing_Normal_Videos_Anomaly/Normal_Videos_018_x264.mp4",
+ "manifest_length": 1181,
+ "extractor": "experiments/experiment03B/code/acquire3b.py::sparse_extract (VERA extract_frames loop; writes only the needed indices)",
+ "extractor_sha256": "f49267e1eba3a81185e98f37d5b18d1ef17e5f6d385e4b751a7cde3bd9e66e83",
+ "vera_extractor_sha256": "79d709e5d190020b001c64d687083fc57429aa9f3e179c1742def01b77a74697",
+ "container_fps": 30.0,
+ "container_frame_count": 1181,
+ "width": 320,
+ "height": 240,
+ "fourcc": "h264",
+ "cv2_version": "4.9.0",
+ "decoded_frame_count": 1181,
+ "frames": {
+  "442": "bfc38c0bca1d7f67ed10fd6abe555d922bcfcbf77cac2233866e1015ba8ed42a",
+  "479": "759d9c33a8dae5fe930b70ed9540f90b681ab787bda8eacae880ffb6c39fc7af",
+  "517": "bbd9e7614a36d9cbc3cd0d9385deeb2397be4b3e24d308792304c8e3f5fa83e0",
+  "554": "142574230466e23bd962568f846868ebc068034c9443e63867487de1be75e3d3",
+  "592": "ff8410d3e0c59f2359d0ab70693c91947cd9b681981c3b7da4d22ec454514481",
+  "629": "9776a19db86157649432b0698f394049963044133f1ba3918a1c09b98370af24",
+  "667": "f6f8e6d233eed835c41e6e4f22701cfec76802031342d8f1f306853fb55f8c8b",
+  "704": "30459f08393a0da0021a61dde8bdea0435a97073091bd90604309ac62268c56f"
+ },
+ "missing_indices": [],
+ "metadata_flags": [],
+ "source": "range-fetched member",
+ "provenance": {
+  "member": "Testing_Normal_Videos_Anomaly/Normal_Videos_018_x264.mp4",
+  "member_bytes": 7662531,
+  "member_crc32": "31ef609e",
+  "sha256": "ab1dbb6434754dea897acd2b0bb4edca35c89cf2786882ef0f6dffdd1f7de9a1",
+  "resolved_url_host": "ucf2b0e0aa7e8317d2a5a416533d.dl.dropboxusercontent.com"
+ },
+ "extracted_at": "2026-10-23T06:23:49+00:00"
+}

@@ -1,0 +1,11 @@
+{
+ "passed": true,
+ "tests": [
+  {
+   "test": "t_pixels",
+   "maps_to": "3 masks are rebuilt from original pixels (real pixel path, CPU)",
+   "passed": true,
+   "detail": null
+  }
+ ]
+}

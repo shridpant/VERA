@@ -1,0 +1,2 @@
+# Frozen experiment records: preserve original bytes, including CSV CRLF.
+experiments/experiment03B/runs/full_v1/** -text

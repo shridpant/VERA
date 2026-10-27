@@ -1,0 +1,115 @@
+{
+ "passed": false,
+ "tests": [
+  {
+   "test": "t_additive",
+   "maps_to": "1 known additive scorer",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_interaction",
+   "maps_to": "2 interacting scorer: fixed vs adaptive differ, analytically",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_adaptive_audit",
+   "maps_to": "4 adaptive audit: never reselects, masked set grows by one, q locked",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_ties_missing",
+   "maps_to": "7 ties, missing values and NaN",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_bf16",
+   "maps_to": "8 numerical interpretation: sub-step FP32 change crosses a BF16 boundary; E1 counts",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_aggregation",
+   "maps_to": "aggregation: hand-worked video-cluster fixture and reproducible bootstrap",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_adjacency",
+   "maps_to": "5 time adjacency uses original slot positions",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_keys",
+   "maps_to": "9 cache keys: identity-based, mask/family/repeat-sensitive, prompt-independent sequence keys",
+   "passed": false,
+   "error": "FileNotFoundError(2, 'No such file or directory')",
+   "traceback": "a = {v: self.al.sha256_bytes(effective_question(v).encode()) for v in TARGET_VARIANT.values()}\n                                               ~~~~~~~~~~~~~~~~~~^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 168, in <lambda>\n    km = engine3b.KeyMaker(cfg, lambda v: engine3b.effective_question_text(cfg, v))\n                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/engine3b.py\", line 63, in effective_question_text\n    instruct = (src / cfg[\"prompt\"][\"learner_instruct_file\"]).read_text(encoding=\"utf-8\")\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py\", line 787, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.2/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py\", line 771, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/setup/source/VERA/VERA_learner_instruct.txt'\n"
+  },
+  {
+   "test": "t_config",
+   "maps_to": "10 config/DAG validation fails clearly",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_dry_run",
+   "maps_to": "10 dry-run has no side effects",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_end_to_end",
+   "maps_to": "3/6/10/11 end-to-end synthetic run: fixed masks, cross-family isolation, resume, independent validation",
+   "passed": false,
+   "error": "AssertionError('stage preflight failed: StageFailed(\"preflight failures: [\\'source checkout setup/source/VERA missing\\']\")\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 382, in main\n    detail = fn()\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 237, in t_end_to_end\n    check(r.returncode == 0, r.stderr[-1500:])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 43, in check\n    raise AssertionError(msg)\nAssertionError: stage preflight failed: StageFailed(\"preflight failures: ['source checkout setup/source/VERA missing']\")\n\n"
+  },
+  {
+   "test": "t_immutable",
+   "maps_to": "10 immutability: config or code change refuses to resume; manifest hash enforced",
+   "passed": false,
+   "error": "AssertionError('stage preflight failed: StageFailed(\"preflight failures: [\\'source checkout setup/source/VERA missing\\']\")\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 382, in main\n    detail = fn()\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 287, in t_immutable\n    check(r.returncode == 0, r.stderr[-800:])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 43, in check\n    raise AssertionError(msg)\nAssertionError: stage preflight failed: StageFailed(\"preflight failures: ['source checkout setup/source/VERA missing']\")\n\n"
+  },
+  {
+   "test": "t_pixels",
+   "maps_to": "3 masks are rebuilt from original pixels (real pixel path, CPU)",
+   "passed": true,
+   "detail": {
+    "skipped": "frame cache not present on this machine"
+   }
+  },
+  {
+   "test": "t_budget_stop",
+   "maps_to": "10 a reached limit stops the run (failed stage, no analysis), never a silent truncation",
+   "passed": false,
+   "error": "AssertionError([{'stage': 'preflight', 'event': 'failed', 'at': '2026-10-27T03:36:46+00:00', 'invocation': '20261027T033646-22793', 'shard': None, 'videos': None, 'ranking_mode': 'both', 'seeds': [0], 'detail': {'error': 'StageFailed(\"preflight failures: [\\'source checkout setup/source/VERA missing\\']\")', 'budget': False, 'traceback': 'Traceback (most recent call last):\\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/run_workflow.py\", line 789, in main\\n    detail = getattr(runner, \"st_\" + st)()\\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/run_workflow.py\", line 333, in st_preflight\\n    raise StageFailed(f\"preflight failures: {rep[\\'failures\\']}\")\\nStageFailed: preflight failures: [\\'source checkout setup/source/VERA missing\\']\\n'}}])",
+   "traceback": "experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 382, in main\n    detail = fn()\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 331, in t_budget_stop\n    check(fails and fails[0][\"stage\"] == \"fixed\" and fails[0][\"detail\"][\"budget\"], fails[:1])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 43, in check\n    raise AssertionError(msg)\nAssertionError: [{'stage': 'preflight', 'event': 'failed', 'at': '2026-10-27T03:36:46+00:00', 'invocation': '20261027T033646-22793', 'shard': None, 'videos': None, 'ranking_mode': 'both', 'seeds': [0], 'detail': {'error': 'StageFailed(\"preflight failures: [\\'source checkout setup/source/VERA missing\\']\")', 'budget': False, 'traceback': 'Traceback (most recent call last):\\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/run_workflow.py\", line 789, in main\\n    detail = getattr(runner, \"st_\" + st)()\\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/run_workflow.py\", line 333, in st_preflight\\n    raise StageFailed(f\"preflight failures: {rep[\\'failures\\']}\")\\nStageFailed: preflight failures: [\\'source checkout setup/source/VERA missing\\']\\n'}}]\n"
+  },
+  {
+   "test": "t_retry",
+   "maps_to": "6/7 transient errors are retried inside the request and logged",
+   "passed": false,
+   "error": "AssertionError('stage preflight failed: StageFailed(\"preflight failures: [\\'source checkout setup/source/VERA missing\\']\")\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 382, in main\n    detail = fn()\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 342, in t_retry\n    check(r.returncode == 0, r.stderr[-800:])\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 43, in check\n    raise AssertionError(msg)\nAssertionError: stage preflight failed: StageFailed(\"preflight failures: ['source checkout setup/source/VERA missing']\")\n\n"
+  },
+  {
+   "test": "t_torn",
+   "maps_to": "10 torn JSONL tails are repaired and kept for audit",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "test": "t_partial_gate",
+   "maps_to": "10 analysis refuses an incomplete run unless --allow-partial",
+   "passed": false,
+   "error": "AssertionError('stage preflight failed: StageFailed(\"preflight failures: [\\'source checkout setup/source/VERA missing\\']\")\\n')",
+   "traceback": "Traceback (most recent call last):\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 382, in main\n    detail = fn()\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 364, in t_partial_gate\n    check(r.returncode == 1 and any(e[\"stage\"] == \"analysis\" and e[\"event\"] == \"failed\" and \"incomplete run\" in\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                    e[\"detail\"][\"error\"] for e in read_jsonl(s.rd / \"ledger.jsonl\")), r.stderr[-600:])\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/shrid/Documents/Codex/2026-10-26/u-h/VERA-experiment03B-audit/experiments/experiment03B/code/tests/run_tests.py\", line 43, in check\n    raise AssertionError(msg)\nAssertionError: stage preflight failed: StageFailed(\"preflight failures: ['source checkout setup/source/VERA missing']\")\n\n"
+  }
+ ]
+}
