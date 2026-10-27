@@ -39,6 +39,10 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
     if not (setup / 'requirements.lock').is_file() or not (setup / 'wheelhouse.json').is_file():
         raise ValueError('tested hash-locked environment required')
     preflight = json.loads((root / 'data/preflight.json').read_text())
+    forecast = json.loads((root / 'throughput-forecast.json').read_text())
+    if (forecast.get('status') != 'measured_forecast' or forecast['warmup_passes'] != warmup_passes or
+        forecast['shared_max_fit_passes'] != max_passes):
+        raise ValueError('matching measured throughput forecast required before freeze')
     module = Path(__file__).parent
     record = {'status': 'frozen', 'methods': METHODS, 'seeds': SEEDS, 'baseline': 'B0',
               'primary_contrast': 'RG-SG', 'secondary_contrast': 'RL-SL',
@@ -53,6 +57,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
               'data_hashes': {name: digest(root / 'data' / name) for name in ('fit.json', 'stop.json', 'audit.json', 'preflight.json')},
               'requirements_lock_sha256': digest(setup / 'requirements.lock'),
               'codebook_sha256': preflight['codebook_sha256'],
+              'throughput_forecast_sha256': digest(root / 'throughput-forecast.json'),
               'model': preflight['model'], 'model_manifest_hash': preflight['model_manifest_hash'],
               'prompt_hashes': preflight['prompt_hashes'], 'frames': 8, 'view': '448_letterbox',
               'completion_cap': 512, 'context_cap': 8192, 'precision': 'bf16',

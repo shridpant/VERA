@@ -82,12 +82,18 @@ def run(args):
                     'groups': len(groups), 'elapsed_seconds': time.monotonic() - started, **resource_metrics()}
             summaries.append(step)
             append(out / 'steps.jsonl', step)
+            if sum(not r['valid'] for r in rewards_all) > 96 * .05:
+                reason = 'irreversible_invalid_output_gate'
+                break
+            if sum(g['zero_variance'] for g in groups) > 19:
+                reason = 'irreversible_reward_spread_gate'
+                break
         spread_fraction = sum(not g['zero_variance'] for g in groups) / len(groups) if groups else 0.
         invalid = sum(not r['valid'] for r in rewards_all) / len(rewards_all) if rewards_all else 1.
         after = native.adapter_hash()
         reference_ok = native.adapter_hash('reference') == native.reference_hash
         passed = (len(groups) == 24 and spread_fraction >= .2 and invalid <= .05 and
-                  after != before and reference_ok and any(s['grad_norm'] > 0 for s in summaries))
+                  after != before and reference_ok and any(s['grad_norm'] > 1e-6 for s in summaries))
         result = {'status': 'passed' if passed else 'failed_gate', 'stop_reason': reason,
                   'groups': len(groups), 'responses': len(rewards_all), 'updates': len(summaries),
                   'nonzero_reward_spread_fraction': spread_fraction, 'invalid_or_truncated_fraction': invalid,

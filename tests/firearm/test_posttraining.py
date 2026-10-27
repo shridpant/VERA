@@ -348,7 +348,9 @@ class OrchestrationTests(unittest.TestCase):
                 root = Path(td)
                 data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
                 data.write_json(root / 'data/fit.json', [{}] * 192)
+                data.write_json(root / 'data/stop.json', [{}] * 48)
                 data.write_json(root / 'pilot-sl-001/result.json', {'status': 'stopped'})
+                data.write_json(root / 'pilot-sl-001/stop-initial/metrics.json', {'latency_seconds_per_video': 1.3})
                 commands = []
                 def fake_run(command, **kwargs):
                     commands.append(command)
@@ -362,12 +364,12 @@ class OrchestrationTests(unittest.TestCase):
                         adapter = directory / 'checkpoints/fixed'
                         data.write_json(adapter / 'state.json', {'cursor': int(192 * passes), 'selection': {'checks': 0}})
                         data.write_json(directory / 'spec.json', {'model': 'pinned', 'warmup_passes': passes, 'grounded': grounded})
-                        result = {'status': 'stopped', 'stop_reason': 'fixed_warmup_complete', 'fit_passes': passes, 'best_checkpoint': str(adapter)}
+                        result = {'status': 'stopped', 'stop_reason': 'fixed_warmup_complete', 'fit_passes': passes, 'best_checkpoint': str(adapter), 'elapsed_seconds': 30.}
                     elif 'studies.firearm_posttraining.fit_format' in command:
                         fail = reject_first_format and grounded and name.endswith('002')
-                        result = {'status': 'failed_gate' if fail else 'passed'}
+                        result = {'status': 'failed_gate' if fail else 'passed', 'elapsed_seconds': 20., 'responses': 96}
                     else:
-                        result = {'status': 'failed_gate' if reject_reward and grounded else 'passed'}
+                        result = {'status': 'failed_gate' if reject_reward and grounded else 'passed', 'elapsed_seconds': 40., 'groups': 24}
                     data.write_json(directory / 'result.json', result)
                 def fake_pipeline(*args):
                     data.write_json(root / 'pipeline/status.json', {'stage': 'complete'})

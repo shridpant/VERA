@@ -25,6 +25,7 @@ def run(root, original_data, frames_root):
     control.mkdir(parents=True, exist_ok=False)
     model = json.loads((root / 'data/preflight.json').read_text())['model']
     fit_count = len(json.loads((root / 'data/fit.json').read_text()))
+    stop_count = len(json.loads((root / 'data/stop.json').read_text()))
     pilot = json.loads((root / 'pilot-sl-001/result.json').read_text())
     if pilot.get('status') != 'stopped':
         raise RuntimeError('supervised pilot must stop before RL calibration')
@@ -123,6 +124,28 @@ def run(root, original_data, frames_root):
         if not all(r['status'] == 'passed' for r in rewards.values()):
             status('failed_real_reward_gate', warmup_passes=passes, results=rewards)
             return
+        label_latency = json.loads((root / 'pilot-sl-001/stop-initial/metrics.json').read_text())['latency_seconds_per_video']
+        ground_latency = formats['g']['elapsed_seconds'] / formats['g']['responses']
+        checks = 1 + min(10, int((5 - passes) * 2))
+        remaining = (5 - passes) * fit_count
+        estimates = {}
+        for method, kind, objective in (('SL', 'l', 'sft'), ('RL', 'l', 'rl'), ('SG', 'g', 'sft'), ('RG', 'g', 'rl')):
+            warm_seconds = warmed[kind]['elapsed_seconds']
+            seconds_per_video = (warm_seconds / (passes * fit_count) if objective == 'sft' else
+                                 rewards[kind]['elapsed_seconds'] / rewards[kind]['groups'])
+            latency = label_latency if kind == 'l' else ground_latency
+            estimates[method] = 1.2 * (warm_seconds + remaining * seconds_per_video + checks * stop_count * latency)
+        estimates['VQ'] = 1.2 * (120 * label_latency + 11 * stop_count * label_latency + 10 * 10)
+        physical_per_seed = sum(estimates.values()) - sum(warmed[k]['elapsed_seconds'] for k in ('l', 'g'))
+        forecast = {'status': 'measured_forecast', 'warmup_passes': passes, 'shared_max_fit_passes': 5.,
+                    'assumption': 'maximum exposure/query schedule with 20% overhead; scientific stops can shorten runs; not a runtime promise',
+                    'estimated_seconds_per_method_seed': estimates,
+                    'estimated_training_physical_gpu_hours': 3 * physical_per_seed / 3600,
+                    'estimated_training_wall_hours_two_workers': 3 * max(physical_per_seed / 2, max(estimates.values())) / 3600,
+                    'estimated_final_evaluation_gpu_hours': (6 * 158 * ground_latency + 10 * 158 * label_latency) * 1.2 / 3600,
+                    'measurement_sources': {'warmups': warm, 'panels': {k: str(v) for k, v in panels.items()}},
+                    'time_ceilings': 'scientific-run ceilings removed by user; no exposure reduction to fit old limits'}
+        write_json(root / 'throughput-forecast.json', forecast, immutable=True)
         status('freezing_protocol', warmup_passes=passes)
         protocol = freeze(root, root / 'protocol.json', root / 'smoke-labels-003/result.json',
                           root / 'smoke-grounded-003/result.json', root / 'pilot-sl-001/result.json',
