@@ -4,7 +4,15 @@
 \title{Original VERA: Insufficient-Evidence Experiment Gate}
 \author{Research update for Shrid Pant}\date{October 27, 2026}
 \begin{document}\maketitle
-\textbf{Decision:} Prepare human annotation calibration; do not launch learning or GPU evaluation yet. No novelty claim is established.
+\textbf{Updated decision:} The user prefers avoiding new human annotation. A timestamp-proxy feasibility study may proceed after endpoint and pair-construction gates; no human validation or semantic-faithfulness claim follows. No model run has launched.
+
+\section{Amendment: no new human annotation for proxy feasibility}
+This amendment supersedes the reviewer prerequisite below for a limited proxy study; the calibration packet remains preserved. Existing UCA captions and timestamps may define annotation-included versus annotation-excluded inputs, but excluding an interval does not prove visual evidence is absent.
+
+Our reproducible metadata audit found UCA references for 1,412 VERA training and 156 validation videos. Of these, 992 training and 105 validation videos contain both an annotated interval and an unannotated gap at least two seconds long. These are construction-feasibility counts, not sufficient/insufficient truth labels. No new images or predictions were used by the audit.
+
+Before inference, freeze matched-duration/frame-count construction and a measurable proxy endpoint. Report response changes and abstention by annotation condition, not hallucination rates. The 192-call/one-GPU-hour cap remains; no learning run is yet justified. The historical human-review design below is optional for stronger later validation.
+
 \section{Closest prior work}
 \begin{tabularx}{\linewidth}{lX}\toprule Work&Overlap\\\midrule
 VirtueBench&Sampled frames can omit decisive evidence; answerability and refusal are evaluated.\\

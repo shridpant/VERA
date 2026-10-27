@@ -1,0 +1,5510 @@
+{
+  "scope": "metadata-only feasibility; gaps do not establish missing visual evidence",
+  "minimum_interval_seconds": 2,
+  "sources_sha256": {
+    "UCFCrime_Train.json": "0df6a6e5e1e1b17b87e229edb865c9dea3e23505fd29256a894660687ff4eba2",
+    "UCFCrime_Val.json": "f93720c911d0bfb3e8da168c7da43538227f0edcf90258a407856913fcacf559",
+    "UCFCrime_Test.json": "8912bc02c1871e177ffc7f45ed54395c0e34e1a8007a474b91309ce8a816f981",
+    "UCF_Instruct_train.json": "28eaf3ff4a167ffc8f40f86a28204d484c1853561fb37f3d9b75ac116778f264",
+    "UCF_Instruct_val.json": "c8a903315e2b47f03b7aeb0d313aedea66800c1598dba2272254493ae4bd1da5"
+  },
+  "splits": {
+    "train": {
+      "uca_covered": 1412,
+      "has_2s_annotation_and_gap": 992,
+      "eligible": [
+        {
+          "video_id": "Normal_Videos267_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery075_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault027_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos564_x264",
+          "annotated_intervals": 21,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos919_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos579_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Normal_Videos241_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing107_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery004_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery029_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos659_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse025_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos712_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos709_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson025_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Arson036_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos420_x264",
+          "annotated_intervals": 22,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Stealing071_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson030_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Arrest043_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery021_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery100_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos280_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism027_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism048_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Shooting003_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos521_x264",
+          "annotated_intervals": 54,
+          "unannotated_gaps": 26
+        },
+        {
+          "video_id": "Burglary007_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos064_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault001_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery099_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery136_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos012_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos136_x264",
+          "annotated_intervals": 159,
+          "unannotated_gaps": 36
+        },
+        {
+          "video_id": "Explosion037_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos111_x264",
+          "annotated_intervals": 72,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Abuse012_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents114_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos625_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary068_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos212_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos552_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest048_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos191_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Fighting051_x264",
+          "annotated_intervals": 27,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos568_x264",
+          "annotated_intervals": 30,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Abuse005_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos815_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents098_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery009_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism022_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos563_x264",
+          "annotated_intervals": 93,
+          "unannotated_gaps": 48
+        },
+        {
+          "video_id": "Arson001_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Burglary064_x264",
+          "annotated_intervals": 47,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Normal_Videos527_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos381_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing061_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Assault030_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson051_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos711_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery062_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos444_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting019_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery119_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos473_x264",
+          "annotated_intervals": 97,
+          "unannotated_gaps": 15
+        },
+        {
+          "video_id": "Arson020_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting010_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos584_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Burglary028_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos556_x264",
+          "annotated_intervals": 153,
+          "unannotated_gaps": 92
+        },
+        {
+          "video_id": "Normal_Videos590_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos558_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary043_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos339_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arson044_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos643_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos104_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos747_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary065_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos571_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos068_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "RoadAccidents042_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting030_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary099_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery034_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Normal_Videos327_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary045_x264",
+          "annotated_intervals": 19,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Assault029_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson040_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing072_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos123_x264",
+          "annotated_intervals": 52,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Arson049_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing055_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos172_x264",
+          "annotated_intervals": 31,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Stealing096_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting027_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos640_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse031_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos823_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery056_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting050_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary054_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson023_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting023_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos728_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing044_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos413_x264",
+          "annotated_intervals": 26,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary014_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos617_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos379_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos201_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos346_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos862_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos090_x264",
+          "annotated_intervals": 128,
+          "unannotated_gaps": 26
+        },
+        {
+          "video_id": "Normal_Videos741_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos322_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos622_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos627_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault019_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault020_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos393_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos719_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Assault015_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos669_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos946_x264",
+          "annotated_intervals": 131,
+          "unannotated_gaps": 106
+        },
+        {
+          "video_id": "Arrest010_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest049_x264",
+          "annotated_intervals": 21,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos738_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos476_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos087_x264",
+          "annotated_intervals": 699,
+          "unannotated_gaps": 17
+        },
+        {
+          "video_id": "RoadAccidents088_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos493_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery128_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Robbery098_x264",
+          "annotated_intervals": 22,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Normal_Videos074_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos863_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents142_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson005_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos546_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting055_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Robbery067_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Vandalism046_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery111_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Robbery133_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arrest040_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism010_x264",
+          "annotated_intervals": 21,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery042_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos707_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos366_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting050_x264",
+          "annotated_intervals": 56,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos676_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Robbery086_x264",
+          "annotated_intervals": 19,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Stealing021_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault002_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos651_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos238_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos658_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing020_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Abuse006_x264",
+          "annotated_intervals": 33,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos804_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Assault033_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting035_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Explosion009_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos483_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents136_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting022_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson019_x264",
+          "annotated_intervals": 32,
+          "unannotated_gaps": 28
+        },
+        {
+          "video_id": "Normal_Videos240_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery054_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shooting038_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos295_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse024_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery043_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary059_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos276_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos482_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents030_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing109_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos554_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos179_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos620_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery094_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos223_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos541_x264",
+          "annotated_intervals": 158,
+          "unannotated_gaps": 14
+        },
+        {
+          "video_id": "Stealing017_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos237_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "RoadAccidents058_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos757_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery030_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shooting029_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Vandalism024_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos392_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Shoplifting042_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos214_x264",
+          "annotated_intervals": 29,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Robbery014_x264",
+          "annotated_intervals": 33,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Normal_Videos773_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos817_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos347_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery142_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos205_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos749_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos091_x264",
+          "annotated_intervals": 80,
+          "unannotated_gaps": 29
+        },
+        {
+          "video_id": "Normal_Videos097_x264",
+          "annotated_intervals": 23,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Vandalism005_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos533_x264",
+          "annotated_intervals": 79,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos562_x264",
+          "annotated_intervals": 55,
+          "unannotated_gaps": 24
+        },
+        {
+          "video_id": "Normal_Videos847_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos007_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos138_x264",
+          "annotated_intervals": 225,
+          "unannotated_gaps": 32
+        },
+        {
+          "video_id": "Vandalism019_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery035_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Abuse034_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents007_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos454_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Shoplifting036_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery027_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "RoadAccidents068_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos282_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Explosion050_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents056_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos639_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos229_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting041_x264",
+          "annotated_intervals": 69,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Assault037_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery022_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery084_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos807_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents025_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing002_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos660_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing014_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson021_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery135_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery080_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting028_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest025_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents106_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos764_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos950_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery115_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Explosion044_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism041_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos231_x264",
+          "annotated_intervals": 31,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson045_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Assault049_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse001_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting020_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting036_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos181_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting039_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery023_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary070_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos631_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing082_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery144_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos456_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos575_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos578_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Burglary012_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos127_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos673_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos076_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arrest015_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson053_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos266_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos616_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Abuse047_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos324_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos802_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary039_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing032_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary025_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Explosion048_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing024_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arrest020_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery063_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos850_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery005_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Robbery037_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Normal_Videos133_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents087_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing066_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents080_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos566_x264",
+          "annotated_intervals": 50,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Normal_Videos221_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing023_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos180_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Normal_Videos681_x264",
+          "annotated_intervals": 63,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos585_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos421_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Explosion001_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting048_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos794_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "RoadAccidents078_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos177_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Normal_Videos122_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos743_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting040_x264",
+          "annotated_intervals": 46,
+          "unannotated_gaps": 16
+        },
+        {
+          "video_id": "RoadAccidents003_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery076_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing074_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos021_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos524_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary086_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos701_x264",
+          "annotated_intervals": 68,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos466_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson032_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Burglary019_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest037_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting014_x264",
+          "annotated_intervals": 101,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing053_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault017_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary066_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents150_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos394_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Fighting031_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "RoadAccidents055_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson006_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos220_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos530_x264",
+          "annotated_intervals": 128,
+          "unannotated_gaps": 98
+        },
+        {
+          "video_id": "Burglary063_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arrest038_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting046_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos809_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos382_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos349_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos207_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse020_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing046_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos793_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos026_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism023_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos226_x264",
+          "annotated_intervals": 22,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arson047_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Abuse040_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery118_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Shooting020_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos332_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos423_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism013_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery052_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos330_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos301_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos542_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Robbery007_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos367_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos342_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing050_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting029_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Explosion032_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos130_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos834_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing042_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents034_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing088_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Burglary055_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Assault007_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary009_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos691_x264",
+          "annotated_intervals": 32,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos512_x264",
+          "annotated_intervals": 82,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos404_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery002_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos678_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Abuse044_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery064_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos588_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery146_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Shoplifting030_x264",
+          "annotated_intervals": 45,
+          "unannotated_gaps": 32
+        },
+        {
+          "video_id": "Normal_Videos340_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Fighting026_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing105_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos425_x264",
+          "annotated_intervals": 261,
+          "unannotated_gaps": 145
+        },
+        {
+          "video_id": "Robbery018_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery058_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos720_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arson008_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting015_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Robbery071_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos921_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting009_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos126_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos222_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Explosion015_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos035_x264",
+          "annotated_intervals": 28,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos336_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism014_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism011_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos836_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Normal_Videos323_x264",
+          "annotated_intervals": 34,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Stealing081_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos689_x264",
+          "annotated_intervals": 57,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos328_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary026_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos075_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery040_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson002_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos545_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos638_x264",
+          "annotated_intervals": 63,
+          "unannotated_gaps": 42
+        },
+        {
+          "video_id": "Normal_Videos184_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos821_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos416_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos653_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery121_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Explosion012_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents107_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary077_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing026_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism004_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos424_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents046_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing052_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing103_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos299_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos084_x264",
+          "annotated_intervals": 80,
+          "unannotated_gaps": 26
+        },
+        {
+          "video_id": "Normal_Videos528_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing006_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing028_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery108_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos213_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos662_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos449_x264",
+          "annotated_intervals": 114,
+          "unannotated_gaps": 72
+        },
+        {
+          "video_id": "Burglary040_x264",
+          "annotated_intervals": 19,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Normal_Videos009_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos553_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Assault040_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery125_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Normal_Videos375_x264",
+          "annotated_intervals": 105,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos298_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Shooting014_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Arson014_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "RoadAccidents054_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary049_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents126_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting006_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos397_x264",
+          "annotated_intervals": 245,
+          "unannotated_gaps": 93
+        },
+        {
+          "video_id": "Normal_Videos700_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos736_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery025_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents141_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos581_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos351_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery101_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos547_x264",
+          "annotated_intervals": 208,
+          "unannotated_gaps": 103
+        },
+        {
+          "video_id": "Burglary003_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing065_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary048_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents032_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary020_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos531_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Arson017_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Burglary073_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arrest023_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing007_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos307_x264",
+          "annotated_intervals": 904,
+          "unannotated_gaps": 13
+        },
+        {
+          "video_id": "Normal_Videos363_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos151_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos219_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery013_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos814_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery090_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Abuse013_x264",
+          "annotated_intervals": 24,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos515_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Vandalism047_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos671_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault031_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos441_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Explosion041_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos684_x264",
+          "annotated_intervals": 40,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse019_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery088_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing091_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse018_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary083_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Burglary093_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary067_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism003_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos713_x264",
+          "annotated_intervals": 119,
+          "unannotated_gaps": 77
+        },
+        {
+          "video_id": "Normal_Videos194_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos827_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos855_x264",
+          "annotated_intervals": 36,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Robbery081_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos169_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos647_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Fighting024_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos440_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos043_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Vandalism044_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos190_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos239_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos065_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing045_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse042_x264",
+          "annotated_intervals": 45,
+          "unannotated_gaps": 14
+        },
+        {
+          "video_id": "Explosion038_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing009_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos471_x264",
+          "annotated_intervals": 404,
+          "unannotated_gaps": 166
+        },
+        {
+          "video_id": "Assault041_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos072_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos475_x264",
+          "annotated_intervals": 36,
+          "unannotated_gaps": 23
+        },
+        {
+          "video_id": "Stealing097_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos390_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos119_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery045_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos718_x264",
+          "annotated_intervals": 38,
+          "unannotated_gaps": 24
+        },
+        {
+          "video_id": "Normal_Videos825_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Explosion023_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos013_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos315_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos228_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson050_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Shoplifting038_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Fighting004_x264",
+          "annotated_intervals": 32,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Normal_Videos137_x264",
+          "annotated_intervals": 30,
+          "unannotated_gaps": 18
+        },
+        {
+          "video_id": "Robbery057_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos377_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery149_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos410_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault024_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos432_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Abuse048_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery019_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos292_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Abuse027_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing059_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Shoplifting032_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos816_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault014_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos356_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos077_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos654_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest008_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Burglary044_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos335_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault012_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary041_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery147_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary080_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos797_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos389_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "RoadAccidents079_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse017_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting043_x264",
+          "annotated_intervals": 24,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Normal_Videos319_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos561_x264",
+          "annotated_intervals": 37,
+          "unannotated_gaps": 15
+        },
+        {
+          "video_id": "Normal_Videos001_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos388_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Arson026_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Robbery112_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing016_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery015_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos582_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos819_x264",
+          "annotated_intervals": 92,
+          "unannotated_gaps": 33
+        },
+        {
+          "video_id": "Normal_Videos171_x264",
+          "annotated_intervals": 55,
+          "unannotated_gaps": 23
+        },
+        {
+          "video_id": "Normal_Videos300_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos865_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos838_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting025_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos672_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos848_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos278_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos302_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting025_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents071_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos947_x264",
+          "annotated_intervals": 249,
+          "unannotated_gaps": 141
+        },
+        {
+          "video_id": "Normal_Videos047_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos550_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary013_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest011_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos851_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos465_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos854_x264",
+          "annotated_intervals": 39,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Robbery031_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson013_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos023_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos516_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Explosion024_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault016_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos305_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents008_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos632_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "RoadAccidents112_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos082_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos734_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos206_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest051_x264",
+          "annotated_intervals": 21,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos803_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos081_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos039_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Shoplifting009_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary023_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos436_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing057_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "RoadAccidents077_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos116_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos560_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Normal_Videos028_x264",
+          "annotated_intervals": 25,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery047_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson031_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos513_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse015_x264",
+          "annotated_intervals": 32,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest044_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos833_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arrest003_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos583_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "Normal_Videos457_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos572_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary038_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos361_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse003_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson039_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Abuse023_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery130_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos261_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery104_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arson038_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos604_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos415_x264",
+          "annotated_intervals": 124,
+          "unannotated_gaps": 27
+        },
+        {
+          "video_id": "Normal_Videos733_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos479_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Burglary006_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Burglary004_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting051_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos484_x264",
+          "annotated_intervals": 37,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos650_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting012_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing018_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing069_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos134_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery148_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Stealing092_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos569_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault013_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing035_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arson027_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery105_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery046_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents139_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos357_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting008_x264",
+          "annotated_intervals": 24,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Normal_Videos235_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery061_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos265_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery097_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery120_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos600_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery141_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos227_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos102_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos384_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery091_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos557_x264",
+          "annotated_intervals": 21,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents026_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents006_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos103_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos197_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos216_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson052_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery087_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos187_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos236_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos353_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery093_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery010_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos117_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos574_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos744_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos262_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism016_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents116_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos376_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing094_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary057_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery103_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos080_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary022_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery074_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents074_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting009_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Burglary046_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos114_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting002_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson046_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault009_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery095_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos386_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary010_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery110_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shooting042_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos341_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting038_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arrest050_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos004_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents062_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos657_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing086_x264",
+          "annotated_intervals": 54,
+          "unannotated_gaps": 19
+        },
+        {
+          "video_id": "Normal_Videos619_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Arson029_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos128_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos737_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos856_x264",
+          "annotated_intervals": 30,
+          "unannotated_gaps": 21
+        },
+        {
+          "video_id": "RoadAccidents091_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos732_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery003_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents081_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos260_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos535_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos419_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos458_x264",
+          "annotated_intervals": 27,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents048_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents082_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault026_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos209_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery124_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos769_x264",
+          "annotated_intervals": 47,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos727_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary001_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos078_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos316_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos830_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos383_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos405_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos548_x264",
+          "annotated_intervals": 72,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shoplifting051_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos714_x264",
+          "annotated_intervals": 99,
+          "unannotated_gaps": 69
+        },
+        {
+          "video_id": "Robbery051_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary060_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary029_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos826_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary095_x264",
+          "annotated_intervals": 23,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Fighting016_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos311_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos771_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest033_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos645_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos920_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism029_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos469_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shoplifting052_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Robbery049_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos008_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos272_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary075_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Assault003_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery017_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arson037_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos325_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting044_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery150_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos573_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos796_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Fighting037_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Robbery129_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery096_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos481_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Robbery060_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos605_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting014_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Vandalism035_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos665_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Normal_Videos474_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos398_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary091_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos860_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos387_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting045_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents057_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest029_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Burglary034_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting012_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos208_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arson015_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 10
+        },
+        {
+          "video_id": "RoadAccidents109_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Vandalism034_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos655_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 11
+        },
+        {
+          "video_id": "Vandalism020_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos185_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos577_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos113_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery055_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Burglary011_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery032_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos646_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Abuse009_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arrest005_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos587_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Arson003_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "RoadAccidents147_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos523_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery020_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos565_x264",
+          "annotated_intervals": 109,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Burglary062_x264",
+          "annotated_intervals": 19,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos364_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault022_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing063_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos480_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos518_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos264_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse049_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism033_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Abuse045_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Robbery114_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos644_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos400_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting041_x264",
+          "annotated_intervals": 28,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arson024_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos303_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson048_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery082_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest021_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary089_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos615_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos259_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing030_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos132_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery041_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary088_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arrest041_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents051_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents145_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing008_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting043_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Burglary031_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Abuse022_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Assault032_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos183_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Vandalism032_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos188_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Arson042_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Robbery113_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos016_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Assault047_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos186_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arrest035_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos591_x264",
+          "annotated_intervals": 33,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos046_x264",
+          "annotated_intervals": 78,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Arrest004_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos099_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos308_x264",
+          "annotated_intervals": 1166,
+          "unannotated_gaps": 351
+        },
+        {
+          "video_id": "Normal_Videos020_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery065_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos756_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse039_x264",
+          "annotated_intervals": 35,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos822_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "RoadAccidents148_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "RoadAccidents117_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos462_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing013_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing012_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos225_x264",
+          "annotated_intervals": 35,
+          "unannotated_gaps": 16
+        },
+        {
+          "video_id": "Normal_Videos529_x264",
+          "annotated_intervals": 164,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism001_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos073_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shoplifting012_x264",
+          "annotated_intervals": 49,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Vandalism012_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary008_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos101_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Abuse002_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse043_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos062_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing027_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing022_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary074_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing101_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos451_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos079_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Vandalism043_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism031_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos234_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos463_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest026_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos835_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Assault008_x264",
+          "annotated_intervals": 19,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Arrest002_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos829_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery073_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos648_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery077_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing054_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos526_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Explosion030_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary084_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos633_x264",
+          "annotated_intervals": 486,
+          "unannotated_gaps": 124
+        },
+        {
+          "video_id": "Normal_Videos786_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos472_x264",
+          "annotated_intervals": 225,
+          "unannotated_gaps": 133
+        },
+        {
+          "video_id": "Normal_Videos106_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting032_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary090_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shoplifting024_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos002_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos739_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery109_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "RoadAccidents049_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "RoadAccidents104_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos540_x264",
+          "annotated_intervals": 138,
+          "unannotated_gaps": 61
+        },
+        {
+          "video_id": "Normal_Videos849_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos450_x264",
+          "annotated_intervals": 150,
+          "unannotated_gaps": 45
+        },
+        {
+          "video_id": "Normal_Videos447_x264",
+          "annotated_intervals": 25,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos806_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse046_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos427_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing104_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism009_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary100_x264",
+          "annotated_intervals": 16,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos508_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos279_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos519_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Shoplifting019_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos283_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Burglary071_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery126_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing110_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary016_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos735_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos626_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Burglary047_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos567_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Explosion040_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos135_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing075_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting021_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing070_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary058_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing067_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary053_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos176_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest013_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Fighting049_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos787_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing068_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos448_x264",
+          "annotated_intervals": 32,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos846_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos131_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing025_x264",
+          "annotated_intervals": 47,
+          "unannotated_gaps": 21
+        },
+        {
+          "video_id": "Robbery028_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos277_x264",
+          "annotated_intervals": 50,
+          "unannotated_gaps": 25
+        },
+        {
+          "video_id": "Robbery116_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery008_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos852_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Stealing003_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Shoplifting018_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse033_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos537_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos426_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery092_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos763_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos661_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing098_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos380_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arson012_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos789_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary072_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos418_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos539_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos399_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos442_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism026_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary027_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos348_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos514_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery053_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing051_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos580_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Vandalism049_x264",
+          "annotated_intervals": 22,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing047_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting031_x264",
+          "annotated_intervals": 22,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary050_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents040_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault028_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shoplifting053_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary002_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest032_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents047_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos708_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos652_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos338_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing010_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos791_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Assault023_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary030_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting017_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse008_x264",
+          "annotated_intervals": 26,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos795_x264",
+          "annotated_intervals": 26,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "RoadAccidents024_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse004_x264",
+          "annotated_intervals": 50,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery033_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos586_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing089_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos668_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos683_x264",
+          "annotated_intervals": 52,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos624_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos682_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse016_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary042_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 3
+        }
+      ]
+    },
+    "val": {
+      "uca_covered": 156,
+      "has_2s_annotation_and_gap": 105,
+      "eligible": [
+        {
+          "video_id": "Normal_Videos061_x264",
+          "annotated_intervals": 28,
+          "unannotated_gaps": 13
+        },
+        {
+          "video_id": "Normal_Videos520_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos320_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Fighting006_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos918_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary085_x264",
+          "annotated_intervals": 10,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos198_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos174_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos811_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos139_x264",
+          "annotated_intervals": 53,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery117_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Vandalism038_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Assault048_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing043_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos464_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Assault005_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest046_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos687_x264",
+          "annotated_intervals": 36,
+          "unannotated_gaps": 13
+        },
+        {
+          "video_id": "Stealing004_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos685_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos536_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Normal_Videos629_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos275_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Abuse021_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Explosion018_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing080_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents138_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos598_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos723_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Stealing113_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary087_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "RoadAccidents118_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Arrest012_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing084_x264",
+          "annotated_intervals": 31,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Robbery059_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Shoplifting006_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery083_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery026_x264",
+          "annotated_intervals": 20,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Robbery038_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery066_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos544_x264",
+          "annotated_intervals": 72,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos813_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary082_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Shoplifting003_x264",
+          "annotated_intervals": 26,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "RoadAccidents044_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos525_x264",
+          "annotated_intervals": 36,
+          "unannotated_gaps": 18
+        },
+        {
+          "video_id": "Normal_Videos630_x264",
+          "annotated_intervals": 15,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Robbery078_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos522_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos488_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Robbery001_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos396_x264",
+          "annotated_intervals": 184,
+          "unannotated_gaps": 89
+        },
+        {
+          "video_id": "Normal_Videos125_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Arrest047_x264",
+          "annotated_intervals": 82,
+          "unannotated_gaps": 42
+        },
+        {
+          "video_id": "Normal_Videos326_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery036_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "RoadAccidents059_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos824_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos623_x264",
+          "annotated_intervals": 21,
+          "unannotated_gaps": 12
+        },
+        {
+          "video_id": "Shooting027_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Stealing083_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Shooting005_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos385_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Normal_Videos017_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "RoadAccidents137_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Vandalism045_x264",
+          "annotated_intervals": 12,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos762_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos270_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse026_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse011_x264",
+          "annotated_intervals": 23,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Arson028_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Fighting011_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 8
+        },
+        {
+          "video_id": "Robbery143_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Abuse050_x264",
+          "annotated_intervals": 19,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos551_x264",
+          "annotated_intervals": 83,
+          "unannotated_gaps": 9
+        },
+        {
+          "video_id": "Normal_Videos391_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos549_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Normal_Videos948_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos637_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Normal_Videos810_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Stealing048_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Shooting040_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Abuse041_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery006_x264",
+          "annotated_intervals": 13,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Burglary094_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Arrest036_x264",
+          "annotated_intervals": 11,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Burglary052_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "RoadAccidents151_x264",
+          "annotated_intervals": 2,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Normal_Videos309_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Robbery011_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Robbery024_x264",
+          "annotated_intervals": 9,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Fighting005_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos559_x264",
+          "annotated_intervals": 14,
+          "unannotated_gaps": 5
+        },
+        {
+          "video_id": "Normal_Videos775_x264",
+          "annotated_intervals": 5,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos343_x264",
+          "annotated_intervals": 1,
+          "unannotated_gaps": 1
+        },
+        {
+          "video_id": "Shooting052_x264",
+          "annotated_intervals": 7,
+          "unannotated_gaps": 6
+        },
+        {
+          "video_id": "Explosion046_x264",
+          "annotated_intervals": 176,
+          "unannotated_gaps": 21
+        },
+        {
+          "video_id": "Normal_Videos460_x264",
+          "annotated_intervals": 17,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Normal_Videos534_x264",
+          "annotated_intervals": 84,
+          "unannotated_gaps": 23
+        },
+        {
+          "video_id": "Normal_Videos060_x264",
+          "annotated_intervals": 3,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Robbery107_x264",
+          "annotated_intervals": 6,
+          "unannotated_gaps": 3
+        },
+        {
+          "video_id": "Normal_Videos589_x264",
+          "annotated_intervals": 4,
+          "unannotated_gaps": 2
+        },
+        {
+          "video_id": "Burglary096_x264",
+          "annotated_intervals": 26,
+          "unannotated_gaps": 4
+        },
+        {
+          "video_id": "Abuse032_x264",
+          "annotated_intervals": 8,
+          "unannotated_gaps": 7
+        },
+        {
+          "video_id": "Fighting034_x264",
+          "annotated_intervals": 18,
+          "unannotated_gaps": 4
+        }
+      ]
+    }
+  }
+}

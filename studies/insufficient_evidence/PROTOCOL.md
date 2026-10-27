@@ -1,3 +1,13 @@
+# Current amendment: existing annotations, no new reviewers required
+
+October27 user prefers avoiding human annotation. Supersedes reviewer gating below for a **proxy feasibility experiment only**. Historical calibration packet retained unchanged. No human validation, hallucination rate, or true sufficiency claims permitted from timestamp proxies.
+
+Metadata audit:1412VERAtrain and156VERAval videos have UCAannotations.992train/105val have both an annotated interval and an unannotated gap of at least2seconds. Script hashes all inputs. This establishes construction feasibility, not semantic absence. No frames/model outputs were examined in selection. Exact annotation boundary should not be presented as a visibility guarantee.
+
+Next prerequisite: freeze a matched-duration/frame-count pair construction and a directly measurable proxy endpoint before any inference. Avoid selecting anomalous/normal labels from UCAcaption absence. Compare original, manual abstention and learned questions; any feedback must be disclosed as annotation-derived. Existing 192-call/1GPUh cap remains. No learned-method launch until an explicit improvement criterion survives the known VirtueBench/readiness overlap. Human annotation optional later if stronger claims needed.
+
+---
+
 # Insufficient-evidence experiment: novelty and annotation gate
 
 Human authorization: October27 request to check novelty, establish human annotation requirement, run bounded pilot if justified. Separate branch research/vera-insufficient-evidence from83b1d18. Prior study records frozen.
