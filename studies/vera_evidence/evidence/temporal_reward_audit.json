@@ -1,0 +1,56 @@
+{
+  "kind": "synthetic analytical diagnostic, no inference",
+  "source": "https://arxiv.org/html/2607.00654v1",
+  "location": "Section 3.4 Eq.5; Appendix C",
+  "parameters": {
+    "mu": 0.8,
+    "epsilon0": 0.05,
+    "epsilon1": 0.2
+  },
+  "assumption": "Output is correct under ordered input; group accuracy rewards are supplied analytically.",
+  "caveat": "An additional ordered>shuffled implementation gate would remove these counterexamples; code not inspected.",
+  "examples": [
+    {
+      "ordered": 0.5,
+      "shuffled": 0.5,
+      "published_equation": 0.03333333333333331,
+      "strict_outperformance_gate": 0.0,
+      "unscaled_difference_diagnostic": 0.0
+    },
+    {
+      "ordered": 0.7,
+      "shuffled": 0.7,
+      "published_equation": 0.08400000000000002,
+      "strict_outperformance_gate": 0.0,
+      "unscaled_difference_diagnostic": 0.0
+    },
+    {
+      "ordered": 0.8,
+      "shuffled": 0.8,
+      "published_equation": 0.11733333333333319,
+      "strict_outperformance_gate": 0.0,
+      "unscaled_difference_diagnostic": 0.0
+    },
+    {
+      "ordered": 1.0,
+      "shuffled": 1.0,
+      "published_equation": 0.1999999999999999,
+      "strict_outperformance_gate": 0.0,
+      "unscaled_difference_diagnostic": 0.0
+    },
+    {
+      "ordered": 0.7,
+      "shuffled": 0.8,
+      "published_equation": 0.00399999999999992,
+      "strict_outperformance_gate": 0.0,
+      "unscaled_difference_diagnostic": 0.0
+    },
+    {
+      "ordered": 0.8,
+      "shuffled": 0.7,
+      "published_equation": 0.2400000000000001,
+      "strict_outperformance_gate": 0.2400000000000001,
+      "unscaled_difference_diagnostic": 0.03333333333333342
+    }
+  ]
+}
