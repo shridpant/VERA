@@ -102,13 +102,13 @@
     "temporal_order_reward": false
   },
   "budget_gpu_hours": {
-    "total_ceiling": 48,
-    "pilot_allocation": 3,
-    "sft_pilot_ceiling": 2,
-    "rl_pilot_ceiling": 1,
-    "per_method_seed_ceiling": 2.5,
-    "full_runs_ceiling": 37.5,
-    "evaluation_reserve": 7.5
+    "total_ceiling": null,
+    "pilot_allocation": 6,
+    "sft_pilot_ceiling": 4,
+    "rl_pilot_ceiling": 2,
+    "per_method_seed_ceiling": null,
+    "full_runs_ceiling": null,
+    "evaluation_reserve": null
   },
   "no_training_started_for_this_plan": false,
   "numbers": "proposed_defaults_freeze_before_comparative_runs",
@@ -122,5 +122,16 @@
     "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7"
   ],
   "budget_accounting": "aggregate device occupancy; concurrent wall time sums across GPUs",
-  "initial_questions": "two existing seed questions, shared across B0 and weight arms"
+  "initial_questions": "two existing seed questions, shared across B0 and weight arms",
+  "resource_policy_authorization": "2026-10-26 side conversation: remove real-run GPU-hour ceilings; extend finite pilot limits; retain other stopping criteria",
+  "progress_updates": {
+    "active_work_max_silence_seconds": 60,
+    "experiment_status_target_minutes": 15,
+    "notify_immediately": [
+      "failure",
+      "stopping_gate",
+      "material_result",
+      "required_user_action"
+    ]
+  }
 }

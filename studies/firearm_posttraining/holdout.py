@@ -42,5 +42,6 @@ def run(args):
     native = NativeModel(protocol['model'], book, adapter=adapter, seed=args.seed)
     measured = evaluate(native, rich, out / 'evaluation', grounded, questions)
     write_json(out / 'result.json', {'status': 'complete', 'method': args.method, 'seed': args.seed,
-               'split': args.split, 'metrics': measured})
+               'split': args.split, 'metrics': measured,
+               'predictions_sha256': digest(out / 'evaluation/predictions.jsonl')})
     return measured

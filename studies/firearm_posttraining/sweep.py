@@ -53,10 +53,10 @@ def run(root, protocol_path):
             for kind, method in (('L', 'SL'), ('G', 'SG')):
                 name = f'C0{kind}-{seed}'
                 command = ['train', *common, '--method', method, '--seed', str(seed),
-                           '--output', str(output / name), '--warmup-only', '--max-seconds', '865']
+                           '--output', str(output / name), '--warmup-only', '--max-seconds', '0']
                 if kind == 'G':
                     command.append('--grounded')
-                futures[executor.submit(launch, name, command, 900)] = kind
+                futures[executor.submit(launch, name, command, 0)] = kind
             for future in concurrent.futures.as_completed(futures):
                 kind = futures[future]
                 directory, result = future.result()
@@ -72,16 +72,16 @@ def run(root, protocol_path):
                 if method == 'VQ':
                     command = ['vq', '--model', protocol['model'], '--data', str(root / 'data'),
                                '--frozen-protocol', protocol_path, '--seed', str(seed),
-                               '--output', str(output / name), '--max-seconds', '8965']
-                    seconds = 9000
+                               '--output', str(output / name), '--max-seconds', '0']
+                    seconds = 0
                 else:
                     init = warm['G' if method in ('SG', 'RG') else 'L']
-                    # Charge the fixed warm-up to both arms, though it was executed
-                    # once. Each arm's logical warm-up+continuation remains <=2.5h.
-                    seconds = max(60, int(9000 - init['elapsed_seconds']))
+                    # Continue recording warm-up time for both arms; user removed
+                    # scientific-run GPU-hour ceilings. Scientific stops still apply.
+                    seconds = 0
                     command = ['train', *common, '--method', method, '--seed', str(seed),
                                '--adapter', init['adapter'], '--output', str(output / name),
-                               '--max-seconds', str(seconds - 35)]
+                               '--max-seconds', '0']
                     if method in ('SG', 'RG'):
                         command.append('--grounded')
                 futures[executor.submit(launch, name, command, seconds)] = method

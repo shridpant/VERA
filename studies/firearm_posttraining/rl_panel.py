@@ -16,6 +16,8 @@ def run(args):
     out.mkdir(parents=True, exist_ok=False)
     provenance(out, vars(args))
     started = time.monotonic()
+    if not 35 < args.max_seconds <= 2 * 3600:
+        raise ValueError('RL pilots retain a finite time cap of at most two hours')
     deadline = started + args.max_seconds - 35
     requested = []
     previous = signal.signal(signal.SIGTERM, lambda *_: requested.append(True))

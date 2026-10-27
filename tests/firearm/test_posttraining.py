@@ -9,7 +9,7 @@ from studies.firearm_posttraining import data, rewards
 from studies.firearm_posttraining.model import target_parts, token_kinds, instruction
 from studies.firearm_posttraining.stopping import StopState
 from studies.firearm_posttraining.evaluation import metrics
-from studies.firearm_posttraining.execute import budget_used, reserve, finish
+from studies.firearm_posttraining.execute import budget_used, reserve, finish, validate_duration
 from studies.firearm_posttraining.verbalized import valid_revision
 from studies.firearm_posttraining.protocol import validate, verify_selection
 
@@ -207,13 +207,13 @@ class EvaluationAndBudgetTests(unittest.TestCase):
     def test_concurrent_reservations_charge_gpu_time_and_fail_closed(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            reserve(root, 'a', 'pilot', 6000, 'gpu6')
+            reserve(root, 'a', 'pilot', 12000, 'gpu6')
             with self.assertRaises(RuntimeError):
-                reserve(root, 'b', 'pilot', 6000, 'gpu7')
+                reserve(root, 'b', 'pilot', 12000, 'gpu7')
             finish(root, 'a', 100, 1, 'child_failure')
-            reserve(root, 'b', 'pilot', 6000, 'gpu7')
+            reserve(root, 'b', 'pilot', 12000, 'gpu7')
             records = json.loads((root / 'budget.json').read_text())
-            self.assertEqual(budget_used(records), 6100)
+            self.assertEqual(budget_used(records), 12100)
             with self.assertRaises(RuntimeError):
                 reserve(root, 'a', 'pilot', 1, 'gpu6')
 
@@ -285,6 +285,22 @@ class StatisticsTests(unittest.TestCase):
         self.assertEqual(changed['all'], {'recovered': 90, 'broken': 0, 'net': 90})
         with self.assertRaises(ValueError):
             paired_interval(rows, one[:, :-1], zero, zero, zero, repeats=10)
+
+    def test_localization_inverse_view_unknowns_and_false_boxes(self):
+        from studies.firearm_posttraining.report import localization
+        row = fixture()
+        row['geometry'] = data.geometry(640, 480)
+        p = response(row)
+        pred = [{'video': row['id'], 'text': json.dumps(p), 'truncated': False}]
+        result = localization([row], pred, BOOK)
+        self.assertEqual(result['precision_IoU50'], 1.)
+        self.assertEqual(result['recall_IoU50'], 1.)
+        self.assertEqual(result['annotation_coverage'], .25)
+        p['grounding'][0]['boxes'] = [[0, 0, 1, 1]]
+        pred[0]['text'] = json.dumps(p)
+        result = localization([row], pred, BOOK)
+        self.assertEqual(result['precision_IoU50'], .5)
+        self.assertEqual(result['whole_image_box_rate'], .5)
 
 
 if __name__ == '__main__':

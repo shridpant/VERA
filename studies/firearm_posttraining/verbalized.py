@@ -27,7 +27,9 @@ def run(args):
     out.mkdir(parents=True, exist_ok=False)
     provenance(out, vars(args))
     started = time.monotonic()
-    deadline = started + args.max_seconds - 35
+    if args.max_seconds != 0:
+        raise ValueError('full VQ comparison has no GPU-hour ceiling; use --max-seconds 0')
+    deadline = float('inf')
     stopping = []
     old_handler = signal.signal(signal.SIGTERM, lambda *_: stopping.append(True))
     book = json.loads(Path(args.codebook).read_text())

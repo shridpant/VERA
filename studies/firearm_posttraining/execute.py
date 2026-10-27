@@ -18,7 +18,17 @@ from .data import write_json
 from .runtime import append
 
 ALLOWED = ('GPU-2931eba2-9a4d-61da-6bd1-e75692edad03', 'GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7')
-CAPS = {'total': 48 * 3600, 'pilot': 3 * 3600, 'sweep': 37.5 * 3600, 'evaluation': 7.5 * 3600}
+CAPS = {'total': None, 'pilot': 6 * 3600, 'sweep': None, 'evaluation': None}
+
+
+def validate_duration(stage, seconds):
+    if stage not in ('pilot', 'sweep', 'evaluation'):
+        raise ValueError('unknown resource stage')
+    if stage == 'pilot':
+        if seconds <= 30 or seconds > CAPS['pilot']:
+            raise ValueError('pilots require a finite positive time limit within the extended allowance')
+    elif seconds != 0:
+        raise ValueError('scientific runs/evaluation have no time ceiling: use --seconds 0')
 
 
 @contextlib.contextmanager
@@ -29,19 +39,24 @@ def lock(path, nonblock=False):
 
 
 def budget_used(records, stage=None):
-    return sum(r.get('elapsed_seconds', r['reserved_seconds']) for r in records.values()
-               if stage is None or r['stage'] == stage)
+    def charged(record):
+        if 'elapsed_seconds' in record:
+            return record['elapsed_seconds']
+        reservation = record['reserved_seconds']
+        return reservation if reservation is not None else max(0., time.time() - record['started_unix'])
+    return sum(charged(r) for r in records.values() if stage is None or r['stage'] == stage)
 
 
 def reserve(root, name, stage, seconds, gpu):
+    validate_duration(stage, seconds)
     with lock(root / 'budget.lock'):
         p = root / 'budget.json'
         records = json.loads(p.read_text()) if p.exists() else {}
         if name in records:
             raise RuntimeError('duplicate run name; explicit new attempt required')
-        if budget_used(records) + seconds > CAPS['total'] or budget_used(records, stage) + seconds > CAPS[stage]:
-            raise RuntimeError('aggregate GPU-hour reservation exceeds remaining hard budget')
-        records[name] = {'stage': stage, 'gpu': gpu, 'reserved_seconds': seconds,
+        if stage == 'pilot' and budget_used(records, stage) + seconds > CAPS['pilot']:
+            raise RuntimeError('aggregate pilot GPU-hour reservation exceeds extended pilot allowance')
+        records[name] = {'stage': stage, 'gpu': gpu, 'reserved_seconds': seconds if seconds else None,
                          'started_unix': time.time(), 'status': 'reserved'}
         write_json(p, records)
 
@@ -69,8 +84,9 @@ def gpu_state(uuid):
 def run(args):
     if not re.fullmatch(r'[A-Za-z0-9_.-]+', args.name):
         raise ValueError('run name must be a simple filename')
-    if args.gpu not in ALLOWED or args.seconds <= 30 or args.seconds > CAPS[args.stage]:
-        raise ValueError('invalid authorized device or duration')
+    if args.gpu not in ALLOWED:
+        raise ValueError('invalid authorized device')
+    validate_duration(args.stage, args.seconds)
     root = Path(args.root)
     root.mkdir(parents=True, exist_ok=True)
     with lock(root / f'{args.gpu}.lock', nonblock=True):
@@ -94,7 +110,7 @@ def run(args):
                    'TRANSFORMERS_OFFLINE': '1', 'TOKENIZERS_PARALLELISM': 'false',
                    'OMP_NUM_THREADS': '8', 'MKL_NUM_THREADS': '8', 'CUBLAS_WORKSPACE_CONFIG': ':4096:8'}
             write_json(job / 'job.json', {'command': command, 'cwd': os.getcwd(), 'gpu': args.gpu,
-                       'before': state, 'seconds': args.seconds, 'supervisor_pid': os.getpid(),
+                       'before': state, 'seconds': args.seconds if args.seconds else None, 'supervisor_pid': os.getpid(),
                        'code_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()}, immutable=True)
             with (job / 'stdout.log').open('w') as stdout, (job / 'stderr.log').open('w') as stderr:
                 child = subprocess.Popen(command, env=env, stdout=stdout, stderr=stderr, start_new_session=True)
@@ -102,7 +118,7 @@ def run(args):
                 while child.poll() is None:
                     elapsed = time.monotonic() - started
                     append(job / 'gpu.jsonl', {'elapsed_seconds': elapsed, **gpu_state(args.gpu)})
-                    if elapsed >= args.seconds - 30 or received:
+                    if (args.seconds and elapsed >= args.seconds - 30) or received:
                         reason = 'hard_time_cap' if not received else 'external_signal'
                         os.killpg(child.pid, signal.SIGTERM)
                         try:
@@ -112,7 +128,7 @@ def run(args):
                             child.wait()
                         break
                     try:
-                        child.wait(timeout=min(5, max(1, args.seconds - 30 - elapsed)))
+                        child.wait(timeout=min(5, max(1, args.seconds - 30 - elapsed)) if args.seconds else 5)
                     except subprocess.TimeoutExpired:
                         pass
                 code = child.returncode
@@ -140,7 +156,7 @@ def main():
     p.add_argument('--gpu', required=True)
     p.add_argument('--name', required=True)
     p.add_argument('--stage', choices=('pilot', 'sweep', 'evaluation'), required=True)
-    p.add_argument('--seconds', type=int, required=True)
+    p.add_argument('--seconds', type=int, required=True, help='finite pilot limit; 0 means no time limit for sweep/evaluation')
     p.add_argument('child', nargs=argparse.REMAINDER)
     args = p.parse_args()
     if not args.child:

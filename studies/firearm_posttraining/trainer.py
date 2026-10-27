@@ -20,7 +20,12 @@ def run(args):
     elif not out.is_dir():
         raise ValueError('resume needs the original run output')
     started = time.monotonic()
-    deadline = started + args.max_seconds - 35
+    limit = args.max_seconds if args.max_seconds is not None else (0 if args.frozen_protocol else 4 * 3600)
+    if args.frozen_protocol and limit != 0:
+        raise ValueError('full comparison GPU-hour ceilings removed; use --max-seconds 0')
+    if not args.frozen_protocol and limit <= 35:
+        raise ValueError('exploratory supervised pilots still require a finite time limit')
+    deadline = float('inf') if limit == 0 else started + limit - 35
     stopping = []
     previous = signal.signal(signal.SIGTERM, lambda *_: stopping.append('SIGTERM'))
     is_rl = args.method in ('RL', 'RG')
