@@ -263,3 +263,19 @@ calibration-probability-v3. No automatic retry or further warm-up candidate.
 Only both new formats and both actual reward panels permit freeze and scaling.
 Unit tests cover temperature-matched likelihoods/entropy/gradients, preventing
 checkpoint filter inheritance, and warm-up reuse with new unique gate jobs.
+
+## Corrected-policy format stop and coordinate diagnosis (no new amendment accepted)
+
+Attempt009 passed labels95/96 and stopped grounded at5/65 invalid. Both real
+reward panels009 never launched. All five invalid responses are valid, untruncated
+JSON with valid labels: four violate unit-coordinate range, one has zero-height
+boxes. The official pinned Qwen cookbook documents0–1000 coordinates. Preserve
+the failure; do not infer EOS failure, salvage answers or claim a completed-panel
+rate. The controller is dead and pilot usage settled at4.0016317/6 GPU-hours.
+
+A specific native-coordinate proposal is recorded in
+COORDINATE_AMENDMENT_PROPOSAL.md for the user's decision. It changes the output
+representation and requires fresh paired warm-ups, actual-tokenizer audit, GPU
+engineering, format and real-reward gates, within the unchanged budget. It is
+not implemented or accepted. No new candidate launches while the decision is
+pending. Current code, parser, rewards, thresholds and old releases are unchanged.

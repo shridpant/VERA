@@ -6,39 +6,34 @@ scientific-run time ceilings, six aggregate bounded pilot GPU-hours, and all
 other scientific stops. These resource changes from a side chat were directly
 confirmed. HANDOFF.md is a historical proposal; current amendments govern.
 
-## Current execution owner
+## Current execution state: scientific format stop
 
-Current CPU controller PID 293624 runs from immutable release 2118b52. Status:
-ROOT/calibration-probability-v3/status.json; log
-ROOT/calibration-probability-v3-controller-001.log; launch
-ROOT/calibration-probability-v3-launch-001.json. Both new format jobs 009 run on
-Ada 6/7, reusing audited three-pass SFT warm-ups 008 without retraining. Never
-restart old controllers or duplicate jobs; inspect live artifacts before acting.
+Controller PID 293624 from immutable release 2118b52 is DEAD. Its status is
+failed_format_calibration. Corrected-policy format 009 passed label-only 95/96;
+grounded stopped after five invalid responses in 65, making the <=5%/96 gate
+irreversibly impossible. Both actual reward panels 009 never launched. Both
+authorized Adas were idle; no active budget reservations remain. Settled pilot
+usage is 4.0016317 of six aggregate GPU-hours, leaving 1.9983683. No protocol,
+selection freeze, scientific sweep or reporting outcomes exist.
 
-A pre-freeze audit corrected sampling temperature 0.8 versus raw-logit scoring,
-plus inherited checkpoint top-k 20. New rollouts use one full-support temperature
-0.8 policy (top-p 1 / top-k 0), matched by old/current/reference probabilities and
-entropy. Greedy reporting stays single-response argmax. All 77 local firearm tests
-and 29 focused Oz tests passed; fresh GPU engineering smokes 005 passed exact
-prediction reload/resume. Fixture reward spread remains zero: synthetic strings
-are engineering evidence only. VQ compatibility 002 also passed 16 images with a
-valid single-slot proposal and unchanged weights under the new generation config.
+Read-only diagnosis found four unit-range violations consistent with Qwen's
+native 0–1000 convention and one degenerate-geometry response. All five are valid,
+untruncated JSON with valid labels. This supports a representation hypothesis,
+not a rescued gate or proven fix. Evidence and reproducible triage are committed
+in evidence/format-009-diagnosis.json and evidence/audit_format_009.py.
 
-The 240-video v3 tokenizer audit passed unchanged targets, maximum 311 tokens,
-6,658 known tokens retained and 553 unknown tokens masked. SFT functions and
-trainer.py are exactly unchanged versus a122820. Reused warm-ups 008 have matched
-source commit, zero STOP queries, 576 exposures and verified checkpoint hashes.
-Settled pilot use before the new controller was 3.86585 of six GPU-hours; the same
-fixed 3-pass candidate counts inside max 5 total passes. New format/reward attempts 009
-must pass the corrected sampler's gates before freeze. No further candidate or
-failed-panel retry follows automatically; scientific/resource stops stay fixed.
+COORDINATE_AMENDMENT_PROPOSAL.md describes a specific fresh fixed-three-pass
+candidate using native model-facing coordinates, normalized at the parser
+boundary, unchanged internal rewards/annotations, strict geometry and all
+existing gates. It is a proposal awaiting the user's decision, not an accepted
+amendment or launch instruction. Do not retry, reuse old failures as passes,
+change exposure, or start a new candidate while that decision is pending.
 
-Old three-pass formats passed 95/96 labels and 94/96 grounded, but those checks used
-the old sampler. Old panels 008 began before the CPU pause and were signaled to
-checkpoint/settle (label 8 groups / 32 responses, grounded 4 groups / 16 responses). Their
-feasibility is invalidated by the probability correction, not a scientific result
-under the new policy. Traces/operator actions remain preserved. No protocol,
-scientific sweep or reporting outcomes have been produced.
+The probability correction passed 77 local and 29 focused Oz tests. Both GPU
+smokes 005 passed exact reload/resume; VQ compatibility 002 passed. Synthetic
+fixture gradients remain engineering evidence only. The v3 target/source audit
+justified warm-up reuse for 009 only; it cannot authorize reuse after a target
+representation change. Old-sampler panels 008 remain invalidated and preserved.
 
 ## Isolation and reproducibility
 
@@ -107,8 +102,9 @@ Failed runs, traces and operator actions remain available under ROOT and evidenc
 
 ## Remaining gates and inference policy
 
-Finite FIT-only warm-up grid 1/1.5/2 passes, shared across all pairs/seeds, no STOP
-selection. Both format gates must pass at one exposure, then both true reward
+The original finite 1/1.5/2-pass grid and subsequent fixed three-pass candidate
+are exhausted; preserve their failures. Any new representation candidate requires
+the pending protocol decision. For an accepted candidate, use no STOP selection. Both format gates must pass at one exposure, then both true reward
 panels: 24 groups / 96 responses / 6 updates, >=20% spread groups, <=5% invalid/truncated,
 finite material gradients/policy change, unchanged actual warm reference. A real
 reward failure stops for diagnosis; no blind retry or fabricated feasibility.
