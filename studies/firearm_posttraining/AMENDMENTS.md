@@ -225,3 +225,41 @@ Format caps remain 600/900 seconds and actual panel caps 1800/3600 seconds, with
 the existing aggregate reservation guard enforcing the unchanged six-hour
 allowance. Do not extend that allowance silently. Full scientific-run time caps
 remain removed; all non-time scientific stopping rules remain.
+
+## Pre-freeze rollout probability correction
+
+The three-pass candidate008 completed its SFT warm-ups without STOP queries
+(label1082s, grounded1180s) and passed old-sampler format checks:95/96valid
+labels and94/96valid grounded. Before protocol freeze, code audit found that
+rollouts used temperature0.8/nucleus0.95 while policy/reference log-probabilities
+used raw unscaled logits. The pinned checkpoint also supplied inherited top-k20.
+The installed TRL1.16 GRPO trainer explicitly passes its temperature to both
+policy/reference scoring (grpo_trainer.py1066-1076; trainer/utils.py699-704).
+The native implementation must define one consistent probability policy.
+
+The format check completed just before the CPU pause, so old panels008 had
+started. Only that CPU controller and the two owned panel children were signaled;
+SIGTERM lets them checkpoint/settle. Preserve their traces and operator actions.
+Those panels are invalidated by implementation correction, not evidence of
+scientific RL feasibility or failure under the corrected policy. No protocol
+was frozen and no reporting outcomes were opened.
+
+Use one full-support temperature0.8 policy: fresh explicit GenerationConfig,
+num_beams1, top-p1, top-k0, repetition penalty1. Scale logits by the same0.8
+for old/current/reference token probabilities and entropy. Greedy reporting
+remains single-response argmax with the same cap. Full support avoids nucleus/
+top-k support renormalization mismatch in clipped ratios and reference KL.
+This changes the stochastic behavior distribution, so prior format gates cannot
+substitute for new checks. Parser, rewards, <=5% invalidity, >=20% reward-spread,
+divergence stops and six aggregate pilot GPU-hours remain unchanged.
+
+Keep the fixed3pass candidate, without additional exposure search. Prove exact
+source equality for SFT functions and trainer.py against a122820, verify its
+completed warm-up source commit and zero STOP checks, then reuse those adapters
+without retraining. Repeat the240-video actual-tokenizer audit as a new v3
+artifact (do not overwrite v2), and both GPU engineering checks as005. New
+format/reward attempt009 uses warm-up attempt008 in a fresh immutable namespace
+calibration-probability-v3. No automatic retry or further warm-up candidate.
+Only both new formats and both actual reward panels permit freeze and scaling.
+Unit tests cover temperature-matched likelihoods/entropy/gradients, preventing
+checkpoint filter inheritance, and warm-up reuse with new unique gate jobs.

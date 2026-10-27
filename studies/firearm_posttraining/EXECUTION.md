@@ -8,25 +8,21 @@ confirmed. HANDOFF.md is a historical proposal; current amendments govern.
 
 ## Current execution owner
 
-Current CPU controller PID 289543 runs from immutable release a122820. Status:
-ROOT/calibration-3pass-v2/status.json; log
-ROOT/calibration-3pass-v2-controller-001.log; launch
-ROOT/calibration-3pass-v2-launch-001.json. It owns fresh three-pass warm-ups
-pilot-c0l-008 / pilot-c0g-008 on Ada 6/7 and the downstream gates if they pass.
-Inspect live artifacts before acting; never double-submit or restart old grids.
+Controller289543 was stopped before protocol freeze for a confirmed GRPO
+probability mismatch: sampling temperature0.8 versus raw logits in likelihoods,
+with inherited checkpoint top-k20. Three-pass SFT completed without STOP queries;
+old format gates passed95/96labels and94/96grounded. Old panels008 had just
+started when the pause reached the scheduler; only owned children were signaled
+for graceful settlement. Their feasibility is invalidated by the correction.
 
-Prior controller 283507 stopped normally after the corrected 1/1.5/2-pass format
-grid exhausted. Label validity passed 94/96, 96/96, 95/96. Grounded gates stopped
-at 5/20, 5/18, 5/64 invalid. These are early-stop fractions, not full 96-response
-estimates. No common passing exposure, protocol freeze or scientific sweep yet.
-
-A committed pre-freeze amendment declares exactly one extra 3.0-pass candidate,
-fresh paired warm-ups and no STOP queries. Three passes count inside the same
-five-total-pass ceiling, leaving two continuation passes. Existing six aggregate
-pilot GPU-hours remain enforced; settled usage before launch was 2.91874 hours.
-Both format gates and both actual reward panels must pass before freeze. No
-further candidate or failed reward-panel retry follows automatically. Parser,
-thresholds, rewards, sampling, model and target mask remain unchanged.
+The new implementation uses one full-support temperature0.8 policy for sampling,
+old/current/reference probabilities and entropy, with fresh explicit generation
+configs. All77local tests passed;29focused Oz tests, exact SFT source-reuse
+audit and new GPU engineering gates are pending before new format/reward jobs.
+Candidate stays fixed at3FITpasses inside five total; no new exposure search.
+Completed SFT warm-ups008 can be reused only after source/identity audit; new
+full-support format/reward attempts009 must pass before freeze. See AMENDMENTS.md.
+Old controllers must not restart. No scientific sweep/reporting outcomes yet.
 
 ## Isolation and reproducibility
 

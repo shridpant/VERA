@@ -26,10 +26,17 @@ def validate_grid(values):
     return grid
 
 
-def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None, warmup_grid=None):
+def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None, warmup_grid=None, warmup_attempt=None):
     root = Path(root).resolve()
     original_data, frames_root = str(original_data), str(frames_root)
     grid = validate_grid((1., 1.5, 2.) if warmup_grid is None else warmup_grid)
+    if warmup_attempt is not None and (len(grid) != 1 or warmup_attempt < 1):
+        raise ValueError('explicit warm-up reuse requires one fixed exposure and a positive attempt')
+    reuse_audit = None
+    if warmup_attempt is not None:
+        reuse_audit = json.loads((root / 'data/target-mask-audit-v3.json').read_text())
+        if not (reuse_audit.get('status') == 'passed' and reuse_audit.get('sft_training_source_unchanged')):
+            raise ValueError('explicit warm-up reuse needs passing SFT source audit')
     if Path(control_name).name != control_name or control_name in ('.', '..') or attempt_offset < 0:
         raise ValueError('simple control directory and nonnegative attempt offset required')
     control = root / control_name
@@ -38,7 +45,8 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
     label_smoke = Path(label_smoke) if label_smoke else root / 'smoke-labels-003/result.json'
     write_json(control / 'config.json', {'control_name': control_name, 'attempt_offset': attempt_offset,
                'grounded_smoke': str(grounded_smoke), 'label_smoke': str(label_smoke),
-               'target_mask': 'known-schema-unknown-payload-v2', 'warmup_grid': grid}, immutable=True)
+               'target_mask': 'known-schema-unknown-payload-v2', 'warmup_grid': grid,
+               'warmup_attempt': warmup_attempt}, immutable=True)
     if resume and (control / 'status.json').exists() and json.loads((control / 'status.json').read_text()).get('stage') == 'complete':
         return
     model = json.loads((root / 'data/preflight.json').read_text())['model']
@@ -103,8 +111,10 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
             warm = {}
             tasks = []
             for index, kind, method in ((0, 'l', 'SL'), (1, 'g', 'SG')):
-                name = f'pilot-c0{kind}-{attempt:03d}'
+                name = f'pilot-c0{kind}-{warmup_attempt if warmup_attempt is not None else attempt:03d}'
                 warm[kind] = name
+                if warmup_attempt is not None and not (root / name / 'result.json').exists():
+                    raise RuntimeError('explicitly reused warm-up must already be complete')
                 if (root / name).exists() or (root / 'jobs' / name).exists():
                     # Reuse only explicitly named, already launched fixed warm-ups.
                     tasks.append((kind, completed, (name, True)))
@@ -123,6 +133,8 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
                 adapters[kind] = result['best_checkpoint']
                 state = json.loads((Path(adapters[kind]) / 'state.json').read_text())
                 spec = json.loads((root / warm[kind] / 'spec.json').read_text())
+                if reuse_audit and spec['code_commit'] != reuse_audit['sft_reference_commit']:
+                    raise RuntimeError('reused warm-up source differs from audited SFT reference')
                 if (state['cursor'] != math.floor(fit_count * passes) or state['selection']['checks'] != 0 or
                     spec['model'] != model or spec['warmup_passes'] != passes or spec['grounded'] != (kind == 'g')):
                     raise RuntimeError('fixed warm-up identity/supervision mismatch')
@@ -209,5 +221,6 @@ if __name__ == '__main__':
     p.add_argument('--grounded-smoke', help='passing engineering evidence for the current grounded target mask')
     p.add_argument('--label-smoke', help='passing engineering evidence for the current label target mask')
     p.add_argument('--warmup-grid', type=float, nargs='+', help='explicit finite pre-freeze grid; defaults to 1 1.5 2')
+    p.add_argument('--warmup-attempt', type=int, help='reuse completed fixed warm-ups at one exposure; new format/reward attempt remains unique')
     args = p.parse_args()
-    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke, args.warmup_grid)
+    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke, args.warmup_grid, args.warmup_attempt)

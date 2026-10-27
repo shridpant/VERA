@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from .data import letterbox, digest
+from .sampling import generation_settings, policy_statistics
 
 DEFAULT_QUESTIONS = ('What is the person in the video holding?',
                      'How is the person moving or positioning their arms and body?')
@@ -195,10 +196,8 @@ class NativeModel:
             self.model.set_adapter('reference')
         try:
             logits, tokens = self.logits(prompt, ids)
-            selected = logits.log_softmax(-1).gather(-1, tokens.unsqueeze(-1)).squeeze(-1)[0]
-            # Exact categorical entropy, reported separately from sampled-token surprisal.
-            entropy = -(logits.softmax(-1) * logits.log_softmax(-1)).sum(-1)[0].mean()
-            return selected, entropy
+            selected, entropy = policy_statistics(logits, tokens)
+            return selected[0], entropy[0].mean()
         finally:
             if reference:
                 self.model.set_adapter('default')
@@ -207,15 +206,14 @@ class NativeModel:
                         p.requires_grad_(False)
 
     def generate(self, prompt, sample=False, max_new_tokens=512):
+        from transformers import GenerationConfig
         torch = self.torch
         self.model.eval()
         with torch.no_grad():
-            settings = {'do_sample': sample, 'max_new_tokens': max_new_tokens,
-                        'use_cache': True, 'pad_token_id': self.tokenizer.pad_token_id,
-                        'eos_token_id': self.tokenizer.eos_token_id}
-            if sample:
-                settings.update(temperature=.8, top_p=.95)
-            full = self.model.generate(**prompt, **settings)
+            # A fresh config prevents checkpoint top-k/nucleus defaults from
+            # silently changing the behavior policy scored by GRPO.
+            config = GenerationConfig(**generation_settings(self.tokenizer, sample, max_new_tokens))
+            full = self.model.generate(**prompt, generation_config=config)
         ids = full[0, prompt['input_ids'].shape[1]:].tolist()
         truncated = not ids or ids[-1] != self.tokenizer.eos_token_id
         text = self.tokenizer.decode(ids, skip_special_tokens=True)

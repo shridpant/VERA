@@ -4,6 +4,7 @@ import json
 import math
 from pathlib import Path
 from .data import digest, canonical_hash, write_json
+from .sampling import TEMPERATURE, VERSION as SAMPLING_VERSION
 
 METHODS = ('VQ', 'SL', 'RL', 'SG', 'RG')
 SEEDS = (20261026, 20261027, 20261028)
@@ -39,7 +40,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
     if not (setup / 'requirements.lock').is_file() or not (setup / 'wheelhouse.json').is_file():
         raise ValueError('tested hash-locked environment required')
     preflight = json.loads((root / 'data/preflight.json').read_text())
-    mask_audit = json.loads((root / 'data/target-mask-audit-v2.json').read_text())
+    mask_audit = json.loads((root / 'data/target-mask-audit-v3.json').read_text())
     if (mask_audit.get('status') != 'passed' or mask_audit.get('target_mask') != 'known-schema-unknown-payload-v2' or
         mask_audit.get('current_model_sha256') != digest(Path(__file__).with_name('model.py'))):
         raise ValueError('passing target-mask audit for current source required')
@@ -59,7 +60,7 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
                                   'sft_pilot_hours': 4, 'rl_pilot_hours': 2,
                                   'scientific_stopping_rules_retained': True},
               'warmup_selection': 'fixed_no_STOP_queries', 'evidence': evidence,
-              'data_hashes': {name: digest(root / 'data' / name) for name in ('fit.json', 'stop.json', 'audit.json', 'preflight.json', 'target-mask-audit-v2.json')},
+              'data_hashes': {name: digest(root / 'data' / name) for name in ('fit.json', 'stop.json', 'audit.json', 'preflight.json', 'target-mask-audit-v3.json')},
               'requirements_lock_sha256': digest(setup / 'requirements.lock'),
               'codebook_sha256': preflight['codebook_sha256'],
               'throughput_forecast_sha256': digest(root / 'throughput-forecast.json'),
@@ -68,6 +69,8 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
               'completion_cap': 512, 'context_cap': 8192, 'precision': 'bf16',
               'lora': {'rank': 16, 'alpha': 32, 'dropout': 0., 'targets': 'language_attention_q_k_v_o_only'},
               'target_mask': 'known-schema-unknown-payload-v2',
+              'rollout_policy': {'version': SAMPLING_VERSION, 'temperature': TEMPERATURE, 'top_p': 1., 'top_k': 0,
+                                 'scoring': 'same temperature-scaled full-support policy for old/current/reference probabilities and entropy'},
               'sft_loss': 'mean_label_and_known_schema + 0.5 * mean_known_box_payload; tokens touching unknown payload masked',
               'reward_version': 'hierarchical-iou-v1', 'reward_coefficients': {'C': .7, 'CG': .2, 'CGA': .1, 'grounded_outcome': .75, 'gated_Q': .25},
               'code_hashes': {p.name: digest(p) for p in module.glob('*.py')},

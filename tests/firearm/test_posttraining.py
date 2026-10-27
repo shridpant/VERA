@@ -258,6 +258,52 @@ class EvaluationAndBudgetTests(unittest.TestCase):
 
 
 class GRPOTests(unittest.TestCase):
+    def test_sampling_likelihoods_match_full_support_temperature_policy(self):
+        import torch
+        from types import SimpleNamespace
+        from studies.firearm_posttraining.sampling import generation_settings, policy_statistics
+        tokenizer = SimpleNamespace(pad_token_id=0, eos_token_id=2, bos_token_id=1)
+        settings = generation_settings(tokenizer, True, 512)
+        self.assertEqual((settings['temperature'], settings['top_p'], settings['top_k']), (.8, 1., 0))
+        self.assertFalse(generation_settings(tokenizer, False, 512)['do_sample'])
+        logits = torch.tensor([[[0., 1., 2.], [2., 0., -1.]]], requires_grad=True)
+        tokens = torch.tensor([[2, 0]])
+        selected, entropy = policy_statistics(logits, tokens)
+        expected = (logits / settings['temperature']).log_softmax(-1)
+        self.assertTrue(torch.allclose(selected, expected.gather(-1, tokens.unsqueeze(-1)).squeeze(-1)))
+        self.assertTrue(torch.allclose(entropy, -(expected.exp() * expected).sum(-1)))
+        self.assertFalse(torch.allclose(selected, logits.log_softmax(-1).gather(-1, tokens.unsqueeze(-1)).squeeze(-1)))
+        from studies.firearm_posttraining.model import NativeModel
+        native = NativeModel.__new__(NativeModel)
+        native.logits = lambda prompt, ids: (logits, tokens)
+        actual, actual_entropy = native.log_probs({}, [2, 0])
+        self.assertTrue(torch.allclose(actual, selected[0]))
+        self.assertTrue(torch.allclose(actual_entropy, entropy[0].mean()))
+        (-selected.mean()).backward()
+        self.assertTrue(bool(torch.isfinite(logits.grad).all()))
+
+    def test_generation_does_not_inherit_checkpoint_sampling_filters(self):
+        import torch
+        from transformers import GenerationConfig
+        from types import SimpleNamespace
+        from studies.firearm_posttraining.model import NativeModel
+        captured = {}
+        def generate(**kwargs):
+            captured.update(kwargs)
+            return torch.tensor([[1, 3, 4, 2]])
+        native = NativeModel.__new__(NativeModel)
+        native.torch = torch
+        native.model = SimpleNamespace(eval=lambda: None, generate=generate,
+            generation_config=GenerationConfig(temperature=.7, top_k=20, top_p=.8, do_sample=True))
+        native.tokenizer = SimpleNamespace(pad_token_id=0, eos_token_id=2, bos_token_id=1,
+                                           decode=lambda ids, **kwargs: '{}')
+        result = native.generate({'input_ids': torch.tensor([[1, 3]])}, sample=True)
+        actual = captured['generation_config']
+        self.assertEqual((actual.temperature, actual.top_p, actual.top_k, actual.num_beams), (.8, 1., 0, 1))
+        self.assertIsNot(actual, native.model.generation_config)
+        self.assertEqual(result['ids'], [4, 2])
+        self.assertFalse(result['truncated'])
+
     def test_policy_direction_zero_variance_and_reference_kl(self):
         import torch
         from studies.firearm_posttraining.smoke import grpo_loss
@@ -377,7 +423,7 @@ class OrchestrationTests(unittest.TestCase):
             with self.subTest(format_retry=reject_first_format, reward_failure=reject_reward), tempfile.TemporaryDirectory() as td:
                 root = Path(td)
                 namespaced = not any((reject_first_format, reject_reward, prelaunch_failure))
-                options = {'control_name': 'calibration-v2', 'attempt_offset': 6, 'warmup_grid': [3.],
+                options = {'control_name': 'calibration-v2', 'attempt_offset': 7, 'warmup_grid': [3.], 'warmup_attempt': 8,
                            'grounded_smoke': root / 'smoke-grounded-new/result.json'} if namespaced else {}
                 data.write_json(root / 'data/preflight.json', {'model': 'pinned'})
                 data.write_json(root / 'data/fit.json', [{}] * 192)
@@ -404,7 +450,8 @@ class OrchestrationTests(unittest.TestCase):
                         passes = float(command[command.index('--warmup-passes') + 1])
                         adapter = directory / 'checkpoints/fixed'
                         data.write_json(adapter / 'state.json', {'cursor': int(192 * passes), 'selection': {'checks': 0}})
-                        data.write_json(directory / 'spec.json', {'model': 'pinned', 'warmup_passes': passes, 'grounded': grounded})
+                        data.write_json(directory / 'spec.json', {'model': 'pinned', 'warmup_passes': passes, 'grounded': grounded,
+                                                               'code_commit': 'audited-reference'})
                         result = {'status': 'stopped', 'stop_reason': 'fixed_warmup_complete', 'fit_passes': passes, 'best_checkpoint': str(adapter), 'elapsed_seconds': 30.}
                     elif 'studies.firearm_posttraining.fit_format' in command:
                         fail = reject_first_format and grounded and name.endswith('002')
@@ -414,6 +461,19 @@ class OrchestrationTests(unittest.TestCase):
                     data.write_json(directory / 'result.json', result)
                 def fake_pipeline(*args):
                     data.write_json(root / 'pipeline/status.json', {'stage': 'complete'})
+                if namespaced:
+                    # Completed SFT artifacts exist before the new probability
+                    # validation; no old freeze/forecast has been produced.
+                    for kind in ('l', 'g'):
+                        name = f'pilot-c0{kind}-008'
+                        command = ['python', '--name', name, '--output', str(root / name), '--model', 'pinned',
+                                   '--data', str(root / 'data'), '--warmup-only', '--warmup-passes', '3', '--seconds', '1800']
+                        if kind == 'g':
+                            command.append('--grounded')
+                        fake_run(command)
+                    data.write_json(root / 'data/target-mask-audit-v3.json', {'status': 'passed',
+                                    'sft_training_source_unchanged': True, 'sft_reference_commit': 'audited-reference'})
+                    prior_warmups = sum('--warmup-only' in c for c in commands)
                 with patch('studies.firearm_posttraining.calibrate.subprocess.run', side_effect=fake_run), \
                      patch('studies.firearm_posttraining.calibrate.freeze', return_value={'protocol_hash': 'frozen'}) as freeze, \
                      patch('studies.firearm_posttraining.calibrate.pipeline', side_effect=fake_pipeline) as pipeline:
@@ -436,6 +496,9 @@ class OrchestrationTests(unittest.TestCase):
                     self.assertEqual(freeze.call_args.args[3], root / 'smoke-grounded-new/result.json')
                     with self.assertRaisesRegex(ValueError, 'immutable artifact differs'):
                         run(root, 'original', 'frames', resume=True, **{**options, 'warmup_grid': [3.5]})
+                    self.assertEqual(sum('--warmup-only' in c for c in commands), prior_warmups)
+                    self.assertTrue(any(c[c.index('--name') + 1] == 'format-g-009' for c in commands))
+                    self.assertTrue(any(c[c.index('--name') + 1] == 'pilot-rg-009' for c in commands))
                 if reject_reward:
                     self.assertEqual(final['stage'], 'failed_real_reward_gate')
                     freeze.assert_not_called()
