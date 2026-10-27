@@ -21,6 +21,36 @@ def valid_revision(old, new):
     return len(new) == len(old) + 1 and new[:-1] == old
 
 
+def decode_proposal(text, old, truncated=False):
+    try:
+        value = json.loads(text) if not truncated else None
+        if not isinstance(value, dict) or set(value) != {'slot', 'question'}:
+            return None
+        slot = value['slot']
+        if type(slot) is not int or not 0 <= slot <= len(old):
+            return None
+        new = list(old)
+        if slot == len(old):
+            new.append(value['question'])
+        else:
+            new[slot] = value['question']
+        return new if valid_revision(old, new) else None
+    except (ValueError, TypeError):
+        return None
+
+
+def optimizer_instruction(book, questions, paired):
+    return ('Improve a short list of visual guiding questions for this video classification task. '
+        'The displayed videos are FIT examples only. Their prediction and target labels follow. '
+        'Return only JSON with exactly two keys: slot (zero-based integer) and question (one concise visual question). '
+        'Choose one existing slot relevant to the observed FIT confusion, or slot equal to the current list length to append. '
+        'Only that slot will change. The maximum list length is five. Retain useful visual checks. '
+        'Do not put filenames or a particular example target into a question.\n'
+        + '\nTask codebook: ' + '\n'.join(f'{code}: {v["category"]}, {v["group"]}, {v["meaning"]}'
+                                          for code, v in sorted(book['codes'].items()))
+        + '\nCurrent questions: ' + json.dumps(questions) + '\nPaired examples: ' + json.dumps(paired))
+
+
 def run(args):
     validate(args.frozen_protocol, args.data, args.model, args.codebook)
     out = Path(args.output)
@@ -75,24 +105,13 @@ def run(args):
                 row = example['row']
                 paired.append({'video_in_this_prompt': example_index, 'predicted': example['parsed'],
                                'target': {k: row[k] for k in ('category', 'action_group', 'action_code')}})
-            optimizer_text = ('Improve a short list of visual guiding questions for this video classification task. '
-                'The displayed videos are FIT examples only. Their prediction and target labels follow. '
-                'Return only JSON with one key questions (a list of at most five concise questions). '
-                'Change exactly one existing question, keeping all others verbatim, or append exactly one question. '
-                'Retain useful questions. Do not include filenames or labels for a particular example in a question.\n'
-                + '\nTask codebook: ' + '\n'.join(f'{code}: {v["category"]}, {v["group"]}, {v["meaning"]}'
-                                                       for code, v in sorted(book['codes'].items()))
-                + '\nCurrent questions: ' + json.dumps(questions)
-                + '\nPaired examples: ' + json.dumps(paired))
+            optimizer_text = optimizer_instruction(book, questions, paired)
             prompt, actual_text = native.encode([e['row'] for e in chosen], optimizer_text)
             proposal = native.generate(prompt, sample=True)
             optimizer_queries += len(chosen)
             append(out / 'optimizer.jsonl', {'candidate': candidate_index, 'fit_ids': [e['row']['id'] for e in chosen],
                     'prompt': actual_text, 'response': proposal['text'], 'truncated': proposal['truncated']})
-            try:
-                proposed = json.loads(proposal['text'])['questions'] if not proposal['truncated'] else None
-            except (ValueError, TypeError, KeyError):
-                proposed = None
+            proposed = decode_proposal(proposal['text'], questions, proposal['truncated'])
             if not valid_revision(questions, proposed):
                 rejected += 1
                 append(out / 'selection.jsonl', {'candidate': candidate_index, 'accepted': False, 'reason': 'invalid_revision'})

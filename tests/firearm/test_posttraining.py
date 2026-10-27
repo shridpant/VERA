@@ -10,7 +10,7 @@ from studies.firearm_posttraining.model import target_parts, token_kinds, instru
 from studies.firearm_posttraining.stopping import StopState
 from studies.firearm_posttraining.evaluation import metrics
 from studies.firearm_posttraining.execute import budget_used, reserve, finish, validate_duration
-from studies.firearm_posttraining.verbalized import valid_revision
+from studies.firearm_posttraining.verbalized import valid_revision, decode_proposal
 from studies.firearm_posttraining.protocol import validate, verify_selection
 
 BOOK = json.loads(Path('studies/firearm_training/codebook.json').read_text())
@@ -282,6 +282,9 @@ class FreezeAndQuestionTests(unittest.TestCase):
         self.assertFalse(valid_revision(old, old[:1]))
         self.assertFalse(valid_revision(old, ['x'] * 6))
         self.assertFalse(valid_revision(old, ['x' * 241, old[1]]))
+        self.assertEqual(decode_proposal(json.dumps({'slot': 0, 'question': 'New question?'}), old), ['New question?', old[1]])
+        self.assertIsNone(decode_proposal(json.dumps({'slot': True, 'question': 'New?'}), old))
+        self.assertIsNone(decode_proposal(json.dumps({'slot': 3, 'question': 'New?'}), old))
 
     def test_protocol_and_selection_tampering_fail_closed(self):
         with tempfile.TemporaryDirectory() as td:
@@ -396,7 +399,7 @@ class OrchestrationTests(unittest.TestCase):
                 assert row['id'].startswith('fit-')
             def generate(self, prompt, **kwargs):
                 if prompt == 'optimizer':
-                    text = json.dumps({'questions': ['Describe the held object precisely?', DEFAULT_QUESTIONS[1]]})
+                    text = json.dumps({'slot': 0, 'question': 'Describe the held object precisely?'})
                 else:
                     text = json.dumps(response(prompt, False))
                 return {'text': text, 'ids': [1], 'truncated': False, 'generated_tokens': 1}
