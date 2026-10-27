@@ -36,8 +36,9 @@ def run(args):
         if warm_state.get('selection', {}).get('checks') != 0:
             raise ValueError('paired initialization must be a fixed 0.5-pass warm start without STOP selection')
     if args.frozen_protocol:
-        protocol = json.loads(Path(args.frozen_protocol).read_text())
-        if protocol.get('status') != 'frozen' or args.max_passes != protocol['shared_max_fit_passes']:
+        from .protocol import validate
+        protocol = validate(args.frozen_protocol, args.data, args.model)
+        if args.max_passes != protocol['shared_max_fit_passes']:
             raise ValueError('frozen protocol/pass budget mismatch')
     if not args.resume:
         provenance(out, vars(args))
@@ -46,6 +47,10 @@ def run(args):
     start_cursor = len(fit) // 2 if args.adapter else 0
     if args.adapter and warm_state['cursor'] != start_cursor:
         raise ValueError('warm-start exposure mismatch')
+    if args.adapter and (warm_state.get('seed') != args.seed or
+                         warm_state.get('fit_manifest_hash') != digest(Path(args.data) / 'fit.json') or
+                         warm_state.get('grounded') != grounded):
+        raise ValueError('warm-start seed, data, or supervision mismatch')
     lookup = {r['id']: r for r in fit}
     native = NativeModel(args.model, book, adapter=args.adapter, seed=args.seed)
     torch, model = native.torch, native.model
@@ -84,6 +89,7 @@ def run(args):
                 'bad_kl': bad_kl, 'bad_format': bad_format, 'bad_stop': bad_stop, 'initial_stop': initial_stop,
                 'reference_hash': native.reference_hash if is_rl else None,
                 'initial_exposures': start_cursor,
+                'grounded': grounded, 'method': args.method,
                 'reward_version': VERSION if is_rl else None}
     def snapshot(name):
         path = out / 'checkpoints' / name

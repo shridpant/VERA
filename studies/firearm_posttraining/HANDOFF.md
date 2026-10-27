@@ -1,3 +1,6 @@
+> Historical proposal. Current two-Ada execution authorization and measured status
+> are in [AMENDMENTS.md](AMENDMENTS.md) and [EXECUTION.md](EXECUTION.md).
+
 # Firearm video post-training: one-GPU controlled study
 
 Prepared 2026-10-26, America/New_York. This is an execution handoff and proposed protocol, not a claim that new training has started.

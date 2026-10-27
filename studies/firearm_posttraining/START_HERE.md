@@ -1,3 +1,6 @@
+> Historical proposal. Current two-Ada execution authorization and measured status
+> are in [AMENDMENTS.md](AMENDMENTS.md) and [EXECUTION.md](EXECUTION.md).
+
 # Start the one-GPU firearm post-training study
 
 Read the full protocol in `POSTTRAINING_HANDOFF.md` and its defaults in `POSTTRAINING_PLAN.json` in the delivered folder. In the repository these are `studies/firearm_posttraining/HANDOFF.md` and `studies/firearm_posttraining/plan.json`.

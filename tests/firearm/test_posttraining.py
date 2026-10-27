@@ -10,6 +10,8 @@ from studies.firearm_posttraining.model import target_parts, token_kinds, instru
 from studies.firearm_posttraining.stopping import StopState
 from studies.firearm_posttraining.evaluation import metrics
 from studies.firearm_posttraining.execute import budget_used, reserve, finish
+from studies.firearm_posttraining.verbalized import valid_revision
+from studies.firearm_posttraining.protocol import validate, verify_selection
 
 BOOK = json.loads(Path('studies/firearm_training/codebook.json').read_text())
 
@@ -235,6 +237,38 @@ class GRPOTests(unittest.TestCase):
         self.assertGreater(parts['kl_per_token'], 0.)
         loss.backward()
         self.assertTrue(bool((lp.grad > 0).all()))
+
+
+class FreezeAndQuestionTests(unittest.TestCase):
+    def test_question_revision_preserves_prior_slots(self):
+        old = ['What is held?', 'How are the arms positioned?']
+        self.assertTrue(valid_revision(old, ['Which object is held?', old[1]]))
+        self.assertTrue(valid_revision(old, old + ['Is the object a firearm?']))
+        self.assertFalse(valid_revision(old, old))
+        self.assertFalse(valid_revision(old, ['new', 'both changed']))
+        self.assertFalse(valid_revision(old, old[:1]))
+        self.assertFalse(valid_revision(old, ['x'] * 6))
+        self.assertFalse(valid_revision(old, ['x' * 241, old[1]]))
+
+    def test_protocol_and_selection_tampering_fail_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            p = Path(td, 'protocol.json')
+            data.write_json(p, {'status': 'frozen', 'protocol_hash': 'wrong'})
+            with self.assertRaises(ValueError):
+                validate(p, td)
+            p = Path(td, 'selection.json')
+            data.write_json(p, {'status': 'selection_frozen', 'selection_hash': 'wrong'})
+            with self.assertRaises(ValueError):
+                verify_selection(p, td)
+
+    def test_holdout_guard_runs_before_original_data_is_read(self):
+        from studies.firearm_posttraining.holdout import run
+        from types import SimpleNamespace
+        with tempfile.TemporaryDirectory() as td:
+            p = Path(td, 'bad.json')
+            data.write_json(p, {'status': 'selection_frozen'})
+            with self.assertRaises(ValueError):
+                run(SimpleNamespace(frozen_manifest=str(p), data=td, original_data='/must/not/be/read'))
 
 
 if __name__ == '__main__':

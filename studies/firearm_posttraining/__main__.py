@@ -31,6 +31,25 @@ def main():
         if command == 'rl-panel':
             a.add_argument('--adapter', required=True)
             a.add_argument('--max-seconds', type=float, default=3600)
+    a = sub.add_parser('vq')
+    a.set_defaults(method='VQ')
+    a.add_argument('--model', required=True)
+    a.add_argument('--data', required=True)
+    a.add_argument('--output', required=True)
+    a.add_argument('--frozen-protocol', required=True)
+    a.add_argument('--codebook', default='studies/firearm_training/codebook.json')
+    a.add_argument('--seed', type=int, required=True)
+    a.add_argument('--max-seconds', type=float, default=9000)
+    a = sub.add_parser('holdout')
+    a.add_argument('--frozen-manifest', required=True)
+    a.add_argument('--data', required=True)
+    a.add_argument('--original-data', required=True)
+    a.add_argument('--frames-root', required=True)
+    a.add_argument('--split', choices=('val', 'test'), required=True)
+    a.add_argument('--method', choices=('B0', 'VQ', 'SL', 'RL', 'SG', 'RG'), required=True)
+    a.add_argument('--seed', type=int, default=20261026)
+    a.add_argument('--output', required=True)
+    a.add_argument('--codebook', default='studies/firearm_training/codebook.json')
     args = p.parse_args()
     if args.command == 'audit':
         from .data import audit
@@ -43,6 +62,12 @@ def main():
         run(args)
     elif args.command == 'rl-panel':
         from .rl_panel import run
+        run(args)
+    elif args.command == 'vq':
+        from .verbalized import run
+        run(args)
+    elif args.command == 'holdout':
+        from .holdout import run
         run(args)
 
 

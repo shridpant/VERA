@@ -119,15 +119,20 @@ class NativeModel:
         self.assert_trainable()
 
     def prompt(self, row, grounded=False, questions=None):
+        return self.encode([row], instruction(self.book, grounded, questions))
+
+    def encode(self, rows, text_instruction):
         from PIL import Image
         images = []
-        for v in row['views']:
-            with Image.open(v['path']) as im:
-                images.append(letterbox(im, row['geometry']))
         content = []
-        for k in range(8):
-            content.extend([{'type': 'text', 'text': f'Frame {k}: '}, {'type': 'image'}])
-        content.append({'type': 'text', 'text': instruction(self.book, grounded, questions)})
+        for number, row in enumerate(rows):
+            if len(rows) > 1:
+                content.append({'type': 'text', 'text': f'Video {number}: '})
+            for k, v in enumerate(row['views']):
+                with Image.open(v['path']) as im:
+                    images.append(letterbox(im, row['geometry']))
+                content.extend([{'type': 'text', 'text': f'Frame {k}: '}, {'type': 'image'}])
+        content.append({'type': 'text', 'text': text_instruction})
         messages = [{'role': 'user', 'content': content}]
         text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True, enable_thinking=False)
         # Never place IDs, paths, labels, or audited annotations in user content.
@@ -135,7 +140,7 @@ class NativeModel:
         if inputs['input_ids'].shape[1] + 512 > 8192:
             raise ValueError('context overflow; image-token truncation forbidden')
         image_id = self.model.config.image_token_id
-        if int((inputs['input_ids'] == image_id).sum()) <= 0 or len(inputs['image_grid_thw']) != 8:
+        if int((inputs['input_ids'] == image_id).sum()) <= 0 or len(inputs['image_grid_thw']) != len(images):
             raise RuntimeError('lost image tokens')
         return inputs.to('cuda:0'), text
 
