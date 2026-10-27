@@ -1,0 +1,15 @@
+{
+  "files": {
+    "PROTOCOL.md": "1980c7282c2ee56abdd8032fef4f1e1a827e9d79a9aae64e3c4fc1e1d78110c0",
+    "NOVELTY.md": "cb5bc530a909e37c3fc02aaa940059e97c7b6cf0b14b6e9b013799beb4c0e239",
+    "run.py": "64bcc403667f96595d1c6c49b85996b79e71e26be7ce25053f385ab0d3ee7170",
+    "analyze.py": "76154de9b0c298e753dcef2d9fe537cbd9a3b0a20f204d57f5aefe228f609dfb",
+    "check_contract.py": "09363960b86f6aa235921adcb7db96cad963d793842c932be978854dd31b56aa",
+    "references.json": "f389824e72e9ef86190646db0346adf8c7e354d0d674e403ba18d2532be3a481"
+  },
+  "inputs_sha256": "73fcb3ed8bc850a8c1b3595885ec7de27a4e42a702f5af7a5fcb78c0766e23c9",
+  "prior_results_sha256": "e74fc5b52c6247f4fd75f340510c90d08b519667f97b09ddbd4d1081a21e2668",
+  "calls": 72,
+  "previous_calls": 48,
+  "scope": "exploratory; no training; no human labels"
+}
