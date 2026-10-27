@@ -33,3 +33,12 @@ statuses are masked. This applies the handoff's unknown-not-negative rule.
   next-step adapter hashes differed. This is an engineering failure, not a
   completed compatibility gate or a generalization result. Enable deterministic
   kernels and capture tensor-level differences before another bounded attempt.
+
+- `smoke-labels-002`, commit afeea9e: deterministic kernels fixed exact resume;
+  prediction reload and native forward/backward/reference scoring passed in
+  44.26 GPU-seconds. Peak allocated memory 19,609,906,176 bytes. All four sampled
+  rewards were equal. The centered synthetic advantages on identical strings
+  almost canceled (gradient norm 4.6e-9), so this did **not** establish a meaningful
+  policy gradient. Strengthen the engineering fixture with distinct explicitly
+  synthetic completions and require gradient norm >1e-6. The real 24-video
+  reward-spread/validity gate remains mandatory; synthetic fixtures never pass it.

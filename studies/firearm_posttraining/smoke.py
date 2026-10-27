@@ -121,6 +121,23 @@ def run(args):
     actual_advantages = (rewards - rewards.mean()) / (rewards.std(unbiased=False) + 1e-4)
     synthetic = spread == 0
     advantages = torch.tensor([-1., -.5, .5, 1.], device='cuda:0') if synthetic else actual_advantages
+    if synthetic:
+        # Identical sampled completions plus centered artificial advantages cancel
+        # mathematically. Use distinct *explicitly synthetic* teacher-forced strings
+        # to test the gradient plumbing, never to claim sampled-policy learning.
+        rollouts, old_lps, ref_lps = [], [], []
+        for code in ('PAH1', 'PCH1', 'PAW1', 'N1'):
+            label = book['codes'][code]
+            fake_row = {**row, 'category': label['category'], 'action_group': label['group'], 'action_code': code}
+            fake_ids, _, fake_text = native.completion(fake_row, args.grounded)
+            with torch.no_grad():
+                lp, _ = native.log_probs(prompt, fake_ids)
+                ref, _ = native.log_probs(prompt, fake_ids, reference=True)
+            old_lps.append(lp.detach())
+            ref_lps.append(ref.detach())
+            fixture = {'ids': fake_ids, 'text': fake_text, 'synthetic_engineering_only': True, 'video': row['id']}
+            append(out / 'engineering-fixtures.jsonl', fixture)
+            rollouts.append(fixture)
     optimizer.zero_grad(set_to_none=True)
     summaries = []
     model.train()
@@ -132,8 +149,8 @@ def run(args):
         (loss / 4).backward()
         summaries.append({**parts, 'loss': float(loss.detach()), 'entropy': float(entropy.detach())})
     norm = torch.nn.utils.clip_grad_norm_([p for p in model.parameters() if p.requires_grad], 1.)
-    if not torch.isfinite(norm) or float(norm) == 0:
-        raise RuntimeError('GRPO gradient not finite and nonzero')
+    if not torch.isfinite(norm) or float(norm) <= 1e-6:
+        raise RuntimeError('GRPO engineering gradient not finite and materially nonzero')
     optimizer.step()
     if native.adapter_hash() == policy_start or native.adapter_hash('reference') != native.reference_hash:
         raise RuntimeError('policy unchanged or reference mutated')

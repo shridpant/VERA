@@ -8,6 +8,8 @@ from pathlib import Path
 from studies.firearm_posttraining import data, rewards
 from studies.firearm_posttraining.model import target_parts, token_kinds, instruction
 from studies.firearm_posttraining.stopping import StopState
+from studies.firearm_posttraining.evaluation import metrics
+from studies.firearm_posttraining.execute import budget_used, reserve, finish
 
 BOOK = json.loads(Path('studies/firearm_training/codebook.json').read_text())
 
@@ -181,6 +183,58 @@ class StoppingTests(unittest.TestCase):
         self.assertEqual(state.stale, 0)
         state.observe({**metrics, 'balanced_category_accuracy': .506, 'action_group_accuracy': .5}, 'tie', 1)
         self.assertEqual(state.best_checkpoint, 'tie')
+
+
+class EvaluationAndBudgetTests(unittest.TestCase):
+    def test_paired_ids_invalid_and_false_positives(self):
+        rows = [{**fixture(), 'id': str(i), 'category': cat} for i, cat in enumerate(data.CATEGORIES)]
+        predictions = [{'video': r['id'], 'text': json.dumps(response(r, False)), 'truncated': False} for r in rows]
+        measured = metrics(rows, predictions, BOOK)
+        self.assertAlmostEqual(measured['balanced_category_accuracy'], 1.)
+        predictions[0]['text'] = '{}'
+        predictions[2]['text'] = json.dumps(response(fixture(), False))
+        measured = metrics(rows, predictions, BOOK)
+        self.assertAlmostEqual(measured['balanced_category_accuracy'], 1 / 3)
+        self.assertEqual(measured['no_gun_category_false_positive_rate'], 1.)
+        self.assertAlmostEqual(measured['invalid_fraction'], 1 / 3)
+        with self.assertRaises(ValueError):
+            metrics(rows, predictions[:-1], BOOK)
+        with self.assertRaises(ValueError):
+            metrics(rows, predictions + predictions[:1], BOOK)
+
+    def test_concurrent_reservations_charge_gpu_time_and_fail_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            reserve(root, 'a', 'pilot', 6000, 'gpu6')
+            with self.assertRaises(RuntimeError):
+                reserve(root, 'b', 'pilot', 6000, 'gpu7')
+            finish(root, 'a', 100, 1, 'child_failure')
+            reserve(root, 'b', 'pilot', 6000, 'gpu7')
+            records = json.loads((root / 'budget.json').read_text())
+            self.assertEqual(budget_used(records), 6100)
+            with self.assertRaises(RuntimeError):
+                reserve(root, 'a', 'pilot', 1, 'gpu6')
+
+
+class GRPOTests(unittest.TestCase):
+    def test_policy_direction_zero_variance_and_reference_kl(self):
+        import torch
+        from studies.firearm_posttraining.smoke import grpo_loss
+        old = torch.tensor([-.5, -.7])
+        lp = old.clone().requires_grad_()
+        loss, parts = grpo_loss(torch, lp, old, old, torch.tensor(1.))
+        loss.backward()
+        self.assertTrue(bool((lp.grad < 0).all()))
+        self.assertEqual(parts['kl_per_token'], 0.)
+        lp = old.clone().requires_grad_()
+        loss, _ = grpo_loss(torch, lp, old, old, torch.tensor(0.))
+        loss.backward()
+        self.assertTrue(bool((lp.grad == 0).all()))
+        lp = (old + .1).clone().requires_grad_()
+        loss, parts = grpo_loss(torch, lp, old, old, torch.tensor(0.))
+        self.assertGreater(parts['kl_per_token'], 0.)
+        loss.backward()
+        self.assertTrue(bool((lp.grad > 0).all()))
 
 
 if __name__ == '__main__':
