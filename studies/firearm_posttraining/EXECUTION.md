@@ -8,21 +8,25 @@ confirmed. HANDOFF.md is a historical proposal; current amendments govern.
 
 ## Current execution owner
 
-Prior CPU controller PID 283507 ran from immutable release 1b109ed and has stopped normally after exhausting its format grid. Its actual status
-is ROOT/calibration-mask-v2/status.json, with log
-ROOT/calibration-mask-v2-controller-001.log and launch metadata
-ROOT/calibration-mask-v2-launch-001.json. Inspect live artifacts before acting;
-verify a new controller launch record before any submission. Do not double-submit GPU jobs.
+Current CPU controller PID 289543 runs from immutable release a122820. Status:
+ROOT/calibration-3pass-v2/status.json; log
+ROOT/calibration-3pass-v2-controller-001.log; launch
+ROOT/calibration-3pass-v2-launch-001.json. It owns fresh three-pass warm-ups
+pilot-c0l-008 / pilot-c0g-008 on Ada 6/7 and the downstream gates if they pass.
+Inspect live artifacts before acting; never double-submit or restart old grids.
 
-Corrected one-pass and 1.5-pass warm-ups completed without STOP queries. Label
-sampled-format gates passed 94/96 and 96/96 respectively. Grounded format failed
-5/20 and 5/18 respectively, with early stopping once <=5% of 96 became impossible.
-The two-pass candidate007 also failed grounded validity (5/64 invalid); labels
-passed95/96. The complete grid exhausted without a common passing exposure.
-Strict parser and thresholds remain unchanged. A recorded pre-freeze amendment
-adds exactly one shared three-pass candidate008 in calibration-3pass-v2, within
-the six aggregate pilot-hour allowance and five-total-pass ceiling. It must pass
-both formats and both actual reward panels before any freeze or scientific sweep.
+Prior controller 283507 stopped normally after the corrected 1/1.5/2-pass format
+grid exhausted. Label validity passed 94/96, 96/96, 95/96. Grounded gates stopped
+at 5/20, 5/18, 5/64 invalid. These are early-stop fractions, not full 96-response
+estimates. No common passing exposure, protocol freeze or scientific sweep yet.
+
+A committed pre-freeze amendment declares exactly one extra 3.0-pass candidate,
+fresh paired warm-ups and no STOP queries. Three passes count inside the same
+five-total-pass ceiling, leaving two continuation passes. Existing six aggregate
+pilot GPU-hours remain enforced; settled usage before launch was 2.91874 hours.
+Both format gates and both actual reward panels must pass before freeze. No
+further candidate or failed reward-panel retry follows automatically. Parser,
+thresholds, rewards, sampling, model and target mask remain unchanged.
 
 ## Isolation and reproducibility
 
@@ -55,8 +59,8 @@ chronological 448 letterbox views; no GT crops. Unknown listed_no_box is unknown
 not absence. Native Qwen3-VL-8B BF16 with rank 16 language-attention LoRA freezes
 vision/projector/embeddings/head/base tensors. Same backbone/capacity across arms.
 
-All75 firearm tests pass locally after the finite-grid amendment;27 focused
-are being verified on Oz before the new controller launch. Real
+All 75 firearm tests pass locally after the finite-grid amendment; 27 focused
+tests passed on Oz before the new controller launch. Real
 VQ compatibility passed 16 images / 4,451 prompt tokens with a valid single-slot
 revision and unchanged adapter. Both fresh engineering gates smoke-labels-004
 and smoke-grounded-004 passed exact prediction reload/next-update resume,
@@ -120,3 +124,8 @@ after passing gates. An active 15-minute in-chat continuation reads the canonica
 outputs/CONTINUE_EXPERIMENTS.md and actual artifacts. Local follow-ups need Mac/
 app running; remote jobs are independent. Deliver verified report/tables/plots,
 update audit evidence/PR from Mac, and never merge. Running jobs are not completion.
+
+The three-pass amendment and actual launch are preserved in AMENDMENTS.md and
+evidence/three-pass-calibration-launch.json. The original failed grid remains
+in calibration-mask-v2/ and its evidence files. No reporting outcomes informed
+this pre-freeze numerical amendment.

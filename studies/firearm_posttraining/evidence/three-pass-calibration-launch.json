@@ -1,0 +1,142 @@
+{
+  "calibration-3pass-v2-launch-001.json": {
+    "code_commit": "a122820",
+    "command": [
+      "/local/datasets/sp2117/envs/firearm-posttrain/bin/python",
+      "-m",
+      "studies.firearm_posttraining.calibrate",
+      "--root",
+      "/local/datasets/sp2117/firearm_visilab/posttraining1",
+      "--original-data",
+      "/local/datasets/sp2117/firearm_visilab/training1/data",
+      "--frames-root",
+      "/local/datasets/sp2117/firearm_visilab/training1/frames",
+      "--control-name",
+      "calibration-3pass-v2",
+      "--attempt-offset",
+      "6",
+      "--warmup-grid",
+      "3",
+      "--label-smoke",
+      "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-labels-004/result.json",
+      "--grounded-smoke",
+      "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-grounded-004/result.json"
+    ],
+    "cwd": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/a122820",
+    "diagnosis": "prior FIT format grid exhausted; incomplete closure, repeated JSON/truncation, non-unit coordinates; no new mask defect identified",
+    "grid": [
+      3.0
+    ],
+    "max_total_fit_passes": 5,
+    "pid": 289543,
+    "pilot_GPU_hours_before_launch": 2.918739631835811,
+    "pilot_aggregate_limit_hours": 6,
+    "started_unix": 1793077249.41745,
+    "tests": {
+      "local_full": 75,
+      "oz_focused": 27
+    }
+  },
+  "calibration-3pass-v2/config.json": {
+    "attempt_offset": 6,
+    "control_name": "calibration-3pass-v2",
+    "grounded_smoke": "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-grounded-004/result.json",
+    "label_smoke": "/local/datasets/sp2117/firearm_visilab/posttraining1/smoke-labels-004/result.json",
+    "target_mask": "known-schema-unknown-payload-v2",
+    "warmup_grid": [
+      3.0
+    ]
+  },
+  "calibration-3pass-v2/status.json": {
+    "attempt": 8,
+    "controller_pid": 289543,
+    "stage": "fixed_warmups",
+    "started_unix": 1793077249.5883565,
+    "updated_unix": 1793077249.5883658,
+    "warmup_passes": 3.0
+  },
+  "controller_alive": true,
+  "pilot-c0g-008": {
+    "job.json": {
+      "before": {
+        "memory_total_mib": 46068,
+        "memory_used_mib": 4,
+        "processes": [],
+        "raw": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7, NVIDIA RTX 6000 Ada Generation, 4, 46068, 0, 615.71.10",
+        "utilization_pct": 0
+      },
+      "code_commit": "a12282013e7dfbfc91e354405dc099b744291168",
+      "command": [
+        "/local/datasets/sp2117/envs/firearm-posttrain/bin/python",
+        "-m",
+        "studies.firearm_posttraining",
+        "train",
+        "--model",
+        "/local/datasets/sp2117/models/Qwen/Qwen3-VL-8B-Instruct/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "--data",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/data",
+        "--output",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0g-008",
+        "--method",
+        "SG",
+        "--warmup-only",
+        "--warmup-passes",
+        "3.0",
+        "--max-passes",
+        "5",
+        "--max-seconds",
+        "1765",
+        "--grounded"
+      ],
+      "cwd": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/a122820",
+      "gpu": "GPU-721a5bd6-d1e2-d5c5-af9a-6db4bdf691f7",
+      "seconds": 1800,
+      "supervisor_pid": 289611
+    },
+    "process.json": {
+      "pid": 289621,
+      "started_unix": 1793077249.9129775
+    }
+  },
+  "pilot-c0l-008": {
+    "job.json": {
+      "before": {
+        "memory_total_mib": 46068,
+        "memory_used_mib": 4,
+        "processes": [],
+        "raw": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03, NVIDIA RTX 6000 Ada Generation, 4, 46068, 0, 615.71.10",
+        "utilization_pct": 0
+      },
+      "code_commit": "a12282013e7dfbfc91e354405dc099b744291168",
+      "command": [
+        "/local/datasets/sp2117/envs/firearm-posttrain/bin/python",
+        "-m",
+        "studies.firearm_posttraining",
+        "train",
+        "--model",
+        "/local/datasets/sp2117/models/Qwen/Qwen3-VL-8B-Instruct/0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "--data",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/data",
+        "--output",
+        "/local/datasets/sp2117/firearm_visilab/posttraining1/pilot-c0l-008",
+        "--method",
+        "SL",
+        "--warmup-only",
+        "--warmup-passes",
+        "3.0",
+        "--max-passes",
+        "5",
+        "--max-seconds",
+        "1765"
+      ],
+      "cwd": "/local/datasets/sp2117/firearm_visilab/code/posttraining-releases/a122820",
+      "gpu": "GPU-2931eba2-9a4d-61da-6bd1-e75692edad03",
+      "seconds": 1800,
+      "supervisor_pid": 289610
+    },
+    "process.json": {
+      "pid": 289625,
+      "started_unix": 1793077249.9346442
+    }
+  }
+}

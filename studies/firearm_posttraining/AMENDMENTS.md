@@ -198,8 +198,8 @@ freeze. All extra GPU work remains inside the existing six-hour pilot budget.
 ## Additional finite FIT-only warm-up candidate: three passes
 
 The corrected 1/1.5/2-pass grid exhausted normally with no passing common format
-exposure. Label validity was94/96,96/96,95/96; grounded checks stopped at5/20,
-5/18,5/64 invalid respectively. These partial-panel fractions are not complete
+exposure. Label validity was 94/96, 96/96, 95/96; grounded checks stopped at 5/20, 
+5/18, 5/64 invalid respectively. These partial-panel fractions are not complete
 96-response estimates. The two-pass FIT failures contain missing JSON closure,
 repeated answers/truncation and non-unit coordinates. No further target-mask
 defect was found in those traces. Preserve the failed grid/controller status.
@@ -212,16 +212,16 @@ using FIT feedback, not reporting-set outcomes. Count three warm-up passes insid
 the unchanged five-total-pass ceiling, leaving at most two continuation passes
 for each supervised/RL pair and applying the same exposure to all three seeds.
 
-Use new calibration namespace calibration-3pass-v2 and attempt008. The immutable
-controller config records grid[3.0]; resume rejects any grid change. No automatic
+Use new calibration namespace calibration-3pass-v2 and attempt 008. The immutable
+controller config records grid [3.0]; resume rejects any grid change. No automatic
 further candidate follows failure. Both format gates and both actual reward
 panels must pass before freeze; failed actual reward gates still stop for
 diagnosis. Existing mask-v2 adapters at shorter exposures are not reused.
 
-Settled pilot use before this candidate is2.91874GPU-hours out of the authorized
+Settled pilot use before this candidate is 2.91874 GPU-hours out of the authorized
 six. Measured two-pass warm-up latencies forecast approximately38 combined
-GPU-minutes for fresh three-pass warm-ups; reserve finite1800seconds each.
-Format caps remain600/900seconds and actual panel caps1800/3600seconds, with
+GPU-minutes for fresh three-pass warm-ups; reserve finite 1800 seconds each.
+Format caps remain 600/900 seconds and actual panel caps 1800/3600 seconds, with
 the existing aggregate reservation guard enforcing the unchanged six-hour
 allowance. Do not extend that allowance silently. Full scientific-run time caps
 remain removed; all non-time scientific stopping rules remain.
