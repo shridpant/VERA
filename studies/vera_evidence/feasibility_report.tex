@@ -2,7 +2,7 @@
 \usepackage[margin=1in]{geometry}\usepackage{booktabs,tabularx,hyperref,graphicx,amsmath}
 \title{VERA Evidence Feedback: Novelty and Feasibility Gate}\author{Research update for Shrid Pant}\date{October 27, 2026}
 \begin{document}\maketitle
-\textbf{Decision:} Do not launch a broad prompt-optimization sweep. Existing work substantially overlaps with that claim. Continue a narrower feasibility investigation of unsupported-claim reduction beyond simpler controls. A subsequent eight-window diagnostic is reported below; no learning was performed.
+\textbf{Final decision:} No-go for the investigated evidence-verified question-learning proposal under current evidence. Stop further compute; reopening conditions are specified below. A subsequent eight-window diagnostic is reported below; no learning was performed.
 \section{Closest existing work}
 \begin{tabularx}{\linewidth}{lXX}\toprule Work & Established overlap & Consequence\\\midrule
 PrismVAU & Weakly supervised optimization of textual anchors and MLLM prompts. & Another frozen-model prompt optimizer is insufficient novelty.\\
@@ -97,6 +97,16 @@ VANGUARD already aligns UCA sentences to subclips, generates object-level reason
 An ID-only candidate manifest was generated before images or predictions were examined: 16 joint-training videos and 12 joint-validation videos, selected by fixed SHA256 order. The latter contains ten normal videos and two burglaries; this cannot support a broad anomaly-category comparison. The manifest is retained as a rejected design artifact, not used for inference. Exact split-ID exclusion passed, but source-byte/scene independence has not been verified.
 
 \textbf{Next design constraint:} preserve original VERA train/validation boundaries while considering UCA annotations across its alternative splits, rather than requiring both split names to agree. Define category coverage and positive-reference evaluation before selection. Caption absence remains unknown, not false. Compare classification-only feedback, no-sound/manual controls and caption-positive feedback at matched model-call budgets. A pilot can test feasibility; it cannot by itself establish novelty. No training videos fetched and no new GPU work performed.
+
+
+\section{Final feasibility decision: no-go under current evidence}
+The assessed candidate would learn frozen-VERA questions from UCA-aligned caption feedback, compared against classification-only and simple manual/no-sound controls. It remains unsuitable for the requested evidence-verification claim: caption agreement is not exhaustive claim support, and no independently validated verifier or clearly differentiated mechanism has been established. Existing prompt, linguistic-feedback and caption-grounding methods substantially overlap.
+
+Data access is not the fundamental blocker. Using UCA annotations across its alternative splits covers 156 original VERA validation videos across all 13 anomaly classes plus normal; the rejected joint-split sample was overly restrictive. Proper split filtering can resolve that issue, but cannot turn caption omission into negative evidence.
+
+\textbf{Stop further compute for this proposal.} Preserve the complete negative result and all raw records. This is a bounded research decision, not proof that novelty is impossible. Reopening requires independently reviewed supported/contradicted/unknown claim labels with source evidence, separate development/evaluation sources, and a precise mechanism evaluated against matched-supervision and matched-call controls. No further data download or model run is justified merely by an available GPU.
+
+Total new inference in this feasibility study remains 40 calls, 89.54 seconds on one Ada (approximately 0.025 allocated GPU-hours); no A16 use. PR5 retains the completed experiment03B repair, and PR10 contains this feasibility study. Neither was merged.
 
 \section{Primary sources and review limits}
 PrismVAU method sections, LRPO reward/appendix, and the instance-caption annotation pipeline were inspected; several other comparisons currently rely on primary abstracts/introduction and need full-method follow-up. This is not an exhaustive novelty proof.
