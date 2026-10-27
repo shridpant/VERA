@@ -1,0 +1,23 @@
+{
+  "calls": 72,
+  "wall_seconds": 190.53781723976135,
+  "generation_seconds": 173.622,
+  "engine": {
+    "model_load_s": 4.3,
+    "attention": {
+      "vision_use_flash_attn": true,
+      "llm_attn_implementation": "flash_attention_2",
+      "llm_attention_class": "InternLM2FlashAttention2"
+    },
+    "counts": {
+      "generation_calls": 72,
+      "score_calls": 0,
+      "alignment_score_forwards": 0,
+      "alignment_generate_calls": 0,
+      "gradient_calls": 0
+    },
+    "candidates": null
+  },
+  "paired_tensor_checks": 24,
+  "dependencies_unchanged": true
+}
