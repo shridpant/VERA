@@ -1,0 +1,6 @@
+{
+  "previous_implementation_commit": "3da8543",
+  "updated_reconstruct_sha256": "5aa27beb6a1c6cad1e642613999e93b6ab06223cf9b8a38a8c519d1b4bf55a9f",
+  "reason": "Match upstream truncation of convolution for videos shorter than kernel",
+  "success_criteria_changed": false
+}

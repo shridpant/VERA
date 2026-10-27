@@ -47,7 +47,7 @@ def replay(feature_path, score_path, ratio):
     smooth = np.convolve(np.asarray(scene), kernel, mode='same')
     keys = list(score)
     lengths = [16]*(n-1)+[int(score[keys[-1]]['end']-int(keys[-1]))]
-    r = np.repeat(np.asarray([round(x, 1) for x in smooth]), lengths)
+    r = np.repeat(np.asarray([round(x, 1) for x in smooth[:n]]), lengths)
     return r
 
 

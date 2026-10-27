@@ -1,0 +1,5 @@
+# Exact-upstream short-video convolution handling
+
+Replay launch002 stopped before counterfactual statistics. The unmodified upstream script completed all290videos and printed AUC0.8660712271901675. Independent replay failed when a14segmentvideo produced15convolution outputs: NumPy mode=same returns max(input,kernel) elements, but the upstream loop reads only the first Nsegment values. The independent np.repeat attempted to use all15values with14repeat lengths.
+
+Fix only the replay implementation: use smooth[:n] before rounding/expansion, exactly matching upstream's index loop. No source, labels, feature selection, ratios, offsets, bootstrap definitions or success criteria change. Preserve partial external caches and evidence/reconstruction logs/provenance. This is an equivalence fix, not selection based on robustness results; no shifted metrics have run. Original frozen code remains in commit3da8543. New amended implementation hash is recorded before rerun. New output/evidence directories prevent overwrites.
