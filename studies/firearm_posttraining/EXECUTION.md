@@ -83,7 +83,7 @@ extended to six combined hours (supervised up to four, RL up to two per pilot).
 Concurrent occupancy still sums across cards for reporting. Scientific jobs use
 `--seconds 0` and `--max-seconds 0`; all non-time scientific stops remain. A pilot
 crash leaves its full reservation charged until explicitly reconciled. There is
-no automatic failure resubmission. See the latest AMENDMENTS.md entry; running
+no automatic failure resubmission. See the latest AMENDMENTS.md entry;
 the human directly confirmed these resource edits from a side chat.
 Running immutable releases are never edited.
 
@@ -148,3 +148,15 @@ not reused. The finite FIT-only calibration grid and actual reward gates still
 precede any freeze or scientific sweep. New launch metadata and passing gates
 are in evidence/corrected-mask-verification.json. No held-out or RL recognition
 improvement is established.
+
+## Corrected one-pass format decision
+
+Both corrected one-pass fixed warm-ups completed 192 clips /24 updates with no
+STOP queries (label366s, grounded401s). Label sampled format passed94/96valid;
+grounded failed5/20invalid and stopped once the96-response gate was impossible.
+FIT failures include trailing prose/duplicate JSON, one truncated response,
+non-unit coordinates and malformed empty-box payloads. These are retained
+optimization/format failures; parser and thresholds are unchanged.
+Controller283507 advanced to the declared1.5-pass candidate006 on both Adas.
+No protocol freeze or scientific sweep yet. Settled results are preserved in
+evidence/corrected-one-pass-calibration.json; raw responses remain on Oz.
