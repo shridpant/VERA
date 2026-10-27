@@ -1,0 +1,34 @@
+{
+  "checked_at_utc": "2026-10-27T20:48:08.194356+00:00",
+  "score_archive_sha256": "2564a0d1985dcd0643e7978db71bb3156cf8489858d3ff973a7fc40fc9598bc3",
+  "bytes": 1471961,
+  "zip_crc_pass": true,
+  "score_files": 800,
+  "test_ids": 800,
+  "missing_score_ids": [],
+  "extra_score_ids": [],
+  "annotation_ids": 814,
+  "ap_ground_truth_keys": 800,
+  "total_metadata_frames": 2335801,
+  "max_video_frames": 33196,
+  "feature_archive_bytes_from_prior_metadata": 652318723,
+  "feature_contents_verified": false,
+  "checks": {
+    "score_anchor_grid_mismatch": [],
+    "score_end_length_mismatch": [],
+    "ap_trimmed_length_mismatch": [],
+    "nonbinary_ap_labels": [],
+    "annotation_test_metadata_mismatch": []
+  },
+  "auc_script_uses_position_weighting": true,
+  "ap_script_uses_position_weighting": false,
+  "gpu_calls": 0,
+  "performance_experiment_run": false,
+  "source_hashes": {
+    "compute_auc_XD_Violence.py": "246611a11818e9be7ff111b06f9a92698cde39b0b7edd497a7b88efc36291810",
+    "compute_AP_XD_Violence.py": "5644e41e3b144166c0d5cbe55e9c2a8a3013f7172660be39dfc5d0ea53032c68",
+    "Data/xd_test_800.json": "1e9e9cc520c8f4a976ab4502fb3444c9af5b194c935b0ab16aae7adbf93fd3c9",
+    "Data/xd_annotations.json": "8c34b4a59c7a6af42ba5507d2dd560e019c1ca2c600b21c4a641e40c5b240168",
+    "Data/name_gt_pair.json": "568ecd6e15c40fa80d8effdd4f0ff65125a8fba324f15ec5847089958143bb03"
+  }
+}
