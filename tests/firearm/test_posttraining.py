@@ -24,7 +24,7 @@ def fixture():
 def response(row, grounding=True):
     result = {k: row[k] for k in ('category', 'action_group', 'action_code')}
     if grounding:
-        result['grounding'] = [{'frame_id': v['frame_id'], 'boxes': copy.deepcopy(v['boxes'] or [])} for v in row['views']]
+        result['grounding'] = [{'frame_id': v['frame_id'], 'boxes': [[x * 1000 for x in b] for b in (v['boxes'] or [])]} for v in row['views']]
     return result
 
 
@@ -84,6 +84,30 @@ class DataTests(unittest.TestCase):
 
 
 class RewardTests(unittest.TestCase):
+    def test_native_coordinate_boundary_preserves_unit_geometry_and_reward(self):
+        row = fixture()
+        for box in ([0, 0, 1, 1], [.00001, .12345, .98765, .99999], [.2, .3, .4, .5]):
+            for view in row['views']:
+                view['boxes'] = [list(box)]
+            target, _ = target_parts(row, True)
+            parsed = rewards.parse(target, BOOK, True)
+            for x, y in zip(parsed['grounding'][0]['boxes'][0], box):
+                self.assertAlmostEqual(x, y, places=14)
+            # Whole-image suppression remains in force, even for perfect GT.
+            expected = 0. if box == [0, 0, 1, 1] else 1.
+            self.assertAlmostEqual(rewards.score(target, row, BOOK, True)['quality'], expected)
+        self.assertIn('[0,1000]', instruction(BOOK, True))
+        for box in ([0, 0, 1001, 1000], [-1, 0, 10, 10], [10, 20, 30, 20],
+                    [30, 20, 10, 40], [0, 0, float('inf'), 1], [False, 0, 1, 1]):
+            value = response(row)
+            value['grounding'][0]['boxes'] = [box]
+            self.assertIsNone(rewards.parse(json.dumps(value), BOOK, True))
+        value = response(row)
+        value['grounding'][0]['boxes'] = [[.2, .3, .4, .5]]
+        # No unit autodetection: small native coordinates stay small.
+        self.assertEqual(rewards.parse(json.dumps(value), BOOK, True)['grounding'][0]['boxes'][0],
+                         [.0002, .0003, .0004, .0005])
+
     def test_exact_hierarchy_inconsistent_codes_and_verbosity(self):
         row = fixture()
         p = response(row, False)
@@ -113,11 +137,11 @@ class RewardTests(unittest.TestCase):
         p['grounding'].reverse()
         self.assertAlmostEqual(rewards.score(json.dumps(p), row, BOOK, True)['reward'], 1.)
         p['grounding'].reverse()
-        p['grounding'][0]['boxes'].append([.2, .3, .4, .5])
+        p['grounding'][0]['boxes'].append([200, 300, 400, 500])
         self.assertAlmostEqual(rewards.score(json.dumps(p), row, BOOK, True)['quality'], (2 / 3 + 1) / 2)
         p['grounding'][0]['boxes'] = []
         self.assertAlmostEqual(rewards.score(json.dumps(p), row, BOOK, True)['quality'], .5)
-        p['grounding'][0]['boxes'] = [[0, 0, 1, 1]]
+        p['grounding'][0]['boxes'] = [[0, 0, 1000, 1000]]
         self.assertAlmostEqual(rewards.score(json.dumps(p), row, BOOK, True)['quality'], .5)
         p['grounding'][1]['frame_id'] = 0
         self.assertFalse(rewards.score(json.dumps(p), row, BOOK, True)['valid'])
@@ -133,9 +157,9 @@ class RewardTests(unittest.TestCase):
             v['boxes'] = []
         p = response(row)
         self.assertEqual(rewards.score(json.dumps(p), row, BOOK, True)['quality'], 1.)
-        p['grounding'][0]['boxes'] = [[0, 0, 1, 1]]
+        p['grounding'][0]['boxes'] = [[0, 0, 1000, 1000]]
         self.assertEqual(rewards.score(json.dumps(p), row, BOOK, True)['quality'], 7/8)
-        p['grounding'][0]['boxes'] = [[0, 0, 1.001, 1]]
+        p['grounding'][0]['boxes'] = [[0, 0, 1001, 1000]]
         self.assertFalse(rewards.score(json.dumps(p), row, BOOK, True)['valid'])
 
     def test_unknown_only_has_no_quality_and_wrong_category_cannot_be_rescued(self):
@@ -155,7 +179,7 @@ class RewardTests(unittest.TestCase):
         kinds = token_kinds([(i, i+1) for i in range(len(target))], spans)
         null = target.index('null')
         self.assertEqual(kinds[null:null+4], [0] * 4)
-        known = target.index('0.2')
+        known = target.index('200.0')
         self.assertEqual(kinds[known:known+3], [2] * 3)
         self.assertEqual(token_kinds([(spans[0][1]-1, spans[1][1])], spans), [1])
         self.assertEqual(token_kinds([(null-1, null+2)], spans), [0])
@@ -387,7 +411,7 @@ class StatisticsTests(unittest.TestCase):
         self.assertEqual(result['precision_IoU50'], 1.)
         self.assertEqual(result['recall_IoU50'], 1.)
         self.assertEqual(result['annotation_coverage'], .25)
-        p['grounding'][0]['boxes'] = [[0, 0, 1, 1]]
+        p['grounding'][0]['boxes'] = [[0, 0, 1000, 1000]]
         pred[0]['text'] = json.dumps(p)
         result = localization([row], pred, BOOK)
         self.assertEqual(result['precision_IoU50'], .5)

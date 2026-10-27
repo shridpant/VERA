@@ -3,6 +3,7 @@ import json
 import math
 
 VERSION = 'hierarchical-iou-v1'
+COORDINATE_VERSION = 'native-1000-to-unit-v1'
 
 
 def _unique(pairs):
@@ -58,8 +59,11 @@ def parse(text, book, grounded=False, truncated=False):
                 for b in boxes:
                     if (not isinstance(b, list) or len(b) != 4 or
                         any(type(x) not in (int, float) or not math.isfinite(x) for x in b) or
-                        not (0 <= b[0] < b[2] <= 1 and 0 <= b[1] < b[3] <= 1)):
+                        not (0 <= b[0] < b[2] <= 1000 and 0 <= b[1] < b[3] <= 1000)):
                         return None
+                # Only the model boundary changes; every downstream scorer uses
+                # unit coordinates. No unit guessing, clamping or box repair.
+                f['boxes'] = [[x / 1000 for x in b] for b in boxes]
         return p
     except (ValueError, TypeError, KeyError):
         return None

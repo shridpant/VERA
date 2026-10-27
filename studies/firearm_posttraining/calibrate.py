@@ -26,7 +26,7 @@ def validate_grid(values):
     return grid
 
 
-def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None, warmup_grid=None, warmup_attempt=None):
+def run(root, original_data, frames_root, resume=False, control_name='calibration', attempt_offset=0, grounded_smoke=None, label_smoke=None, warmup_grid=None, warmup_attempt=None, sequential_panels=False):
     root = Path(root).resolve()
     original_data, frames_root = str(original_data), str(frames_root)
     grid = validate_grid((1., 1.5, 2.) if warmup_grid is None else warmup_grid)
@@ -46,7 +46,7 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
     write_json(control / 'config.json', {'control_name': control_name, 'attempt_offset': attempt_offset,
                'grounded_smoke': str(grounded_smoke), 'label_smoke': str(label_smoke),
                'target_mask': 'known-schema-unknown-payload-v2', 'warmup_grid': grid,
-               'warmup_attempt': warmup_attempt}, immutable=True)
+               'warmup_attempt': warmup_attempt, 'sequential_panels': sequential_panels}, immutable=True)
     if resume and (control / 'status.json').exists() and json.loads((control / 'status.json').read_text()).get('stage') == 'complete':
         return
     model = json.loads((root / 'data/preflight.json').read_text())['model']
@@ -168,7 +168,8 @@ def run(root, original_data, frames_root, resume=False, control_name='calibratio
             if kind == 'g':
                 child.append('--grounded')
             tasks.append((kind, launch, (name, ALLOWED[index], seconds, child)))
-        rewards = pair(tasks)
+        rewards = ({key: function(*arguments) for key, function, arguments in tasks}
+                   if sequential_panels else pair(tasks))
         if not all(r['status'] == 'passed' for r in rewards.values()):
             status('failed_real_reward_gate', warmup_passes=passes, results=rewards)
             return
@@ -222,5 +223,6 @@ if __name__ == '__main__':
     p.add_argument('--label-smoke', help='passing engineering evidence for the current label target mask')
     p.add_argument('--warmup-grid', type=float, nargs='+', help='explicit finite pre-freeze grid; defaults to 1 1.5 2')
     p.add_argument('--warmup-attempt', type=int, help='reuse completed fixed warm-ups at one exposure; new format/reward attempt remains unique')
+    p.add_argument('--sequential-panels', action='store_true', help='settle each full reward panel before reserving the next; no scoring or budget change')
     args = p.parse_args()
-    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke, args.warmup_grid, args.warmup_attempt)
+    run(args.root, args.original_data, args.frames_root, args.resume, args.control_name, args.attempt_offset, args.grounded_smoke, args.label_smoke, args.warmup_grid, args.warmup_attempt, args.sequential_panels)

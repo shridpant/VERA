@@ -4,6 +4,8 @@ import json
 import math
 from pathlib import Path
 from .data import digest, canonical_hash, write_json
+from .model import instruction
+from .rewards import COORDINATE_VERSION
 from .sampling import TEMPERATURE, VERSION as SAMPLING_VERSION
 
 METHODS = ('VQ', 'SL', 'RL', 'SG', 'RG')
@@ -40,10 +42,18 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
     if not (setup / 'requirements.lock').is_file() or not (setup / 'wheelhouse.json').is_file():
         raise ValueError('tested hash-locked environment required')
     preflight = json.loads((root / 'data/preflight.json').read_text())
-    mask_audit = json.loads((root / 'data/target-mask-audit-v3.json').read_text())
+    mask_audit = json.loads((root / 'data/coordinate-audit-v1.json').read_text())
     if (mask_audit.get('status') != 'passed' or mask_audit.get('target_mask') != 'known-schema-unknown-payload-v2' or
-        mask_audit.get('current_model_sha256') != digest(Path(__file__).with_name('model.py'))):
+        mask_audit.get('coordinate_version') != COORDINATE_VERSION or
+        any(mask_audit.get('data_hashes', {}).get(name) != digest(root / 'data' / name)
+            for name in ('fit.json', 'stop.json')) or
+        any(mask_audit.get('code_hashes', {}).get(name) != digest(Path(__file__).with_name(name))
+            for name in ('model.py', 'rewards.py', 'coordinate_audit.py'))):
         raise ValueError('passing target-mask audit for current source required')
+    for name in ('label_smoke', 'grounded_smoke', 'label_panel', 'grounded_panel'):
+        spec = json.loads(Path(evidence[name]['path']).with_name('spec.json').read_text())
+        if spec['code_commit'] != mask_audit['code_commit']:
+            raise ValueError('fresh coordinate-release engineering and reward evidence required')
     forecast = json.loads((root / 'throughput-forecast.json').read_text())
     if (forecast.get('status') != 'measured_forecast' or forecast['warmup_passes'] != warmup_passes or
         forecast['shared_max_fit_passes'] != max_passes):
@@ -60,12 +70,13 @@ def freeze(root, output, label_smoke, grounded_smoke, supervised_pilot, label_pa
                                   'sft_pilot_hours': 4, 'rl_pilot_hours': 2,
                                   'scientific_stopping_rules_retained': True},
               'warmup_selection': 'fixed_no_STOP_queries', 'evidence': evidence,
-              'data_hashes': {name: digest(root / 'data' / name) for name in ('fit.json', 'stop.json', 'audit.json', 'preflight.json', 'target-mask-audit-v3.json')},
+              'data_hashes': {name: digest(root / 'data' / name) for name in ('fit.json', 'stop.json', 'audit.json', 'preflight.json', 'coordinate-audit-v1.json')},
               'requirements_lock_sha256': digest(setup / 'requirements.lock'),
               'codebook_sha256': preflight['codebook_sha256'],
               'throughput_forecast_sha256': digest(root / 'throughput-forecast.json'),
               'model': preflight['model'], 'model_manifest_hash': preflight['model_manifest_hash'],
-              'prompt_hashes': preflight['prompt_hashes'], 'frames': 8, 'view': '448_letterbox',
+              'prompt_hashes': {kind: canonical_hash(instruction(json.loads(Path('studies/firearm_training/codebook.json').read_text()), kind == 'grounded')) for kind in ('labels', 'grounded')},
+              'coordinate_version': COORDINATE_VERSION, 'internal_coordinates': 'unit_xyxy', 'model_coordinates': '0_to_1000_xyxy', 'frames': 8, 'view': '448_letterbox',
               'completion_cap': 512, 'context_cap': 8192, 'precision': 'bf16',
               'lora': {'rank': 16, 'alpha': 32, 'dropout': 0., 'targets': 'language_attention_q_k_v_o_only'},
               'target_mask': 'known-schema-unknown-payload-v2',

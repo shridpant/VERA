@@ -279,3 +279,8 @@ representation and requires fresh paired warm-ups, actual-tokenizer audit, GPU
 engineering, format and real-reward gates, within the unchanged budget. It is
 not implemented or accepted. No new candidate launches while the decision is
 pending. Current code, parser, rewards, thresholds and old releases are unchanged.
+
+
+## Accepted native-coordinate amendment — October 27, 2026
+Human instruction in chat 01a17dce-3275-78b0-b005-0f3a408d5cbe: "fix the coordinate issue on gpu 7 and rerun the format checks, then continue the post-training experiments if they pass. keep everything auditable and don't change the scoring rules".
+This accepts COORDINATE_AMENDMENT_PROPOSAL.md: one fresh paired fixed-three-pass candidate, native model-facing 0–1000 coordinates, unit internal geometry; strict finite/range/positive-area/schema checks and unchanged rewards/IoU, thresholds, panels and stopping rules. No autodetection/clamping/repair or retroactive gate rescue. Fresh engineering checks, actual-tokenizer/source audit and both format/reward gates precede freeze/sweep. Six aggregate pilot GPU-hours retained. Use sequential reward panels to avoid overlapping reservations. No old warm-up reuse. New attempt 010 and calibration-native-coordinates-v1 own execution; prior failures immutable. Human approval is recorded, no further representation permission required. Current operator is chat 01a17dce; other heartbeat must inspect canonical records and not duplicate launches.

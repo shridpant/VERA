@@ -1,3 +1,7 @@
+# Current override: coordinate amendment accepted October 27
+
+Human approval recorded in AMENDMENTS.md. Chat01a17dce owns implementation/deployment of fresh attempt010 / calibration-native-coordinates-v1. No duplicate launches. Prior pending-decision statements below are historical and superseded; all unchanged scientific stops and budgets remain binding. No scoring-rule change authorized.
+
 # Actual execution status
 
 The study is ongoing. Draft PR: https://github.com/shridpant/VERA/pull/9. No merge.

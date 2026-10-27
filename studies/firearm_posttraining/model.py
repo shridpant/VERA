@@ -20,7 +20,7 @@ def instruction(book, grounded=False, questions=None):
     if grounded:
         text += ('\nAlso output grounding: an array of eight objects, each with frame_id (integer 0 through 7) '
                  'and boxes (list of [x1,y1,x2,y2] firearm boxes in that displayed frame). '
-                 'Coordinates are in [0,1] relative to the entire displayed square, including black padding. '
+                 'Coordinates are in [0,1000] relative to the entire displayed square, including black padding. '
                  'Use an empty list when no firearm is visible. Include every frame exactly once.')
     if questions:
         if len(questions) > 5:
@@ -35,7 +35,7 @@ def target_parts(row, grounded=False):
     if grounded:
         pieces.append((',"grounding":[', 1))
         for i, v in enumerate(row['views']):
-            boxes = None if v['boxes'] is None else [[round(x, 5) for x in b] for b in v['boxes']]
+            boxes = None if v['boxes'] is None else [[round(round(x, 5) * 1000, 2) for x in b] for b in v['boxes']]
             pieces.append(((',' if i else '') + '{"frame_id":' + str(v['frame_id']) + ',"boxes":', 1))
             pieces.append((json.dumps(boxes, separators=(',', ':')), 0 if boxes is None else 2))
             pieces.append(('}', 1))
